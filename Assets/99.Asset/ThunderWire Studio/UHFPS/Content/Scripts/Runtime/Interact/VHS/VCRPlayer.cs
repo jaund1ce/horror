@@ -44,8 +44,8 @@ namespace UHFPS.Runtime
         public string rewindSymbol = "<";
         public string playSymbol = "€";
         public string stopSymbol = "€";
-        public string pauseSymbol = "™";
-        public string ejectSymbol = "®";
+        public string pauseSymbol = "?";
+        public string ejectSymbol = "?";
 
         public SoundClip tapeInsert;
         public SoundClip tapeEject;
