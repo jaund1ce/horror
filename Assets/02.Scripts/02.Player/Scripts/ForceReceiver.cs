@@ -5,10 +5,14 @@ using UnityEngine;
 public class ForceReceiver : MonoBehaviour
 {
     [SerializeField] private CharacterController controller;
+    [SerializeField] private float drag = 0.3f;
 
-    private float vertiaclVelocity;
 
-    public Vector3 Movement => Vector3.up * vertiaclVelocity;
+    private Vector3 dampingVelocity;
+    private Vector3 impact;
+    private float verticalVelocity;
+
+    public Vector3 Movement => impact + Vector3.up * verticalVelocity;
           
     void Start()
     {
@@ -18,18 +22,30 @@ public class ForceReceiver : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (controller.isGrounded)
+        if (verticalVelocity < 0f && controller.isGrounded)
         {
-            vertiaclVelocity = Physics.gravity.y * Time.deltaTime;
+            verticalVelocity = Physics.gravity.y * Time.deltaTime;
         }
         else
         {
-            vertiaclVelocity += Physics.gravity.y * Time.deltaTime;
+            verticalVelocity += Physics.gravity.y * Time.deltaTime;
         }
+
+        impact = Vector3.SmoothDamp(impact, Vector3.zero, ref dampingVelocity, drag);
+    }
+    public void Reset()
+    {
+        impact = Vector3.zero;
+        verticalVelocity = 0f;
+    }
+
+    public void AddForce(Vector3 force)
+    {
+        impact += force;
     }
 
     public void Jump(float jumpForce)
     {
-        vertiaclVelocity += jumpForce;
+        verticalVelocity += jumpForce;
     }
 }
