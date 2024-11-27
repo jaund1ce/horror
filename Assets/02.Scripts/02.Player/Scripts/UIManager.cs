@@ -12,8 +12,6 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        // Input System 초기화
-        playerInputs = new PlayerInputs();
 
         // Menu(ESC) 입력 연결
         playerInputs.Player.Menu.performed += _ => HandleMenuInput();

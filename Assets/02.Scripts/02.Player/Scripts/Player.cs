@@ -12,23 +12,29 @@ public class Player : MonoBehaviour
     public Animator Animator { get; private set; }
     public PlayerController Input { get; private set; }
     public CharacterController Controller { get; private set; }
+    public ForceReceiver ForceReceiver { get; private set; }
 
     private PlayerStateMachine2 stateMachine;
 
+
     void Awake()
     {
+
         AnimationData.Initialize();
-        Animator = GetComponent<Animator>();
+        Animator = GetComponentInChildren<Animator>();
         Input = GetComponent<PlayerController>();
         Controller = GetComponent<CharacterController>();
+        ForceReceiver = GetComponent<ForceReceiver>();
+
 
         stateMachine = new PlayerStateMachine2(this);
-        stateMachine.ChangeState(stateMachine.IdleState);
+
     }
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        stateMachine.ChangeState(stateMachine.IdleState);
     }
 
     private void Update()
