@@ -9,7 +9,7 @@ public class CreatureStateMachine : MonoBehaviour
     public Vector2 MovementInput { get; set; }
     public float MovementSpeed { get; private set; }
     public float RotationDamping { get; private set; }
-    public float MovementSpeedModifier { get; set; } = 1f;
+    public float MovementSpeedModifier { get; set; } = 1f;    
 
     public GameObject Target { get; private set; }
     public CreatureIdleState IdleState { get; }
@@ -24,7 +24,8 @@ public class CreatureStateMachine : MonoBehaviour
         AttackState = new CreatureAttackState(this);
         ChasingState = new CreatureChasingState(this);
 
-
+        //MovementSpeed = Creature.Data.GroundData.BaseSpeed;
+        //RotationDamping = Creature.Data.GroundData.BaseRotationDamping;
     }
 
 }
