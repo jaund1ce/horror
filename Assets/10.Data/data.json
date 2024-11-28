@@ -1,15 +1,5 @@
 [
   {
-    "ID": "int",
-    "ItemNameEng": "string",
-    "ItemNameKor": "string",
-    "ItemType": "string",
-    "ItemEffect": "string",
-    "ItemHealHealth": "int",
-    "ItemHealMental": "int",
-    "ItemDescription": "string"
-  },
-  {
     "ID": 1001,
     "ItemNameEng": "keycard",
     "ItemNameKor": "키카드",

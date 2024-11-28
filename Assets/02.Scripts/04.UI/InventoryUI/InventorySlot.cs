@@ -7,7 +7,7 @@ using static UHFPS.Runtime.InventoryItem;
 
 public class InventorySlot : MonoBehaviour
 {
-    public ItemData CurrentItemData = null;
+    public ItemSO CurrentItemData = null;
     public Image CurrentItemImage;
     public TextMeshProUGUI CurrentItemAmount;
     private int amount = 0;
@@ -18,7 +18,7 @@ public class InventorySlot : MonoBehaviour
         ResetSlot();
     }
 
-    public void SetNewData(ItemData itemData)
+    public void SetNewData(ItemSO itemData)
     {
         CurrentItemData = itemData;
         amount = 1;
@@ -53,12 +53,6 @@ public class InventorySlot : MonoBehaviour
 
     public void ChangeUI()
     {
-        CurrentItemImage.color = Color.white;
-        CurrentItemImage = CurrentItemData.ItemImage;
-
-        if (CurrentItemData.Stackable)
-        {
-            CurrentItemAmount.text = amount.ToString();
-        }
+        
     }
 }

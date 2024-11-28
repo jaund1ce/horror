@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class InventorySlotsController : MonoBehaviour
 {
+    public InventorySlot[] slots;   
+
     // Start is called before the first frame update
     void Start()
     {

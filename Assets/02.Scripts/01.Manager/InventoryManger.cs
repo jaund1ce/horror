@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class InventoryManger : MonoBehaviour
 {
-    private ItemData LastSelectItemData;
-    public ItemData CurrentSelectItemData;
+    private ItemSO LastSelectItemData;
+    public ItemSO CurrentSelectItemData;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +19,7 @@ public class InventoryManger : MonoBehaviour
         
     }
 
-    public void ChangeInventory(ItemData itemData)
+    public void ChangeInventory(ItemSO itemData)
     {
         CurrentSelectItemData = itemData;
 
