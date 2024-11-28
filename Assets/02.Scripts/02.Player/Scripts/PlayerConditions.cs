@@ -1,30 +1,25 @@
 using System;
 using UnityEngine;
 
-public interface IDamagable
-{
-    void TakePhysicalDamage(int damageAmount);
-}
 
-public class PlayerCondition : MonoBehaviour, IDamagable
+public class PlayerCondition : MonoBehaviour
 {
     public UICondition uiCondition;
 
     Condition health { get { return uiCondition.health; } }
-    Condition hunger { get { return uiCondition.hunger; } }
     Condition stamina { get { return uiCondition.stamina; } }
+    Condition aggro { get { return uiCondition.aggro; } }
 
-    public float noHungerHealthDecay;
     public event Action onTakeDamage;
 
     private void Update()
     {
-        hunger.Subtract(hunger.passiveValue * Time.deltaTime);
+        aggro.Subtract(aggro.passiveValue * Time.deltaTime);
         stamina.Add(stamina.passiveValue * Time.deltaTime);
 
-        if (hunger.curValue < 0.0f)
+        if (aggro.curValue > 99.9f)
         {
-            health.Subtract(noHungerHealthDecay * Time.deltaTime);
+            //exposed to the enemy
         }
 
         if (health.curValue < 0.0f)
@@ -38,9 +33,9 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         health.Add(amount);
     }
 
-    public void Eat(float amount)
+    public void Attention(float amount)
     {
-        hunger.Add(amount);
+        aggro.Add(amount);
     }
 
     public void Die()
@@ -48,7 +43,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         Debug.Log("플레이어가 죽었다.");
     }
 
-    public void TakePhysicalDamage(int damageAmount)
+    public void TakeDamage(int damageAmount)
     {
         health.Subtract(damageAmount);
         onTakeDamage?.Invoke();

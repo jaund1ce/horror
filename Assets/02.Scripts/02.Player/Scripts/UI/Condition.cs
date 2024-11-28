@@ -3,11 +3,11 @@ using UnityEngine.UI;
 
 public class Condition : MonoBehaviour
 {
-    public float curValue;
-    public float maxValue;
-    public float startValue;
-    public float passiveValue;
-    public Image uiBar;
+    public float curValue; //현재 값
+    public float maxValue; //최대 값
+    public float startValue; //시작 값
+    public float passiveValue; //변화 값
+    public Image uiBar; //이미지
 
     private void Start()
     {
