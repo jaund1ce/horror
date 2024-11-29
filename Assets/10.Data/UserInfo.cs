@@ -6,5 +6,5 @@ using UnityEngine;
 public class UserInfo : MonoBehaviour
 {
     public string Name;
-    public List<ItemData> Inventory = new List<ItemData>();
+    public List<ItemSO> Inventory = new List<ItemSO>();
 }
