@@ -7,7 +7,7 @@ public class DataManager : mainSingleton<DataManager>
    /*private ItemDataList itemDataList;
     
    public ItemDataList ItemData_List
-    {
+   {
 
     get { 
             if(itemDataList == null)
@@ -26,7 +26,7 @@ public class DataManager : mainSingleton<DataManager>
 
     private void GetData()
     {
-        var json = ResourseManager,instance.LoadAsset<TextAsset>("ItemData", eAssetType.JsonData);
-        temDataList = JsonUtility.FromJson<ItemDataList>(json.text);
+        var json = ResourseManager,instanceLoadAsset<TextAsset>("ItemData", eAssetType.JsonData);
+        itemDataList = JsonUtility.FromJson<ItemDataList>(json.text);
     }*/
 }
