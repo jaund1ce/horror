@@ -8,15 +8,10 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 
-public class JsonToSO : MonoBehaviour
+public class JsonToSO
 {
     //public string SOpath = Path.Combine(Application.dataPath, "05.ScriptableObject/JsonItemSO/SO");->c/\ user.... 처럼 나오기 때문에
     public string SOpath = Path.Combine("Assets/05.ScriptableObject/JsonItemSO/SO");//위의 방식은 이 컴퓨터의 경로를 찾는 것으로 asset의 변경은 root 내에서만 가능하기 때문에 다르게 선언해 줘야한다
-
-    private void Start()
-    {
-        ChangeJsonToSO();//
-    }
 
     public void ChangeJsonToSO()
     {
