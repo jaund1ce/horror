@@ -1,112 +1,114 @@
-[
-  {
-    "ID": "int",
-    "ItemNameEng": "string",
-    "ItemNameKor": "string",
-    "ItemType": "string",
-    "ItemEffect": "string",
-    "ItemHealHealth": "int",
-    "ItemHealMental": "int",
-    "ItemDescription": "string"
-  },
-  {
-    "ID": 1001,
-    "ItemNameEng": "keycard",
-    "ItemNameKor": "키카드",
-    "ItemType": "key",
-    "ItemEffect": "할당된 키패드로 잠긴문 해금",
-    "ItemHealHealth": 0,
-    "ItemHealMental": 0,
-    "ItemDescription": "키패드로 잠긴 문을 열때 \n사용하는 도구."
-  },
-  {
-    "ID": 1002,
-    "ItemNameEng": "lockpick",
-    "ItemNameKor": "락픽",
-    "ItemType": "CnsItem",
-    "ItemEffect": "락픽퍼즐 풀때 소모",
-    "ItemHealHealth": 0,
-    "ItemHealMental": 0,
-    "ItemDescription": "락픽퍼즐로 잠긴 문을 열때 \n사용하는 도구."
-  },
-  {
-    "ID": 1003,
-    "ItemNameEng": "key",
-    "ItemNameKor": "열쇠",
-    "ItemType": "key",
-    "ItemEffect": "할당된 자물쇠로 잠긴문 해금",
-    "ItemHealHealth": 0,
-    "ItemHealMental": 0,
-    "ItemDescription": "자물쇠로 잠긴 문을 열때 \n사용하는 도구."
-  },
-  {
-    "ID": 1004,
-    "ItemNameEng": "brokenbat",
-    "ItemNameKor": "금간 배트",
-    "ItemType": "CcItem",
-    "ItemEffect": "괴물 잠시 저지(물리)",
-    "ItemHealHealth": 0,
-    "ItemHealMental": 0,
-    "ItemDescription": "괴물을 때려 잠시 저지시키는 \n무기(일회용)"
-  },
-  {
-    "ID": 1005,
-    "ItemNameEng": "flash",
-    "ItemNameKor": "손전등",
-    "ItemType": "EquipItem",
-    "ItemEffect": "광원",
-    "ItemHealHealth": 0,
-    "ItemHealMental": 0,
-    "ItemDescription": "앞을 밝히는 아이템"
-  },
-  {
-    "ID": 1006,
-    "ItemNameEng": "StrangeCompass",
-    "ItemNameKor": "이상한나침반",
-    "ItemType": "EquipItem",
-    "ItemEffect": "목표지점으로 좌표로 \n화살표가 표시됨",
-    "ItemHealHealth": 0,
-    "ItemHealMental": 0,
-    "ItemDescription": "목표지점을 지시하는 아이템"
-  },
-  {
-    "ID": 1007,
-    "ItemNameEng": "hintpaper",
-    "ItemNameKor": "힌트종이",
-    "ItemType": "EquipItem",
-    "ItemEffect": "힌트가 적힘",
-    "ItemHealHealth": 0,
-    "ItemHealMental": 0,
-    "ItemDescription": "힌트가 적힌 종이"
-  },
-  {
-    "ID": 1008,
-    "ItemNameEng": "indicationPaper",
-    "ItemNameKor": "지시종이",
-    "ItemType": "EquipItem",
-    "ItemEffect": "지시가 적힘",
-    "ItemHealHealth": 0,
-    "ItemHealMental": 0,
-    "ItemDescription": "지시가 적힌 종이"
-  },
-  {
-    "ID": 1009,
-    "ItemNameEng": "healpack",
-    "ItemNameKor": "채력팩",
-    "ItemType": "CnsItem",
-    "ItemEffect": "체력회복",
-    "ItemHealHealth": 100,
-    "ItemHealMental": 0,
-    "ItemDescription": "체력을 무조건 꽉채우는 회복템"
-  },
-  {
-    "ID": 1010,
-    "ItemNameEng": "sedative",
-    "ItemNameKor": "항불안제",
-    "ItemType": "CnsItem",
-    "ItemEffect": "정신력 회복",
-    "ItemHealHealth": 0,
-    "ItemHealMental": 100,
-    "ItemDescription": "정신력을 무조건 꽉채우는 회복템"
-  }
-]
+{
+  "itemData": [
+    {
+      "ID": "int",
+      "ItemNameEng": "string",
+      "ItemNameKor": "string",
+      "ItemType": "string",
+      "ItemEffect": "string",
+      "ItemHealHealth": "int",
+      "ItemHealMental": "int",
+      "ItemDescription": "string"
+    },
+    {
+      "ID": 1001,
+      "ItemNameEng": "keycard",
+      "ItemNameKor": "키카드",
+      "ItemType": "key",
+      "ItemEffect": "할당된 키패드로 잠긴문 해금",
+      "ItemHealHealth": 0,
+      "ItemHealMental": 0,
+      "ItemDescription": "키패드로 잠긴 문을 열때 \n사용하는 도구."
+    },
+    {
+      "ID": 1002,
+      "ItemNameEng": "lockpick",
+      "ItemNameKor": "락픽",
+      "ItemType": "CnsItem",
+      "ItemEffect": "락픽퍼즐 풀때 소모",
+      "ItemHealHealth": 0,
+      "ItemHealMental": 0,
+      "ItemDescription": "락픽퍼즐로 잠긴 문을 열때 \n사용하는 도구."
+    },
+    {
+      "ID": 1003,
+      "ItemNameEng": "key",
+      "ItemNameKor": "열쇠",
+      "ItemType": "key",
+      "ItemEffect": "할당된 자물쇠로 잠긴문 해금",
+      "ItemHealHealth": 0,
+      "ItemHealMental": 0,
+      "ItemDescription": "자물쇠로 잠긴 문을 열때 \n사용하는 도구."
+    },
+    {
+      "ID": 1004,
+      "ItemNameEng": "brokenbat",
+      "ItemNameKor": "금간 배트",
+      "ItemType": "CcItem",
+      "ItemEffect": "괴물 잠시 저지(물리)",
+      "ItemHealHealth": 0,
+      "ItemHealMental": 0,
+      "ItemDescription": "괴물을 때려 잠시 저지시키는 \n무기(일회용)"
+    },
+    {
+      "ID": 1005,
+      "ItemNameEng": "flash",
+      "ItemNameKor": "손전등",
+      "ItemType": "EquipItem",
+      "ItemEffect": "광원",
+      "ItemHealHealth": 0,
+      "ItemHealMental": 0,
+      "ItemDescription": "앞을 밝히는 아이템"
+    },
+    {
+      "ID": 1006,
+      "ItemNameEng": "StrangeCompass",
+      "ItemNameKor": "이상한나침반",
+      "ItemType": "EquipItem",
+      "ItemEffect": "목표지점으로 좌표로 \n화살표가 표시됨",
+      "ItemHealHealth": 0,
+      "ItemHealMental": 0,
+      "ItemDescription": "목표지점을 지시하는 아이템"
+    },
+    {
+      "ID": 1007,
+      "ItemNameEng": "hintpaper",
+      "ItemNameKor": "힌트종이",
+      "ItemType": "EquipItem",
+      "ItemEffect": "힌트가 적힘",
+      "ItemHealHealth": 0,
+      "ItemHealMental": 0,
+      "ItemDescription": "힌트가 적힌 종이"
+    },
+    {
+      "ID": 1008,
+      "ItemNameEng": "indicationPaper",
+      "ItemNameKor": "지시종이",
+      "ItemType": "EquipItem",
+      "ItemEffect": "지시가 적힘",
+      "ItemHealHealth": 0,
+      "ItemHealMental": 0,
+      "ItemDescription": "지시가 적힌 종이"
+    },
+    {
+      "ID": 1009,
+      "ItemNameEng": "healpack",
+      "ItemNameKor": "채력팩",
+      "ItemType": "CnsItem",
+      "ItemEffect": "체력회복",
+      "ItemHealHealth": 100,
+      "ItemHealMental": 0,
+      "ItemDescription": "체력을 무조건 꽉채우는 회복템"
+    },
+    {
+      "ID": 1010,
+      "ItemNameEng": "sedative",
+      "ItemNameKor": "항불안제",
+      "ItemType": "CnsItem",
+      "ItemEffect": "정신력 회복",
+      "ItemHealHealth": 0,
+      "ItemHealMental": 100,
+      "ItemDescription": "정신력을 무조건 꽉채우는 회복템"
+    }
+  ]
+}
