@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3dc2072986e21643bae469b1fb5c042, type: 3}
+  m_Name: SOflash
+  m_EditorClassIdentifier: 
+  itemData:
+    ItemNameEng: flash
+    ItemNameKor: "\uC190\uC804\uB4F1"
+    ItemType: EquipItem
+    ItemEffect: "\uAD11\uC6D0"
+    ItemHealHealth: 0
+    ItemHealMental: 0
+    ItemDescription: "\uC55E\uC744 \uBC1D\uD788\uB294 \uC544\uC774\uD15C"

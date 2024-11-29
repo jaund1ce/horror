@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91dbf18c9ed743742b9f8a078b67d250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthScript: {fileID: 4121303385992341431}
+  HealthScript: {fileID: 0}
   IsHeadDamage: 1
 --- !u!1 &727609448954580247
 GameObject:
@@ -451,7 +451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91dbf18c9ed743742b9f8a078b67d250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthScript: {fileID: 4121303385992341431}
+  HealthScript: {fileID: 0}
   IsHeadDamage: 0
 --- !u!1 &1113594489716137883
 GameObject:
@@ -660,7 +660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91dbf18c9ed743742b9f8a078b67d250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthScript: {fileID: 4121303385992341431}
+  HealthScript: {fileID: 0}
   IsHeadDamage: 0
 --- !u!1 &1327823123455557698
 GameObject:
@@ -1102,7 +1102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91dbf18c9ed743742b9f8a078b67d250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthScript: {fileID: 4121303385992341431}
+  HealthScript: {fileID: 0}
   IsHeadDamage: 0
 --- !u!1 &2378434384490279683
 GameObject:
@@ -1463,10 +1463,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3637253959787248905}
   - component: {fileID: 7249163587682150259}
-  - component: {fileID: 4121303385992341430}
-  - component: {fileID: 4121303385992341429}
-  - component: {fileID: 4121303385992341428}
-  - component: {fileID: 4121303385992341431}
   m_Layer: 9
   m_Name: Zombie
   m_TagString: Untagged
@@ -1513,157 +1509,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!195 &4121303385992341430
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4121303385992341427}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 0.5
-  m_Acceleration: 5
-  avoidancePriority: 50
-  m_AngularSpeed: 360
-  m_StoppingDistance: 1
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: -0.05
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!136 &4121303385992341429
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4121303385992341427}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &4121303385992341428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4121303385992341427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71c2cfaccfa80f343807a0be42c701ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StatesAsset: {fileID: 11400000, guid: a43daf3bc3575a04a948674da6e74c26, type: 2}
-  StatesAssetRuntime: {fileID: 0}
-  Animator: {fileID: 7249163587682150259}
-  HeadBone: {fileID: 4732734565522185038}
-  SightsMask:
-    serializedVersion: 2
-    m_Bits: 5
-  NPCType: 0
-  SightsFOV: 110
-  SightsDistance: 15
-  SteeringSpeed: 6
-  ShowDestination: 1
-  ShowSights: 1
---- !u!114 &4121303385992341431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4121303385992341427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df34d8deeee11f64aaa8afbba5c2a724, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsDead: 0
-  BodySegments:
-  - Rigidbody: {fileID: 441091426923744839}
-    Collider: {fileID: 441091426923744838}
-    BodyPart: {fileID: 441091426923744837}
-  - Rigidbody: {fileID: 183879776556490354}
-    Collider: {fileID: 183879776556490353}
-    BodyPart: {fileID: 183879776556490352}
-  - Rigidbody: {fileID: 668539314404148187}
-    Collider: {fileID: 668539314404148186}
-    BodyPart: {fileID: 668539314404148185}
-  - Rigidbody: {fileID: 1298053623769070061}
-    Collider: {fileID: 1298053623769070060}
-    BodyPart: {fileID: 1298053623769070059}
-  - Rigidbody: {fileID: 677383937067151526}
-    Collider: {fileID: 677383937067151525}
-    BodyPart: {fileID: 677383937067151524}
-  - Rigidbody: {fileID: 3280545070805200999}
-    Collider: {fileID: 3280545070805200998}
-    BodyPart: {fileID: 3280545070805200997}
-  - Rigidbody: {fileID: 2108279290442608727}
-    Collider: {fileID: 2108279290442608726}
-    BodyPart: {fileID: 2108279290442608725}
-  - Rigidbody: {fileID: 6804870539298018924}
-    Collider: {fileID: 6804870539298018923}
-    BodyPart: {fileID: 6804870539298018922}
-  - Rigidbody: {fileID: 1054212511138742842}
-    Collider: {fileID: 1054212511138742841}
-    BodyPart: {fileID: 1054212511138742840}
-  - Rigidbody: {fileID: 3517494793329596162}
-    Collider: {fileID: 3517494793329596161}
-    BodyPart: {fileID: 3517494793329596160}
-  - Rigidbody: {fileID: 8709273337148848963}
-    Collider: {fileID: 8709273337148848962}
-    BodyPart: {fileID: 8709273337148848961}
-  DisableComponents:
-  - {fileID: 7249163587682150259}
-  - {fileID: 4121303385992341430}
-  - {fileID: 4121303385992341429}
-  - {fileID: 4121303385992341428}
-  Hips: {fileID: 441091426923744836}
-  Head: {fileID: 668539314404148186}
-  BodyPartLayer:
-    index: 10
-  MaxHealth: 100
-  StartHealth: 100
-  HeadshotMultiplier: 2
-  AllowHeadhsot: 0
-  RemoveCorpse: 1
-  DisableCorpse: 1
-  CorpseRemoveTime: 10
-  DamageSounds:
-  - {fileID: 8300000, guid: 395a20a5940f9074fa6ffe62af919b39, type: 3}
-  - {fileID: 8300000, guid: a9ce26b5189a6a245b449f91b3ef5bd4, type: 3}
-  - {fileID: 8300000, guid: 49b69091c36a8b74597c38f5da65c28b, type: 3}
-  - {fileID: 8300000, guid: 9ee871d6c15bbbf45a73ae73675a0da9, type: 3}
-  DamageVolume: 1
-  DeathSound:
-    audioClip: {fileID: 8300000, guid: d5fa50f4447ace44d9dc3e7106eedfce, type: 3}
-    volume: 1
-  OnTakeDamage:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDeath:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCorpseRemove:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &4279831422449702244
 GameObject:
   m_ObjectHideFlags: 0
@@ -1825,7 +1670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91dbf18c9ed743742b9f8a078b67d250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthScript: {fileID: 4121303385992341431}
+  HealthScript: {fileID: 0}
   IsHeadDamage: 0
 --- !u!1 &4899739439132062170
 GameObject:
@@ -2035,7 +1880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91dbf18c9ed743742b9f8a078b67d250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthScript: {fileID: 4121303385992341431}
+  HealthScript: {fileID: 0}
   IsHeadDamage: 0
 --- !u!1 &5061929520648947615
 GameObject:
@@ -2279,7 +2124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91dbf18c9ed743742b9f8a078b67d250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthScript: {fileID: 4121303385992341431}
+  HealthScript: {fileID: 0}
   IsHeadDamage: 0
 --- !u!1 &5774856273067474552
 GameObject:
@@ -2457,7 +2302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91dbf18c9ed743742b9f8a078b67d250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthScript: {fileID: 4121303385992341431}
+  HealthScript: {fileID: 0}
   IsHeadDamage: 0
 --- !u!1 &6000232185143336306
 GameObject:
@@ -2603,7 +2448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91dbf18c9ed743742b9f8a078b67d250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthScript: {fileID: 4121303385992341431}
+  HealthScript: {fileID: 0}
   IsHeadDamage: 0
 --- !u!1 &6074610021724679598
 GameObject:
@@ -3003,7 +2848,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91dbf18c9ed743742b9f8a078b67d250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthScript: {fileID: 4121303385992341431}
+  HealthScript: {fileID: 0}
   IsHeadDamage: 0
 --- !u!1 &6981454666116716385
 GameObject:
@@ -3406,7 +3251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91dbf18c9ed743742b9f8a078b67d250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthScript: {fileID: 4121303385992341431}
+  HealthScript: {fileID: 0}
   IsHeadDamage: 0
 --- !u!1 &8017473548092939667
 GameObject:

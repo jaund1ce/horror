@@ -28,6 +28,7 @@ namespace UHFPS.Runtime
 
             SaveGameManager.LoadSceneName = NewGameSceneName;
             SceneManager.LoadScene(SaveGameManager.LMS);
+
         }
 
         public void QuitGame()
