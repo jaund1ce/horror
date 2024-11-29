@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
 
     public Animator Animator { get; private set; }
     public PlayerController Input { get; private set; }
+    public PlayerInteraction Interact { get; private set; }
     public CharacterController Controller { get; private set; }
     public ForceReceiver ForceReceiver { get; private set; }
     public Health health { get; private set; }
@@ -24,6 +25,7 @@ public class Player : MonoBehaviour
         AnimationData.Initialize();
         Animator = GetComponentInChildren<Animator>();
         Input = GetComponent<PlayerController>();
+        Interact = GetComponentInChildren<PlayerInteraction>();
         Controller = GetComponent<CharacterController>();
         ForceReceiver = GetComponent<ForceReceiver>();
         health = GetComponent<Health>();

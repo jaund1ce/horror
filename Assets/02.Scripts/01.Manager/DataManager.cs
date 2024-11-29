@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class DataManager : mainSingleton<DataManager>
 {
-   /*private ItemDataList itemDataList;
+   private ItemSO itemSO;
     
-   public ItemDataList ItemData_List
+   public ItemSO ItemSO
    {
 
     get { 
-            if(itemDataList == null)
+            if(itemSO == null)
             {
                 GetData();
             }
-            return itemDataList; 
+            return itemSO; 
         }
 
     }
@@ -26,7 +26,7 @@ public class DataManager : mainSingleton<DataManager>
 
     private void GetData()
     {
-        var json = ResourseManager,instanceLoadAsset<TextAsset>("ItemData", eAssetType.JsonData);
-        itemDataList = JsonUtility.FromJson<ItemDataList>(json.text);
-    }*/
+        var json = ResourceManager.Instance.LoadAsset<TextAsset>("ItemSO", eAssetType.Data);
+        itemSO = JsonUtility.FromJson<ItemSO>(json.text);
+    }
 }

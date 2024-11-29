@@ -6,11 +6,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject escPanel;
     [SerializeField] private GameObject tabPanel;
     [SerializeField] private GameObject settingPanel;
+    [SerializeField] private GameObject interactPanel;
 
     private PlayerInputs playerInputs;
     private bool isEscPanelOpen = false;
     private bool isTabPanelOpen = false;
     private bool isSettingPanelOpen = false;
+    private bool isinteractPanelOpen = false;
 
     private void Awake()
     {
@@ -158,6 +160,7 @@ public class UIManager : MonoBehaviour
         {
             settingPanel.SetActive(false);
             isSettingPanelOpen = false;
+            LockCursor();
             Time.timeScale = 1f;
         }
     }
@@ -193,5 +196,25 @@ public class UIManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+    }
+
+    public void OpeninteractPanel()
+    {
+        if (interactPanel != null)
+        {
+            interactPanel.SetActive(true);
+            isinteractPanelOpen = true;
+            UnlockCursor();
+        }
+    }
+
+    public void CloseInteractPanel()
+    {
+        if (interactPanel != null)
+        {
+            interactPanel.SetActive(false);
+            isinteractPanelOpen = false;
+            UnlockCursor();
+        }
     }
 }
