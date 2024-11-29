@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class CreatureBaseState : MonoBehaviour // : IState
+public class CreatureBaseState  : IState
 {
     protected CreatureStateMachine stateMachine;
-    // protected readonly PlayerGroundData groundData;
+     protected readonly PlayerGroundData groundData;
 
     public CreatureBaseState(CreatureStateMachine stateMachine) 
     {
@@ -14,10 +14,10 @@ public class CreatureBaseState : MonoBehaviour // : IState
         //groundData = stateMachine.Player.Data.GroundData;
     }
 
-    /*public void Enter() { }
+    public void Enter() { }
     public void Exit() { }
     public void HandleInput() { }
-    public void PhysicsUpdate() { }*/
+    public void PhysicsUpdate() { }
     public void Update() { }
     public void StartAnimation(int animatorHash) 
     {
@@ -60,5 +60,6 @@ public class CreatureBaseState : MonoBehaviour // : IState
     {
 
     }
+
 
 }

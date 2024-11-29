@@ -92,7 +92,7 @@ public class PlayerBaseState : IState
 
         Move(movementDirection);
 
-        Rotate(movementDirection);
+       // Rotate(movementDirection);
     }
 
     private Vector3 GetMovementDirection()

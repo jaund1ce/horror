@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CreatureStateMachine : MonoBehaviour
+public class CreatureStateMachine : StateMachine
 {
     public Creature Creature { get; }
 
@@ -24,8 +24,8 @@ public class CreatureStateMachine : MonoBehaviour
         AttackState = new CreatureAttackState(this);
         ChasingState = new CreatureChasingState(this);
 
-        //MovementSpeed = Creature.Data.GroundData.BaseSpeed;
-        //RotationDamping = Creature.Data.GroundData.BaseRotationDamping;
+        MovementSpeed = Creature.Data.GroundData.BaseSpeed;
+        RotationDamping = Creature.Data.GroundData.BaseRotationDamping;
     }
 
 }
