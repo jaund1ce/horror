@@ -14,11 +14,15 @@ public class CreatureBaseState  : IState
         //groundData = stateMachine.Player.Data.GroundData;
     }
 
-    public void Enter() { }
-    public void Exit() { }
-    public void HandleInput() { }
-    public void PhysicsUpdate() { }
-    public void Update() { }
+    public virtual void Enter() { }
+    public virtual void Exit() { }
+    public virtual void HandleInput() { }
+    public virtual void PhysicsUpdate() { }
+    public virtual void Update() 
+    {
+        Move();
+    }
+
     public void StartAnimation(int animatorHash) 
     {
         stateMachine.Creature.CreatureAnimator.SetBool(animatorHash, true);
@@ -29,7 +33,7 @@ public class CreatureBaseState  : IState
         stateMachine.Creature.CreatureAnimator.SetBool(animatorHash, false);
     }
 
-    /*private void Move() 
+    private void Move() 
     {
         Vector3 movementDirection = GetMovementDirection();
         Move(movementDirection);
@@ -38,28 +42,62 @@ public class CreatureBaseState  : IState
 
     private Vector3 GetMovementDirection()
     {
-        Vector3 forward = stateMachine.MainCamTransform.forward;
-        Vector3 right = stateMachine.MainCamTransform.right;
+        Vector3 dir = (stateMachine.Target.transform.position - stateMachine.Creature.transform.position).normalized;
 
-        forward.y = 0;
-        right.y = 0;
+        return dir;
 
-        forward.Normalize();
-        right.Normalize();
-
-        return forward * stateMachine.MovementInput.y + right * stateMachine.MovementInput.x;
-
-    }*/
+    }
 
     private void Move(Vector3 direction) 
     {
-    
+        float movementSpeed = GetMovementSpeed();
+        stateMachine.Creature.CharacterController.Move(((direction * movementSpeed) + stateMachine.Creature.ForceReceiver.Movement) * Time.deltaTime);
+    }
+
+    private float GetMovementSpeed() 
+    {
+        float moveSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
+        return moveSpeed;
     }
 
     private void Rotate(Vector3 direction)
     {
-
+        if (direction != Vector3.zero)
+        {
+            Transform playerTransform = stateMachine.Creature.transform;
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
+        }
     }
 
+    protected void ForceMove() 
+    {
+        stateMachine.Creature.CharacterController.Move(stateMachine.Creature.ForceReceiver.Movement * Time.deltaTime);
+    }
 
+    protected float GetNormalizedTime(Animator animator, string tag) 
+    {
+        AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);
+        AnimatorStateInfo nextInfo = animator.GetNextAnimatorStateInfo(0);
+
+        if (animator.IsInTransition(0) && nextInfo.IsTag(tag))
+        {
+            return nextInfo.normalizedTime;
+        }
+        else if (!animator.IsInTransition(0) && currentInfo.IsTag(tag))
+        {
+            return currentInfo.normalizedTime;
+        }
+        else 
+        {
+            return 0f;
+        }
+    }
+
+    protected bool IsInChasingRange() 
+    {
+        float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Creature.transform.position).sqrMagnitude; 
+        // 나와 플레이어의 벡터의 크기 Magnitude는 제곱근 sqrMagnitude는 제곱근 하지 않은 연산. 고로 연산 자체가 덜 된다
+        return playerDistanceSqr <= stateMachine.Creature.Data.PlayerChasingRange;
+    }
 }
