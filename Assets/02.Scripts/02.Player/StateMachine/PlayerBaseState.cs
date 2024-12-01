@@ -1,5 +1,7 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -28,8 +30,7 @@ public class PlayerBaseState : IState
         PlayerController input = stateMachine.Player.Input;
         input.playerActions.Movement.canceled += OnMovementCanceled;
         input.playerActions.Run.started += OnRunStarted;
-        input.playerActions.JumpParkour.started += OnJumpStarted;
-
+        input.playerActions.JumpParkour.started += OnJumpStarted;       
     }
     protected virtual void RemoveInputActionCallbacks()
     {
@@ -37,7 +38,6 @@ public class PlayerBaseState : IState
         input.playerActions.Movement.canceled -= OnMovementCanceled;
         input.playerActions.Run.started -= OnRunStarted;
         input.playerActions.JumpParkour.started -= OnJumpStarted;
-
     }
 
     public virtual void HandleInput()
@@ -130,5 +130,4 @@ public class PlayerBaseState : IState
             playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
         }
     }
-       
 }
