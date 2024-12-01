@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
 
         if (delta != Vector2.zero)
         {
+            Debug.Log("RotateAll");
             Transform playerTransform = transform;
 
             float rotatex = Mathf.Clamp(delta.y, -90f, 90f);
