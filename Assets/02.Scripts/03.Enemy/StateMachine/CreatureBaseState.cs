@@ -6,12 +6,12 @@ using UnityEngine.UIElements;
 public class CreatureBaseState  : IState
 {
     protected CreatureStateMachine stateMachine;
-     protected readonly PlayerGroundData groundData;
+    protected readonly PlayerGroundData groundData;
 
     public CreatureBaseState(CreatureStateMachine stateMachine) 
     {
         this.stateMachine = stateMachine;
-        //groundData = stateMachine.Player.Data.GroundData;
+        groundData = stateMachine.Creature.Data.GroundData;
     }
 
     public virtual void Enter() { }
@@ -42,7 +42,7 @@ public class CreatureBaseState  : IState
 
     private Vector3 GetMovementDirection()
     {
-        Vector3 dir = (stateMachine.Target.transform.position - stateMachine.Creature.transform.position).normalized;
+        Vector3 dir = (stateMachine.Target.transform.position - stateMachine.Creature.transform.position);
 
         return dir;
 
@@ -98,6 +98,6 @@ public class CreatureBaseState  : IState
     {
         float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Creature.transform.position).sqrMagnitude; 
         // 나와 플레이어의 벡터의 크기 Magnitude는 제곱근 sqrMagnitude는 제곱근 하지 않은 연산. 고로 연산 자체가 덜 된다
-        return playerDistanceSqr <= stateMachine.Creature.Data.PlayerChasingRange;
+        return playerDistanceSqr <= stateMachine.Creature.Data.PlayerChasingRange * stateMachine.Creature.Data.PlayerChasingRange;
     }
 }

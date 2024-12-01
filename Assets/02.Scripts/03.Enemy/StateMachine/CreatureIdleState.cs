@@ -21,6 +21,9 @@ public class CreatureIdleState : CreatureBaseState
         base.Exit();
         StopAnimation(stateMachine.Creature.AnimationData.GrondParameterHash);
         StopAnimation(stateMachine.Creature.AnimationData.IdleParameterHash);
+        
+        
+        
     }
 
     public override void Update()

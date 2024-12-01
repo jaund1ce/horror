@@ -20,6 +20,8 @@ public class CreatureChasingState : CreatureBaseState
         base.Exit();
         StopAnimation(stateMachine.Creature.AnimationData.GrondParameterHash);
         StopAnimation(stateMachine.Creature.AnimationData.WalkParameterHash);
+        
+        
     }
 
     public override void Update()
@@ -29,6 +31,7 @@ public class CreatureChasingState : CreatureBaseState
         if (!IsInChasingRange())
         {
             stateMachine.ChangeState(stateMachine.IdleState);
+            Debug.Log("µé¾î¿È ?");
             return;
         }
         else if (IsInAttackRange()) 

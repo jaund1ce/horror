@@ -25,6 +25,8 @@ public class CreatureAttackState : CreatureBaseState
         base.Exit();
         StopAnimation(stateMachine.Creature.AnimationData.AttackParameterHash);
         StopAnimation(stateMachine.Creature.AnimationData.BaseAttackParameterHash);
+        
+        
     }
 
     public override void Update()
