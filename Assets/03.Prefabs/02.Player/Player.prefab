@@ -117,6 +117,8 @@ MonoBehaviour:
     airParameterName: '@Air'
     jumpParameterName: Jump
     fallParameterName: Fall
+    attackParameterName: '@Attack'
+    baseAttackParameterName: BaseAttack
 --- !u!114 &6230964232614769512
 MonoBehaviour:
   m_ObjectHideFlags: 0
