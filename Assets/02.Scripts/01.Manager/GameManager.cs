@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class mainGameManager : mainSingleton<mainGameManager>
+public class MainGameManager : mainSingleton<MainGameManager>
 {
     public UserInfo User;
+    public Player Player;
 
     protected override void Start()
     {
 
         SaveUserData();
+        Player = FindObjectOfType<Player>();
     }
 
     public void SaveUserData()

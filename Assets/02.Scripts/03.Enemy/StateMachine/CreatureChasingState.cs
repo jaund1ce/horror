@@ -31,7 +31,6 @@ public class CreatureChasingState : CreatureBaseState
         if (!IsInChasingRange())
         {
             stateMachine.ChangeState(stateMachine.IdleState);
-            Debug.Log("µé¾î¿È ?");
             return;
         }
         else if (IsInAttackRange()) 

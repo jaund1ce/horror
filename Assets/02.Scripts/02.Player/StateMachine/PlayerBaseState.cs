@@ -53,6 +53,8 @@ public class PlayerBaseState : IState
 
     public virtual void Update()
     {
+        //AI 추가시 행동패턴 정리
+
         Move();
     }
 
