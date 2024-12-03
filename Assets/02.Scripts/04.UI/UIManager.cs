@@ -1,21 +1,24 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class UIManager : MonoBehaviour
+public class UIManager : mainSingleton<UIManager>
 {
     [SerializeField] private GameObject escPanel;
     [SerializeField] private GameObject tabPanel;
     [SerializeField] private GameObject settingPanel;
     [SerializeField] private GameObject interactPanel;
+    [SerializeField] private GameObject docPanel;
 
     private PlayerInputs playerInputs;
     private bool isEscPanelOpen = false;
     private bool isTabPanelOpen = false;
     private bool isSettingPanelOpen = false;
     private bool isinteractPanelOpen = false;
+    private bool isDocPanelOpen = false;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         playerInputs = new PlayerInputs();
         playerInputs.Enable();
 
@@ -23,12 +26,12 @@ public class UIManager : MonoBehaviour
         playerInputs.Player.Inventory.performed += _ => HandleInventoryInput();
     }
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
         playerInputs.Enable();
     }
 
-    private void OnDisable()
+    protected override void OnDisable()
     {
         playerInputs.Disable();
     }
@@ -160,6 +163,28 @@ public class UIManager : MonoBehaviour
         {
             settingPanel.SetActive(false);
             isSettingPanelOpen = false;
+            LockCursor();
+            Time.timeScale = 1f;
+        }
+    }
+
+    public void OpenDocPanel()
+    {
+        if (docPanel != null)
+        {
+            docPanel.SetActive(true);
+            isDocPanelOpen = true;
+            UnlockCursor();
+            Time.timeScale = 1f;
+        }
+    }
+
+    public void CloseDocPanel()
+    {
+        if (docPanel != null)
+        {
+            docPanel.SetActive(false);
+            isDocPanelOpen = false;
             LockCursor();
             Time.timeScale = 1f;
         }
