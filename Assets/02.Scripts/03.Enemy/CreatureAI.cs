@@ -9,11 +9,11 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.UIElements;
-using static UnityEngine.UI.Image;
 
 
 public class CreatureAI : MonoBehaviour , AggroGage
 {
+
     public enum SightInObject 
     {
         Player = 0,
@@ -22,26 +22,21 @@ public class CreatureAI : MonoBehaviour , AggroGage
 
     public LayerMask player;
     private NavMeshAgent agent;
-
-    [field: Header("CreatureSight")]
-    [field: SerializeField] private float visionRange = 120f;
-    [field: SerializeField] private float visionDistance = 10f;
-    [field: SerializeField] private int rayAmount = 30;
-    [field: SerializeField] private float missTargetTime = 3f;
+    [field: SerializeField] public CreatureSO Data { get; private set; }
 
 
     public bool isPlayerMiss { get; private set; }
+    public bool IsAggroGageMax { get; private set; }
     private float checkMissTime;
     private float aggroGage;
-    private List<int> visionInObject = new List<int>();
+    
+    private List<int> visionInObject;
 
-    public CreatureAI(CreatureStateMachine creatureStateMachine)
-    {
-    }
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        visionInObject = new List<int>();
     }
 
     private void Update()
@@ -53,10 +48,10 @@ public class CreatureAI : MonoBehaviour , AggroGage
     {
         // 입력받은 각도에 따라 방향을 결정한다.
         bool isTarget = false;
-        float halfAngle = visionRange / 2f;
-        float rayToRay = visionRange / (rayAmount - 1);
+        float halfAngle = Data.VisionRange / 2f;
+        float rayToRay = Data.VisionRange / (Data.RayAmount - 1);
 
-        for (int i = 0; i < rayAmount; i++) 
+        for (int i = 0; i < Data.RayAmount; i++) 
         {
             // 현재 레이의 각도
             float currentAngle = - halfAngle + i * rayToRay;
@@ -65,15 +60,16 @@ public class CreatureAI : MonoBehaviour , AggroGage
             Vector3 direction = Quaternion.Euler(0, currentAngle, 0) * transform.forward;
 
             // 레이 발사
-            if (Physics.Raycast(transform.position+(Vector3.up*0.5f), direction, out RaycastHit hit, visionDistance, player))
+            if (Physics.Raycast(transform.position+(Vector3.up*0.5f), direction, out RaycastHit hit, Data.VisionDistance, player))
             {
                 Debug.Log($"Hit: {hit.collider.name}");
 
-                if (!visionInObject.Contains((int)SightInObject.Player))
-                {
-                    visionInObject.Add((int)SightInObject.Player); // ?? 내가 지정한게 int 인데 왜 형변환을 해야하지 ..?
 
-                }
+                 if (visionInObject.Count == 0)
+                 {
+                     visionInObject.Add((int)SightInObject.Player); 
+
+                 }
                 isTarget = true;
 
                 Debug.DrawLine(transform.position + (Vector3.up * 0.5f), hit.point, Color.red, 1.0f);
@@ -81,7 +77,7 @@ public class CreatureAI : MonoBehaviour , AggroGage
             else
             {
 
-                Debug.DrawRay(transform.position + (Vector3.up * 0.5f), direction * visionDistance, Color.green, 1.0f);
+                Debug.DrawRay(transform.position + (Vector3.up * 0.5f), direction * Data.VisionDistance, Color.green, 1.0f);
             }
         }
 
@@ -94,7 +90,7 @@ public class CreatureAI : MonoBehaviour , AggroGage
         if (!isTarget)
         {
             checkMissTime += Time.deltaTime;
-            if (checkMissTime > missTargetTime)
+            if (checkMissTime > Data.MissTargetTime)
             {
                 Debug.Log("플레이어 놓침");
                 isPlayerMiss = true;
@@ -108,9 +104,19 @@ public class CreatureAI : MonoBehaviour , AggroGage
 
     public void GetAggroGage(int amount)
     {
+
         aggroGage += amount;
+
+        if (aggroGage >= Data.MaxAggroGage) 
+        {
+            IsAggroGageMax = true;
+        }
+        else 
+        {
+            IsAggroGageMax = false;
+        }
     }
 
-    
+
 }
 

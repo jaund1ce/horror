@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 public class Creature : MonoBehaviour
 {
     [field: SerializeField] public CreatureSO Data { get; private set; }
+    public CreatureAI CreatureAI { get; private set; }
     [field: Header("Animations")]
     [field: SerializeField] public PlayerAnimationData AnimationData;
 
@@ -23,6 +24,7 @@ public class Creature : MonoBehaviour
         CreatureAnimator = GetComponent<Animator>();
         CharacterController = GetComponent<CharacterController>();
         ForceReceiver = GetComponent<ForceReceiver>();
+        CreatureAI = GetComponent<CreatureAI>();
 
         stateMachine = new CreatureStateMachine(this);
 

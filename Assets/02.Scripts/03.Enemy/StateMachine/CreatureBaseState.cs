@@ -20,7 +20,11 @@ public class CreatureBaseState  : IState
     public virtual void PhysicsUpdate() { }
     public virtual void Update() 
     {
-        if (stateMachine.CreatureAI.isPlayerMiss) 
+        if (stateMachine.Creature.CreatureAI.isPlayerMiss)
+        {
+        
+        }
+        else 
         {
             Move();
         }
