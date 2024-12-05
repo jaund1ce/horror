@@ -48,6 +48,11 @@ public class Player : MonoBehaviour
     {
         stateMachine.HandleInput();
         stateMachine.Update();
+        if (Input.rotateSencitivity == Data.GroundData.BaseRotationDamping) return;
+        else
+        {
+            Input.rotateSencitivity = Data.GroundData.BaseRotationDamping;
+        }
     }
 
     private void FixedUpdate()

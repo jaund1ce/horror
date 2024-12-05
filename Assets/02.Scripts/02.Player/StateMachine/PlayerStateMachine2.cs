@@ -19,7 +19,7 @@ public class PlayerStateMachine2 : StateMachine
     public PlayerFallState FallState { get; private set; }
     public PlayerHideState HideState { get; private set; }
 
-    public PlayerStateMachine2(Player player)
+    public PlayerStateMachine2(Player player)//존재하는 모든 스테이트 상태를 선언해 줘야함
     {
         this.Player = player;
         MainCamTransform = Camera.main.transform;
