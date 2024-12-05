@@ -10,13 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3dc2072986e21643bae469b1fb5c042, type: 3}
-  m_Name: SOflash
+  m_Name: keycard
   m_EditorClassIdentifier: 
   itemData:
-    ItemNameEng: flash
-    ItemNameKor: "\uC190\uC804\uB4F1"
-    ItemType: EquipItem
-    ItemEffect: "\uAD11\uC6D0"
+    ID: 1001
+    ItemNameEng: keycard
+    ItemNameKor: "\uD0A4\uCE74\uB4DC"
+    ItemType: 0
+    ItemEffect: "\uD560\uB2F9\uB41C \uD0A4\uD328\uB4DC\uB85C \uC7A0\uAE34\uBB38 \uD574\uAE08"
     ItemHealHealth: 0
     ItemHealMental: 0
-    ItemDescription: "\uC55E\uC744 \uBC1D\uD788\uB294 \uC544\uC774\uD15C"
+    ItemDescription: "\uD0A4\uD328\uB4DC\uB85C \uC7A0\uAE34 \uBB38\uC744 \uC5F4\uB54C
+      \n\uC0AC\uC6A9\uD558\uB294 \uB3C4\uAD6C."
+    stackable: 0
+    ItemImage: {fileID: 0}

@@ -10,14 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3dc2072986e21643bae469b1fb5c042, type: 3}
-  m_Name: SOStrangeCompass
+  m_Name: lockpick
   m_EditorClassIdentifier: 
   itemData:
-    ItemNameEng: StrangeCompass
-    ItemNameKor: "\uC774\uC0C1\uD55C\uB098\uCE68\uBC18"
-    ItemType: EquipItem
-    ItemEffect: "\uBAA9\uD45C\uC9C0\uC810\uC73C\uB85C \uC88C\uD45C\uB85C \n\uD654\uC0B4\uD45C\uAC00
-      \uD45C\uC2DC\uB428"
+    ID: 1002
+    ItemNameEng: lockpick
+    ItemNameKor: "\uB77D\uD53D"
+    ItemType: 3
+    ItemEffect: "\uB77D\uD53D\uD37C\uC990 \uD480\uB54C \uC18C\uBAA8"
     ItemHealHealth: 0
     ItemHealMental: 0
-    ItemDescription: "\uBAA9\uD45C\uC9C0\uC810\uC744 \uC9C0\uC2DC\uD558\uB294 \uC544\uC774\uD15C"
+    ItemDescription: "\uB77D\uD53D\uD37C\uC990\uB85C \uC7A0\uAE34 \uBB38\uC744 \uC5F4\uB54C
+      \n\uC0AC\uC6A9\uD558\uB294 \uB3C4\uAD6C."
+    stackable: 0
+    ItemImage: {fileID: 0}

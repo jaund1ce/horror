@@ -7,43 +7,35 @@ using static UHFPS.Runtime.InventoryItem;
 
 public class InventorySlot : MonoBehaviour
 {
-    public ItemSO CurrentItemData = null;
-    public Image CurrentItemImage;
-    public TextMeshProUGUI CurrentItemAmount;
-    private int amount = 0;
+    [SerializeField]private InventoryData CurrentData = null;
+    [SerializeField]private Image CurrentItemImage;
+    [SerializeField]private TextMeshProUGUI CurrentItemAmount;
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
-        ResetSlot();
+        ChangeData(CurrentData);
     }
 
-    public void SetNewData(ItemSO itemData)
+    public void ChangeData(InventoryData itemData)
     {
-        CurrentItemData = itemData;
-        amount = 1;
+        if (itemData == null) { ResetSlot(); return; }
 
+        CurrentData = itemData;
         ChangeUI();
     }
 
-    public void ChangeSlotAmount()
+    private void ResetSlot()
     {
-        amount += 1;
-        ChangeUI();
-    }
-
-    public void ResetSlot()
-    {
-        CurrentItemData = null;
+        CurrentData = null;
         CurrentItemImage.sprite = null;
         CurrentItemImage.color = Color.black;
         CurrentItemAmount.text = "";
-        amount = 0;
     }
 
     public void OnClick()
     {
-        ChangeUI();
+        Debug.Log("Click!");
     }
 
     public void OnUse()//아이템이 사용될 경우
@@ -53,6 +45,7 @@ public class InventorySlot : MonoBehaviour
 
     public void ChangeUI()
     {
-        
+        CurrentItemImage.sprite = CurrentData.ItemData.ItemImage;
+        CurrentItemAmount.text = (CurrentData.amount).ToString();
     }
 }

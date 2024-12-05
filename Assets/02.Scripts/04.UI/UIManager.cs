@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,7 +7,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject escPanel;
     [SerializeField] private GameObject tabPanel;
     [SerializeField] private GameObject settingPanel;
-    [SerializeField] private GameObject interactPanel;
+    [SerializeField] private ItemPromptUILH interactPanel;
 
     private PlayerInputs playerInputs;
     private bool isEscPanelOpen = false;
@@ -198,13 +199,14 @@ public class UIManager : MonoBehaviour
         Cursor.visible = true;
     }
 
-    public void OpeninteractPanel()
+    public void OpeninteractPanel(ItemSO itemSO)
     {
         if (interactPanel != null)
         {
-            interactPanel.SetActive(true);
+            interactPanel.ItemName.text = itemSO.itemData.ItemNameEng;
+            interactPanel.gameObject.SetActive(true);
+            
             isinteractPanelOpen = true;
-            UnlockCursor();
         }
     }
 
@@ -212,9 +214,8 @@ public class UIManager : MonoBehaviour
     {
         if (interactPanel != null)
         {
-            interactPanel.SetActive(false);
+            interactPanel.gameObject.SetActive(false);
             isinteractPanelOpen = false;
-            UnlockCursor();
         }
     }
 }

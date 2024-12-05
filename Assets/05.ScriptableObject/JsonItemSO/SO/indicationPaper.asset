@@ -10,13 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3dc2072986e21643bae469b1fb5c042, type: 3}
-  m_Name: SOhintpaper
+  m_Name: indicationPaper
   m_EditorClassIdentifier: 
   itemData:
-    ItemNameEng: hintpaper
-    ItemNameKor: "\uD78C\uD2B8\uC885\uC774"
-    ItemType: EquipItem
-    ItemEffect: "\uD78C\uD2B8\uAC00 \uC801\uD798"
+    ID: 1008
+    ItemNameEng: indicationPaper
+    ItemNameKor: "\uC9C0\uC2DC\uC885\uC774"
+    ItemType: 0
+    ItemEffect: "\uC9C0\uC2DC\uAC00 \uC801\uD798"
     ItemHealHealth: 0
     ItemHealMental: 0
-    ItemDescription: "\uD78C\uD2B8\uAC00 \uC801\uD78C \uC885\uC774"
+    ItemDescription: "\uC9C0\uC2DC\uAC00 \uC801\uD78C \uC885\uC774"
+    stackable: 0
+    ItemImage: {fileID: 0}

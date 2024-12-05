@@ -10,13 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3dc2072986e21643bae469b1fb5c042, type: 3}
-  m_Name: SOindicationPaper
+  m_Name: sedative
   m_EditorClassIdentifier: 
   itemData:
-    ItemNameEng: indicationPaper
-    ItemNameKor: "\uC9C0\uC2DC\uC885\uC774"
-    ItemType: EquipItem
-    ItemEffect: "\uC9C0\uC2DC\uAC00 \uC801\uD798"
+    ID: 1010
+    ItemNameEng: sedative
+    ItemNameKor: "\uD56D\uBD88\uC548\uC81C"
+    ItemType: 0
+    ItemEffect: "\uC815\uC2E0\uB825 \uD68C\uBCF5"
     ItemHealHealth: 0
-    ItemHealMental: 0
-    ItemDescription: "\uC9C0\uC2DC\uAC00 \uC801\uD78C \uC885\uC774"
+    ItemHealMental: 100
+    ItemDescription: "\uC815\uC2E0\uB825\uC744 \uBB34\uC870\uAC74 \uAF49\uCC44\uC6B0\uB294
+      \uD68C\uBCF5\uD15C"
+    stackable: 0
+    ItemImage: {fileID: 0}

@@ -1,20 +1,27 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class InventorySlotsController : MonoBehaviour
 {
-    public InventorySlot[] slots;   
+    public PlayerInventoryData InventoryData;
+    public InventorySlot[] slots;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+        //InventoryData = Player.playerinventorydata;
+        slots = GetComponentsInChildren<InventorySlot>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        for(int i=0; i< 15; i++)
+        {
+            if (InventoryData.inventoryDatas[i].ItemData == null) return;
+
+            InventoryData iD = InventoryData.inventoryDatas[i];
+            slots[iD.slotIndex].ChangeData(iD);
+        }
     }
 }
