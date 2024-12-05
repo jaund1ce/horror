@@ -10,7 +10,7 @@ public class CreatureIdleState : CreatureBaseState
 
     public override void Enter()
     {
-        stateMachine.MovementSpeedModifier = 0f;
+        MovementSpeedModifier = 0f;
         base.Enter();
         StartAnimation(stateMachine.Creature.AnimationData.GrondParameterHash);
         StartAnimation(stateMachine.Creature.AnimationData.IdleParameterHash);

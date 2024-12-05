@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class CreatureStateMachine : StateMachine
 {
-    public Creature Creature { get; }
+    public Creature Creature { get; set; }
 
     public Vector2 MovementInput { get; set; }
     public float MovementSpeed { get; private set; }
     public float RotationDamping { get; private set; }
-    public float MovementSpeedModifier { get; set; } = 1f;    
 
     public GameObject Target { get; private set; }
     
@@ -27,7 +26,6 @@ public class CreatureStateMachine : StateMachine
         ChasingState = new CreatureChasingState(this);
         WanderState = new CreatureWanderState(this);
 
-        MovementSpeed = Creature.Data.GroundData.BaseSpeed;
         RotationDamping = Creature.Data.GroundData.BaseRotationDamping;
     }
 

@@ -87,7 +87,7 @@ public class CreatureAI : MonoBehaviour , AggroGage
             else
             {
 
-                Debug.DrawRay(transform.position + (Vector3.up * 0.5f), direction * Data.VisionDistance, Color.green, 1.0f);
+                //Debug.DrawRay(transform.position + (Vector3.up * 0.5f), direction * Data.VisionDistance, Color.green, 1.0f);
             }
         }
 

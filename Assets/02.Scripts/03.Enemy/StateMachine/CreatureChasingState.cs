@@ -10,7 +10,7 @@ public class CreatureChasingState : CreatureBaseState
     public override void Enter()
     {
         base.Enter();
-        stateMachine.MovementSpeedModifier = groundData.RunSpeedModifier;
+        MovementSpeedModifier = groundData.RunSpeedModifier;
         StartAnimation(stateMachine.Creature.AnimationData.GrondParameterHash);
         StartAnimation(stateMachine.Creature.AnimationData.RunParameterHash);
     }
@@ -18,7 +18,7 @@ public class CreatureChasingState : CreatureBaseState
     public override void Exit()
     {
         base.Exit();
-        stateMachine.MovementSpeedModifier = groundData.WalkSpeedModifier;
+        MovementSpeedModifier = groundData.WalkSpeedModifier;
         StopAnimation(stateMachine.Creature.AnimationData.GrondParameterHash);
         StopAnimation(stateMachine.Creature.AnimationData.RunParameterHash);
         

@@ -14,7 +14,7 @@ public class CreatureWanderState : CreatureBaseState
     public override void Enter()
     {
         base.Enter();
-        stateMachine.MovementSpeedModifier = groundData.WalkSpeedModifier;
+        MovementSpeedModifier = groundData.WalkSpeedModifier;
         StartAnimation(stateMachine.Creature.AnimationData.GrondParameterHash);
         StartAnimation(stateMachine.Creature.AnimationData.WalkParameterHash);
 

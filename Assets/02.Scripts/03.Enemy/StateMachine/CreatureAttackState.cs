@@ -14,7 +14,7 @@ public class CreatureAttackState : CreatureBaseState
     public override void Enter()
     {
         base.Enter();
-        stateMachine.MovementSpeedModifier = 0f;
+        MovementSpeedModifier = 0f;
         StartAnimation(stateMachine.Creature.AnimationData.AttackParameterHash);
         StartAnimation(stateMachine.Creature.AnimationData.BaseAttackParameterHash);
 
@@ -24,7 +24,7 @@ public class CreatureAttackState : CreatureBaseState
     public override void Exit()
     {
         base.Exit();
-        stateMachine.MovementSpeedModifier = groundData.WalkSpeedModifier;
+        MovementSpeedModifier = groundData.WalkSpeedModifier;
         StopAnimation(stateMachine.Creature.AnimationData.AttackParameterHash);
         StopAnimation(stateMachine.Creature.AnimationData.BaseAttackParameterHash);
         
