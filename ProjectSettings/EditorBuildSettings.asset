@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/01.Scenes/JYH/JYHStartScene.unity
+    path: Assets/01.Scenes/JYH/JYH_StartScene.unity
     guid: 122237f413b78094f868f0c54b5a8773
   - enabled: 1
     path: Assets/01.Scenes/JYH/JYHScene.unity
