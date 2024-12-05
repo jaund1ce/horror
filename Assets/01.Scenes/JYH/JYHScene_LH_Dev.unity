@@ -3554,7 +3554,8 @@ MonoBehaviour:
   escPanel: {fileID: 102180487}
   tabPanel: {fileID: 1113817859}
   settingPanel: {fileID: 586328065}
-  interactPanel: {fileID: 479671569}
+  interactPanel: {fileID: 0}
+  docPanel: {fileID: 0}
 --- !u!114 &1923496470
 MonoBehaviour:
   m_ObjectHideFlags: 0

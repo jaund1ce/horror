@@ -15,29 +15,29 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private CinemachineVirtualCamera playercamera;
     private CinemachinePOV pov;
-    private float rotateSencitivity = 0.02f;
+    public float rotateSencitivity;
 
     private void Awake()
     {
         playerInputs = new PlayerInputs();
         playerActions = playerInputs.Player;//inputsystem에 선언했던 Actionmap 중에 하나를 선택
         pov = playercamera.GetCinemachineComponent<CinemachinePOV>();
-        playerInputs.Enable();
+        //playerInputs.Enable();
     }
 
     private void OnEnable()
     {
         playerInputs.Enable();
-        playerActions.Look.started += RotateAll;
+        playerActions.Look.started += RotateCamera;
     }
 
     private void OnDisable()
     {
         playerInputs.Disable();
-        playerActions.Look.started -= RotateAll;
+        playerActions.Look.started -= RotateCamera;
     }
 
-    private void RotateAll(InputAction.CallbackContext context)//cinemachine의 aim방식에 따라서 회전시키는 방법은 다르다.
+    private void RotateCamera(InputAction.CallbackContext context)//cinemachine의 aim방식에 따라서 회전시키는 방법은 다르다.
     {
         Vector2 delta = context.ReadValue<Vector2>();
 
@@ -46,16 +46,15 @@ public class PlayerController : MonoBehaviour
             float rotatex = Mathf.Clamp(delta.y, -60f, 60f);
             float rotatey = Mathf.Clamp(delta.x, -90f, 90f);
 
-            transform.rotation *= Quaternion.Euler(0f, rotatey * rotateSencitivity, 0f);
+            pov.m_HorizontalAxis.m_MaxSpeed = rotateSencitivity;//나중에 playerso값에 따라서 변경하도록 
+
+            transform.rotation *= Quaternion.Euler(0f, rotatey * rotateSencitivity * Time.deltaTime, 0f);
 
             if (pov == null)
             {
                 Debug.LogError("cinemachine pov not found!");
                 return;
             }
-
-            pov.m_VerticalAxis.Value -= rotatex * rotateSencitivity;
-            pov.m_VerticalAxis.Value = Mathf.Clamp(pov.m_VerticalAxis.Value, -45f, 45f);//나중에 외부에서 변경 후 제거
         }
     }
 }
