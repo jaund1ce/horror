@@ -22,7 +22,7 @@ public class PlayerBaseState : IState
 
     public virtual void Exit()
     {
-       ReadMovementInput();
+        RemoveInputActionCallbacks();
     }
 
     protected virtual void AddInputActionCallbacks()
@@ -63,7 +63,7 @@ public class PlayerBaseState : IState
 
     protected virtual void OnRunStarted(InputAction.CallbackContext context)
     {
-        
+        //if (!stateMachine.Player.Controller.isGrounded) return;
     }
 
     protected virtual void OnJumpStarted(InputAction.CallbackContext context)
