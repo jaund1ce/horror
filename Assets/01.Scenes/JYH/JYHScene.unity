@@ -1594,7 +1594,7 @@ MonoBehaviour:
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
   m_Cameras: []
-  m_RendererIndex: -1
+  m_RendererIndex: 0
   m_VolumeLayerMask:
     serializedVersion: 2
     m_Bits: 1
@@ -1689,6 +1689,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &955268969 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2949480258815605600, guid: 8d12ed94734747d4a91ead2b0bc9f8f0, type: 3}
+  m_PrefabInstance: {fileID: 3456018119755444858}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1164239670
 GameObject:
   m_ObjectHideFlags: 0
@@ -3079,6 +3090,11 @@ MonoBehaviour:
   startSceneName: JYHStartScene
   mainSceneName: JYHScene
   endSceneName: JYHEndScene
+--- !u!143 &1924510867 stripped
+CharacterController:
+  m_CorrespondingSourceObject: {fileID: 6147242421969804343, guid: 8d12ed94734747d4a91ead2b0bc9f8f0, type: 3}
+  m_PrefabInstance: {fileID: 3456018119755444858}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2143990932
 GameObject:
   m_ObjectHideFlags: 0
@@ -57992,6 +58008,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6230964232614769512, guid: 8d12ed94734747d4a91ead2b0bc9f8f0, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 955268969}
     - target: {fileID: 6649819140532374826, guid: 8d12ed94734747d4a91ead2b0bc9f8f0, type: 3}
       propertyPath: m_Name
       value: Player
@@ -58000,6 +58020,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8287903761675837026, guid: 8d12ed94734747d4a91ead2b0bc9f8f0, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 1924510867}
     m_RemovedComponents:
     - {fileID: 6950051414145340682, guid: 8d12ed94734747d4a91ead2b0bc9f8f0, type: 3}
     m_RemovedGameObjects: []
