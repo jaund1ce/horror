@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,8 @@ public class Player : MonoBehaviour
 
     private PlayerStateMachine2 stateMachine;
 
+    public Action makeSound;
+    public Action addItem;
 
     void Awake()
     {

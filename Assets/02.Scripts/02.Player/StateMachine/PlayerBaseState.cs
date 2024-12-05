@@ -65,7 +65,7 @@ public class PlayerBaseState : IState
 
     protected virtual void OnRunStarted(InputAction.CallbackContext context)
     {
-
+        
     }
 
     protected virtual void OnJumpStarted(InputAction.CallbackContext context)
@@ -93,7 +93,6 @@ public class PlayerBaseState : IState
         Vector3 movementDirection = GetMovementDirection(); 
 
         Move(movementDirection);
-
         //Rotate(movementDirection);
     }
 
@@ -123,13 +122,13 @@ public class PlayerBaseState : IState
         return moveSpeed;
     }
 
-    private void Rotate(Vector3 direction)
-    {
-        if(direction != Vector3.zero)
-        {
-            Transform playerTransform = stateMachine.Player.transform;
-            Quaternion targetRotation = Quaternion.LookRotation(direction);
-            playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
-        }
-    }
+    //private void Rotate(Vector3 direction)
+    //{
+    //    if(direction != Vector3.zero)
+    //    {
+    //        Transform playerTransform = stateMachine.Player.transform;
+    //        Quaternion targetRotation = Quaternion.LookRotation(direction);
+    //        playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
+    //    }
+    //}
 }

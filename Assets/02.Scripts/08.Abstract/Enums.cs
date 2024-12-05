@@ -8,10 +8,11 @@ public enum InteractableType
 
 public enum ItemType
 {
-    Equipment,
-    Useable,
-    Consumable,
-    Key
+    Key,
+    EquipItem,
+    CnsItem,
+    CcItem,
+    Document
 }
 
 public enum ObjectType

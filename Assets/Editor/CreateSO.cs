@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -29,7 +30,7 @@ public class CreateSO : EditorWindow
 
     public void ChangeJsonToSO()
     {
-        string filepath = Path.Combine(Application.dataPath, "10.Data/data.json");
+        string filepath = Path.Combine(Application.dataPath, "10.Data/data.json");//json 데이터를 넣어놓은 경로
 
         if (!File.Exists(filepath))
         {
@@ -38,7 +39,7 @@ public class CreateSO : EditorWindow
         }
 
         string json = File.ReadAllText(filepath);
-        JsonItemData[] itemDatas = JsonHelper.FromJson<JsonItemData>(json);
+        ItemData[] itemDatas = JsonHelper.FromJson<ItemData>(json);
 
         if (itemDatas == null || itemDatas.Length == 0)
         {
@@ -48,15 +49,15 @@ public class CreateSO : EditorWindow
 
         foreach (var item in itemDatas)
         {
-            string assetPath = $"{SOpath}{item.ItemNameEng}.asset";
+            string assetPath = $"{SOpath}/{item.ItemNameEng}.asset";
 
             ItemSO existItemData = AssetDatabase.LoadAssetAtPath<ItemSO>(assetPath);
 
             if (existItemData == null)//so가 없으면
             {
                 ItemSO newItemSO = ScriptableObject.CreateInstance<ItemSO>();
+                
                 newItemSO.itemData = item;
-
 
                 AssetDatabase.CreateAsset(newItemSO, assetPath);
             }

@@ -48,11 +48,14 @@ public class PlayerController : MonoBehaviour
 
             transform.rotation *= Quaternion.Euler(0f, rotatey * rotateSencitivity, 0f);
 
-            if (pov == null) return;
+            if (pov == null)
+            {
+                Debug.LogError("cinemachine pov not found!");
+                return;
+            }
 
             pov.m_VerticalAxis.Value -= rotatex * rotateSencitivity;
             pov.m_VerticalAxis.Value = Mathf.Clamp(pov.m_VerticalAxis.Value, -45f, 45f);//나중에 외부에서 변경 후 제거
         }
-
     }
 }

@@ -10,7 +10,7 @@ public interface IState
 
 public abstract class StateMachine
 {
-    protected IState currentState;
+    protected IState currentState;//statemachine을 상속 받는 어떠한 상태 (base, air, hide, ...)
 
     public void ChangeState(IState state)
     {
