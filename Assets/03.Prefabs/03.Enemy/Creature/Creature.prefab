@@ -935,6 +935,7 @@ GameObject:
   - component: {fileID: 8887485394787550634}
   - component: {fileID: 1242223474569651096}
   - component: {fileID: 7745987280538577716}
+  - component: {fileID: 3737413397355850647}
   m_Layer: 0
   m_Name: Creature
   m_TagString: Untagged
@@ -952,7 +953,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.5, z: 0}
-  m_LocalScale: {x: 1, y: 1.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 967333909917681666}
@@ -978,13 +979,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1.7
+  m_Height: 1.9
   m_Radius: 0.25
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: -0.1, z: 0}
+  m_Center: {x: 0, y: -0.07, z: 0}
 --- !u!114 &8887485394787550634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1043,6 +1044,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3737413397355850647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056870907640678056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd0da9d39ca47b84da8ca198330554da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player:
+    serializedVersion: 2
+    m_Bits: 8
+  CreatureAistate: 0
+  <Data>k__BackingField: {fileID: 11400000, guid: 0d86a9414b33d2747ad8ae4b8078db75, type: 2}
 --- !u!1 &2443571384947921874
 GameObject:
   m_ObjectHideFlags: 0
@@ -1910,7 +1928,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6504187104186272640}

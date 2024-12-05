@@ -9,19 +9,27 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.UIElements;
-
-
-public class CreatureAI : MonoBehaviour , AggroGage
-{
-
     public enum SightInObject 
     {
         Player = 0,
         Object = 1
     }
 
+    public enum AIState 
+    {
+        Idle,
+        Wandering,
+        Chasing
+    }
+
+
+public class CreatureAI : MonoBehaviour , AggroGage
+{
+    
+
     public LayerMask player;
     private NavMeshAgent agent;
+    public AIState CreatureAistate;
     [field: SerializeField] public CreatureSO Data { get; private set; }
 
 
@@ -30,18 +38,20 @@ public class CreatureAI : MonoBehaviour , AggroGage
     private float checkMissTime;
     private float aggroGage;
     
-    private List<int> visionInObject;
+    private List<int> visionInObject = new List<int>(); 
 
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        visionInObject = new List<int>();
+        //visionInObject = new List<int>();
     }
 
     private void Update()
     {
         CheckTarget();
+        UpdateState();
+
     }
 
     private void CheckTarget() 
@@ -92,7 +102,6 @@ public class CreatureAI : MonoBehaviour , AggroGage
             checkMissTime += Time.deltaTime;
             if (checkMissTime > Data.MissTargetTime)
             {
-                Debug.Log("플레이어 놓침");
                 isPlayerMiss = true;
             }
         }
@@ -102,7 +111,7 @@ public class CreatureAI : MonoBehaviour , AggroGage
         }
     }
 
-    public void GetAggroGage(int amount)
+    public void GetAggroGage(float amount)
     {
 
         aggroGage += amount;
@@ -117,6 +126,39 @@ public class CreatureAI : MonoBehaviour , AggroGage
         }
     }
 
+    public void FeelThePlayer() 
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, Data.FeelPlayerRange , player);
 
+        foreach (Collider collider in colliders) 
+        {
+            float increaceAmount = 0;
+            Vector3 direction = (collider.transform.position - transform.position).normalized;
+            increaceAmount = (MathF.Abs(direction.x) + MathF.Abs(direction.z))/Data.FeelPlayerRange;
+            GetAggroGage(increaceAmount);
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, Data.FeelPlayerRange);
+    }
+
+    public int UpdateState() 
+    {
+        if (IsAggroGageMax || !isPlayerMiss)
+        {
+            CreatureAistate = AIState.Chasing;
+        } 
+        else if (!IsAggroGageMax && isPlayerMiss) 
+        {
+            CreatureAistate = AIState.Wandering;
+            FeelThePlayer();
+        }
+
+        return (int)CreatureAistate;
+    }
+    
 }
 

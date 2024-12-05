@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 public interface AggroGage
 {
-    void GetAggroGage(int amount);
+    void GetAggroGage(float amount);
+    void FeelThePlayer();
 }
 

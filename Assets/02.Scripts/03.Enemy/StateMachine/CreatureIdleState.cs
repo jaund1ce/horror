@@ -30,9 +30,13 @@ public class CreatureIdleState : CreatureBaseState
     {
         base.Update();
 
-        if (IsInChasingRange()) 
+        if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Chasing /*IsInChasingRange()*/)
         {
             stateMachine.ChangeState(stateMachine.ChasingState);
+            return;
+        } else if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Wandering) 
+        {
+            stateMachine.ChangeState(stateMachine.WanderState);
             return;
         }
     }

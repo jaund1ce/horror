@@ -47,7 +47,7 @@ public class CreatureAttackState : CreatureBaseState
         }
         else 
         {
-            if (IsInChasingRange())
+            if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Chasing /*IsInChasingRange()*/)
             {
                 stateMachine.ChangeState(stateMachine.ChasingState);
                 return;

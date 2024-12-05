@@ -1,17 +1,29 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
 public class CreatureBaseState  : IState
 {
     protected CreatureStateMachine stateMachine;
     protected readonly PlayerGroundData groundData;
-
+    private Vector3 movementLocation = Vector3.zero;
+    private Vector3 creatureTransform;
+    private float minWanderDistance;
+    private float maxWanderDistance;
+    int walkableMask;
     public CreatureBaseState(CreatureStateMachine stateMachine) 
     {
         this.stateMachine = stateMachine;
         groundData = stateMachine.Creature.Data.GroundData;
+        creatureTransform = stateMachine.Creature.transform.position;
+        minWanderDistance = stateMachine.Creature.Data.MinWanderDistance;
+        maxWanderDistance = stateMachine.Creature.Data.MaxWanderDistance;
+        walkableMask = NavMesh.GetAreaFromName("walkable");
     }
 
     public virtual void Enter() { }
@@ -20,17 +32,21 @@ public class CreatureBaseState  : IState
     public virtual void PhysicsUpdate() { }
     public virtual void Update() 
     {
-        if (stateMachine.Creature.CreatureAI.isPlayerMiss)
+        if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Idle)
         {
-        
+
         }
-        else 
+        else if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Chasing)
         {
             Move();
+        } 
+        else if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Wandering) 
+        {
+            WanderLocationMove();
         }
         
     }
-    
+
 
     public void StartAnimation(int animatorHash) 
     {
@@ -47,6 +63,25 @@ public class CreatureBaseState  : IState
         Vector3 movementDirection = GetMovementDirection();
         Move(movementDirection);
         Rotate(movementDirection);
+    }
+    private void WanderLocationMove()
+    {
+        NavMeshHit hit;
+
+        //sourcePosition : 일정한 영역 hit : 이동할수있는 경로의 최단 경로 
+        Vector3 randomPosition = creatureTransform + (Random.onUnitSphere * Random.Range(minWanderDistance, maxWanderDistance));
+        NavMesh.SamplePosition(randomPosition, out hit, maxWanderDistance, walkableMask);
+
+        if (Vector3.Distance(hit.position, creatureTransform) < 0.1f || movementLocation == Vector3.zero)
+        {
+            movementLocation = new Vector3(hit.position.x,0,hit.position.z);
+            Debug.Log($"New Position : {movementLocation}");
+        }
+
+        Move(movementLocation);
+        Rotate(movementLocation);
+        
+
     }
 
     private Vector3 GetMovementDirection()
@@ -73,9 +108,9 @@ public class CreatureBaseState  : IState
     {
         if (direction != Vector3.zero)
         {
-            Transform playerTransform = stateMachine.Creature.transform;
+            Transform creatureTransform = stateMachine.Creature.transform;
             Quaternion targetRotation = Quaternion.LookRotation(direction);
-            playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
+            creatureTransform.rotation = Quaternion.Slerp(creatureTransform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
         }
     }
 

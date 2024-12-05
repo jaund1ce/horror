@@ -22,9 +22,12 @@ public class CreatureSO : ScriptableObject
     [field: SerializeField][field: Range(30f, 180f)] public float VisionRange { get; private set; }
     [field: SerializeField][field: Range(0f, 20f)] public float VisionDistance { get; private set; }
     [field: SerializeField][field: Range(10f, 40f)] public int RayAmount { get; private set; }
+    [field: SerializeField][field: Range(0f, 20f)] public int FeelPlayerRange { get; private set; }
 
     [field: Header("CreatureAI")]
     [field: SerializeField][field: Range(0f, 5f)] public float MissTargetTime { get; private set; }
     [field: SerializeField][field: Range(0f, 100f)] public float MaxAggroGage { get; private set; }
+    [field: SerializeField][field: Range(0f, 20f)] public float MinWanderDistance { get; private set; }
+    [field: SerializeField][field: Range(0f, 20f)] public float MaxWanderDistance { get; private set; }
 }
 
