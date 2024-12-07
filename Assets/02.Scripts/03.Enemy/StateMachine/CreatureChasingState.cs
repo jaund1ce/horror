@@ -9,17 +9,18 @@ public class CreatureChasingState : CreatureBaseState
     }
     public override void Enter()
     {
-        stateMachine.MovementSpeedModifier = groundData.WalkSpeedModifier;
         base.Enter();
+        MovementSpeedModifier = groundData.RunSpeedModifier;
         StartAnimation(stateMachine.Creature.AnimationData.GrondParameterHash);
-        StartAnimation(stateMachine.Creature.AnimationData.WalkParameterHash);
+        StartAnimation(stateMachine.Creature.AnimationData.RunParameterHash);
     }
 
     public override void Exit()
     {
         base.Exit();
+        MovementSpeedModifier = groundData.WalkSpeedModifier;
         StopAnimation(stateMachine.Creature.AnimationData.GrondParameterHash);
-        StopAnimation(stateMachine.Creature.AnimationData.WalkParameterHash);
+        StopAnimation(stateMachine.Creature.AnimationData.RunParameterHash);
         
         
     }
@@ -28,15 +29,19 @@ public class CreatureChasingState : CreatureBaseState
     {
         base.Update();
 
-        if (!IsInChasingRange())
+        /*if (stateMachine.Creature.CreatureAI.CreatureAistate != AIState.Chasing *//*!IsInChasingRange()*//*)
         {
             stateMachine.ChangeState(stateMachine.IdleState);
-            Debug.Log("µé¾î¿È ?");
             return;
         }
-        else if (IsInAttackRange()) 
+        else*/ if (IsInAttackRange())
         {
             stateMachine.ChangeState(stateMachine.AttackState);
+            return;
+        }
+        else if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Wandering) 
+        {
+            stateMachine.ChangeState(stateMachine.WanderState);
             return;
         }
     }

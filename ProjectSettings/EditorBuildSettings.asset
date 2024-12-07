@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/01.Scenes/JYH/JYHScene.unity
     guid: ea11d2e6b88406047b4d82a64c4d7679
   - enabled: 1
-    path: Assets/01.Scenes/JYH/JYHEndScene.unity
-    guid: 8100fed4e408b30489e21378bbcbfb2d
+    path: Assets/01.Scenes/JYH/JYH_EndScene.unity
+    guid: ca95d1daf85c43c48ac2b0c763ac41f2
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: ae838b1c970aab641bb8e4643590df24, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: ce68c4c37abec5347801e4204a280574, type: 2}

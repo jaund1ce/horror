@@ -14,6 +14,7 @@ public class CreatureAttackState : CreatureBaseState
     public override void Enter()
     {
         base.Enter();
+        MovementSpeedModifier = 0f;
         StartAnimation(stateMachine.Creature.AnimationData.AttackParameterHash);
         StartAnimation(stateMachine.Creature.AnimationData.BaseAttackParameterHash);
 
@@ -23,6 +24,7 @@ public class CreatureAttackState : CreatureBaseState
     public override void Exit()
     {
         base.Exit();
+        MovementSpeedModifier = groundData.WalkSpeedModifier;
         StopAnimation(stateMachine.Creature.AnimationData.AttackParameterHash);
         StopAnimation(stateMachine.Creature.AnimationData.BaseAttackParameterHash);
         
@@ -45,7 +47,7 @@ public class CreatureAttackState : CreatureBaseState
         }
         else 
         {
-            if (IsInChasingRange())
+            if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Chasing /*IsInChasingRange()*/)
             {
                 stateMachine.ChangeState(stateMachine.ChasingState);
                 return;
