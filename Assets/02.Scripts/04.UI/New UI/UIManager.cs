@@ -13,35 +13,44 @@ public class UIManager : mainSingleton<UIManager>
 
     protected override void Awake()
     {
-        base.Awake(); 
+        base.Awake();
         LoadAllUIs();
+        // 씬 로드 이벤트 등록
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    protected override void Start()
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         // 현재 활성화된 씬 가져오기
-        Scene currentScene = SceneManager.GetActiveScene();
+        Debug.Log($"새로운 씬 로드됨: {scene.name}");
 
-        // 씬 빌드 인덱스 확인
-        if (currentScene.buildIndex == 0)
+        // 씬 이름 또는 빌드 인덱스를 기반으로 UI 표시
+        if (scene.buildIndex == 0)
         {
-            Debug.Log("Start Scene에서 실행 중"); 
+            Debug.Log("Start Scene에서 실행 중");
             Show<StartUI>();
         }
-
-        else if (currentScene.buildIndex == 1)
+        else if (scene.buildIndex == 1)
         {
             Debug.Log("Main Scene에서 실행 중");
             Show<MainUI>();
         }
-
-        else if (currentScene.buildIndex == 2)
+        else if (scene.buildIndex == 2)
         {
             Debug.Log("End Scene에서 실행 중");
             Show<EndUI>();
         }
-
     }
+
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+
+        // 씬 로드 이벤트 등록 해제
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
 
     private void LoadAllUIs()
     {
