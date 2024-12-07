@@ -12,15 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 737f0c5c2cd7feb488345b7bf97bdbda, type: 3}
   m_Name: Creature
   m_EditorClassIdentifier: 
-  <PlayerChasingRange>k__BackingField: 4
+  <PlayerChasingRange>k__BackingField: 1
   <AttackRange>k__BackingField: 2
   <ForceTransitionTime>k__BackingField: 0.1
   <Force>k__BackingField: 1
   Damage: 10
   <GroundData>k__BackingField:
-    <BaseSpeed>k__BackingField: 3
+    <BaseSpeed>k__BackingField: 5
     <BaseRotationDamping>k__BackingField: 1
-    <WalkSpeedModifier>k__BackingField: 0.225
-    <RunSpeedModifier>k__BackingField: 1
+    <WalkSpeedModifier>k__BackingField: 0.7
+    <RunSpeedModifier>k__BackingField: 0.9
   <Dealing_Start_TransitionTime>k__BackingField: 0
   <Dealing_End_TransitionTime>k__BackingField: 0
+  <VisionRange>k__BackingField: 120
+  <VisionDistance>k__BackingField: 10
+  <RayAmount>k__BackingField: 31
+  <FeelPlayerRange>k__BackingField: 18
+  <MissTargetTime>k__BackingField: 5
+  <MaxAggroGage>k__BackingField: 100
+  <MinWanderDistance>k__BackingField: 5
+  <MaxWanderDistance>k__BackingField: 10

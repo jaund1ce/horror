@@ -56,12 +56,12 @@ public class PlayerInteraction : MonoBehaviour
                 }
 
                 CurrentInteracteItemData = itemBase;
-                temUIManager.OpeninteractPanel();//나중에 메니져가 연결되면 연결, so 값을 넘겨줘서 다른 화면 표시 itemBase.itemSO
+                //temUIManager.OpeninteractPanel();//나중에 메니져가 연결되면 연결, so 값을 넘겨줘서 다른 화면 표시 itemBase.itemSO
             }
             else
             {
                 CurrentInteracteItemData = null;
-                temUIManager.CloseInteractPanel();
+                //temUIManager.CloseInteractPanel();
             }
         }
     }

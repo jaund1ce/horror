@@ -10,7 +10,7 @@ public class CreatureIdleState : CreatureBaseState
 
     public override void Enter()
     {
-        stateMachine.MovementSpeedModifier = 0f;
+        MovementSpeedModifier = 0f;
         base.Enter();
         StartAnimation(stateMachine.Creature.AnimationData.GrondParameterHash);
         StartAnimation(stateMachine.Creature.AnimationData.IdleParameterHash);
@@ -30,9 +30,13 @@ public class CreatureIdleState : CreatureBaseState
     {
         base.Update();
 
-        if (IsInChasingRange()) 
+        if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Chasing /*IsInChasingRange()*/)
         {
             stateMachine.ChangeState(stateMachine.ChasingState);
+            return;
+        } else if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Wandering) 
+        {
+            stateMachine.ChangeState(stateMachine.WanderState);
             return;
         }
     }
