@@ -1,11 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class ItemClcikPanelController : MonoBehaviour
+public class ItemClcikPanInventoryItemInfoPanelelController : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI itemNameText;
+    [SerializeField] private TextMeshProUGUI itemDescriptionText;
     [SerializeField] private TextMeshProUGUI itemUseBTNText;
+    [SerializeField] private InventoryLH InventoryLH;
+
+    private void Awake()
+    {
+        InventoryLH.ItemClcikPanInventoryItemInfoPanelelController = this;
+    }
+
     private ItemSO currentItemSO;
 
     private void OnEnable()
@@ -17,7 +27,7 @@ public class ItemClcikPanelController : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void ChangeUsePanelText(ItemSO itemSO)
+    public void ChangePanelText(ItemSO itemSO)
     {
         if (itemSO.itemData == null) return;
 
@@ -46,11 +56,10 @@ public class ItemClcikPanelController : MonoBehaviour
     {
         if (currentItemSO == null) return;
 
-        //if(currentItemSO.itemData.)
-        ChangeUsePanelText(currentItemSO);
+        //GameManager.Instance.Player.playerinventorydata.selectinventorydata = CurrentData;
     }
     public void OnAddQuickSlotBTNClick()
     {
-
+        //InventoryLH.quickslotController.Add();
     }
 }

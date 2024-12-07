@@ -128,6 +128,7 @@ public class UIManager : mainSingleton<UIManager>
     {
         if (tabPanel != null)
         {
+            //templayer.Input.LockRotate();//
             tabPanel.SetActive(true);
             isTabPanelOpen = true;
             UnlockCursor();
@@ -139,6 +140,7 @@ public class UIManager : mainSingleton<UIManager>
     {
         if (tabPanel != null)
         {
+            //templayer.Input.UnLockRotate();//
             tabPanel.SetActive(false);
             isTabPanelOpen = false;
             LockCursor();

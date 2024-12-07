@@ -21,10 +21,11 @@ public class Player : MonoBehaviour
 
     public Action makeSound;
     public Action addItem;
+    public Action useItem;
+    public Action<InventoryData> changeSelectItem;
 
     void Awake()
     {
-
         AnimationData.Initialize();
         Animator = GetComponentInChildren<Animator>();
         Input = GetComponent<PlayerController>();
@@ -48,11 +49,7 @@ public class Player : MonoBehaviour
     {
         stateMachine.HandleInput();
         stateMachine.Update();
-        if (Input.rotateSencitivity == Data.GroundData.BaseRotationDamping) return;
-        else
-        {
-            Input.rotateSencitivity = Data.GroundData.BaseRotationDamping;
-        }
+        ChangeRotation();//
     }
 
     private void FixedUpdate()
@@ -64,5 +61,15 @@ public class Player : MonoBehaviour
     {
         Animator.SetTrigger("Die");
         enabled = false;
+    }
+
+    void ChangeRotation()//나중에 다른 매니져로 옮기기?
+    {
+        if (Input.rotateXSencitivity == Data.GroundData.BaseRotationDamping && Input.rotateYSencitivity == Data.GroundData.BaseRotationDamping) return;
+        else
+        {
+            Input.rotateXSencitivity = Data.GroundData.BaseRotationDamping;
+            Input.rotateYSencitivity = Data.GroundData.BaseRotationDamping;
+        }
     }
 }

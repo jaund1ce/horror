@@ -7,6 +7,8 @@ public class mainGameManager : mainSingleton<mainGameManager>
 {
     public UserInfo User;
 
+    public Player player;
+
     protected override void Start()
     {
 
