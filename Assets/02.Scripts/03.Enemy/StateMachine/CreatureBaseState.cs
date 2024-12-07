@@ -46,15 +46,22 @@ public class CreatureBaseState : IState
         }
         else if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Chasing)
         {
+            //분리 예정
             Move();
+            Debug.Log("현재 Chasing중");
         }
         else if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Wandering)
         {
-            if (!IsLocationSet()) 
+            if (!IsLocationSet())
             {
                 WanderLocationSet();
             }
+            Debug.Log("현재 Move중");
             Move();
+        }
+        else if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Attacking)
+        {
+            stateMachine.ChangeState(stateMachine.AttackState);
         }
 
     }
@@ -96,7 +103,11 @@ public class CreatureBaseState : IState
 
     private bool IsLocationSet() 
     {
-        if (Vector3.Distance(creatureTransform.position, movementLocation) < 1f || movementLocation == Vector3.zero)
+        if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Chasing) 
+        {
+            setLocation = true;
+        }
+        if (Vector3.Distance(creatureTransform.position, movementLocation) < 1f || movementLocation == Vector3.zero )
         {
             setLocation = false;
         }
@@ -104,32 +115,14 @@ public class CreatureBaseState : IState
         return setLocation;
     }
 
-    /*private Vector3 GetMovementDirection()
-    {
-        Vector3 dir = stateMachine.Target.transform.position;
-
-        return dir;
-
-    }*/
 
     private void Move(Vector3 direction)
-    {
-        //stateMachine.Creature.CharacterController.SetDestination(((direction * movementSpeed) + stateMachine.Creature.ForceReceiver.Movement) * Time.deltaTime);
+    {      
         stateMachine.Creature.CharacterController.SetDestination(direction);
-        Debug.Log(stateMachine.Creature.CharacterController.speed);
+        //Debug.Log(stateMachine.Creature.CharacterController.speed);
 
     }
 
-
-/*    private void Rotate(Vector3 direction)
-    {
-        if (direction != Vector3.zero)
-        {
-            Transform creatureTransform = stateMachine.Creature.transform;
-            Quaternion targetRotation = Quaternion.LookRotation(direction);
-            creatureTransform.rotation = Quaternion.Slerp(creatureTransform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
-        }
-    }*/
 
     protected void ForceMove()
     {

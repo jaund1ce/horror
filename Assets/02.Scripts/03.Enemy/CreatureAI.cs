@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Unity.VisualScripting;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SocialPlatforms;
@@ -19,7 +20,8 @@ using UnityEngine.UIElements;
     {
         Idle,
         Wandering,
-        Chasing
+        Chasing,
+        Attacking
     }
 
 
@@ -28,8 +30,8 @@ public class CreatureAI : MonoBehaviour , AggroGage
     
 
     public LayerMask player;
-    private NavMeshAgent agent;
     public AIState CreatureAistate;
+    private NavMeshAgent agent;
     [field: SerializeField] public CreatureSO Data { get; private set; }
 
 
@@ -37,6 +39,7 @@ public class CreatureAI : MonoBehaviour , AggroGage
     public bool IsAggroGageMax { get; private set; }
     private float checkMissTime;
     private float aggroGage;
+
     
     private List<int> visionInObject = new List<int>(); 
 
@@ -145,20 +148,31 @@ public class CreatureAI : MonoBehaviour , AggroGage
         Gizmos.DrawWireSphere(transform.position, Data.FeelPlayerRange);
     }
 
+    protected bool IsInAttackRange()
+    {
+        float playerDistanceSqr = (MainGameManager.Instance.Player.transform.position - transform.position).sqrMagnitude;
+        return playerDistanceSqr <= Data.AttackRange * Data.AttackRange;
+    }
+
     public int UpdateState() 
     {
-        if (IsAggroGageMax || !isPlayerMiss)
+        if ((IsAggroGageMax || !isPlayerMiss) &&  !IsInAttackRange())
         {
             CreatureAistate = AIState.Chasing;
-        } 
-        else if (!IsAggroGageMax && isPlayerMiss) 
+        }
+        else if (!IsAggroGageMax && isPlayerMiss)
         {
             CreatureAistate = AIState.Wandering;
             FeelThePlayer();
         }
+        else if (!isPlayerMiss && IsInAttackRange()) 
+        {
+            CreatureAistate = AIState.Attacking;
+        }
 
         return (int)CreatureAistate;
     }
-    
+
+
 }
 
