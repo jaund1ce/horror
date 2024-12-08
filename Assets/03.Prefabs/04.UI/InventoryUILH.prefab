@@ -1687,6 +1687,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1951256433692137529}
   - component: {fileID: 7361472159510507804}
+  - component: {fileID: -8024422037177979970}
   m_Layer: 5
   m_Name: InventoryUILH
   m_TagString: Untagged
@@ -1732,6 +1733,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryPanel: {fileID: 1794538355286387953}
   quickslotController: {fileID: 6440499958192701545}
+--- !u!114 &-8024422037177979970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9033927026198235745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e99d58e28a21d749aebe1f58dd3170f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &75916019419203027
 PrefabInstance:
   m_ObjectHideFlags: 0
