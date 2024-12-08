@@ -35,7 +35,7 @@ public class CreatureAI : MonoBehaviour , AggroGage
     [field: SerializeField] public CreatureSO Data { get; private set; }
 
 
-    public bool isPlayerMiss { get; private set; }
+    public bool isPlayerMiss { get; private set; } = true;
     public bool IsAggroGageMax { get; private set; }
     private float checkMissTime;
     private float aggroGage;
@@ -47,8 +47,10 @@ public class CreatureAI : MonoBehaviour , AggroGage
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        CreatureAistate = AIState.Idle;
         //visionInObject = new List<int>();
     }
+
 
     private void Update()
     {
@@ -110,6 +112,7 @@ public class CreatureAI : MonoBehaviour , AggroGage
         }
         else
         {
+            isPlayerMiss = false;
             checkMissTime = 0;
         }
     }
@@ -148,7 +151,7 @@ public class CreatureAI : MonoBehaviour , AggroGage
         Gizmos.DrawWireSphere(transform.position, Data.FeelPlayerRange);
     }
 
-    protected bool IsInAttackRange()
+    private bool IsInAttackRange()
     {
         float playerDistanceSqr = (MainGameManager.Instance.Player.transform.position - transform.position).sqrMagnitude;
         return playerDistanceSqr <= Data.AttackRange * Data.AttackRange;
@@ -156,21 +159,27 @@ public class CreatureAI : MonoBehaviour , AggroGage
 
     public int UpdateState() 
     {
-        if ((IsAggroGageMax || !isPlayerMiss) &&  !IsInAttackRange())
+        if ((IsAggroGageMax || !isPlayerMiss) && !IsInAttackRange())
         {
             CreatureAistate = AIState.Chasing;
+            return (int)CreatureAistate;
         }
         else if (!IsAggroGageMax && isPlayerMiss)
         {
             CreatureAistate = AIState.Wandering;
             FeelThePlayer();
+            return (int)CreatureAistate;
         }
-        else if (!isPlayerMiss && IsInAttackRange()) 
+        else if (!isPlayerMiss && IsInAttackRange())
         {
             CreatureAistate = AIState.Attacking;
+            return (int)CreatureAistate;
         }
-
-        return (int)CreatureAistate;
+        else 
+        {
+            CreatureAistate = AIState.Idle;
+            return (int)CreatureAistate;
+        }
     }
 
 

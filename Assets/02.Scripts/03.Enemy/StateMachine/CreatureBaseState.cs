@@ -33,35 +33,42 @@ public class CreatureBaseState : IState
 
     public virtual void Enter() 
     {
-        stateMachine.Creature.CharacterController.speed = stateMachine.Creature.Data.GroundData.BaseSpeed * MovementSpeedModifier;
+        
     }
     public virtual void Exit() { }
     public virtual void HandleInput() { }
     public virtual void PhysicsUpdate() { }
     public virtual void Update()
     {
-        if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Idle)
+        stateMachine.Creature.CharacterController.speed = stateMachine.Creature.Data.GroundData.BaseSpeed * MovementSpeedModifier;
+        if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Idle )
         {
-
+            Debug.Log($"현재 Idle중 ");
+            stateMachine.ChangeState(stateMachine.IdleState);
         }
-        else if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Chasing)
+        else if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Chasing )
         {
             //분리 예정
+            stateMachine.ChangeState(stateMachine.ChasingState);
             Move();
-            Debug.Log("현재 Chasing중");
+
+            Debug.Log($"현재 Chasing중");
         }
-        else if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Wandering)
+        else if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Wandering )
         {
             if (!IsLocationSet())
             {
                 WanderLocationSet();
             }
-            Debug.Log("현재 Move중");
+            stateMachine.ChangeState(stateMachine.WanderState);
+            Debug.Log($"현재 Move중 ");
             Move();
         }
+        //업데이트에서 공격중에 적이 멀어지면 chasing으로 넘어가서 불값도 넣어 체크중
         else if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Attacking)
         {
             stateMachine.ChangeState(stateMachine.AttackState);
+            Debug.Log($"현재 Attack중");
         }
 
     }
@@ -97,7 +104,6 @@ public class CreatureBaseState : IState
 
         if (NavMesh.SamplePosition(randomPosition, out hit, maxWanderDistance, walkableMask) == false) return;
             movementLocation = hit.position;
-            Debug.Log($"New Position : {movementLocation}");
             setLocation = true;
     }
 
@@ -124,10 +130,10 @@ public class CreatureBaseState : IState
     }
 
 
-    protected void ForceMove()
+    /*protected void ForceMove()
     {
         stateMachine.Creature.CharacterController.SetDestination(stateMachine.Creature.ForceReceiver.Movement * Time.deltaTime);
-    }
+    }*/
 
     protected float GetNormalizedTime(Animator animator, string tag)
     {
@@ -148,10 +154,4 @@ public class CreatureBaseState : IState
         }
     }
 
-    protected bool IsInChasingRange()
-    {
-        float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Creature.transform.position).sqrMagnitude;
-        // 나와 플레이어의 벡터의 크기 Magnitude는 제곱근 sqrMagnitude는 제곱근 하지 않은 연산. 고로 연산 자체가 덜 된다
-        return playerDistanceSqr <= stateMachine.Creature.Data.PlayerChasingRange * stateMachine.Creature.Data.PlayerChasingRange;
-    }
 }

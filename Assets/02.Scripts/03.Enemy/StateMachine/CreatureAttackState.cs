@@ -35,7 +35,7 @@ public class CreatureAttackState : CreatureBaseState
     {
         base.Update();
 
-        ForceMove();
+        //ForceMove();
 
         float normalizeTime = GetNormalizedTime(stateMachine.Creature.CreatureAnimator, "Attack");
         if (normalizeTime < 1f)
@@ -45,18 +45,9 @@ public class CreatureAttackState : CreatureBaseState
                 TryApplyForce();
             }
         }
-        else 
+        else
         {
-            if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Chasing /*IsInChasingRange()*/)
-            {
-                stateMachine.ChangeState(stateMachine.ChasingState);
-                return;
-            }
-            else 
-            {
-                stateMachine.ChangeState(stateMachine.IdleState);
-                return;
-            }
+            stateMachine.ChangeState(stateMachine.IdleState);
         }
     }
 
