@@ -9,6 +9,7 @@ public class PopupUI : BaseUI
 
     public override void CloseUI()
     {
+
         base.CloseUI();
     }
 }
