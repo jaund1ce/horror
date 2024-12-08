@@ -64,19 +64,33 @@ public class UIManager : mainSingleton<UIManager>
     {
        
         BaseUI ui = uiList.Find(x => x is T);
-        if (ui == null)
+        if (ui is PopupUI popup)
+        {
+            popupStack.Push(popup);
+        }
+        else if (ui == null)
         {
             Debug.LogError($"{typeof(T).Name} UI를 찾을 수 없습니다.");
             return null;
         }
 
       
-        if (ui is PopupUI popup)
-        {
-            popupStack.Push(popup);
-        }
+        
 
         return InstantiateUI<T>(ui); 
+    }
+
+    public void TogglePopup<T>() where T : PopupUI
+    {
+        // 스택에 팝업이 있고, 가장 위의 팝업이 T 타입이라면 닫음
+        if (popupStack.Count > 0 && popupStack.Peek() is T)
+        {
+            Hide<T>(); // 팝업 닫기
+        }
+        else
+        {
+            Show<T>(); // 팝업 열기
+        }
     }
 
     public void Hide<T>() where T : BaseUI
@@ -85,7 +99,9 @@ public class UIManager : mainSingleton<UIManager>
         if (typeof(T) == typeof(PopupUI) && popupStack.Count > 0)
         {
             PopupUI topPopup = popupStack.Pop();
-            Destroy(topPopup.canvas.gameObject); 
+            topPopup.CloseUI();                 
+            Destroy(topPopup.canvas.gameObject);
+            Debug.Log($"스택 상태: {popupStack.Count}개의 팝업 남음");
         }
         else
         {

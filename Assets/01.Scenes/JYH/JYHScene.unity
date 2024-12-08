@@ -442,6 +442,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Creature
       objectReference: {fileID: 0}
+    - target: {fileID: 2056870907640678056, guid: ab7ab4d58ffd9e74aa824b10a3596d31, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2080526149833849169, guid: ab7ab4d58ffd9e74aa824b10a3596d31, type: 3}
       propertyPath: m_LocalPosition.x
       value: -41.545
@@ -53188,7 +53192,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6649819140532374826, guid: 8d12ed94734747d4a91ead2b0bc9f8f0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6950051414145340682, guid: 8d12ed94734747d4a91ead2b0bc9f8f0, type: 3}
