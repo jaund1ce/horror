@@ -6,6 +6,7 @@ using UnityEngine;
 public class CreatureAttackState : CreatureBaseState
 {
     bool alreadyApplyForce;
+    bool alreadyAppliedDealing;
 
     public CreatureAttackState(CreatureStateMachine stateMachine) : base(stateMachine)
     {
@@ -19,6 +20,7 @@ public class CreatureAttackState : CreatureBaseState
         StartAnimation(stateMachine.Creature.AnimationData.BaseAttackParameterHash);
 
         alreadyApplyForce = false;
+        alreadyAppliedDealing = false;
     }
 
     public override void Exit()
@@ -44,10 +46,21 @@ public class CreatureAttackState : CreatureBaseState
             {
                 TryApplyForce();
             }
-        }
-        else
-        {
-            stateMachine.ChangeState(stateMachine.IdleState);
+
+            //공격 활성화 시간 컨트롤
+            if (!alreadyAppliedDealing && normalizeTime >= stateMachine.Creature.Data.Dealing_Start_TransitionTime) 
+            {
+                stateMachine.Creature.AttackPoint.SetAttack(stateMachine.Creature.Data.Damage);
+                stateMachine.Creature.AttackPoint.gameObject.SetActive(true);
+                alreadyAppliedDealing = true;
+            }
+
+            if (alreadyAppliedDealing && normalizeTime >= stateMachine.Creature.Data.Dealing_End_TransitionTime) 
+            {
+                stateMachine.Creature.CreatureAI.IsAttacking = false;
+                stateMachine.Creature.AttackPoint.gameObject.SetActive(false);
+            }
+
         }
     }
 

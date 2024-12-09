@@ -39,7 +39,7 @@ public class CreatureAI : MonoBehaviour , AggroGage
     public bool IsAggroGageMax { get; private set; }
     private float checkMissTime;
     private float aggroGage;
-
+    public bool IsAttacking;
     
     private List<int> visionInObject = new List<int>(); 
 
@@ -159,6 +159,8 @@ public class CreatureAI : MonoBehaviour , AggroGage
 
     public int UpdateState() 
     {
+        if (IsAttacking) return (int)CreatureAistate;
+
         if ((IsAggroGageMax || !isPlayerMiss) && !IsInAttackRange())
         {
             CreatureAistate = AIState.Chasing;
@@ -173,6 +175,7 @@ public class CreatureAI : MonoBehaviour , AggroGage
         else if (!isPlayerMiss && IsInAttackRange())
         {
             CreatureAistate = AIState.Attacking;
+            IsAttacking = true;
             return (int)CreatureAistate;
         }
         else 

@@ -137,16 +137,18 @@ public class CreatureBaseState : IState
 
     protected float GetNormalizedTime(Animator animator, string tag)
     {
-        AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);
+        AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0); // 0 은 BaseLayer 추가되면 1...
         AnimatorStateInfo nextInfo = animator.GetNextAnimatorStateInfo(0);
 
+        //전환 되고 있을때 && 다음 애니메이션이 tag
         if (animator.IsInTransition(0) && nextInfo.IsTag(tag))
         {
             return nextInfo.normalizedTime;
         }
+        //전환 되고 있지 않을 때 && 현재 애니메이션이 tag
         else if (!animator.IsInTransition(0) && currentInfo.IsTag(tag))
         {
-            return currentInfo.normalizedTime;
+            return currentInfo.normalizedTime%1f;
         }
         else
         {

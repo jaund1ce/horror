@@ -8,10 +8,13 @@ public class Creature : MonoBehaviour
 {
     [field: SerializeField] public CreatureSO Data { get; private set; }
     public CreatureAI CreatureAI { get; private set; }
+    [field: SerializeField] public AttackPoint AttackPoint { get; private set; }
     [field: Header("Animations")]
     [field: SerializeField] public PlayerAnimationData AnimationData;
+    
 
     public Animator CreatureAnimator { get; private set; }
+    
     public NavMeshAgent CharacterController { get; set; }
 
     public ForceReceiver ForceReceiver { get; private set; }
