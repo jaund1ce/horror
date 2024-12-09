@@ -36,8 +36,12 @@ public class Main_SceneManager : MonoBehaviour
     public void QuitGame()
     {
         #if UNITY_EDITOR
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         EditorApplication.isPlaying = false; // 에디터 실행 중단
         #else
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         Application.Quit();
         #endif
     }

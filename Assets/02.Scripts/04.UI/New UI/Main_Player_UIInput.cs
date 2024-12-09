@@ -16,7 +16,15 @@ public class Main_Player_UIInput : MonoBehaviour
         playerInputs.Player.Menu.performed += OnSystemMenu;
     }
 
-    private void OnInventory(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    private void OnDisable()
+    {
+        playerInputs.Disable();
+        playerInputs.Player.Inventory.performed -= OnInventory;
+        playerInputs.Player.Menu.performed -= OnSystemMenu;
+    }
+
+
+        private void OnInventory(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
         Debug.Log("Tab Å° ÀÔ·Â");
         UIManager.Instance.Hide<SystemUI>();

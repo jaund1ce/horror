@@ -7,17 +7,26 @@ public class UIManager : mainSingleton<UIManager>
 {
     private List<BaseUI> uiList = new List<BaseUI>(); // 인스턴스화된 UI 저장
 
+
     protected override void Awake()
     {
         base.Awake();
         SceneManager.sceneLoaded += OnSceneLoaded; // 씬 로드 이벤트 등록
     }
 
+    private void Initalize()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+
         // 씬에 따라 적절한 UI 표시
         if (scene.buildIndex == 0)
         {
+            Initalize();
             Show<StartUI>();
         }
         else if (scene.buildIndex == 1)
@@ -29,6 +38,7 @@ public class UIManager : mainSingleton<UIManager>
             Show<EndUI>();
         }
     }
+  
 
     // 일반 UI 표시
     public void Show<T>() where T : BaseUI
