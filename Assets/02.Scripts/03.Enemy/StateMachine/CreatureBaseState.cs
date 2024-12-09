@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
@@ -41,9 +42,40 @@ public class CreatureBaseState : IState
     public virtual void Update()
     {
         stateMachine.Creature.CharacterController.speed = stateMachine.Creature.Data.GroundData.BaseSpeed * MovementSpeedModifier;
-        if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Idle )
+
+        switch (stateMachine.Creature.CreatureAI.CreatureAistate) 
         {
-            Debug.Log($"현재 Idle중 ");
+            case AIState.Idle:
+
+                stateMachine.ChangeState(stateMachine.IdleState);
+
+                break;
+            case AIState.Chasing:
+
+                stateMachine.ChangeState(stateMachine.ChasingState);
+
+                Move();
+                break;
+            case AIState.Wandering:
+                
+                if (!IsLocationSet())
+                {
+                    WanderLocationSet();
+                }
+                stateMachine.ChangeState(stateMachine.WanderState);
+                Move();
+
+                break;
+            case AIState.Attacking:
+
+                stateMachine.ChangeState(stateMachine.AttackState);
+
+                break;
+
+        }
+            
+        /*if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Idle )
+        {
             stateMachine.ChangeState(stateMachine.IdleState);
         }
         else if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Chasing )
@@ -51,8 +83,6 @@ public class CreatureBaseState : IState
             //분리 예정
             stateMachine.ChangeState(stateMachine.ChasingState);
             Move();
-
-            Debug.Log($"현재 Chasing중");
         }
         else if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Wandering )
         {
@@ -61,15 +91,13 @@ public class CreatureBaseState : IState
                 WanderLocationSet();
             }
             stateMachine.ChangeState(stateMachine.WanderState);
-            Debug.Log($"현재 Move중 ");
             Move();
         }
         //업데이트에서 공격중에 적이 멀어지면 chasing으로 넘어가서 불값도 넣어 체크중
         else if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Attacking)
         {
             stateMachine.ChangeState(stateMachine.AttackState);
-            Debug.Log($"현재 Attack중");
-        }
+        }*/
 
     }
 
