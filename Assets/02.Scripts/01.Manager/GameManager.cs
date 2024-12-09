@@ -8,6 +8,8 @@ public class MainGameManager : mainSingleton<MainGameManager>
 {
     public Player Player;
 
+    public Player player;
+
     protected override void Start()
     {
         // Player √ ±‚»≠
