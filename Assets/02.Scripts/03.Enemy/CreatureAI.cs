@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Unity.VisualScripting;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SocialPlatforms;
@@ -19,7 +20,8 @@ using UnityEngine.UIElements;
     {
         Idle,
         Wandering,
-        Chasing
+        Chasing,
+        Attacking
     }
 
 
@@ -28,15 +30,16 @@ public class CreatureAI : MonoBehaviour , AggroGage
     
 
     public LayerMask player;
-    private NavMeshAgent agent;
     public AIState CreatureAistate;
+    private NavMeshAgent agent;
     [field: SerializeField] public CreatureSO Data { get; private set; }
 
 
-    public bool isPlayerMiss { get; private set; }
+    public bool isPlayerMiss { get; private set; } = true;
     public bool IsAggroGageMax { get; private set; }
     private float checkMissTime;
     private float aggroGage;
+    public bool IsAttacking;
     
     private List<int> visionInObject = new List<int>(); 
 
@@ -44,8 +47,10 @@ public class CreatureAI : MonoBehaviour , AggroGage
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        CreatureAistate = AIState.Idle;
         //visionInObject = new List<int>();
     }
+
 
     private void Update()
     {
@@ -107,6 +112,7 @@ public class CreatureAI : MonoBehaviour , AggroGage
         }
         else
         {
+            isPlayerMiss = false;
             checkMissTime = 0;
         }
     }
@@ -145,20 +151,40 @@ public class CreatureAI : MonoBehaviour , AggroGage
         Gizmos.DrawWireSphere(transform.position, Data.FeelPlayerRange);
     }
 
+    private bool IsInAttackRange()
+    {
+        float playerDistanceSqr = (MainGameManager.Instance.Player.transform.position - transform.position).sqrMagnitude;
+        return playerDistanceSqr <= Data.AttackRange * Data.AttackRange;
+    }
+
     public int UpdateState() 
     {
-        if (IsAggroGageMax || !isPlayerMiss)
+        if (IsAttacking) return (int)CreatureAistate;
+
+        if ((IsAggroGageMax || !isPlayerMiss) && !IsInAttackRange())
         {
             CreatureAistate = AIState.Chasing;
-        } 
-        else if (!IsAggroGageMax && isPlayerMiss) 
+            return (int)CreatureAistate;
+        }
+        else if (!IsAggroGageMax && isPlayerMiss)
         {
             CreatureAistate = AIState.Wandering;
             FeelThePlayer();
+            return (int)CreatureAistate;
         }
-
-        return (int)CreatureAistate;
+        else if (!isPlayerMiss && IsInAttackRange())
+        {
+            CreatureAistate = AIState.Attacking;
+            IsAttacking = true;
+            return (int)CreatureAistate;
+        }
+        else 
+        {
+            CreatureAistate = AIState.Idle;
+            return (int)CreatureAistate;
+        }
     }
-    
+
+
 }
 
