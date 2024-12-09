@@ -18,8 +18,6 @@ public class PlayerInteraction : MonoBehaviour
 
     public ItemBase CurrentInteracteItemData;
 
-    public UIManager temUIManager;
-
     private void Awake()
     {
         if(mainCamera == null)

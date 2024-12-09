@@ -45,6 +45,8 @@ GameObject:
   - component: {fileID: 6230964232614769512}
   - component: {fileID: 8287903761675837026}
   - component: {fileID: 5728717315042407712}
+  - component: {fileID: 7954731612506228827}
+  - component: {fileID: 2887511944577959569}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -133,7 +135,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playercamera: {fileID: 2949480258815605600}
-  rotateSencitivity: 0
+  rotateXSencitivity: 300
+  rotateYSencitivity: 0
+  Rotateable: 1
 --- !u!114 &8287903761675837026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,6 +165,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+--- !u!114 &7954731612506228827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6649819140532374826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e4a6f209231da744b268ce0160213c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
+  itemCheckDistance: 100
+  itemCheckTime: 0.1
+  CurrentInteracteItemData: {fileID: 0}
+--- !u!114 &2887511944577959569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6649819140532374826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea284d8037eb97a4ca39ef5f00cb3601, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7830904807444179832
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,7 +204,7 @@ GameObject:
   - component: {fileID: 7524853690546446534}
   - component: {fileID: 2331312473626411791}
   - component: {fileID: 5705187608602670100}
-  - component: {fileID: 6950051414145340682}
+  - component: {fileID: 6123709748113002630}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -229,7 +261,7 @@ MonoBehaviour:
   m_YawDamping: 0
   m_RollDamping: 0
   m_AngularDamping: 0
---- !u!114 &6950051414145340682
+--- !u!114 &6123709748113002630
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -244,15 +276,15 @@ MonoBehaviour:
   m_RecenterTarget: 0
   m_VerticalAxis:
     Value: 0
-    m_SpeedMode: 1
-    m_MaxSpeed: 1
+    m_SpeedMode: 0
+    m_MaxSpeed: 300
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse Y
     m_InputAxisValue: 0
     m_InvertInput: 1
-    m_MinValue: -90
-    m_MaxValue: 90
+    m_MinValue: -45
+    m_MaxValue: 45
     m_Wrap: 0
     m_Recentering:
       m_enabled: 0
@@ -268,8 +300,8 @@ MonoBehaviour:
     m_LegacyVelocityFilterStrength: -1
   m_HorizontalAxis:
     Value: 0
-    m_SpeedMode: 1
-    m_MaxSpeed: 1
+    m_SpeedMode: 0
+    m_MaxSpeed: 300
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse X

@@ -2,6 +2,7 @@ using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UHFPS.Runtime;
 using UHFPS.Tools;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -15,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private CinemachineVirtualCamera playercamera;
     private CinemachinePOV pov;
-    public float rotateXSencitivity;
+    public float rotateXSencitivity;//  = () => GameManager.Instance.Player.
     public float rotateYSencitivity;
     public bool Rotateable = true;
 
@@ -24,11 +25,11 @@ public class PlayerController : MonoBehaviour
         playerInputs = new PlayerInputs();
         playerActions = playerInputs.Player;//inputsystem에 선언했던 Actionmap 중에 하나를 선택
         pov = playercamera.GetCinemachineComponent<CinemachinePOV>();
-        //playerInputs.Enable();
     }
 
     private void OnEnable()
     {
+        UnLockRotate();
         playerInputs.Enable();
         playerActions.Look.started += RotateCamera;
     }
@@ -47,7 +48,7 @@ public class PlayerController : MonoBehaviour
         if (delta != Vector2.zero)
         {
             float rotatex = Mathf.Clamp(delta.y, -60f, 60f);
-            float rotatey = Mathf.Clamp(delta.x, -90f, 90f);
+            float rotatey = Mathf.Clamp(delta.x, -60f, 60f);
 
             pov.m_HorizontalAxis.m_MaxSpeed = rotateXSencitivity;
 
