@@ -19,12 +19,15 @@ public class Main_Player_UIInput : MonoBehaviour
     private void OnInventory(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
         Debug.Log("Tab 키 입력");
-        UIManager.Instance.Show<Main_PopUP_InventoryUI>();
+        UIManager.Instance.Show<InventoryUI>();
+        UIManager.Instance.Hide<SystemUI>();
     }
 
     private void OnSystemMenu(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
         Debug.Log("ESC 키 입력");
-        UIManager.Instance.Show<Main_PopUP_SystemUI>();
+        UIManager.Instance.Show<SystemUI>();
+        UIManager.Instance.Hide<InventoryUI>();
+
     }
 }

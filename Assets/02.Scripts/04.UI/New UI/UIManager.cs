@@ -5,21 +5,12 @@ using UnityEngine.UI;
 
 public class UIManager : mainSingleton<UIManager>
 {
-    private List<BaseUI> uiList = new List<BaseUI>(); // 일반 UI 및 팝업 UI 프리팹 저장
+    private List<BaseUI> uiList = new List<BaseUI>(); // 인스턴스화된 UI 저장
 
     protected override void Awake()
     {
         base.Awake();
-        LoadAllUIs(); // Resources 폴더에서 모든 UI 프리팹 로드
         SceneManager.sceneLoaded += OnSceneLoaded; // 씬 로드 이벤트 등록
-    }
-
-    private void LoadAllUIs()
-    {
-        // Resources 폴더의 "UI/" 디렉토리에서 모든 BaseUI를 로드
-        BaseUI[] loadedUIs = Resources.LoadAll<BaseUI>("UI/");
-        uiList.AddRange(loadedUIs);
-        Debug.Log($"{uiList.Count}개의 UI가 로드되었습니다.");
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -42,30 +33,39 @@ public class UIManager : mainSingleton<UIManager>
     // 일반 UI 표시
     public void Show<T>() where T : BaseUI
     {
-
-        string uiName = typeof(T).ToString();
-        // 일반 UI (PopupUI 제외)를 검색하여 표시
-        BaseUI ui = uiList.Find(x => x is T && !(x is PopupUI));
-        if (ui == null)
+        BaseUI existingUI = uiList.Find(x => x is T);
+        if (existingUI != null)
         {
-            Debug.LogError($"{typeof(T).Name} UI를 찾을 수 없습니다.");
+            Debug.LogWarning($"{typeof(T).Name} UI는 이미 활성화되어 있습니다.");
+            Hide<T>();
             return;
         }
-        InstantiateUI<T>(ui);
-    }
+        string uiName = typeof(T).ToString();
+        BaseUI uiPrefab = Resources.Load<BaseUI>("UI/" + typeof(T).Name); // 프리팹 로드
+        if (uiPrefab == null)
+        {
+            Debug.LogError($"{typeof(T).Name} UI 프리팹을 찾을 수 없습니다.");
+            return;
+        }
 
+        T uiInstance = InstantiateUI<T>(uiPrefab); // UI 인스턴스 생성
+        uiList.Add(uiInstance);                   // 인스턴스화된 UI를 리스트에 추가
+        Debug.Log($"{typeof(T).Name} UI가 생성되었습니다.");
+    }
 
     public void Hide<T>() where T : BaseUI
     {
-        // 일반 UI (PopupUI 제외)를 검색하여 제거
-        BaseUI ui = uiList.Find(x => x is T && !(x is PopupUI));
+        
+        // 인스턴스화된 UI를 찾음
+        BaseUI ui = uiList.Find(x => x is T);
         if (ui == null)
         {
             Debug.LogError($"{typeof(T).Name} UI를 찾을 수 없습니다.");
             return;
         }
 
-        Destroy(ui.canvas.gameObject);
+        uiList.Remove(ui); // 리스트에서 제거
+        Destroy(ui.canvas.gameObject); // 캔버스 파괴
         Debug.Log($"{typeof(T).Name} UI가 제거되었습니다.");
     }
 
@@ -97,13 +97,17 @@ public class UIManager : mainSingleton<UIManager>
         SceneManager.sceneLoaded -= OnSceneLoaded; // 씬 로드 이벤트 해제
     }
 
-    public void Hide(string uiName)
+    public void Hide(System.Type type)
     {
-        BaseUI ui = uiList.Find(x => x.name == uiName); // 이름으로 UI 검색
-        if (ui != null)
+        BaseUI ui = uiList.Find(x => x.GetType() == type);
+        if (ui == null)
         {
-            uiList.Remove(ui);                   // UI 리스트에서 제거
-            Destroy(ui.canvas.gameObject);       // UI 캔버스 제거
+            Debug.LogError($"{type.Name} UI를 찾을 수 없습니다.");
+            return;
         }
+
+        uiList.Remove(ui); // 리스트에서 제거
+        Destroy(ui.canvas.gameObject); // 캔버스 파괴
+        Debug.Log($"{type.Name} UI가 제거되었습니다.");
     }
 }

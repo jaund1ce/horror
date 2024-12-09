@@ -11,6 +11,6 @@ public abstract class BaseUI : MonoBehaviour
 
     public virtual void CloseUI()
     {
-        UIManager.Instance.Hide(gameObject.name);
+        UIManager.Instance.Hide(this.GetType());
     }
 }
