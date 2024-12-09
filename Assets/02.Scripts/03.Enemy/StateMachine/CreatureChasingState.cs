@@ -34,7 +34,7 @@ public class CreatureChasingState : CreatureBaseState
             stateMachine.ChangeState(stateMachine.IdleState);
             return;
         }
-        else*/ if (IsInAttackRange())
+        else*/ /*if (IsInAttackRange())
         {
             stateMachine.ChangeState(stateMachine.AttackState);
             return;
@@ -43,12 +43,12 @@ public class CreatureChasingState : CreatureBaseState
         {
             stateMachine.ChangeState(stateMachine.WanderState);
             return;
-        }
+        }*/
     }
 
-    protected bool IsInAttackRange() 
+    /*protected bool IsInAttackRange() 
     {
         float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Creature.transform.position).sqrMagnitude;
         return playerDistanceSqr <= stateMachine.Creature.Data.AttackRange * stateMachine.Creature.Data.AttackRange;
-    }
+    }*/
 }
