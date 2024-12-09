@@ -2,6 +2,7 @@ using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UHFPS.Runtime;
 using UHFPS.Tools;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -15,18 +16,20 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private CinemachineVirtualCamera playercamera;
     private CinemachinePOV pov;
-    public float rotateSencitivity;
+    public float rotateXSencitivity;//  = () => GameManager.Instance.Player.
+    public float rotateYSencitivity;
+    public bool Rotateable = true;
 
     private void Awake()
     {
         playerInputs = new PlayerInputs();
         playerActions = playerInputs.Player;//inputsystem에 선언했던 Actionmap 중에 하나를 선택
         pov = playercamera.GetCinemachineComponent<CinemachinePOV>();
-        //playerInputs.Enable();
     }
 
     private void OnEnable()
     {
+        UnLockRotate();
         playerInputs.Enable();
         playerActions.Look.started += RotateCamera;
     }
@@ -39,16 +42,17 @@ public class PlayerController : MonoBehaviour
 
     private void RotateCamera(InputAction.CallbackContext context)//cinemachine의 aim방식에 따라서 회전시키는 방법은 다르다.
     {
+        if (!Rotateable) return;
         Vector2 delta = context.ReadValue<Vector2>();
 
         if (delta != Vector2.zero)
         {
             float rotatex = Mathf.Clamp(delta.y, -60f, 60f);
-            float rotatey = Mathf.Clamp(delta.x, -90f, 90f);
+            float rotatey = Mathf.Clamp(delta.x, -60f, 60f);
 
-            pov.m_HorizontalAxis.m_MaxSpeed = rotateSencitivity;//나중에 playerso값에 따라서 변경하도록 
+            pov.m_HorizontalAxis.m_MaxSpeed = rotateXSencitivity;
 
-            transform.rotation *= Quaternion.Euler(0f, rotatey * rotateSencitivity * Time.deltaTime, 0f);
+            transform.rotation *= Quaternion.Euler(0f, rotatey * rotateXSencitivity * Time.deltaTime, 0f);
 
             if (pov == null)
             {
@@ -56,5 +60,23 @@ public class PlayerController : MonoBehaviour
                 return;
             }
         }
+    }
+
+    public void LockRotate()
+    {
+        Rotateable = false;
+        pov.m_HorizontalAxis.m_MaxSpeed = 0;
+        pov.m_VerticalAxis.m_MaxSpeed = 0;
+        pov.m_HorizontalAxis.m_InputAxisName = "";
+        pov.m_VerticalAxis.m_InputAxisName = "";
+    }
+
+    public void UnLockRotate()
+    {
+        Rotateable = true;
+        pov.m_HorizontalAxis.m_MaxSpeed = rotateXSencitivity;
+        pov.m_VerticalAxis.m_MaxSpeed = rotateYSencitivity;
+        pov.m_HorizontalAxis.m_InputAxisName = "Mouse X";
+        pov.m_VerticalAxis.m_InputAxisName = "Mouse Y";
     }
 }

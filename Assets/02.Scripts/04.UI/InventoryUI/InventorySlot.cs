@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UHFPS.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
-using static UHFPS.Runtime.InventoryItem;
 
 public class InventorySlot : MonoBehaviour
 {
@@ -20,6 +20,7 @@ public class InventorySlot : MonoBehaviour
     public void ChangeData(InventoryData itemData)
     {
         if (itemData == null) { ResetSlot(); return; }
+        if (itemData.ItemData == null) { ResetSlot(); return; }
 
         CurrentData = itemData;
         ChangeUI();
@@ -27,7 +28,12 @@ public class InventorySlot : MonoBehaviour
 
     private void ResetSlot()
     {
-        CurrentData = null;
+        if (CurrentData != null)
+        {
+            CurrentData.ItemData = null;
+            CurrentData.amount = -1;
+        }
+
         CurrentItemImage.sprite = null;
         CurrentItemImage.color = Color.black;
         CurrentItemAmount.text = "";
@@ -35,12 +41,20 @@ public class InventorySlot : MonoBehaviour
 
     public void OnClick()
     {
+        //GameManager.Instance.Player.changeSelectItem?.invoke(CurrentData);
         Debug.Log("Click!");
     }
 
     public void OnUse()//아이템이 사용될 경우
     {
+        CurrentData.amount -= 1;
 
+        if (CurrentData.amount <= 0)
+        {
+            ResetSlot();
+            return;
+        }
+        ChangeUI();
     }
 
     public void ChangeUI()
