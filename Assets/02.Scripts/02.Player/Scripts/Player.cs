@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        stateMachine.ChangeState(stateMachine.IdleState);
+        stateMachine.ChangeState(stateMachine.IdleState);//처음 시작시 idlestate로 실행
         health.OnDie += OnDie;
     }
 
