@@ -1,12 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UHFPS.Runtime;
 using UnityEngine;
 
 public class ItemBase : MonoBehaviour,IInteractable
 {
     public ItemSO itemSO;
-    public PlayerInventoryData inventoryslotcontroller;
+    private PlayerInventoryData inventoryslotcontroller;
+
+    private void Awake()
+    {
+        inventoryslotcontroller = MainGameManager.Instance.Player.playerInventoryData;
+    }
 
     public void OnInteract()
     {

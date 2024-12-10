@@ -22,7 +22,8 @@ public class Player : MonoBehaviour
     public Action makeSound;
     public Action addItem;
     public Action useItem;
-    public Action<InventoryData> changeSelectItem;
+    public PlayerInventoryData playerInventoryData;
+    public bool isChangingQuickSlot = false;
 
     void Awake()
     {
@@ -33,9 +34,9 @@ public class Player : MonoBehaviour
         Controller = GetComponent<CharacterController>();
         ForceReceiver = GetComponent<ForceReceiver>();
         health = GetComponent<Health>();
+        playerInventoryData = GetComponent<PlayerInventoryData>();
 
         stateMachine = new PlayerStateMachine2(this);
-
     }
 
     void Start()
@@ -65,10 +66,10 @@ public class Player : MonoBehaviour
 
     void ChangeRotation()//나중에 다른 매니져로 옮기기?
     {
-        if (Input.rotateXSencitivity == Data.GroundData.BaseRotationDamping && Input.rotateYSencitivity == Data.GroundData.BaseRotationDamping) return;
+        if (Input.rotateXSencitivity == Data.GroundData.BaseRotationDamping * 6 && Input.rotateYSencitivity == Data.GroundData.BaseRotationDamping) return;
         else
         {
-            Input.rotateXSencitivity = Data.GroundData.BaseRotationDamping;
+            Input.rotateXSencitivity = Data.GroundData.BaseRotationDamping * 6;
             Input.rotateYSencitivity = Data.GroundData.BaseRotationDamping;
         }
     }

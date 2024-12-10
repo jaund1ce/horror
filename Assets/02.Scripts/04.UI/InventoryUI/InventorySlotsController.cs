@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class InventorySlotsController : MonoBehaviour
 {
-    public PlayerInventoryData InventoryData;
+    [SerializeField]private InventoryLH inventoryLH;
+    PlayerInventoryData playerInventoryData;
     public InventorySlot[] slots;
 
     private void Awake()
     {
-        //InventoryData = Player.playerinventorydata;
+        playerInventoryData = MainGameManager.Instance.Player.playerInventoryData;
+        inventoryLH.InventoryslotsController = this;
         slots = GetComponentsInChildren<InventorySlot>();
     }
 
@@ -18,10 +20,10 @@ public class InventorySlotsController : MonoBehaviour
     {
         for(int i=0; i< 15; i++)
         {
-            if (InventoryData.inventoryDatas[i].ItemData == null) return;
+            if (playerInventoryData.inventoryDatas[i].ItemData == null) return;
 
-            InventoryData iD = InventoryData.inventoryDatas[i];
-            slots[iD.slotIndex].ChangeData(iD);
+            InventoryData ID = playerInventoryData.inventoryDatas[i];
+            slots[ID.slotIndex].ChangeData(ID);
         }
     }
 }

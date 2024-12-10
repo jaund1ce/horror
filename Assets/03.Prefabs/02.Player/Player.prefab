@@ -122,6 +122,8 @@ MonoBehaviour:
     attackParameterName: '@Attack'
     baseAttackParameterName: BaseAttack
     hideParameterName: '@Hide'
+  playerInventoryData: {fileID: 0}
+  isChangingQuickSlot: 0
 --- !u!114 &6230964232614769512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,7 +182,6 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   itemCheckDistance: 100
   itemCheckTime: 0.1
-  CurrentInteracteItemData: {fileID: 0}
 --- !u!114 &2887511944577959569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,6 +452,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 44f18923b59ef5340b15bf11ebbf5a8f, type: 2}
+    - target: {fileID: 5866666021909216657, guid: fc5e65fca514e34458acbf2fa895187d, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
