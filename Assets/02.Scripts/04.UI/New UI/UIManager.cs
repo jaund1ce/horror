@@ -14,22 +14,10 @@ public class UIManager : mainSingleton<UIManager>
         SceneManager.sceneLoaded += OnSceneLoaded; // 씬 로드 이벤트 등록
     }
 
+
     private void Initalize()
     {
-        if (uiList == null)
-        {
-            return;
-        }
-        else
-        {
-            for (int i = 0; i < uiList.Count; i++)
-            {
-                if (uiList[i] == null)
-                {
-                    uiList.RemoveAt(i);
-                }
-            }
-        }
+        uiList.RemoveAll(item => item == null);
         Player player = FindObjectOfType<Player>();
         if (player == null)
         {
@@ -48,7 +36,6 @@ public class UIManager : mainSingleton<UIManager>
         }
         else if (scene.buildIndex == 1)
         {
-            Hide<SystemUI>();
             Show<MainUI>();
         }
         else if (scene.buildIndex == 2)
@@ -87,7 +74,7 @@ public class UIManager : mainSingleton<UIManager>
         BaseUI ui = uiList.Find(x => x is T);
         if (ui == null)
         {
-            Debug.Log($"{typeof(T).Name} UI를 찾을 수 없습니다.");
+            Debug.LogError($"{typeof(T).Name} UI를 찾을 수 없습니다.");
             return;
         }
 
