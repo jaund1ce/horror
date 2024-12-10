@@ -12,6 +12,7 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private float itemCheckTime = 0.1f;
 
     private float lastCheckTime;
+    public int paperInteractionCount;
 
     public PlayerInputs playerInputs { get; private set; }//inputsystem generate c# script로 생성된 스크립트
     public PlayerInputs.PlayerActions playerActions { get; private set; }   //미리 정의한 행동들 move, look,... 등

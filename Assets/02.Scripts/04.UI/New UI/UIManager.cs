@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -24,7 +25,7 @@ public class UIManager : mainSingleton<UIManager>
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
-    } 
+    }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -32,7 +33,7 @@ public class UIManager : mainSingleton<UIManager>
         // 씬에 따라 적절한 UI 표시
         if (scene.buildIndex == 0)
         {
-            Show<StartUI>();
+            StartCoroutine(DelayShowUI());
         }
         else if (scene.buildIndex == 1)
         {
@@ -43,7 +44,12 @@ public class UIManager : mainSingleton<UIManager>
             Show<EndUI>();
         }
     }
-  
+
+    private IEnumerator DelayShowUI()
+    {
+        yield return null;
+        Show<StartUI>();
+    }
 
     // 일반 UI 표시
     public void Show<T>() where T : BaseUI
