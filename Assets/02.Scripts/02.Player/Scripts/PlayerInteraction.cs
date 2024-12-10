@@ -16,7 +16,7 @@ public class PlayerInteraction : MonoBehaviour
     public PlayerInputs playerInputs { get; private set; }//inputsystem generate c# script로 생성된 스크립트
     public PlayerInputs.PlayerActions playerActions { get; private set; }   //미리 정의한 행동들 move, look,... 등
 
-    public ItemBase CurrentInteracteItemData;
+    public IInteractable CurrentInteracteable;
 
     private void Awake()
     {
@@ -46,19 +46,24 @@ public class PlayerInteraction : MonoBehaviour
 
         if(Physics.Raycast(ray,out RaycastHit hit, itemCheckDistance))
         {
-            if (hit.collider.TryGetComponent<ItemBase>(out ItemBase itemBase))
+            if (hit.collider.TryGetComponent<IInteractable>(out IInteractable iteractable))
             {
-                if(itemBase.itemSO == CurrentInteracteItemData)
+                if(iteractable == CurrentInteracteable)
                 {
                     return;
                 }
 
-                CurrentInteracteItemData = itemBase;
-                //temUIManager.OpeninteractPanel();//나중에 메니져가 연결되면 연결, so 값을 넘겨줘서 다른 화면 표시 itemBase.itemSO
+                CurrentInteracteable = iteractable;
+
+                if(CurrentInteracteable is ItemBase)
+                {
+                    //UIManger.OpenInteractPanel((ItemBase)CurrentInteracteable);
+                }
+                //else if(CurrentInteracteable is )
             }
             else
             {
-                CurrentInteracteItemData = null;
+                CurrentInteracteable = null;
                 //temUIManager.CloseInteractPanel();
             }
         }
@@ -66,9 +71,9 @@ public class PlayerInteraction : MonoBehaviour
 
     private void handleInteractionInput(InputAction.CallbackContext context)//상호작용시 아이템 회득
     {
-        if (CurrentInteracteItemData == null) return;
+        if (CurrentInteracteable == null) return;
 
-        CurrentInteracteItemData.OnInteract();
+        CurrentInteracteable.OnInteract();
     }
 
     private void OnEnable()

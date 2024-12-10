@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     public Action makeSound;
     public Action addItem;
     public Action useItem;
-    public Action<InventoryData> changeSelectItem;
+    public PlayerInventoryData playerInventoryData;
 
     void Awake()
     {
@@ -33,9 +33,9 @@ public class Player : MonoBehaviour
         Controller = GetComponent<CharacterController>();
         ForceReceiver = GetComponent<ForceReceiver>();
         health = GetComponent<Health>();
+        playerInventoryData = GetComponent<PlayerInventoryData>();
 
         stateMachine = new PlayerStateMachine2(this);
-
     }
 
     void Start()
