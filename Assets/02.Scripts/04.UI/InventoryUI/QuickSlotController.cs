@@ -18,6 +18,11 @@ public class QuickSlotController : MonoBehaviour
 
     private void OnEnable()
     {
+        for(int i=0; i<4; i++)
+        {
+            quickSlots[i].quickIndex = i;   
+        }
+
         for (int i = 0; i < 15; i++)
         {
             int qIndex = InventoryData.inventoryDatas[i].quickslotIndex;
