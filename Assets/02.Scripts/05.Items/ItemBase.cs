@@ -7,11 +7,11 @@ using UnityEngine;
 public class ItemBase : MonoBehaviour,IInteractable
 {
     public ItemSO itemSO;
-    public PlayerInventoryData inventoryslotcontroller;
+    private PlayerInventoryData inventoryslotcontroller;
 
     private void Awake()
     {
-        //inventoryslotcontroller = GameManager.Instance.Player.Inventorydata;
+        inventoryslotcontroller = MainGameManager.Instance.Player.playerInventoryData;
     }
 
     public void OnInteract()

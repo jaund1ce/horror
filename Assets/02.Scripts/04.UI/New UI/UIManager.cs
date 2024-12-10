@@ -87,7 +87,7 @@ public class UIManager : mainSingleton<UIManager>
         BaseUI ui = uiList.Find(x => x is T);
         if (ui == null)
         {
-            Debug.LogError($"{typeof(T).Name} UI를 찾을 수 없습니다.");
+            Debug.Log($"{typeof(T).Name} UI를 찾을 수 없습니다.");
             return;
         }
 

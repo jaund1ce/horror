@@ -19,10 +19,6 @@ public class InventoryItemInfoPanelelController : MonoBehaviour
 
     private InventoryData currentItemData;
 
-    private void OnEnable()
-    {
-        gameObject.SetActive(false);
-    }
     private void OnDisable()
     {
         gameObject.SetActive(false);
@@ -34,6 +30,9 @@ public class InventoryItemInfoPanelelController : MonoBehaviour
 
         gameObject.SetActive(true);
         currentItemData = itemData;
+
+        itemNameText.text = currentItemData.ItemData.ItemNameEng;
+        //itemDescriptionText.text = currentItemData.ItemData.ItemDescription;
 
         switch (currentItemData.ItemData.ItemType)
         {
@@ -51,7 +50,7 @@ public class InventoryItemInfoPanelelController : MonoBehaviour
                 break;
             default:
                 itemUseBTNText.text = "";
-                Debug.LogError("index Error");
+                Debug.Log("index Error");
                 break;
         }
     }
@@ -76,6 +75,7 @@ public class InventoryItemInfoPanelelController : MonoBehaviour
     }
     public void OnAddQuickSlotBTNClick()
     {
-        //InventoryLH.quickslotController.AddToQuick(currentItemData);
+        MainGameManager.Instance.Player.isChangingQuickSlot = true;
+        Debug.Log("QuickslotAdd Ready");
     }
 }

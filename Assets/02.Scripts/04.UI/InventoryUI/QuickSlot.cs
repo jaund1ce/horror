@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UHFPS.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,47 +10,58 @@ public class QuickSlot : MonoBehaviour
     [SerializeField] private InventoryData CurrentData = null;
     [SerializeField] private Image CurrentItemImage;
     [SerializeField] private TextMeshProUGUI CurrentItemAmount;
+    [SerializeField] private InventoryLH inventoryLH;
     public int quickIndex;
 
     // Start is called before the first frame update
     void OnEnable()
     {
-        ChangeData(CurrentData);
+        ChangeData();
     }
 
-    public void ChangeData(InventoryData itemData)
+    public void Add(InventoryData inventoryData)
     {
-        if (itemData == null) { ResetSlot(); return; }
-        if (itemData.ItemData == null) { ResetSlot(); return; }
+        CurrentData = inventoryData;
+        ChangeData();
+    }
 
-        CurrentData = itemData;
+    public void ChangeData()
+    {
+        if (CurrentData == null) { ResetSlot(); return; }
+        if (CurrentData.ItemData == null) { ResetSlot(); return; }
+
         ChangeUI();
     }
 
     private void ResetSlot()
     {
         CurrentItemImage.sprite = null;
-        CurrentItemImage.color = Color.black;
         CurrentItemAmount.text = "";
     }
 
     public void OnClick()
     {
-        if (true) // GameMAnge.instance.Player.isChangingQuickSlot;
+        Debug.Log("Adding");
+        if (MainGameManager.Instance.Player.isChangingQuickSlot)
         {
             if (CurrentData == null) 
             {
-                //CurrentData = UIManger.inventoryLH.currentSelectData;
+                CurrentData = inventoryLH.CurrentInventoryData;
                 CurrentData.quickslotIndex = quickIndex;
             }
             else
-            {
-                quickIndex = CurrentData.quickslotIndex;
-                //CurrentData.quickslotIndex = UIManger.inventoryLH.currentSelectData.quickslotIndex;
-                //CurrentData = UIManger.inventoryLH.currentSelectData;
-                CurrentData.quickslotIndex = quickIndex;
+            {//index ¹Ù²Ù±â
+                CurrentData.quickslotIndex = inventoryLH.CurrentInventoryData.quickslotIndex;
+                inventoryLH.CurrentInventoryData.quickslotIndex = quickIndex;
+
+                CurrentData = inventoryLH.CurrentInventoryData;
             }
+            MainGameManager.Instance.Player.isChangingQuickSlot = false;
             ChangeUI();
+        }
+        else
+        {
+            Debug.Log("Cant add now");
         }
     }
 
