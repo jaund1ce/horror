@@ -15,6 +15,7 @@ public class InventoryLH : MonoBehaviour //Player 처럼 인벤토리의 정보를 가지고 
     {
         if (CurrentInventoryData == inventoryData) return;
 
+        Debug.Log("UIPAnelOpen");
         CurrentInventoryData = inventoryData;
         InventoryItemInfoPanelelController.ChangePanelText(CurrentInventoryData);
     }

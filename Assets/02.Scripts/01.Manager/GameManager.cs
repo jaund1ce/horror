@@ -10,7 +10,7 @@ public class MainGameManager : mainSingleton<MainGameManager>
 
     public Player player;
 
-    protected override void Start()
+    protected override void Awake()
     {
         // Player √ ±‚»≠
         Player = FindObjectOfType<Player>();

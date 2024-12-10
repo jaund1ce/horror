@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UHFPS.Runtime;
 using UnityEngine;
 
 public class QuickSlotController : MonoBehaviour
@@ -11,7 +12,7 @@ public class QuickSlotController : MonoBehaviour
     private void Awake()
     {
         inventory.QuickslotController = this;
-        //InventoryData = GameManger.Instance.Player.playerinventorydata;
+        InventoryData = MainGameManager.Instance.Player.playerInventoryData;
         quickSlots = GetComponentsInChildren<QuickSlot>();
     }
 
@@ -19,10 +20,7 @@ public class QuickSlotController : MonoBehaviour
     {
         for (int i = 0; i < 4; i++)
         {
-            if (InventoryData.inventoryDatas[i].ItemData == null) return;
-
-            InventoryData iD = InventoryData.inventoryDatas[i];
-            quickSlots[i].ChangeData(iD);
+            quickSlots[i].ChangeData();
             quickSlots[i].quickIndex = i;
         }
     }

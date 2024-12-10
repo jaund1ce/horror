@@ -10,6 +10,7 @@ public class InventorySlot : MonoBehaviour
     [SerializeField]private InventoryData CurrentData = null;
     [SerializeField]private Image CurrentItemImage;
     [SerializeField]private TextMeshProUGUI CurrentItemAmount;
+    [SerializeField]private InventoryLH InventorySlotsController;
 
     public void ChangeData(InventoryData itemData)
     {
@@ -23,13 +24,13 @@ public class InventorySlot : MonoBehaviour
     private void ResetSlot()
     {
         CurrentItemImage.sprite = null;
-        CurrentItemImage.color = Color.black;
         CurrentItemAmount.text = "";
     }
 
     public void OnClick()
     {
-        //UIManger.Instance.inventoryLH.changeData(CurrentData);
+        Debug.Log("slotclicked!");
+        InventorySlotsController.ChangeData(CurrentData);
     }
 
     public void ChangeUI()
