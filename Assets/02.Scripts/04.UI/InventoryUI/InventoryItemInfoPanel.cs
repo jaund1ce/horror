@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UHFPS.Runtime.InventoryItem;
 
-public class ItemClcikPanInventoryItemInfoPanelelController : MonoBehaviour
+public class InventoryItemInfoPanelelController : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI itemNameText;
     [SerializeField] private TextMeshProUGUI itemDescriptionText;
@@ -13,10 +14,10 @@ public class ItemClcikPanInventoryItemInfoPanelelController : MonoBehaviour
 
     private void Awake()
     {
-        InventoryLH.ItemClcikPanInventoryItemInfoPanelelController = this;
+        InventoryLH.InventoryItemInfoPanelelController = this;
     }
 
-    private ItemSO currentItemSO;
+    private InventoryData currentItemData;
 
     private void OnEnable()
     {
@@ -27,39 +28,54 @@ public class ItemClcikPanInventoryItemInfoPanelelController : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void ChangePanelText(ItemSO itemSO)
+    public void ChangePanelText(InventoryData itemData)
     {
-        if (itemSO.itemData == null) return;
+        if (itemData.ItemData == null) return;
 
-        switch (itemSO.itemData.ID)
+        gameObject.SetActive(true);
+        currentItemData = itemData;
+
+        switch (currentItemData.ItemData.ItemType)
         {
-            case 0:
-                itemUseBTNText.text = "Use";
+            case ItemType.EquipItem:
+                itemUseBTNText.text = "Equip";
                 Debug.Log("1");
                 break;
-            case 100:
-                itemUseBTNText.text = "Equip";
+            case ItemType.CcItem:
+                itemUseBTNText.text = "Use";
                 Debug.Log("2"); 
                 break;
-            case 1000:
+            case ItemType.CnsItem:
                 itemUseBTNText.text = "Consume";
                 Debug.Log("3");
                 break;
             default:
                 itemUseBTNText.text = "";
-                Debug.Log("-1");
+                Debug.LogError("index Error");
                 break;
         }
     }
 
     public void OnUseBTNClick()
     {
-        if (currentItemSO == null) return;
+        if (currentItemData == null) return;
 
-        //GameManager.Instance.Player.playerinventorydata.selectinventorydata = CurrentData;
+        if (currentItemData.ItemData.ItemType == ItemType.EquipItem)
+        {
+        }
+        else
+        {
+            currentItemData.amount -= 1;
+
+            if (currentItemData.amount <= 0)
+            {
+                currentItemData.ResetData();
+                return;
+            }
+        }
     }
     public void OnAddQuickSlotBTNClick()
     {
-        //InventoryLH.quickslotController.Add();
+        //InventoryLH.quickslotController.AddToQuick(currentItemData);
     }
 }

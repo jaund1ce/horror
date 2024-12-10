@@ -5,23 +5,26 @@ using UnityEngine;
 
 public class InventorySlotsController : MonoBehaviour
 {
-    public PlayerInventoryData InventoryData;
+    [SerializeField]private InventoryLH inventoryLH;
     public InventorySlot[] slots;
 
     private void Awake()
     {
-        //InventoryData = Player.playerinventorydata;
+        //InventoryData = GameManger.Instance.Player.playerinventorydata;
+        inventoryLH.InventoryslotsController = this;
         slots = GetComponentsInChildren<InventorySlot>();
     }
 
     private void OnEnable()
     {
+        PlayerInventoryData playerInventoryData = null;// GameManger.instance.Player.playerinventorydata;
+
         for(int i=0; i< 15; i++)
         {
-            if (InventoryData.inventoryDatas[i].ItemData == null) return;
+            if (playerInventoryData.inventoryDatas[i].ItemData == null) return;
 
-            InventoryData iD = InventoryData.inventoryDatas[i];
-            slots[iD.slotIndex].ChangeData(iD);
+            InventoryData ID = playerInventoryData.inventoryDatas[i];
+            slots[ID.slotIndex].ChangeData(ID);
         }
     }
 }
