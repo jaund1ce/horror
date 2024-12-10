@@ -14,19 +14,24 @@ public class UIManager : mainSingleton<UIManager>
         SceneManager.sceneLoaded += OnSceneLoaded; // 씬 로드 이벤트 등록
     }
 
+
     private void Initalize()
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-    }
+        uiList.RemoveAll(item => item == null);
+        Player player = FindObjectOfType<Player>();
+        if (player == null)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+    } 
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-
+        Initalize();
         // 씬에 따라 적절한 UI 표시
         if (scene.buildIndex == 0)
         {
-            Initalize();
             Show<StartUI>();
         }
         else if (scene.buildIndex == 1)
@@ -50,7 +55,6 @@ public class UIManager : mainSingleton<UIManager>
             Hide<T>();
             return;
         }
-        string uiName = typeof(T).ToString();
         BaseUI uiPrefab = Resources.Load<BaseUI>("UI/" + typeof(T).Name); // 프리팹 로드
         if (uiPrefab == null)
         {
@@ -70,7 +74,7 @@ public class UIManager : mainSingleton<UIManager>
         BaseUI ui = uiList.Find(x => x is T);
         if (ui == null)
         {
-            Debug.Log($"{typeof(T).Name} UI를 찾을 수 없습니다.");
+            Debug.LogError($"{typeof(T).Name} UI를 찾을 수 없습니다.");
             return;
         }
 
