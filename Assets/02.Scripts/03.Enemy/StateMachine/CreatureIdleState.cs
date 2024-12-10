@@ -29,8 +29,9 @@ public class CreatureIdleState : CreatureBaseState
     public override void Update()
     {
         base.Update();
+        stateMachine.Creature.CreatureAI.CreatureAistate = AIState.Wandering;
 
-        if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Chasing /*IsInChasingRange()*/)
+        /*if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Chasing *//*IsInChasingRange()*//*)
         {
             stateMachine.ChangeState(stateMachine.ChasingState);
             return;
@@ -38,6 +39,6 @@ public class CreatureIdleState : CreatureBaseState
         {
             stateMachine.ChangeState(stateMachine.WanderState);
             return;
-        }
+        }*/
     }
 }

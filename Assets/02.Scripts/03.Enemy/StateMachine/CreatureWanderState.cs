@@ -32,11 +32,11 @@ public class CreatureWanderState : CreatureBaseState
     {
         base.Update();
 
-        if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Chasing)
+       /* if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Chasing)
         {
             stateMachine.ChangeState(stateMachine.ChasingState);
             return;
-        }
+        }*/
 
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine;
 public class CreatureAttackState : CreatureBaseState
 {
     bool alreadyApplyForce;
+    bool alreadyAppliedDealing;
 
     public CreatureAttackState(CreatureStateMachine stateMachine) : base(stateMachine)
     {
@@ -19,6 +20,7 @@ public class CreatureAttackState : CreatureBaseState
         StartAnimation(stateMachine.Creature.AnimationData.BaseAttackParameterHash);
 
         alreadyApplyForce = false;
+        alreadyAppliedDealing = false;
     }
 
     public override void Exit()
@@ -35,7 +37,7 @@ public class CreatureAttackState : CreatureBaseState
     {
         base.Update();
 
-        ForceMove();
+        //ForceMove();
 
         float normalizeTime = GetNormalizedTime(stateMachine.Creature.CreatureAnimator, "Attack");
         if (normalizeTime < 1f)
@@ -44,19 +46,21 @@ public class CreatureAttackState : CreatureBaseState
             {
                 TryApplyForce();
             }
-        }
-        else 
-        {
-            if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Chasing /*IsInChasingRange()*/)
+
+            //공격 활성화 시간 컨트롤
+            if (!alreadyAppliedDealing && normalizeTime >= stateMachine.Creature.Data.Dealing_Start_TransitionTime) 
             {
-                stateMachine.ChangeState(stateMachine.ChasingState);
-                return;
+                stateMachine.Creature.AttackPoint.SetAttack(stateMachine.Creature.Data.Damage);
+                stateMachine.Creature.AttackPoint.gameObject.SetActive(true);
+                alreadyAppliedDealing = true;
             }
-            else 
+
+            if (alreadyAppliedDealing && normalizeTime >= stateMachine.Creature.Data.Dealing_End_TransitionTime) 
             {
-                stateMachine.ChangeState(stateMachine.IdleState);
-                return;
+                stateMachine.Creature.CreatureAI.IsAttacking = false;
+                stateMachine.Creature.AttackPoint.gameObject.SetActive(false);
             }
+
         }
     }
 

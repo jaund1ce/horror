@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
@@ -33,29 +34,70 @@ public class CreatureBaseState : IState
 
     public virtual void Enter() 
     {
-        stateMachine.Creature.CharacterController.speed = stateMachine.Creature.Data.GroundData.BaseSpeed * MovementSpeedModifier;
+        
     }
     public virtual void Exit() { }
     public virtual void HandleInput() { }
     public virtual void PhysicsUpdate() { }
     public virtual void Update()
     {
-        if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Idle)
+        stateMachine.Creature.CharacterController.speed = stateMachine.Creature.Data.GroundData.BaseSpeed * MovementSpeedModifier;
+
+        switch (stateMachine.Creature.CreatureAI.CreatureAistate) 
         {
+            case AIState.Idle:
+
+                stateMachine.ChangeState(stateMachine.IdleState);
+
+                break;
+            case AIState.Chasing:
+
+                stateMachine.ChangeState(stateMachine.ChasingState);
+
+                Move();
+                break;
+            case AIState.Wandering:
+                
+                if (!IsLocationSet())
+                {
+                    WanderLocationSet();
+                }
+                stateMachine.ChangeState(stateMachine.WanderState);
+                Move();
+
+                break;
+            case AIState.Attacking:
+
+                stateMachine.ChangeState(stateMachine.AttackState);
+
+                break;
 
         }
-        else if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Chasing)
+            
+        /*if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Idle )
         {
+            stateMachine.ChangeState(stateMachine.IdleState);
+        }
+        else if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Chasing )
+        {
+            //분리 예정
+            stateMachine.ChangeState(stateMachine.ChasingState);
             Move();
         }
-        else if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Wandering)
+        else if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Wandering )
         {
-            if (!IsLocationSet()) 
+            if (!IsLocationSet())
             {
                 WanderLocationSet();
             }
+            stateMachine.ChangeState(stateMachine.WanderState);
             Move();
         }
+        //업데이트에서 공격중에 적이 멀어지면 chasing으로 넘어가서 불값도 넣어 체크중
+        else if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Attacking)
+        {
+            stateMachine.ChangeState(stateMachine.AttackState);
+        }*/
 
     }
 
@@ -90,13 +132,16 @@ public class CreatureBaseState : IState
 
         if (NavMesh.SamplePosition(randomPosition, out hit, maxWanderDistance, walkableMask) == false) return;
             movementLocation = hit.position;
-            Debug.Log($"New Position : {movementLocation}");
             setLocation = true;
     }
 
     private bool IsLocationSet() 
     {
-        if (Vector3.Distance(creatureTransform.position, movementLocation) < 1f || movementLocation == Vector3.zero)
+        if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Chasing) 
+        {
+            setLocation = true;
+        }
+        if (Vector3.Distance(creatureTransform.position, movementLocation) < 1f || movementLocation == Vector3.zero )
         {
             setLocation = false;
         }
@@ -104,50 +149,34 @@ public class CreatureBaseState : IState
         return setLocation;
     }
 
-    /*private Vector3 GetMovementDirection()
-    {
-        Vector3 dir = stateMachine.Target.transform.position;
-
-        return dir;
-
-    }*/
 
     private void Move(Vector3 direction)
-    {
-        //stateMachine.Creature.CharacterController.SetDestination(((direction * movementSpeed) + stateMachine.Creature.ForceReceiver.Movement) * Time.deltaTime);
+    {      
         stateMachine.Creature.CharacterController.SetDestination(direction);
-        Debug.Log(stateMachine.Creature.CharacterController.speed);
+        //Debug.Log(stateMachine.Creature.CharacterController.speed);
 
     }
 
 
-/*    private void Rotate(Vector3 direction)
-    {
-        if (direction != Vector3.zero)
-        {
-            Transform creatureTransform = stateMachine.Creature.transform;
-            Quaternion targetRotation = Quaternion.LookRotation(direction);
-            creatureTransform.rotation = Quaternion.Slerp(creatureTransform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
-        }
-    }*/
-
-    protected void ForceMove()
+    /*protected void ForceMove()
     {
         stateMachine.Creature.CharacterController.SetDestination(stateMachine.Creature.ForceReceiver.Movement * Time.deltaTime);
-    }
+    }*/
 
     protected float GetNormalizedTime(Animator animator, string tag)
     {
-        AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);
+        AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0); // 0 은 BaseLayer 추가되면 1...
         AnimatorStateInfo nextInfo = animator.GetNextAnimatorStateInfo(0);
 
+        //전환 되고 있을때 && 다음 애니메이션이 tag
         if (animator.IsInTransition(0) && nextInfo.IsTag(tag))
         {
             return nextInfo.normalizedTime;
         }
+        //전환 되고 있지 않을 때 && 현재 애니메이션이 tag
         else if (!animator.IsInTransition(0) && currentInfo.IsTag(tag))
         {
-            return currentInfo.normalizedTime;
+            return currentInfo.normalizedTime%1f;
         }
         else
         {
@@ -155,10 +184,4 @@ public class CreatureBaseState : IState
         }
     }
 
-    protected bool IsInChasingRange()
-    {
-        float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Creature.transform.position).sqrMagnitude;
-        // 나와 플레이어의 벡터의 크기 Magnitude는 제곱근 sqrMagnitude는 제곱근 하지 않은 연산. 고로 연산 자체가 덜 된다
-        return playerDistanceSqr <= stateMachine.Creature.Data.PlayerChasingRange * stateMachine.Creature.Data.PlayerChasingRange;
-    }
 }
