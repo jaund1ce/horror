@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera playercamera;
     private CinemachinePOV pov;
     public float rotateXSencitivity;//  = () => GameManager.Instance.Player.
-    public float rotateYSencitivity;
     public bool Rotateable = true;
 
     private void Awake()
@@ -75,7 +74,7 @@ public class PlayerController : MonoBehaviour
     {
         Rotateable = true;
         pov.m_HorizontalAxis.m_MaxSpeed = rotateXSencitivity;
-        pov.m_VerticalAxis.m_MaxSpeed = rotateYSencitivity;
+        pov.m_VerticalAxis.m_MaxSpeed = rotateXSencitivity/6;
         pov.m_HorizontalAxis.m_InputAxisName = "Mouse X";
         pov.m_VerticalAxis.m_InputAxisName = "Mouse Y";
     }

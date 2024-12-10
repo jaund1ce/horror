@@ -18,10 +18,12 @@ public class QuickSlotController : MonoBehaviour
 
     private void OnEnable()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 15; i++)
         {
-            quickSlots[i].ChangeData();
-            quickSlots[i].quickIndex = i;
+            int qIndex = InventoryData.inventoryDatas[i].quickslotIndex;
+            if (qIndex < 0) return;
+
+            quickSlots[qIndex].Add(InventoryData.inventoryDatas[i]);
         }
     }
 }
