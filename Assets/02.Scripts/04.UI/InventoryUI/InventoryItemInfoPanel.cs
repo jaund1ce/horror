@@ -31,8 +31,8 @@ public class InventoryItemInfoPanelelController : MonoBehaviour
         gameObject.SetActive(true);
         currentItemData = itemData;
 
-        itemNameText.text = currentItemData.ItemData.ItemNameEng;
-        //itemDescriptionText.text = currentItemData.ItemData.ItemDescription;
+        itemNameText.text = currentItemData.ItemData.ItemNameKor;
+        itemDescriptionText.text = currentItemData.ItemData.ItemDescription;
 
         switch (currentItemData.ItemData.ItemType)
         {

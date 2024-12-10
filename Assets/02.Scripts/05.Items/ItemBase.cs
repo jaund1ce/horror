@@ -9,7 +9,7 @@ public class ItemBase : MonoBehaviour,IInteractable
     public ItemSO itemSO;
     private PlayerInventoryData inventoryslotcontroller;
 
-    private void Awake()
+    private void Start()
     {
         inventoryslotcontroller = MainGameManager.Instance.Player.playerInventoryData;
     }

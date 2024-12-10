@@ -13,12 +13,6 @@ public class QuickSlot : MonoBehaviour
     [SerializeField] private InventoryLH inventoryLH;
     public int quickIndex;
 
-    // Start is called before the first frame update
-    void OnEnable()
-    {
-        ChangeData();
-    }
-
     public void Add(InventoryData inventoryData)
     {
         CurrentData = inventoryData;

@@ -22,4 +22,12 @@ public class PlayerRunState : PlayerGroundState
         StopAnimation(stateMachine.Player.AnimationData.RunParameterHash);
     }
 
+    public override void Update()
+    {
+        base.Update();
+        if (stateMachine.Player.Input.IsRunning)
+        {
+            stateMachine.ChangeState(stateMachine.WalkState);
+        }
+    }
 }

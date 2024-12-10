@@ -17,8 +17,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera playercamera;
     private CinemachinePOV pov;
     public float rotateXSencitivity;//  = () => GameManager.Instance.Player.
-    public float rotateYSencitivity;
     public bool Rotateable = true;
+    public bool IsRunning = false;
 
     private void Awake()
     {
@@ -32,12 +32,16 @@ public class PlayerController : MonoBehaviour
         UnLockRotate();
         playerInputs.Enable();
         playerActions.Look.started += RotateCamera;
+        playerActions.Run.started += ChangeRunState;
+        playerActions.Run.canceled += ChangeRunState;
     }
 
     private void OnDisable()
     {
         playerInputs.Disable();
         playerActions.Look.started -= RotateCamera;
+        playerActions.Run.canceled -= ChangeRunState;
+        playerActions.Run.canceled -= ChangeRunState;
     }
 
     private void RotateCamera(InputAction.CallbackContext context)//cinemachine의 aim방식에 따라서 회전시키는 방법은 다르다.
@@ -75,8 +79,13 @@ public class PlayerController : MonoBehaviour
     {
         Rotateable = true;
         pov.m_HorizontalAxis.m_MaxSpeed = rotateXSencitivity;
-        pov.m_VerticalAxis.m_MaxSpeed = rotateYSencitivity;
+        pov.m_VerticalAxis.m_MaxSpeed = rotateXSencitivity/6;
         pov.m_HorizontalAxis.m_InputAxisName = "Mouse X";
         pov.m_VerticalAxis.m_InputAxisName = "Mouse Y";
+    }
+
+    private void ChangeRunState(InputAction.CallbackContext context)
+    {
+        IsRunning = !IsRunning; 
     }
 }
