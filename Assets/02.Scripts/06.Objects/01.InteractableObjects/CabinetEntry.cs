@@ -7,11 +7,14 @@ public class CabinetEntry : MonoBehaviour
     public Transform player; // 플레이어 Transform (씬에서 연결)
     public Transform insidePosition; // 캐비닛 내부 위치
     public CharacterController characterController; // 플레이어의 CharacterController
+    public float interactRange = 3f; // 캐비닛과 상호작용할 수 있는 최대 거리
     private bool isPlayerInside = false; // 플레이어가 캐비닛 내부에 있는지 여부
 
     void Update()
     {
-        if (!isPlayerInside && Input.GetKeyDown(KeyCode.E))
+        float distance = Vector3.Distance(transform.position, player.position);
+
+        if (!isPlayerInside && distance <= interactRange && Input.GetKeyDown(KeyCode.E))
         {
             EnterCabinet();
         }
