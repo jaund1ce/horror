@@ -12,7 +12,7 @@ public class PopupUI : BaseUI
         }
         UnlockCursor();
     }
-    public virtual void OnDestroy()
+    public virtual void OnDisable()
     {
         if (playerController != null)
         {

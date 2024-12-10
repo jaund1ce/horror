@@ -16,21 +16,39 @@ public class UIManager : mainSingleton<UIManager>
 
     private void Initalize()
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-    }
+        if (uiList == null)
+        {
+            return;
+        }
+        else
+        {
+            for (int i = 0; i < uiList.Count; i++)
+            {
+                if (uiList[i] == null)
+                {
+                    uiList.RemoveAt(i);
+                }
+            }
+        }
+        Player player = FindObjectOfType<Player>();
+        if (player == null)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+    } 
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-
+        Initalize();
         // 씬에 따라 적절한 UI 표시
         if (scene.buildIndex == 0)
         {
-            Initalize();
             Show<StartUI>();
         }
         else if (scene.buildIndex == 1)
         {
+            Hide<SystemUI>();
             Show<MainUI>();
         }
         else if (scene.buildIndex == 2)
@@ -50,7 +68,6 @@ public class UIManager : mainSingleton<UIManager>
             Hide<T>();
             return;
         }
-        string uiName = typeof(T).ToString();
         BaseUI uiPrefab = Resources.Load<BaseUI>("UI/" + typeof(T).Name); // 프리팹 로드
         if (uiPrefab == null)
         {

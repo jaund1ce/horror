@@ -7,9 +7,9 @@ public class SystemUI : PopupUI
         base.OnEnable();
         Time.timeScale = 0f;
     }
-    public override void OnDestroy()
+    public override void OnDisable()
     {
-        base.OnDestroy();
+        base.OnDisable();
         Time.timeScale = 1f;
     }
     // 필요하다면 추가적인 동작 구현
@@ -22,4 +22,6 @@ public class SystemUI : PopupUI
     {
         base.CloseUI();
     }
+
+
 }
