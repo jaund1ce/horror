@@ -1024,7 +1024,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.30000004, y: 0.3, z: 0.04122524}
   m_Center: {x: 0.000000014901161, y: 0, z: 0.020612597}
@@ -1045,7 +1045,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.3, y: 0.3, z: 0.041225247}
   m_Center: {x: -0.000000029802322, y: 0.000000007450581, z: 0.020612601}
@@ -1066,7 +1066,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.3, y: 0.3, z: 0.04122524}
   m_Center: {x: -0.000000007450581, y: 0, z: 0.020612597}
@@ -1109,36 +1109,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2955206115946768503}
   m_Mesh: {fileID: 3487686481842857982, guid: 4ea876e08fcb5a747b615d3ac4adab28, type: 3}
---- !u!114 &643740640835266047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5582842029828452018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597950852afb9d741a2803d763781f86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ElectricalCircuit: {fileID: 0}
-  ComponentIcon: {fileID: 2800000, guid: 4c47f3d58e8152c4f8c697928d946384, type: 3}
-  ComponentMesh: {fileID: 2078131841389658569}
-  ComponentUp: 4
-  Coords: {x: 1, y: 0}
-  Angle: 180
-  FlowDirections:
-  - FlowDirections: 0200000001000000
-    FlowRenderer:
-    - meshRenderer: {fileID: 972354192606856051}
-      material: {fileID: 2100000, guid: 08a8efb7c56d57a44af98a48d19012ab, type: 2}
-      materialIndex: 1
-  - FlowDirections: 0000000003000000
-    FlowRenderer:
-    - meshRenderer: {fileID: 972354192606856051}
-      material: {fileID: 2100000, guid: 1018c5e6c9ea5314db96e107d764210b, type: 2}
-      materialIndex: 2
-  PowerFlows: []
 --- !u!65 &808641662222304246
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1156,7 +1126,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.3, y: 0.3, z: 0.04122524}
   m_Center: {x: -0.000000007450581, y: 0, z: 0.020612597}
@@ -1172,8 +1142,8 @@ GameObject:
   - component: {fileID: 8754623426166463317}
   - component: {fileID: 1509948803681888511}
   - component: {fileID: 808641662222304246}
-  - component: {fileID: 6570115873155550944}
-  m_Layer: 6
+  - component: {fileID: 8754623426166463318}
+  m_Layer: 0
   m_Name: WirePanelElbow(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1256,7 +1226,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.3, y: 0.3, z: 0.041225247}
   m_Center: {x: -0.000000029802322, y: 0.000000007450581, z: 0.020612601}
@@ -1280,39 +1250,14 @@ GameObject:
   - component: {fileID: 7465338363805780865}
   - component: {fileID: 3143537583777210145}
   - component: {fileID: 1353999308146289808}
-  - component: {fileID: 1799342565458822103}
-  m_Layer: 6
+  - component: {fileID: 8460847519861003407}
+  m_Layer: 0
   m_Name: WirePanelElbow(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1120897211062526668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2289270290838823146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597950852afb9d741a2803d763781f86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ElectricalCircuit: {fileID: 0}
-  ComponentIcon: {fileID: 2800000, guid: e2ab41276b8dda24f94ef75f6f885c8e, type: 3}
-  ComponentMesh: {fileID: 6616084534521655181}
-  ComponentUp: 4
-  Coords: {x: 1, y: 1}
-  Angle: 270
-  FlowDirections:
-  - FlowDirections: 0200000003000000
-    FlowRenderer:
-    - meshRenderer: {fileID: 1695361249322644786}
-      material: {fileID: 2100000, guid: 842edbd0fd9c72a43b518d9250d9d785, type: 2}
-      materialIndex: 1
-  PowerFlows: []
 --- !u!65 &1216639579650266217
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1330,7 +1275,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.3, y: 0.3, z: 0.04122524}
   m_Center: {x: -0.000000007450581, y: 0, z: 0.020612597}
@@ -1394,7 +1339,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.29999995, y: 0.3, z: 0.062017538}
   m_Center: {x: 0.00000011920929, y: 0.000000007450581, z: 0.031008746}
@@ -1458,7 +1403,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.3, y: 0.3, z: 0.04122524}
   m_Center: {x: -0.000000007450581, y: 0, z: 0.020612597}
@@ -1505,31 +1450,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1557323209206167054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5379022300361228031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597950852afb9d741a2803d763781f86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ElectricalCircuit: {fileID: 0}
-  ComponentIcon: {fileID: 2800000, guid: e2ab41276b8dda24f94ef75f6f885c8e, type: 3}
-  ComponentMesh: {fileID: 9183921246885348633}
-  ComponentUp: 4
-  Coords: {x: 0, y: 1}
-  Angle: 180
-  FlowDirections:
-  - FlowDirections: 0200000003000000
-    FlowRenderer:
-    - meshRenderer: {fileID: 1239979678807678021}
-      material: {fileID: 2100000, guid: 842edbd0fd9c72a43b518d9250d9d785, type: 2}
-      materialIndex: 1
-  PowerFlows: []
 --- !u!4 &1589949780548918643
 Transform:
   m_ObjectHideFlags: 0
@@ -1557,8 +1477,8 @@ GameObject:
   - component: {fileID: 2644968230873092032}
   - component: {fileID: 3599638187598157095}
   - component: {fileID: 9142541289449151415}
-  - component: {fileID: 4622793546371268875}
-  m_Layer: 6
+  - component: {fileID: 9142541289449151416}
+  m_Layer: 0
   m_Name: WirePanel2Elbows(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1623,81 +1543,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6108688717064475702}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1770781807986952967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6719538820510584713}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597950852afb9d741a2803d763781f86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ElectricalCircuit: {fileID: 0}
-  ComponentIcon: {fileID: 2800000, guid: 69ef413486a8be34c9f8c35431b857ec, type: 3}
-  ComponentMesh: {fileID: 3895720740713231466}
-  ComponentUp: 4
-  Coords: {x: 2, y: 0}
-  Angle: 270
-  FlowDirections:
-  - FlowDirections: 0200000001000000
-    FlowRenderer:
-    - meshRenderer: {fileID: 163077165127235768}
-      material: {fileID: 2100000, guid: 9e11a17f57ac583488cf27f1417fff5e, type: 2}
-      materialIndex: 1
-  PowerFlows: []
---- !u!114 &1799342565458822103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1052670799682829622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597950852afb9d741a2803d763781f86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ElectricalCircuit: {fileID: 0}
-  ComponentIcon: {fileID: 2800000, guid: 69ef413486a8be34c9f8c35431b857ec, type: 3}
-  ComponentMesh: {fileID: 7465338363805780865}
-  ComponentUp: 4
-  Coords: {x: 3, y: 2}
-  Angle: 270
-  FlowDirections:
-  - FlowDirections: 0200000001000000
-    FlowRenderer:
-    - meshRenderer: {fileID: 3143537583777210145}
-      material: {fileID: 2100000, guid: 9e11a17f57ac583488cf27f1417fff5e, type: 2}
-      materialIndex: 1
-  PowerFlows: []
---- !u!114 &1850253025854502027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5200941265595613127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597950852afb9d741a2803d763781f86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ElectricalCircuit: {fileID: 0}
-  ComponentIcon: {fileID: 2800000, guid: 25800557d2ba2ce499acc0ba116051f9, type: 3}
-  ComponentMesh: {fileID: 7648990438759593210}
-  ComponentUp: 4
-  Coords: {x: 2, y: 2}
-  Angle: 90
-  FlowDirections:
-  - FlowDirections: 010000000300000000000000
-    FlowRenderer:
-    - meshRenderer: {fileID: 1280739527103146460}
-      material: {fileID: 2100000, guid: 09ce4c910f48d364da088be9be90311b, type: 2}
-      materialIndex: 1
-  PowerFlows: []
 --- !u!33 &1932667328368261708
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1788,7 +1633,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.3, y: 0.3, z: 0.04122524}
   m_Center: {x: -0.000000007450581, y: 0, z: 0.020612597}
@@ -1812,8 +1657,8 @@ GameObject:
   - component: {fileID: 6616084534521655181}
   - component: {fileID: 1695361249322644786}
   - component: {fileID: 7768751980442131722}
-  - component: {fileID: 1120897211062526668}
-  m_Layer: 6
+  - component: {fileID: 9188033414021791093}
+  m_Layer: 0
   m_Name: WirePanelLine(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1864,31 +1709,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2299228225063452247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9104179476267504435}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597950852afb9d741a2803d763781f86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ElectricalCircuit: {fileID: 0}
-  ComponentIcon: {fileID: 2800000, guid: 69ef413486a8be34c9f8c35431b857ec, type: 3}
-  ComponentMesh: {fileID: 2460921630041236842}
-  ComponentUp: 4
-  Coords: {x: 0, y: 0}
-  Angle: 270
-  FlowDirections:
-  - FlowDirections: 0200000001000000
-    FlowRenderer:
-    - meshRenderer: {fileID: 5480040932245638613}
-      material: {fileID: 2100000, guid: 9e11a17f57ac583488cf27f1417fff5e, type: 2}
-      materialIndex: 1
-  PowerFlows: []
 --- !u!1 &2353557945910968289
 GameObject:
   m_ObjectHideFlags: 0
@@ -1917,36 +1737,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9104179476267504435}
   m_Mesh: {fileID: 7468017091391701065, guid: a96d79b151dc362459e64fa44cfce3f6, type: 3}
---- !u!114 &2547354399147818573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5350659652311864710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597950852afb9d741a2803d763781f86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ElectricalCircuit: {fileID: 0}
-  ComponentIcon: {fileID: 2800000, guid: 709b3d1c08bd3584f95729968f7dff6c, type: 3}
-  ComponentMesh: {fileID: 1043044701070801076}
-  ComponentUp: 4
-  Coords: {x: 1, y: 2}
-  Angle: 90
-  FlowDirections:
-  - FlowDirections: 0200000003000000
-    FlowRenderer:
-    - meshRenderer: {fileID: 7977572895489933825}
-      material: {fileID: 2100000, guid: ffdb82cd96b954f4aba08739a365ddd3, type: 2}
-      materialIndex: 1
-  - FlowDirections: 0000000001000000
-    FlowRenderer:
-    - meshRenderer: {fileID: 7977572895489933825}
-      material: {fileID: 2100000, guid: dfba9aff14a9e3e418ac8bf17ab608ed, type: 2}
-      materialIndex: 2
-  PowerFlows: []
 --- !u!23 &2583863641741695999
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2193,39 +1983,14 @@ GameObject:
   - component: {fileID: 2096494309871942732}
   - component: {fileID: 4750625158890922028}
   - component: {fileID: 245376603628533437}
-  - component: {fileID: 9021027389133756270}
-  m_Layer: 6
+  - component: {fileID: 4750625158890922029}
+  m_Layer: 0
   m_Name: WirePanel2Elbows(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &3038205721946159828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3061854699580971537}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597950852afb9d741a2803d763781f86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ElectricalCircuit: {fileID: 0}
-  ComponentIcon: {fileID: 2800000, guid: 69ef413486a8be34c9f8c35431b857ec, type: 3}
-  ComponentMesh: {fileID: 4731041928736055902}
-  ComponentUp: 4
-  Coords: {x: 2, y: 1}
-  Angle: 90
-  FlowDirections:
-  - FlowDirections: 0200000001000000
-    FlowRenderer:
-    - meshRenderer: {fileID: 3330123918142713599}
-      material: {fileID: 2100000, guid: 9e11a17f57ac583488cf27f1417fff5e, type: 2}
-      materialIndex: 1
-  PowerFlows: []
 --- !u!1 &3061854699580971537
 GameObject:
   m_ObjectHideFlags: 0
@@ -2238,8 +2003,8 @@ GameObject:
   - component: {fileID: 4731041928736055902}
   - component: {fileID: 3330123918142713599}
   - component: {fileID: 1216639579650266217}
-  - component: {fileID: 3038205721946159828}
-  m_Layer: 6
+  - component: {fileID: 6604586710437147613}
+  m_Layer: 0
   m_Name: WirePanelElbow(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2555,36 +2320,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3551396374478274618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5060210576870767135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597950852afb9d741a2803d763781f86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ElectricalCircuit: {fileID: 0}
-  ComponentIcon: {fileID: 2800000, guid: 4c47f3d58e8152c4f8c697928d946384, type: 3}
-  ComponentMesh: {fileID: 1932667328368261708}
-  ComponentUp: 4
-  Coords: {x: 0, y: 2}
-  Angle: 180
-  FlowDirections:
-  - FlowDirections: 0200000001000000
-    FlowRenderer:
-    - meshRenderer: {fileID: 2293019780259701188}
-      material: {fileID: 2100000, guid: 08a8efb7c56d57a44af98a48d19012ab, type: 2}
-      materialIndex: 1
-  - FlowDirections: 0000000003000000
-    FlowRenderer:
-    - meshRenderer: {fileID: 2293019780259701188}
-      material: {fileID: 2100000, guid: 1018c5e6c9ea5314db96e107d764210b, type: 2}
-      materialIndex: 2
-  PowerFlows: []
 --- !u!23 &3599638187598157095
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2641,8 +2376,8 @@ GameObject:
   - component: {fileID: 3908801256205613161}
   - component: {fileID: 2973075971226042431}
   - component: {fileID: 2083312551707866695}
-  - component: {fileID: 4457569964914108545}
-  m_Layer: 6
+  - component: {fileID: 3908801256205613162}
+  m_Layer: 0
   m_Name: WirePanelElbow(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2661,8 +2396,8 @@ GameObject:
   - component: {fileID: 2991723470356755575}
   - component: {fileID: 7089706324350833723}
   - component: {fileID: 271032231826610906}
-  - component: {fileID: 6688033920059988926}
-  m_Layer: 6
+  - component: {fileID: 7089706324350833724}
+  m_Layer: 0
   m_Name: WirePanelElbow(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2685,36 +2420,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3635084816225785043}
   m_Mesh: {fileID: 7468017091391701065, guid: a96d79b151dc362459e64fa44cfce3f6, type: 3}
---- !u!114 &3914561155211484559
+--- !u!114 &3908801256205613162
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5179698261853521956}
+  m_GameObject: {fileID: 3635084816225785043}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597950852afb9d741a2803d763781f86, type: 3}
+  m_Script: {fileID: 11500000, guid: 41f5d3db1351391459dd77c0ae2f392a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ElectricalCircuit: {fileID: 0}
-  ComponentIcon: {fileID: 2800000, guid: 709b3d1c08bd3584f95729968f7dff6c, type: 3}
-  ComponentMesh: {fileID: 7133229215102556295}
-  ComponentUp: 4
-  Coords: {x: 3, y: 0}
-  Angle: 90
-  FlowDirections:
-  - FlowDirections: 0200000003000000
-    FlowRenderer:
-    - meshRenderer: {fileID: 5046692093981945861}
-      material: {fileID: 2100000, guid: ffdb82cd96b954f4aba08739a365ddd3, type: 2}
-      materialIndex: 1
-  - FlowDirections: 0000000001000000
-    FlowRenderer:
-    - meshRenderer: {fileID: 5046692093981945861}
-      material: {fileID: 2100000, guid: dfba9aff14a9e3e418ac8bf17ab608ed, type: 2}
-      materialIndex: 2
-  PowerFlows: []
+  upConnected: 0
+  downConnected: 0
+  leftConnected: 0
+  rightConnected: 0
 --- !u!1 &3961499828136381334
 GameObject:
   m_ObjectHideFlags: 0
@@ -2766,7 +2487,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.3, y: 0.3, z: 0.04122524}
   m_Center: {x: -0.000000007450581, y: 0, z: 0.020612597}
@@ -2889,31 +2610,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &4457569964914108545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3635084816225785043}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597950852afb9d741a2803d763781f86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ElectricalCircuit: {fileID: 0}
-  ComponentIcon: {fileID: 2800000, guid: 69ef413486a8be34c9f8c35431b857ec, type: 3}
-  ComponentMesh: {fileID: 3908801256205613161}
-  ComponentUp: 4
-  Coords: {x: 3, y: 3}
-  Angle: 270
-  FlowDirections:
-  - FlowDirections: 0200000001000000
-    FlowRenderer:
-    - meshRenderer: {fileID: 2973075971226042431}
-      material: {fileID: 2100000, guid: 9e11a17f57ac583488cf27f1417fff5e, type: 2}
-      materialIndex: 1
-  PowerFlows: []
 --- !u!33 &4489991239699586935
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2937,36 +2633,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5412563967663452872}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4622793546371268875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1646129282351868683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597950852afb9d741a2803d763781f86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ElectricalCircuit: {fileID: 0}
-  ComponentIcon: {fileID: 2800000, guid: 4c47f3d58e8152c4f8c697928d946384, type: 3}
-  ComponentMesh: {fileID: 2644968230873092032}
-  ComponentUp: 4
-  Coords: {x: 3, y: 1}
-  Angle: 180
-  FlowDirections:
-  - FlowDirections: 0200000001000000
-    FlowRenderer:
-    - meshRenderer: {fileID: 3599638187598157095}
-      material: {fileID: 2100000, guid: 08a8efb7c56d57a44af98a48d19012ab, type: 2}
-      materialIndex: 1
-  - FlowDirections: 0000000003000000
-    FlowRenderer:
-    - meshRenderer: {fileID: 3599638187598157095}
-      material: {fileID: 2100000, guid: 1018c5e6c9ea5314db96e107d764210b, type: 2}
-      materialIndex: 2
-  PowerFlows: []
 --- !u!1 &4636063208889182322
 GameObject:
   m_ObjectHideFlags: 0
@@ -2978,6 +2644,7 @@ GameObject:
   - component: {fileID: 5412563967663452872}
   - component: {fileID: 5412563967663452874}
   - component: {fileID: 4286724546925960705}
+  - component: {fileID: 5412563967663452875}
   m_Layer: 6
   m_Name: Puzzle_ElectricCircuit
   m_TagString: Untagged
@@ -3037,6 +2704,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4750625158890922029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3026380553415783362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f5d3db1351391459dd77c0ae2f392a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upConnected: 0
+  downConnected: 0
+  leftConnected: 0
+  rightConnected: 0
 --- !u!4 &4948023912703726844
 Transform:
   m_ObjectHideFlags: 0
@@ -3108,14 +2791,30 @@ GameObject:
   - component: {fileID: 1932667328368261708}
   - component: {fileID: 2293019780259701188}
   - component: {fileID: 996622114447890589}
-  - component: {fileID: 3551396374478274618}
-  m_Layer: 6
+  - component: {fileID: 5060210576870767136}
+  m_Layer: 0
   m_Name: WirePanel2Elbows(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5060210576870767136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5060210576870767135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f5d3db1351391459dd77c0ae2f392a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upConnected: 0
+  downConnected: 0
+  leftConnected: 0
+  rightConnected: 0
 --- !u!1 &5179698261853521956
 GameObject:
   m_ObjectHideFlags: 0
@@ -3128,8 +2827,8 @@ GameObject:
   - component: {fileID: 7133229215102556295}
   - component: {fileID: 5046692093981945861}
   - component: {fileID: 6846925481437099596}
-  - component: {fileID: 3914561155211484559}
-  m_Layer: 6
+  - component: {fileID: 7133229215102556296}
+  m_Layer: 0
   m_Name: WirePanelBridge(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3148,8 +2847,8 @@ GameObject:
   - component: {fileID: 7648990438759593210}
   - component: {fileID: 1280739527103146460}
   - component: {fileID: 8266825664354478996}
-  - component: {fileID: 1850253025854502027}
-  m_Layer: 6
+  - component: {fileID: 8266825664354478997}
+  m_Layer: 0
   m_Name: WirePanelThree(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3168,8 +2867,8 @@ GameObject:
   - component: {fileID: 1043044701070801076}
   - component: {fileID: 7977572895489933825}
   - component: {fileID: 1241605740105969765}
-  - component: {fileID: 2547354399147818573}
-  m_Layer: 6
+  - component: {fileID: 8361841974557677036}
+  m_Layer: 0
   m_Name: WirePanelBridge(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3188,8 +2887,8 @@ GameObject:
   - component: {fileID: 9183921246885348633}
   - component: {fileID: 1239979678807678021}
   - component: {fileID: 202089612027335258}
-  - component: {fileID: 1557323209206167054}
-  m_Layer: 6
+  - component: {fileID: 9183921246885348634}
+  m_Layer: 0
   m_Name: WirePanelLine(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3205,7 +2904,7 @@ Transform:
   m_GameObject: {fileID: 4636063208889182322}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -45.1, y: 2.72, z: 49.17}
+  m_LocalPosition: {x: -45.1, y: 1.995, z: 49.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3232,10 +2931,48 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 0.28, y: 0.28, z: 0.01}
   m_Center: {x: 0, y: 0.015000001, z: 0.15}
+--- !u!114 &5412563967663452875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4636063208889182322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f5a86457e811e74ea9c8f84fdbd92da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1509411850}
+  hinge: {fileID: 409132965211947331}
+  openAngle: 150
+  closeAngle: 0
+  openSpeed: 5
+  interactDistance: 3
+  puzzleCamera: {fileID: 6108688716942634512}
+  playerCamera: {fileID: 106805774}
+  puzzleUI: {fileID: 6108688717064475702}
+  onPuzzleComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  gridSize: 3
+  disablePlayerMovement: 1
 --- !u!65 &5465879148986257085
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3253,7 +2990,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.3, y: 0.3, z: 0.04122524}
   m_Center: {x: -0.000000007450581, y: 0, z: 0.020612597}
@@ -3312,8 +3049,8 @@ GameObject:
   - component: {fileID: 2078131841389658569}
   - component: {fileID: 972354192606856051}
   - component: {fileID: 9054459634608413085}
-  - component: {fileID: 643740640835266047}
-  m_Layer: 6
+  - component: {fileID: 9054459634608413086}
+  m_Layer: 0
   m_Name: WirePanel2Elbows(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3645,7 +3382,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
+  m_Priority: 20
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
@@ -3901,31 +3638,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6108688717064475702}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6570115873155550944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 925179008359822568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597950852afb9d741a2803d763781f86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ElectricalCircuit: {fileID: 0}
-  ComponentIcon: {fileID: 2800000, guid: 69ef413486a8be34c9f8c35431b857ec, type: 3}
-  ComponentMesh: {fileID: 8754623426166463317}
-  ComponentUp: 4
-  Coords: {x: 2, y: 3}
-  Angle: 180
-  FlowDirections:
-  - FlowDirections: 0200000001000000
-    FlowRenderer:
-    - meshRenderer: {fileID: 1509948803681888511}
-      material: {fileID: 2100000, guid: 9e11a17f57ac583488cf27f1417fff5e, type: 2}
-      materialIndex: 1
-  PowerFlows: []
 --- !u!4 &6604586710437147612
 Transform:
   m_ObjectHideFlags: 0
@@ -3941,6 +3653,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6108688717064475702}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6604586710437147613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3061854699580971537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f5d3db1351391459dd77c0ae2f392a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upConnected: 0
+  downConnected: 0
+  leftConnected: 0
+  rightConnected: 0
 --- !u!33 &6616084534521655181
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3949,31 +3677,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2289270290838823146}
   m_Mesh: {fileID: -3431641084622305393, guid: a96d79b151dc362459e64fa44cfce3f6, type: 3}
---- !u!114 &6688033920059988926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3778721527295808958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597950852afb9d741a2803d763781f86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ElectricalCircuit: {fileID: 0}
-  ComponentIcon: {fileID: 2800000, guid: 69ef413486a8be34c9f8c35431b857ec, type: 3}
-  ComponentMesh: {fileID: 2991723470356755575}
-  ComponentUp: 4
-  Coords: {x: 0, y: 3}
-  Angle: 270
-  FlowDirections:
-  - FlowDirections: 0200000001000000
-    FlowRenderer:
-    - meshRenderer: {fileID: 7089706324350833723}
-      material: {fileID: 2100000, guid: 9e11a17f57ac583488cf27f1417fff5e, type: 2}
-      materialIndex: 1
-  PowerFlows: []
 --- !u!1 &6719538820510584713
 GameObject:
   m_ObjectHideFlags: 0
@@ -3986,14 +3689,30 @@ GameObject:
   - component: {fileID: 3895720740713231466}
   - component: {fileID: 163077165127235768}
   - component: {fileID: 4082491348463974947}
-  - component: {fileID: 1770781807986952967}
-  m_Layer: 6
+  - component: {fileID: 6719538820510584714}
+  m_Layer: 0
   m_Name: WirePanelElbow(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6719538820510584714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6719538820510584713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f5d3db1351391459dd77c0ae2f392a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upConnected: 0
+  downConnected: 0
+  leftConnected: 0
+  rightConnected: 0
 --- !u!1 &6803666259992479308
 GameObject:
   m_ObjectHideFlags: 0
@@ -4031,7 +3750,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.29999995, y: 0.3, z: 0.062017538}
   m_Center: {x: 0.00000011920929, y: 0.000000007450581, z: 0.031008746}
@@ -4163,6 +3882,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7089706324350833724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3778721527295808958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f5d3db1351391459dd77c0ae2f392a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upConnected: 0
+  downConnected: 0
+  leftConnected: 0
+  rightConnected: 0
 --- !u!4 &7121876073312126819
 Transform:
   m_ObjectHideFlags: 0
@@ -4186,6 +3921,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5179698261853521956}
   m_Mesh: {fileID: 6075097823486338588, guid: a96d79b151dc362459e64fa44cfce3f6, type: 3}
+--- !u!114 &7133229215102556296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5179698261853521956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f5d3db1351391459dd77c0ae2f392a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upConnected: 0
+  downConnected: 0
+  leftConnected: 0
+  rightConnected: 0
 --- !u!33 &7200448775965560279
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4227,7 +3978,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.30000004, y: 0.3, z: 0.04122524}
   m_Center: {x: 0.000000014901161, y: 0, z: 0.020612597}
@@ -4371,10 +4122,26 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.3, y: 0.3, z: 0.042944767}
   m_Center: {x: 0.000000029802322, y: 0.000000007450581, z: 0.021472361}
+--- !u!114 &8266825664354478997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5200941265595613127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f5d3db1351391459dd77c0ae2f392a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upConnected: 0
+  downConnected: 0
+  leftConnected: 0
+  rightConnected: 0
 --- !u!4 &8361841974557677035
 Transform:
   m_ObjectHideFlags: 0
@@ -4390,6 +4157,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6108688717064475702}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8361841974557677036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5350659652311864710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f5d3db1351391459dd77c0ae2f392a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upConnected: 0
+  downConnected: 0
+  leftConnected: 0
+  rightConnected: 0
 --- !u!23 &8363044004226579501
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4447,6 +4230,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6108688717064475702}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8460847519861003407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052670799682829622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f5d3db1351391459dd77c0ae2f392a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upConnected: 0
+  downConnected: 0
+  leftConnected: 0
+  rightConnected: 0
 --- !u!33 &8754623426166463317
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4455,6 +4254,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 925179008359822568}
   m_Mesh: {fileID: 7468017091391701065, guid: a96d79b151dc362459e64fa44cfce3f6, type: 3}
+--- !u!114 &8754623426166463318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925179008359822568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f5d3db1351391459dd77c0ae2f392a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upConnected: 0
+  downConnected: 0
+  leftConnected: 0
+  rightConnected: 0
 --- !u!33 &8935901008847366592
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4478,36 +4293,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6108688717064475702}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9021027389133756270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3026380553415783362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597950852afb9d741a2803d763781f86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ElectricalCircuit: {fileID: 0}
-  ComponentIcon: {fileID: 2800000, guid: 4c47f3d58e8152c4f8c697928d946384, type: 3}
-  ComponentMesh: {fileID: 2096494309871942732}
-  ComponentUp: 4
-  Coords: {x: 1, y: 3}
-  Angle: 270
-  FlowDirections:
-  - FlowDirections: 0200000001000000
-    FlowRenderer:
-    - meshRenderer: {fileID: 4750625158890922028}
-      material: {fileID: 2100000, guid: 08a8efb7c56d57a44af98a48d19012ab, type: 2}
-      materialIndex: 1
-  - FlowDirections: 0000000003000000
-    FlowRenderer:
-    - meshRenderer: {fileID: 4750625158890922028}
-      material: {fileID: 2100000, guid: 1018c5e6c9ea5314db96e107d764210b, type: 2}
-      materialIndex: 2
-  PowerFlows: []
 --- !u!4 &9038680959751952667
 Transform:
   m_ObjectHideFlags: 0
@@ -4540,10 +4325,26 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.3, y: 0.3, z: 0.041225247}
   m_Center: {x: -0.000000029802322, y: 0.000000007450581, z: 0.020612601}
+--- !u!114 &9054459634608413086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5582842029828452018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f5d3db1351391459dd77c0ae2f392a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upConnected: 0
+  downConnected: 0
+  leftConnected: 0
+  rightConnected: 0
 --- !u!1 &9104179476267504435
 GameObject:
   m_ObjectHideFlags: 0
@@ -4556,14 +4357,30 @@ GameObject:
   - component: {fileID: 2460921630041236842}
   - component: {fileID: 5480040932245638613}
   - component: {fileID: 5465879148986257085}
-  - component: {fileID: 2299228225063452247}
-  m_Layer: 6
+  - component: {fileID: 9104179476267504436}
+  m_Layer: 0
   m_Name: WirePanelElbow(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &9104179476267504436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9104179476267504435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f5d3db1351391459dd77c0ae2f392a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upConnected: 0
+  downConnected: 0
+  leftConnected: 0
+  rightConnected: 0
 --- !u!65 &9142541289449151415
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4581,10 +4398,26 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.3, y: 0.3, z: 0.041225247}
   m_Center: {x: -0.000000029802322, y: 0.000000007450581, z: 0.020612601}
+--- !u!114 &9142541289449151416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646129282351868683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f5d3db1351391459dd77c0ae2f392a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upConnected: 0
+  downConnected: 0
+  leftConnected: 0
+  rightConnected: 0
 --- !u!33 &9183921246885348633
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4593,6 +4426,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5379022300361228031}
   m_Mesh: {fileID: -3431641084622305393, guid: a96d79b151dc362459e64fa44cfce3f6, type: 3}
+--- !u!114 &9183921246885348634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5379022300361228031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f5d3db1351391459dd77c0ae2f392a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upConnected: 0
+  downConnected: 0
+  leftConnected: 0
+  rightConnected: 0
 --- !u!4 &9188033414021791092
 Transform:
   m_ObjectHideFlags: 0
@@ -4608,6 +4457,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6108688717064475702}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9188033414021791093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2289270290838823146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f5d3db1351391459dd77c0ae2f392a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upConnected: 0
+  downConnected: 0
+  leftConnected: 0
+  rightConnected: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
