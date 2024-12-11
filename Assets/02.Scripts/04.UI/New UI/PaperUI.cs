@@ -27,7 +27,7 @@ public class PaperUI : PopupUI
 
     public override void CloseUI()
     {
-        UIManager.Instance.Hide<PaperUI>();
+        base.CloseUI();
     }
 
     private void Start()
