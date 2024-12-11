@@ -19,7 +19,7 @@ public enum ObjectType
 {
     Door,
     Drawer,
-    Cabinet
+    Cabinet,
 }
 
 public enum ConsumableType
