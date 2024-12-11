@@ -18,9 +18,14 @@ public class QuickSlotController : MonoBehaviour
 
     private void OnEnable()
     {
-        for(int i=0; i<4; i++)
+        SetQuickSlotUI();
+    }
+
+    public void SetQuickSlotUI()
+    {
+        for (int i = 0; i < 4; i++)
         {
-            quickSlots[i].quickIndex = i;   
+            quickSlots[i].quickIndex = i;
         }
 
         for (int i = 0; i < 15; i++)

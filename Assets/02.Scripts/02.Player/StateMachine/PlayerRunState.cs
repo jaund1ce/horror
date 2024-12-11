@@ -11,6 +11,7 @@ public class PlayerRunState : PlayerGroundState
 
     public override void Enter()
     {
+        stateMachine.Player.Input.isRunning = true;
         stateMachine.MovementSpeedModifier = groundData.RunSpeedModifier;
         base.Enter();
         StartAnimation(stateMachine.Player.AnimationData.RunParameterHash);
@@ -18,6 +19,7 @@ public class PlayerRunState : PlayerGroundState
 
     public override void Exit()
     {
+        stateMachine.Player.Input.isRunning = false;
         base.Exit();
         StopAnimation(stateMachine.Player.AnimationData.RunParameterHash);
     }
@@ -25,7 +27,7 @@ public class PlayerRunState : PlayerGroundState
     public override void Update()
     {
         base.Update();
-        if (stateMachine.Player.Input.IsRunning)
+        if (!stateMachine.Player.Input.RunningReady)
         {
             stateMachine.ChangeState(stateMachine.WalkState);
         }

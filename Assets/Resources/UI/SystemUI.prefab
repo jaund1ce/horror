@@ -356,7 +356,6 @@ GameObject:
   - component: {fileID: 4356006573727920041}
   - component: {fileID: 2817831874737405461}
   - component: {fileID: 4290590313694159127}
-  - component: {fileID: 7952077090537341601}
   m_Layer: 5
   m_Name: SystemUIPanel
   m_TagString: Untagged
@@ -425,21 +424,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7952077090537341601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3385432185637775503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 849c156b45f512542914821d8382c7ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startSceneName: JYH_StartScene
-  mainSceneName: JYHScene
-  endSceneName: JYH_EndScene
 --- !u!1 &3591186287665971499
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,9 +861,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7952077090537341601}
-        m_TargetAssemblyTypeName: Main_SceneManager, Assembly-CSharp
-        m_MethodName: LoadStartScene
+      - m_Target: {fileID: 2591734588704231616}
+        m_TargetAssemblyTypeName: SystemUI, Assembly-CSharp
+        m_MethodName: LoadStart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1144,9 +1128,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7952077090537341601}
-        m_TargetAssemblyTypeName: Main_SceneManager, Assembly-CSharp
-        m_MethodName: LoadMainScene
+      - m_Target: {fileID: 2591734588704231616}
+        m_TargetAssemblyTypeName: SystemUI, Assembly-CSharp
+        m_MethodName: LoadMain
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

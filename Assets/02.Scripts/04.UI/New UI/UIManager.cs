@@ -7,8 +7,11 @@ using UnityEngine.UI;
 public class UIManager : mainSingleton<UIManager>
 {
     private List<BaseUI> uiList = new List<BaseUI>(); // 인스턴스화된 UI 저장
+    public int paperInteractionCount; // 단서 UI 해금 조건 Count
+
     private MainUI mainUI; // 인스펙터에서 넣는거는 프로젝트의 원본의 오브젝트고 실제로 동작하고싶은건 인스턴시에이트
     //된 아이를 컨트롤 하고싶어서 miss 나는것
+
 
     protected override void Awake()
     {
@@ -26,6 +29,10 @@ public class UIManager : mainSingleton<UIManager>
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
+
+        paperInteractionCount = 0;
+
+        Time.timeScale = 1f;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)

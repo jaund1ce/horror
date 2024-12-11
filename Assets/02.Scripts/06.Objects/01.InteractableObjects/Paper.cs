@@ -14,31 +14,17 @@ public class Paper : MonoBehaviour, IInteractable
     }
     public void OnInteract()
     {
-        PlayerInteraction playerInteraction = FindObjectOfType<PlayerInteraction>();
-        if (playerInteraction != null)
+        Animator animator = GetComponent<Animator>();
+        if (animator != null)
         {
-            // PaperInteractionCount 업데이트
-            playerInteraction.paperInteractionCount += paperData.value;
-
-            Debug.Log($"PaperInteractionCount: {playerInteraction.paperInteractionCount}");
-            UIManager.Instance.Show<PaperUI>();
-            // PaperInteractionCount에 따라 특정 동작 수행
-            if (playerInteraction.paperInteractionCount == 1)
-            {
-               
-            }
+            animator.SetTrigger("Interact"); // Animator에 "Interact"라는 트리거가 설정되어 있어야 함
         }
+        UIManager.Instance.paperInteractionCount += paperData.value;
+        Debug.Log($"PaperInteractionCount: {UIManager.Instance.paperInteractionCount}");
+
+        UIManager.Instance.Show<PaperUI>();
+        
+        Destroy(gameObject);
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

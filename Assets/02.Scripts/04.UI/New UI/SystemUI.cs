@@ -2,6 +2,14 @@ using UnityEngine;
 
 public class SystemUI : PopupUI
 {
+    public void LoadStart()
+    {
+        Main_SceneManager.Instance.LoadStartScene();
+    }
+    public void LoadMain()
+    {
+        Main_SceneManager.Instance.LoadMainScene();
+    }
     public override void OnEnable()
     {
         base.OnEnable();
