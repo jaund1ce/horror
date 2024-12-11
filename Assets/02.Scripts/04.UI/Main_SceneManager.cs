@@ -3,11 +3,16 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Main_SceneManager : MonoBehaviour
+public class Main_SceneManager : mainSingleton<Main_SceneManager>
 {
     [SerializeField] private string startSceneName;
     [SerializeField] private string mainSceneName;
     [SerializeField] private string endSceneName;
+
+    protected override void Awake()
+    {
+        base.Awake();
+    }
 
     public void LoadStartScene()
     {
@@ -45,4 +50,10 @@ public class Main_SceneManager : MonoBehaviour
         Application.Quit();
         #endif
     }
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+    }
+        
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SystemUI : PopupUI
+public class DieUI : PopupUI
 {
     public void LoadStart()
     {
@@ -9,6 +9,10 @@ public class SystemUI : PopupUI
     public void LoadMain()
     {
         Main_SceneManager.Instance.LoadMainScene();
+    }
+    public void LoadQuit()
+    {
+        Main_SceneManager.Instance.QuitGame();
     }
     public override void OnEnable()
     {

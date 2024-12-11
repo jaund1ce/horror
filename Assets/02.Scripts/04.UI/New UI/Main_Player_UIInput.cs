@@ -3,10 +3,16 @@ using UnityEngine;
 public class Main_Player_UIInput : MonoBehaviour
 {
     private PlayerInputs playerInputs;
+    private Health health;
 
     private void Awake()
     {
         playerInputs = new PlayerInputs();
+        health = GetComponent<Health>();
+        if (health == null)
+        {
+            Debug.LogWarning("Health 컴포넌트를 찾을 수 없습니다. OnDie 이벤트는 등록되지 않습니다.");
+        }
     }
 
     private void OnEnable()
@@ -14,6 +20,10 @@ public class Main_Player_UIInput : MonoBehaviour
         playerInputs.Enable();
         playerInputs.Player.Inventory.performed += OnInventory;
         playerInputs.Player.Menu.performed += OnSystemMenu;
+        if (health != null)
+        {
+            health.OnDie += OnDieUI; // 이벤트 구독
+        }
     }
 
     private void OnDisable()
@@ -21,6 +31,10 @@ public class Main_Player_UIInput : MonoBehaviour
         playerInputs.Disable();
         playerInputs.Player.Inventory.performed -= OnInventory;
         playerInputs.Player.Menu.performed -= OnSystemMenu;
+        if (health != null)
+        {
+            health.OnDie -= OnDieUI; // 이벤트 구독 해제
+        }
     }
 
 
@@ -39,5 +53,12 @@ public class Main_Player_UIInput : MonoBehaviour
         UIManager.Instance.Hide<InventoryUI>();
         UIManager.Instance.Show<SystemUI>();
 
+    }
+
+    private void OnDieUI()
+    {
+        UIManager.Instance.Hide<PaperUI>();
+        UIManager.Instance.Hide<InventoryUI>();
+        UIManager.Instance.Show<DieUI>();
     }
 }

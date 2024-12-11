@@ -1,4 +1,7 @@
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public abstract class BaseUI : MonoBehaviour
 {

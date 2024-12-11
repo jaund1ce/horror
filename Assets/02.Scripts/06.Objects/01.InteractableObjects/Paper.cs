@@ -21,8 +21,10 @@ public class Paper : MonoBehaviour, IInteractable
         }
         UIManager.Instance.paperInteractionCount += paperData.value;
         Debug.Log($"PaperInteractionCount: {UIManager.Instance.paperInteractionCount}");
+
         UIManager.Instance.Show<PaperUI>();
         
+        Destroy(gameObject);
     }
 
 }
