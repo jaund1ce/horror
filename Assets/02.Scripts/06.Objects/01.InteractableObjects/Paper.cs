@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Paper : MonoBehaviour, IInteractable
 {
-    public PaperDate paperData;
+    public PaperSO paperData;
 
     public string GetInteractPrompt()
     {

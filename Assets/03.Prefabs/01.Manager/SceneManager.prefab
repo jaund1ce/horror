@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 849c156b45f512542914821d8382c7ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSceneName: JYH_StartScene
-  mainSceneName: JYHScene
-  endSceneName: JYH_EndScene
+  startSceneName: StartScene
+  mainSceneName: MainScene
+  endSceneName: EndScene
