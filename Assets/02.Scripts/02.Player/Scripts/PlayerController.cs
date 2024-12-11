@@ -16,9 +16,10 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private CinemachineVirtualCamera playercamera;
     private CinemachinePOV pov;
-    public float rotateXSencitivity;//  = () => GameManager.Instance.Player.
+    public float rotateXSencitivity;
     public bool Rotateable = true;
-    public bool IsRunning = false;
+    public bool RunningReady = false;
+    public bool isRunning = false;
 
     private void Awake()
     {
@@ -33,7 +34,7 @@ public class PlayerController : MonoBehaviour
         playerInputs.Enable();
         playerActions.Look.started += RotateCamera;
         playerActions.Run.started += ChangeRunState;
-        playerActions.Run.canceled += ChangeRunState;
+        playerActions.Run.canceled += ChangeRunState2;
     }
 
     private void OnDisable()
@@ -41,7 +42,7 @@ public class PlayerController : MonoBehaviour
         playerInputs.Disable();
         playerActions.Look.started -= RotateCamera;
         playerActions.Run.canceled -= ChangeRunState;
-        playerActions.Run.canceled -= ChangeRunState;
+        playerActions.Run.canceled -= ChangeRunState2;
     }
 
 
@@ -88,6 +89,10 @@ public class PlayerController : MonoBehaviour
 
     private void ChangeRunState(InputAction.CallbackContext context)
     {
-        IsRunning = !IsRunning; 
+        RunningReady = true; 
+    }
+    private void ChangeRunState2(InputAction.CallbackContext context)
+    {
+        RunningReady = false;
     }
 }
