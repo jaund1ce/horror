@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 5529642402161023434}
   - component: {fileID: 7779377863286894847}
   - component: {fileID: 521131492606642160}
-  - component: {fileID: 2202295675858730074}
+  - component: {fileID: 6485277013321181572}
   m_Layer: 6
   m_Name: Door_A
   m_TagString: Untagged
@@ -380,7 +380,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0.8524889, z: 0}
   m_Axis: {x: 0, y: 90, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -43.91397, y: 2.6115544, z: 64.791504}
+  m_ConnectedAnchor: {x: -43.82507, y: 3.072088, z: 64.704}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -407,7 +407,7 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &2202295675858730074
+--- !u!114 &6485277013321181572
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -416,14 +416,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2749794324653910695}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f535789cf5ce28345be950e4c91e5a76, type: 3}
+  m_Script: {fileID: 11500000, guid: ceb491c99dcc2d64dbbb64304cb6b7f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openAngle: 90
+  openAngle: 150
   closeAngle: 0
   speed: 5
-  openRange: 5
+  openRange: 3
   player: {fileID: 0}
+  doorFrameCollider: {fileID: 0}
 --- !u!1 &3383000070750489371
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,8 +459,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: -44.20607, y: 0.37135458, z: 65.079}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 1.5, y: 1.261545, z: 1.5}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7686792002906004321}
   - {fileID: 85085063826549376}
@@ -737,7 +738,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   insidePosition: {fileID: 6452018584891983683}
+  outsidePosition: {fileID: 0}
+  cabinetDoor: {fileID: 0}
+  cabinetDoorCollider: {fileID: 0}
   characterController: {fileID: 0}
+  interactDistance: 3
+  doorOpenAngle: 90
+  doorSpeed: 2
 --- !u!1 &4327879837685982043
 GameObject:
   m_ObjectHideFlags: 0
