@@ -140,6 +140,7 @@ MonoBehaviour:
   playercamera: {fileID: 2949480258815605600}
   rotateXSencitivity: 300
   Rotateable: 1
+  IsRunning: 0
 --- !u!114 &8287903761675837026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,8 +282,8 @@ MonoBehaviour:
     Value: 0
     m_SpeedMode: 0
     m_MaxSpeed: 300
-    m_AccelTime: 0.1
-    m_DecelTime: 0.1
+    m_AccelTime: 0.05
+    m_DecelTime: 0
     m_InputAxisName: Mouse X
     m_InputAxisValue: 0
     m_InvertInput: 0
@@ -341,7 +342,7 @@ Transform:
   m_GameObject: {fileID: 8887936187397753127}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.6499999, z: 0.25}
+  m_LocalPosition: {x: 0, y: 1.6499999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

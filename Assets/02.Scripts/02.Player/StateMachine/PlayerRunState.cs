@@ -25,7 +25,7 @@ public class PlayerRunState : PlayerGroundState
     public override void Update()
     {
         base.Update();
-        if (stateMachine.Player.Input.IsRunning)
+        if (!stateMachine.Player.Input.IsRunning)
         {
             stateMachine.ChangeState(stateMachine.WalkState);
         }
