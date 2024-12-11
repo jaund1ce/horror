@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class UIManager : mainSingleton<UIManager>
 {
     private List<BaseUI> uiList = new List<BaseUI>(); // 인스턴스화된 UI 저장
+    public int paperInteractionCount; // 단서 UI 해금 조건 Count
+
 
 
     protected override void Awake()
@@ -25,6 +27,10 @@ public class UIManager : mainSingleton<UIManager>
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
+
+        paperInteractionCount = 0;
+
+        Time.timeScale = 1f;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
