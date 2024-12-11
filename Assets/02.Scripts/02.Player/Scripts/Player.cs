@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     public Action useItem;
     public PlayerInventoryData playerInventoryData;
     public bool isChangingQuickSlot = false;
+    public PlayerState PlayerState = PlayerState.Normal;
 
     void Awake()
     {
