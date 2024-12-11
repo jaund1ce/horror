@@ -51,7 +51,7 @@ public class QuickSlot : MonoBehaviour
                 CurrentData = inventoryLH.CurrentInventoryData;
             }
             MainGameManager.Instance.Player.isChangingQuickSlot = false;
-            ChangeUI();
+            inventoryLH.QuickslotController.SetQuickSlotUI();
         }
         else
         {

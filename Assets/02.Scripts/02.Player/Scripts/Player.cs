@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     public PlayerInteraction Interact { get; private set; }
     public CharacterController Controller { get; private set; }
     public ForceReceiver ForceReceiver { get; private set; }
-    public Health health { get; private set; }
+    public PlayerConditionController health { get; private set; }
 
     private PlayerStateMachine2 stateMachine;
 
@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     public Action useItem;
     public PlayerInventoryData playerInventoryData;
     public bool isChangingQuickSlot = false;
+    public PlayerState PlayerState = PlayerState.Normal;
 
     void Awake()
     {
@@ -33,7 +34,7 @@ public class Player : MonoBehaviour
         Interact = GetComponentInChildren<PlayerInteraction>();
         Controller = GetComponent<CharacterController>();
         ForceReceiver = GetComponent<ForceReceiver>();
-        health = GetComponent<Health>();
+        health = GetComponent<PlayerConditionController>();
         playerInventoryData = GetComponent<PlayerInventoryData>();
 
         stateMachine = new PlayerStateMachine2(this);

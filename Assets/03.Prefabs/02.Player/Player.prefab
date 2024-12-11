@@ -44,9 +44,9 @@ GameObject:
   - component: {fileID: 10648387732540342}
   - component: {fileID: 6230964232614769512}
   - component: {fileID: 8287903761675837026}
-  - component: {fileID: 5728717315042407712}
   - component: {fileID: 7954731612506228827}
   - component: {fileID: 2887511944577959569}
+  - component: {fileID: 4289338087814186505}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -125,6 +125,7 @@ MonoBehaviour:
     hideParameterName: '@Hide'
   playerInventoryData: {fileID: 0}
   isChangingQuickSlot: 0
+  PlayerState: -1
 --- !u!114 &6230964232614769512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,7 +141,8 @@ MonoBehaviour:
   playercamera: {fileID: 2949480258815605600}
   rotateXSencitivity: 300
   Rotateable: 1
-  IsRunning: 0
+  RunningReady: 0
+  isRunning: 0
 --- !u!114 &8287903761675837026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,19 +157,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
   drag: 0.3
---- !u!114 &5728717315042407712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6649819140532374826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96fdf82f8dff1e04e9f4da1323fc05ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
 --- !u!114 &7954731612506228827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,6 +184,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea284d8037eb97a4ca39ef5f00cb3601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4289338087814186505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6649819140532374826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926f8c9a94bc1d24c990296829895407, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  PassiveHealth: 1
+  Health: 0
+  maxStamina: 100
+  PassiveStamina: 5
+  Stamina: 0
 --- !u!1 &7830904807444179832
 GameObject:
   m_ObjectHideFlags: 0

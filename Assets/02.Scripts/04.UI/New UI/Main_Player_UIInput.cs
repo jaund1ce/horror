@@ -3,12 +3,12 @@ using UnityEngine;
 public class Main_Player_UIInput : MonoBehaviour
 {
     private PlayerInputs playerInputs;
-    private Health health;
+    private PlayerConditionController health;
 
     private void Awake()
     {
         playerInputs = new PlayerInputs();
-        health = GetComponent<Health>();
+        health = GetComponent<PlayerConditionController>();
         if (health == null)
         {
             Debug.LogWarning("Health 컴포넌트를 찾을 수 없습니다. OnDie 이벤트는 등록되지 않습니다.");
