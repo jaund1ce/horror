@@ -11,7 +11,7 @@ public class PlayerWalkState : PlayerGroundState
 
     public override void Enter()
     {
-        if (!stateMachine.Player.Input.IsRunning)
+        if (stateMachine.Player.Input.IsRunning)
         {
             stateMachine.ChangeState(stateMachine.RunState);
         }

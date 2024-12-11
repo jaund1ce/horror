@@ -70,7 +70,6 @@ public class Player : MonoBehaviour
         else
         {
             Input.rotateXSencitivity = Data.GroundData.BaseRotationDamping;
-            Input.rotateXSencitivity = Data.GroundData.BaseRotationDamping/6;
         }
     }
 }

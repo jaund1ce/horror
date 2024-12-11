@@ -44,6 +44,8 @@ public class PlayerController : MonoBehaviour
         playerActions.Run.canceled -= ChangeRunState;
     }
 
+
+
     private void RotateCamera(InputAction.CallbackContext context)//cinemachine의 aim방식에 따라서 회전시키는 방법은 다르다.
     {
         if (!Rotateable) return;
@@ -54,9 +56,9 @@ public class PlayerController : MonoBehaviour
             float rotatex = Mathf.Clamp(delta.y, -60f, 60f);
             float rotatey = Mathf.Clamp(delta.x, -60f, 60f);
 
-            pov.m_HorizontalAxis.m_MaxSpeed = rotateXSencitivity;
+            pov.m_HorizontalAxis.Value = rotatey * rotateXSencitivity * Time.deltaTime;
 
-            transform.rotation *= Quaternion.Euler(0f, rotatey * rotateXSencitivity * Time.deltaTime, 0f);
+            transform.Rotate(Vector3.up, pov.m_HorizontalAxis.Value);
 
             if (pov == null)
             {
@@ -79,7 +81,7 @@ public class PlayerController : MonoBehaviour
     {
         Rotateable = true;
         pov.m_HorizontalAxis.m_MaxSpeed = rotateXSencitivity;
-        pov.m_VerticalAxis.m_MaxSpeed = rotateXSencitivity/6;
+        pov.m_VerticalAxis.m_MaxSpeed = rotateXSencitivity;
         pov.m_HorizontalAxis.m_InputAxisName = "Mouse X";
         pov.m_VerticalAxis.m_InputAxisName = "Mouse Y";
     }
