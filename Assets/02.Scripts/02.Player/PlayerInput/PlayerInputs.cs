@@ -125,6 +125,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LightControl"",
+                    ""type"": ""Button"",
+                    ""id"": ""abed4b2d-4d1b-4f05-8c66-e88807ea3d94"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -292,6 +301,17 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Inventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""55471cdc-34e3-4aca-a209-d7b79aab9220"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LightControl"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -311,6 +331,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Player_LeaningRight = m_Player.FindAction("Leaning/Right", throwIfNotFound: true);
         m_Player_Menu = m_Player.FindAction("Menu", throwIfNotFound: true);
         m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
+        m_Player_LightControl = m_Player.FindAction("LightControl", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -383,6 +404,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_LeaningRight;
     private readonly InputAction m_Player_Menu;
     private readonly InputAction m_Player_Inventory;
+    private readonly InputAction m_Player_LightControl;
     public struct PlayerActions
     {
         private @PlayerInputs m_Wrapper;
@@ -398,6 +420,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         public InputAction @LeaningRight => m_Wrapper.m_Player_LeaningRight;
         public InputAction @Menu => m_Wrapper.m_Player_Menu;
         public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
+        public InputAction @LightControl => m_Wrapper.m_Player_LightControl;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -440,6 +463,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Inventory.started += instance.OnInventory;
             @Inventory.performed += instance.OnInventory;
             @Inventory.canceled += instance.OnInventory;
+            @LightControl.started += instance.OnLightControl;
+            @LightControl.performed += instance.OnLightControl;
+            @LightControl.canceled += instance.OnLightControl;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -477,6 +503,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Inventory.started -= instance.OnInventory;
             @Inventory.performed -= instance.OnInventory;
             @Inventory.canceled -= instance.OnInventory;
+            @LightControl.started -= instance.OnLightControl;
+            @LightControl.performed -= instance.OnLightControl;
+            @LightControl.canceled -= instance.OnLightControl;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -507,5 +536,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         void OnLeaningRight(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
+        void OnLightControl(InputAction.CallbackContext context);
     }
 }

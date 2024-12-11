@@ -55,6 +55,7 @@ public class PlayerInteraction : MonoBehaviour
                 }
 
                 CurrentInteracteable = iteractable;
+                UIManager.Instance.ActivePromptUI(CurrentInteracteable);
 
                 if(CurrentInteracteable is ItemBase)
                 {
@@ -65,6 +66,7 @@ public class PlayerInteraction : MonoBehaviour
             else
             {
                 CurrentInteracteable = null;
+                UIManager.Instance.ActivePromptUI(null);
                 //temUIManager.CloseInteractPanel();
             }
         }

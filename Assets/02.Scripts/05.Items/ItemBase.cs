@@ -14,6 +14,12 @@ public class ItemBase : MonoBehaviour,IInteractable
         inventoryslotcontroller = MainGameManager.Instance.Player.playerInventoryData;
     }
 
+    public string GetInteractPrompt()
+    {
+        string str = $"{itemSO.itemData.ItemNameEng}";
+        return str;
+    }
+
     public void OnInteract()
     {
         //GameManger.instance.Player.Inventorydata.AddItem(itemSO);
