@@ -126,12 +126,13 @@ public class CreatureBaseState : IState
     {
         NavMeshHit hit;
         Vector3 radius = Random.onUnitSphere * Random.Range(minWanderDistance, maxWanderDistance);
-        radius.y = 0;
+        radius.y = 0f;
         //sourcePosition : 일정한 영역 hit : 이동할수있는 경로의 최단 경로 
         Vector3 randomPosition = creatureTransform.position + radius;
 
         if (NavMesh.SamplePosition(randomPosition, out hit, maxWanderDistance, walkableMask) == false) return;
             movementLocation = hit.position;
+        Debug.Log(movementLocation);
             setLocation = true;
     }
 
@@ -141,7 +142,7 @@ public class CreatureBaseState : IState
         {
             setLocation = true;
         }
-        if (Vector3.Distance(creatureTransform.position, movementLocation) < 1f || movementLocation == Vector3.zero )
+        if (Vector3.Distance(creatureTransform.position, movementLocation) < 2f || movementLocation == Vector3.zero )
         {
             setLocation = false;
         }

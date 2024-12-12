@@ -395,6 +395,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Creature
       objectReference: {fileID: 0}
+    - target: {fileID: 2056870907640678056, guid: ab7ab4d58ffd9e74aa824b10a3596d31, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2080526149833849169, guid: ab7ab4d58ffd9e74aa824b10a3596d31, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.0781918
@@ -762,7 +766,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.1
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 481ed54d8b1d8c546acaa22f8b9de18e, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: a666dda6707b28e49991137135573efc, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &1529155712 stripped
 GameObject:
@@ -909,7 +913,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3611880198018353212, guid: 8d12ed94734747d4a91ead2b0bc9f8f0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.45
+      value: -23.4
       objectReference: {fileID: 0}
     - target: {fileID: 3611880198018353212, guid: 8d12ed94734747d4a91ead2b0bc9f8f0, type: 3}
       propertyPath: m_LocalPosition.y
