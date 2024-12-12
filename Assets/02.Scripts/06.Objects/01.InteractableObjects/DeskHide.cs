@@ -3,29 +3,48 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class DeskHide : MonoBehaviour, IHideable
+public class DeskHide : MonoBehaviour, IHideable, IInteractable
 {
-    public Transform player; // 플레이어 Transform
+    public GameObject player; // 플레이어 Transform
     public Transform underDeskPosition; // 책상 밑 위치
     public Transform inFrontOfDeskPosition; // 책상 앞 위치
     public CharacterController characterController; // 플레이어 CharacterController
     public float interactDistance = 3f; // 상호작용 거리
 
     private bool isUnderDesk = false; // 플레이어가 책상 밑에 있는지 여부
+    private bool isPlayerNear = false;
 
-    void Update()
+    //void Update()
+    //{
+    //    float distance = Vector3.Distance(player.transform.position, transform.position);
+    //    if (distance <= interactDistance && Input.GetKeyDown(KeyCode.E))
+    //    {
+    //        if (!isUnderDesk)
+    //        {
+    //            OnHide();
+    //        }
+    //        else
+    //        {
+    //            OnExit();
+    //        }
+    //    }
+    //}
+
+    private void OnTriggerEnter(Collider other)
     {
-        float distance = Vector3.Distance(player.position, transform.position);
-        if (distance <= interactDistance && Input.GetKeyDown(KeyCode.E))
+        if (other.gameObject.CompareTag("Player"))
         {
-            if (!isUnderDesk)
-            {
-                OnHide();
-            }
-            else
-            {
-                OnExit();
-            }
+            player = other.gameObject;
+            isPlayerNear = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            player = null;
+            isPlayerNear = false;
         }
     }
 
@@ -39,8 +58,8 @@ public class DeskHide : MonoBehaviour, IHideable
             characterController.enabled = false; // 캐릭터 컨트롤러 비활성화
         }
 
-        player.position = underDeskPosition.position;
-        player.rotation = underDeskPosition.rotation;
+        player.transform.position = underDeskPosition.position;
+        player.transform.rotation = underDeskPosition.rotation;
 
         isUnderDesk = true;
     }
@@ -52,8 +71,8 @@ public class DeskHide : MonoBehaviour, IHideable
         Debug.Log("Exiting to the front of the desk...");
 
         // 책상 앞의 위치로 즉시 이동
-        player.position = inFrontOfDeskPosition.position;
-        player.rotation = inFrontOfDeskPosition.rotation;
+        player.transform.position = inFrontOfDeskPosition.position;
+        player.transform.rotation = inFrontOfDeskPosition.rotation;
 
         if (characterController != null)
         {
@@ -61,5 +80,21 @@ public class DeskHide : MonoBehaviour, IHideable
         }
 
         isUnderDesk = false;
+    }
+
+    public void OnInteract()
+    {
+        if (!isPlayerNear) return;
+
+        if (!isUnderDesk) OnHide();
+        else OnExit();
+    }
+
+    public string GetInteractPrompt()
+    {
+        if (isUnderDesk) return "Out";
+        else if (!isPlayerNear) return "Get Near";
+        else if (isPlayerNear) return "Hide";
+        else return "";
     }
 }
