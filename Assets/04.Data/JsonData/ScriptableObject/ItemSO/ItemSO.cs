@@ -14,7 +14,7 @@ public class ItemData
     public int ItemHealHealth;
     public int ItemHealMental;
     public string ItemDescription;
-    public bool stackable;
+    public bool Stackable;
 
     public Sprite ItemImage;
 }

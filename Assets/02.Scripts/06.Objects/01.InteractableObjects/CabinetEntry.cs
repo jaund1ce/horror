@@ -8,9 +8,9 @@ public interface IHideable
     public void OnExit();
 }
 
-public class CabinetEntry : MonoBehaviour, IHideable
+public class CabinetEntry : MonoBehaviour, IHideable, IInteractable
 {
-    public Transform player; // 플레이어 Transform
+    public GameObject player; // 플레이어 Transform
     public Transform insidePosition; // 캐비닛 내부 위치
     public Transform outsidePosition; // 캐비닛 외부 위치
     public Transform cabinetDoor; // 캐비닛 문 Transform
@@ -20,26 +20,51 @@ public class CabinetEntry : MonoBehaviour, IHideable
     public float doorOpenAngle = 90f; // 문 열림 각도
     public float doorSpeed = 2f; // 문 열림 속도
 
-    private bool isDoorOpen = false; // 문이 열렸는지 여부
-    private bool isPlayerInside = false; // 플레이어가 캐비닛 내부에 있는지 여부
+    [SerializeField]private bool isDoorOpen = false; // 문이 열렸는지 여부
+    [SerializeField] private bool isPlayerInside = false; // 플레이어가 캐비닛 내부에 있는지 여부
+    [SerializeField] private bool isPlayerNear = false;
 
-    void Update()
+    //void Update()
+    //{
+    //    float distance = Vector3.Distance(player.position, transform.position);
+    //    if (distance <= interactDistance && Input.GetKeyDown(KeyCode.E))
+    //    {
+    //        if (!isDoorOpen)
+    //        {
+    //            StartCoroutine(OpenDoor());
+    //        }
+    //        else if (isDoorOpen && !isPlayerInside)
+    //        {
+    //            OnHide();
+    //        }
+    //        else if (isPlayerInside)
+    //        {
+    //            OnExit();
+    //        }
+    //    }
+    //}
+
+    private void GetPlayerData()
     {
-        float distance = Vector3.Distance(player.position, transform.position);
-        if (distance <= interactDistance && Input.GetKeyDown(KeyCode.E))
+        characterController = player.GetComponent<CharacterController>();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
         {
-            if (!isDoorOpen)
-            {
-                StartCoroutine(OpenDoor());
-            }
-            else if (isDoorOpen && !isPlayerInside)
-            {
-                OnHide();
-            }
-            else if (isPlayerInside)
-            {
-                OnExit();
-            }
+            isPlayerNear = true;
+            player = other.gameObject;
+            GetPlayerData();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            isPlayerNear = false;
+            player = null;
         }
     }
 
@@ -49,13 +74,13 @@ public class CabinetEntry : MonoBehaviour, IHideable
 
         // 캐릭터 이동 처리
         if (characterController != null)
-        {
+        {            
             characterController.enabled = false; // 캐릭터 컨트롤러 비활성화
         }
 
         // 캐비닛 내부 위치로 이동
-        player.position = insidePosition.position;
-        player.rotation = insidePosition.rotation;
+        player.transform.position = insidePosition.position;
+        player.transform.rotation = insidePosition.rotation;
 
         isPlayerInside = true;
     }
@@ -65,8 +90,8 @@ public class CabinetEntry : MonoBehaviour, IHideable
         Debug.Log("Player is exiting the cabinet...");
 
         // 캐비닛 외부 위치로 이동
-        player.position = outsidePosition.position;
-        player.rotation = outsidePosition.rotation;
+        player.transform.position = outsidePosition.position;
+        player.transform.rotation = outsidePosition.rotation;
 
         // 캐릭터 컨트롤러 활성화
         if (characterController != null)
@@ -109,5 +134,33 @@ public class CabinetEntry : MonoBehaviour, IHideable
         }
 
         Debug.Log("Cabinet door opened.");
+    }
+
+    public void OnInteract()
+    {
+        if (!isPlayerNear) return;
+
+        if (!isDoorOpen)
+        {
+            StartCoroutine(OpenDoor());
+        }
+        else if (isDoorOpen && !isPlayerInside)
+        {
+            OnHide();
+        }
+        else if (isPlayerInside)
+        {
+            OnExit();
+        }
+    }
+
+    public string GetInteractPrompt()
+    {
+        if (!isPlayerNear) return "Get Near";
+
+        if (!isDoorOpen) return "Open";
+        else if (isPlayerInside) return "Get Out";
+        else if (isDoorOpen && isPlayerNear) return "Get Inside";
+        else return "Err";
     }
 }

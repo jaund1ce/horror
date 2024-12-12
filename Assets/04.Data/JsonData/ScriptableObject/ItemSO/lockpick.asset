@@ -16,11 +16,11 @@ MonoBehaviour:
     ID: 1002
     ItemNameEng: lockpick
     ItemNameKor: "\uB77D\uD53D"
-    ItemType: 3
+    ItemType: 0
     ItemEffect: "\uB77D\uD53D\uD37C\uC990 \uD480\uB54C \uC18C\uBAA8"
     ItemHealHealth: 0
     ItemHealMental: 0
     ItemDescription: "\uB77D\uD53D\uD37C\uC990\uB85C \uC7A0\uAE34 \uBB38\uC744 \uC5F4\uB54C
       \n\uC0AC\uC6A9\uD558\uB294 \uB3C4\uAD6C."
-    stackable: 0
+    Stackable: 0
     ItemImage: {fileID: 0}

@@ -10,7 +10,7 @@ public class DoorWithHinge : MonoBehaviour
     public float closeAngle = 0f;  // 문 닫힘 각도
     public float speed = 5f; // 문 열리는 속도
     public float openRange = 3f; // 문을 열 수 있는 최대 거리
-    public Transform player; // 플레이어의 Transform (씬에서 직접 연결)
+    //public Transform player; // 플레이어의 Transform (씬에서 직접 연결)
     public Collider doorFrameCollider; // 문틀의 Collider
 
     void Start()
@@ -42,19 +42,19 @@ public class DoorWithHinge : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        if (player != null)
-        {
-            float distance = Vector3.Distance(transform.position, player.position);
+    //void Update()
+    //{
+    //    if (player != null)
+    //    {
+    //        float distance = Vector3.Distance(transform.position, player.position);
 
-            // 플레이어가 문 범위 안에 있을 때만 열고 닫기
-            if (distance <= openRange && Input.GetKeyDown(KeyCode.E))
-            {
-                ToggleDoor();
-            }
-        }
-    }
+    //        // 플레이어가 문 범위 안에 있을 때만 열고 닫기
+    //        if (distance <= openRange && Input.GetKeyDown(KeyCode.E))
+    //        {
+    //            ToggleDoor();
+    //        }
+    //    }
+    //}
 
     public void ToggleDoor()
     {
