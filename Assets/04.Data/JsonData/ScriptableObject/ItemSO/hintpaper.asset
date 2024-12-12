@@ -16,10 +16,10 @@ MonoBehaviour:
     ID: 1007
     ItemNameEng: hintpaper
     ItemNameKor: "\uD78C\uD2B8\uC885\uC774"
-    ItemType: 0
+    ItemType: 4
     ItemEffect: "\uD78C\uD2B8\uAC00 \uC801\uD798"
     ItemHealHealth: 0
     ItemHealMental: 0
     ItemDescription: "\uD78C\uD2B8\uAC00 \uC801\uD78C \uC885\uC774"
-    stackable: 0
+    Stackable: 0
     ItemImage: {fileID: 0}

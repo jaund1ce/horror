@@ -44,7 +44,7 @@ public class PlayerInventoryData : MonoBehaviour
 
     public void AddItem(ItemSO itemData)
     {
-        if (itemData.itemData.stackable)
+        if (itemData.itemData.Stackable)
         {
             CheckStack(itemData);
         }

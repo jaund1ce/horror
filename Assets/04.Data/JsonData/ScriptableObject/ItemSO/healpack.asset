@@ -16,11 +16,11 @@ MonoBehaviour:
     ID: 1009
     ItemNameEng: healpack
     ItemNameKor: "\uCC44\uB825\uD329"
-    ItemType: 0
+    ItemType: 2
     ItemEffect: "\uCCB4\uB825\uD68C\uBCF5"
     ItemHealHealth: 100
     ItemHealMental: 0
     ItemDescription: "\uCCB4\uB825\uC744 \uBB34\uC870\uAC74 \uAF49\uCC44\uC6B0\uB294
       \uD68C\uBCF5\uD15C"
-    stackable: 1
-    ItemImage: {fileID: 21300000, guid: 962a649a059108046bfa10b3b8838f0c, type: 3}
+    Stackable: 1
+    ItemImage: {fileID: 0}
