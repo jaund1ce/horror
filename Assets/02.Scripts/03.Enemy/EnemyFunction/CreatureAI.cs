@@ -135,6 +135,7 @@ public class CreatureAI : MonoBehaviour , AggroGage
     public void FeelThePlayer() 
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, Data.FeelPlayerRange , player);
+        MainGameManager.Instance.Player.PlayerState = PlayerState.Chased;
 
         foreach (Collider collider in colliders) 
         {
