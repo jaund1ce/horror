@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3dc2072986e21643bae469b1fb5c042, type: 3}
+  m_Script: {fileID: 11500000, guid: 9349ae882313bda47b18be55d67b17d4, type: 3}
   m_Name: indicationPaper
   m_EditorClassIdentifier: 
-  itemData:
+  itemSO:
     ID: 1008
     ItemNameEng: indicationPaper
     ItemNameKor: "\uC9C0\uC2DC\uC885\uC774"
-    ItemType: 0
+    ItemType: 4
     ItemEffect: "\uC9C0\uC2DC\uAC00 \uC801\uD798"
     ItemHealHealth: 0
     ItemHealMental: 0

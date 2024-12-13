@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3dc2072986e21643bae469b1fb5c042, type: 3}
+  m_Script: {fileID: 11500000, guid: 9349ae882313bda47b18be55d67b17d4, type: 3}
   m_Name: sedative
   m_EditorClassIdentifier: 
-  itemData:
+  itemSO:
     ID: 1010
     ItemNameEng: sedative
     ItemNameKor: "\uD56D\uBD88\uC548\uC81C"

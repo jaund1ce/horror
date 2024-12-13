@@ -61,7 +61,7 @@ public class QuickSlot : MonoBehaviour
 
     public void OnUse()//Äü½½·Ô ¹öÆ° »ç¿ë ½Ã
     {
-        if (CurrentData.ItemData.ItemType == ItemType.CnsItem)
+        if (CurrentData.ItemData.itemSO.ItemType == ItemType.CnsItem)
         {
             CurrentData.amount -= 1;
 
@@ -72,7 +72,7 @@ public class QuickSlot : MonoBehaviour
                 return;
             }
         }
-        else if (CurrentData.ItemData.ItemType == ItemType.EquipItem)
+        else if (CurrentData.ItemData.itemSO.ItemType == ItemType.EquipItem)
         {
             //Player.EquipItemdata = CurrentItemData.ItemData;
         }
@@ -80,7 +80,7 @@ public class QuickSlot : MonoBehaviour
 
     public void ChangeUI()
     {
-        CurrentItemImage.sprite = CurrentData.ItemData.ItemImage;
+        CurrentItemImage.sprite = CurrentData.ItemData.itemSO.ItemImage;
         CurrentItemAmount.text = (CurrentData.amount).ToString();
     }
 }

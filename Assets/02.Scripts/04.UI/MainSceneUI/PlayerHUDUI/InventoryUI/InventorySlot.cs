@@ -35,7 +35,7 @@ public class InventorySlot : MonoBehaviour
 
     public void ChangeUI()
     {
-        CurrentItemImage.sprite = CurrentData.ItemData.ItemImage;
+        CurrentItemImage.sprite = CurrentData.ItemData.itemSO.ItemImage;
         CurrentItemAmount.text = (CurrentData.amount).ToString();
     }
 }

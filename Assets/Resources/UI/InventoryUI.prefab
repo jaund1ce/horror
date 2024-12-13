@@ -1181,7 +1181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a43c907a3eacfd438a6fd210c0fd657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryController: {fileID: 0}
+  inventoryController: {fileID: 7361472159510507804}
   slots: []
 --- !u!1 &7416965607142295257
 GameObject:
@@ -1562,7 +1562,7 @@ MonoBehaviour:
   itemNameText: {fileID: 8982665747072694363}
   itemDescriptionText: {fileID: 8181609536014462469}
   itemUseBTNText: {fileID: 3969668534474281596}
-  InventoryLH: {fileID: 7361472159510507804}
+  Inventory: {fileID: 7361472159510507804}
 --- !u!1 &9033927026198235745
 GameObject:
   m_ObjectHideFlags: 0

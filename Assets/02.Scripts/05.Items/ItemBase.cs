@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ItemBase : MonoBehaviour,IInteractable
 {
-    public ItemSO itemSO;
+    public ItemData itemData;
     private PlayerInventoryData inventoryslotcontroller;
 
     private void Start()
@@ -16,14 +16,14 @@ public class ItemBase : MonoBehaviour,IInteractable
 
     public string GetInteractPrompt()
     {
-        string str = $"{itemSO.itemData.ItemNameEng}";
+        string str = $"{itemData.itemSO.ItemNameEng}";
         return str;
     }
 
     public void OnInteract()
     {
         //GameManger.instance.Player.Inventorydata.AddItem(itemSO);
-        inventoryslotcontroller.AddItem(itemSO);
+        inventoryslotcontroller.AddItem(itemData);
         gameObject.SetActive(false);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [System.Serializable]//직렬화를 통해서 json을 사용가능하게 변경, json
-public class ItemData
+public class ItemSO
 {
     public int ID;
     public string ItemNameEng;
@@ -20,7 +20,7 @@ public class ItemData
 }
 
 [CreateAssetMenu(fileName = "Item",menuName = "ScriptableObject/SO_Item")]
-public class ItemSO : ScriptableObject
+public class ItemData : ScriptableObject
 {
-    public ItemData itemData;
+    public ItemSO itemSO;
 }
