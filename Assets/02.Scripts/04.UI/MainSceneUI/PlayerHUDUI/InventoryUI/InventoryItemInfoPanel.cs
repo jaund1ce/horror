@@ -12,6 +12,7 @@ public class InventoryItemInfoPanelelController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemUseBTNText;
     [SerializeField] private InventoryController Inventory;
 
+
     private void Awake()
     {
         Inventory.InventoryItemInfoPanelelController = this;
@@ -60,8 +61,8 @@ public class InventoryItemInfoPanelelController : MonoBehaviour
     {
         if (currentItemData == null) return;
 
-        // MainGameManager.Instance.player.CurrentItemSO = Inventory.CurrentInventoryData.ItemData;
-
+         MainGameManager.Instance.player.CurrentEquipItem = Inventory.CurrentInventoryData.ItemData;
+         
             /*if (currentItemData.amount <= 0)
             {
                 currentItemData.ResetData();

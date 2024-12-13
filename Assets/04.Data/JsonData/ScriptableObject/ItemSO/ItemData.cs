@@ -15,6 +15,7 @@ public class ItemSO
     public int ItemHealMental;
     public string ItemDescription;
     public bool Stackable;
+    public GameObject EquipPrefab;
 
     public Sprite ItemImage;
 }
