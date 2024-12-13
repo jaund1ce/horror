@@ -4,7 +4,6 @@ using UnityEngine;
 
 public abstract class EquipItemBase : MonoBehaviour
 {
-    protected float onUseRate;
     protected bool onUsing;
     protected string animUse = "Use";
     protected ItemSO itemSO;
