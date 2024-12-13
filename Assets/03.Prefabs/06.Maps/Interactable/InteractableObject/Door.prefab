@@ -664,6 +664,7 @@ MonoBehaviour:
   openAngle: -90
   closeAngle: 0
   openSpeed: 5
+  interactionCollider: {fileID: 8030648439613423639}
 --- !u!1 &6955154207240009244
 GameObject:
   m_ObjectHideFlags: 0
@@ -764,10 +765,10 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6360558719573625917, guid: 395b3f9b5107d154d8e9dae057b01c73, type: 3}
