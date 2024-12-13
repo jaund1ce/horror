@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Cinemachine;
 
 public class KeypadController : MonoBehaviour, IInteractable
@@ -10,27 +9,22 @@ public class KeypadController : MonoBehaviour, IInteractable
     public CinemachineVirtualCamera keypadCamera; // 키패드 카메라
 
     [Header("Keypad Settings")]
-    public float interactDistance = 3f; // 상호작용 거리
-
-    [Header("Keypad Buttons")]
-    public GameObject[] keypadButtons; // 키패드 버튼 오브젝트들 (Key_0~9, Cancel, Enter)
-    public GameObject cancelButton; // Cancel 버튼 오브젝트
-    public GameObject enterButton; // Enter 버튼 오브젝트
+    public GameObject[] keypadButtons; // 키패드 버튼 오브젝트들
+    public GameObject cancelButton; // Cancel 버튼
+    public GameObject enterButton; // Enter 버튼
     public string correctCode = "3895"; // 정답 코드
-
-    [Header("Audio Settings")]
-    public AudioClip buttonPressSound; // 버튼 누를 때 소리
-    public AudioClip successSound; // 정답 소리
-    public AudioClip errorSound; // 오답 소리
+    public AudioClip buttonPressSound; // 버튼 클릭 소리
+    public AudioClip successSound; // 성공 사운드
+    public AudioClip errorSound; // 실패 사운드
     public AudioSource audioSource; // 오디오 소스
 
-    public string currentInput = ""; // 현재 입력된 코드
-    public bool isUsingKeypad = false; // 키패드 사용 여부
+    private string currentInput = ""; // 현재 입력된 코드
+    public bool isUsingKeypad = false; // 키패드 활성화 여부
     public bool isPlayerNear = false; // 플레이어가 키패드 근처에 있는지 여부
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             isPlayerNear = true;
             Debug.Log("Player is near the keypad.");
@@ -39,7 +33,7 @@ public class KeypadController : MonoBehaviour, IInteractable
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             isPlayerNear = false;
             Debug.Log("Player left the keypad area.");
@@ -54,7 +48,6 @@ public class KeypadController : MonoBehaviour, IInteractable
 
         if (!isUsingKeypad)
         {
-            Debug.Log("Calling EnterKeypadView...");
             EnterKeypadView();
         }
         else
@@ -70,16 +63,11 @@ public class KeypadController : MonoBehaviour, IInteractable
 
         if (keypadCamera != null)
         {
-            keypadCamera.Priority = 11; // 키패드 카메라 활성화
+            keypadCamera.Priority = 11; // 카메라 활성화
         }
 
-        EnableKeypadButtons(true);
-
-        // 마우스 커서 활성화
-        Cursor.visible = true;
+        Cursor.visible = true; // 마우스 커서 활성화
         Cursor.lockState = CursorLockMode.None;
-
-        // 플레이어 컨트롤 비활성화 (여기서 구현 필요)
     }
 
     private void ExitKeypadView()
@@ -89,60 +77,24 @@ public class KeypadController : MonoBehaviour, IInteractable
 
         if (keypadCamera != null)
         {
-            keypadCamera.Priority = 9; // 키패드 카메라 비활성화
+            keypadCamera.Priority = 9; // 카메라 비활성화
         }
 
-        EnableKeypadButtons(true);
-
-        // 마우스 커서 숨기기 (원래 상태로 복원)
-        Cursor.visible = false;
+        Cursor.visible = false; // 마우스 커서 숨김
         Cursor.lockState = CursorLockMode.Locked;
-
-        // 플레이어 컨트롤 활성화 (여기서 구현 필요)
-    }
-
-    private void EnableKeypadButtons(bool enable)
-    {
-        foreach (GameObject button in keypadButtons)
-        {
-            Collider buttonCollider = button.GetComponent<Collider>();
-            if (buttonCollider != null)
-            {
-                buttonCollider.enabled = enable;
-            }
-        }
-
-        if (cancelButton != null)
-        {
-            Collider cancelCollider = cancelButton.GetComponent<Collider>();
-            if (cancelCollider != null)
-            {
-                cancelCollider.enabled = enable;
-            }
-        }
-
-        if (enterButton != null)
-        {
-            Collider enterCollider = enterButton.GetComponent<Collider>();
-            if (enterCollider != null)
-            {
-                enterCollider.enabled = enable;
-            }
-        }
     }
 
     public string GetInteractPrompt()
     {
-        if (!isUsingKeypad) return "interact";
-        else return "exit";
+        if (!isUsingKeypad) return isPlayerNear ? "interact" : "";
+        return "exit";
     }
 
     public void OnButtonPress(string buttonName)
     {
-        // 버튼 소리 재생
         if (audioSource != null && buttonPressSound != null)
         {
-            audioSource.PlayOneShot(buttonPressSound);
+            audioSource.PlayOneShot(buttonPressSound); // 버튼 소리 재생
         }
 
         if (buttonName == "Enter")
@@ -153,38 +105,36 @@ public class KeypadController : MonoBehaviour, IInteractable
         {
             OnCancelPress();
         }
-        else if (currentInput.Length < 4) // 숫자 버튼 처리
+        else if (currentInput.Length < 4) // 숫자 버튼
         {
             currentInput += buttonName;
             Debug.Log("Current Input: " + currentInput);
         }
     }
 
-    public void OnEnterPress()
+    private void OnEnterPress()
     {
         if (currentInput == correctCode)
         {
             Debug.Log("Access Granted!");
-            // 정답 소리 재생
             if (audioSource != null && successSound != null)
             {
-                audioSource.PlayOneShot(successSound);
+                audioSource.PlayOneShot(successSound); // 정답 소리 재생
             }
         }
         else
         {
             Debug.Log("Access Denied!");
-            // 오답 소리 재생
             if (audioSource != null && errorSound != null)
             {
-                audioSource.PlayOneShot(errorSound);
+                audioSource.PlayOneShot(errorSound); // 실패 소리 재생
             }
         }
 
-        currentInput = "";
+        currentInput = ""; // 입력 초기화
     }
 
-    public void OnCancelPress()
+    private void OnCancelPress()
     {
         if (currentInput.Length > 0)
         {
@@ -193,7 +143,3 @@ public class KeypadController : MonoBehaviour, IInteractable
         }
     }
 }
-
-
-
-

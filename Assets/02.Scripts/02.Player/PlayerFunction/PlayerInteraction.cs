@@ -46,6 +46,7 @@ public class PlayerInteraction : MonoBehaviour
 
         if(Physics.Raycast(ray,out RaycastHit hit, itemCheckDistance))
         {
+            Debug.Log(hit.collider.gameObject.name);
             if (hit.collider.TryGetComponent<IInteractable>(out IInteractable iteractable))
             {
                 if(iteractable == CurrentInteracteable)
@@ -56,6 +57,7 @@ public class PlayerInteraction : MonoBehaviour
                 CurrentInteracteable = iteractable;
                 UIManager.Instance.ActivePromptUI(CurrentInteracteable);
 
+                Debug.Log(CurrentInteracteable);
                 if(CurrentInteracteable is ItemBase)
                 {
                     //UIManger.OpenInteractPanel((ItemBase)CurrentInteracteable);
@@ -73,6 +75,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void handleInteractionInput(InputAction.CallbackContext context)//상호작용시 아이템 회득
     {
+        //Debug.Log(CurrentInteracteable);
         if (CurrentInteracteable == null) return;
 
         CurrentInteracteable.OnInteract();
