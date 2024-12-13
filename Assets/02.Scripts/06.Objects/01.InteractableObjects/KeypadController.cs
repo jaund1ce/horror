@@ -11,7 +11,6 @@ public class KeypadController : MonoBehaviour
 
     [Header("Keypad Settings")]
     public float interactDistance = 3f; // 상호작용 거리
-    public Transform player; // 플레이어 Transform
 
     [Header("Keypad Buttons")]
     public GameObject[] keypadButtons; // 키패드 버튼 오브젝트들 (Key_0~9, Cancel, Enter)
@@ -27,32 +26,44 @@ public class KeypadController : MonoBehaviour
 
     private string currentInput = ""; // 현재 입력된 코드
     private bool isUsingKeypad = false; // 키패드 사용 여부
+    private bool playerNearby = false; // 플레이어가 키패드 근처에 있는지 여부
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerNearby = true;
+            Debug.Log("Player entered keypad interaction area.");
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerNearby = false;
+            Debug.Log("Player exited keypad interaction area.");
+        }
+    }
 
     void Update()
     {
-        if (!isUsingKeypad)
+        if (playerNearby && !isUsingKeypad && Input.GetKeyDown(KeyCode.E))
         {
-            float distance = Vector3.Distance(player.position, transform.position);
-            if (distance <= interactDistance && Input.GetKeyDown(KeyCode.E))
-            {
-                EnterKeypadView();
-            }
+            EnterKeypadView();
         }
-        else
+        else if (isUsingKeypad && Input.GetKeyDown(KeyCode.Q))
         {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                ExitKeypadView();
-            }
+            ExitKeypadView();
+        }
 
-            // 마우스 클릭 처리
-            if (Input.GetMouseButtonDown(0))
+        // 마우스 클릭 처리
+        if (isUsingKeypad && Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // Main Camera에서 Ray 발사
+            if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // Main Camera에서 Ray 발사
-                if (Physics.Raycast(ray, out RaycastHit hit))
-                {
-                    HandleButtonClick(hit.collider.gameObject);
-                }
+                HandleButtonClick(hit.collider.gameObject);
             }
         }
     }
@@ -202,6 +213,7 @@ public class KeypadController : MonoBehaviour
         }
     }
 }
+
 
 
 
