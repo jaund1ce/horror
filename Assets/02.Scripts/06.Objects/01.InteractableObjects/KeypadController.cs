@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Cinemachine;
 
-public class KeypadController : MonoBehaviour
+public class KeypadController : MonoBehaviour, IInteractable
 {
     [Header("Camera Settings")]
     public CinemachineVirtualCamera keypadCamera; // 키패드 카메라
@@ -24,124 +24,42 @@ public class KeypadController : MonoBehaviour
     public AudioClip errorSound; // 오답 소리
     public AudioSource audioSource; // 오디오 소스
 
-    private string currentInput = ""; // 현재 입력된 코드
-    private bool isUsingKeypad = false; // 키패드 사용 여부
-    private bool playerNearby = false; // 플레이어가 키패드 근처에 있는지 여부
+    public string currentInput = ""; // 현재 입력된 코드
+    public bool isUsingKeypad = false; // 키패드 사용 여부
+    public bool isPlayerNear = false; // 플레이어가 키패드 근처에 있는지 여부
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            playerNearby = true;
-            Debug.Log("Player entered keypad interaction area.");
+            isPlayerNear = true;
+            Debug.Log("Player is near the keypad.");
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            playerNearby = false;
-            Debug.Log("Player exited keypad interaction area.");
+            isPlayerNear = false;
+            Debug.Log("Player left the keypad area.");
         }
     }
 
-    void Update()
+    public void OnInteract()
     {
-        if (playerNearby && !isUsingKeypad && Input.GetKeyDown(KeyCode.E))
+        Debug.Log("OnInteract called. isPlayerNear: " + isPlayerNear);
+
+        if (!isPlayerNear) return;
+
+        if (!isUsingKeypad)
         {
+            Debug.Log("Calling EnterKeypadView...");
             EnterKeypadView();
-        }
-        else if (isUsingKeypad && Input.GetKeyDown(KeyCode.Q))
-        {
-            ExitKeypadView();
-        }
-
-        // 마우스 클릭 처리
-        if (isUsingKeypad && Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // Main Camera에서 Ray 발사
-            if (Physics.Raycast(ray, out RaycastHit hit))
-            {
-                HandleButtonClick(hit.collider.gameObject);
-            }
-        }
-    }
-
-    private void HandleButtonClick(GameObject clickedObject)
-    {
-        foreach (GameObject button in keypadButtons)
-        {
-            if (clickedObject == button)
-            {
-                OnButtonPress(button.name.Replace("Key_", ""));
-                return;
-            }
-        }
-
-        if (clickedObject == cancelButton)
-        {
-            OnButtonPress("Cancel");
-        }
-        else if (clickedObject == enterButton)
-        {
-            OnButtonPress("Enter");
-        }
-    }
-
-    public void OnButtonPress(string buttonName)
-    {
-        // 버튼 소리 재생
-        if (audioSource != null && buttonPressSound != null)
-        {
-            audioSource.PlayOneShot(buttonPressSound);
-        }
-
-        if (buttonName == "Enter")
-        {
-            OnEnterPress();
-        }
-        else if (buttonName == "Cancel")
-        {
-            OnCancelPress();
-        }
-        else if (currentInput.Length < 4) // 숫자 버튼 처리
-        {
-            currentInput += buttonName;
-            Debug.Log("Current Input: " + currentInput);
-        }
-    }
-
-    public void OnEnterPress()
-    {
-        if (currentInput == correctCode)
-        {
-            Debug.Log("Access Granted!");
-            // 정답 소리 재생
-            if (audioSource != null && successSound != null)
-            {
-                audioSource.PlayOneShot(successSound);
-            }
         }
         else
         {
-            Debug.Log("Access Denied!");
-            // 오답 소리 재생
-            if (audioSource != null && errorSound != null)
-            {
-                audioSource.PlayOneShot(errorSound);
-            }
-        }
-
-        currentInput = "";
-    }
-
-    public void OnCancelPress()
-    {
-        if (currentInput.Length > 0)
-        {
-            currentInput = currentInput.Substring(0, currentInput.Length - 1);
-            Debug.Log("Current Input: " + currentInput);
+            ExitKeypadView();
         }
     }
 
@@ -210,6 +128,68 @@ public class KeypadController : MonoBehaviour
             {
                 enterCollider.enabled = enable;
             }
+        }
+    }
+
+    public string GetInteractPrompt()
+    {
+        if (!isUsingKeypad) return "interact";
+        else return "exit";
+    }
+
+    public void OnButtonPress(string buttonName)
+    {
+        // 버튼 소리 재생
+        if (audioSource != null && buttonPressSound != null)
+        {
+            audioSource.PlayOneShot(buttonPressSound);
+        }
+
+        if (buttonName == "Enter")
+        {
+            OnEnterPress();
+        }
+        else if (buttonName == "Cancel")
+        {
+            OnCancelPress();
+        }
+        else if (currentInput.Length < 4) // 숫자 버튼 처리
+        {
+            currentInput += buttonName;
+            Debug.Log("Current Input: " + currentInput);
+        }
+    }
+
+    public void OnEnterPress()
+    {
+        if (currentInput == correctCode)
+        {
+            Debug.Log("Access Granted!");
+            // 정답 소리 재생
+            if (audioSource != null && successSound != null)
+            {
+                audioSource.PlayOneShot(successSound);
+            }
+        }
+        else
+        {
+            Debug.Log("Access Denied!");
+            // 오답 소리 재생
+            if (audioSource != null && errorSound != null)
+            {
+                audioSource.PlayOneShot(errorSound);
+            }
+        }
+
+        currentInput = "";
+    }
+
+    public void OnCancelPress()
+    {
+        if (currentInput.Length > 0)
+        {
+            currentInput = currentInput.Substring(0, currentInput.Length - 1);
+            Debug.Log("Current Input: " + currentInput);
         }
     }
 }
