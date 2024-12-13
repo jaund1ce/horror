@@ -399,7 +399,7 @@ GameObject:
   - component: {fileID: 3297433436447113748}
   - component: {fileID: 7482467313073149265}
   - component: {fileID: 2664454997886259357}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Lock Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}

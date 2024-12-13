@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3969504097751731111}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: UnhidePosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 1882793191073733016}
   - component: {fileID: 2964489375931781581}
   - component: {fileID: 1357032437252692884}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ventilation_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6452018584891983683}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: inside
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 3076419738150528362}
   - component: {fileID: 6345883272786964365}
   - component: {fileID: 6017618704184148603}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ventilation_D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -419,11 +419,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb491c99dcc2d64dbbb64304cb6b7f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hinge: {fileID: 0}
   openAngle: 150
   closeAngle: 0
-  speed: 5
-  openRange: 3
-  doorFrameCollider: {fileID: 0}
+  openSpeed: 5
+  interactionCollider: {fileID: 0}
 --- !u!1 &3211576666677686584
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,7 +433,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4618860496263674109}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: outsideposition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -473,7 +473,7 @@ GameObject:
   - component: {fileID: 1713864574752941521}
   - component: {fileID: 2880451159448278456}
   - component: {fileID: 5756723508499610381}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Locker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -811,7 +811,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4673391438983966031}
   - component: {fileID: 688472878823558142}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FloatingIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -864,7 +864,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1859930281715602910}
   - component: {fileID: 1825737889341345130}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -909,7 +909,7 @@ GameObject:
   - component: {fileID: 1453754649130969621}
   - component: {fileID: 7227399132582022205}
   - component: {fileID: 678768787048148263}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ventilation_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -992,7 +992,7 @@ GameObject:
   - component: {fileID: 8385363075694892014}
   - component: {fileID: 3627984273461097781}
   - component: {fileID: 890792638583713449}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ventilation_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1075,7 +1075,7 @@ GameObject:
   - component: {fileID: 3676275965295536834}
   - component: {fileID: 2322664108370365100}
   - component: {fileID: 4821896185570986669}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ventilation_E
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1157,7 +1157,7 @@ GameObject:
   m_Component:
   - component: {fileID: 85085063826549376}
   - component: {fileID: 8980250708681041621}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Virtual Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
