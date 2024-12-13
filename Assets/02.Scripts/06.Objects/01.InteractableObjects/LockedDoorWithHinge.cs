@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,8 @@ public class LockedDoorWithHinge : MonoBehaviour
 
     private bool isDoorOpen = false;
     private bool playerNearby = false;
+
+    public event Action isOpen;
 
     private void Update()
     {
@@ -35,6 +38,12 @@ public class LockedDoorWithHinge : MonoBehaviour
     private void ToggleDoor()
     {
         isDoorOpen = !isDoorOpen;
+
+        if (isDoorOpen && isOpen != null)
+        {
+            isOpen.Invoke();
+        }
+
         StopAllCoroutines();
         StartCoroutine(RotateDoor(isDoorOpen ? openAngle : closeAngle));
     }

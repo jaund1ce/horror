@@ -9,7 +9,7 @@ public class Paper : MonoBehaviour, IInteractable
 
     public string GetInteractPrompt()
     {
-        string str = $"{paperData.Name}\n{paperData.description}";
+        string str = $"ÀÐ±â";
         return "";
     }
     public void OnInteract()
