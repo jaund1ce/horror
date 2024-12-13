@@ -134,6 +134,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""QuickSlots"",
+                    ""type"": ""Button"",
+                    ""id"": ""bfb6bc5f-3d05-4521-b1b1-0af4bc5804a0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -312,6 +321,50 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""LightControl"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""25262092-5d6a-4677-a461-34135b5166c1"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuickSlots"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a71de0ad-c159-4406-a3d4-dcc08960d78c"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuickSlots"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""202c6a2c-2f2b-4e26-98ac-db5ec29fcba2"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuickSlots"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dcecfe70-fcc2-45d9-bcb7-2383db146bbf"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuickSlots"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -332,6 +385,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Player_Menu = m_Player.FindAction("Menu", throwIfNotFound: true);
         m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
         m_Player_LightControl = m_Player.FindAction("LightControl", throwIfNotFound: true);
+        m_Player_QuickSlots = m_Player.FindAction("QuickSlots", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -405,6 +459,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Menu;
     private readonly InputAction m_Player_Inventory;
     private readonly InputAction m_Player_LightControl;
+    private readonly InputAction m_Player_QuickSlots;
     public struct PlayerActions
     {
         private @PlayerInputs m_Wrapper;
@@ -421,6 +476,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         public InputAction @Menu => m_Wrapper.m_Player_Menu;
         public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
         public InputAction @LightControl => m_Wrapper.m_Player_LightControl;
+        public InputAction @QuickSlots => m_Wrapper.m_Player_QuickSlots;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -466,6 +522,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @LightControl.started += instance.OnLightControl;
             @LightControl.performed += instance.OnLightControl;
             @LightControl.canceled += instance.OnLightControl;
+            @QuickSlots.started += instance.OnQuickSlots;
+            @QuickSlots.performed += instance.OnQuickSlots;
+            @QuickSlots.canceled += instance.OnQuickSlots;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -506,6 +565,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @LightControl.started -= instance.OnLightControl;
             @LightControl.performed -= instance.OnLightControl;
             @LightControl.canceled -= instance.OnLightControl;
+            @QuickSlots.started -= instance.OnQuickSlots;
+            @QuickSlots.performed -= instance.OnQuickSlots;
+            @QuickSlots.canceled -= instance.OnQuickSlots;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -537,5 +599,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         void OnMenu(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
         void OnLightControl(InputAction.CallbackContext context);
+        void OnQuickSlots(InputAction.CallbackContext context);
     }
 }
