@@ -771,4 +771,4 @@ MonoBehaviour:
   openAngle: -90
   closeAngle: 0
   openSpeed: 5
-  isLocked: 1
+  interactionCollider: {fileID: 0}

@@ -16,7 +16,7 @@ public class MainGameManager : mainSingleton<MainGameManager>
         Player = FindObjectOfType<Player>();
         if (Player == null)
         {
-            Debug.LogError("씬에서 Player를 찾을 수 없습니다.");
+            return;
         }
     }
 }
