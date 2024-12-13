@@ -664,6 +664,7 @@ MonoBehaviour:
   openAngle: -90
   closeAngle: 0
   openSpeed: 5
+  interactionCollider: {fileID: 0}
 --- !u!1 &6955154207240009244
 GameObject:
   m_ObjectHideFlags: 0

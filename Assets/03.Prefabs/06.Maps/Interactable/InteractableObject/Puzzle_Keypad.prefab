@@ -190,7 +190,6 @@ GameObject:
   - component: {fileID: 2711796280583945191}
   - component: {fileID: 7611318884091011337}
   - component: {fileID: 7098534387321860510}
-  - component: {fileID: 705000451444846069}
   m_Layer: 6
   m_Name: Keypad
   m_TagString: Untagged
@@ -394,66 +393,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &705000451444846069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1090610300604780026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44e2230d6857bf14995464535978be6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DynamicTitle:
-    ReflectType: 0
-    Instance: {fileID: 0}
-    ReflectName: 
-    ReflectDerived: 0
-  DynamicUseTitle:
-    ReflectType: 0
-    Instance: {fileID: 0}
-    ReflectName: 
-    ReflectDerived: 0
-  DynamicExamineTitle:
-    ReflectType: 0
-    Instance: {fileID: 0}
-    ReflectName: 
-    ReflectDerived: 0
-  OverrideTitle: 1
-  OverrideUseTitle: 0
-  OverrideExamineTitle: 0
-  UseTitleDynamic: 0
-  UseUseTitleDynamic: 0
-  UseExamineTitleDynamic: 0
-  Title:
-    GlocText: objects.keypad
-    NormalText: Keypad
-  TrueTitle:
-    GlocText: 
-    NormalText: 
-  FalseTitle:
-    GlocText: 
-    NormalText: 
-  UseTitle:
-    GlocText: 
-    NormalText: 
-  TrueUseTitle:
-    GlocText: 
-    NormalText: 
-  FalseUseTitle:
-    GlocText: 
-    NormalText: 
-  ExamineTitle:
-    GlocText: 
-    NormalText: 
-  TrueExamineTitle:
-    GlocText: 
-    NormalText: 
-  FalseExamineTitle:
-    GlocText: 
-    NormalText: 
 --- !u!1 &1756006498413395471
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,7 +694,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keypadCamera: {fileID: 2527271121931923560}
-  interactDistance: 3
+  interactDistance: 5
   keypadButtons:
   - {fileID: 1756006498413395471}
   - {fileID: 5860419805421768676}
@@ -774,6 +713,8 @@ MonoBehaviour:
   successSound: {fileID: 8300000, guid: 51749b2ceb411d542a171843474911a5, type: 3}
   errorSound: {fileID: 8300000, guid: 293cbd1c7f98cb7479a7cddff4d24cd7, type: 3}
   audioSource: {fileID: 7098534387321860510}
+  currentInput: 
+  isUsingKeypad: 0
   isPlayerNear: 0
 --- !u!65 &804947930224640954
 BoxCollider:

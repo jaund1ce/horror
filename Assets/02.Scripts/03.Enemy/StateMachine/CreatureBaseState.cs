@@ -132,7 +132,7 @@ public class CreatureBaseState : IState
 
         if (NavMesh.SamplePosition(randomPosition, out hit, maxWanderDistance, walkableMask) == false) return;
             movementLocation = hit.position;
-        Debug.Log(movementLocation);
+        //Debug.Log(movementLocation);
             setLocation = true;
     }
 

@@ -50,7 +50,7 @@ public class KeyPickup : MonoBehaviour
             LockedDoorWithHinge door = FindObjectOfType<LockedDoorWithHinge>();
             if (door != null)
             {
-                door.AcquireKey();
+                //door.AcquireKey();
             }
             Debug.Log("ø≠ºË∏¶ »πµÊ«ﬂΩ¿¥œ¥Ÿ!");
             Destroy(gameObject); // ø≠ºË ªË¡¶
