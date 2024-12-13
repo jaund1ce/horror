@@ -13,7 +13,7 @@ public class PlayerConditionController : MonoBehaviour
     public float PassiveStamina;
     public float Stamina;
 
-    private float staminaAmount = 20f;
+    private float staminaAmount = 15f;
 
     public event Action OnDie;
 
@@ -24,7 +24,7 @@ public class PlayerConditionController : MonoBehaviour
     }
     private void Update()
     {
-        if(Stamina < 10f)
+        if(Stamina == 0f)
         {
             MainGameManager.Instance.Player.Input.RunningReady = false;
         }

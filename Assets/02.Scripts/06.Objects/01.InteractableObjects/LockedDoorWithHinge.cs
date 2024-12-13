@@ -4,83 +4,69 @@ using UnityEngine;
 
 public class LockedDoorWithHinge : MonoBehaviour
 {
-    private HingeJoint hinge;
-    private bool isOpen = false; // 문 상태
-    public float openAngle = -90f; // 문 열림 각도
-    public float closeAngle = 0f;  // 문 닫힘 각도
-    public float speed = 5f; // 문 열리는 속도
-    public float openRange = 3f; // 문을 열 수 있는 최대 거리
-    public Transform player; // 플레이어의 Transform (씬에서 직접 연결)
-    public Collider doorFrameCollider; // 문틀의 Collider
-    public bool hasKey = false; // 열쇠 소지 여부
+    public Transform hinge;
+    public float openAngle = -90f;
+    public float closeAngle = 0f;
+    public float openSpeed = 5f;
+    public bool isLocked = true;
 
-    void Start()
+    private bool isDoorOpen = false;
+    private bool playerNearby = false;
+
+    private void Update()
     {
-        hinge = GetComponent<HingeJoint>();
-        Collider doorCollider = GetComponent<Collider>();
-
-        // 문과 문틀의 충돌 무시
-        if (doorFrameCollider != null && doorCollider != null)
+        if (playerNearby && Input.GetKeyDown(KeyCode.E) && !isLocked)
         {
-            Physics.IgnoreCollision(doorCollider, doorFrameCollider);
-        }
-
-        if (hinge != null)
-        {
-            JointLimits limits = hinge.limits;
-            limits.min = openAngle;
-            limits.max = closeAngle;
-            hinge.limits = limits;
-            hinge.useLimits = true;
-
-            // 초기 상태 설정
-            JointSpring spring = hinge.spring;
-            spring.spring = speed;
-            spring.damper = 1f;
-            spring.targetPosition = closeAngle;
-            hinge.spring = spring;
-            hinge.useSpring = true;
+            ToggleDoor();
         }
     }
 
-    void Update()
+    public void UnlockDoor()
     {
-        if (player != null)
-        {
-            float distance = Vector3.Distance(transform.position, player.position);
-
-            // 플레이어가 문 범위 안에 있고 열쇠가 있을 때만 열고 닫기
-            if (distance <= openRange && hasKey && Input.GetKeyDown(KeyCode.E))
-            {
-                ToggleDoor();
-            }
-            else if (distance <= openRange && !hasKey && Input.GetKeyDown(KeyCode.E))
-            {
-                Debug.Log("열쇠가 필요합니다!");
-            }
-        }
-    }
-
-    public void ToggleDoor()
-    {
-        isOpen = !isOpen;
-
-        if (hinge != null)
-        {
-            JointSpring spring = hinge.spring;
-            spring.spring = speed; // 문이 열리는 속도
-            spring.damper = 1f; // 감쇠값
-            spring.targetPosition = isOpen ? openAngle : closeAngle; // 목표 각도
-            hinge.spring = spring;
-            hinge.useSpring = true;
-
-            Debug.Log(isOpen ? "문이 열렸습니다!" : "문이 닫혔습니다!");
-        }
+        isLocked = false;
+        Debug.Log("Door unlocked!");
     }
 
     public void AcquireKey()
     {
-        hasKey = true;
-        Debug.Log("열쇠를 획득했습니다!");
+        UnlockDoor(); // 키를 획득하면 문을 잠금 해제
+    }
+
+    private void ToggleDoor()
+    {
+        isDoorOpen = !isDoorOpen;
+        StopAllCoroutines();
+        StartCoroutine(RotateDoor(isDoorOpen ? openAngle : closeAngle));
+    }
+
+    private IEnumerator RotateDoor(float targetAngle)
+    {
+        float currentAngle = hinge.localEulerAngles.y;
+        if (currentAngle > 180) currentAngle -= 360;
+
+        while (Mathf.Abs(currentAngle - targetAngle) > 0.1f)
+        {
+            currentAngle = Mathf.Lerp(currentAngle, targetAngle, Time.deltaTime * openSpeed);
+            hinge.localEulerAngles = new Vector3(0, currentAngle, 0);
+            yield return null;
+        }
+
+        hinge.localEulerAngles = new Vector3(0, targetAngle, 0);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerNearby = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerNearby = false;
+        }
     }
 }
