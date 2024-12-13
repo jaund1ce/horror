@@ -9,8 +9,7 @@ public class Paper : MonoBehaviour, IInteractable
 
     public string GetInteractPrompt()
     {
-        string str = $"읽기";
-        return "";
+        return "읽기";
     }
     public void OnInteract()
     {
