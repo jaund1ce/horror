@@ -2,41 +2,53 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LockedDoorWithHinge : MonoBehaviour
+public class LockedDoorWithHinge : MonoBehaviour, IInteractable
 {
-    public Transform hinge;
-    public float openAngle = -90f;
-    public float closeAngle = 0f;
-    public float openSpeed = 5f;
-    public bool isLocked = true;
+    public Transform hinge; // 문 힌지
+    public float openAngle = -90f; // 문 열리는 각도
+    public float closeAngle = 0f; // 문 닫히는 각도
+    public float openSpeed = 5f; // 문 열림 속도
+    public Collider interactionCollider; // 플레이어 감지를 위한 콜라이더
+    public bool isLocked = true; // 문 잠김 여부
+    private bool isOpen = false; // 문이 열렸는지 여부
+    private bool isPlayerNear = false; // 플레이어가 근처에 있는지 여부
 
-    private bool isDoorOpen = false;
-    private bool playerNearby = false;
-
-    private void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        if (playerNearby && Input.GetKeyDown(KeyCode.E) && !isLocked)
+        if (other.CompareTag("Player"))
         {
-            ToggleDoor();
+            isPlayerNear = true;
+            Debug.Log("Player is near the locked door.");
         }
     }
 
-    public void UnlockDoor()
+    private void OnTriggerExit(Collider other)
     {
-        isLocked = false;
-        Debug.Log("Door unlocked!");
+        if (other.CompareTag("Player"))
+        {
+            isPlayerNear = false;
+            Debug.Log("Player left the locked door area.");
+        }
     }
 
-    public void AcquireKey()
+    public void OnInteract()
     {
-        UnlockDoor(); // 키를 획득하면 문을 잠금 해제
+        if (!isPlayerNear) return;
+
+        if (isLocked)
+        {
+            Debug.Log("The door is locked.");
+            return;
+        }
+
+        ToggleDoor();
     }
 
     private void ToggleDoor()
     {
-        isDoorOpen = !isDoorOpen;
+        isOpen = !isOpen;
         StopAllCoroutines();
-        StartCoroutine(RotateDoor(isDoorOpen ? openAngle : closeAngle));
+        StartCoroutine(RotateDoor(isOpen ? openAngle : closeAngle));
     }
 
     private IEnumerator RotateDoor(float targetAngle)
@@ -54,19 +66,17 @@ public class LockedDoorWithHinge : MonoBehaviour
         hinge.localEulerAngles = new Vector3(0, targetAngle, 0);
     }
 
-    private void OnTriggerEnter(Collider other)
+    public string GetInteractPrompt()
     {
-        if (other.CompareTag("Player"))
-        {
-            playerNearby = true;
-        }
+        if (isLocked) return "Locked";
+        return isOpen ? "Close" : "Open";
     }
 
-    private void OnTriggerExit(Collider other)
+    // AcquireKey 메서드 추가
+    public void AcquireKey()
     {
-        if (other.CompareTag("Player"))
-        {
-            playerNearby = false;
-        }
+        isLocked = false;
+        Debug.Log("Key acquired! Door is now unlocked.");
     }
 }
+
