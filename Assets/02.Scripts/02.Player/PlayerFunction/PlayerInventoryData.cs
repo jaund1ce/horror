@@ -42,9 +42,9 @@ public class PlayerInventoryData : MonoBehaviour
         }
     }
 
-    public void AddItem(ItemSO itemData)
+    public void AddItem(ItemData itemData)
     {
-        if (itemData.itemData.Stackable)
+        if (itemData.itemSO.Stackable)
         {
             CheckStack(itemData);
         }
@@ -54,25 +54,26 @@ public class PlayerInventoryData : MonoBehaviour
         }
     }
 
-    private void CheckEmpty(ItemSO itemData)
+    private void CheckEmpty(ItemData itemData)
     {
         foreach(InventoryData item in inventoryDatas)
         {
             if(item.ItemData == null)
             {
-                item.ItemData = itemData.itemData;
+                item.ItemData = itemData;
                 item.amount = 1;
                 return;
             }
         }
     }
 
-    public void CheckStack(ItemSO itemData)
+    public void CheckStack(ItemData itemData)
     {
         foreach (InventoryData item in inventoryDatas)
         {
             if (item == null) continue;
-            if(item.ItemData == itemData.itemData)
+            if (item.ItemData == null) continue;
+            if (item.ItemData.itemSO == itemData.itemSO)
             {
                 item.amount += 1;
                 return;

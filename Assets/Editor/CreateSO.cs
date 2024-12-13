@@ -50,7 +50,7 @@ public class CreateSO : EditorWindow
         string json = File.ReadAllText(filepath);
         if (type == "ItemSO")
         {
-            ItemData[] itemDatas = JsonHelper.FromJson<ItemData>(json);
+            ItemSO[] itemDatas = JsonHelper.FromJson<ItemSO>(json);
             if (itemDatas == null || itemDatas.Length == 0)
             {
                 Debug.LogError("Wrong Json File");
@@ -61,19 +61,19 @@ public class CreateSO : EditorWindow
             {
                 string assetPath = $"{SOpath}/{type}/{item.ItemNameEng}.asset";
 
-                ItemSO existItemData = AssetDatabase.LoadAssetAtPath<ItemSO>(assetPath);
+                ItemData existItemData = AssetDatabase.LoadAssetAtPath<ItemData>(assetPath);
 
                 if (existItemData == null)//so가 없으면
                 {
-                    ItemSO newItemSO = ScriptableObject.CreateInstance<ItemSO>();
+                    ItemData newItemSO = ScriptableObject.CreateInstance<ItemData>();
 
-                    newItemSO.itemData = item;
+                    newItemSO.itemSO = item;
 
                     AssetDatabase.CreateAsset(newItemSO, assetPath);
                 }
                 else//so가 이미 존재하면 업데이트 시켜줌
                 {
-                    existItemData.itemData = item;
+                    existItemData.itemSO = item;
                     EditorUtility.SetDirty(existItemData);
                 }
             }

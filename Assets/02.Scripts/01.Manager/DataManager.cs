@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class DataManager : mainSingleton<DataManager>
 {
-   private ItemSO itemSO;
+   private ItemData itemSO;
     
-   public ItemSO ItemSO
+   public ItemData ItemSO
    {
 
     get { 
@@ -27,6 +27,6 @@ public class DataManager : mainSingleton<DataManager>
     private void GetData()
     {
         var json = ResourceManager.Instance.LoadAsset<TextAsset>("ItemSO", eAssetType.Data);
-        itemSO = JsonUtility.FromJson<ItemSO>(json.text);
+        itemSO = JsonUtility.FromJson<ItemData>(json.text);
     }
 }

@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3dc2072986e21643bae469b1fb5c042, type: 3}
+  m_Script: {fileID: 11500000, guid: 9349ae882313bda47b18be55d67b17d4, type: 3}
   m_Name: key
   m_EditorClassIdentifier: 
-  itemData:
+  itemSO:
     ID: 1003
     ItemNameEng: key
     ItemNameKor: "\uC5F4\uC1E0"
