@@ -149,6 +149,37 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!1 &6568614712308641121
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1620725614695967572}
+  m_Layer: 3
+  m_Name: EquipPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1620725614695967572
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6568614712308641121}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4541800448377673639}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6649819140532374826
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,7 +272,7 @@ MonoBehaviour:
     baseAttackParameterName: BaseAttack
     hideParameterName: '@Hide'
   playerInventoryData: {fileID: 0}
-  CurrentItemSO: {fileID: 0}
+  CurrentItemData: {fileID: 0}
   isChangingQuickSlot: 0
   PlayerState: -1
 --- !u!114 &6230964232614769512
@@ -1208,6 +1239,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2542629622794643519, guid: fc5e65fca514e34458acbf2fa895187d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1620725614695967572}
     - targetCorrespondingSourceObject: {fileID: 5328482478806888397, guid: fc5e65fca514e34458acbf2fa895187d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3380574710098398171}
@@ -1219,6 +1253,11 @@ PrefabInstance:
 --- !u!4 &2000779279271516275 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fc5e65fca514e34458acbf2fa895187d, type: 3}
+  m_PrefabInstance: {fileID: 2039720900316479384}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4541800448377673639 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2542629622794643519, guid: fc5e65fca514e34458acbf2fa895187d, type: 3}
   m_PrefabInstance: {fileID: 2039720900316479384}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &6177841166321504341 stripped

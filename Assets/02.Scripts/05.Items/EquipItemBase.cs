@@ -6,7 +6,7 @@ public abstract class EquipItemBase : MonoBehaviour
 {
     protected bool onUsing;
     protected string animUse = "Use";
-    protected ItemData itemSO;
+    protected ItemData itemData;
 
     protected Animator animator;
     protected Camera camera;
@@ -15,7 +15,7 @@ public abstract class EquipItemBase : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         camera = Camera.main;
-        itemSO = MainGameManager.Instance.player.CurrentItemData;
+        itemData = MainGameManager.Instance.player.CurrentEquipItem;
     }
 
     public virtual void OnUseInput() 
