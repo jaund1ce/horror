@@ -774,7 +774,7 @@ MonoBehaviour:
   successSound: {fileID: 8300000, guid: 51749b2ceb411d542a171843474911a5, type: 3}
   errorSound: {fileID: 8300000, guid: 293cbd1c7f98cb7479a7cddff4d24cd7, type: 3}
   audioSource: {fileID: 7098534387321860510}
-  playerNearby: 0
+  isPlayerNear: 0
 --- !u!65 &804947930224640954
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -794,7 +794,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3763175517553694933
 GameObject:
