@@ -26,11 +26,11 @@ public class KeypadController : MonoBehaviour
 
     private string currentInput = ""; // 현재 입력된 코드
     private bool isUsingKeypad = false; // 키패드 사용 여부
-    private bool playerNearby = false; // 플레이어가 키패드 근처에 있는지 여부
+    public bool playerNearby = false; // 플레이어가 키패드 근처에 있는지 여부
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             playerNearby = true;
             Debug.Log("Player entered keypad interaction area.");
@@ -39,7 +39,7 @@ public class KeypadController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             playerNearby = false;
             Debug.Log("Player exited keypad interaction area.");
