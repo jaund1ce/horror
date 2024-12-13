@@ -11,7 +11,7 @@ public enum PlayerState
     Chasing
 }
 
-public class SoundManger : MonoBehaviour
+public class SoundManger : mainSingleton<SoundManger>
 {
     public AudioSource PlayerStep;
     public AudioSource PlayerHeartBeat;
@@ -27,7 +27,12 @@ public class SoundManger : MonoBehaviour
     public int StageNum = -1;
     public PlayerState playerstate = PlayerState.Normal;
 
-    private void Start()
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
+    protected override void Start()
     {
         if(BGM != null && bgmSource != null && bgmSource.Length != 0 && StageNum != -1)
         {
@@ -37,8 +42,9 @@ public class SoundManger : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
+    protected override void Update()
+    { 
+        if(MainGameManager.Instance.Player == null) return;
         PlayerState templayerState = MainGameManager.Instance.Player.PlayerState;
         if (templayerState != playerstate)
         {
@@ -57,5 +63,10 @@ public class SoundManger : MonoBehaviour
         PlayerHeartBeat.clip = playerheartbeatSource[(int)playerstate];
         PlayerHeartBeat.loop = true;
         PlayerHeartBeat.Play();
+    }
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
     }
 }
