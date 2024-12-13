@@ -56,4 +56,9 @@ public class PlayerConditionController : MonoBehaviour
     {
         return Stamina / maxStamina;
     }
+
+    public void AddHealth(int amount) 
+    {
+        Health = Mathf.Min(Health + amount, 100);
+    }
 }

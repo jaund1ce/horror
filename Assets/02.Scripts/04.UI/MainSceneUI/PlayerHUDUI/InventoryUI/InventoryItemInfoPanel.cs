@@ -55,6 +55,7 @@ public class InventoryItemInfoPanelelController : MonoBehaviour
         }
     }
 
+    //## 장착버튼 구현하기
     public void OnUseBTNClick()
     {
         if (currentItemData == null) return;
