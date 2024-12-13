@@ -10,11 +10,11 @@ public class InventoryItemInfoPanelelController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemNameText;
     [SerializeField] private TextMeshProUGUI itemDescriptionText;
     [SerializeField] private TextMeshProUGUI itemUseBTNText;
-    [SerializeField] private InventoryController InventoryLH;
+    [SerializeField] private InventoryController Inventory;
 
     private void Awake()
     {
-        InventoryLH.InventoryItemInfoPanelelController = this;
+        Inventory.InventoryItemInfoPanelelController = this;
     }
 
     private InventoryData currentItemData;
@@ -55,23 +55,19 @@ public class InventoryItemInfoPanelelController : MonoBehaviour
         }
     }
 
-    public void OnUseBTNClick()
+    //## 장착버튼 구현하기
+    public void OnEquipBTNClick()
     {
         if (currentItemData == null) return;
 
-        if (currentItemData.ItemData.ItemType == ItemType.EquipItem)
-        {
-        }
-        else
-        {
-            currentItemData.amount -= 1;
+        // MainGameManager.Instance.player.CurrentItemSO = Inventory.CurrentInventoryData.ItemData;
 
-            if (currentItemData.amount <= 0)
+            /*if (currentItemData.amount <= 0)
             {
                 currentItemData.ResetData();
                 return;
-            }
-        }
+            }*/
+        
     }
     public void OnAddQuickSlotBTNClick()
     {

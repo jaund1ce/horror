@@ -718,6 +718,7 @@ GameObject:
   m_Component:
   - component: {fileID: 133518258013207784}
   - component: {fileID: 5039454519171928706}
+  - component: {fileID: 804947930224640954}
   m_Layer: 6
   m_Name: Puzzle_Keypad
   m_TagString: Untagged
@@ -755,7 +756,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keypadCamera: {fileID: 2527271121931923560}
   interactDistance: 3
-  player: {fileID: 0}
   keypadButtons:
   - {fileID: 1756006498413395471}
   - {fileID: 5860419805421768676}
@@ -774,6 +774,28 @@ MonoBehaviour:
   successSound: {fileID: 8300000, guid: 51749b2ceb411d542a171843474911a5, type: 3}
   errorSound: {fileID: 8300000, guid: 293cbd1c7f98cb7479a7cddff4d24cd7, type: 3}
   audioSource: {fileID: 7098534387321860510}
+  isPlayerNear: 0
+--- !u!65 &804947930224640954
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3724672441773171691}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3763175517553694933
 GameObject:
   m_ObjectHideFlags: 0

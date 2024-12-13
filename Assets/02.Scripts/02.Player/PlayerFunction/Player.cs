@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     public Action addItem;
     public Action useItem;
     public PlayerInventoryData playerInventoryData;
+    public ItemSO CurrentItemSO;
     public bool isChangingQuickSlot = false;
     public PlayerState PlayerState = PlayerState.Normal;
 
