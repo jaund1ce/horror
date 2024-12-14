@@ -117,6 +117,8 @@ public class CabinetEntry : MonoBehaviour, IHideable, IInteractable
 
     public void OnInteract()
     {
+        if(player == null) player = MainGameManager.Instance.Player.gameObject;
+
         if (!isDoorOpen)
         {
             StartCoroutine(OpenDoor());
