@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 987791271076878837}
   - component: {fileID: 6873755020530854695}
   - component: {fileID: 1759077924099914116}
-  - component: {fileID: 8620887230730363183}
   m_Layer: 6
   m_Name: HideTable
   m_TagString: Untagged
@@ -29,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2418573204628231834}
   serializedVersion: 2
-  m_LocalRotation: {x: 4.149737e-14, y: 1, z: 0.000000081460335, w: 0.00000058114523}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -44.99, y: 0.36, z: 54.49}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
@@ -126,28 +125,6 @@ MonoBehaviour:
   underDeskPosition: {fileID: 4323602757070201617}
   inFrontOfDeskPosition: {fileID: 5723348066123923817}
   characterController: {fileID: 0}
-  interactDistance: 3
---- !u!65 &8620887230730363183
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2418573204628231834}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 22, y: 5.643892, z: 12}
-  m_Center: {x: 0.0000019073486, y: 2.8219454, z: 0.00000011920925}
 --- !u!1 &3634996249314003246
 GameObject:
   m_ObjectHideFlags: 0

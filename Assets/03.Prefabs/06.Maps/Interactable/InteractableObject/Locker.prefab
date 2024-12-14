@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3969504097751731111}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: UnhidePosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 1882793191073733016}
   - component: {fileID: 2964489375931781581}
   - component: {fileID: 1357032437252692884}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Ventilation_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6452018584891983683}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: inside
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 3076419738150528362}
   - component: {fileID: 6345883272786964365}
   - component: {fileID: 6017618704184148603}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Ventilation_D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -433,7 +433,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4618860496263674109}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: outsideposition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -469,9 +469,10 @@ GameObject:
   - component: {fileID: 4010706769887857955}
   - component: {fileID: 2239245832900541176}
   - component: {fileID: 7076123388054403915}
+  - component: {fileID: 573786396125814035}
+  - component: {fileID: 1713864574752941521}
   - component: {fileID: 2880451159448278456}
-  - component: {fileID: 5756723508499610381}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Locker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -688,6 +689,72 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &573786396125814035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3383000070750489371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52522c59543f94a419cc331aa0f91be9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SoundEvents:
+  - Name: Open
+    Sound:
+      audioClip: {fileID: 8300000, guid: 858e6961faf30374381468828efa1081, type: 3}
+      volume: 1
+  - Name: Close
+    Sound:
+      audioClip: {fileID: 8300000, guid: 0dd8f914093e98547928c30502398bf8, type: 3}
+      volume: 0.9
+--- !u!114 &1713864574752941521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3383000070750489371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c7d49080dde3a74985f65a3ed7f4f9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AnimationEvents:
+  - Name: Hidden
+    OnCallEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UHFPS.Runtime.HideInteract, Assembly-CSharp
+          m_MethodName: SetPlayerHidden
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - Name: Unhidden
+    OnCallEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UHFPS.Runtime.HideInteract, Assembly-CSharp
+          m_MethodName: SetPlayerHidden
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &2880451159448278456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -706,33 +773,10 @@ MonoBehaviour:
   cabinetDoor: {fileID: 7686792002906004321}
   cabinetDoorCollider: {fileID: 5529642402161023434}
   characterController: {fileID: 0}
-  interactDistance: 3
   doorOpenAngle: 90
   doorSpeed: 2
   isDoorOpen: 0
   isPlayerInside: 0
-  isPlayerNear: 0
---- !u!135 &5756723508499610381
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3383000070750489371}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 1.5
-  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!1 &4327879837685982043
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,7 +787,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4673391438983966031}
   - component: {fileID: 688472878823558142}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: FloatingIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -796,7 +840,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1859930281715602910}
   - component: {fileID: 1825737889341345130}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -841,7 +885,7 @@ GameObject:
   - component: {fileID: 1453754649130969621}
   - component: {fileID: 7227399132582022205}
   - component: {fileID: 678768787048148263}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Ventilation_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -924,7 +968,7 @@ GameObject:
   - component: {fileID: 8385363075694892014}
   - component: {fileID: 3627984273461097781}
   - component: {fileID: 890792638583713449}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Ventilation_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1007,7 +1051,7 @@ GameObject:
   - component: {fileID: 3676275965295536834}
   - component: {fileID: 2322664108370365100}
   - component: {fileID: 4821896185570986669}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Ventilation_E
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1089,7 +1133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 85085063826549376}
   - component: {fileID: 8980250708681041621}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}

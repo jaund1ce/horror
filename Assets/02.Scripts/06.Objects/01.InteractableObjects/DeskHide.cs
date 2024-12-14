@@ -9,10 +9,8 @@ public class DeskHide : MonoBehaviour, IHideable, IInteractable
     public Transform underDeskPosition; // 책상 밑 위치
     public Transform inFrontOfDeskPosition; // 책상 앞 위치
     public CharacterController characterController; // 플레이어 CharacterController
-    public float interactDistance = 3f; // 상호작용 거리
 
     private bool isUnderDesk = false; // 플레이어가 책상 밑에 있는지 여부
-    private bool isPlayerNear = false;
 
     //void Update()
     //{
@@ -30,24 +28,6 @@ public class DeskHide : MonoBehaviour, IHideable, IInteractable
     //    }
     //}
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            player = other.gameObject;
-            isPlayerNear = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            player = null;
-            isPlayerNear = false;
-        }
-    }
-
     public void OnHide()
     {
 
@@ -63,8 +43,6 @@ public class DeskHide : MonoBehaviour, IHideable, IInteractable
 
         isUnderDesk = true;
     }
-
- 
 
     public void OnExit()
     {
@@ -84,7 +62,7 @@ public class DeskHide : MonoBehaviour, IHideable, IInteractable
 
     public void OnInteract()
     {
-        if (!isPlayerNear) return;
+        if (player == null) player = MainGameManager.Instance.Player.gameObject;
 
         if (!isUnderDesk) OnHide();
         else OnExit();
@@ -93,8 +71,6 @@ public class DeskHide : MonoBehaviour, IHideable, IInteractable
     public string GetInteractPrompt()
     {
         if (isUnderDesk) return "Out";
-        else if (!isPlayerNear) return "Get Near";
-        else if (isPlayerNear) return "Hide";
-        else return "";
+        else return "Hide";
     }
 }

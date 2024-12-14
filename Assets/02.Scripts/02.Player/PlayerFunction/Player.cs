@@ -68,10 +68,10 @@ public class Player : MonoBehaviour
 
     void ChangeRotation()//나중에 다른 매니져로 옮기기?
     {
-        if (Input.rotateXSencitivity == Data.GroundData.BaseRotationDamping) return;
+        if (Input.rotateSencitivity == Data.GroundData.BaseRotationDamping) return;
         else
         {
-            Input.rotateXSencitivity = Data.GroundData.BaseRotationDamping;
+            Input.rotateSencitivity = Data.GroundData.BaseRotationDamping;
         }
     }
 }

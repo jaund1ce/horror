@@ -15,17 +15,18 @@ public class PlayerController : MonoBehaviour
     public PlayerInputs.PlayerActions playerActions { get; private set; }   //미리 정의한 행동들 move, look,... 등
 
     [SerializeField] private CinemachineVirtualCamera playercamera;
-    private CinemachinePOV pov;
-    public float rotateXSencitivity;
+    [SerializeField] private GameObject Head;
+    [SerializeField] float maxRotateY;
+    public float rotateSencitivity;
     public bool Rotateable = true;
     public bool RunningReady = false;
     public bool isRunning = false;
+    private float currentYangle = 0f;
 
     private void Awake()
     {
         playerInputs = new PlayerInputs();
         playerActions = playerInputs.Player;//inputsystem에 선언했던 Actionmap 중에 하나를 선택
-        pov = playercamera.GetCinemachineComponent<CinemachinePOV>();
     }
 
     private void OnEnable()
@@ -54,37 +55,35 @@ public class PlayerController : MonoBehaviour
 
         if (delta != Vector2.zero)
         {
-            float rotatex = Mathf.Clamp(delta.y, -60f, 60f);
+            float rotatex = Mathf.Clamp(delta.y, -maxRotateY, maxRotateY);
             float rotatey = Mathf.Clamp(delta.x, -60f, 60f);
 
-            pov.m_HorizontalAxis.Value = rotatey * rotateXSencitivity * Time.deltaTime;
+            transform.Rotate(Vector3.up, rotatey * rotateSencitivity * Time.deltaTime);
 
-            transform.Rotate(Vector3.up, pov.m_HorizontalAxis.Value);
-
-            if (pov == null)
+            if (currentYangle - rotatex * rotateSencitivity * Time.deltaTime < maxRotateY && currentYangle - rotatex * rotateSencitivity * Time.deltaTime > -maxRotateY)
             {
-                Debug.LogError("cinemachine pov not found!");
-                return;
+                currentYangle -= rotatex * rotateSencitivity * Time.deltaTime;
+                Head.transform.Rotate(Vector3.right, -rotatex * rotateSencitivity * Time.deltaTime, Space.Self);
             }
         }
     }
 
-    public void LockRotate()
+    public void LockRotate() 
     {
         Rotateable = false;
-        pov.m_HorizontalAxis.m_MaxSpeed = 0;
-        pov.m_VerticalAxis.m_MaxSpeed = 0;
-        pov.m_HorizontalAxis.m_InputAxisName = "";
-        pov.m_VerticalAxis.m_InputAxisName = "";
+        //pov.m_HorizontalAxis.m_MaxSpeed = 0;
+        //pov.m_VerticalAxis.m_MaxSpeed = 0;
+        //pov.m_HorizontalAxis.m_InputAxisName = "";
+        //pov.m_VerticalAxis.m_InputAxisName = "";
     }
 
     public void UnLockRotate()
     {
         Rotateable = true;
-        pov.m_HorizontalAxis.m_MaxSpeed = rotateXSencitivity;
-        pov.m_VerticalAxis.m_MaxSpeed = rotateXSencitivity;
-        pov.m_HorizontalAxis.m_InputAxisName = "Mouse X";
-        pov.m_VerticalAxis.m_InputAxisName = "Mouse Y";
+        //pov.m_HorizontalAxis.m_MaxSpeed = rotateXSencitivity;
+        //pov.m_VerticalAxis.m_MaxSpeed = rotateXSencitivity;
+        //pov.m_HorizontalAxis.m_InputAxisName = "Mouse X";
+        //pov.m_VerticalAxis.m_InputAxisName = "Mouse Y";
     }
 
     private void ChangeRunState(InputAction.CallbackContext context)

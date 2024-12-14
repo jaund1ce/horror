@@ -16,13 +16,11 @@ public class CabinetEntry : MonoBehaviour, IHideable, IInteractable
     public Transform cabinetDoor; // 캐비닛 문 Transform
     public Collider cabinetDoorCollider; // 캐비닛 문 Collider
     public CharacterController characterController; // 플레이어 CharacterController
-    public float interactDistance = 3f; // 상호작용 거리
     public float doorOpenAngle = 90f; // 문 열림 각도
     public float doorSpeed = 2f; // 문 열림 속도
 
     [SerializeField]private bool isDoorOpen = false; // 문이 열렸는지 여부
     [SerializeField] private bool isPlayerInside = false; // 플레이어가 캐비닛 내부에 있는지 여부
-    [SerializeField] private bool isPlayerNear = false;
 
     //void Update()
     //{
@@ -47,25 +45,6 @@ public class CabinetEntry : MonoBehaviour, IHideable, IInteractable
     private void GetPlayerData()
     {
         characterController = player.GetComponent<CharacterController>();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            isPlayerNear = true;
-            player = other.gameObject;
-            GetPlayerData();
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            isPlayerNear = false;
-            player = null;
-        }
     }
 
     public void OnHide()
@@ -138,7 +117,7 @@ public class CabinetEntry : MonoBehaviour, IHideable, IInteractable
 
     public void OnInteract()
     {
-        if (!isPlayerNear) return;
+        if(player == null) player = MainGameManager.Instance.Player.gameObject;
 
         if (!isDoorOpen)
         {
@@ -156,11 +135,9 @@ public class CabinetEntry : MonoBehaviour, IHideable, IInteractable
 
     public string GetInteractPrompt()
     {
-        if (!isPlayerNear) return "Get Near";
-
         if (!isDoorOpen) return "Open";
         else if (isPlayerInside) return "Get Out";
-        else if (isDoorOpen && isPlayerNear) return "Get Inside";
+        else if (isDoorOpen) return "Get Inside";
         else return "Err";
     }
 }
