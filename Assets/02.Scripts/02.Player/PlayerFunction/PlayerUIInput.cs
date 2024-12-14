@@ -3,13 +3,13 @@ using UnityEngine;
 public class PlayerUIInput : MonoBehaviour
 {
     private PlayerInputs playerInputs;
-    private PlayerConditionController health;
+    private PlayerConditionController playerConditionController;
 
     private void Awake()
     {
         playerInputs = new PlayerInputs();
-        health = GetComponent<PlayerConditionController>();
-        if (health == null)
+        playerConditionController = GetComponent<PlayerConditionController>();
+        if (playerConditionController == null)
         {
             Debug.LogWarning("Health 컴포넌트를 찾을 수 없습니다. OnDie 이벤트는 등록되지 않습니다.");
         }
@@ -20,9 +20,9 @@ public class PlayerUIInput : MonoBehaviour
         playerInputs.Enable();
         playerInputs.Player.Inventory.performed += OnInventory;
         playerInputs.Player.Menu.performed += OnSystemMenu;
-        if (health != null)
+        if (playerConditionController != null)
         {
-            health.OnDie += OnDieUI; // 이벤트 구독
+            playerConditionController.OnDie += OnDieUI; // 이벤트 구독
         }
     }
 
@@ -31,9 +31,9 @@ public class PlayerUIInput : MonoBehaviour
         playerInputs.Disable();
         playerInputs.Player.Inventory.performed -= OnInventory;
         playerInputs.Player.Menu.performed -= OnSystemMenu;
-        if (health != null)
+        if (playerConditionController != null)
         {
-            health.OnDie -= OnDieUI; // 이벤트 구독 해제
+            playerConditionController.OnDie -= OnDieUI; // 이벤트 구독 해제
         }
     }
 

@@ -13,6 +13,7 @@ public class DoorWithHinge : MonoBehaviour, IInteractable
     private bool isOpen = false; // 문이 열렸는지 여부
     private bool isPlayerNear = false; // 플레이어가 근처에 있는지 여부
 
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
