@@ -8,10 +8,11 @@ using UnityEngine.UIElements;
 public class PlayerInteraction : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
-    [SerializeField] private float itemCheckDistance = 5f;
+    [SerializeField] private float itemCheckDistance;
     [SerializeField] private float itemCheckTime = 0.1f;
 
     private float lastCheckTime;
+    [SerializeField]private LayerMask iteractableLayerMask;
     
     public PlayerInputs playerInputs { get; private set; }//inputsystem generate c# script로 생성된 스크립트
     public PlayerInputs.PlayerActions playerActions { get; private set; }   //미리 정의한 행동들 move, look,... 등
@@ -44,31 +45,27 @@ public class PlayerInteraction : MonoBehaviour
         Vector3 sceenCenter = new Vector3(Screen.width / 2, Screen.height / 2, 0);
         Ray ray = mainCamera.ScreenPointToRay(sceenCenter);
 
-        if(Physics.Raycast(ray,out RaycastHit hit, itemCheckDistance))
+        if(Physics.Raycast(ray,out RaycastHit hit, itemCheckDistance, iteractableLayerMask))//모든 iteractable layer은 iinteractable을 가지고 있다.
         {
-            if (hit.collider.TryGetComponent<IInteractable>(out IInteractable iteractable))
+            IInteractable iteractable = hit.collider.GetComponent<IInteractable>();
+            if(iteractable == null)
             {
-                if(iteractable == CurrentInteracteable)
-                {
-                    return;
-                }
-
-                CurrentInteracteable = iteractable;
-                UIManager.Instance.ActivePromptUI(CurrentInteracteable);
-
-                if(CurrentInteracteable is ItemBase)
-                {
-                    //UIManger.OpenInteractPanel((ItemBase)CurrentInteracteable);
-                }
-                //else if(CurrentInteracteable is )
+                Debug.LogError("Wrong iteractable setting!");
+                return;
             }
-            else
+
+            if (iteractable == CurrentInteracteable)
             {
-                CurrentInteracteable = null;
-                UIManager.Instance.ActivePromptUI(null);
-                //temUIManager.CloseInteractPanel();
+                return;
             }
+
+            CurrentInteracteable = iteractable;
         }
+        else
+        {
+            CurrentInteracteable = null;
+        }
+        UIManager.Instance.ActivePromptUI(CurrentInteracteable);
     }
 
     private void handleInteractionInput(InputAction.CallbackContext context)//상호작용시 아이템 회득

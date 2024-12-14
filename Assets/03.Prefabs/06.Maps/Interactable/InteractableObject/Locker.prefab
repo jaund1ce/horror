@@ -419,11 +419,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb491c99dcc2d64dbbb64304cb6b7f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hinge: {fileID: 0}
   openAngle: 150
   closeAngle: 0
-  speed: 5
-  openRange: 3
-  doorFrameCollider: {fileID: 0}
+  openSpeed: 5
+  interactionCollider: {fileID: 0}
 --- !u!1 &3211576666677686584
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,7 +472,6 @@ GameObject:
   - component: {fileID: 573786396125814035}
   - component: {fileID: 1713864574752941521}
   - component: {fileID: 2880451159448278456}
-  - component: {fileID: 5756723508499610381}
   m_Layer: 0
   m_Name: Locker
   m_TagString: Untagged
@@ -774,33 +773,10 @@ MonoBehaviour:
   cabinetDoor: {fileID: 7686792002906004321}
   cabinetDoorCollider: {fileID: 5529642402161023434}
   characterController: {fileID: 0}
-  interactDistance: 3
   doorOpenAngle: 90
   doorSpeed: 2
   isDoorOpen: 0
   isPlayerInside: 0
-  isPlayerNear: 0
---- !u!135 &5756723508499610381
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3383000070750489371}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 1.5
-  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!1 &4327879837685982043
 GameObject:
   m_ObjectHideFlags: 0
