@@ -12,7 +12,7 @@ public class LockedDoorWithHinge : MonoBehaviour, IInteractable
     public Collider interactionCollider; // 플레이어 감지를 위한 콜라이더
     //public bool isLocked = true; // 문 잠김 여부
     private bool isOpened = false; // 문이 열렸는지 여부
-    private bool isPlayerNear = false; // 플레이어가 근처에 있는지 여부
+    //private bool isPlayerNear = false; // 플레이어가 근처에 있는지 여부
 
     public event Action isOpen;
 
@@ -20,7 +20,7 @@ public class LockedDoorWithHinge : MonoBehaviour, IInteractable
     {
         if (other.CompareTag("Player"))
         {
-            isPlayerNear = true;
+            //isPlayerNear = true;
             Debug.Log("Player is near the locked door.");
         }
     }
@@ -30,14 +30,14 @@ public class LockedDoorWithHinge : MonoBehaviour, IInteractable
     {
         if (other.CompareTag("Player"))
         {
-            isPlayerNear = false;
+            //isPlayerNear = false;
             Debug.Log("Player left the locked door area.");
         }
     }
 
     public void OnInteract()
     {
-        if (!isPlayerNear) return;
+       // if (!isPlayerNear) return;
 
         //if (isLocked)
         //{

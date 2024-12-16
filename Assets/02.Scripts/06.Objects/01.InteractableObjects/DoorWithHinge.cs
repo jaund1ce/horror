@@ -8,33 +8,40 @@ public class DoorWithHinge : MonoBehaviour, IInteractable
     public float openAngle = -90f; // 문 열리는 각도
     public float closeAngle = 0f; // 문 닫히는 각도
     public float openSpeed = 5f; // 문 열림 속도
+    public float pushForce = 2f;
+    private Rigidbody doorRb;
     public Collider interactionCollider; // 플레이어 감지를 위한 콜라이더
 
     private bool isOpen = false; // 문이 열렸는지 여부
-    private bool isPlayerNear = false; // 플레이어가 근처에 있는지 여부
+    //private bool isPlayerNear = false; // 플레이어가 근처에 있는지 여부
 
+    private void Start()
+    {
+        doorRb = GetComponent<Rigidbody>();
+    }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            isPlayerNear = true;
-            Debug.Log("Player is near the door.");
+            CharacterController character = other.GetComponent<CharacterController>();
+
+            if (character != null)
+            {
+                // 문의 회전 방향에 따라 밀어내는 벡터 계산
+                Vector3 pushDirection = doorRb.transform.right; // 문의 Local X축 방향으로 밀기
+                pushDirection.y = 0; // Y축 이동 방지
+
+                // 캐릭터의 위치를 미세하게 이동 (밀어내기)
+                character.Move(pushDirection * pushForce * Time.deltaTime);
+            }
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            isPlayerNear = false;
-            Debug.Log("Player left the door area.");
-        }
-    }
 
     public void OnInteract()
     {
-        if (!isPlayerNear) return;
+        //if (!isPlayerNear) return;
 
         ToggleDoor();
     }

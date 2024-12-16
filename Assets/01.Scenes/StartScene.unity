@@ -328,7 +328,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
-  player: {fileID: 0}
 --- !u!4 &1443688607
 Transform:
   m_ObjectHideFlags: 0

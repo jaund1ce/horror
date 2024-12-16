@@ -12,21 +12,6 @@ public class DeskHide : MonoBehaviour, IHideable, IInteractable
 
     private bool isUnderDesk = false; // 플레이어가 책상 밑에 있는지 여부
 
-    //void Update()
-    //{
-    //    float distance = Vector3.Distance(player.transform.position, transform.position);
-    //    if (distance <= interactDistance && Input.GetKeyDown(KeyCode.E))
-    //    {
-    //        if (!isUnderDesk)
-    //        {
-    //            OnHide();
-    //        }
-    //        else
-    //        {
-    //            OnExit();
-    //        }
-    //    }
-    //}
 
     public void OnHide()
     {

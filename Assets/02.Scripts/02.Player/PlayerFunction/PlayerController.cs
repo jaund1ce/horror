@@ -13,10 +13,12 @@ public class PlayerController : MonoBehaviour
 {
     public PlayerInputs playerInputs {  get; private set; }//inputsystem generate c# script로 생성된 스크립트
     public PlayerInputs.PlayerActions playerActions { get; private set; }   //미리 정의한 행동들 move, look,... 등
+    public Equipment EquipMent { get; private set; }
 
     [SerializeField] private CinemachineVirtualCamera playercamera;
     [SerializeField] private GameObject Head;
     [SerializeField] float maxRotateY;
+
     public float rotateSencitivity;
     public bool Rotateable = true;
     public bool RunningReady = false;
@@ -27,6 +29,7 @@ public class PlayerController : MonoBehaviour
     {
         playerInputs = new PlayerInputs();
         playerActions = playerInputs.Player;//inputsystem에 선언했던 Actionmap 중에 하나를 선택
+        EquipMent = GetComponent<Equipment>();
     }
 
     private void OnEnable()
@@ -36,6 +39,7 @@ public class PlayerController : MonoBehaviour
         playerActions.Look.started += RotateCamera;
         playerActions.Run.started += ChangeRunState;
         playerActions.Run.canceled += ChangeRunState2;
+        playerActions.EquipmentUse.started += EquipMent.OnAttackInput;
     }
 
     private void OnDisable()
@@ -44,6 +48,7 @@ public class PlayerController : MonoBehaviour
         playerActions.Look.started -= RotateCamera;
         playerActions.Run.canceled -= ChangeRunState;
         playerActions.Run.canceled -= ChangeRunState2;
+        playerActions.EquipmentUse.started -= EquipMent.OnAttackInput;
     }
 
 

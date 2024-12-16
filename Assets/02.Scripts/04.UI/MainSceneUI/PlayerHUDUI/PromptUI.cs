@@ -14,7 +14,6 @@ public class PromptUI : BaseUI
     public override void OpenUI()
     {
         this.gameObject.SetActive(true);
-        Debug.Log("Open");
     }
 
     public override void CloseUI()

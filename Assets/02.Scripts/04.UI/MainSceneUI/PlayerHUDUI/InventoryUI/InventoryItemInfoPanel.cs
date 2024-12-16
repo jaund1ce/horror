@@ -39,15 +39,14 @@ public class InventoryItemInfoPanelelController : MonoBehaviour
         {
             case ItemType.EquipItem:
                 itemUseBTNText.text = "Equip";
-                Debug.Log("1");
                 break;
             case ItemType.CcItem:
-                itemUseBTNText.text = "Use";
-                Debug.Log("2"); 
+                //itemUseBTNText.text = "Use";
+                itemUseBTNText.text = "Equip";
                 break;
             case ItemType.CnsItem:
-                itemUseBTNText.text = "Consume";
-                Debug.Log("3");
+                //itemUseBTNText.text = "Consume";
+                itemUseBTNText.text = "Equip";
                 break;
             default:
                 itemUseBTNText.text = "";
@@ -61,8 +60,8 @@ public class InventoryItemInfoPanelelController : MonoBehaviour
     {
         if (currentItemData == null) return;
 
-         MainGameManager.Instance.player.CurrentEquipItem = Inventory.CurrentInventoryData.ItemData;
-         
+        MainGameManager.Instance.Player.CurrentEquipItem = Inventory.CurrentInventoryData;
+        MainGameManager.Instance.Player.Input.EquipMent.EquipNew(MainGameManager.Instance.Player.CurrentEquipItem);
             /*if (currentItemData.amount <= 0)
             {
                 currentItemData.ResetData();

@@ -88,7 +88,7 @@ public class UIManager : mainSingleton<UIManager>
 
         T uiInstance = InstantiateUI<T>(uiPrefab); // UI 인스턴스 생성
         uiList.Add(uiInstance);                   // 인스턴스화된 UI를 리스트에 추가
-        Debug.Log($"{typeof(T).Name} UI가 생성되었습니다.");
+        //Debug.Log($"{typeof(T).Name} UI가 생성되었습니다.");
     }
 
     public void Hide<T>() where T : BaseUI
@@ -104,7 +104,7 @@ public class UIManager : mainSingleton<UIManager>
 
         uiList.Remove(ui); // 리스트에서 제거
         Destroy(ui.canvas.gameObject); // 캔버스 파괴
-        Debug.Log($"{typeof(T).Name} UI가 제거되었습니다.");
+        //Debug.Log($"{typeof(T).Name} UI가 제거되었습니다.");
     }
 
     // UI를 인스턴스화하는 메서드
