@@ -32,7 +32,7 @@ public class PaperUI : PopupUI
 
     private void Start()
     {
-        if (UIManager.Instance.paperInteractionCount >= 1)
+        if (MainGameManager.Instance.paperInteractionCount >= 1)
         {
             if (paperButton1 != null)
             {
@@ -44,7 +44,7 @@ public class PaperUI : PopupUI
                 paperDetail1.SetActive(true);
             }
         }
-        if (UIManager.Instance.paperInteractionCount >= 2)
+        if (MainGameManager.Instance.paperInteractionCount >= 2)
         {
             if (paperButton2 != null)
             {
@@ -56,7 +56,7 @@ public class PaperUI : PopupUI
                 paperDetail2.SetActive(true);
             }
         }
-        if (UIManager.Instance.paperInteractionCount >= 3)
+        if (MainGameManager.Instance.paperInteractionCount >= 3)
         {
             if (paperButton3 != null)
             {
@@ -68,7 +68,7 @@ public class PaperUI : PopupUI
                 paperDetail3.SetActive(true);
             }
         }
-        if (UIManager.Instance.paperInteractionCount >= 4)
+        if (MainGameManager.Instance.paperInteractionCount >= 4)
         {
             if (paperButton4 != null)
             {
