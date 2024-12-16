@@ -119,7 +119,7 @@ public class PlayerBaseState : IState
     private void Move(Vector3 direction)
     {
         float movementSpeed = GetMovementSpeed();
-        stateMachine.Player.Controller.Move(((direction * movementSpeed) + stateMachine.Player.ForceReceiver.Movement) * Time.deltaTime);
+        stateMachine.Player.PlayerRigidbody.velocity = direction * movementSpeed;
     }
 
     private float GetMovementSpeed()

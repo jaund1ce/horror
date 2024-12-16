@@ -25,7 +25,9 @@ public class PlayerFallState : PlayerAirState
     {
         base.Update();
 
-        if(stateMachine.Player.Controller.isGrounded)
+        stateMachine.Player.PlayerRigidbody.AddForce(Vector3.down * Time.deltaTime, ForceMode.Force);
+
+        if (stateMachine.Player.isGround)
         {
             stateMachine.ChangeState(stateMachine.IdleState);
             return;

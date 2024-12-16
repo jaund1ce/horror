@@ -15,7 +15,7 @@ public abstract class EquipItemBase : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         camera = Camera.main;
-        itemData = MainGameManager.Instance.player.CurrentEquipItem;
+        itemData = MainGameManager.Instance.player.CurrentItemData;
     }
 
     public virtual void OnUseInput() 

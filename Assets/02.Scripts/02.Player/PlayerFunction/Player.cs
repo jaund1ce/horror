@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     public Animator Animator { get; private set; }
     public PlayerController Input { get; private set; }
     public PlayerInteraction Interact { get; private set; }
-    public CharacterController Controller { get; private set; }
+    public Rigidbody PlayerRigidbody { get; private set; }
     public ForceReceiver ForceReceiver { get; private set; }
     public PlayerConditionController health { get; private set; }
 
@@ -23,8 +23,9 @@ public class Player : MonoBehaviour
     public Action addItem;
     public Action useItem;
     public PlayerInventoryData playerInventoryData;
-    public ItemData CurrentEquipItem;
+    public ItemData CurrentItemData;
     public bool isChangingQuickSlot = false;
+    public bool isGround = true;
     public PlayerState PlayerState = PlayerState.Normal;
 
     void Awake()
@@ -33,7 +34,7 @@ public class Player : MonoBehaviour
         Animator = GetComponentInChildren<Animator>();
         Input = GetComponent<PlayerController>();
         Interact = GetComponentInChildren<PlayerInteraction>();
-        Controller = GetComponent<CharacterController>();
+        PlayerRigidbody = GetComponent<Rigidbody>();
         ForceReceiver = GetComponent<ForceReceiver>();
         health = GetComponent<PlayerConditionController>();
         playerInventoryData = GetComponent<PlayerInventoryData>();
@@ -53,6 +54,7 @@ public class Player : MonoBehaviour
         stateMachine.HandleInput();
         stateMachine.Update();
         ChangeRotation();//
+        CheckGround();
     }
 
     private void FixedUpdate()
@@ -72,6 +74,20 @@ public class Player : MonoBehaviour
         else
         {
             Input.rotateSencitivity = Data.GroundData.BaseRotationDamping;
+        }
+    }
+
+    private void CheckGround()
+    {
+        Ray ray = new Ray(transform.position, Vector3.down);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, 3f))//모든 iteractable layer은 iinteractable을 가지고 있다.
+        {
+            isGround = true;
+        }
+        else
+        {
+            isGround = false;
         }
     }
 }

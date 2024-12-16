@@ -61,7 +61,7 @@ public class InventoryItemInfoPanelelController : MonoBehaviour
     {
         if (currentItemData == null) return;
 
-         MainGameManager.Instance.player.CurrentEquipItem = Inventory.CurrentInventoryData.ItemData;
+         MainGameManager.Instance.player.CurrentItemData = Inventory.CurrentInventoryData.ItemData;
          
             /*if (currentItemData.amount <= 0)
             {
