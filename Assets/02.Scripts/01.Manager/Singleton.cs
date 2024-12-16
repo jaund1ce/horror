@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class mainSingleton<T> : MonoBehaviour where T : mainSingleton<T>
 {
-    private static T _instance = null;
+    protected static T _instance = null;
 
     public static T Instance
     {

@@ -1,58 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : mainSingleton<UIManager>
 {
     private List<BaseUI> uiList = new List<BaseUI>(); // 인스턴스화된 UI 저장
-    public int paperInteractionCount; // 단서 UI 해금 조건 Count
 
-    private MainUI mainUI; // 인스펙터에서 넣는거는 프로젝트의 원본의 오브젝트고 실제로 동작하고싶은건 인스턴시에이트
+    private MainUI mainUI;
+    // 인스펙터에서 넣는거는 프로젝트의 원본의 오브젝트고 실제로 동작하고싶은건 인스턴시에이트
     //된 아이를 컨트롤 하고싶어서 miss 나는것
 
 
     protected override void Awake()
     {
         base.Awake();
-        SceneManager.sceneLoaded += OnSceneLoaded; // 씬 로드 이벤트 등록
     }
 
 
-    private void Initalize()
+    public void Initalize()
     {
         uiList.RemoveAll(item => item == null);
-        Player player = FindObjectOfType<Player>();
-        if (player == null)
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-
-        paperInteractionCount = 0;
-
-        Time.timeScale = 1f;
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        Initalize();
-        // 씬에 따라 적절한 UI 표시
-        if (scene.buildIndex == 0)
-        {
-            StartCoroutine(DelayShowUI());
-        }
-        else if (scene.buildIndex == 1)
-        {
-            Show<MainUI>();
-            mainUI = GetUI<MainUI>();
-        }
-        else if (scene.buildIndex == 2)
-        {
-            Show<EndUI>();
-        }
-    }
 
     //그럼 직접 코드에서 해당 UI를 가져오는 스크립트 작성
     //해당 스크립트는 씬 매니져에서 씬이 로드될때 동작하는곳에 작성하는게 좋다
@@ -88,7 +59,7 @@ public class UIManager : mainSingleton<UIManager>
 
         T uiInstance = InstantiateUI<T>(uiPrefab); // UI 인스턴스 생성
         uiList.Add(uiInstance);                   // 인스턴스화된 UI를 리스트에 추가
-        Debug.Log($"{typeof(T).Name} UI가 생성되었습니다.");
+        //Debug.Log($"{typeof(T).Name} UI가 생성되었습니다.");
     }
 
     public void Hide<T>() where T : BaseUI
@@ -104,7 +75,7 @@ public class UIManager : mainSingleton<UIManager>
 
         uiList.Remove(ui); // 리스트에서 제거
         Destroy(ui.canvas.gameObject); // 캔버스 파괴
-        Debug.Log($"{typeof(T).Name} UI가 제거되었습니다.");
+        //Debug.Log($"{typeof(T).Name} UI가 제거되었습니다.");
     }
 
     // UI를 인스턴스화하는 메서드
@@ -132,7 +103,6 @@ public class UIManager : mainSingleton<UIManager>
     protected override void OnDestroy()
     {
         base.OnDestroy();
-        SceneManager.sceneLoaded -= OnSceneLoaded; // 씬 로드 이벤트 해제
     }
 
     public void Hide(System.Type type)
@@ -149,8 +119,5 @@ public class UIManager : mainSingleton<UIManager>
         Debug.Log($"{type.Name} UI가 제거되었습니다.");
     }
 
-    public void ActivePromptUI(IInteractable CurrentInteracteable) 
-    {
-        mainUI.ShowPromptUI(CurrentInteracteable);
-    }
+
 }

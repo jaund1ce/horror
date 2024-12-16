@@ -22,25 +22,6 @@ public class CabinetEntry : MonoBehaviour, IHideable, IInteractable
     [SerializeField]private bool isDoorOpen = false; // 문이 열렸는지 여부
     [SerializeField] private bool isPlayerInside = false; // 플레이어가 캐비닛 내부에 있는지 여부
 
-    //void Update()
-    //{
-    //    float distance = Vector3.Distance(player.position, transform.position);
-    //    if (distance <= interactDistance && Input.GetKeyDown(KeyCode.E))
-    //    {
-    //        if (!isDoorOpen)
-    //        {
-    //            StartCoroutine(OpenDoor());
-    //        }
-    //        else if (isDoorOpen && !isPlayerInside)
-    //        {
-    //            OnHide();
-    //        }
-    //        else if (isPlayerInside)
-    //        {
-    //            OnExit();
-    //        }
-    //    }
-    //}
 
     private void GetPlayerData()
     {

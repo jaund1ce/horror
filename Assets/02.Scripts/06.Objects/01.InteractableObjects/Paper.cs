@@ -18,8 +18,8 @@ public class Paper : MonoBehaviour, IInteractable
         {
             animator.SetTrigger("Interact"); // Animator에 "Interact"라는 트리거가 설정되어 있어야 함
         }
-        UIManager.Instance.paperInteractionCount += paperData.value;
-        Debug.Log($"PaperInteractionCount: {UIManager.Instance.paperInteractionCount}");
+        MainGameManager.Instance.paperInteractionCount += paperData.value;
+        Debug.Log($"PaperInteractionCount: {MainGameManager.Instance.paperInteractionCount}");
 
         UIManager.Instance.Show<PaperUI>();
         

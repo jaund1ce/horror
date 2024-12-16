@@ -10,8 +10,8 @@ using UnityEngine.InputSystem;
 
 public class Equipment : MonoBehaviour
 {
-    public EquipItemBase CurEquip;
     public Transform EquipPoint;
+    [HideInInspector]public EquipItemBase CurEquip;
 
     private PlayerController controller;
 
@@ -21,10 +21,11 @@ public class Equipment : MonoBehaviour
 
     }
 
-    public void EquipNew(ItemData data)
+    public void EquipNew(InventoryData data)
     {
         UnEquip();
-        CurEquip = Instantiate(data.itemSO.EquipPrefab, EquipPoint).GetComponent<EquipItemBase>();
+        Debug.Log(data);
+        CurEquip = Instantiate(data.ItemData.itemSO.EquipPrefab, EquipPoint).GetComponent<EquipItemBase>();
 
 
     }
@@ -40,7 +41,8 @@ public class Equipment : MonoBehaviour
 
     public void OnAttackInput(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Performed && CurEquip != null)
+        Debug.Log("들어옴?");
+        if (context.phase == InputActionPhase.Started && CurEquip != null)
         {
             CurEquip.OnUseInput();
         }

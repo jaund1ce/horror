@@ -6,7 +6,7 @@ public abstract class EquipItemBase : MonoBehaviour
 {
     protected bool onUsing;
     protected string animUse = "Use";
-    protected ItemData itemData;
+    protected InventoryData inventoryData;
 
     protected Animator animator;
     protected Camera camera;
@@ -15,21 +15,34 @@ public abstract class EquipItemBase : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         camera = Camera.main;
-        itemData = MainGameManager.Instance.player.CurrentItemData;
+        inventoryData = MainGameManager.Instance.Player.CurrentEquipItem;
     }
 
     public virtual void OnUseInput() 
     {
+        if (inventoryData == null) return;
         if (!onUsing)
         {
+            ResetSlot();
+
             onUsing = true;
+            inventoryData.amount -= 1;
             animator.SetTrigger(animUse);
-            Debug.Log("Item »ç¿ë");
         }
     }
 
     public virtual void OnUse() 
     {
         onUsing = false;
-    } 
+    }
+
+    public void ResetSlot() 
+    {
+        if (inventoryData.amount <= 0)
+        {
+            inventoryData.ResetData();
+            Destroy(this.gameObject);
+            return;
+        }
+    }
 }
