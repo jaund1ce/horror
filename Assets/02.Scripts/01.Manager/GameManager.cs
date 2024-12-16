@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class MainGameManager : mainSingleton<MainGameManager>
 {
+    public int paperInteractionCount;
+
     public Player Player;
 
     protected override void Awake()

@@ -65,7 +65,9 @@ public class PlayerInteraction : MonoBehaviour
         {
             CurrentInteracteable = null;
         }
-        UIManager.Instance.ActivePromptUI(CurrentInteracteable);
+        MainUI mainUI = UIManager.Instance.GetUI<MainUI>();
+        mainUI.ShowPromptUI(CurrentInteracteable);
+
     }
 
     private void handleInteractionInput(InputAction.CallbackContext context)//상호작용시 아이템 회득
