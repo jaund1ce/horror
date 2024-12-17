@@ -20,7 +20,7 @@ public class InventorySlotsController : MonoBehaviour
     {
         for(int i=0; i< 15; i++)
         {
-            if (playerInventoryData.inventoryDatas[i].ItemData == null) return;
+            if (playerInventoryData.inventoryDatas[i].ItemData == null) continue;
 
             InventoryData ID = playerInventoryData.inventoryDatas[i];
             slots[ID.slotIndex].ChangeData(ID);
