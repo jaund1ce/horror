@@ -20,32 +20,12 @@ public class KeypadController : MonoBehaviour, IInteractable
 
     private string currentInput = ""; // 현재 입력된 코드
     public bool isUsingKeypad = false; // 키패드 활성화 여부
-    public bool isPlayerNear = false; // 플레이어가 키패드 근처에 있는지 여부
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            isPlayerNear = true;
-            Debug.Log("Player is near the keypad.");
-        }
-    }
+    
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            isPlayerNear = false;
-            Debug.Log("Player left the keypad area.");
-        }
-    }
 
     public void OnInteract()
     {
-        Debug.Log("OnInteract called. isPlayerNear: " + isPlayerNear);
-
-        if (!isPlayerNear) return;
-
         if (!isUsingKeypad)
         {
             EnterKeypadView();
@@ -58,7 +38,6 @@ public class KeypadController : MonoBehaviour, IInteractable
 
     private void EnterKeypadView()
     {
-        Debug.Log("Entering keypad view...");
         isUsingKeypad = true;
 
         if (keypadCamera != null)
@@ -72,7 +51,6 @@ public class KeypadController : MonoBehaviour, IInteractable
 
     private void ExitKeypadView()
     {
-        Debug.Log("Exiting keypad view...");
         isUsingKeypad = false;
 
         if (keypadCamera != null)
@@ -86,8 +64,8 @@ public class KeypadController : MonoBehaviour, IInteractable
 
     public string GetInteractPrompt()
     {
-        if (!isUsingKeypad) return isPlayerNear ? "interact" : "";
-        return "exit";
+        //if (!isUsingKeypad) return isPlayerNear ? "interact" : "";
+        return "interact";
     }
 
     public void OnButtonPress(string buttonName)
