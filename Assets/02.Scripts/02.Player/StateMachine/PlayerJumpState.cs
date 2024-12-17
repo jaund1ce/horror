@@ -10,8 +10,7 @@ public class PlayerJumpState : PlayerAirState
 
     public override void Enter()
     {
-        stateMachine.JumpForce = stateMachine.Player.Data.AirData.JumpForce; 
-        stateMachine.Player.ForceReceiver.Jump(stateMachine.JumpForce);
+        stateMachine.Player.PlayerRigidbody.AddForce(Vector3.up * 40f, ForceMode.Impulse);//jumpforce 라는 숫자로 바꿔야 함
         base.Enter();
         StartAnimation(stateMachine.Player.AnimationData.JumpParameterHash);
     }
@@ -26,7 +25,7 @@ public class PlayerJumpState : PlayerAirState
     {
         base.PhysicsUpdate();
 
-        if (stateMachine.Player.PlayerRigidbody.velocity.y <=0)
+        if (stateMachine.Player.PlayerRigidbody.velocity.y < 0)
         {
             stateMachine.ChangeState(stateMachine.FallState);
             return;

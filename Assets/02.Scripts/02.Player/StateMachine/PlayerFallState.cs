@@ -25,7 +25,7 @@ public class PlayerFallState : PlayerAirState
     {
         base.Update();
 
-        stateMachine.Player.PlayerRigidbody.AddForce(Vector3.down * Time.deltaTime, ForceMode.Force);
+        stateMachine.Player.PlayerRigidbody.AddForce(Vector3.down * 100f, ForceMode.Acceleration);
 
         if (stateMachine.Player.isGround)
         {

@@ -79,9 +79,13 @@ public class Player : MonoBehaviour
 
     private void CheckGround()
     {
-        Ray ray = new Ray(transform.position, Vector3.down);
+        Ray ray1 = new Ray(this.gameObject.transform.position + Vector3.forward*0.1f + new Vector3(0,0.1f,0), Vector3.down);
+        Ray ray2 = new Ray(this.gameObject.transform.position + Vector3.back * 0.1f + new Vector3(0,0.1f,0), Vector3.down);
+        Ray ray3 = new Ray(this.gameObject.transform.position + Vector3.right * 0.1f + new Vector3(0,0.1f,0), Vector3.down);
+        Ray ray4 = new Ray(this.gameObject.transform.position + Vector3.left * 0.1f + new Vector3(0,0.1f,0), Vector3.down);
+        //Debug.DrawRay(this.gameObject.transform.position, Vector3.down, Color.red, 3f);
 
-        if (Physics.Raycast(ray, out RaycastHit hit, 3f))//모든 iteractable layer은 iinteractable을 가지고 있다.
+        if (Physics.Raycast(ray1, 0.2f) || Physics.Raycast(ray2, 0.2f) || Physics.Raycast(ray3, 0.2f) || Physics.Raycast(ray4, 0.2f))
         {
             isGround = true;
         }

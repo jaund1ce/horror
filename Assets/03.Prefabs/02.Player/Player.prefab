@@ -118,8 +118,10 @@ GameObject:
   - component: {fileID: 7956929184022394648}
   - component: {fileID: 441836061385712579}
   - component: {fileID: 340673919017437607}
+  - component: {fileID: 9178183897942710330}
+  - component: {fileID: 2814281900541009720}
   m_Layer: 3
-  m_Name: Player2
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,7 +171,6 @@ MonoBehaviour:
     baseAttackParameterName: BaseAttack
     hideParameterName: '@Hide'
   playerInventoryData: {fileID: 0}
-  CurrentItemData: {fileID: 0}
   isChangingQuickSlot: 0
   isGround: 1
   PlayerState: -1
@@ -266,7 +267,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &340673919017437607
 CapsuleCollider:
@@ -291,6 +292,32 @@ CapsuleCollider:
   m_Height: 1.9135842
   m_Direction: 1
   m_Center: {x: 0.000000014901161, y: 0.9592478, z: 0}
+--- !u!114 &9178183897942710330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859635996863843495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2cd6b13b2e1fe449b5db80948d392c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EquipPoint: {fileID: 7414968078889586009}
+  CurEquip: {fileID: 0}
+--- !u!114 &2814281900541009720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859635996863843495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a58b6ca0e6afaaf4e8fd77a696e6b88c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5093142531214521437
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,6 +391,37 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 7172837439785154030}
+--- !u!1 &7227284632756826042
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7414968078889586009}
+  m_Layer: 3
+  m_Name: EquipPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7414968078889586009
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7227284632756826042}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0008106433, y: 0.00010170879, z: -0.0006370112, w: 0.99999946}
+  m_LocalPosition: {x: 0, y: 0.0276244, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7243471946196980766}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7270161337631830994
 GameObject:
   m_ObjectHideFlags: 0
@@ -1377,7 +1435,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8505600250597459290, guid: fc5e65fca514e34458acbf2fa895187d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7414968078889586009}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc5e65fca514e34458acbf2fa895187d, type: 3}
 --- !u!137 &974106544266249937 stripped
@@ -1388,5 +1449,10 @@ SkinnedMeshRenderer:
 --- !u!4 &1515096769216427695 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fc5e65fca514e34458acbf2fa895187d, type: 3}
+  m_PrefabInstance: {fileID: 1336457511120785732}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7243471946196980766 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8505600250597459290, guid: fc5e65fca514e34458acbf2fa895187d, type: 3}
   m_PrefabInstance: {fileID: 1336457511120785732}
   m_PrefabAsset: {fileID: 0}
