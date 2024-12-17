@@ -13,7 +13,7 @@ public class PlayerConditionController : MonoBehaviour
     public float PassiveStamina;
     public float Stamina;
 
-    private float staminaAmount = 15f;
+    [SerializeField] private float staminaUseAmount = 15f;
 
     public event Action OnDie;
 
@@ -30,7 +30,7 @@ public class PlayerConditionController : MonoBehaviour
         }
         if (MainGameManager.Instance.Player.Input.isRunning)
         {
-            Stamina -= staminaAmount * Time.deltaTime;
+            Stamina -= staminaUseAmount * Time.deltaTime;
         }
         Health = Mathf.Clamp(Health + PassiveHealth*Time.deltaTime, 0, maxHealth);
         Stamina = Mathf.Clamp(Stamina + PassiveStamina * Time.deltaTime, 0, maxStamina);
@@ -59,6 +59,6 @@ public class PlayerConditionController : MonoBehaviour
 
     public void AddHealth(int amount) 
     {
-        Health = Mathf.Min(Health + amount, 100);
+        Health = Mathf.Min(Health + amount, maxHealth);
     }
 }

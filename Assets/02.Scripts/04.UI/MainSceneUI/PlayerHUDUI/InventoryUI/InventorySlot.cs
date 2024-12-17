@@ -10,7 +10,7 @@ public class InventorySlot : MonoBehaviour
     [SerializeField]private InventoryData CurrentData = null;
     [SerializeField]private Image CurrentItemImage;
     [SerializeField]private TextMeshProUGUI CurrentItemAmount;
-    [SerializeField]private InventoryController InventorySlotsController;
+    [SerializeField]private InventoryController InventoryController;
 
     public void ChangeData(InventoryData itemData)
     {
@@ -30,7 +30,8 @@ public class InventorySlot : MonoBehaviour
     public void OnClick()
     {
         Debug.Log("slotclicked!");
-        InventorySlotsController.ChangeData(CurrentData);
+        if (CurrentData == null) return;
+        InventoryController.ChangeData(CurrentData);
     }
 
     public void ChangeUI()

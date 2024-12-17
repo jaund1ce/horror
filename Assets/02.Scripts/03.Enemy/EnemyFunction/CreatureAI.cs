@@ -38,7 +38,7 @@ public class CreatureAI : MonoBehaviour , AggroGage
     public bool isPlayerMiss { get; private set; } = true;
     public bool IsAggroGageMax { get; private set; }
     private float checkMissTime;
-    private float aggroGage;
+    public float aggroGage;
     public bool IsAttacking;
     
     private List<int> visionInObject = new List<int>(); 
