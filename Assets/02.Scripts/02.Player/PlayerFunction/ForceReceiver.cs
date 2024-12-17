@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ForceReceiver : MonoBehaviour
 {
-    [SerializeField] private CharacterController controller;
+    [SerializeField] private Rigidbody rigidbody;
     [SerializeField] private float drag = 0.3f;
 
 
@@ -16,22 +16,22 @@ public class ForceReceiver : MonoBehaviour
           
     void Start()
     {
-        controller = GetComponent<CharacterController>();
+        rigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
-    void Update()
+    void Update()//rigidbody를 사용하면 중력 자동 적용
     {
-        if (verticalVelocity < 0f && controller.isGrounded)
-        {
-            verticalVelocity = Physics.gravity.y * Time.deltaTime;
-        }
-        else
-        {
-            verticalVelocity += Physics.gravity.y * Time.deltaTime;
-        }
+        //if (verticalVelocity < 0f && controller.isGrounded)
+        //{
+        //    verticalVelocity = Physics.gravity.y * Time.deltaTime;
+        //}
+        //else
+        //{
+        //    verticalVelocity += Physics.gravity.y * Time.deltaTime;
+        //}
 
-        impact = Vector3.SmoothDamp(impact, Vector3.zero, ref dampingVelocity, drag);
+        //impact = Vector3.SmoothDamp(impact, Vector3.zero, ref dampingVelocity, drag);
     }
     public void Reset()
     {
