@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera playercamera;
     [SerializeField] private GameObject Head;
     [SerializeField] float maxRotateY;
+    public SkinnedMeshRenderer skinnedMeshRenderer;
 
     public float rotateSencitivity;
     public bool Rotateable = true;
@@ -51,7 +52,19 @@ public class PlayerController : MonoBehaviour
         playerActions.EquipmentUse.started -= EquipMent.OnAttackInput;
     }
 
+    private void LateUpdate()
+    {
+        UpdateCameraData();
+    }
 
+    private void UpdateCameraData()//카메라가 찍고 있는 head의 위치를 mesh로 설정해둔 머리를 쫓아가도록 설정
+    {
+        Mesh mesh = new Mesh();
+        skinnedMeshRenderer.BakeMesh(mesh);
+        Vector3 headposition = skinnedMeshRenderer.transform.TransformPoint(mesh.vertices[0]);
+
+        Head.transform.position = headposition;
+    }
 
     private void RotateCamera(InputAction.CallbackContext context)//cinemachine의 aim방식에 따라서 회전시키는 방법은 다르다.
     {
@@ -76,19 +89,11 @@ public class PlayerController : MonoBehaviour
     public void LockRotate() 
     {
         Rotateable = false;
-        //pov.m_HorizontalAxis.m_MaxSpeed = 0;
-        //pov.m_VerticalAxis.m_MaxSpeed = 0;
-        //pov.m_HorizontalAxis.m_InputAxisName = "";
-        //pov.m_VerticalAxis.m_InputAxisName = "";
     }
 
     public void UnLockRotate()
     {
         Rotateable = true;
-        //pov.m_HorizontalAxis.m_MaxSpeed = rotateXSencitivity;
-        //pov.m_VerticalAxis.m_MaxSpeed = rotateXSencitivity;
-        //pov.m_HorizontalAxis.m_InputAxisName = "Mouse X";
-        //pov.m_VerticalAxis.m_InputAxisName = "Mouse Y";
     }
 
     private void ChangeRunState(InputAction.CallbackContext context)

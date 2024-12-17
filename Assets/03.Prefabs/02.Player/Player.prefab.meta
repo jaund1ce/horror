@@ -1,6 +1,12 @@
 fileFormatVersion: 2
-guid: 8d12ed94734747d4a91ead2b0bc9f8f0
+<<<<<<<< HEAD:Assets/03.Prefabs/02.Player/Player2.prefab.meta
+guid: d39ba8753157c864da1cc2661a50bee4
 PrefabImporter:
+========
+guid: d7a64e29990596545be998f7b6053fcd
+folderAsset: yes
+DefaultImporter:
+>>>>>>>> Dev:Assets/02.Scripts/10.Scene.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

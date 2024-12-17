@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     public Animator Animator { get; private set; }
     public PlayerController Input { get; private set; }
     public PlayerInteraction Interact { get; private set; }
-    public CharacterController Controller { get; private set; }
+    public Rigidbody PlayerRigidbody { get; private set; }
     public ForceReceiver ForceReceiver { get; private set; }
     public PlayerConditionController health { get; private set; }
 
@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     public PlayerInventoryData playerInventoryData;
     public InventoryData CurrentEquipItem;
     public bool isChangingQuickSlot = false;
+    public bool isGround = true;
     public PlayerState PlayerState = PlayerState.Normal;
 
     void Awake()
@@ -33,7 +34,7 @@ public class Player : MonoBehaviour
         Animator = GetComponentInChildren<Animator>();
         Input = GetComponent<PlayerController>();
         Interact = GetComponentInChildren<PlayerInteraction>();
-        Controller = GetComponent<CharacterController>();
+        PlayerRigidbody = GetComponent<Rigidbody>();
         ForceReceiver = GetComponent<ForceReceiver>();
         health = GetComponent<PlayerConditionController>();
         playerInventoryData = GetComponent<PlayerInventoryData>();
@@ -53,6 +54,7 @@ public class Player : MonoBehaviour
         stateMachine.HandleInput();
         stateMachine.Update();
         ChangeRotation();//
+        CheckGround();
     }
 
     private void FixedUpdate()
@@ -72,6 +74,24 @@ public class Player : MonoBehaviour
         else
         {
             Input.rotateSencitivity = Data.GroundData.BaseRotationDamping;
+        }
+    }
+
+    private void CheckGround()
+    {
+        Ray ray1 = new Ray(this.gameObject.transform.position + Vector3.forward*0.1f + new Vector3(0,0.1f,0), Vector3.down);
+        Ray ray2 = new Ray(this.gameObject.transform.position + Vector3.back * 0.1f + new Vector3(0,0.1f,0), Vector3.down);
+        Ray ray3 = new Ray(this.gameObject.transform.position + Vector3.right * 0.1f + new Vector3(0,0.1f,0), Vector3.down);
+        Ray ray4 = new Ray(this.gameObject.transform.position + Vector3.left * 0.1f + new Vector3(0,0.1f,0), Vector3.down);
+        //Debug.DrawRay(this.gameObject.transform.position, Vector3.down, Color.red, 3f);
+
+        if (Physics.Raycast(ray1, 0.2f) || Physics.Raycast(ray2, 0.2f) || Physics.Raycast(ray3, 0.2f) || Physics.Raycast(ray4, 0.2f))
+        {
+            isGround = true;
+        }
+        else
+        {
+            isGround = false;
         }
     }
 }

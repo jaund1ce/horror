@@ -57,7 +57,6 @@ public class PlayerBaseState : IState
         
     }
 
-
     public virtual void Update()
     {
         //AI 추가시 행동패턴 정리
@@ -67,7 +66,10 @@ public class PlayerBaseState : IState
 
     protected virtual void OnMovementCanceled(InputAction.CallbackContext context)
     {
-
+        if (stateMachine.Player.isGround)
+        {
+            stateMachine.ChangeState(stateMachine.IdleState);
+        }
     }
 
     protected virtual void OnRunStarted(InputAction.CallbackContext context)
@@ -119,7 +121,7 @@ public class PlayerBaseState : IState
     private void Move(Vector3 direction)
     {
         float movementSpeed = GetMovementSpeed();
-        stateMachine.Player.Controller.Move(((direction * movementSpeed) + stateMachine.Player.ForceReceiver.Movement) * Time.deltaTime);
+        stateMachine.Player.PlayerRigidbody.velocity = direction * movementSpeed;
     }
 
     private float GetMovementSpeed()
