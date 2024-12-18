@@ -37,15 +37,25 @@ public class PlayerController : MonoBehaviour
     {
         UnLockRotate();
         playerInputs.Enable();
+        InputSubscribe();
+    }
+
+    private void OnDisable()
+    {
+        playerInputs.Disable();
+        InputUnsubscribe();
+    }
+
+    public void InputSubscribe()
+    {
         playerActions.Look.started += RotateCamera;
         playerActions.Run.started += ChangeRunState;
         playerActions.Run.canceled += ChangeRunState2;
         playerActions.EquipmentUse.started += EquipMent.OnAttackInput;
     }
 
-    private void OnDisable()
+    public void InputUnsubscribe()
     {
-        playerInputs.Disable();
         playerActions.Look.started -= RotateCamera;
         playerActions.Run.canceled -= ChangeRunState;
         playerActions.Run.canceled -= ChangeRunState2;

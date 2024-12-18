@@ -996,7 +996,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ede74c08b1361c7438116793800109c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  rigidbody: {fileID: 0}
   drag: 0.3
 --- !u!95 &7745987280538577716
 Animator:
@@ -1036,6 +1036,7 @@ MonoBehaviour:
     m_Bits: 8
   CreatureAistate: 0
   <Data>k__BackingField: {fileID: 11400000, guid: 0d86a9414b33d2747ad8ae4b8078db75, type: 2}
+  aggroGage: 0
   IsAttacking: 0
 --- !u!195 &7841857677403511611
 NavMeshAgent:
