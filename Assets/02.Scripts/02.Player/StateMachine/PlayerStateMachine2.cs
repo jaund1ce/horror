@@ -17,7 +17,7 @@ public class PlayerStateMachine2 : StateMachine
     public PlayerRunState RunState { get; private set; }
     public PlayerJumpState JumpState { get; private set; }
     public PlayerFallState FallState { get; private set; }
-    public PlayerHideState HideState { get; private set; }
+    public PlayerCrouchState CrouchState { get; private set; }
 
     public PlayerStateMachine2(Player player)//존재하는 모든 스테이트 상태를 선언해 줘야함
     {
@@ -31,7 +31,7 @@ public class PlayerStateMachine2 : StateMachine
         JumpState = new PlayerJumpState(this);
         FallState = new PlayerFallState(this);
         
-        HideState = new PlayerHideState(this);
+        CrouchState = new PlayerCrouchState(this);
 
         MovementSpeed = player.Data.GroundData.BaseSpeed;
         RotationDamping = player.Data.GroundData.BaseRotationDamping;

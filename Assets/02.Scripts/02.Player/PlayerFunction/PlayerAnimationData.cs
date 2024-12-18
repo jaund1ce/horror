@@ -10,6 +10,7 @@ public class PlayerAnimationData
     [SerializeField] private string idleParameterName = "Idle";
     [SerializeField] private string walkParameterName = "Walk";
     [SerializeField] private string runParameterName = "Run";
+    [SerializeField] private string crouchParameterName = "Crouch";
 
     [SerializeField] private string airParameterName = "@Air";    
     [SerializeField] private string jumpParameterName = "Jump";
@@ -18,7 +19,7 @@ public class PlayerAnimationData
     [SerializeField] private string attackParameterName = "@Attack";
     [SerializeField] private string baseAttackParameterName = "BaseAttack";
 
-    [SerializeField] private string hideParameterName = "@Hide";
+    
 
     public int GrondParameterHash { get; private set; }
     public int IdleParameterHash { get; private set; }
@@ -30,7 +31,7 @@ public class PlayerAnimationData
     public int AirParameterHash { get; private set; }
     public int JumpParameterHash { get; private set; }
     public int FallParameterHash { get; private set; }
-    public int HideParameterHash { get; private set; }
+    public int CrouchParameterHash { get; private set; }
     public void Initialize()
     {
         GrondParameterHash = Animator.StringToHash(groundParameterName);
@@ -43,7 +44,7 @@ public class PlayerAnimationData
         AirParameterHash = Animator.StringToHash(airParameterName);
         JumpParameterHash = Animator.StringToHash(jumpParameterName);
         FallParameterHash = Animator.StringToHash(fallParameterName);
-        HideParameterHash = Animator.StringToHash(hideParameterName);
+        CrouchParameterHash = Animator.StringToHash(crouchParameterName);
     }
     // Animator animator = new Animator();
     //animator.SetBool("Idle", true); X

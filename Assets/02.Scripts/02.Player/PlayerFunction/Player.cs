@@ -14,12 +14,13 @@ public class Player : MonoBehaviour
     public PlayerController Input { get; private set; }
     public PlayerInteraction Interact { get; private set; }
     public Rigidbody PlayerRigidbody { get; private set; }
+    public CapsuleCollider CapsuleCollider { get; private set; }
     public ForceReceiver ForceReceiver { get; private set; }
     public PlayerConditionController playerConditionController { get; private set; }
 
     private PlayerStateMachine2 stateMachine;
 
-    public Action makeSound;
+    public Action<float> makeSound;
     public Action addItem;
     public Action useItem;
     public PlayerInventoryData playerInventoryData;
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour
         Input = GetComponent<PlayerController>();
         Interact = GetComponentInChildren<PlayerInteraction>();
         PlayerRigidbody = GetComponent<Rigidbody>();
+        CapsuleCollider = GetComponent<CapsuleCollider>();
         ForceReceiver = GetComponent<ForceReceiver>();
         playerConditionController = GetComponent<PlayerConditionController>();
         playerInventoryData = GetComponent<PlayerInventoryData>();
@@ -94,5 +96,10 @@ public class Player : MonoBehaviour
         {
             isGround = false;
         }
+    }
+
+    public void MakeSound(float amount)
+    {
+        makeSound?.Invoke(amount);
     }
 }
