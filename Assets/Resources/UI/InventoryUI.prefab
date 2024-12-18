@@ -855,7 +855,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 620, y: 380}
+  m_SizeDelta: {x: 680, y: 380}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2841463319350968842
 CanvasRenderer:
@@ -878,7 +878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1220,7 +1220,7 @@ Transform:
   m_GameObject: {fileID: 7416965607142295257}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 70, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1534,7 +1534,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5009822507706385227
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1556,7 +1556,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -342}
+  m_AnchoredPosition: {x: 0, y: -300}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7777219545092142028
@@ -1631,7 +1631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryslotsController: {fileID: 0}
   QuickslotController: {fileID: 0}
-  InventoryItemInfoPanelelController: {fileID: 0}
+  InventoryItemInfoPanelelController: {fileID: 7777219545092142028}
 --- !u!114 &-8024422037177979970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1656,6 +1656,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemSlot_3
       objectReference: {fileID: 0}
+    - target: {fileID: 4935357989469613523, guid: 63ecf854d348c1d42a1eefb9fe082777, type: 3}
+      propertyPath: InventoryController
+      value: 
+      objectReference: {fileID: 7361472159510507804}
     - target: {fileID: 4935357989469613523, guid: 63ecf854d348c1d42a1eefb9fe082777, type: 3}
       propertyPath: InventorySlotsController
       value: 
@@ -1762,6 +1766,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemSlot_11
       objectReference: {fileID: 0}
+    - target: {fileID: 4935357989469613523, guid: 63ecf854d348c1d42a1eefb9fe082777, type: 3}
+      propertyPath: InventoryController
+      value: 
+      objectReference: {fileID: 7361472159510507804}
     - target: {fileID: 4935357989469613523, guid: 63ecf854d348c1d42a1eefb9fe082777, type: 3}
       propertyPath: InventorySlotsController
       value: 
@@ -1979,6 +1987,10 @@ PrefabInstance:
       value: ItemSlot_2
       objectReference: {fileID: 0}
     - target: {fileID: 4935357989469613523, guid: 63ecf854d348c1d42a1eefb9fe082777, type: 3}
+      propertyPath: InventoryController
+      value: 
+      objectReference: {fileID: 7361472159510507804}
+    - target: {fileID: 4935357989469613523, guid: 63ecf854d348c1d42a1eefb9fe082777, type: 3}
       propertyPath: InventorySlotsController
       value: 
       objectReference: {fileID: 7361472159510507804}
@@ -2085,6 +2097,10 @@ PrefabInstance:
       value: ItemSlot_1
       objectReference: {fileID: 0}
     - target: {fileID: 4935357989469613523, guid: 63ecf854d348c1d42a1eefb9fe082777, type: 3}
+      propertyPath: InventoryController
+      value: 
+      objectReference: {fileID: 7361472159510507804}
+    - target: {fileID: 4935357989469613523, guid: 63ecf854d348c1d42a1eefb9fe082777, type: 3}
       propertyPath: InventorySlotsController
       value: 
       objectReference: {fileID: 7361472159510507804}
@@ -2190,6 +2206,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemSlot_5
       objectReference: {fileID: 0}
+    - target: {fileID: 4935357989469613523, guid: 63ecf854d348c1d42a1eefb9fe082777, type: 3}
+      propertyPath: InventoryController
+      value: 
+      objectReference: {fileID: 7361472159510507804}
     - target: {fileID: 4935357989469613523, guid: 63ecf854d348c1d42a1eefb9fe082777, type: 3}
       propertyPath: InventorySlotsController
       value: 
@@ -2509,6 +2529,10 @@ PrefabInstance:
       value: ItemSlot_4
       objectReference: {fileID: 0}
     - target: {fileID: 4935357989469613523, guid: 63ecf854d348c1d42a1eefb9fe082777, type: 3}
+      propertyPath: InventoryController
+      value: 
+      objectReference: {fileID: 7361472159510507804}
+    - target: {fileID: 4935357989469613523, guid: 63ecf854d348c1d42a1eefb9fe082777, type: 3}
       propertyPath: InventorySlotsController
       value: 
       objectReference: {fileID: 7361472159510507804}
@@ -2614,6 +2638,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemSlot_12
       objectReference: {fileID: 0}
+    - target: {fileID: 4935357989469613523, guid: 63ecf854d348c1d42a1eefb9fe082777, type: 3}
+      propertyPath: InventoryController
+      value: 
+      objectReference: {fileID: 7361472159510507804}
     - target: {fileID: 4935357989469613523, guid: 63ecf854d348c1d42a1eefb9fe082777, type: 3}
       propertyPath: InventorySlotsController
       value: 
@@ -2721,6 +2749,10 @@ PrefabInstance:
       value: ItemSlot_10
       objectReference: {fileID: 0}
     - target: {fileID: 4935357989469613523, guid: 63ecf854d348c1d42a1eefb9fe082777, type: 3}
+      propertyPath: InventoryController
+      value: 
+      objectReference: {fileID: 7361472159510507804}
+    - target: {fileID: 4935357989469613523, guid: 63ecf854d348c1d42a1eefb9fe082777, type: 3}
       propertyPath: InventorySlotsController
       value: 
       objectReference: {fileID: 7361472159510507804}
@@ -2826,6 +2858,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemSlot_7
       objectReference: {fileID: 0}
+    - target: {fileID: 4935357989469613523, guid: 63ecf854d348c1d42a1eefb9fe082777, type: 3}
+      propertyPath: InventoryController
+      value: 
+      objectReference: {fileID: 7361472159510507804}
     - target: {fileID: 4935357989469613523, guid: 63ecf854d348c1d42a1eefb9fe082777, type: 3}
       propertyPath: InventorySlotsController
       value: 
@@ -3043,6 +3079,10 @@ PrefabInstance:
       value: ItemSlot_9
       objectReference: {fileID: 0}
     - target: {fileID: 4935357989469613523, guid: 63ecf854d348c1d42a1eefb9fe082777, type: 3}
+      propertyPath: InventoryController
+      value: 
+      objectReference: {fileID: 7361472159510507804}
+    - target: {fileID: 4935357989469613523, guid: 63ecf854d348c1d42a1eefb9fe082777, type: 3}
       propertyPath: InventorySlotsController
       value: 
       objectReference: {fileID: 7361472159510507804}
@@ -3148,6 +3188,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemSlot_8
       objectReference: {fileID: 0}
+    - target: {fileID: 4935357989469613523, guid: 63ecf854d348c1d42a1eefb9fe082777, type: 3}
+      propertyPath: InventoryController
+      value: 
+      objectReference: {fileID: 7361472159510507804}
     - target: {fileID: 4935357989469613523, guid: 63ecf854d348c1d42a1eefb9fe082777, type: 3}
       propertyPath: InventorySlotsController
       value: 
@@ -3255,6 +3299,10 @@ PrefabInstance:
       value: ItemSlot_13
       objectReference: {fileID: 0}
     - target: {fileID: 4935357989469613523, guid: 63ecf854d348c1d42a1eefb9fe082777, type: 3}
+      propertyPath: InventoryController
+      value: 
+      objectReference: {fileID: 7361472159510507804}
+    - target: {fileID: 4935357989469613523, guid: 63ecf854d348c1d42a1eefb9fe082777, type: 3}
       propertyPath: InventorySlotsController
       value: 
       objectReference: {fileID: 7361472159510507804}
@@ -3361,7 +3409,7 @@ PrefabInstance:
       value: ItemSlot
       objectReference: {fileID: 0}
     - target: {fileID: 4935357989469613523, guid: 63ecf854d348c1d42a1eefb9fe082777, type: 3}
-      propertyPath: InventorySlotsController
+      propertyPath: InventoryController
       value: 
       objectReference: {fileID: 7361472159510507804}
     - target: {fileID: 6714290733381922994, guid: 63ecf854d348c1d42a1eefb9fe082777, type: 3}
@@ -3466,6 +3514,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemSlot_6
       objectReference: {fileID: 0}
+    - target: {fileID: 4935357989469613523, guid: 63ecf854d348c1d42a1eefb9fe082777, type: 3}
+      propertyPath: InventoryController
+      value: 
+      objectReference: {fileID: 7361472159510507804}
     - target: {fileID: 4935357989469613523, guid: 63ecf854d348c1d42a1eefb9fe082777, type: 3}
       propertyPath: InventorySlotsController
       value: 
@@ -3572,6 +3624,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemSlot_14
       objectReference: {fileID: 0}
+    - target: {fileID: 4935357989469613523, guid: 63ecf854d348c1d42a1eefb9fe082777, type: 3}
+      propertyPath: InventoryController
+      value: 
+      objectReference: {fileID: 7361472159510507804}
     - target: {fileID: 4935357989469613523, guid: 63ecf854d348c1d42a1eefb9fe082777, type: 3}
       propertyPath: InventorySlotsController
       value: 

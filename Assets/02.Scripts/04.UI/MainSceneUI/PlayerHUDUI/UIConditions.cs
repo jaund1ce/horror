@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class UICondition : MonoBehaviour
 {
-    private Player player;
+    private PlayerConditionController playerConditionController;
     public Condition health;
     public Condition stamina;
     public Condition aggro;
+    public CreatureAI creatureAI;
 
     private void Start()
     {
-        player = MainGameManager.Instance.Player;
+        playerConditionController = MainGameManager.Instance.Player.playerConditionController;
+        creatureAI = FindAnyObjectByType<CreatureAI>();
     }
 
     private void Update()
     {
-        health.GetPercentage(player.health.GetHPPercentage());
-        stamina.GetPercentage(player.health.GetStaminaPercentage());
+        health.GetPercentage(playerConditionController.GetHPPercentage());
+        stamina.GetPercentage(playerConditionController.GetStaminaPercentage());
+        aggro.GetPercentage(creatureAI.aggroGage/100f);
     }
 }
