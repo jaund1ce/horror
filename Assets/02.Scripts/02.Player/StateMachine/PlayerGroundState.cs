@@ -54,6 +54,6 @@ public class PlayerGroundState : PlayerBaseState
     protected override void OnCrouchStarted(InputAction.CallbackContext context)
     {
         base.OnCrouchStarted(context);
-        stateMachine.ChangeState(stateMachine.CrouchState);
+        stateMachine.ChangeState(stateMachine.CrouchIdleState);
     }
 }

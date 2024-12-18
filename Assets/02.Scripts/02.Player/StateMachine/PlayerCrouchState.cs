@@ -11,25 +11,26 @@ public class PlayerCrouchState : PlayerGroundState
 
     public override void Enter()
     {
+        Debug.Log("CrouchState in");
+        base.Enter();
         stateMachine.Player.CapsuleCollider.height = 1f;
         stateMachine.MovementSpeedModifier = groundData.CrouchSpeedModifier;
-        base.Enter();
         StartAnimation(stateMachine.Player.AnimationData.CrouchParameterHash);
     }
 
     public override void Exit()
     {
-        stateMachine.Player.CapsuleCollider.height = 2f;
         base.Exit();
+        stateMachine.Player.CapsuleCollider.height = 2f;
+        Debug.Log("CrouchState out");
         StopAnimation(stateMachine.Player.AnimationData.CrouchParameterHash);
     }
 
-    //public override void Update()
-    //{
-    //    base.Update();
-    //    if (!stateMachine.Player.Input.RunningReady)
-    //    {
-    //        stateMachine.ChangeState(stateMachine.WalkState);
-    //    }
-    //}
+    public override void Update()
+    {
+        if (!stateMachine.Player.isGround)
+        {
+            stateMachine.ChangeState(stateMachine.FallState);
+        }
+    }
 }
