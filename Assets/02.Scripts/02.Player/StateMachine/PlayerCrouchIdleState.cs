@@ -25,9 +25,9 @@ public class PlayerCrouchIdleState : PlayerCrouchState
     public override void Update()
     {
         //base.Update();
-        if (MainGameManager.Instance.Player.Input.Crouching)
+        if (!MainGameManager.Instance.Player.Input.Crouching)
         {
-            stateMachine.ChangeState(this); 
+            stateMachine.ChangeState(stateMachine.IdleState); 
         }
     }
 }

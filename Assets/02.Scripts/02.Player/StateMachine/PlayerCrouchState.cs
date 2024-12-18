@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCrouchState : PlayerGroundState
+public class PlayerCrouchState : PlayerBaseState
 {
     public PlayerCrouchState(PlayerStateMachine2 stateMachine) : base(stateMachine)
     {
