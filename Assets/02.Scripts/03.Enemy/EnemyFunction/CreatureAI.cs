@@ -51,6 +51,10 @@ public class CreatureAI : MonoBehaviour , AggroGage
         //visionInObject = new List<int>();
     }
 
+    private void Start()
+    {
+        MainGameManager.Instance.Player.makeSound += GetAggroGage;
+    }
 
     private void Update()
     {
