@@ -16,7 +16,7 @@ public class PuzzleKeypad : PuzzleBase
     public AudioClip AccessSound; // 성공 사운드
     public AudioClip DeniedSound; // 실패 사운드
     public AudioSource audioSource; // 오디오 소스
-    public LockedDoorWithHinge LockDoor;
+    public LockedDoor LockDoor;
 
     private TextMeshPro text;
     private MeshRenderer keypadRenderer;

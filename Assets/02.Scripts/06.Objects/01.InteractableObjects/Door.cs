@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorWithHinge : MonoBehaviour, IInteractable
+public class Door : ObjectBase
 {
     public Transform hinge; // 문 힌지
     public float openAngle = -90f; // 문 열리는 각도
@@ -18,24 +18,6 @@ public class DoorWithHinge : MonoBehaviour, IInteractable
     private void Start()
     {
         doorRb = GetComponent<Rigidbody>();
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            CharacterController character = other.GetComponent<CharacterController>();
-
-            if (character != null)
-            {
-                // 문의 회전 방향에 따라 밀어내는 벡터 계산
-                Vector3 pushDirection = doorRb.transform.right; // 문의 Local X축 방향으로 밀기
-                pushDirection.y = 0; // Y축 이동 방지
-
-                // 캐릭터의 위치를 미세하게 이동 (밀어내기)
-                character.Move(pushDirection * pushForce * Time.deltaTime);
-            }
-        }
     }
 
 

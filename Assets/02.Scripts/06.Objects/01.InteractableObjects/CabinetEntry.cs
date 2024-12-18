@@ -2,13 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IHideable
-{
-    public void OnHide(); // 인터페이스 메서드 정의
-    public void OnExit();
-}
 
-public class CabinetEntry : MonoBehaviour, IHideable, IInteractable
+
+public class CabinetEntry : ObjectBase
 {
     public GameObject player; // 플레이어 Transform
     public Transform insidePosition; // 캐비닛 내부 위치

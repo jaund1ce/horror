@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LockedDoorWithHinge : MonoBehaviour, IInteractable
+public class LockedDoor : ObjectBase
 {
     public Transform hinge; // 문 힌지
     public float openAngle = -90f; // 문 열리는 각도
@@ -16,35 +16,8 @@ public class LockedDoorWithHinge : MonoBehaviour, IInteractable
 
     public event Action isOpen;
 
-    private void OnTriggerEnter(Collider other)
+    public override void OnInteract()
     {
-        if (other.CompareTag("Player"))
-        {
-            //isPlayerNear = true;
-            Debug.Log("Player is near the locked door.");
-        }
-    }
-
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            //isPlayerNear = false;
-            Debug.Log("Player left the locked door area.");
-        }
-    }
-
-    public void OnInteract()
-    {
-       // if (!isPlayerNear) return;
-
-        //if (isLocked)
-        //{
-        //    Debug.Log("The door is locked.");
-        //    return;
-        //}
-
         ToggleDoor();
     }
 
@@ -57,7 +30,6 @@ public class LockedDoorWithHinge : MonoBehaviour, IInteractable
         }
 
         StopAllCoroutines();
-        Debug.Log("문 잘 열림");
         StartCoroutine(RotateDoor(isOpened ? openAngle : closeAngle));
     }
 
@@ -77,17 +49,11 @@ public class LockedDoorWithHinge : MonoBehaviour, IInteractable
         hinge.localEulerAngles = new Vector3(0, targetAngle, 0);
     }
 
-    public string GetInteractPrompt()
+    public override string GetInteractPrompt()
     {
         //if (isLocked) return "Locked";
         return isOpened ? "Close" : "Open";
     }
 
-    // AcquireKey 메서드 추가
-    //public void AcquireKey()
-    //{
-    //    isLocked = false;
-    //    Debug.Log("Key acquired! Door is now unlocked.");
-    //}
 }
 
