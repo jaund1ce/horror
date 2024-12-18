@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerBaseState : IState 
+public class PlayerBaseState : IState
 {
     protected PlayerStateMachine2 stateMachine;
     protected readonly PlayerGroundData groundData;
