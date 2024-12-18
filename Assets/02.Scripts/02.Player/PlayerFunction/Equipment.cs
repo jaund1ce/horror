@@ -41,7 +41,6 @@ public class Equipment : MonoBehaviour
 
     public void OnAttackInput(InputAction.CallbackContext context)
     {
-        Debug.Log("들어옴?");
         if (context.phase == InputActionPhase.Started && CurEquip != null)
         {
             CurEquip.OnUseInput();

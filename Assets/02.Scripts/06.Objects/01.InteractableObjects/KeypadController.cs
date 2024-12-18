@@ -19,6 +19,7 @@ public class KeypadController : MonoBehaviour, IInteractable
     public AudioClip AccessSound; // 성공 사운드
     public AudioClip DeniedSound; // 실패 사운드
     public AudioSource audioSource; // 오디오 소스
+    public LockedDoorWithHinge LockDoor;
 
     private TextMeshPro text;
     private MeshRenderer keypadRenderer;
@@ -30,6 +31,7 @@ public class KeypadController : MonoBehaviour, IInteractable
     private string txtBgLightKeyword = "_EMISSION";
     private Coroutine currentCoroutine;
     private bool isAccess;
+    private string promptTxt = "Interact";
 
 
     private string currentInput = ""; // 현재 입력된 코드
@@ -47,6 +49,7 @@ public class KeypadController : MonoBehaviour, IInteractable
     {
         if (!isUsingKeypad)
         {
+            if (isAccess) return;
             keypadRenderer.material.EnableKeyword(txtBgLightKeyword);
             EnterKeypadView();
             MainGameManager.Instance.Player.Input.playerActions.EquipmentUse.started -= MainGameManager.Instance.Player.Input.EquipMent.OnAttackInput;
@@ -87,7 +90,7 @@ public class KeypadController : MonoBehaviour, IInteractable
 
     public string GetInteractPrompt()
     {
-        return !isUsingKeypad ? "interact" : null;
+        return promptTxt;
     }
 
     public void OnButtonPress(string buttonName)
@@ -115,7 +118,6 @@ public class KeypadController : MonoBehaviour, IInteractable
         {
             currentInput += buttonName;
             text.text = currentInput;
-            Debug.Log("Current Input: " + currentInput);
         }
     }
 
@@ -148,7 +150,7 @@ public class KeypadController : MonoBehaviour, IInteractable
         if (currentInput.Length > 0)
         {
             currentInput = currentInput.Substring(0, currentInput.Length - 1);
-            Debug.Log("Current Input: " + currentInput);
+            text.text = currentInput;
         }
     }
 
@@ -175,6 +177,7 @@ public class KeypadController : MonoBehaviour, IInteractable
 
         text.color = baseColor;
         currentCoroutine = null;
+        //락도어에 불리언값 변경 코드 작성
         ExitKeypadView();
     }
 
