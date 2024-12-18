@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4403358987252257067}
   - component: {fileID: 7207788179590025526}
   - component: {fileID: 5709567680289689032}
+  - component: {fileID: 56596152847027189}
   m_Layer: 6
   m_Name: Key_4
   m_TagString: Untagged
@@ -105,6 +106,35 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.016, y: 0.016, z: 0.0028070472}
   m_Center: {x: 0, y: 0.000000059604645, z: 0.0035962379}
+--- !u!114 &56596152847027189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507853315934958352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1668704081544442814}
+          m_TargetAssemblyTypeName: KeypadController, Assembly-CSharp
+          m_MethodName: OnButtonPress
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 4
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2433070844454409381
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,6 +147,7 @@ GameObject:
   - component: {fileID: 3060970941091597452}
   - component: {fileID: 7108748204170462352}
   - component: {fileID: 1136796282127512042}
+  - component: {fileID: 5675731597171399846}
   m_Layer: 6
   m_Name: Key_5
   m_TagString: Untagged
@@ -210,6 +241,35 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.016, y: 0.016, z: 0.0028070484}
   m_Center: {x: 0, y: 0.000000059604645, z: 0.0035962374}
+--- !u!114 &5675731597171399846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2433070844454409381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1668704081544442814}
+          m_TargetAssemblyTypeName: KeypadController, Assembly-CSharp
+          m_MethodName: OnButtonPress
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 5
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2878660019978682693
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,6 +282,7 @@ GameObject:
   - component: {fileID: 6968398569721410606}
   - component: {fileID: 3760799768093952893}
   - component: {fileID: 7899876573837333181}
+  - component: {fileID: 8554954921657859238}
   m_Layer: 6
   m_Name: Key_0
   m_TagString: Untagged
@@ -315,6 +376,35 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.016, y: 0.016, z: 0.0028070498}
   m_Center: {x: 0, y: 0.000000059604645, z: 0.0035964749}
+--- !u!114 &8554954921657859238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2878660019978682693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1668704081544442814}
+          m_TargetAssemblyTypeName: KeypadController, Assembly-CSharp
+          m_MethodName: OnButtonPress
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 0
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &3908156120783935929
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,6 +417,7 @@ GameObject:
   - component: {fileID: 7964069680061826773}
   - component: {fileID: 8946921986472972049}
   - component: {fileID: 755212482513620916}
+  - component: {fileID: 2467210789918464617}
   m_Layer: 6
   m_Name: Key_7
   m_TagString: Untagged
@@ -420,6 +511,35 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.016, y: 0.016, z: 0.002807046}
   m_Center: {x: 0, y: 0, z: 0.0035962383}
+--- !u!114 &2467210789918464617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3908156120783935929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1668704081544442814}
+          m_TargetAssemblyTypeName: KeypadController, Assembly-CSharp
+          m_MethodName: OnButtonPress
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 7
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &4959109395978267308
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,7 +769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3202c7027a9b0241b6c4d2632d0a557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keypadCamera: {fileID: 5138720651241507418}
+  PuzzleCamera: {fileID: 5138720651241507418}
   keypadButtons:
   - {fileID: 2878660019978682693}
   - {fileID: 5032715754883805428}
@@ -665,10 +785,10 @@ MonoBehaviour:
   enterButton: {fileID: 8026856181118213887}
   correctCode: 3895
   buttonPressSound: {fileID: 8300000, guid: 065ec17f7f48b0841ac8948be709d7a7, type: 3}
-  successSound: {fileID: 8300000, guid: 51749b2ceb411d542a171843474911a5, type: 3}
-  errorSound: {fileID: 8300000, guid: 293cbd1c7f98cb7479a7cddff4d24cd7, type: 3}
+  AccessSound: {fileID: 8300000, guid: 51749b2ceb411d542a171843474911a5, type: 3}
+  DeniedSound: {fileID: 8300000, guid: 293cbd1c7f98cb7479a7cddff4d24cd7, type: 3}
   audioSource: {fileID: 2093248652141998720}
-  isUsingKeypad: 0
+  LockDoor: {fileID: 0}
 --- !u!1 &4995495589815297084
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,6 +801,7 @@ GameObject:
   - component: {fileID: 3387561239807033447}
   - component: {fileID: 2121760751988946743}
   - component: {fileID: 2835316327030929945}
+  - component: {fileID: 5684044451801943562}
   m_Layer: 6
   m_Name: Key_Cancel
   m_TagString: Untagged
@@ -774,6 +895,35 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.016, y: 0.016, z: 0.0028070484}
   m_Center: {x: 0, y: 0.000000059604645, z: 0.0035964758}
+--- !u!114 &5684044451801943562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4995495589815297084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1668704081544442814}
+          m_TargetAssemblyTypeName: KeypadController, Assembly-CSharp
+          m_MethodName: OnButtonPress
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Cancel
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &5032715754883805428
 GameObject:
   m_ObjectHideFlags: 0
@@ -786,6 +936,7 @@ GameObject:
   - component: {fileID: 7046798317853492897}
   - component: {fileID: 7363773609923054728}
   - component: {fileID: 7647501045219159301}
+  - component: {fileID: 1956085452358980948}
   m_Layer: 6
   m_Name: Key_1
   m_TagString: Untagged
@@ -879,6 +1030,35 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.016, y: 0.016, z: 0.002807046}
   m_Center: {x: 0, y: 0.00000006053597, z: 0.0035962383}
+--- !u!114 &1956085452358980948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5032715754883805428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1668704081544442814}
+          m_TargetAssemblyTypeName: KeypadController, Assembly-CSharp
+          m_MethodName: OnButtonPress
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 1
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &5249532759700748128
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,6 +1242,7 @@ GameObject:
   - component: {fileID: 2329493718352423228}
   - component: {fileID: 8092434229223203055}
   - component: {fileID: 5902602216126184953}
+  - component: {fileID: 3554154132445644774}
   m_Layer: 6
   m_Name: Key_6
   m_TagString: Untagged
@@ -1155,6 +1336,35 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.016, y: 0.016, z: 0.0028070484}
   m_Center: {x: 0, y: 0.000000059604645, z: 0.0035962374}
+--- !u!114 &3554154132445644774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5334604741323226410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1668704081544442814}
+          m_TargetAssemblyTypeName: KeypadController, Assembly-CSharp
+          m_MethodName: OnButtonPress
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 6
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &6079931720394800693
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,6 +1377,7 @@ GameObject:
   - component: {fileID: 7231960910429781961}
   - component: {fileID: 1036656536138792331}
   - component: {fileID: 199106578406456006}
+  - component: {fileID: 1859874378118015692}
   m_Layer: 6
   m_Name: Key_8
   m_TagString: Untagged
@@ -1260,6 +1471,35 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.016, y: 0.016, z: 0.002807045}
   m_Center: {x: 0, y: 0, z: 0.003596239}
+--- !u!114 &1859874378118015692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6079931720394800693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1668704081544442814}
+          m_TargetAssemblyTypeName: KeypadController, Assembly-CSharp
+          m_MethodName: OnButtonPress
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 8
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &6316928893835447751
 GameObject:
   m_ObjectHideFlags: 0
@@ -1272,6 +1512,7 @@ GameObject:
   - component: {fileID: 8448176542203592731}
   - component: {fileID: 3349295508469914010}
   - component: {fileID: 2058207782198998787}
+  - component: {fileID: 6502977760603169901}
   m_Layer: 6
   m_Name: Key_9
   m_TagString: Untagged
@@ -1365,6 +1606,35 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.016, y: 0.016, z: 0.0028070484}
   m_Center: {x: 0, y: 0, z: 0.0035962374}
+--- !u!114 &6502977760603169901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6316928893835447751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1668704081544442814}
+          m_TargetAssemblyTypeName: KeypadController, Assembly-CSharp
+          m_MethodName: OnButtonPress
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 9
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &6587755420310701513
 GameObject:
   m_ObjectHideFlags: 0
@@ -1449,6 +1719,7 @@ GameObject:
   - component: {fileID: 4939326136048916873}
   - component: {fileID: 5533774539210665760}
   - component: {fileID: 7565968011245934742}
+  - component: {fileID: 6259561560698730530}
   m_Layer: 6
   m_Name: Key_2
   m_TagString: Untagged
@@ -1542,6 +1813,35 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.016, y: 0.016, z: 0.0028070472}
   m_Center: {x: 0, y: 0.00000006053597, z: 0.0035962379}
+--- !u!114 &6259561560698730530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6801433450011849895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1668704081544442814}
+          m_TargetAssemblyTypeName: KeypadController, Assembly-CSharp
+          m_MethodName: OnButtonPress
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 2
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &8026856181118213887
 GameObject:
   m_ObjectHideFlags: 0
@@ -1554,6 +1854,7 @@ GameObject:
   - component: {fileID: 4159011680539468345}
   - component: {fileID: 3168901322998414613}
   - component: {fileID: 3647093017355874054}
+  - component: {fileID: 7353666538746040161}
   m_Layer: 6
   m_Name: Key_Enter
   m_TagString: Untagged
@@ -1647,6 +1948,35 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.016, y: 0.016, z: 0.002807051}
   m_Center: {x: 0, y: 0.000000059604645, z: 0.0035964744}
+--- !u!114 &7353666538746040161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8026856181118213887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1668704081544442814}
+          m_TargetAssemblyTypeName: KeypadController, Assembly-CSharp
+          m_MethodName: OnButtonPress
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Enter
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &8433069811369387130
 GameObject:
   m_ObjectHideFlags: 0
@@ -1735,6 +2065,7 @@ GameObject:
   - component: {fileID: 6096625596571338930}
   - component: {fileID: 7077459283774742017}
   - component: {fileID: 8194852993893028924}
+  - component: {fileID: 1980717032810896811}
   m_Layer: 6
   m_Name: Key_3
   m_TagString: Untagged
@@ -1828,3 +2159,32 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.016, y: 0.016, z: 0.0028070484}
   m_Center: {x: 0, y: 0.00000006053597, z: 0.0035962374}
+--- !u!114 &1980717032810896811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9170675273680867829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1668704081544442814}
+          m_TargetAssemblyTypeName: KeypadController, Assembly-CSharp
+          m_MethodName: OnButtonPress
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 3
+            m_BoolArgument: 0
+          m_CallState: 2

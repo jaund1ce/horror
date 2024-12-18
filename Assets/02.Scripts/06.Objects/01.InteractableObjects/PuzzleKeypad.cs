@@ -5,11 +5,8 @@ using Cinemachine;
 using TMPro;
 using static System.Net.WebRequestMethods;
 
-public class KeypadController : MonoBehaviour, IInteractable
+public class PuzzleKeypad : PuzzleBase
 {
-    [Header("Camera Settings")]
-    public CinemachineVirtualCamera keypadCamera; // 키패드 카메라
-
     [Header("Keypad Settings")]
     public GameObject[] keypadButtons; // 키패드 버튼 오브젝트들
     public GameObject cancelButton; // Cancel 버튼
@@ -30,12 +27,9 @@ public class KeypadController : MonoBehaviour, IInteractable
     private string deniedTxt = "DENIED";
     private string txtBgLightKeyword = "_EMISSION";
     private Coroutine currentCoroutine;
-    private bool isAccess;
-    private string promptTxt = "Interact";
 
 
     private string currentInput = ""; // 현재 입력된 코드
-    public bool isUsingKeypad = false; // 키패드 활성화 여부
 
     private void Start()
     {
@@ -45,50 +39,34 @@ public class KeypadController : MonoBehaviour, IInteractable
     }
 
 
-    public void OnInteract()
+    public override void OnInteract()
     {
-        if (!isUsingKeypad)
+        if (isAccess) return;
+        if (!isUsingPuzzle)
         {
-            if (isAccess) return;
             keypadRenderer.material.EnableKeyword(txtBgLightKeyword);
-            EnterKeypadView();
-            MainGameManager.Instance.Player.Input.playerActions.EquipmentUse.started -= MainGameManager.Instance.Player.Input.EquipMent.OnAttackInput;
+            EnterPuzzleView();
         }
         else
         {
             keypadRenderer.material.DisableKeyword(txtBgLightKeyword);
-            ExitKeypadView();
-            MainGameManager.Instance.Player.Input.playerActions.EquipmentUse.started += MainGameManager.Instance.Player.Input.EquipMent.OnAttackInput;
+            ExitPuzzleView();
         }
     }
 
-    private void EnterKeypadView()
+    protected override void EnterPuzzleView()
     {
-        isUsingKeypad = true;
-
-        if (keypadCamera != null)
-        {
-            keypadCamera.Priority = 11; // 카메라 활성화
-        }
-
-        Cursor.visible = true; // 마우스 커서 활성화
-        Cursor.lockState = CursorLockMode.None;
+        base.EnterPuzzleView();
+        isUsingPuzzle = true;
     }
 
-    private void ExitKeypadView()
+    protected override void ExitPuzzleView()
     {
-        isUsingKeypad = false;
-
-        if (keypadCamera != null)
-        {
-            keypadCamera.Priority = 9; // 카메라 비활성화
-        }
-
-        Cursor.visible = false; // 마우스 커서 숨김
-        Cursor.lockState = CursorLockMode.Locked;
+        base.ExitPuzzleView();
+        isUsingPuzzle = false;
     }
 
-    public string GetInteractPrompt()
+    public override string GetInteractPrompt()
     {
         return promptTxt;
     }
@@ -178,7 +156,7 @@ public class KeypadController : MonoBehaviour, IInteractable
         text.color = baseColor;
         currentCoroutine = null;
         //락도어에 불리언값 변경 코드 작성
-        ExitKeypadView();
+        ExitPuzzleView();
     }
 
     private IEnumerator Denied() 

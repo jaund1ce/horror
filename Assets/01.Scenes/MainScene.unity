@@ -167,40 +167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef5a1d82d1a925f49a5a43084b83b7b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &523609532 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1507853315934958352, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-  m_PrefabInstance: {fileID: 585150026}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &523609533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 523609532}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1836295220}
-          m_TargetAssemblyTypeName: KeypadController, Assembly-CSharp
-          m_MethodName: OnButtonPress
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 4
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1001 &585150026
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -209,102 +175,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1507853315934958352, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1668704081544442814, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      propertyPath: AccessSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 51749b2ceb411d542a171843474911a5, type: 3}
-    - target: {fileID: 1668704081544442814, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      propertyPath: DeniedSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 293cbd1c7f98cb7479a7cddff4d24cd7, type: 3}
-    - target: {fileID: 1668704081544442814, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      propertyPath: enterButton
-      value: 
-      objectReference: {fileID: 1307805415}
-    - target: {fileID: 1668704081544442814, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      propertyPath: SuccessSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 51749b2ceb411d542a171843474911a5, type: 3}
-    - target: {fileID: 1668704081544442814, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      propertyPath: cancelButton
-      value: 
-      objectReference: {fileID: 2120444850}
-    - target: {fileID: 1668704081544442814, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      propertyPath: keypadButtons.Array.data[0]
-      value: 
-      objectReference: {fileID: 974113078}
-    - target: {fileID: 1668704081544442814, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      propertyPath: keypadButtons.Array.data[1]
-      value: 
-      objectReference: {fileID: 1198955529}
-    - target: {fileID: 1668704081544442814, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      propertyPath: keypadButtons.Array.data[2]
-      value: 
-      objectReference: {fileID: 608330385}
-    - target: {fileID: 1668704081544442814, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      propertyPath: keypadButtons.Array.data[3]
-      value: 
-      objectReference: {fileID: 1427703690}
-    - target: {fileID: 1668704081544442814, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      propertyPath: keypadButtons.Array.data[4]
-      value: 
-      objectReference: {fileID: 523609532}
-    - target: {fileID: 1668704081544442814, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      propertyPath: keypadButtons.Array.data[5]
-      value: 
-      objectReference: {fileID: 793288042}
-    - target: {fileID: 1668704081544442814, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      propertyPath: keypadButtons.Array.data[6]
-      value: 
-      objectReference: {fileID: 1489321453}
-    - target: {fileID: 1668704081544442814, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      propertyPath: keypadButtons.Array.data[7]
-      value: 
-      objectReference: {fileID: 1025437447}
-    - target: {fileID: 1668704081544442814, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      propertyPath: keypadButtons.Array.data[8]
-      value: 
-      objectReference: {fileID: 1821083855}
-    - target: {fileID: 1668704081544442814, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      propertyPath: keypadButtons.Array.data[9]
-      value: 
-      objectReference: {fileID: 1458840014}
-    - target: {fileID: 2433070844454409381, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2878660019978682693, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3908156120783935929, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4995495589815297084, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5032715754883805428, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5334604741323226410, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6079931720394800693, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6316928893835447751, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 6716966368374150981, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -48.758087
@@ -345,146 +215,75 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6801433450011849895, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6836578845222375737, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      propertyPath: m_fontColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6836578845222375737, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      propertyPath: m_fontColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6836578845222375737, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      propertyPath: m_fontColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8026856181118213887, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 8433069811369387130, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
       propertyPath: m_Name
       value: Puzzle_Keypad
-      objectReference: {fileID: 0}
-    - target: {fileID: 9170675273680867829, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2878660019978682693, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 974113079}
-    - targetCorrespondingSourceObject: {fileID: 5032715754883805428, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1198955530}
-    - targetCorrespondingSourceObject: {fileID: 6801433450011849895, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 608330386}
-    - targetCorrespondingSourceObject: {fileID: 9170675273680867829, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1427703691}
-    - targetCorrespondingSourceObject: {fileID: 1507853315934958352, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 523609533}
-    - targetCorrespondingSourceObject: {fileID: 2433070844454409381, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 793288043}
-    - targetCorrespondingSourceObject: {fileID: 5334604741323226410, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1489321454}
-    - targetCorrespondingSourceObject: {fileID: 3908156120783935929, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1025437448}
-    - targetCorrespondingSourceObject: {fileID: 6079931720394800693, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1821083856}
-    - targetCorrespondingSourceObject: {fileID: 6316928893835447751, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1458840015}
-    - targetCorrespondingSourceObject: {fileID: 4995495589815297084, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2120444851}
-    - targetCorrespondingSourceObject: {fileID: 8026856181118213887, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1307805416}
     - targetCorrespondingSourceObject: {fileID: 5249532759700748128, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
---- !u!1 &608330385 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6801433450011849895, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-  m_PrefabInstance: {fileID: 585150026}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &608330386
-MonoBehaviour:
+--- !u!1001 &685031357
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 608330385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1836295220}
-          m_TargetAssemblyTypeName: KeypadController, Assembly-CSharp
-          m_MethodName: OnButtonPress
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 2
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!1 &793288042 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2433070844454409381, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-  m_PrefabInstance: {fileID: 585150026}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &793288043
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 793288042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1836295220}
-          m_TargetAssemblyTypeName: KeypadController, Assembly-CSharp
-          m_MethodName: OnButtonPress
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 5
-            m_BoolArgument: 0
-          m_CallState: 2
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 388477132197052124, guid: 85883d5f27cffcc48b76d34780543d42, type: 3}
+      propertyPath: m_Name
+      value: Drop_HealPack_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4095725486028059140, guid: 85883d5f27cffcc48b76d34780543d42, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -48.316814
+      objectReference: {fileID: 0}
+    - target: {fileID: 4095725486028059140, guid: 85883d5f27cffcc48b76d34780543d42, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.544
+      objectReference: {fileID: 0}
+    - target: {fileID: 4095725486028059140, guid: 85883d5f27cffcc48b76d34780543d42, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 64.42403
+      objectReference: {fileID: 0}
+    - target: {fileID: 4095725486028059140, guid: 85883d5f27cffcc48b76d34780543d42, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4095725486028059140, guid: 85883d5f27cffcc48b76d34780543d42, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4095725486028059140, guid: 85883d5f27cffcc48b76d34780543d42, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4095725486028059140, guid: 85883d5f27cffcc48b76d34780543d42, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4095725486028059140, guid: 85883d5f27cffcc48b76d34780543d42, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4095725486028059140, guid: 85883d5f27cffcc48b76d34780543d42, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4095725486028059140, guid: 85883d5f27cffcc48b76d34780543d42, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 85883d5f27cffcc48b76d34780543d42, type: 3}
 --- !u!1 &835526694
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,74 +473,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   m_MaxRayIntersections: 0
---- !u!1 &974113078 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2878660019978682693, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-  m_PrefabInstance: {fileID: 585150026}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &974113079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 974113078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1836295220}
-          m_TargetAssemblyTypeName: KeypadController, Assembly-CSharp
-          m_MethodName: OnButtonPress
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 0
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!1 &1025437447 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3908156120783935929, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-  m_PrefabInstance: {fileID: 585150026}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1025437448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1025437447}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1836295220}
-          m_TargetAssemblyTypeName: KeypadController, Assembly-CSharp
-          m_MethodName: OnButtonPress
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 7
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1001 &1107191271
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -753,10 +484,6 @@ PrefabInstance:
     - target: {fileID: 2056870907640678056, guid: ab7ab4d58ffd9e74aa824b10a3596d31, type: 3}
       propertyPath: m_Name
       value: Creature
-      objectReference: {fileID: 0}
-    - target: {fileID: 2056870907640678056, guid: ab7ab4d58ffd9e74aa824b10a3596d31, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2080526149833849169, guid: ab7ab4d58ffd9e74aa824b10a3596d31, type: 3}
       propertyPath: m_LocalPosition.x
@@ -803,221 +530,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab7ab4d58ffd9e74aa824b10a3596d31, type: 3}
---- !u!1 &1198955529 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5032715754883805428, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-  m_PrefabInstance: {fileID: 585150026}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1198955530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1198955529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1836295220}
-          m_TargetAssemblyTypeName: KeypadController, Assembly-CSharp
-          m_MethodName: OnButtonPress
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 1
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!1 &1307805415 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8026856181118213887, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-  m_PrefabInstance: {fileID: 585150026}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1307805416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1307805415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1836295220}
-          m_TargetAssemblyTypeName: KeypadController, Assembly-CSharp
-          m_MethodName: OnButtonPress
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Enter
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!1 &1427703690 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9170675273680867829, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-  m_PrefabInstance: {fileID: 585150026}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1427703691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1427703690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1836295220}
-          m_TargetAssemblyTypeName: KeypadController, Assembly-CSharp
-          m_MethodName: OnButtonPress
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 3
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!1 &1458840014 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6316928893835447751, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-  m_PrefabInstance: {fileID: 585150026}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1458840015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1458840014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1836295220}
-          m_TargetAssemblyTypeName: KeypadController, Assembly-CSharp
-          m_MethodName: OnButtonPress
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 9
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!1 &1489321453 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5334604741323226410, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-  m_PrefabInstance: {fileID: 585150026}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1489321454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1489321453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1836295220}
-          m_TargetAssemblyTypeName: KeypadController, Assembly-CSharp
-          m_MethodName: OnButtonPress
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 6
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!1 &1821083855 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6079931720394800693, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-  m_PrefabInstance: {fileID: 585150026}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1821083856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1821083855}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1836295220}
-          m_TargetAssemblyTypeName: KeypadController, Assembly-CSharp
-          m_MethodName: OnButtonPress
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 8
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &1836295220 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1668704081544442814, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-  m_PrefabInstance: {fileID: 585150026}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3202c7027a9b0241b6c4d2632d0a557, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1992123906
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1079,40 +591,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d39ba8753157c864da1cc2661a50bee4, type: 3}
---- !u!1 &2120444850 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4995495589815297084, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
-  m_PrefabInstance: {fileID: 585150026}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2120444851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2120444850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1836295220}
-          m_TargetAssemblyTypeName: KeypadController, Assembly-CSharp
-          m_MethodName: OnButtonPress
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Cancel
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &2143051746
 GameObject:
   m_ObjectHideFlags: 0
@@ -1253,3 +731,4 @@ SceneRoots:
   - {fileID: 2143051749}
   - {fileID: 1992123906}
   - {fileID: 585150026}
+  - {fileID: 685031357}
