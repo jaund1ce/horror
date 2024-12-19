@@ -1,16 +1,19 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using UHFPS.Runtime;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerQuickSlotUsing : MonoBehaviour
 {
+    private Player player;
     public PlayerInputs playerInputs { get; private set; }//inputsystem generate c# script로 생성된 스크립트
     public PlayerInputs.PlayerActions playerActions { get; private set; }   //미리 정의한 행동들 move, look,... 등
 
     private void Awake()
     {
+        player = GetComponent<Player>();
         playerInputs = new PlayerInputs();
         playerActions = playerInputs.Player;//inputsystem에 선언했던 Actionmap 중에 하나를 선택
     }
@@ -29,15 +32,27 @@ public class PlayerQuickSlotUsing : MonoBehaviour
 
     private void UseQuick(InputAction.CallbackContext context)
     {
-        string index = context.control.displayName;
+        int index = int.Parse(context.control.displayName);
 
-        switch (index)
+        CheckQuickSlot(index);
+    }
+
+    private void CheckQuickSlot(int i)
+    {
+        foreach(InventoryData inventoryData in player.playerInventoryData.inventoryDatas)
         {
-            case "1": Debug.Log("1"); break;
-            case "2": Debug.Log("2"); break;
-            case "3": Debug.Log("3"); break;
-            case "4": Debug.Log("4"); break;
-            default: Debug.Log("IndexError"); break;
+            if(inventoryData == null) continue;
+            if(inventoryData.quickslotIndex == i-1)
+            {
+                EquipQuick(inventoryData);
+                return;
+            }
         }
+    }
+
+    private void EquipQuick(InventoryData inventoryData)
+    {
+        MainGameManager.Instance.Player.CurrentEquipItem = inventoryData;
+        MainGameManager.Instance.Player.Input.EquipMent.EquipNew(MainGameManager.Instance.Player.CurrentEquipItem);
     }
 }

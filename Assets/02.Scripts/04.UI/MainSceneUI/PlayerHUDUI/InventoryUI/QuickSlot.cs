@@ -23,6 +23,7 @@ public class QuickSlot : MonoBehaviour
     {
         if (CurrentData == null) { ResetSlot(); return; }
         if (CurrentData.ItemData == null) { ResetSlot(); return; }
+        if (CurrentData.quickslotIndex != quickIndex) { ResetSlot(); return; }
 
         ChangeUI();
     }
@@ -40,8 +41,17 @@ public class QuickSlot : MonoBehaviour
         {
             if (CurrentData == null) 
             {
-                CurrentData = inventoryLH.CurrentInventoryData;
-                CurrentData.quickslotIndex = quickIndex;
+                if (inventoryLH.CurrentInventoryData.quickslotIndex == -1)
+                {
+                    CurrentData = inventoryLH.CurrentInventoryData;
+                    CurrentData.quickslotIndex = quickIndex;
+                }
+                else//이미 다른 슬롯에 있는데 빈 공간을 고른 경우
+                {
+                    inventoryLH.CurrentInventoryData.quickslotIndex = -1;
+                    CurrentData = inventoryLH.CurrentInventoryData;
+                    CurrentData.quickslotIndex = quickIndex;
+                }
             }
             else
             {//index 바꾸기

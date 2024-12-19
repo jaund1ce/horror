@@ -15,6 +15,7 @@ public class PlayerGroundData
 
     [field: Header("RunData")]
     [field: SerializeField][field: Range(0f, 2f)] public float RunSpeedModifier { get; private set; } = 1f;
+    [field: SerializeField][field: Range(0f, 2f)] public float CrouchSpeedModifier { get; private set; } = 0.1f;
 }
 
 [Serializable]

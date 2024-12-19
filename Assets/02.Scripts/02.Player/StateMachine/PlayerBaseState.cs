@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerBaseState : IState 
+public class PlayerBaseState : IState
 {
     protected PlayerStateMachine2 stateMachine;
     protected readonly PlayerGroundData groundData;
@@ -34,6 +34,7 @@ public class PlayerBaseState : IState
         PlayerController input = stateMachine.Player.Input;
         input.playerActions.Movement.canceled += OnMovementCanceled;
         input.playerActions.Run.started += OnRunStarted;
+        input.playerActions.Crouch.started += OnCrouchStarted;
         input.playerActions.JumpParkour.started += OnJumpStarted;
         input.playerActions.LightControl.started += OnLightControl;
     }
@@ -44,6 +45,7 @@ public class PlayerBaseState : IState
         PlayerController input = stateMachine.Player.Input;
         input.playerActions.Movement.canceled -= OnMovementCanceled;
         input.playerActions.Run.started -= OnRunStarted;
+        input.playerActions.Crouch.started -= OnCrouchStarted;
         input.playerActions.JumpParkour.started -= OnJumpStarted;
     }
 
@@ -78,6 +80,11 @@ public class PlayerBaseState : IState
     }
 
     protected virtual void OnJumpStarted(InputAction.CallbackContext context)
+    {
+
+    }
+
+    protected virtual void OnCrouchStarted(InputAction.CallbackContext context)
     {
 
     }

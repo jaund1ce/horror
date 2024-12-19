@@ -11,12 +11,17 @@ public class InventoryController : MonoBehaviour //Player 처럼 인벤토리의 정보를
 
     public InventoryData CurrentInventoryData;
 
+    private void OnEnable()
+    {
+        MainGameManager.Instance.Player.makeSound(1f);
+    }
+
     public void ChangeData(InventoryData inventoryData)
     {
         if (CurrentInventoryData == inventoryData) return;
 
-        Debug.Log("UIPAnelOpen");
         CurrentInventoryData = inventoryData;
+        InventoryItemInfoPanelelController.gameObject.SetActive(true);
         InventoryItemInfoPanelelController.ChangePanelText(CurrentInventoryData);
     }
 }

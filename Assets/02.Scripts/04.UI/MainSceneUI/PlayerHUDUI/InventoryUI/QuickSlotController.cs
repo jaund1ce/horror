@@ -26,12 +26,13 @@ public class QuickSlotController : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             quickSlots[i].quickIndex = i;
+            quickSlots[i].ChangeData();
         }
 
         for (int i = 0; i < 15; i++)
         {
             int qIndex = InventoryData.inventoryDatas[i].quickslotIndex;
-            if (qIndex < 0) return;
+            if (qIndex < 0) continue;
 
             quickSlots[qIndex].Add(InventoryData.inventoryDatas[i]);
         }
