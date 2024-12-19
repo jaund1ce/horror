@@ -14,12 +14,13 @@ public class Player : MonoBehaviour
     public PlayerController Input { get; private set; }
     public PlayerInteraction Interact { get; private set; }
     public Rigidbody PlayerRigidbody { get; private set; }
+    public CapsuleCollider CapsuleCollider { get; private set; }
     public ForceReceiver ForceReceiver { get; private set; }
-    public PlayerConditionController health { get; private set; }
+    public PlayerConditionController playerConditionController { get; private set; }
 
     private PlayerStateMachine2 stateMachine;
 
-    public Action makeSound;
+    public Action<float> makeSound;
     public Action addItem;
     public Action useItem;
     public PlayerInventoryData playerInventoryData;
@@ -35,8 +36,9 @@ public class Player : MonoBehaviour
         Input = GetComponent<PlayerController>();
         Interact = GetComponentInChildren<PlayerInteraction>();
         PlayerRigidbody = GetComponent<Rigidbody>();
+        CapsuleCollider = GetComponent<CapsuleCollider>();
         ForceReceiver = GetComponent<ForceReceiver>();
-        health = GetComponent<PlayerConditionController>();
+        playerConditionController = GetComponent<PlayerConditionController>();
         playerInventoryData = GetComponent<PlayerInventoryData>();
 
         stateMachine = new PlayerStateMachine2(this);
@@ -46,20 +48,20 @@ public class Player : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         stateMachine.ChangeState(stateMachine.IdleState);//처음 시작시 idlestate로 실행
-        health.OnDie += OnDie;
+        playerConditionController.OnDie += OnDie;
     }
 
     private void Update()
     {
         stateMachine.HandleInput();
         stateMachine.Update();
-        ChangeRotation();//
-        CheckGround();
+        ChangeRotation();//        
     }
 
     private void FixedUpdate()
     {
         stateMachine.PhysicsUpdate();
+        CheckGround();
     }
 
     void OnDie()
@@ -68,7 +70,7 @@ public class Player : MonoBehaviour
         enabled = false;
     }
 
-    void ChangeRotation()//나중에 다른 매니져로 옮기기?
+    void ChangeRotation()//나중에 다른 매니져로 옮기기? 환경설정에 넣기
     {
         if (Input.rotateSencitivity == Data.GroundData.BaseRotationDamping) return;
         else
@@ -79,11 +81,12 @@ public class Player : MonoBehaviour
 
     private void CheckGround()
     {
-        Ray ray1 = new Ray(this.gameObject.transform.position + Vector3.forward*0.1f + new Vector3(0,0.1f,0), Vector3.down);
-        Ray ray2 = new Ray(this.gameObject.transform.position + Vector3.back * 0.1f + new Vector3(0,0.1f,0), Vector3.down);
-        Ray ray3 = new Ray(this.gameObject.transform.position + Vector3.right * 0.1f + new Vector3(0,0.1f,0), Vector3.down);
-        Ray ray4 = new Ray(this.gameObject.transform.position + Vector3.left * 0.1f + new Vector3(0,0.1f,0), Vector3.down);
-        //Debug.DrawRay(this.gameObject.transform.position, Vector3.down, Color.red, 3f);
+        Vector3 curVector = this.gameObject.transform.position;
+        Ray ray1 = new Ray(curVector + Vector3.forward*0.1f + new Vector3(0,0.1f,0), Vector3.down);
+        Ray ray2 = new Ray(curVector + Vector3.back * 0.1f + new Vector3(0,0.1f,0), Vector3.down);
+        Ray ray3 = new Ray(curVector + Vector3.right * 0.1f + new Vector3(0,0.1f,0), Vector3.down);
+        Ray ray4 = new Ray(curVector + Vector3.left * 0.1f + new Vector3(0,0.1f,0), Vector3.down);
+        //Debug.DrawRay(curVector, Vector3.down, Color.red, 3f);
 
         if (Physics.Raycast(ray1, 0.2f) || Physics.Raycast(ray2, 0.2f) || Physics.Raycast(ray3, 0.2f) || Physics.Raycast(ray4, 0.2f))
         {
@@ -93,5 +96,10 @@ public class Player : MonoBehaviour
         {
             isGround = false;
         }
+    }
+
+    public void MakeSound(float amount)
+    {
+        makeSound?.Invoke(amount);
     }
 }

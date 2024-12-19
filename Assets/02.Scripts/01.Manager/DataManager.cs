@@ -5,8 +5,9 @@ using UnityEngine;
 public class DataManager : mainSingleton<DataManager>
 {
    private ItemData itemSO;
-    
-   public ItemData ItemSO
+   //public List<ItemSO> AllItems = new List<ItemSO>();
+
+    public ItemData ItemSO
    {
 
     get { 
@@ -22,7 +23,21 @@ public class DataManager : mainSingleton<DataManager>
     protected override void Awake()
     {
         base.Awake();
+        //LoadItemData();
+
     }
+
+    //private void LoadItemData()
+    //{
+    //    TextAsset jsonData = ResourceManager.Instance.LoadAsset<TextAsset>("itemData", eAssetType.Data);
+
+    //    if (jsonData != null)
+    //    {
+    //        MetaItemDataList metaList = JsonUtility.FromJson<MetaItemDataList>(jsonData.text);
+    //    }
+    //}
+
+   
 
     private void GetData()
     {

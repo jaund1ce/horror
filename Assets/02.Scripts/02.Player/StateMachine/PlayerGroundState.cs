@@ -50,4 +50,10 @@ public class PlayerGroundState : PlayerBaseState
         base.OnJumpStarted(context);
         stateMachine.ChangeState(stateMachine.JumpState);
     }
+
+    protected override void OnCrouchStarted(InputAction.CallbackContext context)
+    {
+        base.OnCrouchStarted(context);
+        stateMachine.ChangeState(stateMachine.CrouchIdleState);
+    }
 }

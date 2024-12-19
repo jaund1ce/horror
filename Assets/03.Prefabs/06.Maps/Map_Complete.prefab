@@ -123083,10 +123083,6 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 4300000, guid: 0b9f8fbb97531c1438c9e0f403373646, type: 3}
-    - target: {fileID: 282021199123799880, guid: 0b56d9e2cfe6da14e9ec359b6741792d, type: 3}
-      propertyPath: m_Convex
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

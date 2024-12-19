@@ -18,6 +18,8 @@ public class PlayerInteraction : MonoBehaviour
     public PlayerInputs.PlayerActions playerActions { get; private set; }   //미리 정의한 행동들 move, look,... 등
 
     public IInteractable CurrentInteracteable;
+    private bool isPuzzle;
+    private bool PuzzleEnter;
 
     private void Awake()
     {
@@ -45,36 +47,46 @@ public class PlayerInteraction : MonoBehaviour
         Vector3 sceenCenter = new Vector3(Screen.width / 2, Screen.height / 2, 0);
         Ray ray = mainCamera.ScreenPointToRay(sceenCenter);
 
-        if(Physics.Raycast(ray,out RaycastHit hit, itemCheckDistance, iteractableLayerMask))//모든 iteractable layer은 iinteractable을 가지고 있다.
+        if (Physics.Raycast(ray, out RaycastHit hit, itemCheckDistance, iteractableLayerMask))//모든 iteractable layer은 iinteractable을 가지고 있다.
         {
             IInteractable iteractable = hit.collider.GetComponent<IInteractable>();
-            if(iteractable == null)
-            {
-                Debug.LogError("Wrong iteractable setting!");
-                return;
-            }
-
-            if (iteractable == CurrentInteracteable)
-            {
-                return;
-            }
-
+            if (iteractable as PuzzleBase) isPuzzle = true;
+            else if (iteractable == null) return;
+            else if (iteractable == CurrentInteracteable) return;
             CurrentInteracteable = iteractable;
         }
-        else
-        {
-            CurrentInteracteable = null;
-        }
-        MainUI mainUI = UIManager.Instance.GetUI<MainUI>();
-        mainUI.ShowPromptUI(CurrentInteracteable);
+        else CurrentInteracteable = null;
 
+        if (!PuzzleEnter)
+        {
+            MainUI mainUI = UIManager.Instance.GetUI<MainUI>();
+            mainUI.ShowPromptUI(CurrentInteracteable);
+        }
     }
 
     private void handleInteractionInput(InputAction.CallbackContext context)//상호작용시 아이템 회득
     {
         if (CurrentInteracteable == null) return;
-
+        HandleInputAndPrompt();
         CurrentInteracteable.OnInteract();
+    }
+
+    private void HandleInputAndPrompt() 
+    {
+        if (isPuzzle && !PuzzleEnter)
+        {
+            PuzzleEnter = true;
+            MainGameManager.Instance.Player.Input.InputUnsubscribe();
+            MainUI mainUI = UIManager.Instance.GetUI<MainUI>();
+            mainUI.ShowPromptUI(null);
+        }
+        else if (isPuzzle && PuzzleEnter)
+        {
+            PuzzleEnter = false;
+            MainGameManager.Instance.Player.Input.InputSubscribe();
+            MainUI mainUI = UIManager.Instance.GetUI<MainUI>();
+            mainUI.ShowPromptUI(CurrentInteracteable);
+        }
     }
 
     private void OnEnable()

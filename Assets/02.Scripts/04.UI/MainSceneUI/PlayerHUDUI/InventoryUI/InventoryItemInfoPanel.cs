@@ -13,14 +13,14 @@ public class InventoryItemInfoPanelelController : MonoBehaviour
     [SerializeField] private InventoryController Inventory;
 
 
-    private void Awake()
-    {
-        Inventory.InventoryItemInfoPanelelController = this;
-    }
+    //private void Awake()//인벤토리가 처음 생성되면 안보이고 싶기 때문에 setactive를 꺼준다.
+    //{
+    //    Inventory.InventoryItemInfoPanelelController = this;
+    //}
 
     private InventoryData currentItemData;
 
-    private void OnDisable()
+    private void OnDisable()//만약을 위한 방어코드
     {
         gameObject.SetActive(false);
     }
@@ -61,13 +61,7 @@ public class InventoryItemInfoPanelelController : MonoBehaviour
         if (currentItemData == null) return;
 
         MainGameManager.Instance.Player.CurrentEquipItem = Inventory.CurrentInventoryData;
-        MainGameManager.Instance.Player.Input.EquipMent.EquipNew(MainGameManager.Instance.Player.CurrentEquipItem);
-            /*if (currentItemData.amount <= 0)
-            {
-                currentItemData.ResetData();
-                return;
-            }*/
-        
+        MainGameManager.Instance.Player.Input.EquipMent.EquipNew(MainGameManager.Instance.Player.CurrentEquipItem);        
     }
     public void OnAddQuickSlotBTNClick()
     {
