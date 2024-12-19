@@ -6,6 +6,14 @@ public class InventoryManger : MonoBehaviour
 {
     private ItemData LastSelectItemData;
     public ItemData CurrentSelectItemData;
+    //public List<ItemSO> PlayerInventory = new List<ItemSO>();
+
+    //public void AddItem(ItemSO item)
+    //{
+    //    if (item == null) return;
+    //    PlayerInventory.Add(item);
+    //    Debug.Log($"{item.ItemNameEng} È¹µæ");
+    //}
 
     // Start is called before the first frame update
     void Start()
