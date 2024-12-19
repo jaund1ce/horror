@@ -31,7 +31,7 @@ public class ItemDataes : DataBase<MetaItemData>
 }
 
 [System.Serializable]
-public class ItemDataList : DataBaseList<string, ItemDataes, MetaItemData>
+public class ItemDataesList : DataBaseList<string, ItemDataes, MetaItemData>
 {
     public override void SetData(List<MetaItemData> metaItemDatas)
     {
