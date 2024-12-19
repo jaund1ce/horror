@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class MetaItemData
+public class  MetaItemData
 {
     public int index;
     public string name;

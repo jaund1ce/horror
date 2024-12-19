@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class UIManager : mainSingleton<UIManager>
 {
@@ -59,7 +60,25 @@ public class UIManager : mainSingleton<UIManager>
 
         T uiInstance = InstantiateUI<T>(uiPrefab); // UI 인스턴스 생성
         uiList.Add(uiInstance);                   // 인스턴스화된 UI를 리스트에 추가
-        //Debug.Log($"{typeof(T).Name} UI가 생성되었습니다.");
+                                                  //Debug.Log($"{typeof(T).Name} UI가 생성되었습니다.");
+
+        //RemoveNull();
+
+        //string uiName = typeof(T).ToString();
+        //uiList.TryGetValue(uiName, out UIBase ui);
+        //if (ui == null)
+        //{
+        //    //ui = Resources.Load<UIBase>($"UI/{uiName}");
+        //    uiList.Remove(uiName);
+        //    var obj = ResourceManager.Instance.LoadAsset<GameObject>(uiName, eAssetType.UI);
+        //    ui = Load<T>(obj, uiName);
+        //    uiList.Add(uiName, ui);
+        //    ui.Opened(param);
+        //}
+
+        //ui.gameObject.SetActive(true);
+
+        //return (T)ui;
     }
 
     public void Hide<T>() where T : BaseUI

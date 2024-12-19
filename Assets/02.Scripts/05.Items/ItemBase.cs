@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class ItemBase : MonoBehaviour,IInteractable
 {
+    public ItemSO itemSO;
     public ItemData itemData;
     private PlayerInventoryData inventoryslotcontroller;
 
@@ -22,6 +23,8 @@ public class ItemBase : MonoBehaviour,IInteractable
 
     public void OnInteract()
     {
+        //InventoryManager inventory = FindObjectOfType<InventoryManager>();
+        //inventory.AddItem(itemSO);
         //GameManger.instance.Player.Inventorydata.AddItem(itemSO);
         inventoryslotcontroller.AddItem(itemData);
         gameObject.SetActive(false);
