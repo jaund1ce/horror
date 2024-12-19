@@ -139,7 +139,6 @@ public class CreatureAI : MonoBehaviour , AggroGage
     public void FeelThePlayer() 
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, Data.FeelPlayerRange , player);
-        MainGameManager.Instance.Player.PlayerState = PlayerState.Chased;
 
         foreach (Collider collider in colliders) 
         {
@@ -168,6 +167,7 @@ public class CreatureAI : MonoBehaviour , AggroGage
 
         if ((IsAggroGageMax || !isPlayerMiss) && !IsInAttackRange())
         {
+            MainGameManager.Instance.Player.ChangeState(PlayerState.Chased);
             CreatureAistate = AIState.Chasing;
             return (int)CreatureAistate;
         }
@@ -185,6 +185,7 @@ public class CreatureAI : MonoBehaviour , AggroGage
         }
         else 
         {
+            MainGameManager.Instance.Player.ChangeState(PlayerState.Normal);
             CreatureAistate = AIState.Idle;
             return (int)CreatureAistate;
         }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class DeskHide : MonoBehaviour, IHideable, IInteractable
+public class DeskHide : MonoBehaviour, IInteractable
 {
     public GameObject player; // 플레이어 Transform
     public Transform underDeskPosition; // 책상 밑 위치

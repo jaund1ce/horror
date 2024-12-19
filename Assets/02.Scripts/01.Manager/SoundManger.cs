@@ -8,7 +8,8 @@ public enum PlayerState
     Normal = -1,
     Chased = 0,
     Danger,
-    Chasing
+    Chasing,
+    Hide
 }
 
 public class SoundManger : mainSingleton<SoundManger>
@@ -25,7 +26,6 @@ public class SoundManger : mainSingleton<SoundManger>
 
     public float interval;
     public int StageNum = -1;
-    public PlayerState playerstate = PlayerState.Normal;
 
     protected override void Awake()
     {
@@ -44,23 +44,19 @@ public class SoundManger : mainSingleton<SoundManger>
 
     protected override void Update()
     { 
-        if(MainGameManager.Instance.Player == null) return;
-        PlayerState templayerState = MainGameManager.Instance.Player.PlayerState;
-        if (templayerState != playerstate)
-        {
-            playerstate = templayerState;
-            ChangeState();
-        }
+        
     }
 
-    private void ChangeState()
+    public void ChangeState(PlayerState playerState)
     {
-        if (playerstate == PlayerState.Normal)
+        if (playerState == PlayerState.Normal)
         {
             PlayerHeartBeat.clip = null;
             return;
         }
-        PlayerHeartBeat.clip = playerheartbeatSource[(int)playerstate];
+        if(playerheartbeatSource[(int)playerState] == null) return ;
+
+        PlayerHeartBeat.clip = playerheartbeatSource[(int)playerState];
         PlayerHeartBeat.loop = true;
         PlayerHeartBeat.Play();
     }
