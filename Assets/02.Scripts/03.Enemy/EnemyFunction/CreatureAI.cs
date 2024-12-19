@@ -141,8 +141,8 @@ public class CreatureAI : MonoBehaviour , AggroGage
         foreach (Collider collider in colliders) 
         {
             float increaceAmount = 0;
-            Vector3 direction = (collider.transform.position - transform.position).normalized;
-            increaceAmount = (MathF.Abs(direction.x) + MathF.Abs(direction.z))/Data.FeelPlayerRange;
+            float distance = Vector3.Distance(collider.transform.position,transform.position);
+            increaceAmount = Data.FeelPlayerRange/ (distance*100);
             GetAggroGage(increaceAmount);
         }
     }

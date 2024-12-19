@@ -12,7 +12,7 @@ public abstract class ObjectBase : MonoBehaviour, IInteractable
 
     protected virtual void OnEnable()
     {
-        objectSO = GetComponent<ObjectSO>();    
+        //objectSO = GetComponent<ObjectSO>();    
     }
 
     public virtual string GetInteractPrompt()
