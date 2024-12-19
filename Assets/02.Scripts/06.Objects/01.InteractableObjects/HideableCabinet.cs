@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 
-public class CabinetEntry : ObjectBase
+public class HideableCabinet : ObjectBase
 {
     public GameObject player; // 플레이어 Transform
     public Transform insidePosition; // 캐비닛 내부 위치
@@ -18,13 +18,17 @@ public class CabinetEntry : ObjectBase
     [SerializeField]private bool isDoorOpen = false; // 문이 열렸는지 여부
     [SerializeField] private bool isPlayerInside = false; // 플레이어가 캐비닛 내부에 있는지 여부
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+    }
 
     private void GetPlayerData()
     {
         characterController = player.GetComponent<CharacterController>();
     }
 
-    public void OnHide()
+    private void OnHide()
     {
         Debug.Log("Player is hiding inside the cabinet...");
 
@@ -41,7 +45,7 @@ public class CabinetEntry : ObjectBase
         isPlayerInside = true;
     }
 
-    public void OnExit()
+    private void OnExit()
     {
         Debug.Log("Player is exiting the cabinet...");
 
@@ -92,7 +96,7 @@ public class CabinetEntry : ObjectBase
         Debug.Log("Cabinet door opened.");
     }
 
-    public void OnInteract()
+    public override void OnInteract()
     {
         if(player == null) player = MainGameManager.Instance.Player.gameObject;
 
@@ -110,7 +114,7 @@ public class CabinetEntry : ObjectBase
         }
     }
 
-    public string GetInteractPrompt()
+    public override string GetInteractPrompt()
     {
         if (!isDoorOpen) return "Open";
         else if (isPlayerInside) return "Get Out";

@@ -9,12 +9,14 @@ public class LockedDoor : ObjectBase
     public float openAngle = -90f; // 문 열리는 각도
     public float closeAngle = 0f; // 문 닫히는 각도
     public float openSpeed = 5f; // 문 열림 속도
-    public Collider interactionCollider; // 플레이어 감지를 위한 콜라이더
-    //public bool isLocked = true; // 문 잠김 여부
     private bool isOpened = false; // 문이 열렸는지 여부
-    //private bool isPlayerNear = false; // 플레이어가 근처에 있는지 여부
 
     public event Action isOpen;
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+    }
 
     public override void OnInteract()
     {

@@ -8,6 +8,13 @@ using UnityEngine;
 
 public abstract class ObjectBase : MonoBehaviour, IInteractable
 {
+    protected ObjectSO objectSO;
+
+    protected virtual void OnEnable()
+    {
+        objectSO = GetComponent<ObjectSO>();    
+    }
+
     public virtual string GetInteractPrompt()
     {
         return null;
@@ -17,4 +24,5 @@ public abstract class ObjectBase : MonoBehaviour, IInteractable
     {
 
     }
+
 }
