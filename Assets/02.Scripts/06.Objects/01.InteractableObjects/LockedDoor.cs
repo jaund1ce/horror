@@ -10,6 +10,7 @@ public class LockedDoor : ObjectBase
     public float closeAngle = 0f; // 문 닫히는 각도
     public float openSpeed = 5f; // 문 열림 속도
     private bool isOpened = false; // 문이 열렸는지 여부
+    public bool IsLocked = true;
 
     public event Action isOpen;
 
@@ -17,6 +18,10 @@ public class LockedDoor : ObjectBase
     {
         base.OnEnable();
         hinge = this.transform;
+    }
+    private void Start()
+    {
+        IsLocked = ObjectSO.IsLocked;
     }
 
     public override void OnInteract()
@@ -27,7 +32,7 @@ public class LockedDoor : ObjectBase
     private void ToggleDoor()
     {
         //잠긴문 Interact 시 Sound 추가
-        if (ObjectSO.IsLocked) return;
+        if (IsLocked) return;
         
         isOpened = !isOpened;
         if (isOpened == true)
@@ -57,7 +62,7 @@ public class LockedDoor : ObjectBase
 
     public override string GetInteractPrompt()
     {
-        if (ObjectSO.IsLocked) return "Locked";
+        if (IsLocked) return "Locked";
         return isOpened ? "Close" : "Open";
     }
 
