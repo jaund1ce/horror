@@ -430,7 +430,7 @@ GameObject:
   - component: {fileID: 1844957228168760783}
   - component: {fileID: 6076140198953057269}
   - component: {fileID: 4147872083613529831}
-  - component: {fileID: 3418605512682344106}
+  - component: {fileID: 4144336706290402073}
   m_Layer: 6
   m_Name: Door
   m_TagString: Untagged
@@ -521,7 +521,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -554,7 +554,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &3418605512682344106
+--- !u!114 &4144336706290402073
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -563,15 +563,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 6497216132809433277}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb491c99dcc2d64dbbb64304cb6b7f9, type: 3}
+  m_Script: {fileID: 11500000, guid: 594c432dd1a4ac343aa3c25f53bd1fab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hinge: {fileID: 8372689945438911682}
+  ObjectSO: {fileID: 0}
+  hinge: {fileID: 0}
   openAngle: -90
   closeAngle: 0
   openSpeed: 5
-  pushForce: 2
-  interactionCollider: {fileID: 0}
 --- !u!1 &6955154207240009244
 GameObject:
   m_ObjectHideFlags: 0

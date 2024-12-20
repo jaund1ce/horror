@@ -11,9 +11,9 @@ public class PlayerCrouchState : PlayerBaseState
 
     public override void Enter()
     {
-        Debug.Log("CrouchState in");
         base.Enter();
-        stateMachine.Player.CapsuleCollider.height = 1f;
+        stateMachine.Player.CapsuleCollider.height = 0.5f;
+        stateMachine.Player.CapsuleCollider.center = new Vector3(0,0.5f,0);
         stateMachine.MovementSpeedModifier = groundData.CrouchSpeedModifier;
         StartAnimation(stateMachine.Player.AnimationData.CrouchParameterHash);
     }
@@ -22,15 +22,17 @@ public class PlayerCrouchState : PlayerBaseState
     {
         base.Exit();
         stateMachine.Player.CapsuleCollider.height = 2f;
-        Debug.Log("CrouchState out");
+        stateMachine.Player.CapsuleCollider.center = new Vector3(0, 1f, 0);
         StopAnimation(stateMachine.Player.AnimationData.CrouchParameterHash);
     }
 
     public override void Update()
     {
-        if (!stateMachine.Player.isGround)
-        {
-            stateMachine.ChangeState(stateMachine.FallState);
-        }
+        base.Update();
+        //if (!stateMachine.Player.isGround)//왜 수그리는 순간 바로 채크를 탈출하는가?
+        //{
+        //    Debug.Log("out?");
+        //    stateMachine.ChangeState(stateMachine.FallState);
+        //}
     }
 }

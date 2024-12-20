@@ -11,20 +11,18 @@ public class PlayerCrouchIdleState : PlayerCrouchState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Crouch idle");
         StartAnimation(stateMachine.Player.AnimationData.CrouchingParameterHash);
     }
 
     public override void Exit()
     {
         base.Exit();
-        Debug.Log("C I S");
         StopAnimation(stateMachine.Player.AnimationData.CrouchingParameterHash);
     }
 
     public override void Update()
     {
-        //base.Update();
+        base.Update();
         if (!MainGameManager.Instance.Player.Input.Crouching)
         {
             stateMachine.ChangeState(stateMachine.IdleState); 

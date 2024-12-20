@@ -439,6 +439,9 @@ MonoBehaviour:
   playerstepSource: []
   playerheartbeatSource:
   - {fileID: 8300000, guid: a0b72b51563fb624f99a0e86792caa68, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   bgmSource: []
   enviromentsource: []
   interval: 0

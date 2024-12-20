@@ -3,53 +3,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LockedDoorWithHinge : MonoBehaviour, IInteractable
+public class LockedDoor : ObjectBase
 {
     public Transform hinge; // 문 힌지
     public float openAngle = -90f; // 문 열리는 각도
     public float closeAngle = 0f; // 문 닫히는 각도
     public float openSpeed = 5f; // 문 열림 속도
-    public Collider interactionCollider; // 플레이어 감지를 위한 콜라이더
-    //public bool isLocked = true; // 문 잠김 여부
     private bool isOpened = false; // 문이 열렸는지 여부
-    //private bool isPlayerNear = false; // 플레이어가 근처에 있는지 여부
 
     public event Action isOpen;
 
-    private void OnTriggerEnter(Collider other)
+    protected override void OnEnable()
     {
-        if (other.CompareTag("Player"))
-        {
-            //isPlayerNear = true;
-            Debug.Log("Player is near the locked door.");
-        }
+        base.OnEnable();
+        hinge = this.transform;
     }
 
-
-    private void OnTriggerExit(Collider other)
+    public override void OnInteract()
     {
-        if (other.CompareTag("Player"))
-        {
-            //isPlayerNear = false;
-            Debug.Log("Player left the locked door area.");
-        }
-    }
-
-    public void OnInteract()
-    {
-       // if (!isPlayerNear) return;
-
-        //if (isLocked)
-        //{
-        //    Debug.Log("The door is locked.");
-        //    return;
-        //}
-
         ToggleDoor();
     }
 
     private void ToggleDoor()
     {
+        //잠긴문 Interact 시 Sound 추가
+        if (ObjectSO.IsLocked) return;
+        
         isOpened = !isOpened;
         if (isOpened == true)
         {
@@ -57,7 +36,6 @@ public class LockedDoorWithHinge : MonoBehaviour, IInteractable
         }
 
         StopAllCoroutines();
-        Debug.Log("문 잘 열림");
         StartCoroutine(RotateDoor(isOpened ? openAngle : closeAngle));
     }
 
@@ -77,17 +55,11 @@ public class LockedDoorWithHinge : MonoBehaviour, IInteractable
         hinge.localEulerAngles = new Vector3(0, targetAngle, 0);
     }
 
-    public string GetInteractPrompt()
+    public override string GetInteractPrompt()
     {
-        //if (isLocked) return "Locked";
+        if (ObjectSO.IsLocked) return "Locked";
         return isOpened ? "Close" : "Open";
     }
 
-    // AcquireKey 메서드 추가
-    //public void AcquireKey()
-    //{
-    //    isLocked = false;
-    //    Debug.Log("Key acquired! Door is now unlocked.");
-    //}
 }
 

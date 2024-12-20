@@ -16,7 +16,7 @@ public class PuzzleKeypad : PuzzleBase
     public AudioClip AccessSound; // 성공 사운드
     public AudioClip DeniedSound; // 실패 사운드
     public AudioSource audioSource; // 오디오 소스
-    public LockedDoorWithHinge LockDoor;
+    public LockedDoor LockDoor;
 
     private TextMeshPro text;
     private MeshRenderer keypadRenderer;
@@ -155,7 +155,8 @@ public class PuzzleKeypad : PuzzleBase
 
         text.color = baseColor;
         currentCoroutine = null;
-        //락도어에 불리언값 변경 코드 작성
+        if (!LockDoor.ObjectSO.IsLocked) LockDoor.ObjectSO.IsLocked = false;
+        MainGameManager.Instance.Player.Input.InputSubscribe();
         ExitPuzzleView();
     }
 

@@ -73,31 +73,6 @@ public class CreatureBaseState : IState
                 break;
 
         }
-            
-        /*if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Idle )
-        {
-            stateMachine.ChangeState(stateMachine.IdleState);
-        }
-        else if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Chasing )
-        {
-            //분리 예정
-            stateMachine.ChangeState(stateMachine.ChasingState);
-            Move();
-        }
-        else if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Wandering )
-        {
-            if (!IsLocationSet())
-            {
-                WanderLocationSet();
-            }
-            stateMachine.ChangeState(stateMachine.WanderState);
-            Move();
-        }
-        //업데이트에서 공격중에 적이 멀어지면 chasing으로 넘어가서 불값도 넣어 체크중
-        else if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Attacking)
-        {
-            stateMachine.ChangeState(stateMachine.AttackState);
-        }*/
 
     }
 
@@ -119,7 +94,6 @@ public class CreatureBaseState : IState
             movementLocation = stateMachine.Target.transform.position;
         }
         Move(movementLocation);
-        //Rotate(movementLocation);
     }
 
     private void WanderLocationSet()
@@ -127,12 +101,10 @@ public class CreatureBaseState : IState
         NavMeshHit hit;
         Vector3 radius = Random.onUnitSphere * Random.Range(minWanderDistance, maxWanderDistance);
         radius.y = 0f;
-        //sourcePosition : 일정한 영역 hit : 이동할수있는 경로의 최단 경로 
         Vector3 randomPosition = creatureTransform.position + radius;
 
         if (NavMesh.SamplePosition(randomPosition, out hit, maxWanderDistance, walkableMask) == false) return;
             movementLocation = hit.position;
-        //Debug.Log(movementLocation);
             setLocation = true;
     }
 
@@ -154,15 +126,9 @@ public class CreatureBaseState : IState
     private void Move(Vector3 direction)
     {      
         stateMachine.Creature.CharacterController.SetDestination(direction);
-        //Debug.Log(stateMachine.Creature.CharacterController.speed);
 
     }
 
-
-    /*protected void ForceMove()
-    {
-        stateMachine.Creature.CharacterController.SetDestination(stateMachine.Creature.ForceReceiver.Movement * Time.deltaTime);
-    }*/
 
     protected float GetNormalizedTime(Animator animator, string tag)
     {

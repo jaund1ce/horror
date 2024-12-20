@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class StageClear : MonoBehaviour
 {
-    private LockedDoorWithHinge lockedDoorWithHinge;
+    private LockedDoor lockedDoorWithHinge;
 
     void Start()
     {
-        lockedDoorWithHinge = GetComponent<LockedDoorWithHinge>();
+        lockedDoorWithHinge = GetComponent<LockedDoor>();
         lockedDoorWithHinge.isOpen += stageClear;
     }
 

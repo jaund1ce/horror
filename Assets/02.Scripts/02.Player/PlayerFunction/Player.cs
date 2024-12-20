@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     public InventoryData CurrentEquipItem;
     public bool isChangingQuickSlot = false;
     public bool isGround = true;
-    public PlayerState PlayerState = PlayerState.Normal;
+    [SerializeField]private PlayerState PlayerState = PlayerState.Normal; //creture 와 플레이어가 둘다 가지고 있어야하나?
 
     void Awake()
     {
@@ -64,6 +64,22 @@ public class Player : MonoBehaviour
         CheckGround();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("HideZone"))
+        {
+            ChangeState(PlayerState.Hide);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("HideZone"))
+        {
+            ChangeState(PlayerState.Normal); 
+        }
+    }
+
     void OnDie()
     {
         Animator.SetTrigger("Die");
@@ -86,9 +102,10 @@ public class Player : MonoBehaviour
         Ray ray2 = new Ray(curVector + Vector3.back * 0.1f + new Vector3(0,0.1f,0), Vector3.down);
         Ray ray3 = new Ray(curVector + Vector3.right * 0.1f + new Vector3(0,0.1f,0), Vector3.down);
         Ray ray4 = new Ray(curVector + Vector3.left * 0.1f + new Vector3(0,0.1f,0), Vector3.down);
-        //Debug.DrawRay(curVector, Vector3.down, Color.red, 3f);
+        float checkdistance = 0.3f;
+        Debug.DrawRay(curVector, Vector3.down, Color.red, checkdistance);
 
-        if (Physics.Raycast(ray1, 0.2f) || Physics.Raycast(ray2, 0.2f) || Physics.Raycast(ray3, 0.2f) || Physics.Raycast(ray4, 0.2f))
+        if (Physics.Raycast(ray1, checkdistance) || Physics.Raycast(ray2, checkdistance) || Physics.Raycast(ray3, checkdistance) || Physics.Raycast(ray4, checkdistance))
         {
             isGround = true;
         }
@@ -101,5 +118,17 @@ public class Player : MonoBehaviour
     public void MakeSound(float amount)
     {
         makeSound?.Invoke(amount);
+    }
+
+    public void ChangeState(PlayerState playerState)//아래 단계로는 변화 할 수 없지만, 기본 상태로 돌리는 건 가능하다.
+    {
+        if (playerState == PlayerState.Normal)
+        {
+            PlayerState = playerState;
+        }
+        else if (PlayerState > playerState) return;
+
+        PlayerState = playerState;  
+        SoundManger.Instance.ChangeState(playerState);
     }
 }
