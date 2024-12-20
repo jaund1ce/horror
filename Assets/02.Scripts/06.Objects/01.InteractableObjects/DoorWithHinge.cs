@@ -10,7 +10,6 @@ public class DoorWithHinge : MonoBehaviour, IInteractable
     public float openSpeed = 5f; // 문 열림 속도
     public float pushForce = 2f;
     private Rigidbody doorRb;
-    public Collider interactionCollider; // 플레이어 감지를 위한 콜라이더
 
     private bool isOpen = false; // 문이 열렸는지 여부
     //private bool isPlayerNear = false; // 플레이어가 근처에 있는지 여부
