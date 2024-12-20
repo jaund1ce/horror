@@ -710,6 +710,14 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1689472027991160991, guid: e26de8888638ca7438f16d188ee08b8b, type: 3}
+      propertyPath: ObjectSO
+      value: 
+      objectReference: {fileID: 11400000, guid: e4866f809dcd387439fcc945ce1524a0, type: 2}
+    - target: {fileID: 3465889138980801321, guid: e26de8888638ca7438f16d188ee08b8b, type: 3}
+      propertyPath: ObjectSO
+      value: 
+      objectReference: {fileID: 11400000, guid: e4866f809dcd387439fcc945ce1524a0, type: 2}
     - target: {fileID: 3492867310982082487, guid: e26de8888638ca7438f16d188ee08b8b, type: 3}
       propertyPath: ObjectSO
       value: 
@@ -734,6 +742,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5576607469201739924, guid: e26de8888638ca7438f16d188ee08b8b, type: 3}
+      propertyPath: ObjectSO
+      value: 
+      objectReference: {fileID: 11400000, guid: e4866f809dcd387439fcc945ce1524a0, type: 2}
     - target: {fileID: 5947691611409059456, guid: e26de8888638ca7438f16d188ee08b8b, type: 3}
       propertyPath: ObjectSO
       value: 
@@ -794,11 +806,19 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7091937579669350542, guid: e26de8888638ca7438f16d188ee08b8b, type: 3}
+      propertyPath: ObjectSO
+      value: 
+      objectReference: {fileID: 11400000, guid: e4866f809dcd387439fcc945ce1524a0, type: 2}
     - target: {fileID: 7463806850334459612, guid: e26de8888638ca7438f16d188ee08b8b, type: 3}
       propertyPath: m_Name
       value: Map_Complete
       objectReference: {fileID: 0}
     - target: {fileID: 7727446790054555710, guid: e26de8888638ca7438f16d188ee08b8b, type: 3}
+      propertyPath: ObjectSO
+      value: 
+      objectReference: {fileID: 11400000, guid: e4866f809dcd387439fcc945ce1524a0, type: 2}
+    - target: {fileID: 8450444673020576004, guid: e26de8888638ca7438f16d188ee08b8b, type: 3}
       propertyPath: ObjectSO
       value: 
       objectReference: {fileID: 11400000, guid: e4866f809dcd387439fcc945ce1524a0, type: 2}

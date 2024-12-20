@@ -155,8 +155,8 @@ public class PuzzleKeypad : PuzzleBase
 
         text.color = baseColor;
         currentCoroutine = null;
-        if (!LockDoor.ObjectSO.IsLocked) LockDoor.ObjectSO.IsLocked = false;
-        MainGameManager.Instance.Player.Input.InputSubscribe();
+        if (LockDoor.IsLocked) LockDoor.IsLocked = false;
+        MainGameManager.Instance.Player.Interact.HandleInputAndPrompt();
         ExitPuzzleView();
     }
 
