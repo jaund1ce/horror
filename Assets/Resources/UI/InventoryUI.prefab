@@ -2506,6 +2506,10 @@ PrefabInstance:
       propertyPath: inventoryLH
       value: 
       objectReference: {fileID: 7361472159510507804}
+    - target: {fileID: 4987381336661423241, guid: cd45ab53eaf9a054ebbf8957dc94a300, type: 3}
+      propertyPath: m_text
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

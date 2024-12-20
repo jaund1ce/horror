@@ -72,7 +72,7 @@ public class PlayerInteraction : MonoBehaviour
         CurrentInteracteable.OnInteract();
     }
 
-    private void HandleInputAndPrompt() 
+    public void HandleInputAndPrompt() 
     {
         if (isPuzzle && !PuzzleEnter)
         {
