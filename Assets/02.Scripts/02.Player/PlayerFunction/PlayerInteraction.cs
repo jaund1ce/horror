@@ -50,7 +50,7 @@ public class PlayerInteraction : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, itemCheckDistance, iteractableLayerMask))//모든 iteractable layer은 iinteractable을 가지고 있다.
         {
             IInteractable iteractable = hit.collider.GetComponent<IInteractable>();
-            if (iteractable as PuzzleBase) isPuzzle = true;
+            if (iteractable as PuzzleBase ) isPuzzle = true;
             else isPuzzle = false;
             if (iteractable == null) return;
             else if (iteractable == CurrentInteracteable) return;
@@ -74,20 +74,22 @@ public class PlayerInteraction : MonoBehaviour
 
     public void HandleInputAndPrompt() 
     {
+        MainUI mainUI = UIManager.Instance.GetUI<MainUI>();
+
         if (isPuzzle && !PuzzleEnter)
         {
             PuzzleEnter = true;
             MainGameManager.Instance.Player.Input.InputUnsubscribe();
-            MainUI mainUI = UIManager.Instance.GetUI<MainUI>();
             mainUI.ShowPromptUI(null);
+            return;
         }
-        else if (!isPuzzle || PuzzleEnter)
+        else if (PuzzleEnter)
         {
             PuzzleEnter = false;
             MainGameManager.Instance.Player.Input.InputSubscribe();
-            MainUI mainUI = UIManager.Instance.GetUI<MainUI>();
-            mainUI.ShowPromptUI(CurrentInteracteable);
         }
+            mainUI.ShowPromptUI(CurrentInteracteable);
+        
     }
 
     private void OnEnable()

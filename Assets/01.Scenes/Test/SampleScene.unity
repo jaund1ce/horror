@@ -403,11 +403,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 350958920}
   m_CullTransparentMesh: 1
---- !u!4 &377128288 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1508177592678931602, guid: ab7ab4d58ffd9e74aa824b10a3596d31, type: 3}
-  m_PrefabInstance: {fileID: 508816502}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,6 +521,11 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!4 &436759733 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7881935985494820888, guid: ab7ab4d58ffd9e74aa824b10a3596d31, type: 3}
+  m_PrefabInstance: {fileID: 508816502}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &508816502
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -582,6 +582,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6904882794916949432, guid: ab7ab4d58ffd9e74aa824b10a3596d31, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8887485394787550634, guid: ab7ab4d58ffd9e74aa824b10a3596d31, type: 3}
       propertyPath: <AttackPoint>k__BackingField
       value: 
@@ -590,7 +594,7 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 8602207207571728558, guid: ab7ab4d58ffd9e74aa824b10a3596d31, type: 3}
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 1508177592678931602, guid: ab7ab4d58ffd9e74aa824b10a3596d31, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 7881935985494820888, guid: ab7ab4d58ffd9e74aa824b10a3596d31, type: 3}
       insertIndex: -1
       addedObject: {fileID: 819172086}
     m_AddedComponents: []
@@ -729,7 +733,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 377128288}
+  m_Father: {fileID: 436759733}
   m_LocalEulerAnglesHint: {x: 80, y: 100, z: 0}
 --- !u!114 &819172087
 MonoBehaviour:
