@@ -21,8 +21,6 @@ public class Player : MonoBehaviour
     private PlayerStateMachine2 stateMachine;
 
     public Action<float> makeSound;
-    public Action addItem;
-    public Action useItem;
     public PlayerInventoryData playerInventoryData;
     public InventoryData CurrentEquipItem;
     public bool isChangingQuickSlot = false;

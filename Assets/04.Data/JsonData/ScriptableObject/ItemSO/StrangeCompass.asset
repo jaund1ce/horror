@@ -23,4 +23,5 @@ MonoBehaviour:
     ItemHealMental: 0
     ItemDescription: "\uBAA9\uD45C\uC9C0\uC810\uC744 \uC9C0\uC2DC\uD558\uB294 \uC544\uC774\uD15C"
     Stackable: 0
+    EquipPrefab: {fileID: 0}
     ItemImage: {fileID: 0}
