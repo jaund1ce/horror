@@ -47,7 +47,7 @@ public class KeyPickup : MonoBehaviour
         if (distanceToKey <= pickupRange && Vector3.Dot(player.forward, directionToKey) > 0.8f)
         {
             // ¿­¼è È¹µæ
-            LockedDoorWithHinge door = FindObjectOfType<LockedDoorWithHinge>();
+            LockedDoor door = FindObjectOfType<LockedDoor>();
             if (door != null)
             {
                 //door.AcquireKey();

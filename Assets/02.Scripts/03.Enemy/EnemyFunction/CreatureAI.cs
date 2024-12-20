@@ -72,13 +72,10 @@ public class CreatureAI : MonoBehaviour , AggroGage
 
         for (int i = 0; i < Data.RayAmount; i++) 
         {
-            // 현재 레이의 각도
             float currentAngle = - halfAngle + i * rayToRay;
 
             // 방향 벡터 계산 (로컬 좌표계 기준)
             Vector3 direction = Quaternion.Euler(0, currentAngle, 0) * transform.forward;
-
-            // 레이 발사
             if (Physics.Raycast(transform.position+(Vector3.up*0.5f), direction, out RaycastHit hit, Data.VisionDistance, player))
             {
                 Debug.Log($"Hit: {hit.collider.name}");
@@ -143,8 +140,8 @@ public class CreatureAI : MonoBehaviour , AggroGage
         foreach (Collider collider in colliders) 
         {
             float increaceAmount = 0;
-            Vector3 direction = (collider.transform.position - transform.position).normalized;
-            increaceAmount = (MathF.Abs(direction.x) + MathF.Abs(direction.z))/Data.FeelPlayerRange;
+            float distance = Vector3.Distance(collider.transform.position,transform.position);
+            increaceAmount = Data.FeelPlayerRange/ (distance*100);
             GetAggroGage(increaceAmount);
         }
     }

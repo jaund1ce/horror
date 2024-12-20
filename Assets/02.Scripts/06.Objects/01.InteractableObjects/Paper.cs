@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Paper : MonoBehaviour, IInteractable
+public class Paper : ObjectBase
 {
     public PaperSO paperData;
 
-    public string GetInteractPrompt()
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+    }
+
+    public override string GetInteractPrompt()
     {
         return "ÀÐ±â";
     }
-    public void OnInteract()
+    public override void OnInteract()
     {
         Animator animator = GetComponent<Animator>();
         if (animator != null)
