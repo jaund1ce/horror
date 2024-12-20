@@ -5,7 +5,7 @@ using UnityEngine;
 public class DataManager : mainSingleton<DataManager>
 {
    private ItemData itemSO;
-   //public List<ItemSO> AllItems = new List<ItemSO>();
+   public List<ItemSO> AllItems = new List<ItemSO>();
 
     public ItemData ItemSO
    {
@@ -13,7 +13,7 @@ public class DataManager : mainSingleton<DataManager>
     get { 
             if(itemSO == null)
             {
-                GetData();
+                LoadData();
             }
             return itemSO; 
         }
@@ -39,9 +39,15 @@ public class DataManager : mainSingleton<DataManager>
 
    
 
-    private void GetData()
+    //private void GetData(string Kor_name)
+    //{
+    //  var item = ItemDataList.utemData.Find(x => x.id == Kor_name);
+    //  return item;
+    //}
+
+    private void LoadData()
     {
-        var json = ResourceManager.Instance.LoadAsset<TextAsset>("ItemSO", eAssetType.Data);
-        itemSO = JsonUtility.FromJson<ItemData>(json.text);
+        var json = ResourceManager.Instance.LoadAsset<TextAsset>("ItemSO", eAssetType.Data); // Resources/Data/ItemSo파일을 자산으로 활용하기 위해 assetPool에 등록 후 지역변수 json에 TextAsset자료형으로 할당
+        itemSO = JsonUtility.FromJson<ItemData>(json.text); //
     }
 }
