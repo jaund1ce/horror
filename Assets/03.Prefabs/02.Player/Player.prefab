@@ -165,12 +165,13 @@ MonoBehaviour:
     idleParameterName: Idle
     walkParameterName: Walk
     runParameterName: Run
+    crouchParameterName: '@Crouch'
+    crouchingParameterName: Crouching
     airParameterName: '@Air'
     jumpParameterName: Jump
     fallParameterName: Fall
     attackParameterName: '@Attack'
     baseAttackParameterName: BaseAttack
-    hideParameterName: '@Hide'
   playerInventoryData: {fileID: 0}
   isChangingQuickSlot: 0
   isGround: 1
@@ -195,6 +196,7 @@ MonoBehaviour:
   Rotateable: 1
   RunningReady: 0
   isRunning: 0
+  Crouching: 0
 --- !u!114 &8206995490645076761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,9 +293,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.2456636
-  m_Height: 1.9135842
+  m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0.000000014901161, y: 0.9592478, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &9178183897942710330
 MonoBehaviour:
   m_ObjectHideFlags: 0
