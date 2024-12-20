@@ -155,7 +155,8 @@ public class PuzzleKeypad : PuzzleBase
 
         text.color = baseColor;
         currentCoroutine = null;
-        //락도어에 불리언값 변경 코드 작성
+        if (!LockDoor.ObjectSO.IsLocked) LockDoor.ObjectSO.IsLocked = false;
+        MainGameManager.Instance.Player.Input.InputSubscribe();
         ExitPuzzleView();
     }
 

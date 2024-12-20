@@ -51,7 +51,8 @@ public class PlayerInteraction : MonoBehaviour
         {
             IInteractable iteractable = hit.collider.GetComponent<IInteractable>();
             if (iteractable as PuzzleBase) isPuzzle = true;
-            else if (iteractable == null) return;
+            else isPuzzle = false;
+            if (iteractable == null) return;
             else if (iteractable == CurrentInteracteable) return;
             CurrentInteracteable = iteractable;
         }
@@ -80,7 +81,7 @@ public class PlayerInteraction : MonoBehaviour
             MainUI mainUI = UIManager.Instance.GetUI<MainUI>();
             mainUI.ShowPromptUI(null);
         }
-        else if (isPuzzle && PuzzleEnter)
+        else if (!isPuzzle || PuzzleEnter)
         {
             PuzzleEnter = false;
             MainGameManager.Instance.Player.Input.InputSubscribe();

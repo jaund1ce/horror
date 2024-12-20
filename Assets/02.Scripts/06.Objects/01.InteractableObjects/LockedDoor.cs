@@ -16,6 +16,7 @@ public class LockedDoor : ObjectBase
     protected override void OnEnable()
     {
         base.OnEnable();
+        hinge = this.transform;
     }
 
     public override void OnInteract()
@@ -25,6 +26,9 @@ public class LockedDoor : ObjectBase
 
     private void ToggleDoor()
     {
+        //잠긴문 Interact 시 Sound 추가
+        if (ObjectSO.IsLocked) return;
+        
         isOpened = !isOpened;
         if (isOpened == true)
         {
@@ -53,7 +57,7 @@ public class LockedDoor : ObjectBase
 
     public override string GetInteractPrompt()
     {
-        //if (isLocked) return "Locked";
+        if (ObjectSO.IsLocked) return "Locked";
         return isOpened ? "Close" : "Open";
     }
 

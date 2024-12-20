@@ -8,11 +8,11 @@ using UnityEngine;
 
 public abstract class ObjectBase : MonoBehaviour, IInteractable
 {
-    protected ObjectSO objectSO;
+    public ObjectSO ObjectSO;
 
     protected virtual void OnEnable()
     {
-        //objectSO = GetComponent<ObjectSO>();    
+        //ObjectSO = GetComponent<ObjectSO>();    
     }
 
     public virtual string GetInteractPrompt()
