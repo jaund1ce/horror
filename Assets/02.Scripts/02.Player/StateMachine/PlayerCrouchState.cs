@@ -12,7 +12,8 @@ public class PlayerCrouchState : PlayerBaseState
     public override void Enter()
     {
         base.Enter();
-        stateMachine.Player.CapsuleCollider.height = 0.5f;
+        stateMachine.Player.CapsuleCollider.height = 0.8f;
+        stateMachine.Player.CapsuleCollider.radius = 0.35f;
         stateMachine.Player.CapsuleCollider.center = new Vector3(0,0.5f,0);
         stateMachine.MovementSpeedModifier = groundData.CrouchSpeedModifier;
         StartAnimation(stateMachine.Player.AnimationData.CrouchParameterHash);
@@ -22,6 +23,7 @@ public class PlayerCrouchState : PlayerBaseState
     {
         base.Exit();
         stateMachine.Player.CapsuleCollider.height = 2f;
+        stateMachine.Player.CapsuleCollider.radius = 0.25f;
         stateMachine.Player.CapsuleCollider.center = new Vector3(0, 1f, 0);
         StopAnimation(stateMachine.Player.AnimationData.CrouchParameterHash);
     }

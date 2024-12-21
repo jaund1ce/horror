@@ -129,4 +129,9 @@ public class Player : MonoBehaviour
         PlayerState = playerState;  
         SoundManger.Instance.ChangeState(playerState);
     }
+
+    public bool CheckState(PlayerState playerState)
+    {
+        return PlayerState == playerState ? true : false; //한줄로 만들기 멋지잖아 한잔해 - merge 용
+    }
 }
