@@ -23,7 +23,7 @@ public class PlayerCrouchIdleState : PlayerCrouchState
     public override void Update()
     {
         base.Update();
-        if (!MainGameManager.Instance.Player.Input.Crouching)
+        if (!MainGameManager.Instance.Player.CheckState(PlayerState.Hide) && !MainGameManager.Instance.Player.Input.Crouching)//hide 상태에서는 예외적으로 탈출 X
         {
             stateMachine.ChangeState(stateMachine.IdleState); 
         }
