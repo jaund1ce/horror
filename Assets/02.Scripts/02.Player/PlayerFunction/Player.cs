@@ -132,6 +132,6 @@ public class Player : MonoBehaviour
 
     public bool CheckState(PlayerState playerState)
     {
-        return PlayerState == playerState ? true : false;
+        return PlayerState == playerState ? true : false; //한줄로 만들기 멋지잖아 한잔해 - merge 용
     }
 }
