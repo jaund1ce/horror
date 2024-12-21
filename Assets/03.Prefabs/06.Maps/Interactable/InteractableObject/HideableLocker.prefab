@@ -840,7 +840,7 @@ Transform:
   m_GameObject: {fileID: 7857442068699564804}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -44.20607, y: 0.37135458, z: 65.079}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.261545, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1055,10 +1055,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a473884f1fecc1409f03cb05366b4f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ObjectSO: {fileID: 0}
+  player: {fileID: 0}
+  insidePosition: {fileID: 0}
+  outsidePosition: {fileID: 0}
   cabinetDoor: {fileID: 2978306331003231102}
+  cabinetDoorCollider: {fileID: 0}
+  characterController: {fileID: 0}
   doorOpenAngle: 90
   doorSpeed: 2
   isDoorOpen: 0
+  isPlayerInside: 0
 --- !u!1 &8027708923919839527
 GameObject:
   m_ObjectHideFlags: 0
