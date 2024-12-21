@@ -41,7 +41,6 @@ public class PuzzleKeypad : PuzzleBase
 
     public override void OnInteract()
     {
-        if (isAccess) return;
         if (!isUsingPuzzle)
         {
             keypadRenderer.material.EnableKeyword(txtBgLightKeyword);
@@ -74,6 +73,7 @@ public class PuzzleKeypad : PuzzleBase
     public void OnButtonPress(string buttonName)
     {
         if (isAccess) return;
+
         if (currentCoroutine != null) 
         {
             StopCoroutine(currentCoroutine);
@@ -153,7 +153,7 @@ public class PuzzleKeypad : PuzzleBase
         }
 
 
-        text.color = baseColor;
+        text.text = accessTxt;
         currentCoroutine = null;
         if (LockDoor.IsLocked) LockDoor.IsLocked = false;
         MainGameManager.Instance.Player.Interact.HandleInputAndPrompt();
