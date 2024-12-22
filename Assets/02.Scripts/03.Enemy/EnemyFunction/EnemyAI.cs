@@ -20,7 +20,7 @@ public enum AIState
     Attacking
 }
 
-public abstract class EnemyAI : MonoBehaviour, AggroGage
+public abstract class EnemyAI : MonoBehaviour, IAggroGage
 {
     public LayerMask player;
     public AIState CreatureAistate;
@@ -83,7 +83,7 @@ public abstract class EnemyAI : MonoBehaviour, AggroGage
             else
             {
 
-                Debug.DrawRay(transform.position + (Vector3.up * 0.5f), direction * Data.VisionDistance, Color.green, 1.0f);
+               // Debug.DrawRay(transform.position + (Vector3.up * 0.5f), direction * Data.VisionDistance, Color.green, 1.0f);
             }
         }
 

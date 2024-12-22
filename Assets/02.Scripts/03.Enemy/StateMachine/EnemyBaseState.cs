@@ -8,9 +8,9 @@ using UnityEngine.AI;
 using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
-public class CreatureBaseState : IState
+public class EnemyBaseState : IState
 {
-    protected CreatureStateMachine stateMachine;
+    protected EnemyStateMachine stateMachine;
     protected readonly PlayerGroundData groundData;
 
     protected float MovementSpeedModifier = 1f;
@@ -21,13 +21,13 @@ public class CreatureBaseState : IState
     private bool setLocation;
     int walkableMask;
 
-    public CreatureBaseState(CreatureStateMachine stateMachine)
+    public EnemyBaseState(EnemyStateMachine stateMachine)
     {
         this.stateMachine = stateMachine;
-        groundData = stateMachine.Creature.Data.GroundData;
-        creatureTransform = stateMachine.Creature.gameObject.transform;
-        minWanderDistance = stateMachine.Creature.Data.MinWanderDistance;
-        maxWanderDistance = stateMachine.Creature.Data.MaxWanderDistance;
+        groundData = stateMachine.Enemy.Data.GroundData;
+        creatureTransform = stateMachine.Enemy.gameObject.transform;
+        minWanderDistance = stateMachine.Enemy.Data.MinWanderDistance;
+        maxWanderDistance = stateMachine.Enemy.Data.MaxWanderDistance;
         walkableMask = NavMesh.GetAreaFromName("walkable");
         
     }
@@ -41,9 +41,9 @@ public class CreatureBaseState : IState
     public virtual void PhysicsUpdate() { }
     public virtual void Update()
     {
-        stateMachine.Creature.CharacterController.speed = stateMachine.Creature.Data.GroundData.BaseSpeed * MovementSpeedModifier;
+        stateMachine.Enemy.CharacterController.speed = stateMachine.Enemy.Data.GroundData.BaseSpeed * MovementSpeedModifier;
 
-        switch (stateMachine.Creature.CreatureAI.CreatureAistate) 
+        switch (stateMachine.Enemy.EnemyAI.CreatureAistate) 
         {
             case AIState.Idle:
 
@@ -79,17 +79,17 @@ public class CreatureBaseState : IState
 
     public void StartAnimation(int animatorHash)
     {
-        stateMachine.Creature.CreatureAnimator.SetBool(animatorHash, true);
+        stateMachine.Enemy.CreatureAnimator.SetBool(animatorHash, true);
     }
 
     protected void StopAnimation(int animatorHash)
     {
-        stateMachine.Creature.CreatureAnimator.SetBool(animatorHash, false);
+        stateMachine.Enemy.CreatureAnimator.SetBool(animatorHash, false);
     }
 
     private void Move()
     {
-        if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Chasing)
+        if (stateMachine.Enemy.EnemyAI.CreatureAistate == AIState.Chasing)
         {
             movementLocation = stateMachine.Target.transform.position;
         }
@@ -110,7 +110,7 @@ public class CreatureBaseState : IState
 
     private bool IsLocationSet() 
     {
-        if (stateMachine.Creature.CreatureAI.CreatureAistate == AIState.Chasing) 
+        if (stateMachine.Enemy.EnemyAI.CreatureAistate == AIState.Chasing) 
         {
             setLocation = true;
         }
@@ -125,7 +125,7 @@ public class CreatureBaseState : IState
 
     private void Move(Vector3 direction)
     {      
-        stateMachine.Creature.CharacterController.SetDestination(direction);
+        stateMachine.Enemy.CharacterController.SetDestination(direction);
 
     }
 
