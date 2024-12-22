@@ -21,7 +21,8 @@ MonoBehaviour:
     <BaseSpeed>k__BackingField: 5
     <BaseRotationDamping>k__BackingField: 1
     <WalkSpeedModifier>k__BackingField: 0.7
-    <RunSpeedModifier>k__BackingField: 0.9
+    <RunSpeedModifier>k__BackingField: 1.2
+    <CrouchSpeedModifier>k__BackingField: 0.1
   <Dealing_Start_TransitionTime>k__BackingField: 0.1
   <Dealing_End_TransitionTime>k__BackingField: 0.8
   <VisionRange>k__BackingField: 120
