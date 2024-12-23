@@ -20,6 +20,6 @@ public class UICondition : MonoBehaviour
     {
         health.GetPercentage(playerConditionController.GetHPPercentage());
         stamina.GetPercentage(playerConditionController.GetStaminaPercentage());
-        aggro.GetPercentage(creatureAI.aggroGage/100f);
+        aggro.GetPercentage(creatureAI.AggroGage/100f);
     }
 }

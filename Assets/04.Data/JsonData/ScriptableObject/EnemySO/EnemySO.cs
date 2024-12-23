@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 [CreateAssetMenu(fileName ="Enemy", menuName = "Characters/Creature")]
-public class CreatureSO : ScriptableObject
+public class EnemySO : ScriptableObject
 {
     [field: SerializeField] public float PlayerChasingRange { get; private set; }
     [field: SerializeField] public float AttackRange { get; private set; }

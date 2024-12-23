@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 866674a6b8ca94c4886ea7e48f6b4c5a, type: 3}
-  m_Name: Creature
+  m_Name: Gazer
   m_EditorClassIdentifier: 
   <PlayerChasingRange>k__BackingField: 1
   <AttackRange>k__BackingField: 2
@@ -26,7 +26,7 @@ MonoBehaviour:
   <Dealing_Start_TransitionTime>k__BackingField: 0.1
   <Dealing_End_TransitionTime>k__BackingField: 0.8
   <VisionRange>k__BackingField: 120
-  <VisionDistance>k__BackingField: 10
+  <VisionDistance>k__BackingField: 20
   <RayAmount>k__BackingField: 31
   <FeelPlayerRange>k__BackingField: 18
   <MissTargetTime>k__BackingField: 5

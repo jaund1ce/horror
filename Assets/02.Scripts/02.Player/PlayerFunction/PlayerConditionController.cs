@@ -43,8 +43,6 @@ public class PlayerConditionController : MonoBehaviour
         Health = Mathf.Max(Health - damage, 0);
 
         if(Health == 0) OnDie?.Invoke();
-
-        Debug.Log(Health);
     }
 
     public float GetHPPercentage()
