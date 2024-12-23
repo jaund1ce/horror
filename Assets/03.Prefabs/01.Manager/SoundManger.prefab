@@ -437,16 +437,11 @@ MonoBehaviour:
   BGM: {fileID: 8192046684148059100}
   Enviroment: {fileID: 639795112180627924}
   playerstepSource: []
-  playerheartbeatSource:
-  - {fileID: 8300000, guid: a0b72b51563fb624f99a0e86792caa68, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  playerheartbeatSource: []
   bgmSource: []
   enviromentsource: []
   interval: 0
-  StageNum: -1
-  playerstate: -1
+  stageNum: -1
 --- !u!1 &8355438441886998168
 GameObject:
   m_ObjectHideFlags: 0

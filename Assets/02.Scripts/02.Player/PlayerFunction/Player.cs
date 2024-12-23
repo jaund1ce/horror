@@ -127,7 +127,7 @@ public class Player : MonoBehaviour
         else if (PlayerState > playerState) return;
 
         PlayerState = playerState;  
-        SoundManger.Instance.ChangeState(playerState);
+        SoundManger.Instance.ChangeHearthBeatSound(playerState);
     }
 
     public bool CheckState(PlayerState playerState)
