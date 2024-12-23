@@ -22,23 +22,24 @@ public enum AIState
 
 public abstract class EnemyAI : MonoBehaviour, IAggroGage
 {
-    public LayerMask player;
-    public AIState CreatureAistate;
+    
+    [SerializeField]protected LayerMask playerMask;
+    [HideInInspector] public AIState EnemyAistate;
     protected NavMeshAgent agent;
-    [field: SerializeField] public CreatureSO Data { get; private set; }
+    [field: SerializeField] public EnemySO Data { get; private set; }
 
     public bool isPlayerMiss { get; private set; } = true;
     public bool IsAggroGageMax { get; private set; }
     protected float checkMissTime;
-    public float aggroGage;
-    public bool IsAttacking;
+    [HideInInspector] public float AggroGage;
+    [HideInInspector] public bool IsAttacking;
 
     protected List<int> visionInObject = new List<int>();
 
     protected virtual void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        CreatureAistate = AIState.Idle;
+        EnemyAistate = AIState.Idle;
     }
 
     protected virtual void Start() 
@@ -66,11 +67,8 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
 
             // 방향 벡터 계산 (로컬 좌표계 기준)
             Vector3 direction = Quaternion.Euler(0, currentAngle, 0) * transform.forward;
-            if (Physics.Raycast(transform.position + (Vector3.up * 0.5f), direction, out RaycastHit hit, Data.VisionDistance, player))
+            if (Physics.Raycast(transform.position + (Vector3.up * 0.5f), direction, out RaycastHit hit, Data.VisionDistance, playerMask))
             {
-                Debug.Log($"Hit: {hit.collider.name}");
-
-
                 if (visionInObject.Count == 0)
                 {
                     visionInObject.Add((int)SightInObject.Player);
@@ -110,7 +108,7 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
 
     public virtual void FeelThePlayer()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, Data.FeelPlayerRange, player);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, Data.FeelPlayerRange, playerMask);
 
         foreach (Collider collider in colliders)
         {
@@ -123,9 +121,9 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
 
     public virtual void GetAggroGage(float amount)
     {
-        aggroGage += amount;
+        AggroGage += amount;
 
-        if (aggroGage >= Data.MaxAggroGage)
+        if (AggroGage >= Data.MaxAggroGage)
         {
             IsAggroGageMax = true;
         }
@@ -149,31 +147,31 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
 
     public virtual int UpdateState()
     {
-        if (IsAttacking) return (int)CreatureAistate;
+        if (IsAttacking) return (int)EnemyAistate;
 
         if ((IsAggroGageMax || !isPlayerMiss) && !IsInAttackRange())
         {
             MainGameManager.Instance.Player.ChangeState(PlayerState.Chased);
-            CreatureAistate = AIState.Chasing;
-            return (int)CreatureAistate;
+            EnemyAistate = AIState.Chasing;
+            return (int)EnemyAistate;
         }
         else if (!IsAggroGageMax && isPlayerMiss)
         {
-            CreatureAistate = AIState.Wandering;
+            EnemyAistate = AIState.Wandering;
             FeelThePlayer();
-            return (int)CreatureAistate;
+            return (int)EnemyAistate;
         }
         else if (!isPlayerMiss && IsInAttackRange())
         {
-            CreatureAistate = AIState.Attacking;
+            EnemyAistate = AIState.Attacking;
             IsAttacking = true;
-            return (int)CreatureAistate;
+            return (int)EnemyAistate;
         }
         else
         {
             MainGameManager.Instance.Player.ChangeState(PlayerState.Normal);
-            CreatureAistate = AIState.Idle;
-            return (int)CreatureAistate;
+            EnemyAistate = AIState.Idle;
+            return (int)EnemyAistate;
         }
     }
 }
