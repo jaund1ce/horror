@@ -39,12 +39,12 @@ public class EnemyAttackState : EnemyBaseState
 
         //ForceMove();
 
-        float normalizeTime = GetNormalizedTime(stateMachine.Enemy.CreatureAnimator, "Attack");
+        float normalizeTime = GetNormalizedTime(stateMachine.Enemy.EnemyAnimator, "Attack");
         if (normalizeTime < 1f)
         {
             if (normalizeTime >= stateMachine.Enemy.Data.ForceTransitionTime)
             {
-                TryApplyForce();
+                //TryApplyForce();
             }
 
             //공격 활성화 시간 컨트롤

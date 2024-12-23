@@ -43,7 +43,7 @@ public class EnemyBaseState : IState
     {
         stateMachine.Enemy.CharacterController.speed = stateMachine.Enemy.Data.GroundData.BaseSpeed * MovementSpeedModifier;
 
-        switch (stateMachine.Enemy.EnemyAI.CreatureAistate) 
+        switch (stateMachine.Enemy.EnemyAI.EnemyAistate) 
         {
             case AIState.Idle:
 
@@ -79,17 +79,17 @@ public class EnemyBaseState : IState
 
     public void StartAnimation(int animatorHash)
     {
-        stateMachine.Enemy.CreatureAnimator.SetBool(animatorHash, true);
+        stateMachine.Enemy.EnemyAnimator.SetBool(animatorHash, true);
     }
 
     protected void StopAnimation(int animatorHash)
     {
-        stateMachine.Enemy.CreatureAnimator.SetBool(animatorHash, false);
+        stateMachine.Enemy.EnemyAnimator.SetBool(animatorHash, false);
     }
 
     private void Move()
     {
-        if (stateMachine.Enemy.EnemyAI.CreatureAistate == AIState.Chasing)
+        if (stateMachine.Enemy.EnemyAI.EnemyAistate == AIState.Chasing)
         {
             movementLocation = stateMachine.Target.transform.position;
         }
@@ -110,7 +110,7 @@ public class EnemyBaseState : IState
 
     private bool IsLocationSet() 
     {
-        if (stateMachine.Enemy.EnemyAI.CreatureAistate == AIState.Chasing) 
+        if (stateMachine.Enemy.EnemyAI.EnemyAistate == AIState.Chasing) 
         {
             setLocation = true;
         }

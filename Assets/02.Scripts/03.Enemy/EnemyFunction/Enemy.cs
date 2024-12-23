@@ -9,13 +9,13 @@ using UnityEngine.AI;
 
 public abstract class Enemy : MonoBehaviour
 {
-    [field: SerializeField] public CreatureSO Data { get; protected set; }
+    [field: SerializeField] public EnemySO Data { get; protected set; }
 
     [field: SerializeField] public AttackPoint AttackPoint { get; protected set; }
     [field: Header("Animations")]
     [field: SerializeField] public PlayerAnimationData AnimationData;
 
-    public Animator CreatureAnimator { get; protected set; }
+    public Animator EnemyAnimator { get; protected set; }
 
     public NavMeshAgent CharacterController { get; set; }
 
@@ -26,7 +26,7 @@ public abstract class Enemy : MonoBehaviour
     protected virtual void Awake() 
     {
         AnimationData.Initialize();
-        CreatureAnimator = GetComponent<Animator>();
+        EnemyAnimator = GetComponent<Animator>();
         CharacterController = GetComponent<NavMeshAgent>();
         ForceReceiver = GetComponent<ForceReceiver>();
     }
