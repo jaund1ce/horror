@@ -39,3 +39,20 @@ public enum UseLockType//UseKey와 상관관계
 {
     Bolt
 }
+
+public enum PlayerState
+{
+    Normal = -1,
+    Chased = 0,
+    Danger,
+    Chasing,
+    Hide
+}
+
+public enum GroundType
+{
+    Cement = 0,
+    Wood,
+    Dirt,
+    Grass
+}
