@@ -151,4 +151,12 @@ public class EnemyBaseState : IState
         }
     }
 
+    protected void LookRotate()
+    {
+        Vector3 direction = MainGameManager.Instance.Player.transform.position - stateMachine.Enemy.transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        float rotationDamping = stateMachine.Enemy.Data.GroundData.BaseRotationDamping * Time.deltaTime;
+        stateMachine.Enemy.transform.rotation = Quaternion.Lerp(stateMachine.Enemy.transform.rotation, lookRotation, rotationDamping);
+    }
+
 }

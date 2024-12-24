@@ -39,6 +39,7 @@ public class EnemyAttackState : EnemyBaseState
         base.Update();
 
         //ForceMove();
+        LookRotate();
 
         float normalizeTime = GetNormalizedTime(stateMachine.Enemy.EnemyAnimator, attackTransition);
         if (normalizeTime < 1f)
@@ -74,4 +75,6 @@ public class EnemyAttackState : EnemyBaseState
 
         stateMachine.Enemy.ForceReceiver.AddForce(Vector3.forward * stateMachine.Enemy.Data.Force);
     }
+
+
 }
