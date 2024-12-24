@@ -18,16 +18,16 @@ public class SoundManger : mainSingleton<SoundManger>
     public AudioClip[] bgmSource;
     public AudioClip[] enviromentsource;
 
-    public Dictionary<string, AudioClip[]> AudioClipsDictionary; //발걸음 같이 특수한 경우 저장
-    public Dictionary<string, AudioClip> AudioClipDictionary;
+    private Dictionary<string, AudioClip[]> AudioClipsDictionary = new Dictionary<string, AudioClip[]>(); //반드시 초기화 해주자
+    private Dictionary<string, AudioClip> AudioClipDictionary = new Dictionary<string, AudioClip>();
 
+    private float lastSoundChangeTime;
     [SerializeField]private float interval;
     [SerializeField]private int stageNum = -1;
 
     protected override void Awake()
     {
         base.Awake();
-        //GetSceneSource(SceneManager.GetActiveScene().name);
     }
 
     protected override void Start()
@@ -36,28 +36,31 @@ public class SoundManger : mainSingleton<SoundManger>
     }
 
     protected override void Update()
-    { 
-        
+    {
+        GetSceneSource(SceneManager.GetActiveScene().name);//씬이 로드 할때 호출이 필요
     }
 
-    public void GetSceneSource(string stagename)
+    public void GetSceneSource(string stagename)//특정 씬에서 필요한 사운드를 로드
     {
-        if (stagename == "StartScene")
+        if (stagename == "StartScene" && bgmSource.Length == 0)
         {
+            Debug.Log("BGM load complete");
             bgmSource = Resources.LoadAll<AudioClip>("Sounds/BGMs");
 
             AddToDictionary(bgmSource);
+            ChangeBGMSound(0);
         }
 
-        else if (stagename == "MainScene")
+        else if (stagename == "MainScene" && (playerstepSource1.Length == 0 || playerheartbeatSource.Length == 0 || enviromentsource.Length == 0))
         {
+            ChangeBGMSound(1);
+            Debug.Log("MainSceneSound load complete");
+
             playerstepSource1 = Resources.LoadAll<AudioClip>("Sounds/PlayerSteps");
-
-            AddToDictionarys("playerStep1", playerstepSource1);
-
-            playerheartbeatSource = Resources.LoadAll<AudioClip>("Sounds/PlayerHearthBeats");
+            playerheartbeatSource = Resources.LoadAll<AudioClip>("Sounds/PlayerHeartBeats");
             enviromentsource = Resources.LoadAll<AudioClip>("Sounds/Enviroments");
 
+            AddToDictionarys("playerStep1", playerstepSource1);
             AddToDictionary(playerheartbeatSource);
             AddToDictionary(enviromentsource);
         }
@@ -81,23 +84,23 @@ public class SoundManger : mainSingleton<SoundManger>
             AudioClipsDictionary.Add(name, audioClips);//호출할 bgm이름과 audioclip의 이름을 동일하게 설정해줘야한다.
     }
 
-    //public void ChangeStepSound(string groundType)
-    //{
-    //    if (groundType == "Cement")
-    //    {
-    //        if(AudioClipsDictionary.TryGetValue(groundType, out AudioClip[] values))
-    //        {
-    //            for(int i =0; i < values.Length; i++)
-    //            {
-    //                PlayerStep.PlayOneShot(values[i]);
-    //            }
-    //        }
-    //        else
-    //        {
-    //            Debug.Log("No Step Clips!");
-    //        }
-    //    }
-    //}
+    public void ChangeStepSound(GroundType groundType)
+    {
+        if (groundType == GroundType.Cement)
+        {
+            if (AudioClipsDictionary.TryGetValue(groundType.ToString(), out AudioClip[] values))
+            {
+                for (int i = 0; i < values.Length; i++)
+                {
+                    PlayerStep.PlayOneShot(values[i]);
+                }
+            }
+            else
+            {
+                Debug.Log("No Step Clips!");
+            }
+        }
+    }
 
     public void ChangeHearthBeatSound(PlayerState playerState)
     {
@@ -106,6 +109,10 @@ public class SoundManger : mainSingleton<SoundManger>
             PlayerHeartBeat.clip = null;
             return;
         }
+
+        if (Time.time - lastSoundChangeTime < interval) return;
+
+        lastSoundChangeTime = Time.time;
         //playerstat.normal은 -1 이기 때문에 심장 박동음의 시작 숫자는 0 이어야한다.
         string hearthbeatname = $"PlayerHearthBeat{(int)playerState}";
 
@@ -128,10 +135,11 @@ public class SoundManger : mainSingleton<SoundManger>
 
         switch (stagenum)//이름을 지정, -1은 default이다.
         {
-            case 0: bgmname = "Stage1BGM"; break;
-            case 1: bgmname = "Stage2BGM"; break;
-            case 2: bgmname = "Stage3BGM"; break;
-            case 3: bgmname = "Stage4BGM"; break;
+            case 0: bgmname = "StartSceneBGM"; break;
+            case 1: bgmname = "Stage1BGM"; break;
+            case 2: bgmname = "Stage2BGM"; break;
+            case 3: bgmname = "Stage3BGM"; break;
+            case 4: bgmname = "Stage4BGM"; break;
             default: Debug.Log($"StageNum : {stagenum} / out of index"); break;
         }
 

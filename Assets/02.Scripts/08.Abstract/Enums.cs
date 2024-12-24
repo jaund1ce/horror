@@ -48,3 +48,11 @@ public enum PlayerState
     Chasing,
     Hide
 }
+
+public enum GroundType
+{
+    Cement = 0,
+    Wood,
+    Dirt,
+    Grass
+}
