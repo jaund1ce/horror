@@ -19,8 +19,6 @@ public class Player : MonoBehaviour
     public PlayerConditionController playerConditionController { get; private set; }
 
     private PlayerStateMachine2 stateMachine;
-
-    public Action<float> makeSound;
     public PlayerInventoryData playerInventoryData;
     public InventoryData CurrentEquipItem;
     public bool isChangingQuickSlot = false;
@@ -53,7 +51,7 @@ public class Player : MonoBehaviour
     {
         stateMachine.HandleInput();
         stateMachine.Update();
-        ChangeRotation();//        
+        ChangeRotationSencitivity();//        
     }
 
     private void FixedUpdate()
@@ -84,7 +82,7 @@ public class Player : MonoBehaviour
         enabled = false;
     }
 
-    void ChangeRotation()//나중에 다른 매니져로 옮기기? 환경설정에 넣기
+    void ChangeRotationSencitivity()//나중에 다른 매니져로 옮기기? 환경설정에 넣기****************
     {
         if (Input.rotateSencitivity == Data.GroundData.BaseRotationDamping) return;
         else
@@ -113,11 +111,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void MakeSound(float amount)
-    {
-        makeSound?.Invoke(amount);
-    }
-
     public void ChangeState(PlayerState playerState)//아래 단계로는 변화 할 수 없지만, 기본 상태로 돌리는 건 가능하다.
     {
         if (playerState == PlayerState.Normal)
@@ -132,6 +125,6 @@ public class Player : MonoBehaviour
 
     public bool CheckState(PlayerState playerState)
     {
-        return PlayerState == playerState ? true : false; //한줄로 만들기 멋지잖아 한잔해 - merge 용
+        return PlayerState == playerState ? true : false;
     }
 }

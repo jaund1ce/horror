@@ -7,6 +7,7 @@ using UnityEngine;
 public class MainGameManager : mainSingleton<MainGameManager>
 {
     public int paperInteractionCount;
+    public Action<float> makeSound;
 
     public Player Player;
 
@@ -18,5 +19,10 @@ public class MainGameManager : mainSingleton<MainGameManager>
         {
             return;
         }
+    }
+
+    public void MakeSound(float amount)
+    {
+        makeSound?.Invoke(amount);
     }
 }
