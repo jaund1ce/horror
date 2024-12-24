@@ -657,7 +657,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7881935985494820888, guid: ab7ab4d58ffd9e74aa824b10a3596d31, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -41.545
+      value: -36.16
       objectReference: {fileID: 0}
     - target: {fileID: 7881935985494820888, guid: ab7ab4d58ffd9e74aa824b10a3596d31, type: 3}
       propertyPath: m_LocalPosition.y
@@ -665,7 +665,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7881935985494820888, guid: ab7ab4d58ffd9e74aa824b10a3596d31, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.274
+      value: 42.73
       objectReference: {fileID: 0}
     - target: {fileID: 7881935985494820888, guid: ab7ab4d58ffd9e74aa824b10a3596d31, type: 3}
       propertyPath: m_LocalRotation.w
@@ -712,6 +712,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gazer
       objectReference: {fileID: 0}
+    - target: {fileID: 2443492063605548831, guid: 2181175abcb8529489f0681f5fc53919, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6743628305308513042, guid: 2181175abcb8529489f0681f5fc53919, type: 3}
       propertyPath: playerSight
       value: 
@@ -726,7 +730,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9124466122554177732, guid: 2181175abcb8529489f0681f5fc53919, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -14.08
+      value: -14.012
       objectReference: {fileID: 0}
     - target: {fileID: 9124466122554177732, guid: 2181175abcb8529489f0681f5fc53919, type: 3}
       propertyPath: m_LocalRotation.w
