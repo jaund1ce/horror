@@ -84,7 +84,7 @@ public class SoundManger : mainSingleton<SoundManger>
             AudioClipsDictionary.Add(name, audioClips);//호출할 bgm이름과 audioclip의 이름을 동일하게 설정해줘야한다.
     }
 
-    public void ChangeStepSound(GroundType groundType)
+    public void ChangeStepSound(GroundType groundType)//발소리 생성은 어떻게?
     {
         if (groundType == GroundType.Cement)
         {
@@ -102,17 +102,13 @@ public class SoundManger : mainSingleton<SoundManger>
         }
     }
 
-    public void ChangeHearthBeatSound(PlayerState playerState)
+    public void ChangeHearthBeatSound(PlayerHeartState playerState)
     {
-        if (playerState == PlayerState.Normal)
+        if (playerState == PlayerHeartState.Normal)
         {
             PlayerHeartBeat.clip = null;
             return;
         }
-
-        if (Time.time - lastSoundChangeTime < interval) return;
-
-        lastSoundChangeTime = Time.time;
         //playerstat.normal은 -1 이기 때문에 심장 박동음의 시작 숫자는 0 이어야한다.
         string hearthbeatname = $"PlayerHearthBeat{(int)playerState}";
 

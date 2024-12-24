@@ -14,7 +14,7 @@ public class PlayerCrouchState : PlayerBaseState
         base.Enter();
         stateMachine.Player.CapsuleCollider.height = 0.8f;
         stateMachine.Player.CapsuleCollider.radius = 0.35f;
-        stateMachine.Player.CapsuleCollider.center = new Vector3(0,0.5f,0);
+        stateMachine.Player.CapsuleCollider.center = new Vector3(0,0.4f,0);
         stateMachine.MovementSpeedModifier = groundData.CrouchSpeedModifier;
         StartAnimation(stateMachine.Player.AnimationData.CrouchParameterHash);
     }

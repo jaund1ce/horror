@@ -301,7 +301,12 @@ MonoBehaviour:
   playerInventoryData: {fileID: 0}
   isChangingQuickSlot: 0
   isGround: 1
-  PlayerState: -1
+  isHiding: 0
+  playerState: -1
+  checkdistance: 0.3
+  monsterMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &6688923639993171277
 MonoBehaviour:
   m_ObjectHideFlags: 0
