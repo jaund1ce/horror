@@ -38,7 +38,6 @@ public class EnemyAttackState : EnemyBaseState
     {
         base.Update();
 
-        //ForceMove();
         LookRotate();
 
         float normalizeTime = GetNormalizedTime(stateMachine.Enemy.EnemyAnimator, attackTransition);
@@ -46,7 +45,6 @@ public class EnemyAttackState : EnemyBaseState
         {
             if (normalizeTime >= stateMachine.Enemy.Data.ForceTransitionTime)
             {
-                //TryApplyForce();
             }
 
             //공격 활성화 시간 컨트롤
@@ -65,16 +63,5 @@ public class EnemyAttackState : EnemyBaseState
 
         }
     }
-
-    private void TryApplyForce() 
-    {
-        if (alreadyApplyForce) return;
-        alreadyApplyForce = true;
-
-        stateMachine.Enemy.ForceReceiver.Reset();
-
-        stateMachine.Enemy.ForceReceiver.AddForce(Vector3.forward * stateMachine.Enemy.Data.Force);
-    }
-
 
 }
