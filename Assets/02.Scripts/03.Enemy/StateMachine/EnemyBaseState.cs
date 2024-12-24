@@ -12,14 +12,14 @@ public class EnemyBaseState : IState
 {
     protected EnemyStateMachine stateMachine;
     protected readonly PlayerGroundData groundData;
-
     protected float MovementSpeedModifier = 1f;
+
     private Vector3 movementLocation = Vector3.zero;
     private Transform creatureTransform;
     private float minWanderDistance;
     private float maxWanderDistance;
     private bool setLocation;
-    int walkableMask;
+    private int walkableMask;
 
     public EnemyBaseState(EnemyStateMachine stateMachine)
     {

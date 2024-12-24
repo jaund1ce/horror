@@ -29,7 +29,7 @@ MonoBehaviour:
   <VisionDistance>k__BackingField: 10
   <RayAmount>k__BackingField: 31
   <FeelPlayerRange>k__BackingField: 18
-  <MissTargetTime>k__BackingField: 5
+  <MissTargetTime>k__BackingField: 2
   <MaxAggroGage>k__BackingField: 100
   <MinWanderDistance>k__BackingField: 10
   <MaxWanderDistance>k__BackingField: 15
