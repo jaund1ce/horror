@@ -37,7 +37,7 @@ public class SoundManger : mainSingleton<SoundManger>
 
     protected override void Update()
     {
-        GetSceneSource(SceneManager.GetActiveScene().name);//씬이 로드 할때 호출이 필요
+        GetSceneSource(SceneManager.GetActiveScene().name);//##ToDo : 씬이 로드 할때 호출이 필요
     }
 
     public void GetSceneSource(string stagename)//특정 씬에서 필요한 사운드를 로드
@@ -109,12 +109,12 @@ public class SoundManger : mainSingleton<SoundManger>
             PlayerHeartBeat.clip = null;
             return;
         }
-        //playerstat.normal은 -1 이기 때문에 심장 박동음의 시작 숫자는 0 이어야한다.
-        string hearthbeatname = $"PlayerHearthBeat{(int)playerState}";
+        string hearthbeatname = "PlayerHearthBeat";
 
         if (AudioClipDictionary.TryGetValue(hearthbeatname, out AudioClip value))
         {
             PlayerHeartBeat.clip = value;
+            PlayerHeartBeat.pitch = (int)playerState;
             PlayerHeartBeat.loop = true;
             PlayerHeartBeat.Play();
         }

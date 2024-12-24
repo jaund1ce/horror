@@ -42,8 +42,8 @@ public enum UseLockType//UseKey와 상관관계
 
 public enum PlayerHeartState
 {
-    Normal = -1,
-    Near = 0,
+    Normal = 0,
+    Near = 1,
     Danger,
     Chasing,
 }

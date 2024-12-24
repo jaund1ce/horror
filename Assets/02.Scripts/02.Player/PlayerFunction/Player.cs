@@ -95,7 +95,7 @@ public class Player : MonoBehaviour
         enabled = false;
     }
 
-    void ChangeRotationSencitivity()//나중에 다른 매니져로 옮기기? 환경설정에 넣기****************
+    void ChangeRotationSencitivity()//##ToDO : 나중에 다른 매니져로 옮기기? 환경설정에 넣기
     {
         if (Input.rotateSencitivity == Data.GroundData.BaseRotationDamping) return;
         else
