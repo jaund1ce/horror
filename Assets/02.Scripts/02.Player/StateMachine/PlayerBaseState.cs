@@ -66,7 +66,7 @@ public class PlayerBaseState : IState
 
     protected virtual void OnMovementCanceled(InputAction.CallbackContext context)
     {
-        if (stateMachine.Player.isGround)
+        if (stateMachine.Player.isGround && !stateMachine.Player.Input.Crouching)
         {
             stateMachine.ChangeState(stateMachine.IdleState);
         }

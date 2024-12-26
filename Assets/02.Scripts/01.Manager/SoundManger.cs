@@ -37,7 +37,7 @@ public class SoundManger : mainSingleton<SoundManger>
 
     protected override void Update()
     {
-        GetSceneSource(SceneManager.GetActiveScene().name);//씬이 로드 할때 호출이 필요
+        GetSceneSource(SceneManager.GetActiveScene().name);//##ToDo : 씬이 로드 할때 호출이 필요
     }
 
     public void GetSceneSource(string stagename)//특정 씬에서 필요한 사운드를 로드
@@ -84,7 +84,7 @@ public class SoundManger : mainSingleton<SoundManger>
             AudioClipsDictionary.Add(name, audioClips);//호출할 bgm이름과 audioclip의 이름을 동일하게 설정해줘야한다.
     }
 
-    public void ChangeStepSound(GroundType groundType)
+    public void ChangeStepSound(GroundType groundType)//발소리 생성은 어떻게?
     {
         if (groundType == GroundType.Cement)
         {
@@ -102,23 +102,19 @@ public class SoundManger : mainSingleton<SoundManger>
         }
     }
 
-    public void ChangeHearthBeatSound(PlayerState playerState)
+    public void ChangeHearthBeatSound(PlayerHeartState playerState)
     {
-        if (playerState == PlayerState.Normal)
+        if (playerState == PlayerHeartState.Normal)
         {
             PlayerHeartBeat.clip = null;
             return;
         }
-
-        if (Time.time - lastSoundChangeTime < interval) return;
-
-        lastSoundChangeTime = Time.time;
-        //playerstat.normal은 -1 이기 때문에 심장 박동음의 시작 숫자는 0 이어야한다.
-        string hearthbeatname = $"PlayerHearthBeat{(int)playerState}";
+        string hearthbeatname = "PlayerHearthBeat";
 
         if (AudioClipDictionary.TryGetValue(hearthbeatname, out AudioClip value))
         {
             PlayerHeartBeat.clip = value;
+            PlayerHeartBeat.pitch = (int)playerState;
             PlayerHeartBeat.loop = true;
             PlayerHeartBeat.Play();
         }

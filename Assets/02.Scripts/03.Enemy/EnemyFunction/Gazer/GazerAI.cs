@@ -65,7 +65,6 @@ public class GazerAI : EnemyAI
         Plane[] planes = GeometryUtility.CalculateFrustumPlanes(playerSight);
 
         // 렌더러의 바운딩 박스와 뷰 프러스텀 교차 체크
-        Debug.Log(GeometryUtility.TestPlanesAABB(planes, GazerRenderer.bounds));
         return GeometryUtility.TestPlanesAABB(planes, GazerRenderer.bounds);
     }
 

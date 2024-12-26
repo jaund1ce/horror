@@ -40,13 +40,12 @@ public enum UseLockType//UseKey와 상관관계
     Bolt
 }
 
-public enum PlayerState
+public enum PlayerHeartState
 {
-    Normal = -1,
-    Chased = 0,
+    Normal = 0,
+    Near = 1,
     Danger,
     Chasing,
-    Hide
 }
 
 public enum GroundType

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing.Text;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -21,9 +22,18 @@ public class Player : MonoBehaviour
     private PlayerStateMachine2 stateMachine;
     public PlayerInventoryData playerInventoryData;
     public InventoryData CurrentEquipItem;
+
+    [Header("Player States")]
     public bool isChangingQuickSlot = false;
     public bool isGround = true;
-    [SerializeField]private PlayerState PlayerState = PlayerState.Normal; //creture 와 플레이어가 둘다 가지고 있어야하나?
+    public bool isHiding = false;
+    [SerializeField]private PlayerHeartState playerState = PlayerHeartState.Normal; //creture 와 플레이어가 둘다 가지고 있어야하나?
+
+    [Header("Monster Check Data")]
+    [SerializeField] private float checkDistance = 12f;
+    [SerializeField] private float checkDuration = 2f;
+    [SerializeField] private LayerMask monsterMask;
+    private float lastCheckTime = 0f;
 
     void Awake()
     {
@@ -51,20 +61,23 @@ public class Player : MonoBehaviour
     {
         stateMachine.HandleInput();
         stateMachine.Update();
-        ChangeRotationSencitivity();//        
+        ChangeRotationSencitivity();//     ***   
     }
 
     private void FixedUpdate()
     {
         stateMachine.PhysicsUpdate();
         CheckGround();
+
+        if (Time.time - lastCheckTime < checkDuration) return;
+        CheckMonster();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("HideZone"))
         {
-            ChangeState(PlayerState.Hide);
+            isHiding = true;
         }
     }
 
@@ -72,7 +85,7 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("HideZone"))
         {
-            ChangeState(PlayerState.Normal); 
+            isHiding = false;
         }
     }
 
@@ -82,7 +95,7 @@ public class Player : MonoBehaviour
         enabled = false;
     }
 
-    void ChangeRotationSencitivity()//나중에 다른 매니져로 옮기기? 환경설정에 넣기****************
+    void ChangeRotationSencitivity()//##ToDO : 나중에 다른 매니져로 옮기기? 환경설정에 넣기
     {
         if (Input.rotateSencitivity == Data.GroundData.BaseRotationDamping) return;
         else
@@ -111,20 +124,55 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void ChangeState(PlayerState playerState)//아래 단계로는 변화 할 수 없지만, 기본 상태로 돌리는 건 가능하다.
+    private void CheckMonster()
     {
-        if (playerState == PlayerState.Normal)
-        {
-            PlayerState = playerState;
-        }
-        else if (PlayerState > playerState) return;
+        Vector3 curVector = this.gameObject.transform.position;
 
-        PlayerState = playerState;  
+        Collider[] colliders = Physics.OverlapSphere(curVector, checkDistance, monsterMask);
+
+        if (colliders.Length == 0)
+        {
+            ChangeState(PlayerHeartState.Normal);
+        }
+        else
+        {
+            float minDistance = checkDistance;
+            foreach (Collider collider in colliders)
+            {
+                float distance = Vector3.Distance(curVector, collider.transform.position);
+                minDistance = minDistance < distance ? minDistance : distance;
+            }
+
+            if (minDistance < checkDistance / 3)
+            {
+                ChangeState(PlayerHeartState.Chasing);
+            }
+            else if (minDistance < (checkDistance / 3) * 2)
+            {
+                ChangeState(PlayerHeartState.Danger);
+            }
+            else if (minDistance < checkDistance)
+            {
+                ChangeState(PlayerHeartState.Near);
+            }
+        }
+    }
+
+    public void ChangeState(PlayerHeartState playerState)
+    {
+        //if (playerState == PlayerState.Normal)//아래 단계로는 변화 할 수 없지만, 기본 상태로 돌리는 건 가능하다.
+        //{
+        //    this.playerState = playerState;
+        //}
+        //else if (this.playerState > playerState) return;
+        if (this.playerState == playerState) return;
+
+        this.playerState = playerState;  
         SoundManger.Instance.ChangeHearthBeatSound(playerState);
     }
 
-    public bool CheckState(PlayerState playerState)
+    public bool CheckState(PlayerHeartState playerState)
     {
-        return PlayerState == playerState ? true : false;
+        return this.playerState == playerState ? true : false;
     }
 }

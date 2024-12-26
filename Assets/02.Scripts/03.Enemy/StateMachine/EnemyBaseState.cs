@@ -12,14 +12,14 @@ public class EnemyBaseState : IState
 {
     protected EnemyStateMachine stateMachine;
     protected readonly PlayerGroundData groundData;
-
     protected float MovementSpeedModifier = 1f;
+
     private Vector3 movementLocation = Vector3.zero;
     private Transform creatureTransform;
     private float minWanderDistance;
     private float maxWanderDistance;
     private bool setLocation;
-    int walkableMask;
+    private int walkableMask;
 
     public EnemyBaseState(EnemyStateMachine stateMachine)
     {
@@ -149,6 +149,14 @@ public class EnemyBaseState : IState
         {
             return 0f;
         }
+    }
+
+    protected void LookRotate()
+    {
+        Vector3 direction = MainGameManager.Instance.Player.transform.position - stateMachine.Enemy.transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        float rotationDamping = stateMachine.Enemy.Data.GroundData.BaseRotationDamping * Time.deltaTime;
+        stateMachine.Enemy.transform.rotation = Quaternion.Lerp(stateMachine.Enemy.transform.rotation, lookRotation, rotationDamping);
     }
 
 }
