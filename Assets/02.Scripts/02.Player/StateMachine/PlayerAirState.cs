@@ -19,4 +19,9 @@ public class PlayerAirState : PlayerBaseState
         base.Exit();
         StopAnimation(stateMachine.Player.AnimationData.AirParameterHash);
     }
+
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
+    }
 }

@@ -19,6 +19,9 @@ public class PlayerStateMachine2 : StateMachine
     public PlayerFallState FallState { get; private set; }
     public PlayerCrouchIdleState CrouchIdleState { get; private set; }
 
+    //만약에 모든 state 가 공유해야하는 조건이 있다면 여기에 존재해야한다.
+    public bool isCrouching;
+
     public PlayerStateMachine2(Player player)//존재하는 모든 스테이트 상태를 선언해 줘야함
     {
         this.Player = player;

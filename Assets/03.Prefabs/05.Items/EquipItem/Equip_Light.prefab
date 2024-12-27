@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1857665825958165911}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Flashlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 3314844376445150798}
   - component: {fileID: 4520219667155110362}
   - component: {fileID: 2640176828456098970}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Equip_Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 2542399571413879243}
   - component: {fileID: 4476359816140126211}
   - component: {fileID: 6278734636006995036}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Flashlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 8847394457783388403}
   - component: {fileID: 1732516619166958992}
   - component: {fileID: 3209903516998810767}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FlashlightCap
   m_TagString: Untagged
   m_Icon: {fileID: 0}

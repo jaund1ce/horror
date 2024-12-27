@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8210448826315969723}
   - component: {fileID: 5794982504115036125}
   - component: {fileID: 2204125241926405279}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Equip_Key_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 1016067447250285725}
   - component: {fileID: 6867618077386191043}
   - component: {fileID: 1414586722742638036}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Key_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
