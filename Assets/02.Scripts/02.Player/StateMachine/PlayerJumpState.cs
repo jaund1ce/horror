@@ -12,8 +12,8 @@ public class PlayerJumpState : PlayerAirState
 
     public override void Enter()
     {
-        stateMachine.Player.PlayerRigidbody.AddForce(Vector3.up * 100f, ForceMode.Impulse);//jumpforce 라는 숫자로 바꿔야 함
         base.Enter();
+        stateMachine.Player.PlayerRigidbody.AddForce(Vector3.up * 100f, ForceMode.Impulse);//jumpforce 라는 숫자로 바꿔야 함
         StartAnimation(stateMachine.Player.AnimationData.JumpParameterHash);
     }
 
