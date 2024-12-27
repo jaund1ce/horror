@@ -52,8 +52,6 @@ public class PlayerController : MonoBehaviour
         playerActions.Look.started += RotateCamera;
         playerActions.Run.started += ChangeRunState;
         playerActions.Run.canceled += ChangeRunState2;
-        playerActions.Crouch.started += ChangeCrouchingState;
-        playerActions.Crouch.canceled += ChangeCrouchingState2;
         playerActions.EquipmentUse.started += EquipMent.OnAttackInput;
     }
 
@@ -62,8 +60,6 @@ public class PlayerController : MonoBehaviour
         playerActions.Look.started -= RotateCamera;
         playerActions.Run.canceled -= ChangeRunState;
         playerActions.Run.canceled -= ChangeRunState2;
-        playerActions.Crouch.started -= ChangeCrouchingState;
-        playerActions.Crouch.canceled -= ChangeCrouchingState2;
         playerActions.EquipmentUse.started -= EquipMent.OnAttackInput;
     }
 
@@ -118,14 +114,5 @@ public class PlayerController : MonoBehaviour
     private void ChangeRunState2(InputAction.CallbackContext context)
     {
         RunningReady = false;
-    }
-
-    private void ChangeCrouchingState(InputAction.CallbackContext context)
-    {
-        Crouching = true;
-    }
-    private void ChangeCrouchingState2(InputAction.CallbackContext context)
-    {
-        Crouching = false;
     }
 }

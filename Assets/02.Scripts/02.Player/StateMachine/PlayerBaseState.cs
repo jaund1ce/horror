@@ -10,6 +10,7 @@ public class PlayerBaseState : IState
 {
     protected PlayerStateMachine2 stateMachine;
     protected readonly PlayerGroundData groundData;
+    protected bool isRunnig;
     private bool IsLightOn;
     public Light light;
 
@@ -35,6 +36,7 @@ public class PlayerBaseState : IState
         input.playerActions.Movement.canceled += OnMovementCanceled;
         input.playerActions.Run.started += OnRunStarted;
         input.playerActions.Crouch.started += OnCrouchStarted;
+        input.playerActions.Crouch.canceled += OnCrouchCanceled;
         input.playerActions.JumpParkour.started += OnJumpStarted;
         input.playerActions.LightControl.started += OnLightControl;
     }
@@ -46,6 +48,7 @@ public class PlayerBaseState : IState
         input.playerActions.Movement.canceled -= OnMovementCanceled;
         input.playerActions.Run.started -= OnRunStarted;
         input.playerActions.Crouch.started -= OnCrouchStarted;
+        input.playerActions.Crouch.canceled -= OnCrouchCanceled;
         input.playerActions.JumpParkour.started -= OnJumpStarted;
     }
 
@@ -54,9 +57,21 @@ public class PlayerBaseState : IState
         ReadMovementInput();
     }
 
-    public virtual void PhysicsUpdate()
+    public virtual void PhysicsUpdate()//언제든 떨어지면 하강 상태로 변경, 플레이어에서 호출 중이기 때문에 특별한 작업의 경우 base.physicupdate는 불필요하다./ 하지만 우리는 어떤상태이던지 낙하 상태가 필요하기 때문에 상속이 필요하다.
     {
-        
+        if (stateMachine.Player.PlayerRigidbody.velocity.y < 0)
+        {
+            if (stateMachine.Player.isGround)
+            {
+                if (stateMachine.isCrouching) { stateMachine.ChangeState(stateMachine.CrouchIdleState); return; }//없으면 왜인지 모르나 지상에서 가끔씩 상태가 idle로 감
+
+                stateMachine.ChangeState(stateMachine.IdleState);
+                return;
+            }
+
+            stateMachine.ChangeState(stateMachine.FallState);
+            return;
+        }
     }
 
     public virtual void Update()
@@ -66,7 +81,11 @@ public class PlayerBaseState : IState
 
     protected virtual void OnMovementCanceled(InputAction.CallbackContext context)
     {
-        if (stateMachine.Player.isGround && !stateMachine.Player.Input.Crouching)
+        if (stateMachine.isCrouching)
+        {
+            stateMachine.ChangeState(stateMachine.CrouchIdleState);
+        }
+        else if (stateMachine.Player.isGround)
         {
             stateMachine.ChangeState(stateMachine.IdleState);
         }
@@ -74,17 +93,22 @@ public class PlayerBaseState : IState
 
     protected virtual void OnRunStarted(InputAction.CallbackContext context)
     {
-        
+        isRunnig = true;
     }
 
     protected virtual void OnJumpStarted(InputAction.CallbackContext context)
     {
-
+        if (!stateMachine.Player.isGround) return;
     }
 
     protected virtual void OnCrouchStarted(InputAction.CallbackContext context)
     {
+        stateMachine.isCrouching = true;
+    }
 
+    protected virtual void OnCrouchCanceled(InputAction.CallbackContext context)
+    {
+        stateMachine.isCrouching = false;
     }
 
     protected void StartAnimation(int animatorHash)

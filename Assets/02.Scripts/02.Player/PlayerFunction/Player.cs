@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     public bool isChangingQuickSlot = false;
     public bool isGround = true;
     public bool isHiding = false;
+    public bool isCrouching = false;
     [SerializeField]private PlayerHeartState playerState = PlayerHeartState.Normal; //creture 와 플레이어가 둘다 가지고 있어야하나?
 
     [Header("Monster Check Data")]
@@ -111,8 +112,7 @@ public class Player : MonoBehaviour
         Ray ray2 = new Ray(curVector + Vector3.back * 0.1f + new Vector3(0,0.1f,0), Vector3.down);
         Ray ray3 = new Ray(curVector + Vector3.right * 0.1f + new Vector3(0,0.1f,0), Vector3.down);
         Ray ray4 = new Ray(curVector + Vector3.left * 0.1f + new Vector3(0,0.1f,0), Vector3.down);
-        float checkdistance = 0.3f;
-        Debug.DrawRay(curVector, Vector3.down, Color.red, checkdistance);
+        float checkdistance = 0.1f;
 
         if (Physics.Raycast(ray1, checkdistance) || Physics.Raycast(ray2, checkdistance) || Physics.Raycast(ray3, checkdistance) || Physics.Raycast(ray4, checkdistance))
         {
