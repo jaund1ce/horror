@@ -44,7 +44,7 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
 
     protected virtual void Start() 
     {
-        MainGameManager.Instance.Player.makeSound += GetAggroGage;
+        MainGameManager.Instance.makeSound += GetAggroGage;
     }
 
     protected virtual void Update()
@@ -151,7 +151,6 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
 
         if ((IsAggroGageMax || !isPlayerMiss) && !IsInAttackRange())
         {
-            MainGameManager.Instance.Player.ChangeState(PlayerState.Chased);
             EnemyAistate = AIState.Chasing;
             return (int)EnemyAistate;
         }
@@ -169,7 +168,6 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
         }
         else
         {
-            MainGameManager.Instance.Player.ChangeState(PlayerState.Normal);
             EnemyAistate = AIState.Idle;
             return (int)EnemyAistate;
         }

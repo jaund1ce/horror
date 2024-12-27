@@ -29,7 +29,6 @@ public class EnemyIdleState : EnemyBaseState
     public override void Update()
     {
         base.Update();
-        stateMachine.Enemy.EnemyAI.EnemyAistate = AIState.Wandering;
-
+        //stateMachine.Enemy.EnemyAI.EnemyAistate = AIState.Wandering;
     }
 }

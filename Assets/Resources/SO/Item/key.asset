@@ -23,5 +23,5 @@ MonoBehaviour:
     ItemDescription: "\uC790\uBB3C\uC1E0\uB85C \uC7A0\uAE34 \uBB38\uC744 \uC5F4\uB54C
       \n\uC0AC\uC6A9\uD558\uB294 \uB3C4\uAD6C."
     Stackable: 0
-    EquipPrefab: {fileID: 0}
-    ItemImage: {fileID: 0}
+    EquipPrefab: {fileID: 988203792830958513, guid: f98515f4871f6ae4b9437f391ca1285b, type: 3}
+    ItemImage: {fileID: 21300000, guid: 5bbd29b842d27754596feeb5f711b24a, type: 3}

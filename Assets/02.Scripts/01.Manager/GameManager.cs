@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class MainGameManager : mainSingleton<MainGameManager>
 {
     public int paperInteractionCount;
+    public Action<float> makeSound;
     public Player Player;
     public UserInfo PlayerData = new UserInfo();
     public EnemyInfo EnemyData = new EnemyInfo();
@@ -19,10 +20,6 @@ public class MainGameManager : mainSingleton<MainGameManager>
     private void FindOrSetPlayer()
     {
         Player = FindObjectOfType<Player>();
-        if (Player == null)
-        {
-            Debug.LogWarning("씬에 Player 오브젝트가 없습니다.");
-        }
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -34,5 +31,10 @@ public class MainGameManager : mainSingleton<MainGameManager>
     {
         base.OnDestroy();
         SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    public void MakeSound(float amount)
+    {
+        makeSound?.Invoke(amount);
     }
 }

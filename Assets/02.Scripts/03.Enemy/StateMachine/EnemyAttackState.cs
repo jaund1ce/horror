@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class EnemyAttackState : EnemyBaseState
 {
-    bool alreadyApplyForce;
-    bool alreadyAppliedDealing;
+    private bool alreadyApplyForce;
+    private bool alreadyAppliedDealing;
+    private string attackTransition = "Attack";
 
     public EnemyAttackState(EnemyStateMachine stateMachine) : base(stateMachine)
     {
@@ -37,14 +38,13 @@ public class EnemyAttackState : EnemyBaseState
     {
         base.Update();
 
-        //ForceMove();
+        LookRotate();
 
-        float normalizeTime = GetNormalizedTime(stateMachine.Enemy.EnemyAnimator, "Attack");
+        float normalizeTime = GetNormalizedTime(stateMachine.Enemy.EnemyAnimator, attackTransition);
         if (normalizeTime < 1f)
         {
             if (normalizeTime >= stateMachine.Enemy.Data.ForceTransitionTime)
             {
-                //TryApplyForce();
             }
 
             //공격 활성화 시간 컨트롤
@@ -64,13 +64,4 @@ public class EnemyAttackState : EnemyBaseState
         }
     }
 
-    private void TryApplyForce() 
-    {
-        if (alreadyApplyForce) return;
-        alreadyApplyForce = true;
-
-        stateMachine.Enemy.ForceReceiver.Reset();
-
-        stateMachine.Enemy.ForceReceiver.AddForce(Vector3.forward * stateMachine.Enemy.Data.Force);
-    }
 }

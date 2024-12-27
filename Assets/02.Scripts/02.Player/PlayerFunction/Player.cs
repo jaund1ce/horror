@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing.Text;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -19,13 +20,21 @@ public class Player : MonoBehaviour
     public PlayerConditionController playerConditionController { get; private set; }
 
     private PlayerStateMachine2 stateMachine;
-
-    public Action<float> makeSound;
     public PlayerInventoryData playerInventoryData;
     public InventoryData CurrentEquipItem;
+
+    [Header("Player States")]
     public bool isChangingQuickSlot = false;
     public bool isGround = true;
-    [SerializeField]private PlayerState PlayerState = PlayerState.Normal; //creture 와 플레이어가 둘다 가지고 있어야하나?
+    public bool isHiding = false;
+    public bool isCrouching = false;
+    [SerializeField]private PlayerHeartState playerState = PlayerHeartState.Normal; //creture 와 플레이어가 둘다 가지고 있어야하나?
+
+    [Header("Monster Check Data")]
+    [SerializeField] private float checkDistance = 12f;
+    [SerializeField] private float checkDuration = 2f;
+    [SerializeField] private LayerMask monsterMask;
+    private float lastCheckTime = 0f;
 
     void Awake()
     {
@@ -53,20 +62,24 @@ public class Player : MonoBehaviour
     {
         stateMachine.HandleInput();
         stateMachine.Update();
-        ChangeRotation();//        
+        ChangeRotationSencitivity();//     ***   
+        ChangeEquip();// *****
     }
 
     private void FixedUpdate()
     {
         stateMachine.PhysicsUpdate();
         CheckGround();
+
+        if (Time.time - lastCheckTime < checkDuration) return;
+        CheckMonster();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("HideZone"))
         {
-            ChangeState(PlayerState.Hide);
+            isHiding = true;
         }
     }
 
@@ -74,7 +87,7 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("HideZone"))
         {
-            ChangeState(PlayerState.Normal); 
+            isHiding = false;
         }
     }
 
@@ -84,7 +97,7 @@ public class Player : MonoBehaviour
         enabled = false;
     }
 
-    void ChangeRotation()//나중에 다른 매니져로 옮기기? 환경설정에 넣기
+    void ChangeRotationSencitivity()//##ToDO : 나중에 다른 매니져로 옮기기? 환경설정에 넣기
     {
         if (Input.rotateSencitivity == Data.GroundData.BaseRotationDamping) return;
         else
@@ -100,8 +113,7 @@ public class Player : MonoBehaviour
         Ray ray2 = new Ray(curVector + Vector3.back * 0.1f + new Vector3(0,0.1f,0), Vector3.down);
         Ray ray3 = new Ray(curVector + Vector3.right * 0.1f + new Vector3(0,0.1f,0), Vector3.down);
         Ray ray4 = new Ray(curVector + Vector3.left * 0.1f + new Vector3(0,0.1f,0), Vector3.down);
-        float checkdistance = 0.3f;
-        Debug.DrawRay(curVector, Vector3.down, Color.red, checkdistance);
+        float checkdistance = 0.1f;
 
         if (Physics.Raycast(ray1, checkdistance) || Physics.Raycast(ray2, checkdistance) || Physics.Raycast(ray3, checkdistance) || Physics.Raycast(ray4, checkdistance))
         {
@@ -113,25 +125,83 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void MakeSound(float amount)
+    private void CheckMonster()
     {
-        makeSound?.Invoke(amount);
-    }
+        Vector3 curVector = this.gameObject.transform.position;
 
-    public void ChangeState(PlayerState playerState)//아래 단계로는 변화 할 수 없지만, 기본 상태로 돌리는 건 가능하다.
-    {
-        if (playerState == PlayerState.Normal)
+        Collider[] colliders = Physics.OverlapSphere(curVector, checkDistance, monsterMask);
+
+        if (colliders.Length == 0)
         {
-            PlayerState = playerState;
+            ChangeState(PlayerHeartState.Normal);
         }
-        else if (PlayerState > playerState) return;
+        else
+        {
+            float minDistance = checkDistance;
+            foreach (Collider collider in colliders)
+            {
+                float distance = Vector3.Distance(curVector, collider.transform.position);
+                minDistance = minDistance < distance ? minDistance : distance;
+            }
 
-        PlayerState = playerState;  
-        SoundManger.Instance.ChangeState(playerState);
+            if (minDistance < checkDistance / 3)
+            {
+                ChangeState(PlayerHeartState.Chasing);
+            }
+            else if (minDistance < (checkDistance / 3) * 2)
+            {
+                ChangeState(PlayerHeartState.Danger);
+            }
+            else if (minDistance < checkDistance)
+            {
+                ChangeState(PlayerHeartState.Near);
+            }
+        }
     }
 
-    public bool CheckState(PlayerState playerState)
+    public void ChangeState(PlayerHeartState playerState)
     {
-        return PlayerState == playerState ? true : false; //한줄로 만들기 멋지잖아 한잔해 - merge 용
+        //if (playerState == PlayerState.Normal)//아래 단계로는 변화 할 수 없지만, 기본 상태로 돌리는 건 가능하다.
+        //{
+        //    this.playerState = playerState;
+        //}
+        //else if (this.playerState > playerState) return;
+        if (this.playerState == playerState) return;
+
+        this.playerState = playerState;  
+        SoundManger.Instance.ChangeHearthBeatSound(playerState);
+    }
+
+    public bool CheckState(PlayerHeartState playerState)
+    {
+        return this.playerState == playerState ? true : false;
+    }
+
+    public void ChangeEquip()
+    {
+        if (CurrentEquipItem == null)
+        {
+            Animator.SetBool("FlashLight", false);
+            Animator.SetBool("HealPack", false);
+            Animator.SetBool("Key", false);
+            return;
+        }
+
+        Animator.SetBool("FlashLight", false);
+        Animator.SetBool("HealPack", false);
+        Animator.SetBool("Key", false);
+
+        if (CurrentEquipItem.ItemData.itemSO.ItemNameEng == "flash")
+        {
+            Animator.SetBool("FlashLight", true);
+        }
+        else if (CurrentEquipItem.ItemData.itemSO.ItemNameEng == "healpack")
+        {
+            Animator.SetBool("HealPack", true);
+        }
+        else
+        {
+            Animator.SetBool("Key", true);
+        }
     }
 }
