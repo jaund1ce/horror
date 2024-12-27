@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using TMPro;
-using static System.Net.WebRequestMethods;
 
 public class PuzzleKeypad : PuzzleBase
 {
     [Header("Keypad Settings")]
-    public GameObject[] keypadButtons; // 키패드 버튼 오브젝트들
-    public GameObject cancelButton; // Cancel 버튼
-    public GameObject enterButton; // Enter 버튼
+    public GameObject[] keypadButtons; 
+    public GameObject cancelButton; 
+    public GameObject enterButton; 
     public string correctCode = "3895"; // 정답 코드
-    public AudioClip buttonPressSound; // 버튼 클릭 소리
-    public AudioClip AccessSound; // 성공 사운드
-    public AudioClip DeniedSound; // 실패 사운드
-    public AudioSource audioSource; // 오디오 소스
+    public AudioClip buttonPressSound; 
+    public AudioClip AccessSound;
+    public AudioClip DeniedSound; 
+    public AudioSource audioSource; 
     public LockedDoor LockDoor;
 
     private TextMeshPro text;
@@ -29,7 +28,7 @@ public class PuzzleKeypad : PuzzleBase
     private Coroutine currentCoroutine;
 
 
-    private string currentInput = ""; // 현재 입력된 코드
+    private string currentInput = ""; 
 
     private void Start()
     {
@@ -81,7 +80,7 @@ public class PuzzleKeypad : PuzzleBase
         }
         if (audioSource != null && buttonPressSound != null)
         {
-            audioSource.PlayOneShot(buttonPressSound); // 버튼 소리 재생
+            audioSource.PlayOneShot(buttonPressSound); 
         }
 
         if (buttonName == "Enter")
@@ -92,7 +91,7 @@ public class PuzzleKeypad : PuzzleBase
         {
             OnCancelPress();
         }
-        else if (currentInput.Length < 4) // 숫자 버튼
+        else if (currentInput.Length < 4)
         {
             currentInput += buttonName;
             text.text = currentInput;
@@ -119,7 +118,7 @@ public class PuzzleKeypad : PuzzleBase
             }
         }
 
-        currentInput = ""; // 입력 초기화
+        currentInput = ""; 
         text.text = currentInput;
     }
 
