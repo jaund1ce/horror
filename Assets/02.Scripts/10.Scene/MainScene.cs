@@ -8,6 +8,7 @@ public class MainScene : SceneBase
     void Start()
     {
         UIManager.Instance.Show<MainUI>();
+        MapManager.Instance.LoadAndSpawnObjects();
     }
 
     // Update is called once per frame
