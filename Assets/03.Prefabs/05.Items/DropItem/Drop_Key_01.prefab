@@ -46,6 +46,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e6d4c9bbeca57e478e132303d81d247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemSO:
+    ID: 0
+    ItemNameEng: 
+    ItemNameKor: 
+    ItemType: 0
+    ItemEffect: 
+    ItemHealHealth: 0
+    ItemHealMental: 0
+    ItemDescription: 
+    Stackable: 0
+    EquipPrefab: {fileID: 0}
+    ItemImage: {fileID: 0}
   itemData: {fileID: 11400000, guid: 2257cb10c3002d04ead6846e1bfa5dcf, type: 2}
 --- !u!65 &487079407238255611
 BoxCollider:
@@ -66,7 +78,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.05, y: 0.09, z: 0.002927893}
+  m_Size: {x: 0.1, y: 0.15, z: 0.002927893}
   m_Center: {x: 0.0010060016, y: 0.000035947196, z: -6.8777894e-10}
 --- !u!1 &7405368965449065713
 GameObject:

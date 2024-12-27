@@ -63,6 +63,7 @@ public class Player : MonoBehaviour
         stateMachine.HandleInput();
         stateMachine.Update();
         ChangeRotationSencitivity();//     ***   
+        ChangeEquip();// *****
     }
 
     private void FixedUpdate()
@@ -174,5 +175,33 @@ public class Player : MonoBehaviour
     public bool CheckState(PlayerHeartState playerState)
     {
         return this.playerState == playerState ? true : false;
+    }
+
+    public void ChangeEquip()
+    {
+        if (CurrentEquipItem == null)
+        {
+            Animator.SetBool("FlashLight", false);
+            Animator.SetBool("HealPack", false);
+            Animator.SetBool("Key", false);
+            return;
+        }
+
+        Animator.SetBool("FlashLight", false);
+        Animator.SetBool("HealPack", false);
+        Animator.SetBool("Key", false);
+
+        if (CurrentEquipItem.ItemData.itemSO.ItemNameEng == "flash")
+        {
+            Animator.SetBool("FlashLight", true);
+        }
+        else if (CurrentEquipItem.ItemData.itemSO.ItemNameEng == "healpack")
+        {
+            Animator.SetBool("HealPack", true);
+        }
+        else
+        {
+            Animator.SetBool("Key", true);
+        }
     }
 }

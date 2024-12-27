@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
         skinnedMeshRenderer.BakeMesh(mesh);
         Vector3 headposition = skinnedMeshRenderer.transform.TransformPoint(mesh.vertices[0]);
 
-        Head.transform.position = headposition;
+        Head.transform.position = headposition + new Vector3(0,0,-0.3f);
     }
 
     private void RotateCamera(InputAction.CallbackContext context)//cinemachine의 aim방식에 따라서 회전시키는 방법은 다르다.
