@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerCrouchState : PlayerBaseState
 {
@@ -30,11 +31,26 @@ public class PlayerCrouchState : PlayerBaseState
 
     public override void Update()
     {
-        base.Update();
-        //if (!stateMachine.Player.isGround)//왜 수그리는 순간 바로 채크를 탈출하는가?
-        //{
-        //    Debug.Log("out?");
-        //    stateMachine.ChangeState(stateMachine.FallState);
-        //}
+        base.Update(); //crouch 상태에서도 이동이 가능
+
+        if (!stateMachine.isCrouching && !stateMachine.Player.isHiding)
+        {
+            stateMachine.ChangeState(stateMachine.IdleState);
+        }
+    }
+
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
+    }
+
+    protected override void OnMovementCanceled(InputAction.CallbackContext context)
+    {
+        if (stateMachine.Player.isHiding)
+        {
+            return;
+        }
+
+        base.OnMovementCanceled(context);
     }
 }

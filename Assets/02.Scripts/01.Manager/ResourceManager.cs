@@ -24,7 +24,7 @@ public enum eCategoryType
     Model         // 3D 모델
 }
 
-public class ResourceManager : Singleton<ResourceManager> // Singleton<T>을 상속 받음, Instance 생성 가능
+public class ResourceManager : mainSingleton<ResourceManager> // Singleton<T>을 상속 받음, Instance 생성 가능
 {
     private Dictionary<string, object> assetPool = new Dictionary<string, object>(); // HDD, SSD의 Resource폴더에서 RAM(메모리)으로 게임에서 사용 할 파일들을 Dictionary자료구조로 assetPool이라는 변수(필드)으로 저장하기 위해서.
                                                                                      // Dictionary자료구조는 string(이름,문자)을 식별자로 사용하여 RAM에 object(모든 데이터 타입의 기본 클래스, 모든 값형(Value Type)과 참조형(Reference Type)은 암묵적으로 object를 상속, C#에서 모든 데이터는 object로 취급될 수 있음)를 저장하거나 사용.

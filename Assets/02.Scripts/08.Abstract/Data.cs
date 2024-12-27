@@ -1,50 +1,68 @@
 using System.Collections;
 using System.Collections.Generic;
+using UHFPS.Runtime;
 using UnityEngine;
 
-public abstract class DataBase<T>
+public interface ISaveable
 {
-    public int index;
-
-    public abstract void SetData(T metaData);
+    string Save(); // 데이터를 JSON 형식 문자열로 변환
+    void Load(string json); // JSON 문자열을 객체로 역직렬화
 }
 
-public abstract class DataBaseList<T1, T2, T3>
-{
-    public Dictionary<T1, T2> datas = new Dictionary<T1, T2>();
-
-    public abstract void SetData(List<T3> metaDataList);
-}
 
 [System.Serializable]
-public class ItemDataes : DataBase<MetaItemData>
+public class UserInfo : ISaveable
 {
-    public string name;
-    public string KOR_Name;
+    public int paperInteractionCount;
+    public InventoryData[] InventoryDatas = new InventoryData[15];
+    public InventoryData[] QuickSlotDatas = new InventoryData[5];
 
-    public override void SetData(MetaItemData metaItemData)
+    public string Save()
     {
-        this.index = metaItemData.index;
-        this.name = metaItemData.name;
-        this.KOR_Name = metaItemData.KOR_Name;
+        return JsonUtility.ToJson(this, true);
+    }
+
+    public void Load(string json)
+    {
+        JsonUtility.FromJsonOverwrite(json, this);
     }
 }
 
 [System.Serializable]
-public class ItemDataesList : DataBaseList<string, ItemDataes, MetaItemData>
+public class EnemyInfo : ISaveable
 {
-    public override void SetData(List<MetaItemData> metaItemDatas)
-    {
-        datas = new Dictionary<string, ItemDataes>(metaItemDatas.Count);
+    public string EnemyType;
+    public int PositionX, PositionY, PositionZ;
 
-        metaItemDatas.ForEach(obj =>
-        {
-            ItemDataes item = new ItemDataes();
-            item.SetData(obj);
-            datas.Add(item.name, item);
-        });
+    public string Save()
+    {
+        return JsonUtility.ToJson(this, true);
+    }
+
+    public void Load(string json)
+    {
+        JsonUtility.FromJsonOverwrite(json, this);
     }
 }
+
+[System.Serializable]
+public class MapInfo : ISaveable
+{
+    public string MapName;
+    public int[] ExploredAreas;
+
+    public string Save()
+    {
+        return JsonUtility.ToJson(this, true);
+    }
+
+    public void Load(string json)
+    {
+        JsonUtility.FromJsonOverwrite(json, this);
+    }
+}
+
+
 
 
 

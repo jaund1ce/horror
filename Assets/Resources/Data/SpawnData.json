@@ -1,0 +1,19 @@
+{
+    "data": [
+        {
+            "key": "Drop_HealPack_1 1",
+            "assetType": "Prefab",
+            "categoryType": "Item",
+            "position": {},
+            "referenceObjectName": "HideableTable_1"
+        },
+        {
+            "key": "Drop_HealPack_1 1",
+            "assetType": "Prefab",
+            "categoryType": "Item",
+            "position": {},
+            "referenceObjectName": "HideableTable_6"
+        }
+
+    ]
+}

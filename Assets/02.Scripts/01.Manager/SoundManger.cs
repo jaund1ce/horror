@@ -13,13 +13,13 @@ public class SoundManger : mainSingleton<SoundManger>
     public AudioSource BGM;
     public AudioSource Enviroment;
 
-    public AudioClip[] playerstepSource1;
-    public AudioClip[] playerheartbeatSource;
-    public AudioClip[] bgmSource;
-    public AudioClip[] enviromentsource;
+    [SerializeField] private AudioClip[] playerstepSource1;
+    [SerializeField] private AudioClip[] playerheartbeatSource;
+    [SerializeField] private AudioClip[] bgmSource;
+    [SerializeField] private AudioClip[] enviromentsource;
 
-    private Dictionary<string, AudioClip[]> AudioClipsDictionary = new Dictionary<string, AudioClip[]>(); //반드시 초기화 해주자
-    private Dictionary<string, AudioClip> AudioClipDictionary = new Dictionary<string, AudioClip>();
+    private Dictionary<string, AudioClip[]> audioClipsDictionary = new Dictionary<string, AudioClip[]>(); //반드시 초기화 해주자
+    private Dictionary<string, AudioClip> audioClipDictionary = new Dictionary<string, AudioClip>();
 
     private float lastSoundChangeTime;
     [SerializeField]private float interval;
@@ -75,20 +75,20 @@ public class SoundManger : mainSingleton<SoundManger>
     {
         foreach (AudioClip clip in audioClips)
         {
-            AudioClipDictionary.Add(clip.name, clip);//호출할 bgm이름과 audioclip의 이름을 동일하게 설정해줘야한다.
+            audioClipDictionary.Add(clip.name, clip);//호출할 bgm이름과 audioclip의 이름을 동일하게 설정해줘야한다.
         }
     }
 
     private void AddToDictionarys(string name, AudioClip[] audioClips)
     {
-            AudioClipsDictionary.Add(name, audioClips);//호출할 bgm이름과 audioclip의 이름을 동일하게 설정해줘야한다.
+            audioClipsDictionary.Add(name, audioClips);//호출할 bgm이름과 audioclip의 이름을 동일하게 설정해줘야한다.
     }
 
     public void ChangeStepSound(GroundType groundType)//발소리 생성은 어떻게?
     {
         if (groundType == GroundType.Cement)
         {
-            if (AudioClipsDictionary.TryGetValue(groundType.ToString(), out AudioClip[] values))
+            if (audioClipsDictionary.TryGetValue(groundType.ToString(), out AudioClip[] values))
             {
                 for (int i = 0; i < values.Length; i++)
                 {
@@ -111,10 +111,10 @@ public class SoundManger : mainSingleton<SoundManger>
         }
         string hearthbeatname = "PlayerHearthBeat";
 
-        if (AudioClipDictionary.TryGetValue(hearthbeatname, out AudioClip value))
+        if (audioClipDictionary.TryGetValue(hearthbeatname, out AudioClip value))
         {
             PlayerHeartBeat.clip = value;
-            PlayerHeartBeat.pitch = (int)playerState;
+            PlayerHeartBeat.pitch = (int)playerState/2 + 0.5f;
             PlayerHeartBeat.loop = true;
             PlayerHeartBeat.Play();
         }
@@ -139,7 +139,7 @@ public class SoundManger : mainSingleton<SoundManger>
             default: Debug.Log($"StageNum : {stagenum} / out of index"); break;
         }
 
-        if(AudioClipDictionary.TryGetValue(bgmname, out AudioClip value))
+        if(audioClipDictionary.TryGetValue(bgmname, out AudioClip value))
         {
             BGM.clip = value;
             BGM.loop = true;
@@ -153,7 +153,7 @@ public class SoundManger : mainSingleton<SoundManger>
 
     public void MakeEnviormentSound(string enviormentName)
     {
-        if (AudioClipDictionary.TryGetValue(enviormentName, out AudioClip value))
+        if (audioClipDictionary.TryGetValue(enviormentName, out AudioClip value))
         {
             Enviroment.PlayOneShot(value);//오브젝트의 소리는 한번만 생성된다.
         }
