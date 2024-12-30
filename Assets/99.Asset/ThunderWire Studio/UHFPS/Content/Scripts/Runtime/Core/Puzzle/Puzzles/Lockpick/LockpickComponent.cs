@@ -117,6 +117,7 @@ namespace UHFPS.Runtime
                         float targetDiff = Mathf.Abs(keyholeTarget - keyholeAngle); // 열쇠구멍 각도 차이 계산
                         float targetNormalized = targetDiff / keyholeTestRange; // 열쇠구멍 목표 정규화 값
 
+                        Debug.Log($"pinNormalized : {bobbyPinNormalized}  대상 : {1 - bobbyPinUnlockDistance}");
                         if (bobbyPinNormalized >= (1 - bobbyPinUnlockDistance)) // 잠금 해제 성공 조건
                         {
                             bobbyPinNormalized = 1; // 정규화 값 최대화
