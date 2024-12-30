@@ -27891,6 +27891,7 @@ GameObject:
   - component: {fileID: 3731346907538673877}
   - component: {fileID: 1297322461129545560}
   - component: {fileID: 6213298591298744012}
+  - component: {fileID: 4310018357652528920}
   m_Layer: 6
   m_Name: Drawer_D
   m_TagString: Untagged
@@ -27985,6 +27986,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 406671322545427003, guid: 1ef89ee9f1a1e89498989adde9ffe9c6, type: 3}
+--- !u!114 &4310018357652528920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064316701575045346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8f66b636656d947a26155f4b8a9dff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectSO: {fileID: 0}
+  IsLocked: 0
 --- !u!1 &2064346950665198421
 GameObject:
   m_ObjectHideFlags: 0
@@ -34476,6 +34491,7 @@ GameObject:
   - component: {fileID: 1046761534879900436}
   - component: {fileID: 5078347428240579608}
   - component: {fileID: 5958903392087034321}
+  - component: {fileID: 3986926519348556954}
   m_Layer: 6
   m_Name: Drawer_B
   m_TagString: Untagged
@@ -34570,6 +34586,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2771245037084468056, guid: 1ef89ee9f1a1e89498989adde9ffe9c6, type: 3}
+--- !u!114 &3986926519348556954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2532907603728178899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8f66b636656d947a26155f4b8a9dff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectSO: {fileID: 0}
+  IsLocked: 0
 --- !u!1 &2535051850849196998
 GameObject:
   m_ObjectHideFlags: 0
@@ -34688,6 +34718,7 @@ GameObject:
   - component: {fileID: 2309617971907874190}
   - component: {fileID: 5377218881536921910}
   - component: {fileID: 721780249721924259}
+  - component: {fileID: 7596880278028148835}
   m_Layer: 6
   m_Name: Drawer_E
   m_TagString: Untagged
@@ -34782,6 +34813,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2281060842802442550, guid: 1ef89ee9f1a1e89498989adde9ffe9c6, type: 3}
+--- !u!114 &7596880278028148835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2544476791448827599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8f66b636656d947a26155f4b8a9dff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectSO: {fileID: 0}
+  IsLocked: 0
 --- !u!1 &2547443188092130491
 GameObject:
   m_ObjectHideFlags: 0
@@ -57697,6 +57742,7 @@ GameObject:
   - component: {fileID: 5437274072927506979}
   - component: {fileID: 6864612313586947642}
   - component: {fileID: 834875037534765367}
+  - component: {fileID: 5144314729029680081}
   m_Layer: 6
   m_Name: Drawer_A
   m_TagString: Untagged
@@ -57791,6 +57837,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -7096714504933067955, guid: 1ef89ee9f1a1e89498989adde9ffe9c6, type: 3}
+--- !u!114 &5144314729029680081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4053113476374767691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8f66b636656d947a26155f4b8a9dff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectSO: {fileID: 0}
+  IsLocked: 0
 --- !u!1 &4056475961217812066
 GameObject:
   m_ObjectHideFlags: 0
@@ -73622,6 +73682,7 @@ GameObject:
   - component: {fileID: 795185422903711808}
   - component: {fileID: 1873114776574034903}
   - component: {fileID: 5978237570434734563}
+  - component: {fileID: 6263415963213129629}
   m_Layer: 6
   m_Name: Drawer_C
   m_TagString: Untagged
@@ -73716,6 +73777,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6257746266756301766, guid: 1ef89ee9f1a1e89498989adde9ffe9c6, type: 3}
+--- !u!114 &6263415963213129629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5266856999629593391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8f66b636656d947a26155f4b8a9dff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectSO: {fileID: 0}
+  IsLocked: 0
 --- !u!1 &5269659143957630162
 GameObject:
   m_ObjectHideFlags: 0
@@ -122960,6 +123035,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1338401769138149651}
     m_Modifications:
+    - target: {fileID: 4144336706290402073, guid: 70f68fbf72e1fa4449144b020332479e, type: 3}
+      propertyPath: ObjectSO
+      value: 
+      objectReference: {fileID: 11400000, guid: e4866f809dcd387439fcc945ce1524a0, type: 2}
     - target: {fileID: 6955154207240009244, guid: 70f68fbf72e1fa4449144b020332479e, type: 3}
       propertyPath: m_Name
       value: Door_3
@@ -123182,6 +123261,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1338401769138149651}
     m_Modifications:
+    - target: {fileID: 4144336706290402073, guid: 70f68fbf72e1fa4449144b020332479e, type: 3}
+      propertyPath: ObjectSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 71f61577060e40043bc47742b6926a4c, type: 2}
     - target: {fileID: 6955154207240009244, guid: 70f68fbf72e1fa4449144b020332479e, type: 3}
       propertyPath: m_Name
       value: Door_Clear
@@ -123552,6 +123635,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1338401769138149651}
     m_Modifications:
+    - target: {fileID: 4144336706290402073, guid: 70f68fbf72e1fa4449144b020332479e, type: 3}
+      propertyPath: ObjectSO
+      value: 
+      objectReference: {fileID: 11400000, guid: e4866f809dcd387439fcc945ce1524a0, type: 2}
     - target: {fileID: 6955154207240009244, guid: 70f68fbf72e1fa4449144b020332479e, type: 3}
       propertyPath: m_Name
       value: Door_4
@@ -123700,6 +123787,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1338401769138149651}
     m_Modifications:
+    - target: {fileID: 4144336706290402073, guid: 70f68fbf72e1fa4449144b020332479e, type: 3}
+      propertyPath: ObjectSO
+      value: 
+      objectReference: {fileID: 11400000, guid: e4866f809dcd387439fcc945ce1524a0, type: 2}
     - target: {fileID: 6955154207240009244, guid: 70f68fbf72e1fa4449144b020332479e, type: 3}
       propertyPath: m_Name
       value: Door_2
@@ -123848,6 +123939,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1338401769138149651}
     m_Modifications:
+    - target: {fileID: 474327829853057372, guid: 2f01f18246f367945af87f6cf2ed720d, type: 3}
+      propertyPath: ObjectSO
+      value: 
+      objectReference: {fileID: 11400000, guid: e4866f809dcd387439fcc945ce1524a0, type: 2}
     - target: {fileID: 6011104709501107215, guid: 2f01f18246f367945af87f6cf2ed720d, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.65
@@ -124484,6 +124579,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1338401769138149651}
     m_Modifications:
+    - target: {fileID: 4144336706290402073, guid: 70f68fbf72e1fa4449144b020332479e, type: 3}
+      propertyPath: ObjectSO
+      value: 
+      objectReference: {fileID: 11400000, guid: e4866f809dcd387439fcc945ce1524a0, type: 2}
     - target: {fileID: 6955154207240009244, guid: 70f68fbf72e1fa4449144b020332479e, type: 3}
       propertyPath: m_Name
       value: Door_1

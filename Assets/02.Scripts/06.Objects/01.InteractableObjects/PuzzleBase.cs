@@ -21,7 +21,7 @@ public abstract class PuzzleBase : MonoBehaviour , IInteractable
 
     public virtual void OnInteract()
     {
-        if (isAccess) return;
+        //if (isAccess) return;
         if (!isUsingPuzzle)
         {
             EnterPuzzleView();
