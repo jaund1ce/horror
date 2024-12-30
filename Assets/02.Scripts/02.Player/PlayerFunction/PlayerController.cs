@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     public bool Rotateable = true;
     public bool RunningReady = false;
     public bool isRunning = false;
-    public bool Crouching = false;
+    public bool isCrouching = false;
     private float currentYangle = 0f;
 
     private void Awake()
@@ -52,6 +52,8 @@ public class PlayerController : MonoBehaviour
         playerActions.Look.started += RotateCamera;
         playerActions.Run.started += ChangeRunState;
         playerActions.Run.canceled += ChangeRunState2;
+        playerActions.Crouch.started += ChangeCrouchState;
+        playerActions.Crouch.canceled += ChangeCrouchState2;
         playerActions.EquipmentUse.started += EquipMent.OnAttackInput;
     }
 
@@ -60,6 +62,8 @@ public class PlayerController : MonoBehaviour
         playerActions.Look.started -= RotateCamera;
         playerActions.Run.canceled -= ChangeRunState;
         playerActions.Run.canceled -= ChangeRunState2;
+        playerActions.Crouch.started -= ChangeCrouchState;
+        playerActions.Crouch.canceled -= ChangeCrouchState2;
         playerActions.EquipmentUse.started -= EquipMent.OnAttackInput;
     }
 
@@ -114,5 +118,14 @@ public class PlayerController : MonoBehaviour
     private void ChangeRunState2(InputAction.CallbackContext context)
     {
         RunningReady = false;
+    }
+
+    private void ChangeCrouchState(InputAction.CallbackContext context)
+    {
+        isCrouching = true;
+    }
+    private void ChangeCrouchState2(InputAction.CallbackContext context)
+    {
+        isCrouching = false;
     }
 }

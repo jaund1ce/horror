@@ -21,6 +21,7 @@ public class PlayerStateMachine2 : StateMachine
 
     //만약에 모든 state 가 공유해야하는 조건이 있다면 여기에 존재해야한다.
     public bool isCrouching;
+    public bool isAir;
 
     public PlayerStateMachine2(Player player)//존재하는 모든 스테이트 상태를 선언해 줘야함
     {
@@ -38,6 +39,7 @@ public class PlayerStateMachine2 : StateMachine
 
         MovementSpeed = player.Data.GroundData.BaseSpeed;
         RotationDamping = player.Data.GroundData.BaseRotationDamping;
+        JumpForce = player.Data.AirData.JumpForce;
     }
 
 }

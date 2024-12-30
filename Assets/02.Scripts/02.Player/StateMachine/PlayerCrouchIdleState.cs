@@ -19,14 +19,5 @@ public class PlayerCrouchIdleState : PlayerCrouchState
         base.Exit();
         StopAnimation(stateMachine.Player.AnimationData.CrouchingParameterHash);
     }
-
-    public override void Update()
-    {
-        base.Update();
-    }
-
-    //public override void PhysicsUpdate() //없어도 되나? crouchidle에 있으니까?
-    //{
-    //    base.PhysicsUpdate();
-    //}
+    //crouchstate에 update와 physicsupdate가 존재해서 여기에 불필요.
 }
