@@ -54,9 +54,9 @@ public class PlayerBaseState : IState
         ReadMovementInput();
     }
 
-    public virtual void PhysicsUpdate()//언제든 떨어지면 하강 상태로 변경, 플레이어에서 호출 중이기 때문에 특별한 작업의 경우 base.physicupdate는 불필요하다./ 하지만 우리는 어떤상태이던지 낙하 상태가 필요하기 때문에 상속이 필요하다.
+    public virtual void PhysicsUpdate()
     {
-        if (!stateMachine.isAir)//점프하기 전에 이동 중이 었으면 해당 값을 유지하고 점프하지만 그렇지 ㅇ낳으면 제자리 점프만 함
+        if (!stateMachine.isAir)//점프하기 전에 이동 중이 었으면 해당 값을 유지하고 점프하지만 그렇지 않으면 제자리 점프만 함
         {
             Move();
         }
@@ -64,13 +64,10 @@ public class PlayerBaseState : IState
 
     public virtual void Update()//update는 값의 변경만을 해준다.
     {
-        //Debug.Log($"{stateMachine.Player.PlayerRigidbody.velocity.y}");
-        if (stateMachine.Player.PlayerRigidbody.velocity.y < -0.01f)
+        if (stateMachine.Player.PlayerRigidbody.velocity.y < -0.01f)//지상을 걸어 다닐때 velocity.y가 정확히 0 이 아니기 때문에 오류가 발생 할 수 있음
         {
             if (stateMachine.Player.isGround)
             {
-                if (stateMachine.isCrouching) { stateMachine.ChangeState(stateMachine.CrouchIdleState); return; }//없으면 왜인지 모르나 지상에서 가끔씩 상태가 idle로 감
-
                 stateMachine.ChangeState(stateMachine.IdleState);
                 return;
             }
@@ -126,7 +123,7 @@ public class PlayerBaseState : IState
     {
         Vector3 movementDirection = GetMovementDirection(); 
 
-        Move(movementDirection); //이부분이 문제....
+        Move(movementDirection);
     }
 
     private Vector3 GetMovementDirection()
@@ -147,13 +144,13 @@ public class PlayerBaseState : IState
     {
         float movementSpeed = GetMovementSpeed();
 
-        Vector3 dir = direction * movementSpeed;
-        dir.y = stateMachine.Player.PlayerRigidbody.velocity.y;
+        Vector3 rigidbodyChange = direction * movementSpeed;
+        rigidbodyChange.y = stateMachine.Player.PlayerRigidbody.velocity.y;
 
-        stateMachine.Player.PlayerRigidbody.velocity = dir; //아마도 여기가 문제?
+        stateMachine.Player.PlayerRigidbody.velocity = rigidbodyChange;
     }
 
-    private float GetMovementSpeed()//매번 다른 스테이트에 들어갈때 마다 바꿔주니 상관 x
+    private float GetMovementSpeed()
     {
         float moveSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
         return moveSpeed;
