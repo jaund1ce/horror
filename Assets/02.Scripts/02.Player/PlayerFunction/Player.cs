@@ -17,10 +17,10 @@ public class Player : MonoBehaviour
     public Rigidbody PlayerRigidbody { get; private set; }
     public CapsuleCollider CapsuleCollider { get; private set; }
     public ForceReceiver ForceReceiver { get; private set; }
-    public PlayerConditionController playerConditionController { get; private set; }
+    public PlayerConditionController PlayerConditionController { get; private set; }
 
     private PlayerStateMachine2 stateMachine;
-    public PlayerInventoryData playerInventoryData;
+    public PlayerInventoryData PlayerInventoryData;
     public InventoryData CurrentEquipItem;
 
     [Header("Player States")]
@@ -45,8 +45,8 @@ public class Player : MonoBehaviour
         PlayerRigidbody = GetComponent<Rigidbody>();
         CapsuleCollider = GetComponent<CapsuleCollider>();
         ForceReceiver = GetComponent<ForceReceiver>();
-        playerConditionController = GetComponent<PlayerConditionController>();
-        playerInventoryData = GetComponent<PlayerInventoryData>();
+        PlayerConditionController = GetComponent<PlayerConditionController>();
+        PlayerInventoryData = GetComponent<PlayerInventoryData>();
 
         stateMachine = new PlayerStateMachine2(this);
     }
@@ -55,15 +55,14 @@ public class Player : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         stateMachine.ChangeState(stateMachine.IdleState);//처음 시작시 idlestate로 실행
-        playerConditionController.OnDie += OnDie;
+        PlayerConditionController.OnDie += OnDie;
     }
 
     private void Update()
     {
         stateMachine.HandleInput();
         stateMachine.Update();
-        ChangeRotationSencitivity();//     ***   
-        //ChangeEquip();// *****
+        ChangeEquip();// *****
     }
 
     private void FixedUpdate()
@@ -97,14 +96,14 @@ public class Player : MonoBehaviour
         enabled = false;
     }
 
-    void ChangeRotationSencitivity()//##ToDO : 나중에 다른 매니져로 옮기기? 환경설정에 넣기
-    {
-        if (Input.rotateSencitivity == Data.GroundData.BaseRotationDamping) return;
-        else
-        {
-            Input.rotateSencitivity = Data.GroundData.BaseRotationDamping;
-        }
-    }
+    //void ChangeRotationSencitivity()//##ToDO : 나중에 다른 매니져로 옮기기? 환경설정에 넣기
+    //{
+    //    if (Input.rotateSencitivity == Data.GroundData.BaseRotationDamping) return;
+    //    else
+    //    {
+    //        Input.rotateSencitivity = Data.GroundData.BaseRotationDamping;
+    //    }
+    //}
 
     private void CheckGround()
     {
@@ -161,11 +160,6 @@ public class Player : MonoBehaviour
 
     public void ChangeState(PlayerHeartState playerState)
     {
-        //if (playerState == PlayerState.Normal)//아래 단계로는 변화 할 수 없지만, 기본 상태로 돌리는 건 가능하다.
-        //{
-        //    this.playerState = playerState;
-        //}
-        //else if (this.playerState > playerState) return;
         if (this.playerState == playerState) return;
 
         this.playerState = playerState;  
@@ -179,7 +173,7 @@ public class Player : MonoBehaviour
 
     public void ChangeEquip()
     {
-        if (CurrentEquipItem == null)
+        if (CurrentEquipItem == null || CurrentEquipItem.ItemData == null)
         {
             Animator.SetBool("FlashLight", false);
             Animator.SetBool("HealPack", false);

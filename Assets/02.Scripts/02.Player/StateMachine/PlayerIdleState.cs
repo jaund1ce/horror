@@ -21,15 +21,26 @@ public class PlayerIdleState : PlayerGroundState
         StopAnimation(stateMachine.Player.AnimationData.IdleParameterHash);
     }
 
-    public override void Update()
+    public override void PhysicsUpdate()
     {
-        base.Update();
+        base.PhysicsUpdate();
 
         if (stateMachine.MovementInput != Vector2.zero)
         {
             stateMachine.ChangeState(stateMachine.WalkState);
             return;
         }
+    }
+
+    public override void Update()
+    {
+        base.Update();
+
+        //if (stateMachine.MovementInput != Vector2.zero)
+        //{
+        //    stateMachine.ChangeState(stateMachine.WalkState);
+        //    return;
+        //}
 
     }
 }

@@ -21,17 +21,9 @@ public class PlayerFallState : PlayerAirState
         StopAnimation(stateMachine.Player.AnimationData.FallParameterHash);
     }
 
-    public override void Update()
-    {
-        base.Update();
-    }
-
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-
-        stateMachine.Player.PlayerRigidbody.AddForce(Vector3.down * 100f * Time.deltaTime, ForceMode.Impulse); //왜인지는 모르나 accelate를 써도 적용이 안되어서 impurse로 비슷한 느낌을 냄
-        Debug.Log(stateMachine.Player.PlayerRigidbody.velocity.y);
 
         if (stateMachine.Player.isGround)
         {

@@ -29,11 +29,6 @@ public class PlayerGroundState : PlayerBaseState
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-
-        if(!stateMachine.Player.isGround)
-        {
-            stateMachine.ChangeState(stateMachine.FallState);
-        }
     }
 
     protected override void OnMovementCanceled(InputAction.CallbackContext context)
