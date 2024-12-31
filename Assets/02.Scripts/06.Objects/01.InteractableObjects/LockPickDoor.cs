@@ -43,6 +43,7 @@ public class LockPickDoor : PuzzleBase
 
     private bool canUsePin = true;
     private bool tryUnlock;
+    private Player player;
 
 
     private void OnEnable()
@@ -50,6 +51,7 @@ public class LockPickDoor : PuzzleBase
         hinge = this.transform;
         currentPinLifeTime = pinLifeTime;
         lockPickUI.SetActive(false);
+        player = MainGameManager.Instance.Player;
     }
 
     private void Update()
@@ -95,8 +97,7 @@ public class LockPickDoor : PuzzleBase
 
                         if (targetNormalized <= keyholeUnlockDistance)
                         {
-                            //## 잠금 해제 성공 코루틴 작성
-                            MainGameManager.Instance.Player.Interact.HandleInputAndPrompt();
+                            player.Interact.HandleInputAndPrompt();
                             ExitPuzzleView();
                             audioSource.PlayOneShot(unlock);
                             IsAccess = true;
@@ -182,6 +183,14 @@ public class LockPickDoor : PuzzleBase
         }
     }
 
+    private void SetPin()
+    {
+        if (player.playerInventoryData.inventoryDatas[1].ItemData.itemSO.ID == 1) 
+        {
+        
+        }
+    }
+
     protected override void EnterPuzzleView()
     {
         if (PuzzleCamera != null)
@@ -190,9 +199,10 @@ public class LockPickDoor : PuzzleBase
         }
         isUsingPuzzle = true;
         Invoke("PopupPuzzleUI", 2f);
-        MainGameManager.Instance.Player.Input.playerActions.Look.started += RotatePin;
-        MainGameManager.Instance.Player.Input.playerActions.EquipmentUse.performed += ForceToPin;
-        MainGameManager.Instance.Player.Input.playerActions.EquipmentUse.canceled += ForceToPin;
+        player.Input.playerActions.Look.started += RotatePin;
+        player.Input.playerActions.EquipmentUse.performed += ForceToPin;
+        player.Input.playerActions.EquipmentUse.canceled += ForceToPin;
+        SetPin();
     }
 
     protected override void ExitPuzzleView()
@@ -203,9 +213,9 @@ public class LockPickDoor : PuzzleBase
         }
         isUsingPuzzle = false;
         PopupPuzzleUI();
-        MainGameManager.Instance.Player.Input.playerActions.Look.started -= RotatePin;
-        MainGameManager.Instance.Player.Input.playerActions.EquipmentUse.performed -= ForceToPin;
-        MainGameManager.Instance.Player.Input.playerActions.EquipmentUse.canceled -= ForceToPin;
+        player.Input.playerActions.Look.started -= RotatePin;
+        player.Input.playerActions.EquipmentUse.performed -= ForceToPin;
+        player.Input.playerActions.EquipmentUse.canceled -= ForceToPin;
     }
 
 
