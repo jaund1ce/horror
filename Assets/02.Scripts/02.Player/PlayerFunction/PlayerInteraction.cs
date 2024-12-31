@@ -69,6 +69,7 @@ public class PlayerInteraction : MonoBehaviour
         if (CurrentInteracteable == null) return;
         HandleInputAndPrompt();
         CurrentInteracteable.OnInteract();
+        CurrentInteracteable = null;
     }
 
     public void HandleInputAndPrompt() 

@@ -20,10 +20,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float maxRotateY;
     public SkinnedMeshRenderer SkinnedMeshRenderer;
 
-    private float rotateSencitivity;
+    [SerializeField]private float rotateSencitivity;
     public bool Rotateable = true;
     public bool RunningReady = false;
     public bool isCrouching = false;
+    public bool isRunning = false;
     private float currentYangle = 0f;
 
     private void Awake()
