@@ -11,7 +11,7 @@ public abstract class PuzzleBase : MonoBehaviour , IInteractable
 {
     public CinemachineVirtualCamera PuzzleCamera;
     protected string promptTxt = "Interact";
-    protected bool isAccess;
+    public bool IsAccess;
     protected bool isUsingPuzzle = false;
 
     public virtual string GetInteractPrompt()
