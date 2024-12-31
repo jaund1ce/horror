@@ -192,11 +192,11 @@ public class LockPickDoor : PuzzleBase
 
     private void SetPin()
     {
-        for (int i= 0; i < player.playerInventoryData.inventoryDatas.Length; i++) 
+        for (int i= 0; i < player.PlayerInventoryData.inventoryDatas.Length; i++) 
         {
-            if (player.playerInventoryData.inventoryDatas[i]?.ItemData?.itemSO?.ID == 1002)
+            if (player.PlayerInventoryData.inventoryDatas[i]?.ItemData?.itemSO?.ID == 1002)
             {
-                inventoryPin = player.playerInventoryData.inventoryDatas[i];
+                inventoryPin = player.PlayerInventoryData.inventoryDatas[i];
                 canUsePin = true;
                 return;
             }
@@ -213,9 +213,9 @@ public class LockPickDoor : PuzzleBase
         }
         isUsingPuzzle = true;
         Invoke("PopupPuzzleUI", 2f);
-        player.Input.playerActions.Look.started += RotatePin;
-        player.Input.playerActions.EquipmentUse.performed += ForceToPin;
-        player.Input.playerActions.EquipmentUse.canceled += ForceToPin;
+        player.Input.PlayerActions.Look.started += RotatePin;
+        player.Input.PlayerActions.EquipmentUse.performed += ForceToPin;
+        player.Input.PlayerActions.EquipmentUse.canceled += ForceToPin;
         
     }
 
