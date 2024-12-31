@@ -26,7 +26,6 @@ public class InventoryData
         this.ItemData = itemData;
         this.ItemID = itemData.itemSO.ID; // 수정됨: ItemSO의 ID 저장
         this.amount = quantity;
-        Debug.Log($"SetItem called: ItemID={ItemID}, Quantity={quantity}"); // 수정됨: 디버깅 추가
     }
 
     public void ResetData()
@@ -47,7 +46,6 @@ public class PlayerInventoryData : MonoBehaviour
     {
         if (DataManager.Instance == null)
         {
-            Debug.LogError("DataManager.Instance is null during PlayerInventoryData initialization.");
             return;
         }
 
@@ -61,7 +59,6 @@ public class PlayerInventoryData : MonoBehaviour
 
     public void AddItem(ItemData itemData)
     {
-        Debug.Log($"Attempting to add item: {itemData.itemSO.ItemNameEng}"); // 수정됨: 디버깅 메시지 추가
         if (itemData.itemSO.Stackable)
         {
             CheckStack(itemData);
@@ -81,11 +78,9 @@ public class PlayerInventoryData : MonoBehaviour
             if (item.ItemData == null)
             {
                 item.SetItem(itemData, 1); // 수정됨: SetItem으로 ID와 데이터 설정
-                Debug.Log($"Item added to empty slot: {item.slotIndex}"); // 수정됨: 디버깅 메시지 추가
                 return;
             }
         }
-        Debug.LogWarning("No empty slot available!"); // 수정됨: 빈 슬롯이 없을 때 경고 메시지 추가
     }
 
     public void CheckStack(ItemData itemData)
@@ -96,7 +91,6 @@ public class PlayerInventoryData : MonoBehaviour
             if (item.ItemData.itemSO == itemData.itemSO)
             {
                 item.amount += 1;
-                Debug.Log($"Item stacked in slot: {item.slotIndex}, New Amount: {item.amount}"); // 수정됨: 디버깅 메시지 추가
                 return;
             }
         }
@@ -108,28 +102,17 @@ public class PlayerInventoryData : MonoBehaviour
     {
         if (DataManager.Instance == null)
         {
-            Debug.LogError("DataManager.Instance is null! Ensure DataManager is initialized before calling SyncInventoryData.");
             return;
         }
 
         if (DataManager.Instance.InventoryData == null)
         {
-            Debug.LogError("DataManager.InventoryData is null! Ensure InventoryData is initialized in DataManager.");
-            return;
+           return;
         }
 
-        Debug.Log("Syncing InventoryData with PlayerInventoryData...");
         for (int i = 0; i < inventoryDatas.Length; i++)
         {
             DataManager.Instance.InventoryData[i] = inventoryDatas[i]; // 동기화
-            if (inventoryDatas[i].ItemData != null)
-            {
-                Debug.Log($"Slot {i} Synced: ItemID={inventoryDatas[i].ItemID}, Amount={inventoryDatas[i].amount}");
-            }
-            else
-            {
-                Debug.Log($"Slot {i} is empty during sync.");
-            }
         }
     }
 

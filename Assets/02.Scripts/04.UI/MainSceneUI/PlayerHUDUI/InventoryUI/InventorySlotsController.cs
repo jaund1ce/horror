@@ -28,12 +28,10 @@ public class InventorySlotsController : MonoBehaviour
 
             if (inventoryData.ItemData == null)
             {
-                Debug.Log($"Slot {i}: Empty");
                 slots[i].ResetSlot();
             }
             else
             {
-                Debug.Log($"Slot {i}: {inventoryData.ItemData.itemSO.ItemNameEng}, Amount: {inventoryData.amount}");
                 slots[i].ChangeData(inventoryData);
             }
         }

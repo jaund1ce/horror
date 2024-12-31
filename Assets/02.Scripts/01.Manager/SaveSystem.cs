@@ -17,12 +17,10 @@ public static class SaveSystem
     {
         if (data == null)
         {
-            Debug.LogError($"Attempting to save null data to {fileName}"); // 기존 유지
             return;
         }
 
         string json = JsonConvert.SerializeObject(data, Formatting.Indented); // 수정됨: Newtonsoft.Json 사용
-        Debug.Log($"Saving data to {fileName}: {json}");
 
         try
         {

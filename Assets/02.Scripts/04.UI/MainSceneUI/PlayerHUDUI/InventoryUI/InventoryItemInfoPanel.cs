@@ -65,6 +65,5 @@ public class InventoryItemInfoPanelelController : MonoBehaviour
     public void OnAddQuickSlotBTNClick()
     {
         MainGameManager.Instance.Player.isChangingQuickSlot = true;
-        Debug.Log("QuickslotAdd Ready");
     }
 }

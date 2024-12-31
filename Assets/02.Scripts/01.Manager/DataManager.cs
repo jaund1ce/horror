@@ -17,7 +17,6 @@ public class DataManager : mainSingleton<DataManager>
         if (PlayerData == null)
         {
             PlayerData = new UserInfo();
-            Debug.Log("PlayerData initialized.");
         }
 
         if (InventoryData == null)
@@ -27,45 +26,34 @@ public class DataManager : mainSingleton<DataManager>
             {
                 InventoryData[i] = new InventoryData(i);
             }
-            Debug.Log("InventoryData initialized.");
         }
 
         if (MapData == null)
         {
             MapData = new MapInfo();
-            Debug.Log("MapData initialized.");
         }
     }
 
     public void InitializeGameData()
     {
-        Debug.Log("Initializing game data...");
         PlayerData = new UserInfo();
         InventoryData = new InventoryData[15]; // 슬롯 수에 맞게 초기화
         for (int i = 0; i < InventoryData.Length; i++)
         {
             InventoryData[i] = new InventoryData(i);
-            Debug.Log($"Initialized slot {i}");
         }
         MapData = new MapInfo();
     }
 
     public void LoadAllItems()
     {
-        Debug.Log("Entering LoadAllItems...");
         AllItems = Resources.LoadAll<ItemData>("SO/Item");
 
         if (AllItems == null || AllItems.Length == 0)
         {
-            Debug.LogWarning("No items found in Resources/SO/Item!");
             return;
         }
 
-        Debug.Log($"Loaded {AllItems.Length} items.");
-        foreach (var item in AllItems)
-        {
-            Debug.Log($"Item Loaded: {item.itemSO.ItemNameEng}, ID: {item.itemSO.ID}");
-        }
     }
 
 
@@ -73,20 +61,6 @@ public class DataManager : mainSingleton<DataManager>
 
     public void SaveGame()
     {
-        Debug.Log("Saving game...");
-
-        // 수정되지 않은 기존 코드: InventoryData 상태 확인
-        foreach (var slot in InventoryData)
-        {
-            if (slot.ItemData != null)
-            {
-                Debug.Log($"Slot {slot.slotIndex}: ItemID={slot.ItemData.itemSO.ID}, Amount={slot.amount}");
-            }
-            else
-            {
-                Debug.Log($"Slot {slot.slotIndex}: Empty");
-            }
-        }
 
         // PlayerData 저장 (기존 코드 유지)
         SaveSystem.Save(PlayerData, "PlayerData.json");
@@ -97,7 +71,6 @@ public class DataManager : mainSingleton<DataManager>
         {
             if (inventorySlot.ItemData != null)
             {
-                Debug.Log($"Adding Slot {inventorySlot.slotIndex} to serializable inventory: ItemID={inventorySlot.ItemID}, Amount={inventorySlot.amount}");
                 serializableInventory.Add(new InventoryData(inventorySlot.slotIndex)
                 {
                     ItemID = inventorySlot.ItemData.itemSO.ID,
@@ -110,8 +83,6 @@ public class DataManager : mainSingleton<DataManager>
                 Debug.Log($"Slot {inventorySlot.slotIndex} is empty or null.");
             }
         }
-
-        Debug.Log($"Saving {serializableInventory.Count} inventory slots."); // 직렬화된 슬롯 개수 확인
 
         // InventoryData 저장 (기존 코드 유지)
         SaveSystem.Save(serializableInventory, "InventoryData.json");
@@ -128,7 +99,6 @@ public class DataManager : mainSingleton<DataManager>
 
     public void LoadGame()
     {
-        Debug.Log("Loading game...");
         PlayerData = SaveSystem.Load<UserInfo>("PlayerData.json");
 
         if (PlayerData != null)
@@ -151,7 +121,6 @@ public class DataManager : mainSingleton<DataManager>
                 if (itemData != null)
                 {
                     InventoryData[serializedSlot.slotIndex].SetItem(itemData, serializedSlot.amount);
-                    Debug.Log($"Slot {serializedSlot.slotIndex} Loaded: ItemID={serializedSlot.ItemID}, Amount={serializedSlot.amount}");
                 }
                 else
                 {
@@ -173,17 +142,13 @@ public class DataManager : mainSingleton<DataManager>
 
     public ItemData FindItemByID(int id)
     {
-        Debug.Log($"Searching for item with ID: {id}");
         foreach (var item in AllItems)
         {
-            Debug.Log($"Checking item: {item.itemSO.ItemNameEng}, ID: {item.itemSO.ID}");
             if (item.itemSO.ID == id)
             {
-                Debug.Log($"Item found: {item.itemSO.ItemNameEng}, ID: {item.itemSO.ID}");
                 return item;
             }
         }
-        Debug.LogWarning($"Item with ID {id} not found.");
         return null;
     }
 
