@@ -71,7 +71,7 @@ public class PuzzleKeypad : PuzzleBase
 
     public void OnButtonPress(string buttonName)
     {
-        if (isAccess) return;
+        if (IsAccess) return;
 
         if (currentCoroutine != null) 
         {
@@ -106,7 +106,7 @@ public class PuzzleKeypad : PuzzleBase
             {
                 currentCoroutine = StartCoroutine(Access());
                 audioSource.PlayOneShot(AccessSound); // 정답 소리 재생
-                isAccess = true;
+                IsAccess = true;
             }
         }
         else

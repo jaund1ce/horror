@@ -167,6 +167,7 @@ namespace UHFPS.Runtime
             keyholeTarget *= bobbyPinNormalized; // 열쇠구멍 목표 각도에 정규화 값 반영
             keyholeAngle = Mathf.MoveTowardsAngle(keyholeAngle, keyholeTarget, Time.deltaTime * KeyholeRotateSpeed * 100); // 열쇠구멍 각도 조정
             keyholeAngle = Mathf.Clamp(keyholeAngle, keyholeLimits.RealMin, keyholeLimits.RealMax); // 열쇠구멍 각도를 제한 범위로 클램핑     
+            Debug.Log(keyholeAngle);
             LockpickKeyhole.localRotation = Quaternion.AngleAxis(keyholeAngle, KeyholeForward.Convert()); // 열쇠구멍 회전 반영
         }        // 잠금 해제 종료 및 초기 상태로 복귀
         private void UnuseLockpick()

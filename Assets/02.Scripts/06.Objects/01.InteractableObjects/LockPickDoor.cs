@@ -10,28 +10,25 @@ using UnityEngine.InputSystem;
 public class LockPickDoor : PuzzleBase
 {
     [Header("Door Settings")]
-    private Transform hinge; 
-    private float openAngle = -90f; 
-    private float closeAngle = 0f; 
-    private float openSpeed = 5f; 
+    private Transform hinge;
+    private float openAngle = -90f;
+    private float closeAngle = 0f;
+    private float openSpeed = 5f;
     private bool isOpened = false;
-    [HideInInspector]public bool IsLocked = true;
 
     [Header("LcokPick Settings")]
     [field: SerializeField] private AudioSource audioSource;
     [field: SerializeField] private Transform pin;
     [field: SerializeField] private Transform keyhole;
     [field: SerializeField] private Transform lockPickPoint; //락픽이 꽂혀져보이는 정확한 지점
-    [field: SerializeField] private SoundClip Unlock;
-    [field: SerializeField] private float UnlockAngle; //## 추후에 랜덤으로 넣거나 아니면 SO 로 넣어줄 예정
+    [field: SerializeField] private AudioClip unlock;
+    [field: SerializeField] private float unlockAngle; //## 추후에 랜덤으로 넣거나 아니면 SO 로 넣어줄 예정
     [field: SerializeField] private GameObject lockPickUI;
-    private Vector3 pinCenterPoint = Vector3.forward;
-    private Vector3 keyholeCenterPoint  = Vector3.forward;
     private float keyHoleTargetAngle;
     private float keyholeUnlockAngle = -90f;
     private float keyholeRotateSpeed = 2f;
     private float currentKeyholeAngle;
-    private float keyholeUnlockDistance;
+    private float keyholeUnlockDistance = 0.1f;
 
     [Header("Pin Settings")]
     [field: SerializeField] private AudioClip pinBreak;
@@ -41,8 +38,8 @@ public class LockPickDoor : PuzzleBase
     private float pinResetTime = 1f;
     private float pinShakeAmount = 3f;
     private float currentPinAngle;
-    private float pinUnlockDistance;
-    private float marginOfErrorAngle = 2f; // 정답 각도와의 오차 범위
+    private float pinUnlockDistance = 0.1f;
+    private float marginOfErrorAngle = 20f; // 정답 각도와의 오차 범위
 
     private bool canUsePin = true;
     private bool tryUnlock;
@@ -57,70 +54,75 @@ public class LockPickDoor : PuzzleBase
 
     private void Update()
     {
-        if (!isUsingPuzzle || !tryUnlock) return;
+        if (!isUsingPuzzle) return;
 
-        float pinAngleDiff = Mathf.Abs(UnlockAngle - currentPinAngle); //잠금성공 각도와 현재 핀 각도 차이
-        Debug.Log(pinAngleDiff);
+        float pinAngleDiff = Mathf.Abs(unlockAngle - currentPinAngle); //잠금성공 각도와 현재 핀 각도 차이
         float pinNormalized = 0f;
         float pinShake = 0f;
 
         if (lockPickPoint != null && !canUsePin)// ## 핀 갯수 체크도 같이 넣어야함
         {
-            Invoke("InitializePinPosition", 1f);
+            Invoke("InitializePinPosition", pinResetTime);
         }
 
-        if (IsLocked && canUsePin)
+        pin.position = lockPickPoint.position;
+
+        if (!IsAccess && canUsePin)
         {
-            bool damageToPin = true;
-
-            float randomShake = UnityEngine.Random.insideUnitCircle.x;
-            pinShake = UnityEngine.Random.Range(-randomShake, randomShake) * pinShakeAmount;
-
-            if (pinAngleDiff <= marginOfErrorAngle)
+            if (tryUnlock)
             {
-                pinNormalized = 1 - (pinAngleDiff / marginOfErrorAngle);
-                pinNormalized = (float)Math.Round(pinNormalized, 2);
-                float targetDiff = Mathf.Abs(keyHoleTargetAngle - currentKeyholeAngle);
-                float targetNormalized = targetDiff / marginOfErrorAngle;
+                bool damageToPin = true;
 
-                Debug.Log($"pinNormalized : {pinNormalized}  대상 : {1-pinUnlockDistance}");
-                if (pinNormalized >= (1 - pinUnlockDistance))
+                float randomShake = UnityEngine.Random.insideUnitCircle.x;
+                pinShake = UnityEngine.Random.Range(-randomShake, randomShake) * pinShakeAmount;
+
+                if (pinAngleDiff <= marginOfErrorAngle)
                 {
-                    pinNormalized = 1;
-                    damageToPin = false;
-                    pinShake = 0;
+                    keyHoleTargetAngle = -90f;
+                    // 각도차이가 5도 일경우 값이 0.75가 나옴
+                    // marginOfErrorAngle = 20f; 기준 2도정도까지 오차범위 허용 (** pinUnlockDistance에 따라도 달라짐)
+                    // marginOfErrorAngle = 40f; 기준 4도정도까지 오차범위 허용
+                    pinNormalized = 1 - (pinAngleDiff / marginOfErrorAngle); 
+                    pinNormalized = (float)Math.Round(pinNormalized, 2);
+                    float targetDiff = Mathf.Abs(keyHoleTargetAngle - currentKeyholeAngle);
+                    float targetNormalized = targetDiff / marginOfErrorAngle;
 
-                    if (targetNormalized <= keyholeUnlockDistance)
+                    if (pinNormalized >= (1 - pinUnlockDistance))
                     {
-                        //잠금 해제 성공 코루틴 작성
-                        IsLocked = false;
+                        pinNormalized = 1;
+                        damageToPin = false;
+                        pinShake = 0;
+
+                        if (targetNormalized <= keyholeUnlockDistance)
+                        {
+                            //## 잠금 해제 성공 코루틴 작성
+                            MainGameManager.Instance.Player.Interact.HandleInputAndPrompt();
+                            ExitPuzzleView();
+                            audioSource.PlayOneShot(unlock);
+                            IsAccess = true;
+                        }
+                    }
+                }
+
+                if (damageToPin)
+                {
+                    if (currentPinLifeTime > 0)
+                    {
+                        currentPinLifeTime -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        //## 인벤토리의 수량감소 작성
+                        pin.gameObject.SetActive(false);
+                        currentPinLifeTime = pinLifeTime;
+                        audioSource.PlayOneShot(pinBreak);
+                        canUsePin = false;
+                        currentPinAngle = 0;
                     }
                 }
             }
-
-
-            if (damageToPin)
-            {
-                if (currentPinLifeTime > 0)
-                {
-                    currentPinLifeTime -= Time.deltaTime;
-                }
-                else
-                {
-                    //인벤토리의 수량감소 작성
-                    pin.gameObject.SetActive(false);
-                    currentPinLifeTime = pinLifeTime;
-                    audioSource.PlayOneShot(pinBreak);
-                    canUsePin = false;
-                    currentPinAngle = 0;
-                }
-            }
-
-            pin.localRotation = Quaternion.Euler(0f, 0f, currentPinAngle + pinShake);
-
         }
-
-        if (!IsLocked)
+        if (IsAccess)
         {
             keyHoleTargetAngle = keyholeUnlockAngle;
             pinNormalized = 1f;
@@ -128,8 +130,10 @@ public class LockPickDoor : PuzzleBase
 
         keyHoleTargetAngle *= pinNormalized;
         currentKeyholeAngle = Mathf.MoveTowardsAngle(currentKeyholeAngle, keyHoleTargetAngle, Time.deltaTime * keyholeRotateSpeed * 100f);
-        currentKeyholeAngle = Mathf.Clamp(currentKeyholeAngle, 0, -90);
-        //keyhole.localRotation = Quaternion.AngleAxis(currentKeyholeAngle, keyholeCenterPoint);
+        currentKeyholeAngle = Mathf.Clamp(currentKeyholeAngle, -90f, 0f);
+        keyhole.localRotation = Quaternion.Euler(0f, 0f, currentKeyholeAngle);
+        pin.localRotation = Quaternion.Euler(0f, 0f, (currentPinAngle + pinShake) - currentKeyholeAngle / 18);
+
     }
 
 
@@ -159,24 +163,23 @@ public class LockPickDoor : PuzzleBase
         pin.localRotation = Quaternion.Euler(0f, 0f, currentPinAngle);
     }
 
-    private void InitializePinPosition() 
+    private void InitializePinPosition()
     {
         //## 핀 갯수가 모자라면 UI 감추기
         pin.gameObject.SetActive(true);
-        pin.position = lockPickPoint.position;
         canUsePin = true;
     }
 
     public override void OnInteract()
     {
-        if (!isAccess)
+        if (!IsAccess)
         {
             base.OnInteract();
         }
-        else 
+        else
         {
             ToggleDoor();
-        } 
+        }
     }
 
     protected override void EnterPuzzleView()
@@ -206,24 +209,24 @@ public class LockPickDoor : PuzzleBase
     }
 
 
-    private void PopupPuzzleUI() 
+    private void PopupPuzzleUI()
     {
         if (isUsingPuzzle)
         {
             lockPickUI.SetActive(true);
         }
-        else 
+        else
         {
             lockPickUI.SetActive(false);
         }
     }
 
-    
+
 
     private void ToggleDoor()
     {
         //잠긴문 Interact 시 Sound 추가
-        if (IsLocked) return;
+        if (!IsAccess) return;
 
         isOpened = !isOpened;
 
@@ -233,7 +236,6 @@ public class LockPickDoor : PuzzleBase
 
     private IEnumerator RotateDoor(float targetAngle)
     {
-        Debug.Log("문열림 코루틴 시작");
         float currentAngle = hinge.localEulerAngles.y;
         if (currentAngle > 180) currentAngle -= 360;
 
@@ -249,7 +251,7 @@ public class LockPickDoor : PuzzleBase
 
     public override string GetInteractPrompt()
     {
-        if (IsLocked) return "Locked";
+        if (!IsAccess) return "Lock..ed..?";
         return isOpened ? "Close" : "Open";
     }
 }
