@@ -227,9 +227,9 @@ public class LockPickDoor : PuzzleBase
         }
         isUsingPuzzle = false;
         PopupPuzzleUI();
-        player.Input.playerActions.Look.started -= RotatePin;
-        player.Input.playerActions.EquipmentUse.performed -= ForceToPin;
-        player.Input.playerActions.EquipmentUse.canceled -= ForceToPin;
+        player.Input.PlayerActions.Look.started -= RotatePin;
+        player.Input.PlayerActions.EquipmentUse.performed -= ForceToPin;
+        player.Input.PlayerActions.EquipmentUse.canceled -= ForceToPin;
     }
 
 

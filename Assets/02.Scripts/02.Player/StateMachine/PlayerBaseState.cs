@@ -32,21 +32,21 @@ public class PlayerBaseState : IState
     protected virtual void AddInputActionCallbacks()
     {   
         PlayerController input = stateMachine.Player.Input;
-        input.playerActions.Movement.canceled += OnMovementCanceled;
-        input.playerActions.Run.started += OnRunStarted;
-        input.playerActions.Crouch.started += OnCrouchStarted;
-        input.playerActions.JumpParkour.started += OnJumpStarted;
-        input.playerActions.LightControl.started += OnLightControl;
+        input.PlayerActions.Movement.canceled += OnMovementCanceled;
+        input.PlayerActions.Run.started += OnRunStarted;
+        input.PlayerActions.Crouch.started += OnCrouchStarted;
+        input.PlayerActions.JumpParkour.started += OnJumpStarted;
+        input.PlayerActions.LightControl.started += OnLightControl;
     }
 
 
     protected virtual void RemoveInputActionCallbacks()
     {
         PlayerController input = stateMachine.Player.Input;
-        input.playerActions.Movement.canceled -= OnMovementCanceled;
-        input.playerActions.Run.started -= OnRunStarted;
-        input.playerActions.Crouch.started -= OnCrouchStarted;
-        input.playerActions.JumpParkour.started -= OnJumpStarted;
+        input.PlayerActions.Movement.canceled -= OnMovementCanceled;
+        input.PlayerActions.Run.started -= OnRunStarted;
+        input.PlayerActions.Crouch.started -= OnCrouchStarted;
+        input.PlayerActions.JumpParkour.started -= OnJumpStarted;
     }
 
     public virtual void HandleInput()
@@ -116,7 +116,7 @@ public class PlayerBaseState : IState
 
     private void ReadMovementInput()
     {
-        stateMachine.MovementInput = stateMachine.Player.Input.playerActions.Movement.ReadValue<Vector2>();
+        stateMachine.MovementInput = stateMachine.Player.Input.PlayerActions.Movement.ReadValue<Vector2>();
     }
 
     private void Move() 

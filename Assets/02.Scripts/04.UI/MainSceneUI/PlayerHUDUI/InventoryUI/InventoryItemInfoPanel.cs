@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UHFPS.Runtime.InventoryItem;
 
 public class InventoryItemInfoPanelelController : MonoBehaviour
 {
@@ -66,6 +65,5 @@ public class InventoryItemInfoPanelelController : MonoBehaviour
     public void OnAddQuickSlotBTNClick()
     {
         MainGameManager.Instance.Player.isChangingQuickSlot = true;
-        Debug.Log("QuickslotAdd Ready");
     }
 }

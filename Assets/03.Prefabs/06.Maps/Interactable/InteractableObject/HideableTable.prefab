@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3198310963120760066}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: HidePosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 2150325617186938854}
   - component: {fileID: 5694327741802999092}
   - component: {fileID: 7810427507654527690}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: HideableTable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,7 +166,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6849765657402214266}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: StandPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7182184600492354554}
   - component: {fileID: 5827162206678852804}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: HideDetectCollider
   m_TagString: HideZone
   m_Icon: {fileID: 0}

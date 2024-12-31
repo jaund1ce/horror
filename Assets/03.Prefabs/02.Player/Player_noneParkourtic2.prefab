@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 870975651428172388}
   serializedVersion: 2
   m_LocalRotation: {x: -0.0147494385, y: 0.026324023, z: 0.0032112368, w: 0.9995395}
-  m_LocalPosition: {x: -0.005783081, y: 1.7660491, z: -0.03386879}
+  m_LocalPosition: {x: -0.005783081, y: 1.7660491, z: -0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -304,7 +304,7 @@ Transform:
   m_GameObject: {fileID: 3421899445845962556}
   serializedVersion: 2
   m_LocalRotation: {x: -0.00017849039, y: -0.62251455, z: -0.00047647502, w: 0.782608}
-  m_LocalPosition: {x: 0.02, y: -4, z: 0.02}
+  m_LocalPosition: {x: 0.02, y: 0, z: 0.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -406,8 +406,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5969197017517164433}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.014823774, y: 0.026282286, z: 0.00038978015, w: 0.9995446}
-  m_LocalPosition: {x: -0.005783081, y: 1.7660491, z: -0.03386879}
+  m_LocalRotation: {x: -0.014823571, y: 0.026281605, z: 0.0003897647, w: 0.9995446}
+  m_LocalPosition: {x: -0.005783081, y: 1.7660491, z: -0.20000076}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -553,7 +553,7 @@ MonoBehaviour:
     fallParameterName: Fall
     attackParameterName: '@Attack'
     baseAttackParameterName: BaseAttack
-  playerInventoryData: {fileID: 0}
+  PlayerInventoryData: {fileID: 0}
   isChangingQuickSlot: 0
   isGround: 1
   isHiding: 0
@@ -577,14 +577,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playercamera: {fileID: 1422299344214973022}
-  Head: {fileID: 870975651428172388}
+  head: {fileID: 870975651428172388}
   maxRotateY: 40
-  skinnedMeshRenderer: {fileID: 6801644551444437539}
-  rotateSencitivity: 0
+  SkinnedMeshRenderer: {fileID: 6801644551444437539}
+  rotateSencitivity: 10
   Rotateable: 1
   RunningReady: 0
+  isCrouching: 0
   isRunning: 0
-  Crouching: 0
 --- !u!114 &5712043628017939973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -786,7 +786,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.1
   far clip plane: 1
   field of view: 50
   orthographic: 0

@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UHFPS.Runtime;
+using System;
 using UnityEngine;
 
 public interface ISaveable
@@ -10,12 +8,12 @@ public interface ISaveable
 }
 
 
-[System.Serializable]
+[Serializable]
 public class UserInfo : ISaveable
 {
     public int paperInteractionCount;
     public InventoryData[] InventoryDatas = new InventoryData[15];
-    public InventoryData[] QuickSlotDatas = new InventoryData[5];
+    public InventoryData[] QuickSlotDatas = new InventoryData[4];
 
     public string Save()
     {
@@ -28,7 +26,7 @@ public class UserInfo : ISaveable
     }
 }
 
-[System.Serializable]
+[Serializable]
 public class EnemyInfo : ISaveable
 {
     public string EnemyType;
@@ -45,7 +43,7 @@ public class EnemyInfo : ISaveable
     }
 }
 
-[System.Serializable]
+[Serializable]
 public class MapInfo : ISaveable
 {
     public string MapName;

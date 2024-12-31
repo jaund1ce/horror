@@ -37,9 +37,6 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Update()
     {
-        if (Time.time - lastCheckTime < itemCheckTime) return;
-
-        lastCheckTime = Time.time;
         getItemData();   
     }
 
@@ -72,6 +69,7 @@ public class PlayerInteraction : MonoBehaviour
         if (CurrentInteracteable == null) return;
         HandleInputAndPrompt();
         CurrentInteracteable.OnInteract();
+        CurrentInteracteable = null;
     }
 
     public void HandleInputAndPrompt() 
