@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/01.Scenes/MainScene.unity
     guid: ea11d2e6b88406047b4d82a64c4d7679
   - enabled: 1
+    path: Assets/01.Scenes/MainScene2.unity
+    guid: 7255529efe34d6d4895c73f94d85b2bc
+  - enabled: 1
     path: Assets/01.Scenes/EndScene.unity
     guid: ca95d1daf85c43c48ac2b0c763ac41f2
   - enabled: 1

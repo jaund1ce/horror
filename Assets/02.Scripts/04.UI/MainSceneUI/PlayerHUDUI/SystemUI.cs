@@ -31,5 +31,15 @@ public class SystemUI : PopupUI
         base.CloseUI();
     }
 
+    public void Save()
+    {
+        DataManager.Instance.SaveGame();
+    }
+
+    public void Load()
+    {
+        DataManager.Instance.LoadGame();
+    }
+
 
 }

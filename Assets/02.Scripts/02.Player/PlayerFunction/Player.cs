@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
         stateMachine.HandleInput();
         stateMachine.Update();
         ChangeRotationSencitivity();//     ***   
-        ChangeEquip();// *****
+        //ChangeEquip();// *****
     }
 
     private void FixedUpdate()

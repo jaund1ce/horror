@@ -1,11 +1,10 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class InventorySlotsController : MonoBehaviour
 {
-    [SerializeField]private InventoryController inventoryController;
+    [SerializeField] private InventoryController inventoryController;
     PlayerInventoryData playerInventoryData;
     public InventorySlot[] slots;
 
@@ -18,12 +17,26 @@ public class InventorySlotsController : MonoBehaviour
 
     private void OnEnable()
     {
-        for(int i=0; i< 15; i++)
-        {
-            if (playerInventoryData.inventoryDatas[i].ItemData == null) continue;
+        RefreshSlots(); // 수정됨: OnEnable에서 RefreshSlots 호출
+    }
 
-            InventoryData ID = playerInventoryData.inventoryDatas[i];
-            slots[ID.slotIndex].ChangeData(ID);
+    public void RefreshSlots()
+    {
+        for (int i = 0; i < slots.Length; i++)
+        {
+            var inventoryData = playerInventoryData.inventoryDatas[i];
+
+            if (inventoryData.ItemData == null)
+            {
+                Debug.Log($"Slot {i}: Empty");
+                slots[i].ResetSlot();
+            }
+            else
+            {
+                Debug.Log($"Slot {i}: {inventoryData.ItemData.itemSO.ItemNameEng}, Amount: {inventoryData.amount}");
+                slots[i].ChangeData(inventoryData);
+            }
         }
     }
+
 }
