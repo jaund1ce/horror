@@ -20,6 +20,7 @@ public class PlayerInteraction : MonoBehaviour
     public IInteractable CurrentInteracteable;
     private bool isPuzzle;
     private bool PuzzleEnter;
+    private bool puzzleAccess;
 
     private void Awake()
     {
@@ -36,6 +37,9 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Update()
     {
+        if (Time.time - lastCheckTime < itemCheckTime) return;
+
+        lastCheckTime = Time.time;
         getItemData();   
     }
 
@@ -47,16 +51,13 @@ public class PlayerInteraction : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, itemCheckDistance, iteractableLayerMask))//모든 iteractable layer은 iinteractable을 가지고 있다.
         {
             IInteractable iteractable = hit.collider.GetComponent<IInteractable>();
-            if (iteractable as PuzzleBase) isPuzzle = true;
-            else isPuzzle = false;
+            IsPuzzleCheck(iteractable);
+
             if (iteractable == null) return;
             else if (iteractable == CurrentInteracteable) return;
             CurrentInteracteable = iteractable;
         }
-        else
-        {
-            CurrentInteracteable = null;
-        }
+        else CurrentInteracteable = null;
 
         if (!PuzzleEnter)
         {
@@ -64,6 +65,7 @@ public class PlayerInteraction : MonoBehaviour
             mainUI.ShowPromptUI(CurrentInteracteable);
         }
     }
+
 
     private void handleInteractionInput(InputAction.CallbackContext context)//상호작용시 아이템 회득
     {
@@ -76,7 +78,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         MainUI mainUI = UIManager.Instance.GetUI<MainUI>();
 
-        if (isPuzzle && !PuzzleEnter)
+        if (isPuzzle && !PuzzleEnter && !puzzleAccess)
         {
             PuzzleEnter = true;
             MainGameManager.Instance.Player.Input.InputUnsubscribe();
@@ -88,8 +90,20 @@ public class PlayerInteraction : MonoBehaviour
             PuzzleEnter = false;
             MainGameManager.Instance.Player.Input.InputSubscribe();
         }
-            mainUI.ShowPromptUI(CurrentInteracteable);
-        
+        mainUI.ShowPromptUI(CurrentInteracteable);
+       
+    }
+    private void IsPuzzleCheck(IInteractable iteractable) 
+    {
+        if (iteractable as PuzzleBase)
+        {
+            PuzzleBase puzzle = iteractable as PuzzleBase;
+            isPuzzle = true;
+            if (puzzle.IsAccess) { puzzleAccess = true; }
+            else { puzzleAccess = false; }
+
+        }
+        else isPuzzle = false;
     }
 
     private void OnEnable()
