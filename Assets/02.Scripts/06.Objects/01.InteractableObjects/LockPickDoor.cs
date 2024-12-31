@@ -41,6 +41,7 @@ public class LockPickDoor : PuzzleBase
     private float pinUnlockDistance = 0.1f;
     private float marginOfErrorAngle = 20f; // 정답 각도와의 오차 범위
 
+    private InventoryData inventoryPin;
     private bool canUsePin = true;
     private bool tryUnlock;
     private Player player;
@@ -62,8 +63,9 @@ public class LockPickDoor : PuzzleBase
         float pinNormalized = 0f;
         float pinShake = 0f;
 
-        if (lockPickPoint != null && !canUsePin)// ## 핀 갯수 체크도 같이 넣어야함
+        if (lockPickPoint != null)
         {
+            Invoke("SetPin", pinResetTime);
             Invoke("InitializePinPosition", pinResetTime);
         }
 
@@ -113,7 +115,7 @@ public class LockPickDoor : PuzzleBase
                     }
                     else
                     {
-                        //## 인벤토리의 수량감소 작성
+                        inventoryPin.amount -= 1;
                         pin.gameObject.SetActive(false);
                         currentPinLifeTime = pinLifeTime;
                         audioSource.PlayOneShot(pinBreak);
@@ -166,9 +168,14 @@ public class LockPickDoor : PuzzleBase
 
     private void InitializePinPosition()
     {
-        //## 핀 갯수가 모자라면 UI 감추기
-        pin.gameObject.SetActive(true);
-        canUsePin = true;
+        if (canUsePin)
+        {
+            pin.gameObject.SetActive(true);
+        }
+        else 
+        {
+            pin.gameObject.SetActive(false);
+        }
     }
 
     public override void OnInteract()
@@ -185,10 +192,17 @@ public class LockPickDoor : PuzzleBase
 
     private void SetPin()
     {
-        if (player.playerInventoryData.inventoryDatas[1].ItemData.itemSO.ID == 1) 
+        for (int i= 0; i < player.playerInventoryData.inventoryDatas.Length; i++) 
         {
-        
+            if (player.playerInventoryData.inventoryDatas[i]?.ItemData?.itemSO?.ID == 1002)
+            {
+                inventoryPin = player.playerInventoryData.inventoryDatas[i];
+                canUsePin = true;
+                return;
+            }
         }
+        inventoryPin = null;
+        canUsePin = false;
     }
 
     protected override void EnterPuzzleView()
@@ -202,7 +216,7 @@ public class LockPickDoor : PuzzleBase
         player.Input.playerActions.Look.started += RotatePin;
         player.Input.playerActions.EquipmentUse.performed += ForceToPin;
         player.Input.playerActions.EquipmentUse.canceled += ForceToPin;
-        SetPin();
+        
     }
 
     protected override void ExitPuzzleView()

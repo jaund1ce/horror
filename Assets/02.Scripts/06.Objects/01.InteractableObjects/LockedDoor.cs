@@ -9,8 +9,8 @@ public class LockedDoor : ObjectBase
     public float openAngle = -90f; // 문 열리는 각도
     public float closeAngle = 0f; // 문 닫히는 각도
     public float openSpeed = 5f; // 문 열림 속도
-    private bool isOpened = false; // 문이 열렸는지 여부
     public bool IsLocked = true;
+    private bool isOpened = false; // 문이 열렸는지 여부
 
     public event Action isOpen;
 

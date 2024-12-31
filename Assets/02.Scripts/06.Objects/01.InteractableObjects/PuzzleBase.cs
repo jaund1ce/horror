@@ -10,8 +10,8 @@ using UnityEngine;
 public abstract class PuzzleBase : MonoBehaviour , IInteractable
 {
     public CinemachineVirtualCamera PuzzleCamera;
+    [HideInInspector]public bool IsAccess;
     protected string promptTxt = "Interact";
-    public bool IsAccess;
     protected bool isUsingPuzzle = false;
 
     public virtual string GetInteractPrompt()
