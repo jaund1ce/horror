@@ -12,7 +12,7 @@ public class ItemBase : MonoBehaviour,IInteractable
 
     private void Start()
     {
-        inventoryslotcontroller = MainGameManager.Instance.Player.playerInventoryData;
+        inventoryslotcontroller = MainGameManager.Instance.Player.PlayerInventoryData;
     }
 
     public string GetInteractPrompt()

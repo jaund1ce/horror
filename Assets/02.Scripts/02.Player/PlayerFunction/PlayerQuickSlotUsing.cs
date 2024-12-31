@@ -39,7 +39,7 @@ public class PlayerQuickSlotUsing : MonoBehaviour
 
     private void CheckQuickSlot(int i)
     {
-        foreach(InventoryData inventoryData in player.playerInventoryData.inventoryDatas)
+        foreach(InventoryData inventoryData in player.PlayerInventoryData.inventoryDatas)
         {
             if(inventoryData == null) continue;
             if(inventoryData.quickslotIndex == i-1)

@@ -12,7 +12,7 @@ public class QuickSlotController : MonoBehaviour
     private void Awake()
     {
         inventory.QuickslotController = this;
-        InventoryData = MainGameManager.Instance.Player.playerInventoryData;
+        InventoryData = MainGameManager.Instance.Player.PlayerInventoryData;
         quickSlots = GetComponentsInChildren<QuickSlot>();
     }
 

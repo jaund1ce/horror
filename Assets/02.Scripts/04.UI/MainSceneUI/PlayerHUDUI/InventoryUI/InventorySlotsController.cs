@@ -11,7 +11,7 @@ public class InventorySlotsController : MonoBehaviour
 
     private void Awake()
     {
-        playerInventoryData = MainGameManager.Instance.Player.playerInventoryData;
+        playerInventoryData = MainGameManager.Instance.Player.PlayerInventoryData;
         inventoryController.InventoryslotsController = this;
         slots = GetComponentsInChildren<InventorySlot>();
     }

@@ -12,7 +12,7 @@ public class UICondition : MonoBehaviour
 
     private void Start()
     {
-        playerConditionController = MainGameManager.Instance.Player.playerConditionController;
+        playerConditionController = MainGameManager.Instance.Player.PlayerConditionController;
         creatureAI = FindAnyObjectByType<CreatureAI>();
     }
 

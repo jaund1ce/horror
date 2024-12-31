@@ -185,7 +185,7 @@ public class LockPickDoor : PuzzleBase
 
     private void SetPin()
     {
-        if (player.playerInventoryData.inventoryDatas[1].ItemData.itemSO.ID == 1) 
+        if (player.PlayerInventoryData.inventoryDatas[1].ItemData.itemSO.ID == 1) 
         {
         
         }
@@ -199,9 +199,9 @@ public class LockPickDoor : PuzzleBase
         }
         isUsingPuzzle = true;
         Invoke("PopupPuzzleUI", 2f);
-        player.Input.playerActions.Look.started += RotatePin;
-        player.Input.playerActions.EquipmentUse.performed += ForceToPin;
-        player.Input.playerActions.EquipmentUse.canceled += ForceToPin;
+        player.Input.PlayerActions.Look.started += RotatePin;
+        player.Input.PlayerActions.EquipmentUse.performed += ForceToPin;
+        player.Input.PlayerActions.EquipmentUse.canceled += ForceToPin;
         SetPin();
     }
 
@@ -213,9 +213,9 @@ public class LockPickDoor : PuzzleBase
         }
         isUsingPuzzle = false;
         PopupPuzzleUI();
-        player.Input.playerActions.Look.started -= RotatePin;
-        player.Input.playerActions.EquipmentUse.performed -= ForceToPin;
-        player.Input.playerActions.EquipmentUse.canceled -= ForceToPin;
+        player.Input.PlayerActions.Look.started -= RotatePin;
+        player.Input.PlayerActions.EquipmentUse.performed -= ForceToPin;
+        player.Input.PlayerActions.EquipmentUse.canceled -= ForceToPin;
     }
 
 

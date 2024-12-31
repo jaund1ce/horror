@@ -37,9 +37,6 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Update()
     {
-        if (Time.time - lastCheckTime < itemCheckTime) return;
-
-        lastCheckTime = Time.time;
         getItemData();   
     }
 
