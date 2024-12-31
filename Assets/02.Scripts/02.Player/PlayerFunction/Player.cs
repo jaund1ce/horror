@@ -179,7 +179,7 @@ public class Player : MonoBehaviour
 
     public void ChangeEquip()
     {
-        if (CurrentEquipItem == null)
+        if (CurrentEquipItem == null || CurrentEquipItem.ItemData == null)
         {
             Animator.SetBool("FlashLight", false);
             Animator.SetBool("HealPack", false);

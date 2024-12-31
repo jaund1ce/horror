@@ -36,9 +36,6 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Update()
     {
-        if (Time.time - lastCheckTime < itemCheckTime) return;
-
-        lastCheckTime = Time.time;
         getItemData();   
     }
 
@@ -50,13 +47,16 @@ public class PlayerInteraction : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, itemCheckDistance, iteractableLayerMask))//모든 iteractable layer은 iinteractable을 가지고 있다.
         {
             IInteractable iteractable = hit.collider.GetComponent<IInteractable>();
-            if (iteractable as PuzzleBase ) isPuzzle = true;
+            if (iteractable as PuzzleBase) isPuzzle = true;
             else isPuzzle = false;
             if (iteractable == null) return;
             else if (iteractable == CurrentInteracteable) return;
             CurrentInteracteable = iteractable;
         }
-        else CurrentInteracteable = null;
+        else
+        {
+            CurrentInteracteable = null;
+        }
 
         if (!PuzzleEnter)
         {
