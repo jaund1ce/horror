@@ -98,5 +98,15 @@
     "ItemHealHealth": 0,
     "ItemHealMental": 100,
     "ItemDescription": "정신력을 무조건 꽉채우는 회복템"
+  },
+  {
+    "ID": 1010,
+    "ItemNameEng": "battery",
+    "ItemNameKor": "배터리",
+    "ItemType": 2,
+    "ItemEffect": "배터리 충전",
+    "ItemHealHealth": 0,
+    "ItemHealMental": 0,
+    "ItemDescription": "전원을 켜주는 아이템"
   }
 ]
