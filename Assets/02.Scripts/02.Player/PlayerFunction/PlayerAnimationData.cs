@@ -12,6 +12,7 @@ public class PlayerAnimationData
     [SerializeField] private string runParameterName = "Run";
     [SerializeField] private string crouchParameterName = "@Crouch";
     [SerializeField] private string crouchingParameterName = "Crouching";
+    [SerializeField] private string FrenzyParameterName = "Frenzy";
 
     [SerializeField] private string airParameterName = "@Air";    
     [SerializeField] private string jumpParameterName = "Jump";
@@ -34,6 +35,7 @@ public class PlayerAnimationData
     public int FallParameterHash { get; private set; }
     public int CrouchParameterHash { get; private set; }
     public int CrouchingParameterHash { get; private set; }
+    public int FrenzyParameterHash { get; private set; }
     public void Initialize()
     {
         GrondParameterHash = Animator.StringToHash(groundParameterName);
@@ -42,6 +44,7 @@ public class PlayerAnimationData
         RunParameterHash = Animator.StringToHash(runParameterName);
         AttackParameterHash = Animator.StringToHash(attackParameterName);
         BaseAttackParameterHash = Animator.StringToHash(baseAttackParameterName);
+        FrenzyParameterHash = Animator.StringToHash(FrenzyParameterName);
 
         AirParameterHash = Animator.StringToHash(airParameterName);
         JumpParameterHash = Animator.StringToHash(jumpParameterName);
