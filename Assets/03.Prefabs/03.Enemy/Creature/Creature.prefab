@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7881935985494820888}
   - component: {fileID: 8813338221556428918}
-  - component: {fileID: 2502720147496875953}
   - component: {fileID: 6030273412276728436}
   - component: {fileID: 354449184589021364}
   - component: {fileID: 7490741983644993469}
@@ -20,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7881935985494820888
 Transform:
   m_ObjectHideFlags: 0
@@ -58,25 +57,12 @@ MonoBehaviour:
     runParameterName: Run
     crouchParameterName: '@Crouch'
     crouchingParameterName: Crouching
+    FrenzyParameterName: Frenzy
     airParameterName: '@Air'
     jumpParameterName: Jump
     fallParameterName: Fall
     attackParameterName: '@Attack'
     baseAttackParameterName: BaseAttack
---- !u!114 &2502720147496875953
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6904882794916949432}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ede74c08b1361c7438116793800109c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rigidbody: {fileID: 0}
-  drag: 0.3
 --- !u!95 &6030273412276728436
 Animator:
   serializedVersion: 5
@@ -170,7 +156,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.90909064, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2462468651889485684}
+  m_Father: {fileID: 8676714061966010330}
   m_LocalEulerAnglesHint: {x: 70, y: -50, z: 80}
 --- !u!114 &1212158185069725885
 MonoBehaviour:
@@ -2343,16 +2329,11 @@ PrefabInstance:
     - {fileID: 5866666021909216657, guid: f6e63f3ec46bbec4088f29da30411a63, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 6759668001111009093, guid: f6e63f3ec46bbec4088f29da30411a63, type: 3}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: f6e63f3ec46bbec4088f29da30411a63, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8618674769098667487}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6e63f3ec46bbec4088f29da30411a63, type: 3}
---- !u!4 &2462468651889485684 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6759668001111009093, guid: f6e63f3ec46bbec4088f29da30411a63, type: 3}
-  m_PrefabInstance: {fileID: 9215306065315594289}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8676714061966010330 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f6e63f3ec46bbec4088f29da30411a63, type: 3}

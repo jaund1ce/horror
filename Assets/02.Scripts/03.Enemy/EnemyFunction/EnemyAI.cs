@@ -82,7 +82,7 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
             else
             {
 
-               Debug.DrawRay(transform.position + (Vector3.up * 0.5f), direction * Data.VisionDistance, Color.green, 1.0f);
+               //Debug.DrawRay(transform.position + (Vector3.up * 0.5f), direction * Data.VisionDistance, Color.green, 1.0f);
             }
         }
 
