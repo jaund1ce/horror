@@ -42,7 +42,7 @@ public class LockPickDoor : PuzzleBase
     private float marginOfErrorAngle = 20f; // 정답 각도와의 오차 범위
 
     private InventoryData inventoryPin;
-    private bool canUsePin = true;
+    private bool canUsePin = false;
     private bool tryUnlock;
     private Player player;
 
@@ -63,9 +63,9 @@ public class LockPickDoor : PuzzleBase
         float pinNormalized = 0f;
         float pinShake = 0f;
 
-        if (lockPickPoint != null)
+        if (lockPickPoint != null && !canUsePin)
         {
-            Invoke("SetPin", pinResetTime);
+            SetPin();
             Invoke("InitializePinPosition", pinResetTime);
         }
 
@@ -115,7 +115,7 @@ public class LockPickDoor : PuzzleBase
                     }
                     else
                     {
-                        inventoryPin.amount -= 1;
+                        inventoryPin.Use(1);
                         pin.gameObject.SetActive(false);
                         currentPinLifeTime = pinLifeTime;
                         audioSource.PlayOneShot(pinBreak);
@@ -174,6 +174,7 @@ public class LockPickDoor : PuzzleBase
         }
         else 
         {
+            Debug.Log("들어옴?");
             pin.gameObject.SetActive(false);
         }
     }
@@ -197,8 +198,11 @@ public class LockPickDoor : PuzzleBase
             if (player.PlayerInventoryData.inventoryDatas[i]?.ItemData?.itemSO?.ID == 1002)
             {
                 inventoryPin = player.PlayerInventoryData.inventoryDatas[i];
-                canUsePin = true;
-                return;
+                if (inventoryPin.amount > 0) 
+                {
+                    canUsePin = true;
+                    return;
+                }
             }
         }
         inventoryPin = null;

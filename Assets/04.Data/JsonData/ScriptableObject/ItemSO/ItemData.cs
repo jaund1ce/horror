@@ -13,6 +13,7 @@ public class ItemSO
     public string ItemEffect;// ºÒÇÊ¿ä
     public int ItemHealHealth;
     public int ItemHealMental;
+    public int ItemDropAmount;
     public string ItemDescription;
     public bool Stackable;
     public GameObject EquipPrefab;
