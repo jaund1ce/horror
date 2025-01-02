@@ -50,28 +50,35 @@ public class EnemyBaseState : IState
                 stateMachine.ChangeState(stateMachine.IdleState);
 
                 break;
+
             case AIState.Chasing:
 
                 stateMachine.ChangeState(stateMachine.ChasingState);
 
                 Move();
                 break;
+
             case AIState.Wandering:
                 
                 if (!IsLocationSet())
                 {
-                    WanderLocationSet();
+                    WanderLocationSet(creatureTransform.position);
                 }
                 stateMachine.ChangeState(stateMachine.WanderState);
                 Move();
 
                 break;
+
             case AIState.Attacking:
 
                 stateMachine.ChangeState(stateMachine.AttackState);
 
                 break;
 
+            case AIState.Frenzy:
+                NearPlayerLocationSet();
+                stateMachine.ChangeState(stateMachine.FrenzyState);
+                break;
         }
 
     }
@@ -96,12 +103,29 @@ public class EnemyBaseState : IState
         Move(movementLocation);
     }
 
-    private void WanderLocationSet()
+    private void NearPlayerLocationSet() 
+    {
+        if (stateMachine.Enemy.EnemyAI.EnemyAistate == AIState.Frenzy)
+        {
+            WanderLocationSet(GetRandomPointBetween());
+        }
+        Move(movementLocation);
+    }
+
+    private Vector3 GetRandomPointBetween() 
+    {
+        Vector3 direction = (stateMachine.Target.transform.position - stateMachine.Enemy.transform.position).normalized;
+        Vector3 point = stateMachine.Enemy.transform.position + direction * 30f;
+        WanderLocationSet(point);
+        return point;
+    }
+
+    private void WanderLocationSet(Vector3 direction)
     {
         NavMeshHit hit;
         Vector3 radius = Random.onUnitSphere * Random.Range(minWanderDistance, maxWanderDistance);
         radius.y = 0f;
-        Vector3 randomPosition = creatureTransform.position + radius;
+        Vector3 randomPosition = direction + radius;
 
         if (NavMesh.SamplePosition(randomPosition, out hit, maxWanderDistance, walkableMask) == false) return;
             movementLocation = hit.position;

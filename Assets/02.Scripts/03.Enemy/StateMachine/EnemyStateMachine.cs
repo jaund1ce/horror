@@ -16,6 +16,7 @@ public class EnemyStateMachine : StateMachine
     public EnemyChasingState ChasingState { get; }
     public EnemyAttackState AttackState { get; }
     public EnemyWanderState WanderState { get; }
+    public EnemyFrenzyState FrenzyState { get; }
     public EnemyStateMachine(Enemy Enemy) 
     {
         this.Enemy = Enemy;
@@ -25,6 +26,7 @@ public class EnemyStateMachine : StateMachine
         AttackState = new EnemyAttackState(this);
         ChasingState = new EnemyChasingState(this);
         WanderState = new EnemyWanderState(this);
+        FrenzyState = new EnemyFrenzyState(this);
 
         RotationDamping = Enemy.Data.GroundData.BaseRotationDamping;
     }
