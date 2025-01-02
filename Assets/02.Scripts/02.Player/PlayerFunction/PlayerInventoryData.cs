@@ -1,5 +1,12 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
+    public enum TryUse 
+    {
+        CanUse,
+        CanNotUse,
+        ResetItem
+    }
 
 [Serializable]
 public class InventoryData
@@ -8,6 +15,8 @@ public class InventoryData
     public int amount; // 아이템 수량
     public int slotIndex; // 슬롯 인덱스
     public int quickslotIndex; // 퀵슬롯 인덱스
+
+        
 
     // 비직렬화 필드: 실제 ItemSO 참조
     [NonSerialized]
@@ -20,6 +29,34 @@ public class InventoryData
         this.amount = 0;
         this.ItemID = -1;
     }
+
+    public int Use(int amount) 
+    {
+        int result;
+        if (this.amount >= amount)
+        {
+            UseItemQuantity(amount);
+            result = (int)TryUse.CanUse;
+        }
+        else result = (int)TryUse.CanNotUse;
+        if (this.amount <= 0)
+        {
+            this.ResetData();
+            result = (int)TryUse.ResetItem;
+        }
+        return result;
+    }
+
+    public void UseItemQuantity(int amount)
+    {
+        if (this.amount >= amount)
+        {
+            this.amount -= amount;
+        }
+        else return;
+    }
+
+
 
     public void SetItem(ItemData itemData, int quantity)
     {
@@ -77,7 +114,7 @@ public class PlayerInventoryData : MonoBehaviour
         {
             if (item.ItemData == null)
             {
-                item.SetItem(itemData, 1); // 수정됨: SetItem으로 ID와 데이터 설정
+                item.SetItem(itemData, itemData.itemSO.ItemDropAmount); // 수정됨: SetItem으로 ID와 데이터 설정
                 return;
             }
         }
@@ -90,7 +127,7 @@ public class PlayerInventoryData : MonoBehaviour
             if (item == null || item.ItemData == null) continue;
             if (item.ItemData.itemSO == itemData.itemSO)
             {
-                item.amount += 1;
+                item.amount += itemData.itemSO.ItemDropAmount;
                 return;
             }
         }
@@ -115,5 +152,6 @@ public class PlayerInventoryData : MonoBehaviour
             DataManager.Instance.InventoryData[i] = inventoryDatas[i]; // 동기화
         }
     }
+
 
 }

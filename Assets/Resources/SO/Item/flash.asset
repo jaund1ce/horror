@@ -20,6 +20,7 @@ MonoBehaviour:
     ItemEffect: "\uAD11\uC6D0"
     ItemHealHealth: 0
     ItemHealMental: 0
+    ItemDropAmount: 1
     ItemDescription: "\uC55E\uC744 \uBC1D\uD788\uB294 \uC544\uC774\uD15C"
     Stackable: 0
     EquipPrefab: {fileID: 4819155080753292284, guid: ff02bf44152fd20459c2e87559024b3a, type: 3}

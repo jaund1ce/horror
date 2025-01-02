@@ -20,6 +20,7 @@ MonoBehaviour:
     ItemEffect: "\uD560\uB2F9\uB41C \uD0A4\uD328\uB4DC\uB85C \uC7A0\uAE34\uBB38 \uD574\uAE08"
     ItemHealHealth: 0
     ItemHealMental: 0
+    ItemDropAmount: 1
     ItemDescription: "\uD0A4\uD328\uB4DC\uB85C \uC7A0\uAE34 \uBB38\uC744 \uC5F4\uB54C
       \n\uC0AC\uC6A9\uD558\uB294 \uB3C4\uAD6C."
     Stackable: 0
