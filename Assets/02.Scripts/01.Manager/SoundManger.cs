@@ -10,11 +10,13 @@ public class SoundManger : mainSingleton<SoundManger>
 {
     public AudioSource PlayerStep;
     public AudioSource PlayerHeartBeat;
+    public AudioSource PlayerBreathe;
     public AudioSource BGM;
     public AudioSource Enviroment;
 
     [SerializeField] private AudioClip[] playerstepSource1;
     [SerializeField] private AudioClip[] playerheartbeatSource;
+    [SerializeField] private AudioClip[] playerBreatheSource;
     [SerializeField] private AudioClip[] bgmSource;
     [SerializeField] private AudioClip[] enviromentsource;
 
@@ -58,10 +60,12 @@ public class SoundManger : mainSingleton<SoundManger>
 
             playerstepSource1 = Resources.LoadAll<AudioClip>("Sounds/PlayerSteps");
             playerheartbeatSource = Resources.LoadAll<AudioClip>("Sounds/PlayerHeartBeats");
+            playerBreatheSource = Resources.LoadAll<AudioClip>("Sounds/PlayerBreathes");
             enviromentsource = Resources.LoadAll<AudioClip>("Sounds/Enviroments");
 
             AddToDictionarys("playerStep1", playerstepSource1);
             AddToDictionary(playerheartbeatSource);
+            AddToDictionary(playerBreatheSource);
             AddToDictionary(enviromentsource);
         }
 
@@ -114,7 +118,7 @@ public class SoundManger : mainSingleton<SoundManger>
         if (audioClipDictionary.TryGetValue(hearthbeatname, out AudioClip value))
         {
             PlayerHeartBeat.clip = value;
-            PlayerHeartBeat.pitch = (int)playerState/2 + 0.5f;
+            PlayerHeartBeat.pitch = (float)playerState/2 + 0.5f;
             PlayerHeartBeat.loop = true;
             PlayerHeartBeat.Play();
         }
@@ -167,5 +171,27 @@ public class SoundManger : mainSingleton<SoundManger>
     protected override void OnDestroy()
     {
         base.OnDestroy();
+    }
+
+    public void ChangeBreatheBeatSound(PlayerBreatheType playerBreatheType)
+    {
+        if (playerBreatheType == PlayerBreatheType.Normal)
+        {
+            PlayerBreathe.clip = null;
+            return;
+        }
+        string breathename = "PlayerBreathe";
+
+        if (audioClipDictionary.TryGetValue(breathename, out AudioClip value))
+        {
+            PlayerBreathe.clip = value;
+            PlayerBreathe.pitch = (float)playerBreatheType / 2;
+            PlayerBreathe.loop = true;
+            PlayerBreathe.Play();
+        }
+        else
+        {
+            Debug.Log("No Sound Clip!");
+        }
     }
 }
