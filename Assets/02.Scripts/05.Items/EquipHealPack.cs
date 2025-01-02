@@ -20,7 +20,6 @@ public class EquipHealPack : EquipItemBase
     {
         base.OnUse();
         MainGameManager.Instance.Player.PlayerConditionController.AddHealth(inventoryData.ItemData.itemSO.ItemHealHealth);
-        ResetSlot();
     }
 
 }

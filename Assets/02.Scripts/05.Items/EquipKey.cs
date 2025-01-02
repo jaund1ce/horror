@@ -24,7 +24,6 @@ public class EquipKey : EquipItemBase
     {
         base.OnUse();
         //열쇠 작동 코드 작성
-        ResetSlot();
     }
 
 }

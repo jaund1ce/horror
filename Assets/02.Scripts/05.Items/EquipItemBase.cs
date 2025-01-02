@@ -23,10 +23,11 @@ public abstract class EquipItemBase : MonoBehaviour
         if (inventoryData == null) return;
         if (!onUsing)
         {
-            ResetSlot();
-
             onUsing = true;
-            inventoryData.amount -= 1;
+            if (inventoryData.Use(1) == (int)TryUse.ResetItem) 
+            {
+                Destroy(this.gameObject);
+            }
             animator.SetTrigger(animUse);
         }
     }
@@ -36,13 +37,4 @@ public abstract class EquipItemBase : MonoBehaviour
         onUsing = false;
     }
 
-    public void ResetSlot() 
-    {
-        if (inventoryData.amount <= 0)
-        {
-            inventoryData.ResetData();
-            Destroy(this.gameObject);
-            return;
-        }
-    }
 }

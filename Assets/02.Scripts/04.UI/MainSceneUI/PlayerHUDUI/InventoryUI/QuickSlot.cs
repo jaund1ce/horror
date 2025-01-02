@@ -73,14 +73,15 @@ public class QuickSlot : MonoBehaviour
     {
         if (CurrentData.ItemData.itemSO.ItemType == ItemType.CnsItem)
         {
-            CurrentData.amount -= 1;
+            CurrentData.Use(1); // ##TODO : int int °ªÀ» Quantity ·Î
 
-            if (CurrentData.amount <= 0)
+
+/*            if (CurrentData.amount <= 0)
             {
                 CurrentData.ResetData();
                 ResetSlot();
                 return;
-            }
+            }*/
         }
         else if (CurrentData.ItemData.itemSO.ItemType == ItemType.EquipItem)
         {
