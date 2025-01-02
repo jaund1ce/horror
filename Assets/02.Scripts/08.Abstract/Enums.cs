@@ -55,3 +55,11 @@ public enum GroundType
     Dirt,
     Grass
 }
+
+public enum PlayerBreatheType
+{
+    Normal = 0,
+    Tired,
+    Exhausted,
+    Fatigued
+}

@@ -50,7 +50,11 @@ public class PlayerInteraction : MonoBehaviour
             IInteractable iteractable = hit.collider.GetComponent<IInteractable>();
             IsPuzzleCheck(iteractable);
 
-            if (iteractable == null) return;
+            if (iteractable == null) 
+            {
+                iteractable = hit.collider.GetComponentInParent<IInteractable>();
+                if (iteractable == null) return;
+            }
             else if (iteractable == CurrentInteracteable) return;
             CurrentInteracteable = iteractable;
         }
