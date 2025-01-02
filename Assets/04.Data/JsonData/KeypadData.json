@@ -1,0 +1,17 @@
+[
+  {
+    "ID": "int",
+    "KeypadName": "string",
+    "Correct Code": "int"
+  },
+  {
+    "ID": 5001,
+    "KeypadName": "Keypad1",
+    "Correct Code": 3895
+  },
+  {
+    "ID": 5002,
+    "KeypadName": "Keypad2",
+    "Correct Code": 4029
+  }
+]
