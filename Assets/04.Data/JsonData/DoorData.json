@@ -1,0 +1,14 @@
+[
+  {
+    "ID": "int",
+    "IsLocked": "int"
+  },
+  {
+    "ID": 4001,
+    "IsLocked": 1
+  },
+  {
+    "ID": 4002,
+    "IsLocked": 2
+  }
+]

@@ -1,0 +1,146 @@
+[
+  {
+    "ID": "int",
+    "ItemId": "int",
+    "ItemName": "string",
+    "Stage2SpawnPointX": "float",
+    "Stage2SpawnPointY": "float",
+    "Stage2SpawnPointZ": "float"
+  },
+  {
+    "ID": 7001,
+    "ItemId": 1002,
+    "ItemName": "lockpick",
+    "Stage2SpawnPointX": 1.08,
+    "Stage2SpawnPointY": -0.7,
+    "Stage2SpawnPointZ": 7.76
+  },
+  {
+    "ID": 7002,
+    "ItemId": 1002,
+    "ItemName": "lockpick",
+    "Stage2SpawnPointX": -35.37,
+    "Stage2SpawnPointY": -0.7,
+    "Stage2SpawnPointZ": 6.55
+  },
+  {
+    "ID": 7003,
+    "ItemId": 1002,
+    "ItemName": "lockpick",
+    "Stage2SpawnPointX": -31.4,
+    "Stage2SpawnPointY": -0.7,
+    "Stage2SpawnPointZ": 40.8
+  },
+  {
+    "ID": 7004,
+    "ItemId": 1002,
+    "ItemName": "lockpick",
+    "Stage2SpawnPointX": -20.54,
+    "Stage2SpawnPointY": -0.7,
+    "Stage2SpawnPointZ": 61.485
+  },
+  {
+    "ID": 7005,
+    "ItemId": 1002,
+    "ItemName": "lockpick",
+    "Stage2SpawnPointX": 21.27,
+    "Stage2SpawnPointY": -0.7,
+    "Stage2SpawnPointZ": 43.98
+  },
+  {
+    "ID": 7006,
+    "ItemId": 1002,
+    "ItemName": "lockpick",
+    "Stage2SpawnPointX": 22.814,
+    "Stage2SpawnPointY": -0.7,
+    "Stage2SpawnPointZ": 14.27
+  },
+  {
+    "ID": 7007,
+    "ItemId": 1008,
+    "ItemName": "healpack",
+    "Stage2SpawnPointX": -3.28,
+    "Stage2SpawnPointY": -0.7,
+    "Stage2SpawnPointZ": 31.79
+  },
+  {
+    "ID": 7008,
+    "ItemId": 1008,
+    "ItemName": "healpack",
+    "Stage2SpawnPointX": -4.8,
+    "Stage2SpawnPointY": -3.7,
+    "Stage2SpawnPointZ": 99.7
+  },
+  {
+    "ID": 7009,
+    "ItemId": 1008,
+    "ItemName": "healpack",
+    "Stage2SpawnPointX": 49.5,
+    "Stage2SpawnPointY": -1.7,
+    "Stage2SpawnPointZ": 33.91
+  },
+  {
+    "ID": 7010,
+    "ItemId": 1008,
+    "ItemName": "healpack",
+    "Stage2SpawnPointX": 98.22,
+    "Stage2SpawnPointY": -2.4,
+    "Stage2SpawnPointZ": 59.71
+  },
+  {
+    "ID": 7011,
+    "ItemId": 1010,
+    "ItemName": "battery",
+    "Stage2SpawnPointX": 33.02,
+    "Stage2SpawnPointY": -0.7,
+    "Stage2SpawnPointZ": 36.096
+  },
+  {
+    "ID": 7012,
+    "ItemId": 1010,
+    "ItemName": "battery",
+    "Stage2SpawnPointX": -35.37,
+    "Stage2SpawnPointY": -0.7,
+    "Stage2SpawnPointZ": 6.55
+  },
+  {
+    "ID": 7013,
+    "ItemId": 1010,
+    "ItemName": "battery",
+    "Stage2SpawnPointX": 22.814,
+    "Stage2SpawnPointY": -0.7,
+    "Stage2SpawnPointZ": 14.27
+  },
+  {
+    "ID": 7014,
+    "ItemId": 1010,
+    "ItemName": "battery",
+    "Stage2SpawnPointX": 2.46,
+    "Stage2SpawnPointY": -3.7,
+    "Stage2SpawnPointZ": 127.33
+  },
+  {
+    "ID": 7015,
+    "ItemId": 1009,
+    "ItemName": "sedative",
+    "Stage2SpawnPointX": -31.4,
+    "Stage2SpawnPointY": -3.7,
+    "Stage2SpawnPointZ": 123.62
+  },
+  {
+    "ID": 7016,
+    "ItemId": 1009,
+    "ItemName": "sedative",
+    "Stage2SpawnPointX": 87.34,
+    "Stage2SpawnPointY": -1.5,
+    "Stage2SpawnPointZ": 27.42
+  },
+  {
+    "ID": 7017,
+    "ItemId": 1009,
+    "ItemName": "sedative",
+    "Stage2SpawnPointX": 50.29,
+    "Stage2SpawnPointY": -1.5,
+    "Stage2SpawnPointZ": 11.95
+  }
+]
