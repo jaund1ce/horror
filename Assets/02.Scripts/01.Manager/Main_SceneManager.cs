@@ -73,7 +73,6 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
 
         while (!op.isDone) // op.isDone이 false일 동안 반복
         {
-            Debug.Log("로딩창 띄우기"); // 로딩창을 표시하거나 다른 작업을 수행할 수 있습니다.
             await Task.Yield(); // 현재 Task를 대기 상태로 두고 다음 프레임까지 실행을 멈춥니다.
                                 // 이는 메인 스레드가 멈추지 않고 다른 작업을 병행할 수 있도록 합니다.
         }

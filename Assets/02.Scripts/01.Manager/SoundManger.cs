@@ -44,7 +44,6 @@ public class SoundManger : mainSingleton<SoundManger>
     {
         if (stagename == "StartScene" && bgmSource.Length == 0)
         {
-            Debug.Log("BGM load complete");
             bgmSource = Resources.LoadAll<AudioClip>("Sounds/BGMs");
 
             AddToDictionary(bgmSource);
@@ -54,7 +53,6 @@ public class SoundManger : mainSingleton<SoundManger>
         else if (stagename == "MainScene" && (playerstepSource1.Length == 0 || playerheartbeatSource.Length == 0 || enviromentsource.Length == 0))
         {
             ChangeBGMSound(1);
-            Debug.Log("MainSceneSound load complete");
 
             playerstepSource1 = Resources.LoadAll<AudioClip>("Sounds/PlayerSteps");
             playerheartbeatSource = Resources.LoadAll<AudioClip>("Sounds/PlayerHeartBeats");
