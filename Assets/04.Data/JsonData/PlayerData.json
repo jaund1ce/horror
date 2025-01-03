@@ -1,0 +1,26 @@
+[
+  {
+    "ID": "int",
+    "BaseSpeed": "float",
+    "BaseRotationDamping": "float",
+    "WalkSpeedModifier": "float",
+    "RunSpeedModifier": "float",
+    "CrouchSpeedModifier": "float",
+    "Jumpforce": "float",
+    "Stage1SpawnPointX": "float",
+    "Stage1SpawnPointY": "float",
+    "Stage1SpawnPointZ": "float"
+  },
+  {
+    "ID": 3001,
+    "BaseSpeed": 5,
+    "BaseRotationDamping": 25,
+    "WalkSpeedModifier": 0.225,
+    "RunSpeedModifier": 1,
+    "CrouchSpeedModifier": 0.1,
+    "Jumpforce": 3,
+    "Stage1SpawnPointX": -49.45,
+    "Stage1SpawnPointY": 0,
+    "Stage1SpawnPointZ": 62.15
+  }
+]

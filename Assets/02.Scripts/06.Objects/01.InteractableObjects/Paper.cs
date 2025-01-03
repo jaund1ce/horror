@@ -18,6 +18,7 @@ public class Paper : ObjectBase
     }
     public override void OnInteract()
     {
+
         Animator animator = GetComponent<Animator>();
         if (animator != null)
         {

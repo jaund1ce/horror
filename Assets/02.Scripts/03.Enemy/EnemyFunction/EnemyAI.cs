@@ -45,7 +45,7 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
 
     protected virtual void Start() 
     {
-        MainGameManager.Instance.makeSound += GetAggroGage;
+        MainGameManager.Instance.MakeSoundAction += GetAggroGage;
     }
 
     protected virtual void Update()

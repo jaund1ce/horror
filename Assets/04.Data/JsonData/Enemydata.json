@@ -11,6 +11,7 @@
     "BaseRotationDamping": "float",
     "WalkSpeedModifier": "float",
     "RunSpeedmodifier": "float",
+    "SpecialSpeedmodifier": "float",
     "CrouchSpeedmodifier": "float",
     "DealingStartTransitionTime": "float",
     "DealingEndTransitionTime": "float",
@@ -21,7 +22,10 @@
     "MissTargetTime": "float",
     "MaxAggroGage": "float",
     "MinWanderDistance": "float",
-    "MaxWanderDistance": "float"
+    "MaxWanderDistance": "float",
+    "Stage1SpawnPointX": "float",
+    "Stage1SpawnPointY": "float",
+    "Stage1SpawnPointZ": "float"
   },
   {
     "ID": "2001",
@@ -35,6 +39,7 @@
     "BaseRotationDamping": 1,
     "WalkSpeedModifier": 0.7,
     "RunSpeedmodifier": 1.2,
+    "SpecialSpeedmodifier": 0,
     "CrouchSpeedmodifier": 0.1,
     "DealingStartTransitionTime": 0.1,
     "DealingEndTransitionTime": 0.8,
@@ -45,7 +50,10 @@
     "MissTargetTime": 5,
     "MaxAggroGage": 100,
     "MinWanderDistance": 5,
-    "MaxWanderDistance": 10
+    "MaxWanderDistance": 10,
+    "Stage1SpawnPointX": -36.16,
+    "Stage1SpawnPointY": 1.5,
+    "Stage1SpawnPointZ": 42.73
   },
   {
     "ID": "2002",
@@ -59,6 +67,7 @@
     "BaseRotationDamping": 1,
     "WalkSpeedModifier": 0.7,
     "RunSpeedmodifier": 1.2,
+    "SpecialSpeedmodifier": 0,
     "CrouchSpeedmodifier": 0.1,
     "DealingStartTransitionTime": 0.1,
     "DealingEndTransitionTime": 0.8,
@@ -69,6 +78,37 @@
     "MissTargetTime": 5,
     "MaxAggroGage": 100,
     "MinWanderDistance": 5,
-    "MaxWanderDistance": 10
+    "MaxWanderDistance": 10,
+    "Stage1SpawnPointX": -36.16,
+    "Stage1SpawnPointY": 1.5,
+    "Stage1SpawnPointZ": -14.012
+  },
+  {
+    "ID": "2003",
+    "EnemyName": "C003",
+    "PlayerChasingRange": 1,
+    "AttckRange": 2,
+    "ForceTransitionTime": 0.1,
+    "Force": "1",
+    "Damage": "10",
+    "BaseSpeed": 5,
+    "BaseRotationDamping": 3,
+    "WalkSpeedModifier": 0.5,
+    "RunSpeedmodifier": 1.2,
+    "SpecialSpeedmodifier": 3.6,
+    "CrouchSpeedmodifier": 0.1,
+    "DealingStartTransitionTime": 0.1,
+    "DealingEndTransitionTime": 0.8,
+    "VisionRange": 120,
+    "VisionDistance": 20,
+    "RayAmount": 31,
+    "FeelPlayerRange": 18,
+    "MissTargetTime": 2,
+    "MaxAggroGage": 100,
+    "MinWanderDistance": 10,
+    "MaxWanderDistance": 15,
+    "Stage1SpawnPointX": -71.305,
+    "Stage1SpawnPointY": 1.5,
+    "Stage1SpawnPointZ": -27055
   }
 ]

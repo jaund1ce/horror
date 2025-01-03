@@ -10,6 +10,8 @@ public class PaperUI : PopupUI
     [SerializeField] private GameObject paperDetail3; // PaperDetail_1 오브젝트
     [SerializeField] private GameObject paperButton4; // PaperButton_1 오브젝트
     [SerializeField] private GameObject paperDetail4; // PaperDetail_1 오브젝트
+    [SerializeField] private GameObject paperButton5; // PaperButton_1 오브젝트
+    [SerializeField] private GameObject paperDetail5; // PaperDetail_1 오브젝트
 
     public override void OnEnable()
     {
@@ -80,6 +82,17 @@ public class PaperUI : PopupUI
                 paperDetail4.SetActive(true);
             }
         }
+        if (MainGameManager.Instance.paperInteractionCount >= 5)
+        {
+            if (paperButton5 != null)
+            {
+                paperButton5.SetActive(true);
+            }
 
+            if (paperDetail5 != null)
+            {
+                paperDetail5.SetActive(true);
+            }
+        }
     }
 }

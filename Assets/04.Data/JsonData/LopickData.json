@@ -1,0 +1,17 @@
+[
+  {
+    "ID": "int",
+    "LockpickName": "string",
+    "CorrectAngle": "int"
+  },
+  {
+    "ID": 6001,
+    "LockpickName": "Lockpick1",
+    "CorrectAngle": -10
+  },
+  {
+    "ID": 6002,
+    "LockpickName": "Lockpick2",
+    "CorrectAngle": 50
+  }
+]

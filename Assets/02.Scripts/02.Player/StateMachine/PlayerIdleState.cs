@@ -11,6 +11,8 @@ public class PlayerIdleState : PlayerGroundState
     public override void Enter()
     {
         stateMachine.MovementSpeedModifier = 0f;
+        stateMachine.Player.Input.VirtualCameraNoise.m_AmplitudeGain = 1f;
+        stateMachine.Player.Input.VirtualCameraNoise.m_FrequencyGain = 0.01f;
         base.Enter();
         StartAnimation(stateMachine.Player.AnimationData.IdleParameterHash);
     }

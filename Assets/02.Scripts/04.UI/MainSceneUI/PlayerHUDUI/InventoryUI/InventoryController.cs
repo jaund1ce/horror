@@ -10,20 +10,28 @@ public class InventoryController : MonoBehaviour //Player 처럼 인벤토리의 정보를
     //[SerializeField] private UsePanel usePanel;
 
     public InventoryData CurrentInventoryData;
+    public bool isInventoryOpen = false;
 
     private void OnEnable()
     {
-        SoundManger.Instance.MakeEnviormentSound("InventoryOpen");
-        MainGameManager.Instance.makeSound(10f);
+        SoundManger.Instance.MakeEnviormentSound("InventoryOpen", 1f);
+        isInventoryOpen = true;
     }
 
     private void OnDisable()
     {
-        SoundManger.Instance.MakeEnviormentSound("InventoryClose");
+        SoundManger.Instance.MakeEnviormentSound("InventoryClose", 1f);
+        isInventoryOpen = false;
     }
 
     public void ChangeData(InventoryData inventoryData)
     {
+        if (inventoryData == null)
+        {
+            CurrentInventoryData = null;
+            InventoryItemInfoPanelelController.gameObject.SetActive(false);
+            return;
+        }
         if (CurrentInventoryData == inventoryData) return;
 
         CurrentInventoryData = inventoryData;
