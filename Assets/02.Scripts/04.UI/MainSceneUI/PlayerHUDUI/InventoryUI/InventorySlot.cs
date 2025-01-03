@@ -28,7 +28,7 @@ public class InventorySlot : MonoBehaviour
 
     public void OnClick()
     {
-        Debug.Log("slotclicked!");
+        SoundManger.Instance.MakeEnviormentSound("Click4");
         if (CurrentData == null) return;
         InventoryController.ChangeData(CurrentData);
     }

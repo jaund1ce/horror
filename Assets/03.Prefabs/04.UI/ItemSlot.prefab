@@ -227,9 +227,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74893ea2e5507974d925c6721684aa4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentData:
+    ItemID: 0
+    amount: 0
+    slotIndex: 0
+    quickslotIndex: 0
   CurrentItemImage: {fileID: 8456395589277408591}
   CurrentItemAmount: {fileID: 3000047371655525401}
-  InventorySlotsController: {fileID: 0}
+  InventoryController: {fileID: 0}
 --- !u!114 &5501059518385383101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,7 +349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5137255, g: 0.5137255, b: 0.5137255, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

@@ -164,8 +164,20 @@ public class SoundManger : mainSingleton<SoundManger>
         else
         {
             Debug.Log($"No {enviormentName} Enviorment Sound Clip!");
+        }        
+    }
+
+    public void MakeEnviormentSound(string enviormentName, float amount)
+    {
+        if (audioClipDictionary.TryGetValue(enviormentName, out AudioClip value))
+        {
+            Enviroment.PlayOneShot(value);//오브젝트의 소리는 한번만 생성된다.
+            MainGameManager.Instance.MakeSoundAction(amount);
         }
-        
+        else
+        {
+            Debug.Log($"No {enviormentName} Enviorment Sound Clip!");
+        }
     }
 
     protected override void OnDestroy()
