@@ -44,3 +44,92 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afff47c388ab6894f96586336e465902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AllItems: []
+  PlayerData:
+    paperInteractionCount: 0
+    InventoryDatas:
+    - ItemID: 0
+      amount: 0
+      slotIndex: 0
+      quickslotIndex: 0
+    - ItemID: 0
+      amount: 0
+      slotIndex: 0
+      quickslotIndex: 0
+    - ItemID: 0
+      amount: 0
+      slotIndex: 0
+      quickslotIndex: 0
+    - ItemID: 0
+      amount: 0
+      slotIndex: 0
+      quickslotIndex: 0
+    - ItemID: 0
+      amount: 0
+      slotIndex: 0
+      quickslotIndex: 0
+    - ItemID: 0
+      amount: 0
+      slotIndex: 0
+      quickslotIndex: 0
+    - ItemID: 0
+      amount: 0
+      slotIndex: 0
+      quickslotIndex: 0
+    - ItemID: 0
+      amount: 0
+      slotIndex: 0
+      quickslotIndex: 0
+    - ItemID: 0
+      amount: 0
+      slotIndex: 0
+      quickslotIndex: 0
+    - ItemID: 0
+      amount: 0
+      slotIndex: 0
+      quickslotIndex: 0
+    - ItemID: 0
+      amount: 0
+      slotIndex: 0
+      quickslotIndex: 0
+    - ItemID: 0
+      amount: 0
+      slotIndex: 0
+      quickslotIndex: 0
+    - ItemID: 0
+      amount: 0
+      slotIndex: 0
+      quickslotIndex: 0
+    - ItemID: 0
+      amount: 0
+      slotIndex: 0
+      quickslotIndex: 0
+    - ItemID: 0
+      amount: 0
+      slotIndex: 0
+      quickslotIndex: 0
+    - ItemID: 0
+      amount: 0
+      slotIndex: 0
+      quickslotIndex: 0
+    QuickSlotDatas:
+    - ItemID: 0
+      amount: 0
+      slotIndex: 0
+      quickslotIndex: 0
+    - ItemID: 0
+      amount: 0
+      slotIndex: 0
+      quickslotIndex: 0
+    - ItemID: 0
+      amount: 0
+      slotIndex: 0
+      quickslotIndex: 0
+    - ItemID: 0
+      amount: 0
+      slotIndex: 0
+      quickslotIndex: 0
+  InventoryData: []
+  MapData:
+    MapName: 
+    ExploredAreas: 

@@ -24,6 +24,7 @@ public class InventorySlotsController : MonoBehaviour
     {
         for (int i = 0; i < slots.Length; i++)
         {
+            Debug.Log(i);
             var inventoryData = playerInventoryData.inventoryDatas[i];
 
             if (inventoryData.ItemData == null)

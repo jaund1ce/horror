@@ -26,6 +26,12 @@ public class InventoryController : MonoBehaviour //Player 처럼 인벤토리의 정보를
 
     public void ChangeData(InventoryData inventoryData)
     {
+        if (inventoryData == null)
+        {
+            CurrentInventoryData = null;
+            InventoryItemInfoPanelelController.gameObject.SetActive(false);
+            return;
+        }
         if (CurrentInventoryData == inventoryData) return;
 
         CurrentInventoryData = inventoryData;

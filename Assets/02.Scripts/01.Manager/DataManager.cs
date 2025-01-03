@@ -21,7 +21,7 @@ public class DataManager : mainSingleton<DataManager>
 
         if (InventoryData == null)
         {
-            InventoryData = new InventoryData[15];
+            InventoryData = new InventoryData[16];
             for (int i = 0; i < InventoryData.Length; i++)
             {
                 InventoryData[i] = new InventoryData(i);
@@ -37,7 +37,7 @@ public class DataManager : mainSingleton<DataManager>
     public void InitializeGameData()
     {
         PlayerData = new UserInfo();
-        InventoryData = new InventoryData[15]; // 슬롯 수에 맞게 초기화
+        InventoryData = new InventoryData[16]; // 슬롯 수에 맞게 초기화
         for (int i = 0; i < InventoryData.Length; i++)
         {
             InventoryData[i] = new InventoryData(i);

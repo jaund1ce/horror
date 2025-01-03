@@ -21,6 +21,7 @@ public class HideableCabinet : ObjectBase
 
     private IEnumerator OpenDoor()
     {
+        SoundManger.Instance.MakeEnviormentSound("CabinetOpen", 1f);
         isDoorOpen = true;
 
         Quaternion initialRotation = cabinetDoor.localRotation;
@@ -41,6 +42,7 @@ public class HideableCabinet : ObjectBase
 
     private IEnumerator CloseDoor()
     {
+        SoundManger.Instance.MakeEnviormentSound("CabinetClose", 1f);
         isDoorOpen = false;
 
         Quaternion initialRotation = cabinetDoor.localRotation;

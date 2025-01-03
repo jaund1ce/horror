@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryItemInfoPanelelController : MonoBehaviour
 {
+    [SerializeField] private Image itemImage;
     [SerializeField] private TextMeshProUGUI itemNameText;
     [SerializeField] private TextMeshProUGUI itemDescriptionText;
     [SerializeField] private TextMeshProUGUI itemUseBTNText;
@@ -31,6 +33,7 @@ public class InventoryItemInfoPanelelController : MonoBehaviour
         gameObject.SetActive(true);
         currentItemData = itemData;
 
+        itemImage.sprite = currentItemData.ItemData.itemSO.ItemImage;
         itemNameText.text = currentItemData.ItemData.itemSO.ItemNameKor;
         itemDescriptionText.text = currentItemData.ItemData.itemSO.ItemDescription;
 
