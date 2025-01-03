@@ -196,7 +196,7 @@ public class SoundManger : mainSingleton<SoundManger>
         if (audioClipDictionary.TryGetValue(enviormentName, out AudioClip value))
         {
             Enviroment.PlayOneShot(value);//오브젝트의 소리는 한번만 생성된다.
-            MainGameManager.Instance.MakeSoundAction(amount);
+            MainGameManager.Instance.MakeSoundAction(amount + Enviroment.volume);
         }
         else
         {
