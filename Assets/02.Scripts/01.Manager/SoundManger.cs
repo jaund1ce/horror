@@ -73,6 +73,32 @@ public class SoundManger : mainSingleton<SoundManger>
         //}
     }
 
+    public void AdjustSoundVolume(AudioSourceType audioSourceType, float volumePercentage)
+    {
+        switch (audioSourceType)
+        {
+            case AudioSourceType.STEP: PlayerStep.volume = volumePercentage; break;
+            case AudioSourceType.HEARTHBEAT: PlayerHeartBeat.volume = volumePercentage; break;
+            case AudioSourceType.BREATHE: PlayerBreathe.volume = volumePercentage; break;
+            case AudioSourceType.BGM: BGM.volume = volumePercentage; break;
+            case AudioSourceType.ENVIROMENT: Enviroment.volume = volumePercentage; break;
+            default: Debug.Log("Index Error"); break;
+        }
+    }
+
+    public float GetVolume(AudioSourceType audioSourceType)
+    {
+        switch (audioSourceType)
+        {
+            case AudioSourceType.STEP: return PlayerStep.volume;
+            case AudioSourceType.HEARTHBEAT: return PlayerHeartBeat.volume;
+            case AudioSourceType.BREATHE: return PlayerBreathe.volume;
+            case AudioSourceType.BGM: return BGM.volume;
+            case AudioSourceType.ENVIROMENT: return Enviroment.volume;
+            default: Debug.Log("Index Error"); return -1;
+        }
+    }
+
     private void AddToDictionary(AudioClip[] audioClips)
     {
         foreach (AudioClip clip in audioClips)

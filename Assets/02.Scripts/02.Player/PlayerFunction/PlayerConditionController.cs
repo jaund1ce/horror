@@ -17,24 +17,27 @@ public class PlayerConditionController : MonoBehaviour
 
     public event Action OnDie;
     private PlayerBreatheType playerBreatheType = PlayerBreatheType.Normal;
+    private Player player;
 
     void Start()//저장 값을 넣고 싶으면 변경
     {
         Health = maxHealth;
         Stamina = maxStamina;
+
+        player = MainGameManager.Instance.Player;
     }
     private void Update()
     {
         if(Stamina == 0f)
         {
-            MainGameManager.Instance.Player.Input.RunningReady = false;
+            player.Input.RunningReady = false;
         }
 
-        if (MainGameManager.Instance.Player.Input.isRunning)
+        if (player.Input.isRunning)
         {
             Stamina -= staminaUseAmount * Time.deltaTime;
         }
-        else if (MainGameManager.Instance.Player.Input.isCrouching)
+        else if (player.Input.isCrouching)
         {
             Stamina += PassiveStamina * Time.deltaTime;
         }
@@ -73,22 +76,22 @@ public class PlayerConditionController : MonoBehaviour
 
     private bool ChangeState(float staminaPercentage)
     {
-        if (staminaPercentage > 0.8f && playerBreatheType != PlayerBreatheType.Normal)
+        if (staminaPercentage > 0.7f && playerBreatheType != PlayerBreatheType.Normal)
         {
             playerBreatheType = PlayerBreatheType.Normal;
             return true;
         }
-        else if (staminaPercentage <= 0.8f && staminaPercentage > 0.5f && playerBreatheType != PlayerBreatheType.Tired)
+        else if (staminaPercentage <= 0.7f && staminaPercentage > 0.4f && playerBreatheType != PlayerBreatheType.Tired)
         {
             playerBreatheType = PlayerBreatheType.Tired;
             return true;
         }
-        else if (staminaPercentage <= 0.5f && staminaPercentage > 0.2f && playerBreatheType != PlayerBreatheType.Exhausted)
+        else if (staminaPercentage <= 0.4f && staminaPercentage > 0.15f && playerBreatheType != PlayerBreatheType.Exhausted)
         {
             playerBreatheType = PlayerBreatheType.Exhausted;
             return true;
         }
-        else if (staminaPercentage <= 0.2f && staminaPercentage > 0f && playerBreatheType != PlayerBreatheType.Fatigued)
+        else if (staminaPercentage <= 0.15f && staminaPercentage > 0f && playerBreatheType != PlayerBreatheType.Fatigued)
         {
             playerBreatheType = PlayerBreatheType.Fatigued;
             return true;
