@@ -7,7 +7,8 @@
     "ItemEffect": "string",
     "ItemHealHealth": "int",
     "ItemHealMental": "int",
-    "ItemDescription": "string"
+    "ItemDescription": "string",
+    "GetItem": "int"
   },
   {
     "ID": 1001,
@@ -17,7 +18,8 @@
     "ItemEffect": "할당된 키패드로 잠긴문 해금",
     "ItemHealHealth": 0,
     "ItemHealMental": 0,
-    "ItemDescription": "키패드로 잠긴 문을 열때 \n사용하는 도구."
+    "ItemDescription": "키패드로 잠긴 문을 열때 \n사용하는 도구.",
+    "GetItem": 1
   },
   {
     "ID": 1002,
@@ -27,7 +29,8 @@
     "ItemEffect": "락픽퍼즐 풀때 소모",
     "ItemHealHealth": 0,
     "ItemHealMental": 0,
-    "ItemDescription": "락픽퍼즐로 잠긴 문을 열때 \n사용하는 도구."
+    "ItemDescription": "락픽퍼즐로 잠긴 문을 열때 \n사용하는 도구.",
+    "GetItem": 5
   },
   {
     "ID": 1003,
@@ -37,7 +40,8 @@
     "ItemEffect": "할당된 자물쇠로 잠긴문 해금",
     "ItemHealHealth": 0,
     "ItemHealMental": 0,
-    "ItemDescription": "자물쇠로 잠긴 문을 열때 \n사용하는 도구."
+    "ItemDescription": "자물쇠로 잠긴 문을 열때 \n사용하는 도구.",
+    "GetItem": 1
   },
   {
     "ID": 1004,
@@ -47,7 +51,8 @@
     "ItemEffect": "광원",
     "ItemHealHealth": 0,
     "ItemHealMental": 0,
-    "ItemDescription": "앞을 밝히는 아이템"
+    "ItemDescription": "앞을 밝히는 아이템",
+    "GetItem": 1
   },
   {
     "ID": 1005,
@@ -57,7 +62,8 @@
     "ItemEffect": "목표지점으로 좌표로 \n화살표가 표시됨",
     "ItemHealHealth": 0,
     "ItemHealMental": 0,
-    "ItemDescription": "목표지점을 지시하는 아이템"
+    "ItemDescription": "목표지점을 지시하는 아이템",
+    "GetItem": 1
   },
   {
     "ID": 1006,
@@ -67,7 +73,8 @@
     "ItemEffect": "힌트가 적힘",
     "ItemHealHealth": 0,
     "ItemHealMental": 0,
-    "ItemDescription": "힌트가 적힌 종이"
+    "ItemDescription": "힌트가 적힌 종이",
+    "GetItem": 1
   },
   {
     "ID": 1007,
@@ -77,7 +84,8 @@
     "ItemEffect": "지시가 적힘",
     "ItemHealHealth": 0,
     "ItemHealMental": 0,
-    "ItemDescription": "지시가 적힌 종이"
+    "ItemDescription": "지시가 적힌 종이",
+    "GetItem": 1
   },
   {
     "ID": 1008,
@@ -87,7 +95,8 @@
     "ItemEffect": "체력회복",
     "ItemHealHealth": 100,
     "ItemHealMental": 0,
-    "ItemDescription": "체력을 무조건 꽉채우는 회복템"
+    "ItemDescription": "체력을 무조건 꽉채우는 회복템",
+    "GetItem": 1
   },
   {
     "ID": 1009,
@@ -97,7 +106,8 @@
     "ItemEffect": "정신력 회복",
     "ItemHealHealth": 0,
     "ItemHealMental": 100,
-    "ItemDescription": "정신력을 무조건 꽉채우는 회복템"
+    "ItemDescription": "정신력을 무조건 꽉채우는 회복템",
+    "GetItem": 1
   },
   {
     "ID": 1010,
@@ -107,6 +117,7 @@
     "ItemEffect": "배터리 충전",
     "ItemHealHealth": 0,
     "ItemHealMental": 0,
-    "ItemDescription": "전원을 켜주는 아이템"
+    "ItemDescription": "전원을 켜주는 아이템",
+    "GetItem": 1
   }
 ]
