@@ -12,6 +12,8 @@ public class PlayerRunState : PlayerGroundState
     public override void Enter()
     {
         stateMachine.Player.Input.isRunning = true;
+        stateMachine.Player.Input.VirtualCameraNoise.m_AmplitudeGain = 5f;
+        stateMachine.Player.Input.VirtualCameraNoise.m_FrequencyGain = 0.05f;
         stateMachine.MovementSpeedModifier = groundData.RunSpeedModifier;
         base.Enter();
         StartAnimation(stateMachine.Player.AnimationData.RunParameterHash);

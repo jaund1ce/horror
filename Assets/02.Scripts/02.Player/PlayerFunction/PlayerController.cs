@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public Equipment EquipMent { get; private set; }
 
     [SerializeField] private CinemachineVirtualCamera playercamera;
+    public CinemachineBasicMultiChannelPerlin VirtualCameraNoise;
     [SerializeField] private GameObject head;
     [SerializeField] float maxRotateY;
     public SkinnedMeshRenderer SkinnedMeshRenderer;
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
     {
         UnLockRotate();
         PlayerInputs.Enable();
+        VirtualCameraNoise = playercamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         InputSubscribe();
     }
 
