@@ -19,7 +19,7 @@ public class DataManager : mainSingleton<DataManager>
             PlayerData = new UserInfo();
         }
 
-        if (InventoryData == null)
+        if (InventoryData == null || InventoryData.Length != 15)
         {
             InventoryData = new InventoryData[15];
             for (int i = 0; i < InventoryData.Length; i++)

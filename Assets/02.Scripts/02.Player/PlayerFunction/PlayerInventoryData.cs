@@ -134,17 +134,17 @@ public class PlayerInventoryData : MonoBehaviour
 
         CheckEmpty(itemData);
     }
-
     public void SyncInventoryData()
     {
-        if (DataManager.Instance == null)
+        if (DataManager.Instance == null || DataManager.Instance.InventoryData == null)
         {
             return;
         }
 
-        if (DataManager.Instance.InventoryData == null)
+        if (DataManager.Instance.InventoryData.Length != inventoryDatas.Length)
         {
-           return;
+            Debug.LogError("InventoryData size mismatch!");
+            return;
         }
 
         for (int i = 0; i < inventoryDatas.Length; i++)
@@ -152,6 +152,7 @@ public class PlayerInventoryData : MonoBehaviour
             DataManager.Instance.InventoryData[i] = inventoryDatas[i]; // µ¿±âÈ­
         }
     }
+
 
 
 }
