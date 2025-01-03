@@ -56,8 +56,6 @@ public class InventoryData
         else return;
     }
 
-
-
     public void SetItem(ItemData itemData, int quantity)
     {
         this.ItemData = itemData;
@@ -77,7 +75,7 @@ public class InventoryData
 
 public class PlayerInventoryData : MonoBehaviour
 {
-    public InventoryData[] inventoryDatas = new InventoryData[15]; // 인벤토리칸이 15개 클래스를 new로 선언하는 경우 공간만 미리 할당해주고 그 내부 값은 null이다.
+    public InventoryData[] inventoryDatas = new InventoryData[16]; // 인벤토리칸이 15개 클래스를 new로 선언하는 경우 공간만 미리 할당해주고 그 내부 값은 null이다.
 
     private void Awake()
     {
@@ -86,7 +84,7 @@ public class PlayerInventoryData : MonoBehaviour
             return;
         }
 
-        for (int i = 0; i < inventoryDatas.Length; i++) // 할당 후 기본 값 적용
+        for (int i = 0; i < 16; i++) // 할당 후 기본 값 적용
         {
             inventoryDatas[i] = new InventoryData(i);
         }
@@ -149,6 +147,7 @@ public class PlayerInventoryData : MonoBehaviour
 
         for (int i = 0; i < inventoryDatas.Length; i++)
         {
+            Debug.Log(i);
             DataManager.Instance.InventoryData[i] = inventoryDatas[i]; // 동기화
         }
     }

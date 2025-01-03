@@ -303,13 +303,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3421899445845962556}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.00017849039, y: -0.62251455, z: -0.00047647502, w: 0.782608}
-  m_LocalPosition: {x: 0.02, y: 0, z: 0.02}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3991605753899813100}
-  m_LocalEulerAnglesHint: {x: -0.05, y: -77, z: -0.03}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5140488067936447006
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,8 +424,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5969197017517164433}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.014823774, y: 0.026282286, z: 0.00038978015, w: 0.9995446}
-  m_LocalPosition: {x: -0.005783081, y: 1.7660491, z: -0.2}
+  m_LocalRotation: {x: -0.014823571, y: 0.026281605, z: 0.0003897647, w: 0.9995446}
+  m_LocalPosition: {x: -0.005783081, y: 1.766049, z: -0.20000076}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -601,6 +601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playercamera: {fileID: 1422299344214973022}
+  VirtualCameraNoise: {fileID: 0}
   head: {fileID: 870975651428172388}
   maxRotateY: 40
   SkinnedMeshRenderer: {fileID: 6801644551444437539}
@@ -640,6 +641,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryDatas:
+  - ItemID: 0
+    amount: 0
+    slotIndex: 0
+    quickslotIndex: 0
   - ItemID: 0
     amount: 0
     slotIndex: 0

@@ -39,6 +39,7 @@ public class QuickSlot : MonoBehaviour
         Debug.Log("Adding");
         if (MainGameManager.Instance.Player.isChangingQuickSlot)
         {
+            SoundManger.Instance.MakeEnviormentSound("Click2");
             if (CurrentData == null) 
             {
                 if (inventoryLH.CurrentInventoryData.quickslotIndex == -1)
@@ -65,11 +66,12 @@ public class QuickSlot : MonoBehaviour
         }
         else
         {
+            SoundManger.Instance.MakeEnviormentSound("InventoryError");
             Debug.Log("Cant add now");
         }
     }
 
-    public void OnUse()//Äü½½·Ô ¹öÆ° »ç¿ë ½Ã
+    public void OnUse()//Äü½½·Ô ¾ÆÀÌÅÛ »ç¿ë ½Ã
     {
         if (CurrentData.ItemData.itemSO.ItemType == ItemType.CnsItem)
         {

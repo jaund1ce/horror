@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class MainGameManager : mainSingleton<MainGameManager>
 {
     public int paperInteractionCount;
-    public Action<float> makeSound;
+    public Action<float> MakeSoundAction;
     public Player Player;
 
     protected override void Awake()
@@ -33,7 +33,7 @@ public class MainGameManager : mainSingleton<MainGameManager>
 
     public void MakeSound(float amount)
     {
-        makeSound?.Invoke(amount);
+        MakeSoundAction?.Invoke(amount);
     }
 
 

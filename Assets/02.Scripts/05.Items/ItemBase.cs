@@ -23,10 +23,8 @@ public class ItemBase : MonoBehaviour,IInteractable
 
     public void OnInteract()
     {
-        //InventoryManager inventory = FindObjectOfType<InventoryManager>();
-        //inventory.AddItem(itemSO);
-        //GameManger.instance.Player.Inventorydata.AddItem(itemSO);
         inventoryslotcontroller.AddItem(itemData);
         gameObject.SetActive(false);
+        SoundManger.Instance.MakeEnviormentSound("PickupObject", 1f);
     }
 }

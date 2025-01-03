@@ -3,21 +3,23 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryItemInfoPanelelController : MonoBehaviour
 {
+    [SerializeField] private Image itemImage;
     [SerializeField] private TextMeshProUGUI itemNameText;
     [SerializeField] private TextMeshProUGUI itemDescriptionText;
     [SerializeField] private TextMeshProUGUI itemUseBTNText;
     [SerializeField] private InventoryController Inventory;
-
-
-    //private void Awake()//인벤토리가 처음 생성되면 안보이고 싶기 때문에 setactive를 꺼준다.
-    //{
-    //    Inventory.InventoryItemInfoPanelelController = this;
-    //}
+    private Player player;
 
     private InventoryData currentItemData;
+
+    private void OnEnable()
+    {
+        player = MainGameManager.Instance.Player;
+    }
 
     private void OnDisable()//만약을 위한 방어코드
     {
@@ -26,13 +28,20 @@ public class InventoryItemInfoPanelelController : MonoBehaviour
 
     public void ChangePanelText(InventoryData itemData)
     {
-        if (itemData.ItemData == null) return;
+        if(itemData.ItemData == null) return;
 
         gameObject.SetActive(true);
         currentItemData = itemData;
 
+        itemImage.sprite = currentItemData.ItemData.itemSO.ItemImage;
         itemNameText.text = currentItemData.ItemData.itemSO.ItemNameKor;
         itemDescriptionText.text = currentItemData.ItemData.itemSO.ItemDescription;
+
+        if(player.CurrentEquipItem == currentItemData)
+        {
+            itemUseBTNText.text = "UnEquip";
+            return;
+        }
 
         switch (currentItemData.ItemData.itemSO.ItemType)
         {
@@ -40,12 +49,10 @@ public class InventoryItemInfoPanelelController : MonoBehaviour
                 itemUseBTNText.text = "Equip";
                 break;
             case ItemType.CcItem:
-                //itemUseBTNText.text = "Use";
-                itemUseBTNText.text = "Equip";
+                itemUseBTNText.text = "Use";
                 break;
             case ItemType.CnsItem:
-                //itemUseBTNText.text = "Consume";
-                itemUseBTNText.text = "Equip";
+                itemUseBTNText.text = "Consume";
                 break;
             default:
                 itemUseBTNText.text = "";
@@ -58,12 +65,20 @@ public class InventoryItemInfoPanelelController : MonoBehaviour
     public void OnEquipBTNClick()
     {
         if (currentItemData == null) return;
+        if (currentItemData == player.CurrentEquipItem)
+        {
+            SoundManger.Instance.MakeEnviormentSound("Click3");
+            player.CurrentEquipItem = null;
+            return;
+        }
 
-        MainGameManager.Instance.Player.CurrentEquipItem = Inventory.CurrentInventoryData;
-        MainGameManager.Instance.Player.Input.EquipMent.EquipNew(MainGameManager.Instance.Player.CurrentEquipItem);        
+        SoundManger.Instance.MakeEnviormentSound("Click3");
+        player.CurrentEquipItem = Inventory.CurrentInventoryData;
+        player.Input.EquipMent.EquipNew(player.CurrentEquipItem);        
     }
     public void OnAddQuickSlotBTNClick()
     {
-        MainGameManager.Instance.Player.isChangingQuickSlot = true;
+        SoundManger.Instance.MakeEnviormentSound("Click3");
+        player.isChangingQuickSlot = true;
     }
 }
