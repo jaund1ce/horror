@@ -97,6 +97,7 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
             checkMissTime += Time.deltaTime;
             if (checkMissTime > Data.MissTargetTime)
             {
+                if (!isPlayerMiss) GetAggroGage(-0.3f * Data.MaxAggroGage);
                 isPlayerMiss = true;
             }
         }
@@ -123,7 +124,7 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
     public virtual void GetAggroGage(float amount)
     {
         AggroGage += amount;
-
+        AggroGage = Mathf.Clamp(AggroGage, 0f, 100f);
         if (AggroGage >= Data.MaxAggroGage)
         {
             IsAggroGageMax = true;
