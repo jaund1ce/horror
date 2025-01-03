@@ -62,6 +62,9 @@ public class DataManager : mainSingleton<DataManager>
     public void SaveGame()
     {
 
+        // MainGameManager의 데이터를 동기화
+        PlayerData.paperInteractionCount = MainGameManager.Instance.paperInteractionCount; // 추가
+
         // PlayerData 저장 (기존 코드 유지)
         SaveSystem.Save(PlayerData, "PlayerData.json");
 
@@ -78,10 +81,7 @@ public class DataManager : mainSingleton<DataManager>
                     quickslotIndex = inventorySlot.quickslotIndex
                 });
             }
-            else
-            {
-                Debug.Log($"Slot {inventorySlot.slotIndex} is empty or null.");
-            }
+            
         }
 
         // InventoryData 저장 (기존 코드 유지)
@@ -103,6 +103,7 @@ public class DataManager : mainSingleton<DataManager>
 
         if (PlayerData != null)
         {
+            MainGameManager.Instance.paperInteractionCount = PlayerData.paperInteractionCount; // 추가
             Debug.Log("PlayerData loaded successfully.");
         }
         else

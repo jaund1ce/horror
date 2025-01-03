@@ -12,17 +12,17 @@ public interface ISaveable
 public class UserInfo : ISaveable
 {
     public int paperInteractionCount;
-    public InventoryData[] InventoryDatas = new InventoryData[15];
-    public InventoryData[] QuickSlotDatas = new InventoryData[4];
 
     public string Save()
     {
+        paperInteractionCount = MainGameManager.Instance.paperInteractionCount;
         return JsonUtility.ToJson(this, true);
     }
 
     public void Load(string json)
     {
         JsonUtility.FromJsonOverwrite(json, this);
+        MainGameManager.Instance.paperInteractionCount = paperInteractionCount;
     }
 }
 
