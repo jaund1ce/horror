@@ -1,43 +1,62 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UHFPS.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ImageBlink : MonoBehaviour
 {
     private Image image;
+    private AudioSource audioSource;
     [field: SerializeField] private Color startColor;
     [field: SerializeField] private Color endColor;
-    private float duration = 2.0f;
-
-    private float lerpTime = 0;
-    private bool isReversing = false;
+    [field: SerializeField] private AudioClip blinkLightsound;
+    private float blinkInterval = 0.3f; // √÷º“ ±Ù∫˝¿” ∞£∞›
+    private float nextBlinkTime = 0;
+    private float soundCheckTime;
+    private float soundTime = 0.7f;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         if (image == null)
         {
             image = GetComponent<Image>();
         }
+        ScheduleNextBlink();
     }
 
     void Update()
     {
-        lerpTime += (isReversing ? -1 : 1) * Time.deltaTime / duration;
-
-        if (lerpTime > 1)
+        if (Time.time >= nextBlinkTime)
         {
-            lerpTime = 1;
-            isReversing = true;
+            BlinkRandomly();
+            ScheduleNextBlink();
         }
-        else if (lerpTime < 0)
+    }
+
+    private void BlinkRandomly()
+    {
+        if (Random.value > 0.5f)
         {
-            lerpTime = 0;
-            isReversing = false;
+            image.color = startColor;
+            int i = Random.Range(0,2);
+            soundCheckTime += Time.deltaTime;
+            if (i == 1 || soundCheckTime > soundTime) 
+            {
+                audioSource.PlayOneShot(blinkLightsound);
+                soundCheckTime = 0;
+            } 
         }
+        else
+        {
+            image.color = endColor;
+        }
+    }
 
-
-        image.color = Color.Lerp(startColor, endColor, lerpTime);
+    private void ScheduleNextBlink()
+    {
+        nextBlinkTime = Time.time + Random.Range(blinkInterval, blinkInterval * 2);
     }
 }

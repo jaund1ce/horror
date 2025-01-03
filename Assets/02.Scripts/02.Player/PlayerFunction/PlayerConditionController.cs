@@ -81,17 +81,17 @@ public class PlayerConditionController : MonoBehaviour
             playerBreatheType = PlayerBreatheType.Normal;
             return true;
         }
-        else if (staminaPercentage <= 0.7f && staminaPercentage > 0.4f && playerBreatheType != PlayerBreatheType.Tired)
+        else if (staminaPercentage <= 0.7f && staminaPercentage > 0.5f && playerBreatheType != PlayerBreatheType.Tired)
         {
             playerBreatheType = PlayerBreatheType.Tired;
             return true;
         }
-        else if (staminaPercentage <= 0.4f && staminaPercentage > 0.15f && playerBreatheType != PlayerBreatheType.Exhausted)
+        else if (staminaPercentage <= 0.5f && staminaPercentage > 0.1f && playerBreatheType != PlayerBreatheType.Exhausted)
         {
             playerBreatheType = PlayerBreatheType.Exhausted;
             return true;
         }
-        else if (staminaPercentage <= 0.15f && staminaPercentage > 0f && playerBreatheType != PlayerBreatheType.Fatigued)
+        else if (staminaPercentage <= 0.1f && staminaPercentage > 0f && playerBreatheType != PlayerBreatheType.Fatigued)
         {
             playerBreatheType = PlayerBreatheType.Fatigued;
             return true;
