@@ -718,7 +718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  PassiveHealth: 1
+  PassiveHealth: 0.1
   Health: 0
   maxStamina: 100
   PassiveStamina: 5

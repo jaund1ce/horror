@@ -11,13 +11,15 @@ public class SoundManger : mainSingleton<SoundManger>
     public AudioSource PlayerStep;
     public AudioSource PlayerHeartBeat;
     public AudioSource PlayerBreathe;
-    public AudioSource BGM;
     public AudioSource Enviroment;
+    public AudioSource BGM;
+    public AudioSource TEMBGM;
 
     [SerializeField] private AudioClip[] playerstepSource1;
     [SerializeField] private AudioClip[] playerheartbeatSource;
     [SerializeField] private AudioClip[] playerBreatheSource;
     [SerializeField] private AudioClip[] bgmSource;
+    [SerializeField] private AudioClip[] temBgmSource;
     [SerializeField] private AudioClip[] enviromentsource;
 
     private Dictionary<string, AudioClip[]> audioClipsDictionary = new Dictionary<string, AudioClip[]>(); //반드시 초기화 해주자
@@ -26,6 +28,7 @@ public class SoundManger : mainSingleton<SoundManger>
     private float lastSoundChangeTime;
     [SerializeField]private float interval;
     [SerializeField]private int stageNum = -1;
+    private float lastCheckTime;
 
     protected override void Awake()
     {
@@ -40,6 +43,9 @@ public class SoundManger : mainSingleton<SoundManger>
     protected override void Update()
     {
         GetSceneSource(SceneManager.GetActiveScene().name);//##ToDo : 씬이 로드 할때 호출이 필요
+
+        if (Time.time - lastCheckTime < interval) return;
+        StartTemBGMSound(stageNum);
     }
 
     public void GetSceneSource(string stagename)//특정 씬에서 필요한 사운드를 로드
@@ -47,8 +53,10 @@ public class SoundManger : mainSingleton<SoundManger>
         if (stagename == "StartScene" && bgmSource.Length == 0)
         {
             bgmSource = Resources.LoadAll<AudioClip>("Sounds/BGMs");
+            temBgmSource = Resources.LoadAll<AudioClip>("Sounds/TempBGMs");
 
             AddToDictionary(bgmSource);
+            AddToDictionary(temBgmSource);
             ChangeBGMSound(0);
         }
 
@@ -176,6 +184,33 @@ public class SoundManger : mainSingleton<SoundManger>
         else
         {
             Debug.Log("No Sound Clip!");
+        }
+    }
+
+    public void StartTemBGMSound(int stagenum)
+    {
+        stageNum = stagenum;
+        string tembgmname = "";
+
+        switch (stagenum)//이름을 지정, -1은 default이다.
+        {
+            case 0: tembgmname = "StartSceneTemBGM"; break;
+            case 1: tembgmname = "Stage1TemBGM"; break;
+            case 2: tembgmname = "Stage2TemBGM"; break;
+            case 3: tembgmname = "Stage3TemBGM"; break;
+            case 4: tembgmname = "Stage4TemBGM"; break;
+            default: Debug.Log($"StageNum : {stagenum} / out of index"); break;
+        }
+
+        if (audioClipDictionary.TryGetValue(tembgmname, out AudioClip value))
+        {
+            BGM.clip = value;
+            BGM.loop = true;
+            BGM.Play();
+        }
+        else
+        {
+            Debug.Log($"No {tembgmname} Enviorment Sound Clip!");
         }
     }
 
