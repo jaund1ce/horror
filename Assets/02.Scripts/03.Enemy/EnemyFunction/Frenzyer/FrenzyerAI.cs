@@ -5,6 +5,9 @@ using UnityEngine;
 public class FrenzyerAI : EnemyAI
 {
 
+    private float checkFrenzyTime;
+    private float lastFrenzyTime = 30f;
+
     protected override void Awake()
     {
         base.Awake();
@@ -13,11 +16,17 @@ public class FrenzyerAI : EnemyAI
     protected override void Start()
     {
         base.Start();
+        checkFrenzyTime = lastFrenzyTime;
     }
 
     protected override void Update()
     {
         base.Update();
+        if (previouseState == AIState.Frenzy)
+        {
+            checkFrenzyTime = lastFrenzyTime;
+        }
+        checkFrenzyTime += Time.deltaTime;
     }
 
     protected override void CheckTarget()
@@ -54,24 +63,25 @@ public class FrenzyerAI : EnemyAI
     {
         if (IsAttacking) return (int)EnemyAistate;
 
-        if ((IsAggroGageMax || !isPlayerMiss) && !IsInAttackRange())
+        if ((IsAggroGageMax || !IsPlayerMiss) && !IsInAttackRange())
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, Data.FeelPlayerRange, playerMask);
-            if (colliders.Length == 0) 
+            if (colliders.Length == 0 && checkFrenzyTime >= lastFrenzyTime ) 
             {
                 EnemyAistate = AIState.Frenzy;
+                checkFrenzyTime = 0f;
                 return (int)EnemyAistate;
             }
             EnemyAistate = AIState.Chasing;
             return (int)EnemyAistate;
         }
-        else if (!IsAggroGageMax && isPlayerMiss)
+        else if (!IsAggroGageMax && IsPlayerMiss)
         {
             EnemyAistate = AIState.Wandering;
             FeelThePlayer();
             return (int)EnemyAistate;
         }
-        else if (!isPlayerMiss && IsInAttackRange())
+        else if (!IsPlayerMiss && IsInAttackRange())
         {
             EnemyAistate = AIState.Attacking;
             IsAttacking = true;
@@ -82,6 +92,10 @@ public class FrenzyerAI : EnemyAI
             EnemyAistate = AIState.Idle;
             return (int)EnemyAistate;
         }
+    }
+    protected override void PlaySoundBasedOnState()
+    {
+        base.PlaySoundBasedOnState();
     }
 
 }
