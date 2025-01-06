@@ -15,13 +15,13 @@ public class InventoryController : MonoBehaviour //Player 처럼 인벤토리의 정보를
     private void OnEnable()
     {
         SoundManger.Instance.MakeEnviormentSound("InventoryOpen", 1f);
-        isInventoryOpen = true;
+        MainGameManager.Instance.Player.Input.InputUnsubscribe();
     }
 
     private void OnDisable()
     {
         SoundManger.Instance.MakeEnviormentSound("InventoryClose", 1f);
-        isInventoryOpen = false;
+        MainGameManager.Instance.Player.Input.InputSubscribe();
     }
 
     public void ChangeData(InventoryData inventoryData)

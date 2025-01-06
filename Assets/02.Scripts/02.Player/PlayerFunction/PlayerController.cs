@@ -17,9 +17,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private CinemachineVirtualCamera playercamera;
     public CinemachineBasicMultiChannelPerlin VirtualCameraNoise;
-    [SerializeField] private GameObject head;
+    public GameObject Head;
     [SerializeField] float maxRotateY;
-    public SkinnedMeshRenderer SkinnedMeshRenderer;
 
     [SerializeField]private float rotateSencitivity;
     public bool Rotateable = true;
@@ -71,17 +70,7 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
-        UpdateCameraData();
         OnUsing();
-    }
-
-    private void UpdateCameraData()//카메라가 찍고 있는 head의 위치를 mesh로 설정해둔 머리의 y값을 쫓아가도록 설정
-    {
-        Mesh mesh = new Mesh();
-        SkinnedMeshRenderer.BakeMesh(mesh);
-        Vector3 headposition = SkinnedMeshRenderer.transform.TransformPoint(mesh.vertices[0]);
-
-        head.transform.position = new Vector3(head.transform.position.x, headposition.y, head.transform.position.z);
     }
 
     private void RotateCamera(InputAction.CallbackContext context)//cinemachine의 aim방식에 따라서 회전시키는 방법은 다르다.
@@ -99,7 +88,7 @@ public class PlayerController : MonoBehaviour
             if (currentYangle - rotatex * rotateSencitivity * Time.deltaTime < maxRotateY && currentYangle - rotatex * rotateSencitivity * Time.deltaTime > -maxRotateY)
             {
                 currentYangle -= rotatex * rotateSencitivity * Time.deltaTime;
-                head.transform.Rotate(Vector3.right, -rotatex * rotateSencitivity * Time.deltaTime, Space.Self);
+                Head.transform.Rotate(Vector3.right, -rotatex * rotateSencitivity * Time.deltaTime, Space.Self);
             }
         }
     }

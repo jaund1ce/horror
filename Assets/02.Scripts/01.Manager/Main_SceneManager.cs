@@ -35,12 +35,13 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
 
     public void LoadStartScene()
     {
-            ChangeScene(startSceneName);
+        ChangeScene(startSceneName);
     }
 
     public void LoadMainScene()
     {
-            ChangeScene(mainSceneName);
+        ChangeScene(mainSceneName);
+        SoundManger.Instance.GetSceneSource(mainSceneName);
     }
     public void LoadMainScene2()
     {
@@ -50,6 +51,11 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
     public void   LoadEndScene()
     {
             ChangeScene(endSceneName);
+    }
+
+    public void LoadScene(string SceneName)
+    {
+        ChangeScene(SceneName);
     }
 
     public void QuitGame()

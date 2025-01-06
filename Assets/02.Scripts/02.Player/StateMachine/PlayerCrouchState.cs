@@ -17,8 +17,9 @@ public class PlayerCrouchState : PlayerBaseState
         stateMachine.Player.CapsuleCollider.height = 0.8f;
         stateMachine.Player.CapsuleCollider.radius = 0.35f;
         stateMachine.Player.CapsuleCollider.center = new Vector3(0,0.4f,0);
-        stateMachine.Player.Input.VirtualCameraNoise.m_AmplitudeGain = 0f;//크라우치 애니메이션이 이미 위 아래로 머리를 움직임
-        stateMachine.Player.Input.VirtualCameraNoise.m_FrequencyGain = 0;
+        stateMachine.Player.Input.Head.transform.localPosition = Vector3.Lerp(stateMachine.Player.Input.Head.transform.localPosition, new Vector3(0, 0.9f, -0.2f),0.9f);
+        stateMachine.Player.Input.VirtualCameraNoise.m_AmplitudeGain = 1f;
+        stateMachine.Player.Input.VirtualCameraNoise.m_FrequencyGain = 0.005f;
         stateMachine.MovementSpeedModifier = groundData.CrouchSpeedModifier;
         StartAnimation(stateMachine.Player.AnimationData.CrouchParameterHash);
     }
@@ -30,6 +31,7 @@ public class PlayerCrouchState : PlayerBaseState
         stateMachine.Player.CapsuleCollider.height = 2f;
         stateMachine.Player.CapsuleCollider.radius = 0.25f;
         stateMachine.Player.CapsuleCollider.center = new Vector3(0, 1f, 0);
+        stateMachine.Player.Input.Head.transform.localPosition = Vector3.Lerp(stateMachine.Player.Input.Head.transform.localPosition, new Vector3(0, 1.8f, -0.2f), 0.9f);
         StopAnimation(stateMachine.Player.AnimationData.CrouchParameterHash);
     }
 

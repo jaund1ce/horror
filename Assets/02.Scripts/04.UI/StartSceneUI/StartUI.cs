@@ -2,31 +2,25 @@ using UnityEngine;
 
 public class StartUI : BaseUI
 {
-    [field: SerializeField] private AudioClip buttonSound;
-    private AudioSource audiosource;
-
-    private void Awake()
-    {
-        audiosource = GetComponent<AudioSource>();
-    }
-    
     public void LoadMain()
     {
-        audiosource.PlayOneShot(buttonSound);
+        SoundManger.Instance.MakeEnviormentSound("PaperSound");
         Main_SceneManager.Instance.LoadMainScene();
     }
     public void LoadQuit()
     {
-        audiosource.PlayOneShot(buttonSound);
+        SoundManger.Instance.MakeEnviormentSound("PaperSound");
         Main_SceneManager.Instance.QuitGame();
     }
     public override void OpenUI()
     {
+        SoundManger.Instance.MakeEnviormentSound("PaperSound");
         base.OpenUI();
     }
 
     public override void CloseUI()
     {
+        SoundManger.Instance.MakeEnviormentSound("PaperSound");
         base.CloseUI();
     }
 }

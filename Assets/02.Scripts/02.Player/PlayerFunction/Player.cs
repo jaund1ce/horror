@@ -25,8 +25,10 @@ public class Player : MonoBehaviour
 
     [Header("Player States")]
     public bool isChangingQuickSlot = false;
+    public bool isInventoryOpen = false;
     public bool isGround = true;
     public bool isHiding = false;
+    public bool isCollideOverlapr= false;
     public bool isCrouching = false;
     [SerializeField]private PlayerHeartState playerState = PlayerHeartState.Normal; //creture 와 플레이어가 둘다 가지고 있어야하나?
     [SerializeField]private GroundType groundType = GroundType.Cement;
@@ -80,6 +82,7 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("HideZone"))
         {
+            if (isHiding) isCollideOverlapr = true;
             isHiding = true;
         }
     }
@@ -88,6 +91,12 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("HideZone"))
         {
+            if (isCollideOverlapr)
+            {
+                isCollideOverlapr = false;
+                isHiding = true;
+                return;
+            }
             isHiding = false;
         }
     }
@@ -110,37 +119,41 @@ public class Player : MonoBehaviour
     private void CheckGround()
     {
         Vector3 curVector = this.gameObject.transform.position;
-        Ray ray1 = new Ray(curVector + Vector3.forward*0.1f + new Vector3(0,0.1f,0), Vector3.down);
-        Ray ray2 = new Ray(curVector + Vector3.back * 0.1f + new Vector3(0,0.1f,0), Vector3.down);
-        Ray ray3 = new Ray(curVector + Vector3.right * 0.1f + new Vector3(0,0.1f,0), Vector3.down);
-        Ray ray4 = new Ray(curVector + Vector3.left * 0.1f + new Vector3(0,0.1f,0), Vector3.down);
+        Ray ray1 = new Ray(curVector + Vector3.forward*0.2f + new Vector3(0,0.1f,0), Vector3.down);
+        Ray ray2 = new Ray(curVector + Vector3.back * 0.2f + new Vector3(0,0.1f,0), Vector3.down);
+        Ray ray3 = new Ray(curVector + Vector3.right * 0.2f + new Vector3(0,0.1f,0), Vector3.down);
+        Ray ray4 = new Ray(curVector + Vector3.left * 0.2f + new Vector3(0,0.1f,0), Vector3.down);
         float checkdistance = 0.2f;
         RaycastHit hit;
 
         if (Physics.Raycast(ray1,out hit, checkdistance) || Physics.Raycast(ray2, checkdistance) || Physics.Raycast(ray3, checkdistance) || Physics.Raycast(ray4, checkdistance))
         {
-            GroundType temGrounType = GroundType.None;
-            switch (hit.collider.gameObject.layer)
+            if (hit.collider != null)
             {
-                case 0: 
-                case 20: temGrounType = GroundType.Cement; break;
-                case 21: temGrounType = GroundType.Concrete; break;
-                case 22: temGrounType = GroundType.Wood; break;
-                case 23: temGrounType = GroundType.Dirt; break;
-                default:
-                    {
-                        Debug.Log("No GroundType!");
-                        groundType = GroundType.None;
-                        break;
-                    }
-            }
-            isGround = true;
+                GroundType temGrounType = GroundType.None;
 
-            if(temGrounType != groundType)
-            {
-                groundType = temGrounType;
-                SoundManger.Instance.ChangeStepSound(groundType);
+                switch (hit.collider.gameObject.layer)
+                {
+                    case 0:
+                    case 20: temGrounType = GroundType.Cement; break;
+                    case 21: temGrounType = GroundType.Concrete; break;
+                    case 22: temGrounType = GroundType.Wood; break;
+                    case 23: temGrounType = GroundType.Dirt; break;
+                    default:
+                        {
+                            Debug.Log("No GroundType!");
+                            groundType = GroundType.None;
+                            break;
+                        }
+                }
+
+                if (temGrounType != groundType)
+                {
+                    groundType = temGrounType;
+                    SoundManger.Instance.ChangeStepSound(groundType);
+                }
             }
+            isGround = true;            
         }
         else
         {
