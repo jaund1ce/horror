@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class StartUI : BaseUI
-{    
+{
     public void LoadMain()
     {
         SoundManger.Instance.MakeEnviormentSound("PaperSound");
@@ -14,11 +14,13 @@ public class StartUI : BaseUI
     }
     public override void OpenUI()
     {
+        SoundManger.Instance.MakeEnviormentSound("PaperSound");
         base.OpenUI();
     }
 
     public override void CloseUI()
     {
+        SoundManger.Instance.MakeEnviormentSound("PaperSound");
         base.CloseUI();
     }
 }
