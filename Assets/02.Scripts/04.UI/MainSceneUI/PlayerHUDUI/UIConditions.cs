@@ -8,6 +8,7 @@ public class UICondition : MonoBehaviour
     public Condition health;
     public Condition stamina;
     public Condition aggro;
+    public Condition DamagePrompt;
     public CreatureAI creatureAI;
 
     private void Start()
@@ -21,5 +22,6 @@ public class UICondition : MonoBehaviour
         health.GetPercentage(playerConditionController.GetHPPercentage());
         stamina.GetPercentage(playerConditionController.GetStaminaPercentage());
         aggro.GetPercentage(creatureAI.AggroGage/100f);
+        DamagePrompt.GetAPercentage(playerConditionController.GetHPPercentage());
     }
 }

@@ -52,7 +52,13 @@ public class PlayerConditionController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if(Health ==0) return;
+        SoundManger.Instance.MakeEnviormentSound("PlayerTakeDamage");
+        //else if (damage >= 10)//소리만 추가 된다면 데미지에 따라 다른 소리를
+        //{
+        //    SoundManger.Instance.MakeEnviormentSound("PlayerTakeDamage2");
+        //}
+
+        if (Health ==0) return;
 
         Health = Mathf.Max(Health - damage, 0);
 
