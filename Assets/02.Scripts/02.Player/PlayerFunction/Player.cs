@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
 
     [Header("Player States")]
     public bool isChangingQuickSlot = false;
+    public bool isInventoryOpen = false;
     public bool isGround = true;
     public bool isHiding = false;
     public bool isCrouching = false;
