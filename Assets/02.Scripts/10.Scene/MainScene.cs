@@ -9,6 +9,7 @@ public class MainScene : SceneBase
     {
         Debug.Log("MainScene Start method called.");
         UIManager.Instance.Show<MainUI>();
+        //MapManager.Instance.ShowMap<Stage01>;
         MapManager.Instance.LoadAndSpawnObjects();
         DataManager.Instance.LoadAllItems();
     }
