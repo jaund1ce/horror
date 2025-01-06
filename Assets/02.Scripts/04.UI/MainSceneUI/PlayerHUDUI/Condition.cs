@@ -9,4 +9,12 @@ public class Condition : MonoBehaviour
     {
         uiBar.fillAmount = percentage;
     }
+
+    public void GetAPercentage(float percentage)
+    {
+        Color currentColor = uiBar.color;
+        currentColor.a = (1f - percentage)/2;
+
+        uiBar.color = currentColor;
+    }
 }

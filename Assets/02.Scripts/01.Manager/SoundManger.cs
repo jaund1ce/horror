@@ -177,14 +177,35 @@ public class SoundManger : mainSingleton<SoundManger>
             if (playerStepCoroutine == null) return;
 
             StopCoroutine(playerStepCoroutine);
+            PlayerStep.pitch = 1f;
+            playerStepCoroutine = null;
+        }
+    }
+
+    public void PlayPlayrtStepSound(bool OnOff, int pitch)
+    {
+        if (OnOff)
+        {
+            PlayerStep.pitch = pitch;
+            playerStepCoroutine = StartCoroutine(StartStepSound());
+        }
+        else
+        {
+            if (playerStepCoroutine == null) return;
+
+            StopCoroutine(playerStepCoroutine);
+            PlayerStep.pitch = 1f;
             playerStepCoroutine = null;
         }
     }
 
     private IEnumerator StartStepSound()//코루티의 조건을 외부에서 결정
     {
+        if (stepAudioClips == null) yield break;
+
         while (true)
         {
+            index = (int)((index) % stepAudioClips.Length);//다른 소리의 리스트의 길이는 서로 다르기때문에
             PlayerStep.clip = stepAudioClips[index];
             PlayerStep.PlayOneShot(PlayerStep.clip);
 
@@ -254,7 +275,7 @@ public class SoundManger : mainSingleton<SoundManger>
             case 2: tembgmname = "Stage2TemBGM"; break;
             case 3: tembgmname = "Stage3TemBGM"; break;
             case 4: tembgmname = "Stage4TemBGM"; break;
-            default: Debug.Log($"StageNum : {stagenum} / out of index"); break;
+            default: Debug.Log($"TemBGM StageNum : {stagenum} / out of index"); break;
         }
 
         if (audioClipDictionary.TryGetValue(tembgmname, out AudioClip value))
@@ -265,7 +286,7 @@ public class SoundManger : mainSingleton<SoundManger>
         else
         {
             TEMBGM.clip = null;
-            Debug.Log($"No {tembgmname} Enviorment Sound Clip!");
+            Debug.Log($"No {tembgmname} TemBGMName Sound Clip!");
         }
     }
 
