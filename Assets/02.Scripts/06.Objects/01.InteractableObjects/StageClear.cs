@@ -19,7 +19,8 @@ public class StageClear : MonoBehaviour
 
     private void stageClear()
     {
-        Main_SceneManager.Instance.LoadEndScene();
+        DataManager.Instance.SaveGame();
+        Main_SceneManager.Instance.LoadMainScene2();
     }
 
 }

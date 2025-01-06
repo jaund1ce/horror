@@ -23,8 +23,8 @@ public class InventoryUI : PopupUI
 
     public void OnDocumentUI()
     {
-        UIManager.Instance.Show<PaperUI>();
+
         UIManager.Instance.Hide<InventoryUI>();
-        UnlockCursor();
+        UIManager.Instance.Show<PaperUI>();
     }
 }
