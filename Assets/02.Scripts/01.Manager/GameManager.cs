@@ -13,6 +13,7 @@ public class MainGameManager : mainSingleton<MainGameManager>
         base.Awake();
         SceneManager.sceneLoaded += OnSceneLoaded;
         FindOrSetPlayer();
+        paperInteractionCount = 0;
     }
 
     private void FindOrSetPlayer()

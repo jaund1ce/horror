@@ -34,7 +34,29 @@
             "categoryType": "Enemy",
             "position": {},
             "referenceObjectName": "Enemy02_SpawnPoint"
+        },
+        {
+            "key": "DropFlashlight",
+            "assetType": "Prefab",
+            "categoryType": "Item",
+            "position": {},
+            "referenceObjectName": "HideableTable_3"
+        },
+        {
+            "key": "DropHealPack",
+            "assetType": "Prefab",
+            "categoryType": "Item",
+            "position": {},
+            "referenceObjectName": "HideableTable_13"
+        },
+        {
+            "key": "DropHealPack",
+            "assetType": "Prefab",
+            "categoryType": "Item",
+            "position": {},
+            "referenceObjectName": "HideableTable_4"
         }
+
 
 
     ]

@@ -8,20 +8,6 @@
             "referenceObjectName": "SpawnPoint"
         },
         {
-            "key": "DropHealPack",
-            "assetType": "Prefab",
-            "categoryType": "Item",
-            "position": {},
-            "referenceObjectName": "HideableTable_1"
-        },
-        {
-            "key": "DropHealPack",
-            "assetType": "Prefab",
-            "categoryType": "Item",
-            "position": {},
-            "referenceObjectName": "HideableTable_6"
-        },
-        {
             "key": "Creature",
             "assetType": "Prefab",
             "categoryType": "Enemy",
@@ -29,11 +15,121 @@
             "referenceObjectName": "Enemy01_SpawnPoint"
         },
         {
-            "key": "Gazer_Statue",
+            "key": "Frenzyer",
             "assetType": "Prefab",
             "categoryType": "Enemy",
             "position": {},
             "referenceObjectName": "Enemy02_SpawnPoint"
+        },
+        {
+            "key": "DropLockpick",
+            "assetType": "Prefab",
+            "categoryType": "Item",
+            "position": {
+                "x": 1.08,
+                "y": -0.7,
+                "z": 7.76
+            },
+            "referenceObjectName":
+        },
+        {
+            "key": "DropLockpick",
+            "assetType": "Prefab",
+            "categoryType": "Item",
+            "position": {
+                "x": -35.37,
+                "y": -0.7,
+                "z": 6.55
+            },
+            "referenceObjectName":
+        },
+        {
+            "key": "DropLockpick",
+            "assetType": "Prefab",
+            "categoryType": "Item",
+            "position": {
+                "x": -31.4,
+                "y": -0.7,
+                "z": 40.8
+            },
+            "referenceObjectName":
+        },
+        {
+            "key": "DropLockpick",
+            "assetType": "Prefab",
+            "categoryType": "Item",
+            "position": {
+                "x": -20.54,
+                "y": -0.7,
+                "z": 61.485
+            },
+            "referenceObjectName":
+        },
+        {
+            "key": "DropLockpick",
+            "assetType": "Prefab",
+            "categoryType": "Item",
+            "position": {
+                "x": 21.27,
+                "y": -0.7,
+                "z": 43.98
+            },
+            "referenceObjectName":
+        },
+        {
+            "key": "DropLockpick",
+            "assetType": "Prefab",
+            "categoryType": "Item",
+            "position": {
+                "x": 22.814,
+                "y": -0.7,
+                "z": 14.27
+            },
+            "referenceObjectName":
+        },
+        {
+            "key": "DropHealpack",
+            "assetType": "Prefab",
+            "categoryType": "Item",
+            "position": {
+                "x": -3.28,
+                "y": -0.7,
+                "z": 31.79
+            },
+            "referenceObjectName":
+        },
+        {
+            "key": "DropHealpack",
+            "assetType": "Prefab",
+            "categoryType": "Item",
+            "position": {
+                "x": -4.8,
+                "y": -3.7,
+                "z": 99.7
+            },
+            "referenceObjectName":
+        },
+        {
+            "key": "DropHealpack",
+            "assetType": "Prefab",
+            "categoryType": "Item",
+            "position": {
+                "x": 49.5,
+                "y": -1.7,
+                "z": 33.91
+            },
+            "referenceObjectName":
+        },
+        {
+            "key": "DropHealpack",
+            "assetType": "Prefab",
+            "categoryType": "Item",
+            "position": {
+                "x": 98.22,
+                "y": -2.4,
+                "z": 59.71
+            },
+            "referenceObjectName":
         }
 
 

@@ -11,6 +11,7 @@ public class MainScene2 : SceneBase
         MapManager.Instance.LoadAndSpawnObjects2();
         DataManager.Instance.LoadAllItems();
         UIManager.Instance.Show<MainUI>();
+        DataManager.Instance.LoadGame();
     }
 
 
