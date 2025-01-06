@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
     private void LateUpdate()
     {
         UpdateCameraData();
+        OnUsing();
     }
 
     private void UpdateCameraData()//카메라가 찍고 있는 head의 위치를 mesh로 설정해둔 머리의 y값을 쫓아가도록 설정
@@ -134,5 +135,15 @@ public class PlayerController : MonoBehaviour
     public void ChangeRotateSencitivity(float amount)
     {
         rotateSencitivity = amount;
+    }
+
+    public void OnUsing()
+    {
+        if (EquipMent.CurEquip == null)
+        {
+            return;
+        }
+        bool onusing = EquipMent.CurEquip.OnUsing;
+        MainGameManager.Instance.Player.Animator.SetBool("OnUsing", onusing);
     }
 }

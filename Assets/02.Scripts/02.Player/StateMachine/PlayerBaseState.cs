@@ -11,13 +11,11 @@ public class PlayerBaseState : IState
     protected PlayerStateMachine2 stateMachine;
     protected readonly PlayerGroundData groundData;
     private bool IsLightOn;
-    public Light light;
 
     public PlayerBaseState(PlayerStateMachine2 stateMachine)
     {
         this.stateMachine = stateMachine;
         groundData = stateMachine.Player.Data.GroundData;
-        light = stateMachine.Player.gameObject.GetComponentInChildren<Light>(true);
     }
     public virtual void Enter()
     {
@@ -36,7 +34,6 @@ public class PlayerBaseState : IState
         input.PlayerActions.Run.started += OnRunStarted;
         input.PlayerActions.Crouch.started += OnCrouchStarted;
         input.PlayerActions.JumpParkour.started += OnJumpStarted;
-        input.PlayerActions.LightControl.started += OnLightControl;
     }
 
 
@@ -155,24 +152,5 @@ public class PlayerBaseState : IState
         float moveSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
         return moveSpeed;
     }
-    private void OnLightControl(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Started)
-        {
-            if (IsLightOn)
-            {
-                light.gameObject.SetActive(false);
-                IsLightOn = false;
-                Debug.Log("isLightOff");
-            }
-            else if (!IsLightOn)
-            {
-                light.gameObject.SetActive(true);
-                IsLightOn = true;
-                Debug.Log("isLightOn");
-            }
-        }
-    }
-
     
 }

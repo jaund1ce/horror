@@ -50,7 +50,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3859356586777422147
 Transform:
   m_ObjectHideFlags: 0
@@ -60,7 +60,7 @@ Transform:
   m_GameObject: {fileID: 995039423475799774}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -73,14 +73,14 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 995039423475799774}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 3
+  m_Intensity: 5
   m_Range: 30
-  m_SpotAngle: 40
+  m_SpotAngle: 45
   m_InnerSpotAngle: 10
   m_CookieSize: 10
   m_Shadows:
@@ -425,7 +425,7 @@ Transform:
   m_GameObject: {fileID: 5969197017517164433}
   serializedVersion: 2
   m_LocalRotation: {x: -0.014823774, y: 0.026282286, z: 0.00038978015, w: 0.9995446}
-  m_LocalPosition: {x: -0.005783081, y: 1.7660491, z: -0.2}
+  m_LocalPosition: {x: 0, y: 1.7660491, z: -0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -583,6 +583,7 @@ MonoBehaviour:
   isHiding: 0
   isCrouching: 0
   playerState: -1
+  groundType: 0
   checkDistance: 12
   checkDuration: 2
   monsterMask:

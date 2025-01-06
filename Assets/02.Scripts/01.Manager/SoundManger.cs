@@ -182,7 +182,7 @@ public class SoundManger : mainSingleton<SoundManger>
         }
     }
 
-    public void PlayPlayrtStepSound(bool OnOff, int pitch)
+    public void PlayPlayrtStepSound(bool OnOff, float pitch)
     {
         if (OnOff)
         {

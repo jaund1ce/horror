@@ -22,8 +22,7 @@ public class EquipKey : EquipItemBase
 
     public override void OnUse() 
     {
-        base.OnUse();
-        //열쇠 작동 코드 작성
+       
     }
 
 }
