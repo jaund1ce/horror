@@ -14,7 +14,7 @@ public class EquipLight : EquipItemBase
     protected override void Start()
     {
         base.Start();
-        light = GetComponent<Light>();
+        light = MainGameManager.Instance.Player.gameObject.GetComponentInChildren<Light>();
         light.enabled = false;
     }
 
@@ -32,24 +32,17 @@ public class EquipLight : EquipItemBase
         if (inventoryData == null) return;
 
         Invoke("OnUse", 2f);
-        if (!OnUsing)
-        {
-            light.enabled = true;
-            OnUsing = true;
-        }
     }
 
 
     public override void OnUse()
     {
-        base.OnUse();
-
         if (!OnUsing)
         {
             light.enabled = true;
             OnUsing = true;
         }
-        else if (OnUsing)
+        else
         {
             light.enabled = false;
             OnUsing = false;

@@ -20,6 +20,7 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
 
     [SerializeField] private string startSceneName = "StartScene";
     [SerializeField] private string mainSceneName = "MainScene";
+    [SerializeField] private string mainScene2Name = "MainScene2";
     [SerializeField] private string endSceneName = "EndScene";
 
     protected override void Awake()
@@ -40,6 +41,10 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
     public void LoadMainScene()
     {
             ChangeScene(mainSceneName);
+    }
+    public void LoadMainScene2()
+    {
+        ChangeScene(mainScene2Name);
     }
 
     public void   LoadEndScene()
