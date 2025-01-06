@@ -31,6 +31,7 @@ public class InteractableWardrobe : ObjectBase
 
     public override void OnInteract()
     {
+        //## 열쇠체크
         ToggleWardrobe();
     }
 
