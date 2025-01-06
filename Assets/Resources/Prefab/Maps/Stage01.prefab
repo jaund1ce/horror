@@ -14009,6 +14009,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300028, guid: 0b9f8fbb97531c1438c9e0f403373646, type: 3}
+--- !u!1 &1094334958838743712
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4958264142070776521}
+  m_Layer: 3
+  m_Name: Enemy02_SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4958264142070776521
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094334958838743712}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.70711, z: -0, w: -0.70710367}
+  m_LocalPosition: {x: 24.65, y: 0.3413546, z: -0.793}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6282500574904446350}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1106412750066094572
 GameObject:
   m_ObjectHideFlags: 0
@@ -99163,6 +99194,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6282500574904446350}
+  - component: {fileID: 8455466655895187195}
   m_Layer: 0
   m_Name: Stage01
   m_TagString: Untagged
@@ -99184,6 +99216,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1433896890568182679}
+  - {fileID: 18665190124725833}
+  - {fileID: 4958264142070776521}
   - {fileID: 7474311633862960688}
   - {fileID: 6979199212926974108}
   - {fileID: 6733759666646827385}
@@ -99192,6 +99226,18 @@ Transform:
   - {fileID: 6447354890134966239}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8455466655895187195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7463806850334459612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 670a48eaeb98e5e4bbbcb28d69076b42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7468736409535334923
 GameObject:
   m_ObjectHideFlags: 0
@@ -100162,6 +100208,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300004, guid: 0b9f8fbb97531c1438c9e0f403373646, type: 3}
+--- !u!1 &7510743717148644947
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 18665190124725833}
+  m_Layer: 3
+  m_Name: Enemy01_SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &18665190124725833
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7510743717148644947}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -96.77, y: 0.38135505, z: 36.299984}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6282500574904446350}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7520625583279850680
 GameObject:
   m_ObjectHideFlags: 0
@@ -123096,7 +123173,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 282021199117086150, guid: 0b56d9e2cfe6da14e9ec359b6741792d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 9
+      value: 8.95
       objectReference: {fileID: 0}
     - target: {fileID: 282021199117086150, guid: 0b56d9e2cfe6da14e9ec359b6741792d, type: 3}
       propertyPath: m_LocalScale.z
@@ -123104,7 +123181,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 282021199117086150, guid: 0b56d9e2cfe6da14e9ec359b6741792d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -48
+      value: -47.5
       objectReference: {fileID: 0}
     - target: {fileID: 282021199117086150, guid: 0b56d9e2cfe6da14e9ec359b6741792d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -123196,7 +123273,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.1
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 31188227f686acc43b9b7a2b74521974, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: f53675df3b05eb44e9fa52258e7bb2aa, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &197384417189506933 stripped
 Transform:
