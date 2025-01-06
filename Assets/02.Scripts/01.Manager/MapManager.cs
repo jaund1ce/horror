@@ -165,7 +165,7 @@ public class MapManager : mainSingleton<MapManager>
             GameObject referenceObject = GameObject.Find(data.referenceObjectName);
             if (referenceObject != null)
             {
-                spawnPosition = referenceObject.transform.position + new Vector3(0, 2, 0); // y + 3으로 위치 조정
+                spawnPosition = referenceObject.transform.position + new Vector3(0, 2, 0); // y + 2으로 위치 조정
             }
             else
             {
