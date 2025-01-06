@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     public bool isHiding = false;
     public bool isCrouching = false;
     [SerializeField]private PlayerHeartState playerState = PlayerHeartState.Normal; //creture 와 플레이어가 둘다 가지고 있어야하나?
+    [SerializeField]private GroundType groundType = GroundType.Cement;
 
     [Header("Monster Check Data")]
     [SerializeField] private float checkDistance = 12f;
@@ -113,13 +114,36 @@ public class Player : MonoBehaviour
         Ray ray3 = new Ray(curVector + Vector3.right * 0.1f + new Vector3(0,0.1f,0), Vector3.down);
         Ray ray4 = new Ray(curVector + Vector3.left * 0.1f + new Vector3(0,0.1f,0), Vector3.down);
         float checkdistance = 0.2f;
+        RaycastHit hit;
 
-        if (Physics.Raycast(ray1, checkdistance) || Physics.Raycast(ray2, checkdistance) || Physics.Raycast(ray3, checkdistance) || Physics.Raycast(ray4, checkdistance))
+        if (Physics.Raycast(ray1,out hit, checkdistance) || Physics.Raycast(ray2, checkdistance) || Physics.Raycast(ray3, checkdistance) || Physics.Raycast(ray4, checkdistance))
         {
+            GroundType temGrounType = GroundType.None;
+            switch (hit.collider.gameObject.layer)
+            {
+                case 0: 
+                case 20: temGrounType = GroundType.Cement; break;
+                case 21: temGrounType = GroundType.Concrete; break;
+                case 22: temGrounType = GroundType.Wood; break;
+                case 23: temGrounType = GroundType.Dirt; break;
+                default:
+                    {
+                        Debug.Log("No GroundType!");
+                        groundType = GroundType.None;
+                        break;
+                    }
+            }
             isGround = true;
+
+            if(temGrounType != groundType)
+            {
+                groundType = temGrounType;
+                SoundManger.Instance.ChangeStepSound(groundType);
+            }
         }
         else
         {
+            groundType = GroundType.None;
             isGround = false;
         }
     }
