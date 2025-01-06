@@ -4,37 +4,34 @@ using UnityEngine;
 
 public abstract class EquipItemBase : MonoBehaviour
 {
-    protected bool onUsing;
+    public bool OnUsing { get; protected set; }
     protected string animUse = "Use";
     protected InventoryData inventoryData;
 
-    protected Animator animator;
-    protected Camera camera;
-
     protected virtual void Start()
     {
-        animator = GetComponent<Animator>();
-        camera = Camera.main;
+
         inventoryData = MainGameManager.Instance.Player.CurrentEquipItem;
     }
 
     public virtual void OnUseInput() 
     {
         if (inventoryData == null) return;
-        if (!onUsing)
+        if (!OnUsing)
         {
-            onUsing = true;
+            OnUsing = true;
             if (inventoryData.Use(1) == (int)TryUse.ResetItem) 
             {
                 Destroy(this.gameObject);
             }
-            animator.SetTrigger(animUse);
+            Invoke("OnUse", 2f);
+            // 애니메이션 추가
         }
     }
 
     public virtual void OnUse() 
     {
-        onUsing = false;
+        OnUsing = false;
     }
 
 }
