@@ -53,4 +53,9 @@ public class GhostAI : EnemyAI
     {
         return base.UpdateState();
     }
+
+    protected override void PlaySoundBasedOnState()
+    {
+        base.PlaySoundBasedOnState();
+    }
 }

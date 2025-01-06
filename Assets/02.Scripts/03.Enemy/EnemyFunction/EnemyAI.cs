@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public enum SightInObject
 {
@@ -21,31 +22,51 @@ public enum AIState
     Frenzy
 }
 
+public struct SoundState
+{
+    public AudioClip Sound;
+    public float LastPlayTime; 
+}
+
 public abstract class EnemyAI : MonoBehaviour, IAggroGage
 {
-    
+    [field: Header("Enemy Settings")]
+
     [SerializeField]protected LayerMask playerMask;
-    [HideInInspector] public AIState EnemyAistate;
-    protected NavMeshAgent agent;
-    [field: SerializeField] public EnemySO Data { get; private set; }
-
-    public bool isPlayerMiss { get; private set; } = true;
-    public bool IsAggroGageMax { get; private set; }
-    protected float checkMissTime;
-    [HideInInspector] public float AggroGage;
+    [HideInInspector] public EnemySO Data { get; protected set; }
     [HideInInspector] public bool IsAttacking;
+    protected Enemy enemy;
+    protected NavMeshAgent agent;
+    
 
+
+    [field: Header("Enemy CalculateToAction")]
+
+    [HideInInspector] public AIState EnemyAistate{ get; protected set; }
+    [HideInInspector] public float AggroGage;
+    public bool IsPlayerMiss { get; protected set; } = true;
+    public bool IsAggroGageMax { get; protected set; }
     protected List<int> visionInObject = new List<int>();
+    protected float checkMissTime;
+    protected Dictionary<AIState, SoundState> soundStates = new Dictionary<AIState, SoundState>();
+    protected AIState previouseState;
 
     protected virtual void Awake()
     {
+        enemy = GetComponent<Enemy>();
         agent = GetComponent<NavMeshAgent>();
         EnemyAistate = AIState.Idle;
+        Data = enemy.Data;
     }
 
     protected virtual void Start() 
     {
         MainGameManager.Instance.MakeSoundAction += GetAggroGage;
+        soundStates.Add(AIState.Idle, new SoundState { Sound = enemy.IdleSound, LastPlayTime = -enemy.SoundTime });
+        soundStates.Add(AIState.Wandering, new SoundState { Sound = enemy.WanderSound, LastPlayTime = -enemy.SoundTime });
+        soundStates.Add(AIState.Chasing, new SoundState { Sound = enemy.ChasingSound, LastPlayTime = -enemy.SoundTime });
+        soundStates.Add(AIState.Attacking, new SoundState { Sound = enemy.AttackSound, LastPlayTime = -enemy.SoundTime });
+        soundStates.Add(AIState.Frenzy, new SoundState { Sound = enemy.HowlingSound, LastPlayTime = -enemy.SoundTime });
     }
 
     protected virtual void Update()
@@ -53,6 +74,11 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
         CheckTarget();
         UpdateState();
 
+        if (previouseState != EnemyAistate) 
+        {
+            PlaySoundBasedOnState();
+            previouseState = EnemyAistate;
+        }
     }
 
     protected virtual void CheckTarget()
@@ -97,13 +123,13 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
             checkMissTime += Time.deltaTime;
             if (checkMissTime > Data.MissTargetTime)
             {
-                if (!isPlayerMiss) GetAggroGage(-0.3f * Data.MaxAggroGage);
-                isPlayerMiss = true;
+                if (!IsPlayerMiss) GetAggroGage(-0.3f * Data.MaxAggroGage);
+                IsPlayerMiss = true;
             }
         }
         else
         {
-            isPlayerMiss = false;
+            IsPlayerMiss = false;
             checkMissTime = 0;
         }
     }
@@ -138,7 +164,7 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
     protected virtual void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, Data.FeelPlayerRange);
+        if(Data!=null) Gizmos.DrawWireSphere(transform.position, Data.FeelPlayerRange); 
     }
 
     protected virtual bool IsInAttackRange()
@@ -151,18 +177,18 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
     {
         if (IsAttacking) return (int)EnemyAistate;
 
-        if ((IsAggroGageMax || !isPlayerMiss) && !IsInAttackRange())
+        if ((IsAggroGageMax || !IsPlayerMiss) && !IsInAttackRange())
         {
             EnemyAistate = AIState.Chasing;
             return (int)EnemyAistate;
         }
-        else if (!IsAggroGageMax && isPlayerMiss)
+        else if (!IsAggroGageMax && IsPlayerMiss)
         {
             EnemyAistate = AIState.Wandering;
             FeelThePlayer();
             return (int)EnemyAistate;
         }
-        else if (!isPlayerMiss && IsInAttackRange())
+        else if (!IsPlayerMiss && IsInAttackRange())
         {
             EnemyAistate = AIState.Attacking;
             IsAttacking = true;
@@ -172,6 +198,26 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
         {
             EnemyAistate = AIState.Idle;
             return (int)EnemyAistate;
+        }
+    }
+
+    protected virtual void PlaySoundBasedOnState()
+    {
+        if (!soundStates.ContainsKey(EnemyAistate)) return;
+
+        SoundState currentSoundState = soundStates[EnemyAistate];
+
+        if (Time.time - currentSoundState.LastPlayTime >= enemy.SoundTime)
+        {
+            if (currentSoundState.Sound != null)
+            {
+                enemy.AudioSource.Stop();
+                enemy.AudioSource.clip = currentSoundState.Sound;
+                enemy.AudioSource.Play();
+
+                currentSoundState.LastPlayTime = Time.time; // 구조체는 값 타입이므로 아래코드 업데이트 하기 위해 필요
+                soundStates[EnemyAistate] = currentSoundState; 
+            }
         }
     }
 }
