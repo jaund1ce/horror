@@ -36,6 +36,7 @@ public class MapManager : mainSingleton<MapManager>
     }
     private static Transform mapTransform;
     public string jsonFilePath ="Data/SpawnData"; // JSON 파일 경로 (Resources 폴더 내부 기준), 파일을 로드하여 데이터에 따라 오브젝트를 스폰
+    public string jsonFilePath2 = "Data/SpawnData2";
     private Dictionary<string, GameObject> mapList = new Dictionary<string, GameObject>();
 
 
@@ -121,6 +122,26 @@ public class MapManager : mainSingleton<MapManager>
         if (jsonFile == null)
         {
             Debug.LogError($"JSON 파일을 찾을 수 없습니다: {jsonFilePath}"); // JSON 파일이 없는 경우 오류 메시지 출력
+            return;
+        }
+
+        // JSON 데이터를 SpawnData 배열로 파싱
+        SpawnData[] spawnDataArray = JsonUtility.FromJson<SpawnDataArrayWrapper>(jsonFile.text).data;
+
+        // 각 SpawnData 항목에 대해 오브젝트를 스폰
+        foreach (var spawnData in spawnDataArray)
+        {
+            SpawnObject(spawnData); // 개별 오브젝트 스폰 함수 호출
+        }
+    }
+
+    public void LoadAndSpawnObjects2()
+    {
+        // JSON 파일 로드
+        TextAsset jsonFile = Resources.Load<TextAsset>(jsonFilePath2); // Resources 폴더에서 JSON 파일 로드
+        if (jsonFile == null)
+        {
+            Debug.LogError($"JSON 파일을 찾을 수 없습니다: {jsonFilePath2}"); // JSON 파일이 없는 경우 오류 메시지 출력
             return;
         }
 
