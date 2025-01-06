@@ -68,9 +68,11 @@ public class SoundManger : mainSingleton<SoundManger>
         {
             bgmSource = Resources.LoadAll<AudioClip>("Sounds/BGMs");
             temBgmSource = Resources.LoadAll<AudioClip>("Sounds/TempBGMs");
+            enviromentsource = Resources.LoadAll<AudioClip>("Sounds/Enviroments");
 
             AddToDictionary(bgmSource);
             AddToDictionary(temBgmSource);
+            AddToDictionary(enviromentsource);
             ChangeBGMSound(0);
             ChangeTemBGMSound(0);
         }
@@ -82,11 +84,11 @@ public class SoundManger : mainSingleton<SoundManger>
             playerstepSource_cement = Resources.LoadAll<AudioClip>("Sounds/PlayerSteps/Cement");
             playerheartbeatSource = Resources.LoadAll<AudioClip>("Sounds/PlayerHeartBeats");
             playerBreatheSource = Resources.LoadAll<AudioClip>("Sounds/PlayerBreathes");
-            enviromentsource = Resources.LoadAll<AudioClip>("Sounds/Enviroments");
+            
 
             AddToDictionary(playerheartbeatSource);
             AddToDictionary(playerBreatheSource);
-            AddToDictionary(enviromentsource);
+            
 
             ChangeBGMSound(1);
             ChangeTemBGMSound(-1);
