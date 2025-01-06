@@ -123326,7 +123326,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.1
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: f53675df3b05eb44e9fa52258e7bb2aa, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: cd9b7a0c6738b2b458c3857144923314, type: 2}
   m_BuildHeightMesh: 0
 --- !u!54 &1281933095822314153
 Rigidbody:
@@ -123350,8 +123350,8 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
