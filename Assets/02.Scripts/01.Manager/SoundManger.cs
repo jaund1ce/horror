@@ -15,7 +15,12 @@ public class SoundManger : mainSingleton<SoundManger>
     public AudioSource BGM;
     public AudioSource TEMBGM;
 
-    [SerializeField] private AudioClip[] playerstepSource1;
+    [SerializeField] private AudioClip[] playerstepSource_cement;
+    [SerializeField] private AudioClip[] playerstepSource_concrete;
+    [SerializeField] private AudioClip[] playerstepSource_dirt;
+    [SerializeField] private AudioClip[] playerstepSource_grass;
+    [SerializeField] private AudioClip[] playerstepSource_wood;
+
     [SerializeField] private AudioClip[] playerheartbeatSource;
     [SerializeField] private AudioClip[] playerBreatheSource;
     [SerializeField] private AudioClip[] bgmSource;
@@ -29,6 +34,11 @@ public class SoundManger : mainSingleton<SoundManger>
     [SerializeField]private float interval;
     [SerializeField]private int stageNum = -1;
     private float lastCheckTime;
+    private AudioClip[] stepAudioClips;
+    private Coroutine playerStepCoroutine;
+
+    private int index = 0;
+
 
     protected override void Awake()
     {
@@ -37,7 +47,7 @@ public class SoundManger : mainSingleton<SoundManger>
 
     protected override void Start()
     {
-        
+
     }
 
     protected override void Update()
@@ -45,7 +55,11 @@ public class SoundManger : mainSingleton<SoundManger>
         GetSceneSource(SceneManager.GetActiveScene().name);//##ToDo : 씬이 로드 할때 호출이 필요
 
         if (Time.time - lastCheckTime < interval) return;
-        StartTemBGMSound(stageNum);
+        if (TEMBGM.clip != null)
+        {
+            lastCheckTime = Time.time;
+            TEMBGM.Play();
+        }
     }
 
     public void GetSceneSource(string stagename)//특정 씬에서 필요한 사운드를 로드
@@ -58,27 +72,46 @@ public class SoundManger : mainSingleton<SoundManger>
             AddToDictionary(bgmSource);
             AddToDictionary(temBgmSource);
             ChangeBGMSound(0);
+            ChangeTemBGMSound(0);
         }
 
-        else if (stagename == "MainScene" && (playerstepSource1.Length == 0 || playerheartbeatSource.Length == 0 || enviromentsource.Length == 0))
+        else if (stagename == "MainScene" && (playerstepSource_cement.Length == 0 || playerheartbeatSource.Length == 0 || enviromentsource.Length == 0))
         {
-            ChangeBGMSound(1);
+            GetPlayerStepSources();
 
-            playerstepSource1 = Resources.LoadAll<AudioClip>("Sounds/PlayerSteps");
+            playerstepSource_cement = Resources.LoadAll<AudioClip>("Sounds/PlayerSteps/Cement");
             playerheartbeatSource = Resources.LoadAll<AudioClip>("Sounds/PlayerHeartBeats");
             playerBreatheSource = Resources.LoadAll<AudioClip>("Sounds/PlayerBreathes");
             enviromentsource = Resources.LoadAll<AudioClip>("Sounds/Enviroments");
 
-            AddToDictionarys("playerStep1", playerstepSource1);
             AddToDictionary(playerheartbeatSource);
             AddToDictionary(playerBreatheSource);
             AddToDictionary(enviromentsource);
+
+            ChangeBGMSound(1);
+            ChangeTemBGMSound(-1);
+            ChangeStepSound(GroundType.Cement);
         }
 
         //else //나중에 필요하면 추가
         //{
 
         //}
+    }
+
+    private void GetPlayerStepSources()
+    {
+        playerstepSource_cement = Resources.LoadAll<AudioClip>("Sounds/PlayerSteps/Cement");
+        playerstepSource_concrete = Resources.LoadAll<AudioClip>("Sounds/PlayerSteps/Concrete");
+        playerstepSource_dirt = Resources.LoadAll<AudioClip>("Sounds/PlayerSteps/Dirt");
+        playerstepSource_grass = Resources.LoadAll<AudioClip>("Sounds/PlayerSteps/Grass");
+        playerstepSource_wood = Resources.LoadAll<AudioClip>("Sounds/PlayerSteps/Wood");
+
+        AddToDictionarys("Cement", playerstepSource_cement);
+        AddToDictionarys("Concrete", playerstepSource_concrete);
+        AddToDictionarys("Dirt", playerstepSource_dirt);
+        AddToDictionarys("Grass", playerstepSource_grass);
+        AddToDictionarys("Wood", playerstepSource_wood);
     }
 
     public void AdjustSoundVolume(AudioSourceType audioSourceType, float volumePercentage)
@@ -122,19 +155,41 @@ public class SoundManger : mainSingleton<SoundManger>
 
     public void ChangeStepSound(GroundType groundType)//발소리 생성은 어떻게?
     {
-        if (groundType == GroundType.Cement)
+        if (audioClipsDictionary.TryGetValue(groundType.ToString(), out AudioClip[] values))
         {
-            if (audioClipsDictionary.TryGetValue(groundType.ToString(), out AudioClip[] values))
-            {
-                for (int i = 0; i < values.Length; i++)
-                {
-                    PlayerStep.PlayOneShot(values[i]);
-                }
-            }
-            else
-            {
-                Debug.Log("No Step Clips!");
-            }
+            stepAudioClips = values;
+        }
+        else
+        {
+            stepAudioClips = null;
+            Debug.Log("No Step Clips!");
+        }
+    }
+
+    public void PlayPlayrtStepSound(bool OnOff)
+    {
+        if (OnOff)
+        {
+            playerStepCoroutine =  StartCoroutine(StartStepSound());
+        }
+        else
+        {
+            if (playerStepCoroutine == null) return;
+
+            StopCoroutine(playerStepCoroutine);
+            playerStepCoroutine = null;
+        }
+    }
+
+    private IEnumerator StartStepSound()//코루티의 조건을 외부에서 결정
+    {
+        while (true)
+        {
+            PlayerStep.clip = stepAudioClips[index];
+            PlayerStep.PlayOneShot(PlayerStep.clip);
+
+            yield return new WaitForSeconds(stepAudioClips[index].length);
+            index = (int)((index + 1) % stepAudioClips.Length);
         }
     }
 
@@ -187,7 +242,7 @@ public class SoundManger : mainSingleton<SoundManger>
         }
     }
 
-    public void StartTemBGMSound(int stagenum)
+    public void ChangeTemBGMSound(int stagenum)
     {
         stageNum = stagenum;
         string tembgmname = "";
@@ -204,12 +259,12 @@ public class SoundManger : mainSingleton<SoundManger>
 
         if (audioClipDictionary.TryGetValue(tembgmname, out AudioClip value))
         {
-            BGM.clip = value;
-            BGM.loop = true;
-            BGM.Play();
+            TEMBGM.clip = value;
+            TEMBGM.loop = false;
         }
         else
         {
+            TEMBGM.clip = null;
             Debug.Log($"No {tembgmname} Enviorment Sound Clip!");
         }
     }

@@ -147,7 +147,6 @@ public class PlayerInventoryData : MonoBehaviour
 
         for (int i = 0; i < inventoryDatas.Length; i++)
         {
-            Debug.Log(i);
             DataManager.Instance.InventoryData[i] = inventoryDatas[i]; // µ¿±âÈ­
         }
     }
