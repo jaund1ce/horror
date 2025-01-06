@@ -9,8 +9,8 @@ public class LockedDoor : ObjectBase
     private float openAngle = -90f; // 문 열리는 각도
     private float closeAngle = 0f; // 문 닫히는 각도
     private float openSpeed = 5f; // 문 열림 속도
-    public bool IsLocked = true;
-    private bool isOpened = false; // 문이 열렸는지 여부
+    [HideInInspector] public bool IsLocked = true;
+    [HideInInspector] public bool IsOpened = false; // 문이 열렸는지 여부
 
     public event Action isOpen;
 
@@ -29,19 +29,19 @@ public class LockedDoor : ObjectBase
         ToggleDoor();
     }
 
-    private void ToggleDoor()
+    public void ToggleDoor()
     {
         //잠긴문 Interact 시 Sound 추가
         if (IsLocked) return;
-        
-        isOpened = !isOpened;
-        if (isOpened == true)
+
+        IsOpened = !IsOpened;
+        if (IsOpened == true)
         {
             isOpen?.Invoke();
         }
 
         StopAllCoroutines();
-        StartCoroutine(RotateDoor(isOpened ? openAngle : closeAngle));
+        StartCoroutine(RotateDoor(IsOpened ? openAngle : closeAngle));
     }
 
     private IEnumerator RotateDoor(float targetAngle)
@@ -62,7 +62,7 @@ public class LockedDoor : ObjectBase
     public override string GetInteractPrompt()
     {
         if (IsLocked) return "Locked";
-        return isOpened ? "Close" : "Open";
+        return IsOpened ? "Close" : "Open";
     }
 
 }

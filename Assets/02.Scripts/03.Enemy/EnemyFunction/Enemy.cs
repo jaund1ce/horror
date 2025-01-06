@@ -23,7 +23,7 @@ public abstract class Enemy : MonoBehaviour
     [field: SerializeField] public AudioClip ChasingSound { get; protected set; }
     [field: SerializeField] public AudioClip HowlingSound { get; protected set; }
     [field: SerializeField] public AudioClip AttackSound { get; protected set; }
-    [HideInInspector]public float SoundTime { get; protected set; } = 5f;
+    [HideInInspector]public float SoundTime { get; set; } = 5f;
 
     protected EnemyStateMachine stateMachine;
 

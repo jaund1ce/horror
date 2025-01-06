@@ -37,8 +37,7 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
     [HideInInspector] public bool IsAttacking;
     protected Enemy enemy;
     protected NavMeshAgent agent;
-    
-
+    protected string doorTag = "Door";
 
     [field: Header("Enemy CalculateToAction")]
 
@@ -218,6 +217,16 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
                 currentSoundState.LastPlayTime = Time.time; // 구조체는 값 타입이므로 아래코드 업데이트 하기 위해 필요
                 soundStates[EnemyAistate] = currentSoundState; 
             }
+        }
+    }
+
+    protected virtual void OnTriggerEnter(Collider other) 
+    {
+        LockedDoor lockedDoor = other.GetComponent<LockedDoor>();
+
+        if (lockedDoor != null)
+        {
+            if(!lockedDoor.IsOpened) lockedDoor.ToggleDoor();
         }
     }
 }

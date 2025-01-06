@@ -58,4 +58,8 @@ public class GhostAI : EnemyAI
     {
         base.PlaySoundBasedOnState();
     }
+    protected override void OnTriggerEnter(Collider other)
+    {
+        base.OnTriggerEnter(other);
+    }
 }
