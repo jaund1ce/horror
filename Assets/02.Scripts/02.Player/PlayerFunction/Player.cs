@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
         PlayerInventoryData = GetComponent<PlayerInventoryData>();
 
         stateMachine = new PlayerStateMachine2(this);
+        MainGameManager.Instance.Player=this;
     }
 
     void Start()

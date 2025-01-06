@@ -20,6 +20,7 @@ public class GazerAI : EnemyAI
     {
         base.Start();
         animator = GetComponent<Animator>();
+        playerSight = Camera.main;
     }
 
     protected override void Update()

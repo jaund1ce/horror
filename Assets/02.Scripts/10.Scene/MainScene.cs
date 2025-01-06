@@ -7,11 +7,10 @@ public class MainScene : SceneBase
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("MainScene Start method called.");
-        UIManager.Instance.Show<MainUI>();
-        //MapManager.Instance.ShowMap<Stage01>;
+        MapManager.Instance.ShowMap<Stage01>();
         MapManager.Instance.LoadAndSpawnObjects();
         DataManager.Instance.LoadAllItems();
+        UIManager.Instance.Show<MainUI>();
     }
 
 
