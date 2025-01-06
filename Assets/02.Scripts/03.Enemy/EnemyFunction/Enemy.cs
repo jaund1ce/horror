@@ -9,26 +9,35 @@ using UnityEngine.AI;
 
 public abstract class Enemy : MonoBehaviour
 {
+    [field: Header("Enemy Settings")]
     [field: SerializeField] public EnemySO Data { get; protected set; }
-
     [field: SerializeField] public AttackPoint AttackPoint { get; protected set; }
-    [field: Header("Animations")]
-    [field: SerializeField] public PlayerAnimationData AnimationData;
-
-    public Animator EnemyAnimator { get; protected set; }
-
-    public NavMeshAgent CharacterController { get; set; }
-
-    public ForceReceiver ForceReceiver { get; protected set; }
-    protected EnemyStateMachine stateMachine;
     public EnemyAI EnemyAI { get; protected set; }
+    public NavMeshAgent CharacterController { get; protected set; }
+
+
+    [field: Header("Enemy Sounds")]
+    [field: SerializeField] public AudioSource AudioSource { get; protected set; }
+    [field: SerializeField] public AudioClip IdleSound { get; protected set; }
+    [field: SerializeField] public AudioClip WanderSound { get; protected set; }
+    [field: SerializeField] public AudioClip ChasingSound { get; protected set; }
+    [field: SerializeField] public AudioClip HowlingSound { get; protected set; }
+    [field: SerializeField] public AudioClip AttackSound { get; protected set; }
+    [HideInInspector]public float SoundTime { get; protected set; } = 5f;
+
+    protected EnemyStateMachine stateMachine;
+
+
+    [field: Header("Enemy Animations")]
+    [field: SerializeField] public PlayerAnimationData AnimationData;
+    public Animator EnemyAnimator { get; protected set; }
 
     protected virtual void Awake() 
     {
         AnimationData.Initialize();
         EnemyAnimator = GetComponent<Animator>();
         CharacterController = GetComponent<NavMeshAgent>();
-        ForceReceiver = GetComponent<ForceReceiver>();
+        AudioSource = GetComponent<AudioSource>();
     }
 
     protected virtual void Start() 

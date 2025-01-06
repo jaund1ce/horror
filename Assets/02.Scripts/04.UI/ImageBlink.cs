@@ -19,7 +19,7 @@ public class ImageBlink : MonoBehaviour
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponentInParent<AudioSource>();
         if (image == null)
         {
             image = GetComponent<Image>();
