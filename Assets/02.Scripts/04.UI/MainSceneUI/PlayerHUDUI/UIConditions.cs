@@ -5,11 +5,13 @@ using UnityEngine;
 public class UICondition : MonoBehaviour
 {
     private PlayerConditionController playerConditionController;
-    public Condition health;
-    public Condition stamina;
-    public Condition aggro;
     public Condition DamagePrompt;
     public CreatureAI creatureAI;
+    public GameObject RecPoint;
+
+    private float duration = 2f;
+    private float lastCheckTime;
+    private bool onoff = true;
 
     private void Start()
     {
@@ -19,9 +21,12 @@ public class UICondition : MonoBehaviour
 
     private void Update()
     {
-        health.GetPercentage(playerConditionController.GetHPPercentage());
-        stamina.GetPercentage(playerConditionController.GetStaminaPercentage());
-        aggro.GetPercentage(creatureAI.AggroGage/100f);
         DamagePrompt.GetAPercentage(playerConditionController.GetHPPercentage());
+
+        if (Time.time - lastCheckTime < duration) return;
+
+        onoff = !onoff;
+        lastCheckTime = Time.time;
+        RecPoint.SetActive(onoff);
     }
 }

@@ -6,6 +6,7 @@ using UHFPS.Runtime;
 using UHFPS.Tools;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UIElements;
 using UnityEngine.Windows;
 
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public PlayerInputs.PlayerActions PlayerActions { get; private set; }   //미리 정의한 행동들 move, look,... 등
     public Equipment EquipMent { get; private set; }
 
+    [SerializeField] private Camera parkourCamera;
     [SerializeField] private CinemachineVirtualCamera playercamera;
     public CinemachineBasicMultiChannelPerlin VirtualCameraNoise;
     public GameObject Head;
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour
         PlayerInputs = new PlayerInputs();
         PlayerActions = PlayerInputs.Player;//inputsystem에 선언했던 Actionmap 중에 하나를 선택
         EquipMent = GetComponent<Equipment>();
+        Camera.main.GetUniversalAdditionalCameraData().cameraStack.Add(parkourCamera);
     }
 
     private void OnEnable()

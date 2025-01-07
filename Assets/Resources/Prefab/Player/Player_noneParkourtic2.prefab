@@ -723,6 +723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26b1fdaafaad7524eae78b8ee5590096, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parkourCamera: {fileID: 8072818613756455399}
   playercamera: {fileID: 1422299344214973022}
   VirtualCameraNoise: {fileID: 0}
   Head: {fileID: 870975651428172388}
@@ -1033,7 +1034,7 @@ MonoBehaviour:
   m_RenderShadows: 1
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
-  m_CameraType: 0
+  m_CameraType: 1
   m_Cameras: []
   m_RendererIndex: -1
   m_VolumeLayerMask:
@@ -1041,7 +1042,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0

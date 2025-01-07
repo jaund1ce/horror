@@ -113,7 +113,7 @@ Material:
     - _ScanlinesFrequency: 5
     - _ScanlinesScroll: 2
     - _ScanlinesSharpness: 1.5
-    - _ScanlinesStrength: 1
+    - _ScanlinesStrength: 0.92
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
