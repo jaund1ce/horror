@@ -583,10 +583,11 @@ MonoBehaviour:
   isInventoryOpen: 0
   isGround: 1
   isHiding: 0
+  isCollideOverlapr: 0
   isCrouching: 0
   playerState: -1
   groundType: 0
-  checkDistance: 12
+  checkDistance: 15
   checkDuration: 2
   monsterMask:
     serializedVersion: 2
@@ -625,7 +626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
-  itemCheckDistance: 1.5
+  itemCheckDistance: 3
   itemCheckTime: 0.1
   iteractableLayerMask:
     serializedVersion: 2
