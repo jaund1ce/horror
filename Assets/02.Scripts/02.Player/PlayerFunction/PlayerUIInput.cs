@@ -57,6 +57,9 @@ public class PlayerUIInput : MonoBehaviour
     {
         UIManager.Instance.Hide<PaperUI>();
         UIManager.Instance.Hide<InventoryUI>();
+        playerInputs.Disable();
+        playerInputs.Player.Inventory.performed -= OnInventory;
+        playerInputs.Player.Menu.performed -= OnSystemMenu;
         UIManager.Instance.Show<DieUI>();
     }
 }

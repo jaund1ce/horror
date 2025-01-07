@@ -127,7 +127,7 @@ public class UIManager : mainSingleton<UIManager>
         if (ui == null) // 검색된 UI 객체가 없으면
             return; // 메서드를 종료합니다.
 
-        DestroyImmediate(ui.canvas.gameObject); // Canvas GameObject를 즉시 삭제합니다.
+        Destroy(ui.canvas.gameObject); 
         uiList.Remove(uiName); // uiList에서 uiName 키를 제거합니다.
     }
 
