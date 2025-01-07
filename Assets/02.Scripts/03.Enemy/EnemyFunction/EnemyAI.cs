@@ -47,7 +47,7 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
     public bool IsAggroGageMax { get; protected set; }
     protected List<int> visionInObject = new List<int>();
     protected float checkMissTime;
-    protected Dictionary<AIState, SoundState> soundStates = new Dictionary<AIState, SoundState>();
+    [HideInInspector]public Dictionary<AIState, SoundState> SoundStates = new Dictionary<AIState, SoundState>();
     protected AIState previouseState;
 
     protected virtual void Awake()
@@ -61,11 +61,11 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
     protected virtual void Start() 
     {
         MainGameManager.Instance.MakeSoundAction += GetAggroGage;
-        soundStates.Add(AIState.Idle, new SoundState { Sound = enemy.IdleSound, LastPlayTime = -enemy.SoundTime });
-        soundStates.Add(AIState.Wandering, new SoundState { Sound = enemy.WanderSound, LastPlayTime = -enemy.SoundTime });
-        soundStates.Add(AIState.Chasing, new SoundState { Sound = enemy.ChasingSound, LastPlayTime = -enemy.SoundTime });
-        soundStates.Add(AIState.Attacking, new SoundState { Sound = enemy.AttackSound, LastPlayTime = -enemy.SoundTime });
-        soundStates.Add(AIState.Frenzy, new SoundState { Sound = enemy.HowlingSound, LastPlayTime = -enemy.SoundTime });
+        SoundStates.Add(AIState.Idle, new SoundState { Sound = enemy.IdleSound, LastPlayTime = -enemy.SoundTime });
+        SoundStates.Add(AIState.Wandering, new SoundState { Sound = enemy.WanderSound, LastPlayTime = -enemy.SoundTime });
+        SoundStates.Add(AIState.Chasing, new SoundState { Sound = enemy.ChasingSound, LastPlayTime = -enemy.SoundTime });
+        SoundStates.Add(AIState.Attacking, new SoundState { Sound = enemy.AttackSound, LastPlayTime = -enemy.SoundTime });
+        SoundStates.Add(AIState.Frenzy, new SoundState { Sound = enemy.HowlingSound, LastPlayTime = -enemy.SoundTime });
     }
 
     protected virtual void Update()
@@ -202,9 +202,9 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
 
     protected virtual void PlaySoundBasedOnState()
     {
-        if (!soundStates.ContainsKey(EnemyAistate)) return;
+        if (!SoundStates.ContainsKey(EnemyAistate)) return;
 
-        SoundState currentSoundState = soundStates[EnemyAistate];
+        SoundState currentSoundState = SoundStates[EnemyAistate];
 
         if (Time.time - currentSoundState.LastPlayTime >= enemy.SoundTime)
         {
@@ -215,7 +215,7 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
                 enemy.AudioSource.Play();
 
                 currentSoundState.LastPlayTime = Time.time; // 구조체는 값 타입이므로 아래코드 업데이트 하기 위해 필요
-                soundStates[EnemyAistate] = currentSoundState; 
+                SoundStates[EnemyAistate] = currentSoundState; 
             }
         }
     }
