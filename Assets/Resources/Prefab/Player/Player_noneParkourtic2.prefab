@@ -122,7 +122,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 2
+  m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -727,7 +727,7 @@ MonoBehaviour:
   playercamera: {fileID: 1422299344214973022}
   VirtualCameraNoise: {fileID: 0}
   Head: {fileID: 870975651428172388}
-  maxRotateY: 40
+  maxRotateY: 60
   rotateSencitivity: 10
   Rotateable: 1
   RunningReady: 0

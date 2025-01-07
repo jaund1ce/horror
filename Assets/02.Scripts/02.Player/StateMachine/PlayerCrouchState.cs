@@ -17,7 +17,7 @@ public class PlayerCrouchState : PlayerBaseState
         stateMachine.Player.CapsuleCollider.height = 0.8f;
         stateMachine.Player.CapsuleCollider.radius = 0.35f;
         stateMachine.Player.CapsuleCollider.center = new Vector3(0,0.4f,0);
-        stateMachine.Player.Input.Head.transform.localPosition = Vector3.Lerp(stateMachine.Player.Input.Head.transform.localPosition, new Vector3(0, 0.9f, -0.2f),0.9f);
+        stateMachine.Player.Input.Head.transform.localPosition = Vector3.Lerp(stateMachine.Player.Input.Head.transform.localPosition, new Vector3(0, 0.7f, -0.2f),0.9f);
         stateMachine.Player.Input.VirtualCameraNoise.m_AmplitudeGain = 1f;
         stateMachine.Player.Input.VirtualCameraNoise.m_FrequencyGain = 0.005f;
         stateMachine.MovementSpeedModifier = groundData.CrouchSpeedModifier;
