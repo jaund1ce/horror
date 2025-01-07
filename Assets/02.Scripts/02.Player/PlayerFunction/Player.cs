@@ -16,7 +16,6 @@ public class Player : MonoBehaviour
     public PlayerInteraction Interact { get; private set; }
     public Rigidbody PlayerRigidbody { get; private set; }
     public CapsuleCollider CapsuleCollider { get; private set; }
-    public ForceReceiver ForceReceiver { get; private set; }
     public PlayerConditionController PlayerConditionController { get; private set; }
 
     private PlayerStateMachine2 stateMachine;
@@ -47,7 +46,6 @@ public class Player : MonoBehaviour
         Interact = GetComponentInChildren<PlayerInteraction>();
         PlayerRigidbody = GetComponent<Rigidbody>();
         CapsuleCollider = GetComponent<CapsuleCollider>();
-        ForceReceiver = GetComponent<ForceReceiver>();
         PlayerConditionController = GetComponent<PlayerConditionController>();
         PlayerInventoryData = GetComponent<PlayerInventoryData>();
 
@@ -106,15 +104,6 @@ public class Player : MonoBehaviour
         Animator.SetTrigger("Die");
         enabled = false;
     }
-
-    //void ChangeRotationSencitivity()//##ToDO : 나중에 다른 매니져로 옮기기? 환경설정에 넣기
-    //{
-    //    if (Input.rotateSencitivity == Data.GroundData.BaseRotationDamping) return;
-    //    else
-    //    {
-    //        Input.rotateSencitivity = Data.GroundData.BaseRotationDamping;
-    //    }
-    //}
 
     private void CheckGround()
     {

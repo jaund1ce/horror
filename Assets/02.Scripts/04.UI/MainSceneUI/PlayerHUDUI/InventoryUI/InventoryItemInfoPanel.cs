@@ -11,6 +11,7 @@ public class InventoryItemInfoPanelelController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemNameText;
     [SerializeField] private TextMeshProUGUI itemDescriptionText;
     [SerializeField] private TextMeshProUGUI itemUseBTNText;
+    [SerializeField] private GameObject addToQuickslotBTN;
     [SerializeField] private InventoryController Inventory;
     private Player player;
 
@@ -60,10 +61,12 @@ public class InventoryItemInfoPanelelController : MonoBehaviour
         if(itemUseBTNText.text == "")
         {
             itemUseBTNText.transform.parent.gameObject.SetActive(false);
+            addToQuickslotBTN.SetActive(false);
         }
         else
         {
             itemUseBTNText.transform.parent.gameObject.SetActive(true);
+            addToQuickslotBTN.SetActive(true);
         }
     }
 
