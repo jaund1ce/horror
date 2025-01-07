@@ -48,6 +48,11 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
         ChangeScene(mainScene2Name);
     }
 
+    public void Restart()
+    {
+        ChangeScene(NowSceneName);
+    }
+
     public void   LoadEndScene()
     {
             ChangeScene(endSceneName);
