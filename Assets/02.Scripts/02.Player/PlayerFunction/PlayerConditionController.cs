@@ -50,8 +50,9 @@ public class PlayerConditionController : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage , Enemy enemy)
     {
+        Enemy attackEnemy = enemy;
         SoundManger.Instance.MakeEnviormentSound("PlayerTakeDamage");
         //else if (damage >= 10)//소리만 추가 된다면 데미지에 따라 다른 소리를
         //{
@@ -62,7 +63,13 @@ public class PlayerConditionController : MonoBehaviour
 
         Health = Mathf.Max(Health - damage, 0);
 
-        if(Health == 0) OnDie?.Invoke();
+        if (Health == 0) 
+        {
+            Camera camera = enemy.GetComponent<Camera>();
+            camera.gameObject.SetActive(true);
+            //camera = Camera.main;
+            OnDie?.Invoke();
+        }
     }
 
     public float GetHPPercentage()

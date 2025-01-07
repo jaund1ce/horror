@@ -10,6 +10,7 @@ using UnityEngine;
 public class AttackPoint : MonoBehaviour
 {
     private Collider creatureCollider;
+    private Enemy enemy;
 
     private int damage;
 
@@ -18,6 +19,7 @@ public class AttackPoint : MonoBehaviour
     private void Awake()
     {
         //## creatureCollider = this.gameObject.GetComponentInParent<Collider>();
+        enemy = GetComponentInParent<Enemy>();
     }
     private void OnEnable()
     {
@@ -33,7 +35,7 @@ public class AttackPoint : MonoBehaviour
 
         if (other.TryGetComponent(out PlayerConditionController health)) 
         {
-            health.TakeDamage(damage);
+            health.TakeDamage(damage , enemy);
         }
     }
 
