@@ -1100,7 +1100,7 @@ MonoBehaviour:
   ObjectSO: {fileID: 0}
   cabinetDoor: {fileID: 2978306331003231102}
   cabinetDoorCollider: {fileID: 1100238654263450069}
-  doorOpenAngle: 90
+  doorOpenAngle: -90
   doorSpeed: 2
   isDoorOpen: 0
 --- !u!1 &9220661216234513220

@@ -46,18 +46,24 @@ public class InventoryItemInfoPanelelController : MonoBehaviour
         switch (currentItemData.ItemData.itemSO.ItemType)
         {
             case ItemType.EquipItem:
+            case ItemType.CnsItem:
                 itemUseBTNText.text = "Equip";
                 break;
             case ItemType.CcItem:
-                itemUseBTNText.text = "Use";
-                break;
-            case ItemType.CnsItem:
-                itemUseBTNText.text = "Consume";
+                itemUseBTNText.text = "";
                 break;
             default:
                 itemUseBTNText.text = "";
                 Debug.Log("index Error");
                 break;
+        }
+        if(itemUseBTNText.text == "")
+        {
+            itemUseBTNText.transform.parent.gameObject.SetActive(false);
+        }
+        else
+        {
+            itemUseBTNText.transform.parent.gameObject.SetActive(true);
         }
     }
 
@@ -69,12 +75,14 @@ public class InventoryItemInfoPanelelController : MonoBehaviour
         {
             SoundManger.Instance.MakeEnviormentSound("Click3");
             player.CurrentEquipItem = null;
+            ChangePanelText(currentItemData);
             return;
         }
 
         SoundManger.Instance.MakeEnviormentSound("Click3");
         player.CurrentEquipItem = Inventory.CurrentInventoryData;
-        player.Input.EquipMent.EquipNew(player.CurrentEquipItem);        
+        player.Input.EquipMent.EquipNew(player.CurrentEquipItem);
+        ChangePanelText(currentItemData);
     }
     public void OnAddQuickSlotBTNClick()
     {

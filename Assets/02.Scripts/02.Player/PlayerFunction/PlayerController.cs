@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     public bool isCrouching = false;
     public bool isRunning = false;
     private float currentYangle = 0f;
+    private bool subscribed = false;
 
     private void Awake()
     {
@@ -50,22 +51,30 @@ public class PlayerController : MonoBehaviour
 
     public void InputSubscribe()
     {
-        PlayerActions.Look.started += RotateCamera;
-        PlayerActions.Run.started += ChangeRunState;
-        PlayerActions.Run.canceled += ChangeRunState2;
-        PlayerActions.Crouch.started += ChangeCrouchState;
-        PlayerActions.Crouch.canceled += ChangeCrouchState2;
-        PlayerActions.EquipmentUse.started += EquipMent.OnAttackInput;
+        if (!subscribed)
+        {
+            PlayerActions.Look.started += RotateCamera;
+            PlayerActions.Run.started += ChangeRunState;
+            PlayerActions.Run.canceled += ChangeRunState2;
+            PlayerActions.Crouch.started += ChangeCrouchState;
+            PlayerActions.Crouch.canceled += ChangeCrouchState2;
+            PlayerActions.EquipmentUse.started += EquipMent.OnAttackInput;
+            subscribed = true;
+        }
     }
 
     public void InputUnsubscribe()
     {
-        PlayerActions.Look.started -= RotateCamera;
-        PlayerActions.Run.canceled -= ChangeRunState;
-        PlayerActions.Run.canceled -= ChangeRunState2;
-        PlayerActions.Crouch.started -= ChangeCrouchState;
-        PlayerActions.Crouch.canceled -= ChangeCrouchState2;
-        PlayerActions.EquipmentUse.started -= EquipMent.OnAttackInput;
+        if (subscribed)
+        {
+            PlayerActions.Look.started -= RotateCamera;
+            PlayerActions.Run.canceled -= ChangeRunState;
+            PlayerActions.Run.canceled -= ChangeRunState2;
+            PlayerActions.Crouch.started -= ChangeCrouchState;
+            PlayerActions.Crouch.canceled -= ChangeCrouchState2;
+            PlayerActions.EquipmentUse.started -= EquipMent.OnAttackInput;
+            subscribed = false;
+        }
     }
 
     private void LateUpdate()
