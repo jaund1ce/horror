@@ -47,7 +47,7 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
     public bool IsAggroGageMax { get; protected set; }
     protected List<int> visionInObject = new List<int>();
     protected float checkMissTime;
-    protected Dictionary<AIState, SoundState> soundStates = new Dictionary<AIState, SoundState>();
+    [HideInInspector] public Dictionary<AIState, SoundState> soundStates = new Dictionary<AIState, SoundState>();
     protected AIState previouseState;
 
     protected virtual void Awake()
