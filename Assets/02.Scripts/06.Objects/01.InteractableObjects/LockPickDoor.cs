@@ -46,13 +46,18 @@ public class LockPickDoor : PuzzleBase
     private bool tryUnlock;
     private Player player;
 
+    private void Start()
+    {
+        player = MainGameManager.Instance.Player;
+    }
+
 
     private void OnEnable()
     {
         hinge = this.transform;
         currentPinLifeTime = pinLifeTime;
         lockPickUI.SetActive(false);
-        player = MainGameManager.Instance.Player;
+        
     }
 
     private void Update()
