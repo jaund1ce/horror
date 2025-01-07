@@ -15,7 +15,8 @@ public class EnemyBaseState : IState
     protected float MovementSpeedModifier = 1f;
 
     private Vector3 movementLocation = Vector3.zero;
-    private Transform creatureTransform;
+    private Transform enemyTransform;
+    private Transform target;
     private float minWanderDistance;
     private float maxWanderDistance;
     private bool setLocation;
@@ -25,10 +26,19 @@ public class EnemyBaseState : IState
     {
         this.stateMachine = stateMachine;
         groundData = stateMachine.Enemy.Data.GroundData;
-        creatureTransform = stateMachine.Enemy.gameObject.transform;
+        enemyTransform = stateMachine.Enemy.gameObject.transform;
+        target = stateMachine.Target.transform;
         minWanderDistance = stateMachine.Enemy.Data.MinWanderDistance;
         maxWanderDistance = stateMachine.Enemy.Data.MaxWanderDistance;
-        walkableMask = NavMesh.GetAreaFromName("walkable");
+
+        if (stateMachine.Enemy.Data.EnemyType == EnemyType.Ghost)
+        {
+            walkableMask = NavMesh.AllAreas;
+        }
+        else 
+        {
+            walkableMask = NavMesh.GetAreaFromName("walkable");
+        }
         
     }
 
@@ -62,7 +72,7 @@ public class EnemyBaseState : IState
                 
                 if (!IsLocationSet())
                 {
-                    WanderLocationSet(creatureTransform.position);
+                    WanderLocationSet(enemyTransform.position);
                 }
                 stateMachine.ChangeState(stateMachine.WanderState);
                 Move();
@@ -84,7 +94,7 @@ public class EnemyBaseState : IState
     }
 
 
-    public void StartAnimation(int animatorHash)
+    protected void StartAnimation(int animatorHash)
     {
         stateMachine.Enemy.EnemyAnimator.SetBool(animatorHash, true);
     }
@@ -98,7 +108,7 @@ public class EnemyBaseState : IState
     {
         if (stateMachine.Enemy.EnemyAI.EnemyAistate == AIState.Chasing)
         {
-            movementLocation = stateMachine.Target.transform.position;
+            movementLocation = target.position;
         }
         Move(movementLocation);
     }
@@ -114,8 +124,8 @@ public class EnemyBaseState : IState
 
     private Vector3 GetRandomPointBetween() 
     {
-        Vector3 direction = (stateMachine.Target.transform.position - stateMachine.Enemy.transform.position).normalized;
-        Vector3 point = stateMachine.Enemy.transform.position + direction * 30f;
+        Vector3 direction = (target.position - enemyTransform.position).normalized;
+        Vector3 point = enemyTransform.position + direction * 30f;
         WanderLocationSet(point);
         return point;
     }
@@ -138,7 +148,7 @@ public class EnemyBaseState : IState
         {
             setLocation = true;
         }
-        if (Vector3.Distance(creatureTransform.position, movementLocation) < 2f || movementLocation == Vector3.zero )
+        if (Vector3.Distance(enemyTransform.position, movementLocation) < 2f || movementLocation == Vector3.zero )
         {
             setLocation = false;
         }
@@ -148,10 +158,10 @@ public class EnemyBaseState : IState
 
 
     private void Move(Vector3 direction)
-    {      
+    {
         stateMachine.Enemy.CharacterController.SetDestination(direction);
-
     }
+ 
 
 
     protected float GetNormalizedTime(Animator animator, string tag)
@@ -177,10 +187,10 @@ public class EnemyBaseState : IState
 
     protected void LookRotate()
     {
-        Vector3 direction = MainGameManager.Instance.Player.transform.position - stateMachine.Enemy.transform.position;
+        Vector3 direction = target.position - enemyTransform.position;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         float rotationDamping = stateMachine.Enemy.Data.GroundData.BaseRotationDamping * Time.deltaTime;
-        stateMachine.Enemy.transform.rotation = Quaternion.Lerp(stateMachine.Enemy.transform.rotation, lookRotation, rotationDamping);
+        enemyTransform.rotation = Quaternion.Lerp(enemyTransform.rotation, lookRotation, rotationDamping);
     }
 
 }

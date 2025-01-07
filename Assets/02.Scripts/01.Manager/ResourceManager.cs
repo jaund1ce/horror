@@ -17,9 +17,9 @@ public enum eCategoryType
 {
     None,         // 분류 없음
     Item,         // 아이템 자산
-    NPC,          // NPC 관련 자산
+    Enemy,          // NPC 관련 자산
     Stage,        // 스테이지 자산
-    Character,    // 캐릭터 관련 자산
+    Player,    // 캐릭터 관련 자산
     Maps,         // 맵 데이터
     Model         // 3D 모델
 }

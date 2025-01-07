@@ -20,4 +20,11 @@ public class InventoryUI : PopupUI
     {
        base .CloseUI();
     }
+
+    public void OnDocumentUI()
+    {
+
+        UIManager.Instance.Hide<InventoryUI>();
+        UIManager.Instance.Show<PaperUI>();
+    }
 }

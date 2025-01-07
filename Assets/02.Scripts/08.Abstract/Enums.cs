@@ -50,10 +50,12 @@ public enum PlayerHeartState
 
 public enum GroundType
 {
-    Cement = 0,
-    Wood,
+    None = -1,
+    Cement,
+    Concrete,
     Dirt,
-    Grass
+    Grass,
+    Wood
 }
 
 public enum PlayerBreatheType

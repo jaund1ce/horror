@@ -12,6 +12,7 @@ public class GazerAI : EnemyAI
     protected override void Awake()
     {
         base.Awake();
+        enemy.SoundTime = 40f;
         //playerSight = MainGameManager.Instance.Player.GetComponentInChildren<Camera>();
     }
 
@@ -19,6 +20,7 @@ public class GazerAI : EnemyAI
     {
         base.Start();
         animator = GetComponent<Animator>();
+        playerSight = Camera.main;
     }
 
     protected override void Update()
@@ -88,5 +90,13 @@ public class GazerAI : EnemyAI
             animator.speed = 1;
         }
         return base.UpdateState();
+    }
+    protected override void PlaySoundBasedOnState()
+    {
+        base.PlaySoundBasedOnState();
+    }
+    protected override void OnTriggerEnter(Collider other)
+    {
+        base.OnTriggerEnter(other);
     }
 }

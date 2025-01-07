@@ -16,9 +16,9 @@ public class PlayerController : MonoBehaviour
     public Equipment EquipMent { get; private set; }
 
     [SerializeField] private CinemachineVirtualCamera playercamera;
-    [SerializeField] private GameObject head;
+    public CinemachineBasicMultiChannelPerlin VirtualCameraNoise;
+    public GameObject Head;
     [SerializeField] float maxRotateY;
-    public SkinnedMeshRenderer SkinnedMeshRenderer;
 
     [SerializeField]private float rotateSencitivity;
     public bool Rotateable = true;
@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     public bool isCrouching = false;
     public bool isRunning = false;
     private float currentYangle = 0f;
+    private bool subscribed = false;
 
     private void Awake()
     {
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
     {
         UnLockRotate();
         PlayerInputs.Enable();
+        VirtualCameraNoise = playercamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         InputSubscribe();
     }
 
@@ -49,36 +51,35 @@ public class PlayerController : MonoBehaviour
 
     public void InputSubscribe()
     {
-        PlayerActions.Look.started += RotateCamera;
-        PlayerActions.Run.started += ChangeRunState;
-        PlayerActions.Run.canceled += ChangeRunState2;
-        PlayerActions.Crouch.started += ChangeCrouchState;
-        PlayerActions.Crouch.canceled += ChangeCrouchState2;
-        PlayerActions.EquipmentUse.started += EquipMent.OnAttackInput;
+        if (!subscribed)
+        {
+            PlayerActions.Look.started += RotateCamera;
+            PlayerActions.Run.started += ChangeRunState;
+            PlayerActions.Run.canceled += ChangeRunState2;
+            PlayerActions.Crouch.started += ChangeCrouchState;
+            PlayerActions.Crouch.canceled += ChangeCrouchState2;
+            PlayerActions.EquipmentUse.started += EquipMent.OnAttackInput;
+            subscribed = true;
+        }
     }
 
     public void InputUnsubscribe()
     {
-        PlayerActions.Look.started -= RotateCamera;
-        PlayerActions.Run.canceled -= ChangeRunState;
-        PlayerActions.Run.canceled -= ChangeRunState2;
-        PlayerActions.Crouch.started -= ChangeCrouchState;
-        PlayerActions.Crouch.canceled -= ChangeCrouchState2;
-        PlayerActions.EquipmentUse.started -= EquipMent.OnAttackInput;
+        if (subscribed)
+        {
+            PlayerActions.Look.started -= RotateCamera;
+            PlayerActions.Run.canceled -= ChangeRunState;
+            PlayerActions.Run.canceled -= ChangeRunState2;
+            PlayerActions.Crouch.started -= ChangeCrouchState;
+            PlayerActions.Crouch.canceled -= ChangeCrouchState2;
+            PlayerActions.EquipmentUse.started -= EquipMent.OnAttackInput;
+            subscribed = false;
+        }
     }
 
     private void LateUpdate()
     {
-        UpdateCameraData();
-    }
-
-    private void UpdateCameraData()//카메라가 찍고 있는 head의 위치를 mesh로 설정해둔 머리의 y값을 쫓아가도록 설정
-    {
-        Mesh mesh = new Mesh();
-        SkinnedMeshRenderer.BakeMesh(mesh);
-        Vector3 headposition = SkinnedMeshRenderer.transform.TransformPoint(mesh.vertices[0]);
-
-        head.transform.position = new Vector3(head.transform.position.x, headposition.y, head.transform.position.z);
+        OnUsing();
     }
 
     private void RotateCamera(InputAction.CallbackContext context)//cinemachine의 aim방식에 따라서 회전시키는 방법은 다르다.
@@ -96,7 +97,7 @@ public class PlayerController : MonoBehaviour
             if (currentYangle - rotatex * rotateSencitivity * Time.deltaTime < maxRotateY && currentYangle - rotatex * rotateSencitivity * Time.deltaTime > -maxRotateY)
             {
                 currentYangle -= rotatex * rotateSencitivity * Time.deltaTime;
-                head.transform.Rotate(Vector3.right, -rotatex * rotateSencitivity * Time.deltaTime, Space.Self);
+                Head.transform.Rotate(Vector3.right, -rotatex * rotateSencitivity * Time.deltaTime, Space.Self);
             }
         }
     }
@@ -132,5 +133,15 @@ public class PlayerController : MonoBehaviour
     public void ChangeRotateSencitivity(float amount)
     {
         rotateSencitivity = amount;
+    }
+
+    public void OnUsing()
+    {
+        if (EquipMent.CurEquip == null)
+        {
+            return;
+        }
+        bool onusing = EquipMent.CurEquip.OnUsing;
+        MainGameManager.Instance.Player.Animator.SetBool("OnUsing", onusing);
     }
 }

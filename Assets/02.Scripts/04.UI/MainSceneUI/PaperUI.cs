@@ -10,6 +10,18 @@ public class PaperUI : PopupUI
     [SerializeField] private GameObject paperDetail3; // PaperDetail_1 오브젝트
     [SerializeField] private GameObject paperButton4; // PaperButton_1 오브젝트
     [SerializeField] private GameObject paperDetail4; // PaperDetail_1 오브젝트
+    [SerializeField] private GameObject paperButton5; // PaperButton_1 오브젝트
+    [SerializeField] private GameObject paperDetail5; // PaperDetail_1 오브젝트
+    [SerializeField] private GameObject paperButton6; // PaperButton_1 오브젝트
+    [SerializeField] private GameObject paperDetail6; // PaperDetail_1 오브젝트
+    [SerializeField] private GameObject paperButton7; // PaperButton_1 오브젝트
+    [SerializeField] private GameObject paperDetail7; // PaperDetail_1 오브젝트
+    [SerializeField] private GameObject paperButton8; // PaperButton_1 오브젝트
+    [SerializeField] private GameObject paperDetail8; // PaperDetail_1 오브젝트
+    [SerializeField] private GameObject paperButton9; // PaperButton_1 오브젝트
+    [SerializeField] private GameObject paperDetail9; // PaperDetail_1 오브젝트
+    [SerializeField] private GameObject paperButton10; // PaperButton_1 오브젝트
+    [SerializeField] private GameObject paperDetail10; // PaperDetail_1 오브젝트
 
     public override void OnEnable()
     {
@@ -80,6 +92,77 @@ public class PaperUI : PopupUI
                 paperDetail4.SetActive(true);
             }
         }
+        if (MainGameManager.Instance.paperInteractionCount >= 5)
+        {
+            if (paperButton5 != null)
+            {
+                paperButton5.SetActive(true);
+            }
 
+            if (paperDetail5 != null)
+            {
+                paperDetail5.SetActive(true);
+            }
+        }
+        if (MainGameManager.Instance.paperInteractionCount >= 6)
+        {
+            if (paperButton6 != null)
+            {
+                paperButton6.SetActive(true);
+            }
+
+            if (paperDetail6 != null)
+            {
+                paperDetail6.SetActive(true);
+            }
+        }
+        if (MainGameManager.Instance.paperInteractionCount >= 7)
+        {
+            if (paperButton7 != null)
+            {
+                paperButton7.SetActive(true);
+            }
+
+            if (paperDetail7 != null)
+            {
+                paperDetail7.SetActive(true);
+            }
+        }
+        if (MainGameManager.Instance.paperInteractionCount >= 8)
+        {
+            if (paperButton8 != null)
+            {
+                paperButton8.SetActive(true);
+            }
+
+            if (paperDetail8 != null)
+            {
+                paperDetail8.SetActive(true);
+            }
+        }
+        if (MainGameManager.Instance.paperInteractionCount >= 9)
+        {
+            if (paperButton9 != null)
+            {
+                paperButton9.SetActive(true);
+            }
+
+            if (paperDetail9 != null)
+            {
+                paperDetail9.SetActive(true);
+            }
+        }
+        if (MainGameManager.Instance.paperInteractionCount >= 10)
+        {
+            if (paperButton10 != null)
+            {
+                paperButton10.SetActive(true);
+            }
+
+            if (paperDetail10 != null)
+            {
+                paperDetail10.SetActive(true);
+            }
+        }
     }
 }

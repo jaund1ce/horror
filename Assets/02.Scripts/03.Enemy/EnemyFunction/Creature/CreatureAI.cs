@@ -65,6 +65,15 @@ public class CreatureAI : EnemyAI
     {
         return base.UpdateState();
     }
+    protected override void PlaySoundBasedOnState()
+    {
+        base.PlaySoundBasedOnState();
+    }
+
+    protected override void OnTriggerEnter(Collider other)
+    {
+        base.OnTriggerEnter(other);
+    }
 
 }
 

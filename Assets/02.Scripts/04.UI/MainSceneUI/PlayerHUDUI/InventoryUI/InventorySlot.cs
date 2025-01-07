@@ -28,8 +28,13 @@ public class InventorySlot : MonoBehaviour
 
     public void OnClick()
     {
-        Debug.Log("slotclicked!");
-        if (CurrentData == null) return;
+        if (CurrentData == null || CurrentData.ItemData == null)
+        {
+            SoundManger.Instance.MakeEnviormentSound("InventoryError");
+            InventoryController.ChangeData(null);
+            return;
+        }
+        SoundManger.Instance.MakeEnviormentSound("Click4");
         InventoryController.ChangeData(CurrentData);
     }
 

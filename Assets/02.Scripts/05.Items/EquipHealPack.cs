@@ -13,6 +13,7 @@ public class EquipHealPack : EquipItemBase
     public override void OnUseInput()
     {
         base.OnUseInput();
+        SoundManger.Instance.MakeEnviormentSound("HealPackUse");
     }
 
 
