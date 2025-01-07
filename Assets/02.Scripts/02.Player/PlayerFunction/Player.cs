@@ -16,7 +16,6 @@ public class Player : MonoBehaviour
     public PlayerInteraction Interact { get; private set; }
     public Rigidbody PlayerRigidbody { get; private set; }
     public CapsuleCollider CapsuleCollider { get; private set; }
-    public ForceReceiver ForceReceiver { get; private set; }
     public PlayerConditionController PlayerConditionController { get; private set; }
 
     private PlayerStateMachine2 stateMachine;
@@ -47,7 +46,6 @@ public class Player : MonoBehaviour
         Interact = GetComponentInChildren<PlayerInteraction>();
         PlayerRigidbody = GetComponent<Rigidbody>();
         CapsuleCollider = GetComponent<CapsuleCollider>();
-        ForceReceiver = GetComponent<ForceReceiver>();
         PlayerConditionController = GetComponent<PlayerConditionController>();
         PlayerInventoryData = GetComponent<PlayerInventoryData>();
 
