@@ -42,7 +42,11 @@ public class PlayerConditionController : MonoBehaviour
             Stamina += PassiveStamina * Time.deltaTime;
         }
 
-        Health = Mathf.Clamp(Health + PassiveHealth*Time.deltaTime, 0, maxHealth);
+        if (player.isHiding)
+        {
+            Health = Mathf.Clamp(Health + PassiveHealth * Time.deltaTime, 0, maxHealth);
+        }
+        
         Stamina = Mathf.Clamp(Stamina + PassiveStamina * Time.deltaTime, 0, maxStamina);
         if (ChangeState(GetStaminaPercentage()))
         {

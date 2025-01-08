@@ -222,7 +222,8 @@ public class Player : MonoBehaviour
         }
         else
         {
-            Animator.SetBool("Key", true);
+            return;
+            //Animator.SetBool("Key", true);
         }
     }
 }
