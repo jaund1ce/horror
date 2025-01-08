@@ -10,13 +10,6 @@ public class LoadingSceneController : MonoBehaviour
     [SerializeField] private Button confirmButton;
     private int currentIndex = 0; // 현재 활성화된 오브젝트 인덱스
 
-    private void Awake()
-    {
-        if (confirmButton != null)
-        {
-            confirmButton.gameObject.SetActive(false); // 버튼 초기 상태 비활성화
-        }
-    }
     void Start()
     {
         // 버튼 클릭 이벤트 등록
@@ -55,13 +48,6 @@ public class LoadingSceneController : MonoBehaviour
         if (progressBar != null)
         {
             progressBar.value = Mathf.Clamp01(progress); // 진행률 업데이트
-            if (progress > 0.98) 
-            {
-                if (confirmButton != null)
-                {
-                    confirmButton.gameObject.SetActive(true); // 버튼 초기 상태 활성화
-                }
-            }
         }
 
     }

@@ -162,10 +162,6 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
             yield return null;
         }
 
-        // 5. 로딩 씬을 언로드
-        //AsyncOperation unloadSceneOp = SceneManager.UnloadSceneAsync(loadingSceneName);
-        //yield return new WaitUntil(() => unloadSceneOp.isDone);
-
         // 6. 추가 작업 실행
         callback?.Invoke();
     }
