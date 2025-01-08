@@ -11,6 +11,10 @@ public class LockedDoor : ObjectBase
     private float openSpeed = 5f; // 문 열림 속도
     [HideInInspector] public bool IsLocked = true;
     [HideInInspector] public bool IsOpened = false; // 문이 열렸는지 여부
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip openSound; // 문이 열릴 때의 소리
+    [SerializeField] private AudioClip closeSound; // 문이 닫힐 때의 소리
+    [SerializeField] private AudioClip lockSound; // 문이 닫힐 때의 소리
 
     public event Action isOpen;
 
@@ -32,12 +36,21 @@ public class LockedDoor : ObjectBase
     public void ToggleDoor()
     {
         //잠긴문 Interact 시 Sound 추가
-        if (IsLocked) return;
+        if (IsLocked)
+        {
+            PlaySound(lockSound);
+            return;
+        }
 
         IsOpened = !IsOpened;
         if (IsOpened == true)
         {
+            PlaySound(openSound);
             isOpen?.Invoke();
+        }
+        else
+        {
+            PlaySound(closeSound);
         }
 
         StopAllCoroutines();
@@ -63,6 +76,15 @@ public class LockedDoor : ObjectBase
     {
         if (IsLocked) return "Locked";
         return IsOpened ? "Close" : "Open";
+    }
+
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.clip = clip;
+            audioSource.Play();
+        }
     }
 
 }

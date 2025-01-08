@@ -233,7 +233,7 @@ public class SoundManger : mainSingleton<SoundManger>
             case 1: bgmname = "Stage1BGM"; break;
             case 2: bgmname = "Stage2BGM"; break;
             case 3: bgmname = "Stage3BGM"; break;
-            case 4: bgmname = "Stage4BGM"; break;
+            case 4: bgmname = "DieUI"; break;
             default: Debug.Log($"StageNum : {stagenum} / out of index"); break;
         }
 

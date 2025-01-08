@@ -1,11 +1,11 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UHFPS.Runtime;
 using UnityEngine;
+using System.Threading;
 
 public class PlayerConditionController : MonoBehaviour
 {
+
+    public event Action OnDie;
     [SerializeField] private float maxHealth;
     public float PassiveHealth;
     public float Health;
@@ -15,7 +15,6 @@ public class PlayerConditionController : MonoBehaviour
 
     [SerializeField] private float staminaUseAmount = 15f;
 
-    public event Action OnDie;
     private PlayerBreatheType playerBreatheType = PlayerBreatheType.Normal;
     private Player player;
 
@@ -54,9 +53,9 @@ public class PlayerConditionController : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage , Enemy enemy)
+    public void TakeDamage(int damage, EnemyAI enemy)
     {
-        Enemy attackEnemy = enemy;
+        EnemyAI attackEnemy = enemy;
         SoundManger.Instance.MakeEnviormentSound("PlayerTakeDamage");
         //else if (damage >= 10)//소리만 추가 된다면 데미지에 따라 다른 소리를
         //{
@@ -69,10 +68,7 @@ public class PlayerConditionController : MonoBehaviour
 
         if (Health == 0) 
         {
-            Camera camera = enemy.GetComponent<Camera>();
-            camera.gameObject.SetActive(true);
-            //camera = Camera.main;
-            OnDie?.Invoke();
+            PlayerDie(attackEnemy);
         }
     }
 
@@ -114,5 +110,15 @@ public class PlayerConditionController : MonoBehaviour
             return true;
         }
         else return false;
+    }
+
+    public void PlayerDie(EnemyAI enemyAI)
+    {
+        EnemyAI enemy = enemyAI;
+        SoundState enemyKillSound = enemy.soundStates[AIState.Chasing];
+        SoundManger.Instance.Enviroment.PlayOneShot(enemyKillSound.Sound);
+        Transform firstChild = enemy.transform.GetChild(0);
+        firstChild.gameObject.SetActive(true);
+        OnDie?.Invoke();
     }
 }
