@@ -18,12 +18,13 @@ public class SystemUIMouseSencitivitySetting : MonoBehaviour
     private void OnEnable()
     {
         player = MainGameManager.Instance.Player;
-
+        if (player == null) return;
         mousesencitivitySlider.value = player.Input.GetRotateSencitivity();
     }
 
     private void ChangeVolume(float amount)
     {
+        if (player == null) return;
         player.Input.ChangeRotateSencitivity(amount);
     }
 }

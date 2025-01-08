@@ -105,15 +105,9 @@ public class SoundManger : mainSingleton<SoundManger>
     private void GetPlayerStepSources()
     {
         playerstepSource_cement = Resources.LoadAll<AudioClip>("Sounds/PlayerSteps/Cement");
-        playerstepSource_concrete = Resources.LoadAll<AudioClip>("Sounds/PlayerSteps/Concrete");
-        playerstepSource_dirt = Resources.LoadAll<AudioClip>("Sounds/PlayerSteps/Dirt");
-        playerstepSource_grass = Resources.LoadAll<AudioClip>("Sounds/PlayerSteps/Grass");
         playerstepSource_wood = Resources.LoadAll<AudioClip>("Sounds/PlayerSteps/Wood");
 
         AddToDictionarys("Cement", playerstepSource_cement);
-        AddToDictionarys("Concrete", playerstepSource_concrete);
-        AddToDictionarys("Dirt", playerstepSource_dirt);
-        AddToDictionarys("Grass", playerstepSource_grass);
         AddToDictionarys("Wood", playerstepSource_wood);
     }
 
