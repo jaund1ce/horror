@@ -60,7 +60,7 @@ public class PlayerInteraction : MonoBehaviour
         }
         else CurrentInteracteable = null;
 
-        if (!PuzzleEnter)
+        if (CurrentInteracteable != null && !PuzzleEnter)
         {
             MainUI mainUI = UIManager.Instance.GetUI<MainUI>();
             mainUI.ShowPromptUI(CurrentInteracteable);
