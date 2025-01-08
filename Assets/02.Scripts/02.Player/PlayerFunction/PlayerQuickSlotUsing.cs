@@ -59,8 +59,7 @@ public class PlayerQuickSlotUsing : MonoBehaviour
         }
         else
         {
-            player.CurrentEquipItem = null;
-            player.Input.EquipMent.UnEquip();
+            player.UnEquipCurrentItem();
         }
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainGameManager : mainSingleton<MainGameManager>
 {
     public int paperInteractionCount;
+    public int fisrtStart;
     public Action<float> MakeSoundAction;
     public Player Player;
 
@@ -15,6 +16,7 @@ public class MainGameManager : mainSingleton<MainGameManager>
         SceneManager.sceneLoaded += OnSceneLoaded;
         FindOrSetPlayer();
         paperInteractionCount = 0;
+        fisrtStart = 0;
     }
 
     private void FindOrSetPlayer()

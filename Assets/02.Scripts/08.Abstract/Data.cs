@@ -12,10 +12,12 @@ public interface ISaveable
 public class UserInfo : ISaveable
 {
     public int paperInteractionCount;
+    public int firstStart;
 
     public string Save()
     {
         paperInteractionCount = MainGameManager.Instance.paperInteractionCount;
+        firstStart = MainGameManager.Instance.fisrtStart;
         return JsonUtility.ToJson(this, true);
     }
 

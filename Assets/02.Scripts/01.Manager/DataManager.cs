@@ -66,6 +66,9 @@ public class DataManager : mainSingleton<DataManager>
 
         // MainGameManager의 데이터를 동기화
         PlayerData.paperInteractionCount = MainGameManager.Instance.paperInteractionCount; // 추가
+        PlayerData.firstStart = 1;
+        PlayerData.firstStart = MainGameManager.Instance.fisrtStart;
+
 
         // PlayerData 저장 (기존 코드 유지)
         SaveSystem.Save(PlayerData, "PlayerData.json");

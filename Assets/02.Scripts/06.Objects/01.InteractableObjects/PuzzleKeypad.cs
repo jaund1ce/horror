@@ -42,6 +42,7 @@ public class PuzzleKeypad : PuzzleBase
     {
         if (!isUsingPuzzle)
         {
+            MainGameManager.Instance.Player.UnEquipCurrentItem();
             keypadRenderer.material.EnableKeyword(txtBgLightKeyword);
             EnterPuzzleView();
         }

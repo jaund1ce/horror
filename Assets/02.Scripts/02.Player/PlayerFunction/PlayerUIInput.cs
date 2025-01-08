@@ -18,6 +18,16 @@ public class PlayerUIInput : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+
+        UIManager.Instance.Show<MainUI>();
+        if (MainGameManager.Instance.fisrtStart == 0)
+        {
+            UIManager.Instance.Show<ManualUI>();
+        }
+    }
+
     private void OnEnable()
     {
         playerInputs.Enable();
@@ -63,6 +73,7 @@ public class PlayerUIInput : MonoBehaviour
         playerInputs.Player.Menu.performed -= OnSystemMenu;
         UIManager.Instance.Hide<PaperUI>();
         UIManager.Instance.Hide<InventoryUI>();
+        SoundManger.Instance.ResetAllSounds();
         StartCoroutine(Delay(2.0f));
         
     }
