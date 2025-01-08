@@ -222,7 +222,14 @@ public class Player : MonoBehaviour
         }
         else
         {
-            Animator.SetBool("Key", true);
+            return;
+            //Animator.SetBool("Key", true);
         }
+    }
+
+    public void UnEquipCurrentItem()
+    {
+        CurrentEquipItem = null;
+        Input.EquipMent.UnEquip();
     }
 }

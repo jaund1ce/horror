@@ -52,7 +52,14 @@ public class PlayerQuickSlotUsing : MonoBehaviour
 
     private void EquipQuick(InventoryData inventoryData)
     {
-        MainGameManager.Instance.Player.CurrentEquipItem = inventoryData;
-        MainGameManager.Instance.Player.Input.EquipMent.EquipNew(MainGameManager.Instance.Player.CurrentEquipItem);
+        if (player.CurrentEquipItem != inventoryData)
+        {
+            player.CurrentEquipItem = inventoryData;
+            player.Input.EquipMent.EquipNew(player.CurrentEquipItem);
+        }
+        else
+        {
+            player.UnEquipCurrentItem();
+        }
     }
 }
