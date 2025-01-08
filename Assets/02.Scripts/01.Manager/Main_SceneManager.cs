@@ -37,6 +37,7 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
 
     public void LoadStartScene()
     {
+        SoundManger.Instance.GetSceneSource(startSceneName);
         ChangeScene(startSceneName);
     }
 
@@ -44,14 +45,17 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
     {
         LoadLoadingScene(mainSceneName);
         SoundManger.Instance.GetSceneSource(mainSceneName);
+        SoundManger.Instance.GetSceneSource(mainSceneName);
     }
     public void LoadMainScene2()
     {
+        SoundManger.Instance.GetSceneSource(mainScene2Name);
         LoadLoadingScene(mainScene2Name);
     }
 
     public void Restart()
     {
+        SoundManger.Instance.GetSceneSource(SceneManager.GetActiveScene().name);
         ChangeScene(SceneManager.GetActiveScene().name);
     }
 

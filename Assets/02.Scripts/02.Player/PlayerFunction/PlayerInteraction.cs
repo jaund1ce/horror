@@ -22,6 +22,8 @@ public class PlayerInteraction : MonoBehaviour
     private bool PuzzleEnter;
     private bool puzzleAccess;
 
+    public MainUI mainUI;
+
     private void Awake()
     {
         if(mainCamera == null)
@@ -29,15 +31,26 @@ public class PlayerInteraction : MonoBehaviour
             mainCamera = Camera.main;
         }
 
+        if(mainUI == null)
+        {
+            mainUI = UIManager.Instance.GetUI<MainUI>();
+        }
+
         playerInputs = new PlayerInputs();
-        playerActions = playerInputs.Player;//inputsystem에 선언했던 Actionmap 중에 하나를 선택
+        playerActions = playerInputs.Player;
         playerInputs.Enable();
-        //playerInputs.Player.Look.performed += _ => getItemData(); //look이 마우스 델타 값을 받기 때문에 X
     }
 
     private void Update()
     {
-        getItemData();   
+        if (mainUI != null)
+        {
+            getItemData();
+        }
+        else
+        {
+            mainUI = UIManager.Instance.GetUI<MainUI>();
+        }
     }
 
     private void getItemData()//현재 바라보는 아이템 표시
@@ -62,7 +75,6 @@ public class PlayerInteraction : MonoBehaviour
 
         if (!PuzzleEnter)
         {
-            MainUI mainUI = UIManager.Instance.GetUI<MainUI>();
             mainUI.ShowPromptUI(CurrentInteracteable);
         }
     }
@@ -78,8 +90,6 @@ public class PlayerInteraction : MonoBehaviour
 
     public void HandleInputAndPrompt() 
     {
-        MainUI mainUI = UIManager.Instance.GetUI<MainUI>();
-
         if (isPuzzle && !PuzzleEnter && !puzzleAccess)
         {
             PuzzleEnter = true;
