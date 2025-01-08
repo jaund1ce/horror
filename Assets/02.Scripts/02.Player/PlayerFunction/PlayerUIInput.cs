@@ -1,3 +1,6 @@
+using System;
+using System.Collections;
+using System.Threading;
 using UnityEngine;
 
 public class PlayerUIInput : MonoBehaviour
@@ -55,11 +58,18 @@ public class PlayerUIInput : MonoBehaviour
 
     private void OnDieUI()
     {
-        UIManager.Instance.Hide<PaperUI>();
-        UIManager.Instance.Hide<InventoryUI>();
         playerInputs.Disable();
         playerInputs.Player.Inventory.performed -= OnInventory;
         playerInputs.Player.Menu.performed -= OnSystemMenu;
+        UIManager.Instance.Hide<PaperUI>();
+        UIManager.Instance.Hide<InventoryUI>();
+        StartCoroutine(Delay(2.0f));
+        
+    }
+    IEnumerator Delay(float Seconds)
+    {
+        yield return new WaitForSeconds(Seconds);
         UIManager.Instance.Show<DieUI>();
     }
+
 }

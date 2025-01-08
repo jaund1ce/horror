@@ -105,15 +105,6 @@ public class Player : MonoBehaviour
         enabled = false;
     }
 
-    //void ChangeRotationSencitivity()//##ToDO : 나중에 다른 매니져로 옮기기? 환경설정에 넣기
-    //{
-    //    if (Input.rotateSencitivity == Data.GroundData.BaseRotationDamping) return;
-    //    else
-    //    {
-    //        Input.rotateSencitivity = Data.GroundData.BaseRotationDamping;
-    //    }
-    //}
-
     private void CheckGround()
     {
         Vector3 curVector = this.gameObject.transform.position;
@@ -231,7 +222,8 @@ public class Player : MonoBehaviour
         }
         else
         {
-            Animator.SetBool("Key", true);
+            return;
+            //Animator.SetBool("Key", true);
         }
     }
 }

@@ -8,7 +8,7 @@ public class DataManager : mainSingleton<DataManager>
     public InventoryData[] InventoryData; // 인벤토리 데이터 배열
     public MapInfo MapData; // 맵 데이터
     InventorySlotsController InventorySlotsController;
-
+    public Dictionary<Vector3, int> SaveItemData;
 
     protected override void Awake()
     {
@@ -32,6 +32,8 @@ public class DataManager : mainSingleton<DataManager>
         {
             MapData = new MapInfo();
         }
+
+        SaveItemData = new Dictionary<Vector3, int>();
     }
 
     public void InitializeGameData()
@@ -84,11 +86,19 @@ public class DataManager : mainSingleton<DataManager>
             
         }
 
+        foreach (GameObject rootObject in UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()) 
+        {
+            FindByItemBase<ItemBase>(rootObject);
+            FindByPaper<Paper>(rootObject);
+        }
+
         // InventoryData 저장 (기존 코드 유지)
         SaveSystem.Save(serializableInventory, "InventoryData.json");
 
         // MapData 저장 (기존 코드 유지)
         SaveSystem.Save(MapData, "MapData.json");
+
+        SaveSystem.Save(SaveItemData, "DropItemData.json");
 
         Debug.Log("Game Saved!"); // 게임 저장 완료 로그
     }
@@ -153,6 +163,21 @@ public class DataManager : mainSingleton<DataManager>
         return null;
     }
 
+    public void FindByItemBase<T>(GameObject obj) where T : ItemBase 
+    {
+        if (obj.TryGetComponent<T>(out T ItemBase))
+        {
+            SaveItemData.Add(obj.transform.position, ItemBase.itemData.itemSO.ID);
+        }
+    }
+
+    public void FindByPaper<T>(GameObject obj) where T : Paper
+    {
+        if (obj.TryGetComponent<T>(out T Paper))
+        {
+            SaveItemData.Add(obj.transform.position, Paper.paperData.value);
+        }
+    }
 
 
 

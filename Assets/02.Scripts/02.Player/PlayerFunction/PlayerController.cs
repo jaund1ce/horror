@@ -137,6 +137,10 @@ public class PlayerController : MonoBehaviour
     {
         rotateSencitivity = amount;
     }
+    public float GetRotateSencitivity()
+    {
+        return rotateSencitivity;
+    }
 
     public void OnUsing()
     {

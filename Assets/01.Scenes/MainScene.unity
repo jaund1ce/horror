@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 623165634}
   - component: {fileID: 623165633}
   m_Layer: 0
-  m_Name: MainScene1Volume
+  m_Name: MainScene1BaseVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -202,7 +202,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 105668af6fdd05f4885ad0634492529f, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 72c4ae8bfcc5f7c43b54f9a225977e2a, type: 2}
 --- !u!4 &623165634
 Transform:
   m_ObjectHideFlags: 0
@@ -211,7 +211,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 623165632}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -57.35178, y: 4.1920676, z: 47.88492}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
