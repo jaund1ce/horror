@@ -39,11 +39,13 @@ public class EquipLight : EquipItemBase
     {
         if (!OnUsing)
         {
+            SoundManger.Instance.MakeEnviormentSound("Flashlight_On");
             light.enabled = true;
             OnUsing = true;
         }
         else
         {
+            SoundManger.Instance.MakeEnviormentSound("Flashlight_Off");
             light.enabled = false;
             OnUsing = false;
         }

@@ -226,4 +226,10 @@ public class Player : MonoBehaviour
             //Animator.SetBool("Key", true);
         }
     }
+
+    public void UnEquipCurrentItem()
+    {
+        CurrentEquipItem = null;
+        Input.EquipMent.UnEquip();
+    }
 }
