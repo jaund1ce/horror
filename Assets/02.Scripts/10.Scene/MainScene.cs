@@ -10,7 +10,6 @@ public class MainScene : SceneBase
         MapManager.Instance.ShowMap<Stage01>();
         MapManager.Instance.LoadAndSpawnObjects();
         DataManager.Instance.LoadAllItems();
-        UIManager.Instance.Show<MainUI>();
     }
 
 

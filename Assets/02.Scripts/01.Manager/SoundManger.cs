@@ -219,7 +219,6 @@ public class SoundManger : mainSingleton<SoundManger>
         }
         else
         {
-            Debug.Log("No Sound Clip!");
         }
     }
 
