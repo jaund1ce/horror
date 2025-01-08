@@ -15,7 +15,7 @@ public class PlayerCrouchState : PlayerBaseState
         base.Enter();
         stateMachine.isCrouching = true;
         stateMachine.Player.CapsuleCollider.height = 0.8f;
-        stateMachine.Player.CapsuleCollider.radius = 0.35f;
+        stateMachine.Player.CapsuleCollider.radius = 0.4f;
         stateMachine.Player.CapsuleCollider.center = new Vector3(0,0.4f,0);
         stateMachine.Player.Input.Head.transform.localPosition = Vector3.Lerp(stateMachine.Player.Input.Head.transform.localPosition, new Vector3(0, 0.6f, -0.2f),0.9f);
         stateMachine.Player.Input.VirtualCameraNoise.m_AmplitudeGain = 1f;
@@ -29,7 +29,7 @@ public class PlayerCrouchState : PlayerBaseState
         base.Exit();
         stateMachine.isCrouching = false;
         stateMachine.Player.CapsuleCollider.height = 2f;
-        stateMachine.Player.CapsuleCollider.radius = 0.25f;
+        stateMachine.Player.CapsuleCollider.radius = 0.3f;
         stateMachine.Player.CapsuleCollider.center = new Vector3(0, 1f, 0);
         stateMachine.Player.Input.Head.transform.localPosition = Vector3.Lerp(stateMachine.Player.Input.Head.transform.localPosition, new Vector3(0, 1.8f, -0.2f), 0.9f);
         StopAnimation(stateMachine.Player.AnimationData.CrouchParameterHash);
