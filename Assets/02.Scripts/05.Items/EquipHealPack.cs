@@ -13,13 +13,13 @@ public class EquipHealPack : EquipItemBase
     public override void OnUseInput()
     {
         base.OnUseInput();
-        SoundManger.Instance.MakeEnviormentSound("HealPackUse");
     }
 
 
     public override void OnUse()
     {
         MainGameManager.Instance.Player.PlayerConditionController.AddHealth(inventoryData.ItemData.itemSO.ItemHealHealth);
+        SoundManger.Instance.MakeEnviormentSound("HealPackUse");
         base.OnUse();
     }
 

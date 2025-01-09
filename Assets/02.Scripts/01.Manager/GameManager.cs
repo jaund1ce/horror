@@ -15,7 +15,7 @@ public class MainGameManager : mainSingleton<MainGameManager>
         base.Awake();
         SceneManager.sceneLoaded += OnSceneLoaded;
         FindOrSetPlayer();
-        
+        fisrtStart = 0;
     }
 
     private void FindOrSetPlayer()
@@ -25,9 +25,8 @@ public class MainGameManager : mainSingleton<MainGameManager>
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        FindOrSetPlayer();
         paperInteractionCount = 0;
-        fisrtStart = 0;
+        FindOrSetPlayer();
     }
 
     protected override void OnDestroy()
@@ -40,8 +39,4 @@ public class MainGameManager : mainSingleton<MainGameManager>
     {
         MakeSoundAction?.Invoke(amount);
     }
-
-
-
-
 }
