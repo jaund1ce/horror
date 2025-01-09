@@ -19,8 +19,8 @@ public class EquipHealPack : EquipItemBase
 
     public override void OnUse()
     {
-        MainGameManager.Instance.Player.PlayerConditionController.AddHealth(inventoryData.ItemData.itemSO.ItemHealHealth);
         base.OnUse();
+        MainGameManager.Instance.Player.PlayerConditionController.AddHealth(inventoryData.ItemData.itemSO.ItemHealHealth);
     }
 
 }

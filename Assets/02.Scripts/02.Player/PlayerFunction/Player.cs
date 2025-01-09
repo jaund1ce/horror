@@ -38,8 +38,6 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask monsterMask;
     private float lastCheckTime = 0f;
 
-    public event Action HPChange;
-
     void Awake()
     {
         AnimationData.Initialize();
@@ -66,6 +64,7 @@ public class Player : MonoBehaviour
     {
         stateMachine.HandleInput();
         stateMachine.Update();
+        ChangeEquip();// *****
     }
 
     private void FixedUpdate()
@@ -230,12 +229,7 @@ public class Player : MonoBehaviour
 
     public void UnEquipCurrentItem()
     {
-        Input.EquipMent.UnEquip();
         CurrentEquipItem = null;
-    }
-
-    public void PlayerHPChange()
-    {
-        HPChange?.Invoke();
+        Input.EquipMent.UnEquip();
     }
 }

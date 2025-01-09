@@ -43,8 +43,9 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
 
     public void LoadMainScene()
     {
-        SoundManger.Instance.GetSceneSource(mainSceneName);
         LoadLoadingScene(mainSceneName);
+        SoundManger.Instance.GetSceneSource(mainSceneName);
+        SoundManger.Instance.GetSceneSource(mainSceneName);
     }
     public void LoadMainScene2()
     {

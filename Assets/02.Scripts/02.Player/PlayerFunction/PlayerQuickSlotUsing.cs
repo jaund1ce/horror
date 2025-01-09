@@ -61,6 +61,5 @@ public class PlayerQuickSlotUsing : MonoBehaviour
         {
             player.UnEquipCurrentItem();
         }
-        player.ChangeEquip();
     }
 }
