@@ -24,7 +24,6 @@ public class DieUI : PopupUI
     {
         base.OnDisable();
         Time.timeScale = 1f;
-        SoundManger.Instance.ResetAllSounds();
     }
     // 필요하다면 추가적인 동작 구현
     public override void OpenUI()

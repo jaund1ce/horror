@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
     [SerializeField]private GroundType groundType = GroundType.Cement;
 
     [Header("Monster Check Data")]
-    [SerializeField] private float checkDistance = 12f;
+    [SerializeField] private float checkDistance = 30f;
     [SerializeField] private float checkDuration = 2f;
     [SerializeField] private LayerMask monsterMask;
     private float lastCheckTime = 0f;
