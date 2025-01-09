@@ -6,7 +6,7 @@ public class StageClear2 : MonoBehaviour
 {
     private LockedDoor lockedDoorWithHinge;
 
-    void Start()
+    private void OnEnable()
     {
         lockedDoorWithHinge = GetComponent<LockedDoor>();
         lockedDoorWithHinge.isOpen += stageClear;
@@ -19,6 +19,7 @@ public class StageClear2 : MonoBehaviour
 
     private void stageClear()
     {
+        SoundManger.Instance.ResetAllSounds();
         Main_SceneManager.Instance.LoadEndScene();
     }
 

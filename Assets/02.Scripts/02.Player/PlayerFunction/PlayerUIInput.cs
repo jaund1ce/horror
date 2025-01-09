@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerUIInput : MonoBehaviour
 {
+    public static bool fisrtStart = false;
     private PlayerInputs playerInputs;
     private PlayerConditionController playerConditionController;
 
@@ -20,10 +21,12 @@ public class PlayerUIInput : MonoBehaviour
 
     private void Start()
     {
-        if (MainGameManager.Instance.fisrtStart == 0)
+        if (fisrtStart)
         {
-            UIManager.Instance.Show<ManualUI>();
+            return;
         }
+        UIManager.Instance.Show<ManualUI>();
+        fisrtStart = true;
     }
 
     private void OnEnable()
