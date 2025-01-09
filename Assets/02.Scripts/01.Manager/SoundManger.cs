@@ -36,6 +36,7 @@ public class SoundManger : mainSingleton<SoundManger>
     private float lastCheckTime;
     private AudioClip[] stepAudioClips;
     private Coroutine playerStepCoroutine;
+    private string breathename = "";
 
     private int index = 0;
 
@@ -319,6 +320,16 @@ public class SoundManger : mainSingleton<SoundManger>
             PlayerBreathe.clip = null;
             return;
         }
+
+        if (playerBreatheType == PlayerBreatheType.Damaged)
+        {
+            if(PlayerBreathe.clip == null)
+            {
+                PlayerBreathe.Stop();
+                PlayerBreathe.Play();
+            }
+        }
+
         string breathename = $"PlayerBreathe{playerBreatheType.ToString()}";
 
         if (audioClipDictionary.TryGetValue(breathename, out AudioClip value))
