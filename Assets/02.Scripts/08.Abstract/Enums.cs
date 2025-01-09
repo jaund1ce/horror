@@ -67,9 +67,3 @@ public enum PlayerBreatheType
     Damaged
 }
 
-public enum TryUse
-{
-    CanUse,
-    CanNotUse,
-    ResetItem
-}

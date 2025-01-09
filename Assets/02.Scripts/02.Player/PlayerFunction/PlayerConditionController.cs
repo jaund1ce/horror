@@ -56,11 +56,8 @@ public class PlayerConditionController : MonoBehaviour
     public void TakeDamage(int damage, EnemyAI enemy)
     {
         EnemyAI attackEnemy = enemy;
-        SoundManger.Instance.MakeEnviormentSound("PlayerTakeDamage");
-        //else if (damage >= 10)//소리만 추가 된다면 데미지에 따라 다른 소리를
-        //{
-        //    SoundManger.Instance.MakeEnviormentSound("PlayerTakeDamage2");
-        //}
+        SoundManger.Instance.ChangeBreatheBeatSound(PlayerBreatheType.Damaged);
+        player.PlayerHPChange();
 
         if (Health ==0) return;
 
@@ -85,6 +82,7 @@ public class PlayerConditionController : MonoBehaviour
     public void AddHealth(int amount) 
     {
         Health = Mathf.Min(Health + amount, maxHealth);
+        player.PlayerHPChange();
     }
 
     private bool ChangeState(float staminaPercentage)

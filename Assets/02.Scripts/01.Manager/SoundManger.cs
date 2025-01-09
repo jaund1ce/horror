@@ -317,9 +317,13 @@ public class SoundManger : mainSingleton<SoundManger>
         {
             if(PlayerBreathe.clip == null)
             {
-                PlayerBreathe.Stop();
-                PlayerBreathe.Play();
+                MakeEnviormentSound("PlayerTakeDamage");
             }
+            else//코루틴으로
+            {
+                StartCoroutine( StartDamagedSound());
+            }
+            return;
         }
 
         string breathename = $"PlayerBreathe{playerBreatheType.ToString()}";
@@ -334,6 +338,17 @@ public class SoundManger : mainSingleton<SoundManger>
         {
             Debug.Log("No Sound Clip!");
         }
+    }
+
+    private IEnumerator StartDamagedSound()//코루티의 조건을 외부에서 결정
+    {
+            PlayerBreathe.Stop();
+            MakeEnviormentSound("PlayerTakeDamage2");
+
+            yield return new WaitForSeconds(1f);
+
+            PlayerBreathe.Play();
+
     }
 
     public void ChangeAllSounds()

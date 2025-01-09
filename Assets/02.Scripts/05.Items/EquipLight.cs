@@ -9,6 +9,7 @@ using UnityEngine.InputSystem;
 public class EquipLight : EquipItemBase
 {
     private Light light;
+    private bool usable = false;
 
 
     protected override void Start()
@@ -18,20 +19,13 @@ public class EquipLight : EquipItemBase
         light.enabled = false;
     }
 
-    private void Update()
-    {
-        if (OnUsing) 
-        {
-            //배터리 감소 로직 작성
-            //if(배터리 0 이면) animator.SetBool(animUse,false);
-        }
-    }
-
     public override void OnUseInput()
     {
         if (inventoryData == null) return;
+        if (!usable) return;
 
-        Invoke("OnUse", 2f);
+        usable = false;
+        Invoke("OnUse", 1f);
     }
 
 
@@ -49,6 +43,7 @@ public class EquipLight : EquipItemBase
             light.enabled = false;
             OnUsing = false;
         }
+        usable = true;
     }
 }
 
