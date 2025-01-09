@@ -38,6 +38,8 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask monsterMask;
     private float lastCheckTime = 0f;
 
+    public event Action HPChange;
+
     void Awake()
     {
         AnimationData.Initialize();
