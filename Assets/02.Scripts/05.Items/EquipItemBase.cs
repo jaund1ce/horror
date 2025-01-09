@@ -32,6 +32,7 @@ public abstract class EquipItemBase : MonoBehaviour
         if (inventoryData.Use(1) == (int)TryUse.ResetItem)
         {
             Destroy(this.gameObject);
+            MainGameManager.Instance.Player.ChangeEquip();
         }
     }
 

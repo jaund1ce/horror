@@ -17,6 +17,7 @@ public class UICondition : MonoBehaviour
     {
         playerConditionController = MainGameManager.Instance.Player.PlayerConditionController;
         creatureAI = FindAnyObjectByType<CreatureAI>();
+        MainGameManager.Instance.Player.HPChange += ChangeDamagePrompt;
     }
 
     private void FixedUpdate()

@@ -66,7 +66,6 @@ public class Player : MonoBehaviour
     {
         stateMachine.HandleInput();
         stateMachine.Update();
-        ChangeEquip();// *****
     }
 
     private void FixedUpdate()
@@ -233,5 +232,10 @@ public class Player : MonoBehaviour
     {
         Input.EquipMent.UnEquip();
         CurrentEquipItem = null;
+    }
+
+    public void PlayerHPChange()
+    {
+        HPChange?.Invoke();
     }
 }
