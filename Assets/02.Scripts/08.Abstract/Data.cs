@@ -17,6 +17,7 @@ public class UserInfo : ISaveable
     public string Save()
     {
         paperInteractionCount = MainGameManager.Instance.paperInteractionCount;
+        firstStart = 1;
         firstStart = MainGameManager.Instance.fisrtStart;
         return JsonUtility.ToJson(this, true);
     }
