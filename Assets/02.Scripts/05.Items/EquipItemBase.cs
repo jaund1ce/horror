@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class EquipItemBase : MonoBehaviour
 {
     public bool OnUsing { get; protected set; }
+    protected string animUse = "Use";
     protected InventoryData inventoryData;
 
     protected virtual void Start()
@@ -19,8 +20,11 @@ public abstract class EquipItemBase : MonoBehaviour
         if (!OnUsing)
         {
             OnUsing = true;
-            
-            Invoke("OnUse", 1f);
+            if (inventoryData.Use(1) == (int)TryUse.ResetItem) 
+            {
+                Destroy(this.gameObject);
+            }
+            Invoke("OnUse", 2f);
             // 애니메이션 추가
         }
     }
@@ -28,12 +32,6 @@ public abstract class EquipItemBase : MonoBehaviour
     public virtual void OnUse() 
     {
         OnUsing = false;
-
-        if (inventoryData.Use(1) == (int)TryUse.ResetItem)
-        {
-            Destroy(this.gameObject);
-            MainGameManager.Instance.Player.ChangeEquip();
-        }
     }
 
 }

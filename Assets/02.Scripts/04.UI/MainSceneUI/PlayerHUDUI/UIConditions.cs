@@ -17,20 +17,16 @@ public class UICondition : MonoBehaviour
     {
         playerConditionController = MainGameManager.Instance.Player.PlayerConditionController;
         creatureAI = FindAnyObjectByType<CreatureAI>();
-        MainGameManager.Instance.Player.HPChange += ChangeDamagePrompt;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
+        DamagePrompt.GetAPercentage(playerConditionController.GetHPPercentage());
+
         if (Time.time - lastCheckTime < duration) return;
 
         onoff = !onoff;
         lastCheckTime = Time.time;
         RecPoint.SetActive(onoff);
-    }
-
-    public void ChangeDamagePrompt()
-    {
-        DamagePrompt.GetAPercentage(playerConditionController.GetHPPercentage());
     }
 }
