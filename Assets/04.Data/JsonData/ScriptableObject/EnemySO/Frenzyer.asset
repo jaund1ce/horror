@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866674a6b8ca94c4886ea7e48f6b4c5a, type: 3}
   m_Name: Frenzyer
   m_EditorClassIdentifier: 
+  <EnemyType>k__BackingField: 0
   <PlayerChasingRange>k__BackingField: 1
   <AttackRange>k__BackingField: 2
   <ForceTransitionTime>k__BackingField: 0.1
@@ -30,7 +31,7 @@ MonoBehaviour:
   <VisionRange>k__BackingField: 40
   <VisionDistance>k__BackingField: 100
   <RayAmount>k__BackingField: 31
-  <FeelPlayerRange>k__BackingField: 10
+  <FeelPlayerRange>k__BackingField: 2
   <MissTargetTime>k__BackingField: 3
   <MaxAggroGage>k__BackingField: 100
   <MinWanderDistance>k__BackingField: 15

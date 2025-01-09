@@ -35,16 +35,16 @@ public class EnemyFrenzyState : EnemyBaseState
 
     public override void Update()
     {
-        checkTime += Time.deltaTime;
-        if (checkTime < crawlTime)
-        {
-            MovementSpeedModifier = 0;
-        }
-        else if (checkTime >= crawlTime && checkTime <= frenzyTime)
-        {
-            MovementSpeedModifier = groundData.SpecialMovementModifier;
-        }
-        else checkTime = 0f;
+        //checkTime += Time.deltaTime;
+        //if (checkTime < crawlTime)
+        //{
+        //    MovementSpeedModifier = 0;
+        //}
+        //else if (checkTime >= crawlTime && checkTime <= frenzyTime)
+        //{
+        //    MovementSpeedModifier = groundData.SpecialMovementModifier;
+        //}
+        //else checkTime = 0f;
         base.Update();
     }
 

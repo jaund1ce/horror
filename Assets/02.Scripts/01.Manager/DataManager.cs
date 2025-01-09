@@ -89,11 +89,11 @@ public class DataManager : mainSingleton<DataManager>
             
         }
 
-        foreach (GameObject rootObject in UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()) 
-        {
-            FindByItemBase<ItemBase>(rootObject);
-            FindByPaper<Paper>(rootObject);
-        }
+        //foreach (GameObject rootObject in UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()) 
+        //{
+        //    FindByItemBase<ItemBase>(rootObject);
+        //    FindByPaper<Paper>(rootObject);
+        //}
 
         // InventoryData 저장 (기존 코드 유지)
         SaveSystem.Save(serializableInventory, "InventoryData.json");
@@ -166,21 +166,21 @@ public class DataManager : mainSingleton<DataManager>
         return null;
     }
 
-    public void FindByItemBase<T>(GameObject obj) where T : ItemBase 
-    {
-        if (obj.TryGetComponent<T>(out T ItemBase))
-        {
-            SaveItemData.Add(obj.transform.position, ItemBase.itemData.itemSO.ID);
-        }
-    }
+    //public void FindByItemBase<T>(GameObject obj) where T : ItemBase 
+    //{
+    //    if (obj.TryGetComponent<T>(out T ItemBase))
+    //    {
+    //        SaveItemData.Add(obj.transform.position, ItemBase.itemData.itemSO.ID);
+    //    }
+    //}
 
-    public void FindByPaper<T>(GameObject obj) where T : Paper
-    {
-        if (obj.TryGetComponent<T>(out T Paper))
-        {
-            SaveItemData.Add(obj.transform.position, Paper.paperData.value);
-        }
-    }
+    //public void FindByPaper<T>(GameObject obj) where T : Paper
+    //{
+    //    if (obj.TryGetComponent<T>(out T Paper))
+    //    {
+    //        SaveItemData.Add(obj.transform.position, Paper.paperData.value);
+    //    }
+    //}
 
 
 
