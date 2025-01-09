@@ -229,7 +229,7 @@ public class Player : MonoBehaviour
 
     public void UnEquipCurrentItem()
     {
-        CurrentEquipItem = null;
         Input.EquipMent.UnEquip();
+        CurrentEquipItem = null;
     }
 }

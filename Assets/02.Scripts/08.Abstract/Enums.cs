@@ -65,3 +65,10 @@ public enum PlayerBreatheType
     Exhausted,
     Fatigued
 }
+
+public enum TryUse
+{
+    CanUse,
+    CanNotUse,
+    ResetItem
+}

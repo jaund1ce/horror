@@ -20,8 +20,6 @@ public class PlayerUIInput : MonoBehaviour
 
     private void Start()
     {
-
-        UIManager.Instance.Show<MainUI>();
         if (MainGameManager.Instance.fisrtStart == 0)
         {
             UIManager.Instance.Show<ManualUI>();

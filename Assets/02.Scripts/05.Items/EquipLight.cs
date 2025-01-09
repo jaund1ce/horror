@@ -31,7 +31,7 @@ public class EquipLight : EquipItemBase
     {
         if (inventoryData == null) return;
 
-        Invoke("OnUse", 2f);
+        Invoke("OnUse", 1f);
     }
 
 

@@ -5,7 +5,6 @@ using UnityEngine;
 public abstract class EquipItemBase : MonoBehaviour
 {
     public bool OnUsing { get; protected set; }
-    protected string animUse = "Use";
     protected InventoryData inventoryData;
 
     protected virtual void Start()
@@ -24,7 +23,7 @@ public abstract class EquipItemBase : MonoBehaviour
             {
                 Destroy(this.gameObject);
             }
-            Invoke("OnUse", 2f);
+            Invoke("OnUse", 1f);
             // 애니메이션 추가
         }
     }

@@ -25,7 +25,6 @@ public class MainGameManager : mainSingleton<MainGameManager>
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         paperInteractionCount = 0;
-        fisrtStart = 0;
         FindOrSetPlayer();
     }
 

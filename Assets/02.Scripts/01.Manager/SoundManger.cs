@@ -93,6 +93,20 @@ public class SoundManger : mainSingleton<SoundManger>
             stageNum = 1;
         }
 
+        else if (stagename == "MainScene2")
+        {
+            if (playerheartbeatSource.Length == 0 || playerBreatheSource.Length == 0)
+            {
+                GetPlayerStepSources();
+                playerheartbeatSource = Resources.LoadAll<AudioClip>("Sounds/PlayerHeartBeats");
+                playerBreatheSource = Resources.LoadAll<AudioClip>("Sounds/PlayerBreathes");
+
+                AddToDictionary(playerheartbeatSource);
+                AddToDictionary(playerBreatheSource);
+            }
+            stageNum = 2;
+        }
+
         //else //나중에 필요하면 추가
         //{
 
