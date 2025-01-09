@@ -34,8 +34,6 @@ public class Equipment : MonoBehaviour
     {
         if (CurEquip != null)
         {
-            if (CurEquip is EquipLight && CurEquip.OnUsing){ CurEquip.OnUse(); }
-
             Destroy(CurEquip.gameObject);
             CurEquip = null;
         }

@@ -225,7 +225,7 @@ public class Player : MonoBehaviour
 
     public void UnEquipCurrentItem()
     {
-        Input.EquipMent.UnEquip();
         CurrentEquipItem = null;
+        Input.EquipMent.UnEquip();
     }
 }

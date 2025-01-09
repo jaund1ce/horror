@@ -1,6 +1,12 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+    public enum TryUse 
+    {
+        CanUse,
+        CanNotUse,
+        ResetItem
+    }
 
 [Serializable]
 public class InventoryData

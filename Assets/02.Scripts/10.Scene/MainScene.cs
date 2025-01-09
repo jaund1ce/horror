@@ -9,7 +9,14 @@ public class MainScene : SceneBase
     {
         MapManager.Instance.ShowMap<Stage01>();
         MapManager.Instance.LoadAndSpawnObjects();
-        UIManager.Instance.Show<MainUI>();
         DataManager.Instance.LoadAllItems();
     }
+
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
 }

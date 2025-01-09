@@ -93,20 +93,6 @@ public class SoundManger : mainSingleton<SoundManger>
             stageNum = 1;
         }
 
-        else if (stagename == "MainScene2")
-        {
-            if (playerheartbeatSource.Length == 0 || playerBreatheSource.Length == 0)
-            {
-                GetPlayerStepSources();
-                playerheartbeatSource = Resources.LoadAll<AudioClip>("Sounds/PlayerHeartBeats");
-                playerBreatheSource = Resources.LoadAll<AudioClip>("Sounds/PlayerBreathes");
-
-                AddToDictionary(playerheartbeatSource);
-                AddToDictionary(playerBreatheSource);
-            }
-            stageNum = 2;
-        }
-
         //else //나중에 필요하면 추가
         //{
 
@@ -119,9 +105,15 @@ public class SoundManger : mainSingleton<SoundManger>
     private void GetPlayerStepSources()
     {
         playerstepSource_cement = Resources.LoadAll<AudioClip>("Sounds/PlayerSteps/Cement");
+        playerstepSource_concrete = Resources.LoadAll<AudioClip>("Sounds/PlayerSteps/Concrete");
+        playerstepSource_dirt = Resources.LoadAll<AudioClip>("Sounds/PlayerSteps/Dirt");
+        playerstepSource_grass = Resources.LoadAll<AudioClip>("Sounds/PlayerSteps/Grass");
         playerstepSource_wood = Resources.LoadAll<AudioClip>("Sounds/PlayerSteps/Wood");
 
         AddToDictionarys("Cement", playerstepSource_cement);
+        AddToDictionarys("Concrete", playerstepSource_concrete);
+        AddToDictionarys("Dirt", playerstepSource_dirt);
+        AddToDictionarys("Grass", playerstepSource_grass);
         AddToDictionarys("Wood", playerstepSource_wood);
     }
 
