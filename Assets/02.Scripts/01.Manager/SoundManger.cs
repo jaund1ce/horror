@@ -36,6 +36,7 @@ public class SoundManger : mainSingleton<SoundManger>
     private float lastCheckTime;
     private AudioClip[] stepAudioClips;
     private Coroutine playerStepCoroutine;
+    private string breathename = "";
 
     private int index = 0;
 
@@ -311,6 +312,20 @@ public class SoundManger : mainSingleton<SoundManger>
             PlayerBreathe.clip = null;
             return;
         }
+
+        if (playerBreatheType == PlayerBreatheType.Damaged)
+        {
+            if(PlayerBreathe.clip == null)
+            {
+                MakeEnviormentSound("PlayerTakeDamage");
+            }
+            else//코루틴으로
+            {
+                StartCoroutine( StartDamagedSound());
+            }
+            return;
+        }
+
         string breathename = $"PlayerBreathe{playerBreatheType.ToString()}";
 
         if (audioClipDictionary.TryGetValue(breathename, out AudioClip value))
@@ -323,6 +338,17 @@ public class SoundManger : mainSingleton<SoundManger>
         {
             Debug.Log("No Sound Clip!");
         }
+    }
+
+    private IEnumerator StartDamagedSound()//코루티의 조건을 외부에서 결정
+    {
+            PlayerBreathe.Stop();
+            MakeEnviormentSound("PlayerTakeDamage2");
+
+            yield return new WaitForSeconds(1f);
+
+            PlayerBreathe.Play();
+
     }
 
     public void ChangeAllSounds()

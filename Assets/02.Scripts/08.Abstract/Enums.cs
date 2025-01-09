@@ -63,5 +63,7 @@ public enum PlayerBreatheType
     Normal = 0,
     Tired,
     Exhausted,
-    Fatigued
+    Fatigued,
+    Damaged
 }
+

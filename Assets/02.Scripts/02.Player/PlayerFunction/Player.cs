@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
     public PlayerInventoryData PlayerInventoryData;
     public InventoryData CurrentEquipItem;
 
+    public event Action HPChange;
+
     [Header("Player States")]
     public bool isChangingQuickSlot = false;
     public bool isInventoryOpen = false;
@@ -64,7 +66,6 @@ public class Player : MonoBehaviour
     {
         stateMachine.HandleInput();
         stateMachine.Update();
-        ChangeEquip();// *****
     }
 
     private void FixedUpdate()
@@ -230,6 +231,12 @@ public class Player : MonoBehaviour
     public void UnEquipCurrentItem()
     {
         CurrentEquipItem = null;
+        ChangeEquip();
         Input.EquipMent.UnEquip();
+    }
+
+    public void PlayerHPChange()
+    {
+        HPChange?.Invoke();
     }
 }
