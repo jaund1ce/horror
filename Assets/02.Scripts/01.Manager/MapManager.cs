@@ -35,8 +35,8 @@ public class MapManager : mainSingleton<MapManager>
         set { mapTransform = value; }
     }
     private static Transform mapTransform;
-    public string jsonFilePath ="Data/SpawnData"; // JSON 파일 경로 (Resources 폴더 내부 기준), 파일을 로드하여 데이터에 따라 오브젝트를 스폰
-    public string jsonFilePath2 = "Data/SpawnData2";
+    //public string jsonFilePath1 ="Data/SpawnData"; // JSON 파일 경로 (Resources 폴더 내부 기준), 파일을 로드하여 데이터에 따라 오브젝트를 스폰
+    //public string jsonFilePath2 = "Data/SpawnData2";
     private Dictionary<string, GameObject> mapList = new Dictionary<string, GameObject>();
 
 
@@ -115,13 +115,14 @@ public class MapManager : mainSingleton<MapManager>
     }
 
     // JSON 데이터를 읽어와 오브젝트를 스폰하는 함수
-    public void LoadAndSpawnObjects()
+    public void LoadAndSpawnObjects(int SceneNumber)
     {
+        string path = $"Data/SpawnData{SceneNumber}";
         // JSON 파일 로드
-        TextAsset jsonFile = Resources.Load<TextAsset>(jsonFilePath); // Resources 폴더에서 JSON 파일 로드
+        TextAsset jsonFile = Resources.Load<TextAsset>(path); // Resources 폴더에서 JSON 파일 로드
         if (jsonFile == null)
         {
-            Debug.LogError($"JSON 파일을 찾을 수 없습니다: {jsonFilePath}"); // JSON 파일이 없는 경우 오류 메시지 출력
+            Debug.LogError($"JSON 파일을 찾을 수 없습니다: {path}"); // JSON 파일이 없는 경우 오류 메시지 출력
             return;
         }
 
@@ -135,7 +136,7 @@ public class MapManager : mainSingleton<MapManager>
         }
     }
 
-    public void LoadAndSpawnObjects2()
+    /*public void LoadAndSpawnObjects2()
     {
         // JSON 파일 로드
         TextAsset jsonFile = Resources.Load<TextAsset>(jsonFilePath2); // Resources 폴더에서 JSON 파일 로드
@@ -153,10 +154,10 @@ public class MapManager : mainSingleton<MapManager>
         {
             SpawnObject(spawnData); // 개별 오브젝트 스폰 함수 호출
         }
-    }
+    }*/
 
     // 개별 오브젝트를 스폰하는 함수
-    private void SpawnObject(SpawnData data)
+    public void SpawnObject(SpawnData data)
     {
         // assetType 문자열을 eAssetType 열거형으로 변환
         if (!System.Enum.TryParse(data.assetType, out eAssetType assetType))
@@ -192,7 +193,7 @@ public class MapManager : mainSingleton<MapManager>
             {
                 Debug.LogWarning($"기준 오브젝트를 찾을 수 없습니다: {data.referenceObjectName}");
             }
-        }
+        }//## else if(!string.isNullOrEmpty(data.position))
 
         // 로드된 프리팹을 스폰 (Instantiate 함수 사용)
         Instantiate(prefab, spawnPosition, Quaternion.identity); // 지정된 위치에 오브젝트 생성

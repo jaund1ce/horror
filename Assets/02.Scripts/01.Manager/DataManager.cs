@@ -8,7 +8,7 @@ public class DataManager : mainSingleton<DataManager>
     public InventoryData[] InventoryData; // 인벤토리 데이터 배열
     public MapInfo MapData; // 맵 데이터
     InventorySlotsController InventorySlotsController;
-    public Dictionary<Vector3, int> SaveItemData;
+    public Dictionary<string, SpawnData> SaveItemData;
 
     protected override void Awake()
     {
@@ -33,7 +33,7 @@ public class DataManager : mainSingleton<DataManager>
             MapData = new MapInfo();
         }
 
-        SaveItemData = new Dictionary<Vector3, int>();
+        SaveItemData = new Dictionary<string, SpawnData>();
     }
 
     public void InitializeGameData()
@@ -61,7 +61,7 @@ public class DataManager : mainSingleton<DataManager>
 
 
 
-    public void SaveGame()
+    public void SaveGame(bool saveBtnClick)
     {
 
         // MainGameManager의 데이터를 동기화
@@ -86,19 +86,28 @@ public class DataManager : mainSingleton<DataManager>
             
         }
 
-        foreach (GameObject rootObject in UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()) 
+        if (saveBtnClick)
         {
-            FindByItemBase<ItemBase>(rootObject);
-            FindByPaper<Paper>(rootObject);
+            foreach (GameObject rootObject in UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects())
+            {
+                FindByItemBase<ItemBase>(rootObject);
+                //FindByPaper<Paper>(rootObject);
+            }
+            SaveSystem.Save(SaveItemData, "DropItemData.json");
         }
+        else 
+        {
+            SaveItemData.Clear();
+            SaveSystem.Save(SaveItemData, "DropItemData.json");
+        }
+
+        MapData.MapName = Main_SceneManager.Instance.NowSceneName;
 
         // InventoryData 저장 (기존 코드 유지)
         SaveSystem.Save(serializableInventory, "InventoryData.json");
 
         // MapData 저장 (기존 코드 유지)
         SaveSystem.Save(MapData, "MapData.json");
-
-        SaveSystem.Save(SaveItemData, "DropItemData.json");
 
         Debug.Log("Game Saved!"); // 게임 저장 완료 로그
     }
@@ -110,6 +119,8 @@ public class DataManager : mainSingleton<DataManager>
     public void LoadGame()
     {
         PlayerData = SaveSystem.Load<UserInfo>("PlayerData.json");
+        SaveItemData = SaveSystem.Load<Dictionary<string, SpawnData>>("DropItemData.json");
+
 
         if (PlayerData != null)
         {
@@ -144,7 +155,40 @@ public class DataManager : mainSingleton<DataManager>
             Debug.LogWarning("InventoryData.json not found, initializing empty inventory.");
         }
 
+        if (SaveItemData != null)
+        {
+            foreach (var serializedItemData in SaveItemData)
+            {
+                SpawnData spawndata = new SpawnData();
+                spawndata.key = serializedItemData.Value.key;
+                spawndata.assetType = serializedItemData.Value.assetType;
+                spawndata.categoryType = serializedItemData.Value.categoryType;
+                spawndata.position = StringToVector3(serializedItemData.Key);
+                spawndata.referenceObjectName = serializedItemData.Value.referenceObjectName;
+                MapManager.Instance.SpawnObject(spawndata);
+            }
+
+        }
+        else
+        {
+            int SceneNumber;
+            if (string.IsNullOrEmpty(MapData.MapName))
+            {
+                SceneNumber = 1;
+            }
+            else
+            {
+                SceneNumber = int.Parse(MapData.MapName[MapData.MapName.Length-1].ToString());
+            }
+
+            MapManager.Instance.LoadAndSpawnObjects(SceneNumber);
+        }
+
+
         MapData = SaveSystem.Load<MapInfo>("MapData.json") ?? new MapInfo();
+        
+
+
         Debug.Log("Game Loaded!");
     }
 
@@ -167,7 +211,15 @@ public class DataManager : mainSingleton<DataManager>
     {
         if (obj.TryGetComponent<T>(out T ItemBase))
         {
-            SaveItemData.Add(obj.transform.position, ItemBase.itemData.itemSO.ID);
+            SpawnData spawndata = new SpawnData();
+            spawndata.key = ItemBase.itemData.name;
+            spawndata.assetType = "Prefab";
+            spawndata.categoryType = "Item";
+            spawndata.position = obj.transform.position;
+            spawndata.referenceObjectName = "";
+            string key = obj.transform.position.ToString();
+            if (SaveItemData == null) SaveItemData = new Dictionary<string, SpawnData>();
+            SaveItemData.Add(key, spawndata);
         }
     }
 
@@ -175,7 +227,7 @@ public class DataManager : mainSingleton<DataManager>
     {
         if (obj.TryGetComponent<T>(out T Paper))
         {
-            SaveItemData.Add(obj.transform.position, Paper.paperData.value);
+           // SaveItemData.Add(obj.transform.position, Paper.paperData.value);
         }
     }
 
@@ -190,5 +242,16 @@ public class DataManager : mainSingleton<DataManager>
     protected override void OnDestroy()
     {
         base.OnDestroy();
+    }
+
+    private Vector3 StringToVector3(string s)
+    {
+        s = s.Trim('(', ')');
+        string[] parts = s.Split(',');
+        return new Vector3(
+            float.Parse(parts[0]),
+            float.Parse(parts[1]),
+            float.Parse(parts[2])
+        );
     }
 }

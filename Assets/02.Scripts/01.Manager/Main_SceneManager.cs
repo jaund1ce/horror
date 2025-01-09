@@ -15,12 +15,11 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
 
     public string NowSceneName = ""; // 현재 활성화된 씬의 이름을 저장하는 string 형식 변수
                                      // 초기값은 빈 문자열로 설정되며, Awake에서 현재 씬의 이름을 가져옵니다.
-                                     // 씬 전환 후 로직에 따라 다른 동작을 수행할 때 사용됩니다.
-    public string PreviousSceneName = "";                                     
+                                     // 씬 전환 후 로직에 따라 다른 동작을 수행할 때 사용됩니다.                              
 
 
     [SerializeField] private string startSceneName = "StartScene";
-    [SerializeField] private string mainSceneName = "MainScene";
+    [SerializeField] private string mainSceneName = "MainScene1";
     [SerializeField] private string mainScene2Name = "MainScene2";
     [SerializeField] private string endSceneName = "EndScene";
 
@@ -95,7 +94,6 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
         }
 
         if (loadSceneMode == LoadSceneMode.Single) // LoadSceneMode가 Single이면   
-            PreviousSceneName = NowSceneName;
             NowSceneName = SceneName; // NowSceneName을 로드한 씬의 이름으로 업데이트합니다.
                                       // 이는 메인 스레드가 멈추지 않고 다른 작업을 병행할 수 있도록 합니다.
 

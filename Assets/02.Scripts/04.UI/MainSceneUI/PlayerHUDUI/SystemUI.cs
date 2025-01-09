@@ -33,7 +33,7 @@ public class SystemUI : PopupUI
 
     public void Save()
     {
-        DataManager.Instance.SaveGame();
+        DataManager.Instance.SaveGame(true);
     }
 
     public void Load()
