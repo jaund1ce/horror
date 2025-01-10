@@ -161,7 +161,7 @@ VideoPlayer:
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 3
   m_AspectRatio: 2
-  m_DataSource: 0
+  m_DataSource: 1
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
@@ -169,7 +169,7 @@ VideoPlayer:
   - {fileID: 0}
   m_DirectAudioVolumes:
   - 1
-  m_Url: 
+  m_Url: https://prodoinger.github.io/video/Outtro02.mp4
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
@@ -299,6 +299,7 @@ MonoBehaviour:
   mapTransform: {fileID: 0}
   targetObject: {fileID: 589358839}
   delay: 26
+  delay2: 18
 --- !u!4 &865599171
 Transform:
   m_ObjectHideFlags: 0

@@ -124211,7 +124211,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4261256237592065419, guid: 626d7725f74c19d4e9f8d9a136ea88f0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 24.011
+      value: 24.169
       objectReference: {fileID: 0}
     - target: {fileID: 4261256237592065419, guid: 626d7725f74c19d4e9f8d9a136ea88f0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -124732,6 +124732,10 @@ PrefabInstance:
     - target: {fileID: 7857442068699564804, guid: 626d7725f74c19d4e9f8d9a136ea88f0, type: 3}
       propertyPath: m_Name
       value: HideableLocker_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8381495513175002428, guid: 626d7725f74c19d4e9f8d9a136ea88f0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
