@@ -39,7 +39,7 @@ public class MainScene : SceneBase
 
     private void ActivateObject01(InputAction.CallbackContext context)
     {
-        if (!this.gameObject.activeSelf) 
+        if (!this.targetObject01.activeSelf) 
         {return;}
 
         if (targetObject01 != null)

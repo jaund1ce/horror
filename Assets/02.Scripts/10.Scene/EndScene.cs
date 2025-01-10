@@ -29,7 +29,7 @@ public class EndScene : SceneBase
 
     void ActivateObject(InputAction.CallbackContext context)
     {
-        if (!this.gameObject.activeSelf)
+        if (!targetObject.activeSelf)
         { return; }
         playerActions.Menu.performed -= ActivateObject;
         playerInputs.Disable();
@@ -45,7 +45,7 @@ public class EndScene : SceneBase
 
     void ActivateSound()
     {
-        if(!this.gameObject.activeSelf) 
+        if(!targetObject.activeSelf) 
         { return; }
         SoundManger.Instance.ChangeBGMSound(4);
     }
