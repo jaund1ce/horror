@@ -25487,6 +25487,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2633741593654113938, guid: 380f21bd8269a1d42bb76d3021afe1b7, type: 3}
+      propertyPath: m_Name
+      value: LockPickDoor_3
+      objectReference: {fileID: 0}
     - target: {fileID: 5150097562937998635, guid: 380f21bd8269a1d42bb76d3021afe1b7, type: 3}
       propertyPath: m_Name
       value: LockPickDoor
@@ -26654,6 +26658,10 @@ PrefabInstance:
     - target: {fileID: 808685091375186157, guid: 380f21bd8269a1d42bb76d3021afe1b7, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2633741593654113938, guid: 380f21bd8269a1d42bb76d3021afe1b7, type: 3}
+      propertyPath: m_Name
+      value: LockPickDoor_2
       objectReference: {fileID: 0}
     - target: {fileID: 5150097562937998635, guid: 380f21bd8269a1d42bb76d3021afe1b7, type: 3}
       propertyPath: m_Name
@@ -36368,6 +36376,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2633741593654113938, guid: 380f21bd8269a1d42bb76d3021afe1b7, type: 3}
+      propertyPath: m_Name
+      value: LockPickDoor_1
+      objectReference: {fileID: 0}
     - target: {fileID: 5150097562937998635, guid: 380f21bd8269a1d42bb76d3021afe1b7, type: 3}
       propertyPath: m_Name
       value: LockPickDoor_1
@@ -44215,6 +44227,10 @@ PrefabInstance:
     - target: {fileID: 808685091375186157, guid: 380f21bd8269a1d42bb76d3021afe1b7, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2633741593654113938, guid: 380f21bd8269a1d42bb76d3021afe1b7, type: 3}
+      propertyPath: m_Name
+      value: LockPickDoor_4
       objectReference: {fileID: 0}
     - target: {fileID: 5150097562937998635, guid: 380f21bd8269a1d42bb76d3021afe1b7, type: 3}
       propertyPath: m_Name

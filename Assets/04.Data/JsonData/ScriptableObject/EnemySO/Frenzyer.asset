@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866674a6b8ca94c4886ea7e48f6b4c5a, type: 3}
   m_Name: Frenzyer
   m_EditorClassIdentifier: 
+  <EnemyType>k__BackingField: 0
   <PlayerChasingRange>k__BackingField: 1
   <AttackRange>k__BackingField: 2
   <ForceTransitionTime>k__BackingField: 0.1

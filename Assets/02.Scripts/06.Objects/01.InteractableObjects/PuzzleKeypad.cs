@@ -106,7 +106,6 @@ public class PuzzleKeypad : PuzzleBase
             {
                 currentCoroutine = StartCoroutine(Access());
                 audioSource.PlayOneShot(AccessSound); // 정답 소리 재생
-                IsAccess = true;
             }
         }
         else
@@ -154,7 +153,8 @@ public class PuzzleKeypad : PuzzleBase
 
         text.text = accessTxt;
         currentCoroutine = null;
-        if (LockDoor.IsLocked) LockDoor.IsLocked = false;
+        IsAccess = true;
+        Access(IsAccess);
         MainGameManager.Instance.Player.Interact.HandleInputAndPrompt();
         ExitPuzzleView();
     }
@@ -182,5 +182,11 @@ public class PuzzleKeypad : PuzzleBase
 
         text.color = baseColor;
         currentCoroutine = null;
+    }
+
+    public override void Access(bool access)
+    {
+        base.Access(access);
+        if (LockDoor.IsLocked) LockDoor.IsLocked = false;
     }
 }

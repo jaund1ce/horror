@@ -11,26 +11,31 @@ public interface ISaveable
 [Serializable]
 public class UserInfo : ISaveable
 {
-    public int paperInteractionCount;
+    public int PaperInteractionCount;
+    public float Health;
+    public float Stamina;
+    public string Playerposition;
 
-    public string Save()
+    public string Save() // ?? 안쓰는거같은데
     {
-        paperInteractionCount = MainGameManager.Instance.paperInteractionCount;
+        PaperInteractionCount = MainGameManager.Instance.paperInteractionCount;
         return JsonUtility.ToJson(this, true);
     }
 
     public void Load(string json)
     {
         JsonUtility.FromJsonOverwrite(json, this);
-        MainGameManager.Instance.paperInteractionCount = paperInteractionCount;
+        MainGameManager.Instance.paperInteractionCount = PaperInteractionCount;
     }
 }
 
-[Serializable]
+/*[Serializable]
 public class EnemyInfo : ISaveable
 {
     public string EnemyType;
-    public int PositionX, PositionY, PositionZ;
+    public string EnemyPosition;
+    public string AssetType;
+    public string CategoryType;
 
     public string Save()
     {
@@ -41,7 +46,7 @@ public class EnemyInfo : ISaveable
     {
         JsonUtility.FromJsonOverwrite(json, this);
     }
-}
+}*/
 
 [Serializable]
 public class MapInfo : ISaveable
