@@ -5,12 +5,12 @@ using UnityEngine.InputSystem;
 
 public class EndScene : SceneBase
 {
-    public GameObject targetObject; // 비활성화할 오브젝트
+    public GameObject targetObject; 
     private PlayerInputs playerInputs;
     public PlayerInputs.PlayerActions playerActions;
 
-    public float delay = 26f;        // 지연 시간
-    public float delay2 = 18f;       // 음악 재생 지연 시간
+    public float delay = 26f;       
+    public float delay2 = 18f;     
     // Start is called before the first frame update
     private void Awake()
     {
@@ -22,8 +22,8 @@ public class EndScene : SceneBase
     {
         playerInputs.Enable();
         playerActions.Menu.performed += ActivateObject;
-        Invoke("ActivateObject", delay);
         Invoke("ActivateSound", delay2);
+        Invoke("ActivateObject2", delay);
     }
 
 
@@ -36,7 +36,22 @@ public class EndScene : SceneBase
         if (targetObject != null)
         {
             SoundManger.Instance.ChangeBGMSound(4);
-            targetObject.SetActive(false); // 오브젝트 비활성화
+            targetObject.SetActive(false); 
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            UIManager.Instance.Show<EndUI>();
+        }
+    }
+
+    void ActivateObject2()
+    {
+        if (!targetObject.activeSelf)
+        { return; }
+        playerActions.Menu.performed -= ActivateObject;
+        playerInputs.Disable();
+        if (targetObject != null)
+        {
+            targetObject.SetActive(false); 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             UIManager.Instance.Show<EndUI>();
@@ -45,7 +60,7 @@ public class EndScene : SceneBase
 
     void ActivateSound()
     {
-        if(!targetObject.activeSelf) 
+        if (!targetObject.activeSelf)
         { return; }
         SoundManger.Instance.ChangeBGMSound(4);
     }

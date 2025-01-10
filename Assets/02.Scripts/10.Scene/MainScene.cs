@@ -33,14 +33,30 @@ public class MainScene : SceneBase
         fisrtPlay = true;
         playerInputs.Enable();
         playerActions.Menu.performed += ActivateObject01;
-        Invoke("ActivateObject01", delay01);
+        Invoke("ActivateObject02", delay01);
 
     }
 
-    private void ActivateObject01(InputAction.CallbackContext context)
+    public void ActivateObject01(InputAction.CallbackContext context)
     {
-        if (!this.targetObject01.activeSelf) 
+        if (!targetObject01.activeSelf) 
         {return;}
+
+        if (targetObject01 != null)
+        {
+            playerActions.Menu.performed -= ActivateObject01;
+
+            targetObject01.SetActive(false); // 오브젝트 비활성화
+            MapManager.Instance.ShowMap<Stage01>();
+            MapManager.Instance.LoadAndSpawnObjects();
+            UIManager.Instance.Show<MainUI>();
+            DataManager.Instance.LoadAllItems();
+        }
+    }
+    public void ActivateObject02()
+    {
+        if (!targetObject01.activeSelf)
+        { return; }
 
         if (targetObject01 != null)
         {

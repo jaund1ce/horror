@@ -868,6 +868,7 @@ GameObject:
   - component: {fileID: 2434927833138133844}
   - component: {fileID: 4904304417949342988}
   - component: {fileID: 7205902739065197991}
+  - component: {fileID: 3779003833044872706}
   m_Layer: 6
   m_Name: HideableLocker
   m_TagString: Untagged
@@ -883,9 +884,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7857442068699564804}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6, y: 1.261545, z: 1.5}
+  m_LocalScale: {x: 1.5000002, y: 1.261545, z: 1.5000002}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2978306331003231102}
@@ -895,7 +896,7 @@ Transform:
   - {fileID: 1443333413166988357}
   - {fileID: 7862917705970124318}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!33 &5276461623383610977
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1103,6 +1104,22 @@ MonoBehaviour:
   doorOpenAngle: -90
   doorSpeed: 2
   isDoorOpen: 0
+--- !u!208 &3779003833044872706
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7857442068699564804}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.55, y: 0.90000004, z: 0.254}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.90000004, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &9220661216234513220
 GameObject:
   m_ObjectHideFlags: 0
