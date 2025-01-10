@@ -39,7 +39,7 @@ public class SoundManger : mainSingleton<SoundManger>
     private string breathename = "";
 
     private int index = 0;
-
+    private float soundpitch;
 
     protected override void Awake()
     {
@@ -187,7 +187,7 @@ public class SoundManger : mainSingleton<SoundManger>
     {
         if (OnOff)
         {
-            PlayerStep.pitch = pitch;
+            soundpitch = pitch;
             playerStepCoroutine = StartCoroutine(StartStepSound());
         }
         else
@@ -206,11 +206,11 @@ public class SoundManger : mainSingleton<SoundManger>
 
         while (true)
         {
-            index = (int)((index) % stepAudioClips.Length);//다른 소리의 리스트의 길이는 서로 다르기때문에
+            index = (int)(((index) % stepAudioClips.Length));//다른 소리의 리스트의 길이는 서로 다르기때문에
             PlayerStep.clip = stepAudioClips[index];
             PlayerStep.PlayOneShot(PlayerStep.clip);
 
-            yield return new WaitForSeconds(stepAudioClips[index].length);
+            yield return new WaitForSeconds(stepAudioClips[index].length * soundpitch);
             index = (int)((index + 1) % stepAudioClips.Length);
         }
     }

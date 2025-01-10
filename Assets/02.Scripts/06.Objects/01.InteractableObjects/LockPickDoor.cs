@@ -188,6 +188,7 @@ public class LockPickDoor : PuzzleBase
     {
         if (!IsAccess)
         {
+            MainGameManager.Instance.Player.UnEquipCurrentItem();
             base.OnInteract();
         }
         else
