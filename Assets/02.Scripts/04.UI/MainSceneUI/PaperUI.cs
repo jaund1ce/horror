@@ -26,10 +26,12 @@ public class PaperUI : PopupUI
     public override void OnEnable()
     {
         base.OnEnable();
+        MainGameManager.Instance.Player.Input.InputUnsubscribe();
     }
     public override void OnDisable()
     {
         base.OnDisable();
+        MainGameManager.Instance.Player.Input.InputSubscribe();
     }
     // 필요하다면 추가적인 동작 구현
     public override void OpenUI()
