@@ -18,7 +18,6 @@ public class Paper : ObjectBase
     }
     public override void OnInteract()
     {
-        SoundManger.Instance.MakeEnviormentSound("PaperSound");
         Animator animator = GetComponent<Animator>();
         if (animator != null)
         {
