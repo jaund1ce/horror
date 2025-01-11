@@ -22,6 +22,7 @@ public class PaperUI : PopupUI
     [SerializeField] private GameObject paperDetail9; // PaperDetail_1 오브젝트
     [SerializeField] private GameObject paperButton10; // PaperButton_1 오브젝트
     [SerializeField] private GameObject paperDetail10; // PaperDetail_1 오브젝트
+    public GameObject targetObject;
 
     public override void OnEnable()
     {
@@ -165,6 +166,15 @@ public class PaperUI : PopupUI
             {
                 paperDetail10.SetActive(true);
             }
+        }
+    }
+
+    public void OpenBigUI()
+    {
+        if (targetObject != null) // targetObject가 null이 아니라면(Destroy, 아예 오브젝트가 없지 않다면)
+        {
+            bool isActive = targetObject.activeSelf; // activeSelf = targetObject의 SetAtive상태의(True, False) bool 지역 변수 
+            targetObject.SetActive(!isActive); // activeSelf(targetObject의 SetAtive상태(True, False) )의 반대로 SetActive 한다
         }
     }
 }

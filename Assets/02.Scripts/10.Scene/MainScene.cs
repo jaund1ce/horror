@@ -42,8 +42,6 @@ public class MainScene : SceneBase
         if (!targetObject01.activeSelf) 
         {return;}
 
-        if (targetObject01 != null)
-        {
             playerActions.Menu.performed -= ActivateObject01;
 
             targetObject01.SetActive(false); // 오브젝트 비활성화
@@ -51,15 +49,12 @@ public class MainScene : SceneBase
             MapManager.Instance.LoadAndSpawnObjects();
             UIManager.Instance.Show<MainUI>();
             DataManager.Instance.LoadAllItems();
-        }
     }
     public void ActivateObject02()
     {
         if (!targetObject01.activeSelf)
-        { return; }
+        {return;}
 
-        if (targetObject01 != null)
-        {
             playerActions.Menu.performed -= ActivateObject01;
 
             targetObject01.SetActive(false); // 오브젝트 비활성화
@@ -67,6 +62,5 @@ public class MainScene : SceneBase
             MapManager.Instance.LoadAndSpawnObjects();
             UIManager.Instance.Show<MainUI>();
             DataManager.Instance.LoadAllItems();
-        }
     }
 }
