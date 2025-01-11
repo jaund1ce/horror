@@ -52,8 +52,6 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
     protected List<int> visionInObject = new List<int>();
     protected AIState previouseState;
 
-    private float a;
-
     protected virtual void Awake()
     {
         enemy = GetComponent<Enemy>();

@@ -44299,6 +44299,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floor_1
       objectReference: {fileID: 0}
+    - target: {fileID: 1813009103452946, guid: da4f3513fcbf2c145883e2feeae5ca61, type: 3}
+      propertyPath: m_Layer
+      value: 22
+      objectReference: {fileID: 0}
     - target: {fileID: 4347646678998180, guid: da4f3513fcbf2c145883e2feeae5ca61, type: 3}
       propertyPath: m_LocalScale.x
       value: 53
