@@ -81,6 +81,7 @@ public class FrenzyerAI : EnemyAI
         else if (!IsAggroGageMax && IsPlayerMiss)
         {
             EnemyAistate = AIState.Wandering;
+            CheckHalfAggroGage();
             FeelThePlayer();
             return (int)EnemyAistate;
         }

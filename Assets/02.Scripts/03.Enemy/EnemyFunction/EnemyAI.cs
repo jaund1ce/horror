@@ -58,6 +58,7 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
         agent = GetComponent<NavMeshAgent>();
         EnemyAistate = AIState.Idle;
         Data = enemy.Data;
+        checkAggroSoundTime = 30f;
         releaseGageAmount = Data.MaxAggroGage/100;
     }
 
@@ -156,7 +157,6 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
         AggroGage += amount;
         AggroGage = Mathf.Clamp(AggroGage, 0f, 100f);
 
-        CheckHalfAggroGage();
 
         if (AggroGage >= Data.MaxAggroGage)
         {
@@ -195,6 +195,7 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
         {
             EnemyAistate = AIState.Wandering;
             FeelThePlayer();
+            CheckHalfAggroGage();
             return (int)EnemyAistate;
         }
         else if (!IsPlayerMiss && IsInAttackRange())
