@@ -19,7 +19,7 @@ MonoBehaviour:
   <Force>k__BackingField: 1
   Damage: 20
   <GroundData>k__BackingField:
-    <BaseSpeed>k__BackingField: 5
+    <BaseSpeed>k__BackingField: 4.3
     <BaseRotationDamping>k__BackingField: 3
     <WalkSpeedModifier>k__BackingField: 0.7
     <RunSpeedModifier>k__BackingField: 1.2
