@@ -99,4 +99,14 @@ public class GazerAI : EnemyAI
     {
         base.OnTriggerEnter(other);
     }
+
+    public override void RealeaseAggroGage(float amount)
+    {
+        base.RealeaseAggroGage(amount);
+    }
+
+    protected override void CheckHalfAggroGage()
+    {
+        base.CheckHalfAggroGage();
+    }
 }

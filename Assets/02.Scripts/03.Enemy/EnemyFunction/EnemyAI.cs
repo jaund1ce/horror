@@ -42,12 +42,14 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
     [field: Header("Enemy CalculateToAction")]
 
     [HideInInspector] public AIState EnemyAistate{ get; protected set; }
-    [HideInInspector] public float AggroGage;
-    public bool IsPlayerMiss { get; protected set; } = true;
-    public bool IsAggroGageMax { get; protected set; }
-    protected List<int> visionInObject = new List<int>();
-    protected float checkMissTime;
     [HideInInspector] public Dictionary<AIState, SoundState> soundStates = new Dictionary<AIState, SoundState>();
+    [HideInInspector] public float AggroGage;
+    [HideInInspector] public bool IsPlayerMiss { get; protected set; } = true;
+    [HideInInspector] public bool IsAggroGageMax { get; protected set; }
+    protected float checkMissTime;
+    protected float checkAggroSoundTime;
+    protected float releaseGageAmount;
+    protected List<int> visionInObject = new List<int>();
     protected AIState previouseState;
 
     protected virtual void Awake()
@@ -56,6 +58,7 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
         agent = GetComponent<NavMeshAgent>();
         EnemyAistate = AIState.Idle;
         Data = enemy.Data;
+        releaseGageAmount = Data.MaxAggroGage/100;
     }
 
     protected virtual void Start() 
@@ -112,7 +115,7 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
         }
 
         CheckMissTime(isTarget);
-
+        checkAggroSoundTime += Time.deltaTime;
     }
 
     protected virtual void CheckMissTime(bool isTarget)
@@ -144,12 +147,17 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
             increaceAmount = Data.FeelPlayerRange / (distance * 100);
             GetAggroGage(increaceAmount);
         }
+
+        if (colliders.Length == 0) RealeaseAggroGage(releaseGageAmount);
     }
 
     public virtual void GetAggroGage(float amount)
     {
         AggroGage += amount;
         AggroGage = Mathf.Clamp(AggroGage, 0f, 100f);
+
+        CheckHalfAggroGage();
+
         if (AggroGage >= Data.MaxAggroGage)
         {
             IsAggroGageMax = true;
@@ -174,6 +182,8 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
 
     public virtual int UpdateState()
     {
+        if (MainGameManager.Instance.Player.PlayerConditionController.IsDie) return (int)AIState.Idle;
+
         if (IsAttacking) return (int)EnemyAistate;
 
         if ((IsAggroGageMax || !IsPlayerMiss) && !IsInAttackRange())
@@ -228,6 +238,22 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
         {
             if(!lockedDoor.IsOpened) lockedDoor.ToggleDoor();
         }
+    }
+
+    public virtual void RealeaseAggroGage(float amount)
+    {
+        AggroGage -= amount * Time.deltaTime;
+        AggroGage = Mathf.Clamp(AggroGage, 0f, 100f);
+    }
+
+    protected virtual void CheckHalfAggroGage() 
+    {
+        if (AggroGage / Data.MaxAggroGage > 0.5f && checkAggroSoundTime > 30f) 
+        {
+            enemy.AudioSource.PlayOneShot(enemy.AggroSound);
+            checkAggroSoundTime = 0f;
+        }
+
     }
 }
 

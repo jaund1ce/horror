@@ -21,12 +21,13 @@ public class FrenzyerAI : EnemyAI
 
     protected override void Update()
     {
-        base.Update();
         if (previouseState == AIState.Frenzy)
         {
             checkFrenzyTime = lastFrenzyTime;
         }
         checkFrenzyTime += Time.deltaTime;
+        Debug.Log(checkFrenzyTime);
+        base.Update();
     }
 
     protected override void CheckTarget()
@@ -61,6 +62,8 @@ public class FrenzyerAI : EnemyAI
 
     public override int UpdateState()
     {
+        if (MainGameManager.Instance.Player.PlayerConditionController.IsDie) return (int)AIState.Idle;
+
         if (IsAttacking) return (int)EnemyAistate;
 
         if ((IsAggroGageMax || !IsPlayerMiss) && !IsInAttackRange())
@@ -68,8 +71,8 @@ public class FrenzyerAI : EnemyAI
             Collider[] colliders = Physics.OverlapSphere(transform.position, Data.FeelPlayerRange, playerMask);
             if (colliders.Length == 0 && checkFrenzyTime >= lastFrenzyTime ) 
             {
-                EnemyAistate = AIState.Frenzy;
                 checkFrenzyTime = 0f;
+                EnemyAistate = AIState.Frenzy;
                 return (int)EnemyAistate;
             }
             EnemyAistate = AIState.Chasing;
@@ -83,6 +86,7 @@ public class FrenzyerAI : EnemyAI
         }
         else if (!IsPlayerMiss && IsInAttackRange())
         {
+            checkFrenzyTime = 0f;
             EnemyAistate = AIState.Attacking;
             IsAttacking = true;
             return (int)EnemyAistate;
@@ -100,5 +104,15 @@ public class FrenzyerAI : EnemyAI
     protected override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
+    }
+
+    public override void RealeaseAggroGage(float amount)
+    {
+        base.RealeaseAggroGage(amount);
+    }
+
+    protected override void CheckHalfAggroGage()
+    {
+        base.CheckHalfAggroGage();
     }
 }
