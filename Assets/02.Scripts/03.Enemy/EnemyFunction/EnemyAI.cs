@@ -82,7 +82,7 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
             PlaySoundBasedOnState();
             previouseState = EnemyAistate;
         }
-    }
+;    }
 
     protected virtual void CheckTarget()
     {
@@ -97,8 +97,9 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
 
             // 방향 벡터 계산 (로컬 좌표계 기준)
             Vector3 direction = Quaternion.Euler(0, currentAngle, 0) * transform.forward;
-            if (Physics.Raycast(transform.position + (Vector3.up * 0.5f), direction, out RaycastHit hit, Data.VisionDistance, playerMask))
+            if (Physics.Raycast(transform.position - (Vector3.up * 0.2f), direction, out RaycastHit hit, Data.VisionDistance, playerMask))
             {
+                if (MainGameManager.Instance.Player.isHiding) return;
                 if (visionInObject.Count == 0)
                 {
                     visionInObject.Add((int)SightInObject.Player);
@@ -106,12 +107,12 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
                 }
                 isTarget = true;
 
-                Debug.DrawLine(transform.position + (Vector3.up * 0.5f), hit.point, Color.red, 1.0f);
+                Debug.DrawLine(transform.position - (Vector3.up * 0.2f), hit.point, Color.red, 1.0f);
             }
             else
             {
 
-               //Debug.DrawRay(transform.position + (Vector3.up * 0.5f), direction * Data.VisionDistance, Color.green, 1.0f);
+               Debug.DrawRay(transform.position - (Vector3.up * 0.2f), direction * Data.VisionDistance, Color.green, 1.0f);
             }
         }
 
@@ -182,7 +183,16 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
 
     public virtual int UpdateState()
     {
-        if (MainGameManager.Instance.Player.PlayerConditionController.IsDie) return (int)AIState.Idle;
+        if (MainGameManager.Instance.Player.PlayerConditionController.IsDie)
+        {
+            EnemyAistate = AIState.Idle;
+            return (int)EnemyAistate;
+        }else if (MainGameManager.Instance.Player.isHiding)
+        {
+            EnemyAistate = AIState.Wandering;
+            return (int)EnemyAistate;
+        }
+        
 
         if (IsAttacking) return (int)EnemyAistate;
 

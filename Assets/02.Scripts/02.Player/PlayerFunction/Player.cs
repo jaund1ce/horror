@@ -110,7 +110,7 @@ public class Player : MonoBehaviour
         Ray ray2 = new Ray(curVector + Vector3.back * 0.2f + new Vector3(0,0.1f,0), Vector3.down);
         Ray ray3 = new Ray(curVector + Vector3.right * 0.2f + new Vector3(0,0.1f,0), Vector3.down);
         Ray ray4 = new Ray(curVector + Vector3.left * 0.2f + new Vector3(0,0.1f,0), Vector3.down);
-        float checkdistance = 0.2f;
+        float checkdistance = 0.4f;
         RaycastHit hit;
 
         if (Physics.Raycast(ray1,out hit, checkdistance) || Physics.Raycast(ray2, checkdistance) || Physics.Raycast(ray3, checkdistance) || Physics.Raycast(ray4, checkdistance))

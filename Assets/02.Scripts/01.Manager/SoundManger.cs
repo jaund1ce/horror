@@ -185,6 +185,7 @@ public class SoundManger : mainSingleton<SoundManger>
 
     public void PlayPlayrtStepSound(bool OnOff, float pitch = 1)
     {
+        PlayerStep.pitch = pitch;
         if (OnOff)
         {
             soundpitch = pitch;
@@ -195,7 +196,6 @@ public class SoundManger : mainSingleton<SoundManger>
             if (playerStepCoroutine == null) return;
 
             StopCoroutine(playerStepCoroutine);
-            PlayerStep.pitch = pitch;
             playerStepCoroutine = null;
         }
     }
@@ -211,7 +211,7 @@ public class SoundManger : mainSingleton<SoundManger>
             PlayerStep.PlayOneShot(PlayerStep.clip);
             MainGameManager.Instance.MakeSoundAction(PlayerStep.clip.length);
 
-            yield return new WaitForSeconds(PlayerStep.clip.length * soundpitch);
+            yield return new WaitForSeconds(PlayerStep.clip.length % soundpitch);
             index = (int)((index + 1) % stepAudioClips.Length);
         }
     }
