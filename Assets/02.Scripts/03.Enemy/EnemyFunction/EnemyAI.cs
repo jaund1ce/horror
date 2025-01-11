@@ -52,6 +52,8 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
     protected List<int> visionInObject = new List<int>();
     protected AIState previouseState;
 
+    private float a;
+
     protected virtual void Awake()
     {
         enemy = GetComponent<Enemy>();
@@ -82,7 +84,7 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
             PlaySoundBasedOnState();
             previouseState = EnemyAistate;
         }
-    }
+;    }
 
     protected virtual void CheckTarget()
     {
