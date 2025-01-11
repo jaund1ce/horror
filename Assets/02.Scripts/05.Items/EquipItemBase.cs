@@ -10,7 +10,6 @@ public abstract class EquipItemBase : MonoBehaviour
 
     protected virtual void Start()
     {
-
         inventoryData = MainGameManager.Instance.Player.CurrentEquipItem;
     }
 
@@ -30,9 +29,7 @@ public abstract class EquipItemBase : MonoBehaviour
         OnUsing = false;
         if (inventoryData.Use(1) == (int)TryUse.ResetItem)
         {
-            Destroy(this.gameObject);
             MainGameManager.Instance.Player.UnEquipCurrentItem();
         }
     }
-
 }

@@ -256,6 +256,7 @@ MonoBehaviour:
   <ChasingSound>k__BackingField: {fileID: 8300000, guid: 552c969891a5c894f93dc283bf968ead, type: 3}
   <HowlingSound>k__BackingField: {fileID: 0}
   <AttackSound>k__BackingField: {fileID: 0}
+  <AggroSound>k__BackingField: {fileID: 8300000, guid: 4ee4ebae50d8441499130ff7e596fe1f, type: 3}
   AnimationData:
     groundParameterName: '@Ground'
     idleParameterName: Idle

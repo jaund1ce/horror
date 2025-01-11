@@ -209,8 +209,9 @@ public class SoundManger : mainSingleton<SoundManger>
             index = (int)(((index) % stepAudioClips.Length));//다른 소리의 리스트의 길이는 서로 다르기때문에
             PlayerStep.clip = stepAudioClips[index];
             PlayerStep.PlayOneShot(PlayerStep.clip);
+            MainGameManager.Instance.MakeSoundAction(PlayerStep.clip.length);
 
-            yield return new WaitForSeconds(stepAudioClips[index].length * soundpitch);
+            yield return new WaitForSeconds(PlayerStep.clip.length * soundpitch);
             index = (int)((index + 1) % stepAudioClips.Length);
         }
     }
@@ -300,7 +301,7 @@ public class SoundManger : mainSingleton<SoundManger>
         }        
     }
 
-    public void MakeEnviormentSound(string enviormentName, float amount)
+    public void MakeEnviormentSound(string enviormentName, float amount = 1f)
     {
         if (audioClipDictionary.TryGetValue(enviormentName, out AudioClip value))
         {

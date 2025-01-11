@@ -12,6 +12,7 @@ public class PlayerConditionController : MonoBehaviour
     [SerializeField] private float maxStamina;
     public float PassiveStamina;
     public float Stamina;
+    [HideInInspector]public bool IsDie;
 
     [SerializeField] private float staminaUseAmount = 15f;
 
@@ -24,6 +25,7 @@ public class PlayerConditionController : MonoBehaviour
         Stamina = maxStamina;
 
         player = MainGameManager.Instance.Player;
+        IsDie = false;
     }
     private void Update()
     {
@@ -57,15 +59,16 @@ public class PlayerConditionController : MonoBehaviour
     public void TakeDamage(int damage, EnemyAI enemy)
     {
         EnemyAI attackEnemy = enemy;
-        SoundManger.Instance.ChangeBreatheBeatSound(PlayerBreatheType.Damaged);
         player.PlayerHPChange();
 
-        if (Health ==0) return;
+        if (IsDie) return;
 
         Health = Mathf.Max(Health - damage, 0);
+        SoundManger.Instance.ChangeBreatheBeatSound(PlayerBreatheType.Damaged);
 
         if (Health == 0) 
         {
+            IsDie = true;
             PlayerDie(attackEnemy);
         }
     }
