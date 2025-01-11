@@ -642,7 +642,6 @@ GameObject:
   - component: {fileID: 3195387049487522309}
   - component: {fileID: 3657573553402751489}
   - component: {fileID: 617768501147057438}
-  - component: {fileID: 6011614007993854922}
   m_Layer: 3
   m_Name: Player_noneParkourtic2
   m_TagString: Player
@@ -884,7 +883,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6525747102213386876}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 2977af72be4922d49ba8762683e0d27a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1034,27 +1033,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!135 &6011614007993854922
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6525747102213386876}
-  m_Material: {fileID: 13400000, guid: 2977af72be4922d49ba8762683e0d27a, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.35
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &8129987379810366141
 GameObject:
   m_ObjectHideFlags: 0

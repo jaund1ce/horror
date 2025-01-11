@@ -50,8 +50,6 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
     [HideInInspector] public Dictionary<AIState, SoundState> soundStates = new Dictionary<AIState, SoundState>();
     protected AIState previouseState;
 
-    private float a;
-
     protected virtual void Awake()
     {
         enemy = GetComponent<Enemy>();
