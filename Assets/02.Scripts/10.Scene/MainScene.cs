@@ -7,7 +7,7 @@ public class MainScene : SceneBase
 {
     public GameObject targetObject01; // 비활성화할 오브젝트
 
-    public float delay01 = 46f;        // 지연 시간
+    public float delay01 = 17f;        // 지연 시간
     public static bool fisrtPlay = false;
     private PlayerInputs playerInputs;
     public PlayerInputs.PlayerActions playerActions;

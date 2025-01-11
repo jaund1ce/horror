@@ -171,7 +171,7 @@ MonoBehaviour:
   uiTransform: {fileID: 64313802}
   mapTransform: {fileID: 0}
   targetObject01: {fileID: 1621892444}
-  delay01: 46
+  delay01: 17
 --- !u!1 &835526694
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,8 +260,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 835526694}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 45.86181, y: 1.9217682, z: 99.3521}
+  m_LocalRotation: {x: -0.00000029993078, y: 0.99998295, z: -0.00000034406972, w: 0.00583813}
+  m_LocalPosition: {x: -37.503998, y: 2.398, z: -20.088999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
