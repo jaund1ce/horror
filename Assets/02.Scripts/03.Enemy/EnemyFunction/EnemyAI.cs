@@ -82,7 +82,7 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
             PlaySoundBasedOnState();
             previouseState = EnemyAistate;
         }
-    }
+;    }
 
     protected virtual void CheckTarget()
     {

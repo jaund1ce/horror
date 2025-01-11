@@ -18,7 +18,6 @@ public class Paper : ObjectBase
     }
     public override void OnInteract()
     {
-        SoundManger.Instance.MakeEnviormentSound("PaperSound");
         Animator animator = GetComponent<Animator>();
         if (animator != null)
         {
@@ -28,7 +27,6 @@ public class Paper : ObjectBase
         Debug.Log($"PaperInteractionCount: {MainGameManager.Instance.paperInteractionCount}");
 
         UIManager.Instance.Show<PaperUI>();
-        SoundManger.Instance.MakeEnviormentSound("PaperSound");
         
         Destroy(gameObject);
     }
