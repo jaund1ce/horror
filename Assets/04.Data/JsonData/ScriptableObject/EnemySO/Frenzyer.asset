@@ -19,7 +19,7 @@ MonoBehaviour:
   <Force>k__BackingField: 1
   Damage: 20
   <GroundData>k__BackingField:
-    <BaseSpeed>k__BackingField: 4
+    <BaseSpeed>k__BackingField: 4.3
     <BaseRotationDamping>k__BackingField: 3
     <WalkSpeedModifier>k__BackingField: 0.5
     <RunSpeedModifier>k__BackingField: 1.2
@@ -33,6 +33,6 @@ MonoBehaviour:
   <RayAmount>k__BackingField: 31
   <FeelPlayerRange>k__BackingField: 10
   <MissTargetTime>k__BackingField: 3
-  <MaxAggroGage>k__BackingField: 100
+  <MaxAggroGage>k__BackingField: 90
   <MinWanderDistance>k__BackingField: 15
   <MaxWanderDistance>k__BackingField: 20
