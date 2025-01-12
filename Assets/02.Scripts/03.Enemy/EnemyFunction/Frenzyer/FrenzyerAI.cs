@@ -61,7 +61,18 @@ public class FrenzyerAI : EnemyAI
 
     public override int UpdateState()
     {
-        if (MainGameManager.Instance.Player.PlayerConditionController.IsDie) return (int)AIState.Idle;
+        if (MainGameManager.Instance.Player.PlayerConditionController.IsDie)
+        {
+            EnemyAistate = AIState.Idle;
+            return (int)EnemyAistate;
+        }
+        else if (MainGameManager.Instance.Player.isHiding)
+        {
+            Debug.Log("Player Hiding");
+            EnemyAistate = AIState.Wandering;
+            IsAttacking = false;
+            return (int)EnemyAistate;
+        }
 
         if (IsAttacking) return (int)EnemyAistate;
 
