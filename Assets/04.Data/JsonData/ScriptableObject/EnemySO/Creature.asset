@@ -29,7 +29,7 @@ MonoBehaviour:
   <Dealing_Start_TransitionTime>k__BackingField: 0.1
   <Dealing_End_TransitionTime>k__BackingField: 0.8
   <VisionRange>k__BackingField: 100
-  <VisionDistance>k__BackingField: 5
+  <VisionDistance>k__BackingField: 10
   <RayAmount>k__BackingField: 31
   <FeelPlayerRange>k__BackingField: 18
   <MissTargetTime>k__BackingField: 2
