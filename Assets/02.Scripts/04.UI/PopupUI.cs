@@ -11,6 +11,7 @@ public class PopupUI : BaseUI
             playerController.LockRotate(); // 회전 잠금
         }
         UnlockCursor();
+        MainGameManager.Instance.Player.Input.InputUnsubscribe();
     }
     public virtual void OnDisable()
     {
@@ -19,6 +20,7 @@ public class PopupUI : BaseUI
             playerController.UnLockRotate(); // 회전 잠금 해제
         }
         LockCursor();
+        MainGameManager.Instance.Player.Input.InputSubscribe();
     }
     public override void OpenUI()
     {
