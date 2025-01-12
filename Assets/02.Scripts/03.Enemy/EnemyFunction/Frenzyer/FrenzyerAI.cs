@@ -26,7 +26,6 @@ public class FrenzyerAI : EnemyAI
             checkFrenzyTime = lastFrenzyTime;
         }
         checkFrenzyTime += Time.deltaTime;
-        Debug.Log(checkFrenzyTime);
         base.Update();
     }
 

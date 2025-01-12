@@ -29,14 +29,17 @@ public class RandomRotationOnDestroy : MonoBehaviour
     private IEnumerator SetRandomRotationWithDelay(GameObject targetObject)
     {
         yield return new WaitForSeconds(2f);
-        SoundManger.Instance.MakeEnviormentSound("Statue_Moving");
-        // 90, 180, 270 중 하나를 랜덤으로 선택
-        int[] rotationValues = { 90, 180, 270 };
-        int randomIndex = Random.Range(0, rotationValues.Length);
-        float randomYRotation = rotationValues[randomIndex];
+        if (targetObject != null)
+        {
+            SoundManger.Instance.MakeEnviormentSound("Statue_Moving");
+            // 90, 180, 270 중 하나를 랜덤으로 선택
+            int[] rotationValues = { 90, 180, 270 };
+            int randomIndex = Random.Range(0, rotationValues.Length);
+            float randomYRotation = rotationValues[randomIndex];
 
-        // targetObject의 회전값 설정
-        Vector3 currentRotation = targetObject.transform.eulerAngles;
-        targetObject.transform.eulerAngles = new Vector3(currentRotation.x, randomYRotation, currentRotation.z);
+            // targetObject의 회전값 설정
+            Vector3 currentRotation = targetObject.transform.eulerAngles;
+            targetObject.transform.eulerAngles = new Vector3(currentRotation.x, randomYRotation, currentRotation.z);
+        }
     }
 }
