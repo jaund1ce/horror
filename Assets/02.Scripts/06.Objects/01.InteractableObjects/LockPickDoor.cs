@@ -1,9 +1,5 @@
-using Cinemachine;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using UHFPS.Runtime;
-using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -22,13 +18,13 @@ public class LockPickDoor : PuzzleBase
     [field: SerializeField] private Transform keyhole;
     [field: SerializeField] private Transform lockPickPoint; //락픽이 꽂혀져보이는 정확한 지점
     [field: SerializeField] private AudioClip unlock;
-    [field: SerializeField] private float unlockAngle; //## 추후에 랜덤으로 넣거나 아니면 SO 로 넣어줄 예정
     [field: SerializeField] private GameObject lockPickUI;
     private float keyHoleTargetAngle;
     private float keyholeUnlockAngle = -90f;
     private float keyholeRotateSpeed = 2f;
     private float currentKeyholeAngle;
     private float keyholeUnlockDistance = 0.1f;
+    private float unlockAngle; //## 추후에 랜덤으로 넣거나 아니면 SO 로 넣어줄 예정
 
     [Header("Pin Settings")]
     [field: SerializeField] private AudioClip pinBreak;
@@ -55,9 +51,9 @@ public class LockPickDoor : PuzzleBase
     private void OnEnable()
     {
         hinge = this.transform;
+        unlockAngle = UnityEngine.Random.Range(-90f, 90f);
         currentPinLifeTime = pinLifeTime;
         lockPickUI.SetActive(false);
-        
     }
 
     private void Update()
