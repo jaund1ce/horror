@@ -126002,6 +126002,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 6447354890134966239}
     m_Modifications:
     - target: {fileID: 1668704081544442814, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
+      propertyPath: Siren
+      value: 
+      objectReference: {fileID: 7939786346165423497}
+    - target: {fileID: 1668704081544442814, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
       propertyPath: LockDoor
       value: 
       objectReference: {fileID: 3492867310982082487}
@@ -126277,6 +126281,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1187522524004233664, guid: ec8555491953e234ea9b23676e5dd032, type: 3}
   m_PrefabInstance: {fileID: 5013932279770735076}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7939786346165423497 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3151069803770719341, guid: ec8555491953e234ea9b23676e5dd032, type: 3}
+  m_PrefabInstance: {fileID: 5013932279770735076}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51f3ca8659f9cd449923fd1a152454ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5066067311362990163
 PrefabInstance:
   m_ObjectHideFlags: 0

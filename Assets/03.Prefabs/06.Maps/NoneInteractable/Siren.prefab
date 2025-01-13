@@ -122,7 +122,7 @@ MonoBehaviour:
   accessColor: {r: 0, g: 190, b: 0, a: 1}
   denieColor: {r: 190, g: 0, b: 0, a: 1}
   blinkTime: 3
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: bde2cdcc031f6984fac58de592297899, type: 3}
 --- !u!82 &5583787885435057863
 AudioSource:
   m_ObjectHideFlags: 0
