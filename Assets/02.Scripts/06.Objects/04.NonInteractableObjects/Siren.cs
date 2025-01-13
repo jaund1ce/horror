@@ -37,6 +37,10 @@ public class Siren : MonoBehaviour
     {
         if (blinkCoroutine == null)
         {
+            foreach (EnemyAI enemy in MainGameManager.Instance.Enemy) 
+            {
+                enemy.GetAggroGage(20f);
+            }
             audioSource.PlayOneShot(audioClip);
             blinkCoroutine = StartCoroutine(BlinkSiren(blinkTime));
         }
@@ -75,14 +79,4 @@ public class Siren : MonoBehaviour
     }
 
 
-
-
-    private void FindEnemy<T>(EnemyAI enemyAI) where T : EnemyAI
-    {
-        T enemy = enemyAI.GetComponent<T>();
-        if (enemy != null)
-        {
-            enemy.GetAggroGage(20f);
-        }
-    }
 }

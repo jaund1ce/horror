@@ -9,6 +9,7 @@ public class MainGameManager : mainSingleton<MainGameManager>
     public bool getNewPaper;
     public Action<float> MakeSoundAction;
     public Player Player;
+    public EnemyAI[] Enemy;
     [SerializeField]public GameObject targetObject;
     [SerializeField]public string componentName;
     public Component component;
@@ -35,10 +36,17 @@ public class MainGameManager : mainSingleton<MainGameManager>
         Player = FindObjectOfType<Player>();
     }
 
+    private void FindOrSetEnemy() 
+    {
+        Enemy = null;
+        Enemy = FindObjectsOfType<EnemyAI>();
+    }
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         paperInteractionCount = 0;
         FindOrSetPlayer();
+        FindOrSetEnemy();
     }
 
     protected override void OnDestroy()

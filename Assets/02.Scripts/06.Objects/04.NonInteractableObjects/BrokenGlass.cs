@@ -14,5 +14,9 @@ public class BrokenGlass : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         audioSource.PlayOneShot(clip);
+        foreach (EnemyAI enemy in MainGameManager.Instance.Enemy)
+        {
+            enemy.GetAggroGage(5f);
+        }
     }
 }
