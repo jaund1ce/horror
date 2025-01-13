@@ -15,7 +15,7 @@ public class PlayerRunState : PlayerGroundState
         stateMachine.Player.Input.VirtualCameraNoise.m_AmplitudeGain = 5f;
         stateMachine.Player.Input.VirtualCameraNoise.m_FrequencyGain = 0.05f;
         stateMachine.MovementSpeedModifier = groundData.RunSpeedModifier;
-        SoundManger.Instance.PlayPlayrtStepSound(true, 2f);
+        SoundManger.Instance.PlayPlayrtStepSound(true, 4f);
         base.Enter();
         StartAnimation(stateMachine.Player.AnimationData.RunParameterHash);
     }
