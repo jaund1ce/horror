@@ -200,7 +200,7 @@ public class SoundManger : mainSingleton<SoundManger>
         if (OnOff)
         {
             soundpitch = pitch;
-            if(soundpitch > 1f)
+            if(soundpitch >= 1f)
             {
                 PlayerStep.volume = 1f;
             }
@@ -230,7 +230,7 @@ public class SoundManger : mainSingleton<SoundManger>
             PlayerStep.PlayOneShot(PlayerStep.clip);
             MainGameManager.Instance.MakeSound(PlayerStep.clip.length);
 
-            yield return new WaitForSeconds(PlayerStep.clip.length % soundpitch);
+            yield return new WaitForSeconds(PlayerStep.clip.length / soundpitch);
             index = (int)((index + 1) % stepAudioClips.Length);
         }
     }
