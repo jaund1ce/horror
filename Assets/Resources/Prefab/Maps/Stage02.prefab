@@ -48118,12 +48118,12 @@ GameObject:
   - component: {fileID: 5577784408899657443}
   - component: {fileID: 7361572266831923884}
   m_Layer: 0
-  m_Name: MainScene1BaseVolume
+  m_Name: MainScene2BaseVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5577784408899657443
 Transform:
   m_ObjectHideFlags: 0

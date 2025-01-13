@@ -20,7 +20,7 @@ public class PlayerWalkState : PlayerGroundState
             stateMachine.MovementSpeedModifier = groundData.WalkSpeedModifier;
             stateMachine.Player.Input.VirtualCameraNoise.m_AmplitudeGain = 2f;
             stateMachine.Player.Input.VirtualCameraNoise.m_FrequencyGain = 0.02f;
-            SoundManger.Instance.PlayPlayrtStepSound(true,0.25f);
+            SoundManger.Instance.PlayPlayrtStepSound(true, 0.5f);
             base.Enter();
             StartAnimation(stateMachine.Player.AnimationData.WalkParameterHash);
         }        

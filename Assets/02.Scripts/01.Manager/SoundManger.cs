@@ -44,6 +44,8 @@ public class SoundManger : mainSingleton<SoundManger>
     protected override void Awake()
     {
         base.Awake();
+
+        Init();
     }
 
     protected override void Start()
@@ -59,6 +61,16 @@ public class SoundManger : mainSingleton<SoundManger>
             lastCheckTime = Time.time;
             TEMBGM.Play();
         }
+    }
+
+    private void Init()
+    {
+        PlayerStep.volume = 0.5f;
+        PlayerHeartBeat.volume = 0.9f;
+        PlayerBreathe.volume = 0.1f;
+        Enviroment.volume = 0.5f;
+        BGM.volume = 0.5f;
+        TEMBGM.volume = 0.5f;
     }
 
     public void GetSceneSource(string stagename)//특정 씬에서 필요한 사운드를 로드해줌으로서 로딩을 줄여준다
@@ -185,10 +197,17 @@ public class SoundManger : mainSingleton<SoundManger>
 
     public void PlayPlayrtStepSound(bool OnOff, float pitch = 1)
     {
-        PlayerStep.pitch = pitch;
         if (OnOff)
         {
             soundpitch = pitch;
+            if(soundpitch >= 1f)
+            {
+                PlayerStep.volume = 1f;
+            }
+            else
+            {
+                PlayerStep.volume = 0.5f;
+            }
             playerStepCoroutine = StartCoroutine(StartStepSound());
         }
         else
@@ -209,9 +228,9 @@ public class SoundManger : mainSingleton<SoundManger>
             index = (int)(((index) % stepAudioClips.Length));//다른 소리의 리스트의 길이는 서로 다르기때문에
             PlayerStep.clip = stepAudioClips[index];
             PlayerStep.PlayOneShot(PlayerStep.clip);
-            MainGameManager.Instance.MakeSoundAction(PlayerStep.clip.length);
+            MainGameManager.Instance.MakeSound(PlayerStep.clip.length);
 
-            yield return new WaitForSeconds(PlayerStep.clip.length % soundpitch);
+            yield return new WaitForSeconds(PlayerStep.clip.length / soundpitch);
             index = (int)((index + 1) % stepAudioClips.Length);
         }
     }
