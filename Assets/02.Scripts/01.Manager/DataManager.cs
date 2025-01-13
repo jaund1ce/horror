@@ -1,7 +1,30 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using static UHFPS.Runtime.InventoryItem;
+
+public static class AssetType 
+{
+    public const string Prefab = "Prefab";
+}
+
+public static class CategoryType 
+{
+    public const string Player = "Player";
+    public const string Enemy = "Enemy";
+    public const string Item = "Item";
+    public const string Interactableobjects = "InteractableObjects";
+}
+
+public static class Json 
+{
+    public const string PlayerData = "PlayerData.json";
+    public const string InventoryData = "InventoryData.json";
+    public const string DropItemData = "DropItemData.json";
+    public const string EnemyData = "EnemyData.json";
+    public const string PaperData = "PaperData.json";
+    public const string PuzzleData = "PuzzleData.json";
+    public const string MapData = "MapData.json";
+}
 
 public class DataManager : mainSingleton<DataManager>
 {
@@ -96,7 +119,7 @@ public class DataManager : mainSingleton<DataManager>
         MapData.MapName = Main_SceneManager.Instance.NowSceneName;
 
         // InventoryData 저장 (기존 코드 유지)
-        SaveSystem.Save(serializableInventory, "InventoryData.json");
+        SaveSystem.Save(serializableInventory, Json.InventoryData);
 
         // MapData 저장 (기존 코드 유지)
         SaveSystem.Save(MapData, "MapData.json");
@@ -109,10 +132,10 @@ public class DataManager : mainSingleton<DataManager>
     {
         LoadPlayerData();
 
-        SaveItemData = SaveSystem.Load<Dictionary<string, SpawnData>>("DropItemData.json");
-        SaveEnemyData = SaveSystem.Load<Dictionary<string, SpawnData>>("EnemyData.json");
-        SavePaperData = SaveSystem.Load<Dictionary<string, SpawnData>>("PaperData.json");
-        SavePuzzleData = SaveSystem.Load<Dictionary<string, bool>>("PuzzleData.json");
+        SaveItemData = SaveSystem.Load<Dictionary<string, SpawnData>>(Json.DropItemData);
+        SaveEnemyData = SaveSystem.Load<Dictionary<string, SpawnData>>(Json.EnemyData);
+        SavePaperData = SaveSystem.Load<Dictionary<string, SpawnData>>(Json.PaperData);
+        SavePuzzleData = SaveSystem.Load<Dictionary<string, bool>>(Json.PuzzleData);
 
         if (SaveEnemyData != null) // 저장시에 적이 없을경우는 없기에 최상위 if문으로 NewGame인지 LoadGame인지 검출중
         {
@@ -139,7 +162,7 @@ public class DataManager : mainSingleton<DataManager>
 
 
 
-        MapData = SaveSystem.Load<MapInfo>("MapData.json") ?? new MapInfo();
+        MapData = SaveSystem.Load<MapInfo>(Json.MapData) ?? new MapInfo();
         
 
 
@@ -168,8 +191,8 @@ public class DataManager : mainSingleton<DataManager>
             SpawnData spawndata = new SpawnData();
             spawndata.key = ItemBase.gameObject.name;
             spawndata.key = spawndata.key.Replace("(Clone)", "").Trim();
-            spawndata.assetType = "Prefab";
-            spawndata.categoryType = "Item";
+            spawndata.assetType = AssetType.Prefab;
+            spawndata.categoryType = CategoryType.Item;
             string position = obj.transform.position.ToString();
             spawndata.position = position;
             spawndata.referenceObjectName = "";
@@ -187,8 +210,8 @@ public class DataManager : mainSingleton<DataManager>
             SpawnData enemy = new SpawnData();
             enemy.key = Enemy.gameObject.name;
             enemy.key = enemy.key.Replace("(Clone)", "").Trim();
-            enemy.assetType = "Prefab";
-            enemy.categoryType = "Enemy";
+            enemy.assetType = AssetType.Prefab;
+            enemy.categoryType = CategoryType.Enemy;
             string position = obj.transform.position.ToString();
             enemy.position = position;
             enemy.referenceObjectName = "";
@@ -204,8 +227,8 @@ public class DataManager : mainSingleton<DataManager>
             SpawnData spawndata = new SpawnData();
             spawndata.key = Paper.gameObject.name;
             spawndata.key = spawndata.key.Replace("(Clone)", "").Trim();
-            spawndata.assetType = "Prefab";
-            spawndata.categoryType = "InteractableObjects";
+            spawndata.assetType = AssetType.Prefab;
+            spawndata.categoryType = CategoryType.Interactableobjects;
             string position = obj.transform.position.ToString();
             spawndata.position = position;
             spawndata.referenceObjectName = "";
@@ -257,7 +280,7 @@ public class DataManager : mainSingleton<DataManager>
         PlayerData.Playerposition = (MainGameManager.Instance.Player.transform.position).ToString();
 
         // PlayerData 저장 (기존 코드 유지)
-        SaveSystem.Save(PlayerData, "PlayerData.json");
+        SaveSystem.Save(PlayerData, Json.PlayerData);
     }
 
     private void SaveSpawnData(bool saveBtnClick)
@@ -278,14 +301,14 @@ public class DataManager : mainSingleton<DataManager>
                 }
             }
             //저장하기 버튼을 눌렀을경우, 그 내용을 저장하고 배열을 비워준다. 비워주는 이유는 두번 저장하기 클릭시 두번 add됨
-            SaveSystem.Save(SaveItemData, "DropItemData.json");
+            SaveSystem.Save(SaveItemData, Json.DropItemData);
             SaveItemData.Clear();
-            SaveSystem.Save(SaveEnemyData, "EnemyData.json");
+            SaveSystem.Save(SaveEnemyData, Json.EnemyData);
             SaveEnemyData.Clear();
             //## TODO :: 나중에 스폰 수정시에 주석해제
             /*SaveSystem.Save(SavePaperData, "PaperData.json");
             SavePaperData.Clear();*/
-            SaveSystem.Save(SavePuzzleData, "PuzzleData.json");
+            SaveSystem.Save(SavePuzzleData, Json.PuzzleData);
             SavePuzzleData.Clear();
         }
         else
@@ -293,19 +316,19 @@ public class DataManager : mainSingleton<DataManager>
             //스테이지를 클리어하여 넘어갈때 데이터들을 저장하는데, DropItem 의 경우 다음스테이지에서 또 뿌려주면 안되기때문에
             // 먼저 세이브데이터를 비워주고 저장한다.
             SaveItemData.Clear();
-            SaveSystem.Save(SaveItemData, "DropItemData.json");
+            SaveSystem.Save(SaveItemData, Json.DropItemData);
             SaveEnemyData.Clear();
-            SaveSystem.Save(SaveEnemyData, "EnemyData.json");
+            SaveSystem.Save(SaveEnemyData, Json.EnemyData);
             /*SavePaperData.Clear();
             SaveSystem.Save(SavePaperData, "PaperData.json");*/
             SavePuzzleData.Clear();
-            SaveSystem.Save(SavePuzzleData, "PuzzleData.json");
+            SaveSystem.Save(SavePuzzleData, Json.PuzzleData);
         }
     }
 
     private void LoadPlayerData() 
     {
-        PlayerData = SaveSystem.Load<UserInfo>("PlayerData.json");
+        PlayerData = SaveSystem.Load<UserInfo>(Json.PlayerData);
         
         if (PlayerData != null)
         {
@@ -322,7 +345,7 @@ public class DataManager : mainSingleton<DataManager>
             PlayerData = new UserInfo();
         }
 
-        var loadedInventory = SaveSystem.Load<List<InventoryData>>("InventoryData.json");
+        var loadedInventory = SaveSystem.Load<List<InventoryData>>(Json.InventoryData);
         if (loadedInventory != null)
         {
             Debug.Log($"Loaded {loadedInventory.Count} inventory slots.");
