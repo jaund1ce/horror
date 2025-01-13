@@ -770,24 +770,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PuzzleCamera: {fileID: 5138720651241507418}
-  keypadButtons:
-  - {fileID: 2878660019978682693}
-  - {fileID: 5032715754883805428}
-  - {fileID: 6801433450011849895}
-  - {fileID: 9170675273680867829}
-  - {fileID: 1507853315934958352}
-  - {fileID: 2433070844454409381}
-  - {fileID: 5334604741323226410}
-  - {fileID: 3908156120783935929}
-  - {fileID: 6079931720394800693}
-  - {fileID: 6316928893835447751}
-  cancelButton: {fileID: 4995495589815297084}
-  enterButton: {fileID: 8026856181118213887}
-  correctCode: 3895
-  buttonPressSound: {fileID: 8300000, guid: 065ec17f7f48b0841ac8948be709d7a7, type: 3}
+  IsAccess: 0
+  KeypadButtons: []
+  CancelButton: {fileID: 4995495589815297084}
+  EnterButton: {fileID: 8026856181118213887}
+  CorrectCode: 3895
+  ButtonPressSound: {fileID: 8300000, guid: 0e502501d932a88499495193eed243f7, type: 3}
   AccessSound: {fileID: 8300000, guid: 51749b2ceb411d542a171843474911a5, type: 3}
   DeniedSound: {fileID: 8300000, guid: 293cbd1c7f98cb7479a7cddff4d24cd7, type: 3}
-  audioSource: {fileID: 2093248652141998720}
+  AudioSource: {fileID: 0}
   LockDoor: {fileID: 0}
 --- !u!1 &4995495589815297084
 GameObject:

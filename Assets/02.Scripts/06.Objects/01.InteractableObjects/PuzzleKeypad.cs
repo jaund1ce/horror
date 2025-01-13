@@ -7,15 +7,16 @@ using TMPro;
 public class PuzzleKeypad : PuzzleBase
 {
     [Header("Keypad Settings")]
-    public GameObject[] keypadButtons; 
-    public GameObject cancelButton; 
-    public GameObject enterButton; 
-    public string correctCode = "3895"; // 정답 코드
-    public AudioClip buttonPressSound; 
+    public GameObject[] KeypadButtons; 
+    public GameObject CancelButton; 
+    public GameObject EnterButton; 
+    public string CorrectCode = "3895"; // 정답 코드
+    public AudioClip ButtonPressSound; 
     public AudioClip AccessSound;
     public AudioClip DeniedSound; 
-    public AudioSource audioSource; 
+    public AudioSource AudioSource; 
     public LockedDoor LockDoor;
+    public Siren Siren;
 
     private TextMeshPro text;
     private MeshRenderer keypadRenderer;
@@ -26,6 +27,7 @@ public class PuzzleKeypad : PuzzleBase
     private string deniedTxt = "DENIED";
     private string txtBgLightKeyword = "_EMISSION";
     private Coroutine currentCoroutine;
+    private float denieCount;
 
 
     private string currentInput = ""; 
@@ -35,6 +37,7 @@ public class PuzzleKeypad : PuzzleBase
         text = GetComponentInChildren<TextMeshPro>();
         keypadRenderer = GetComponent<MeshRenderer>();
         keypadRenderer.material.DisableKeyword(txtBgLightKeyword);
+        denieCount = 0;
     }
 
 
@@ -79,9 +82,9 @@ public class PuzzleKeypad : PuzzleBase
             StopCoroutine(currentCoroutine);
             text.color = baseColor;
         }
-        if (audioSource != null && buttonPressSound != null)
+        if (AudioSource != null && ButtonPressSound != null)
         {
-            audioSource.PlayOneShot(buttonPressSound); 
+            AudioSource.PlayOneShot(ButtonPressSound); 
         }
 
         if (buttonName == "Enter")
@@ -101,21 +104,33 @@ public class PuzzleKeypad : PuzzleBase
 
     private void OnEnterPress()
     {
-        if (currentInput == correctCode)
+        if (currentInput == CorrectCode)
         {
-            if (audioSource != null && AccessSound != null)
+            if (AudioSource != null && AccessSound != null)
             {
+                if (Siren != null) 
+                {
+                    Siren.Access();
+                }
                 currentCoroutine = StartCoroutine(Access());
-                audioSource.PlayOneShot(AccessSound); // 정답 소리 재생
+                AudioSource.PlayOneShot(AccessSound); // 정답 소리 재생
                 IsAccess = true;
             }
         }
         else
         {
-            if (audioSource != null && DeniedSound != null)
+            if (AudioSource != null && DeniedSound != null)
             {
+                if (Siren != null) 
+                {
+                    denieCount++;
+                    if (denieCount == 3) 
+                    {
+                        Siren.Denie();
+                    }
+                }
                 currentCoroutine = StartCoroutine(Denied());
-                audioSource.PlayOneShot(DeniedSound); // 실패 소리 재생
+                AudioSource.PlayOneShot(DeniedSound); // 실패 소리 재생
             }
         }
 
