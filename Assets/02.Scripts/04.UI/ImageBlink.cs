@@ -45,8 +45,11 @@ public class ImageBlink : MonoBehaviour
             soundCheckTime += Time.deltaTime;
             if (i == 1 || soundCheckTime > soundTime) 
             {
-                audioSource.PlayOneShot(blinkLightsound);
-                soundCheckTime = 0;
+                if (audioSource != null)
+                {
+                    audioSource.PlayOneShot(blinkLightsound);
+                    soundCheckTime = 0;
+                }
             } 
         }
         else

@@ -32,6 +32,7 @@ public class MainScene : SceneBase
 
         fisrtPlay = true;
         playerInputs.Enable();
+        UIManager.Instance.Show<SkipUI>();
         playerActions.Menu.performed += ActivateObject01;
         Invoke("ActivateObject02", delay01);
 
@@ -39,11 +40,11 @@ public class MainScene : SceneBase
 
     public void ActivateObject01(InputAction.CallbackContext context)
     {
-        if (!targetObject01.activeSelf) 
+        if (targetObject01.activeSelf == false) 
         {return;}
 
             playerActions.Menu.performed -= ActivateObject01;
-
+            UIManager.Instance.Hide<SkipUI>();
             targetObject01.SetActive(false); // 오브젝트 비활성화
             MapManager.Instance.ShowMap<Stage01>();
             MapManager.Instance.LoadAndSpawnObjects();
@@ -52,11 +53,10 @@ public class MainScene : SceneBase
     }
     public void ActivateObject02()
     {
-        if (!targetObject01.activeSelf)
+        if (targetObject01.activeSelf == false)
         {return;}
 
             playerActions.Menu.performed -= ActivateObject01;
-
             targetObject01.SetActive(false); // 오브젝트 비활성화
             MapManager.Instance.ShowMap<Stage01>();
             MapManager.Instance.LoadAndSpawnObjects();
