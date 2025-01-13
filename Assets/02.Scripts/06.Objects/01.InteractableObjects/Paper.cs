@@ -25,10 +25,10 @@ public class Paper : ObjectBase
         }
         MainGameManager.Instance.paperInteractionCount += paperData.value;
         MainGameManager.Instance.getNewPaper = true;
-        if (MainGameManager.Instance.component == false)
-        {
-            MainGameManager.Instance.component.enabled = true;
-        }
+        //if (MainGameManager.Instance.component == false)
+        //{
+        //    MainGameManager.Instance.component.enabled = true;
+        //}
         Debug.Log($"PaperInteractionCount: {MainGameManager.Instance.paperInteractionCount}");
 
         UIManager.Instance.Show<PaperUI>();

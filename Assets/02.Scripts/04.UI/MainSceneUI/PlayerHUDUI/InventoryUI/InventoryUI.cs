@@ -24,14 +24,14 @@ public class InventoryUI : PopupUI
 
     public void OnDocumentUI()
     {
-        if (gameManager.component != null)
-        {
-            if (gameManager.getNewPaper == true)
-            {
-                gameManager.component.enabled = false;
-                gameManager.getNewPaper = false;
-            }
-        }
+        //if (gameManager.component != null)
+        //{
+        //    if (gameManager.getNewPaper == true)
+        //    {
+        //        gameManager.component.enabled = false;
+        //        gameManager.getNewPaper = false;
+        //    }
+        //}
         UIManager.Instance.Hide<InventoryUI>();
         UIManager.Instance.Show<PaperUI>();
     }
