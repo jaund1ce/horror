@@ -129,6 +129,7 @@ public class PuzzleKeypad : PuzzleBase
                     denieCount++;
                     if (denieCount == 3) 
                     {
+                        denieCount = 0;
                         Siren.Denie();
                     }
                 }
