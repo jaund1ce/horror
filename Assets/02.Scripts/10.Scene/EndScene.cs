@@ -22,6 +22,8 @@ public class EndScene : SceneBase
     {
         playerInputs.Enable();
         playerActions.Menu.performed += ActivateObject;
+        UIManager.Instance.Show<SkipUI>();
+        UIManager.Instance.Show<MainUI>();
         Invoke("ActivateSound", delay2);
         Invoke("ActivateObject2", delay);
     }
@@ -29,8 +31,9 @@ public class EndScene : SceneBase
 
     void ActivateObject(InputAction.CallbackContext context)
     {
-        if (!targetObject.activeSelf)
+        if (targetObject.activeSelf == false)
         { return; }
+        UIManager.Instance.Hide<SkipUI>();
         playerActions.Menu.performed -= ActivateObject;
         playerInputs.Disable();
         if (targetObject != null)
@@ -45,7 +48,7 @@ public class EndScene : SceneBase
 
     void ActivateObject2()
     {
-        if (!targetObject.activeSelf)
+        if (targetObject.activeSelf == false)
         { return; }
         playerActions.Menu.performed -= ActivateObject;
         playerInputs.Disable();
@@ -60,7 +63,7 @@ public class EndScene : SceneBase
 
     void ActivateSound()
     {
-        if (!targetObject.activeSelf)
+        if (targetObject.activeSelf == false)
         { return; }
         SoundManger.Instance.ChangeBGMSound(4);
     }
