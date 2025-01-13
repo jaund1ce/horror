@@ -68352,6 +68352,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8151418005398920871}
     - target: {fileID: 1668704081544442814, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
+      propertyPath: CorrectCode
+      value: 6713
+      objectReference: {fileID: 0}
+    - target: {fileID: 1668704081544442814, guid: b5a2984a3cff73744b23a86357ea023b, type: 3}
       propertyPath: correctCode
       value: 6713
       objectReference: {fileID: 0}
