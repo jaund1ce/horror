@@ -5,18 +5,33 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class EquipLight : EquipItemBase
 {
     private Light light;
     private bool usable = false;
 
-
     protected override void Start()
     {
         base.Start();
         light = MainGameManager.Instance.Player.gameObject.GetComponentInChildren<Light>();
+        ChangeLightIntencity();
         light.enabled = false;
+    }
+
+    private void ChangeLightIntencity()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        if (sceneName == "MainScene")
+        {
+            light.intensity = 10;
+        }
+        else if (sceneName == "MainScene2")
+        {
+            light.intensity = 200;
+        }
     }
 
     public override void OnUseInput()
