@@ -46,8 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paperInteractionCount: 0
+  getNewPaper: 0
   Player: {fileID: 0}
-  enemyAI: {fileID: 0}
+  component: {fileID: 0}
 --- !u!82 &5657693398694335089
 AudioSource:
   m_ObjectHideFlags: 0
