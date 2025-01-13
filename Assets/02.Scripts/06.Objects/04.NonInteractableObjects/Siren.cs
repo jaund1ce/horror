@@ -6,7 +6,7 @@ public class Siren : MonoBehaviour
 {
     [SerializeField]private Color accessColor = new Color(0, 190, 0);
     [SerializeField]private Color denieColor = new Color(190, 0, 0);
-    [SerializeField]private float blinkTime = 3f;
+    [SerializeField]private float blinkTime = 8f;
     [SerializeField]private AudioClip audioClip;
     private AudioSource audioSource;
     private string emissionKeyword = "_EMISSION";

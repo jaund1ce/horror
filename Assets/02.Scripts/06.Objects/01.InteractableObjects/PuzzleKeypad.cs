@@ -14,12 +14,13 @@ public class PuzzleKeypad : PuzzleBase
     public AudioClip ButtonPressSound; 
     public AudioClip AccessSound;
     public AudioClip DeniedSound; 
-    public AudioSource AudioSource; 
+    
     public LockedDoor LockDoor;
     public Siren Siren;
 
     private TextMeshPro text;
     private MeshRenderer keypadRenderer;
+    private AudioSource audioSource;
     private Color baseColor = Color.black;
     private Color accessColor = Color.green;
     private string accessTxt = "ACCESS";
@@ -36,6 +37,8 @@ public class PuzzleKeypad : PuzzleBase
     {
         text = GetComponentInChildren<TextMeshPro>();
         keypadRenderer = GetComponent<MeshRenderer>();
+        audioSource = GetComponent<AudioSource>();
+
         keypadRenderer.material.DisableKeyword(txtBgLightKeyword);
         denieCount = 0;
     }
@@ -82,9 +85,9 @@ public class PuzzleKeypad : PuzzleBase
             StopCoroutine(currentCoroutine);
             text.color = baseColor;
         }
-        if (AudioSource != null && ButtonPressSound != null)
+        if (audioSource != null && ButtonPressSound != null)
         {
-            AudioSource.PlayOneShot(ButtonPressSound); 
+            audioSource.PlayOneShot(ButtonPressSound); 
         }
 
         if (buttonName == "Enter")
@@ -106,20 +109,20 @@ public class PuzzleKeypad : PuzzleBase
     {
         if (currentInput == CorrectCode)
         {
-            if (AudioSource != null && AccessSound != null)
+            if (audioSource != null && AccessSound != null)
             {
                 if (Siren != null) 
                 {
                     Siren.Access();
                 }
                 currentCoroutine = StartCoroutine(Access());
-                AudioSource.PlayOneShot(AccessSound); // 沥翠 家府 犁积
+                audioSource.PlayOneShot(AccessSound); // 沥翠 家府 犁积
                 IsAccess = true;
             }
         }
         else
         {
-            if (AudioSource != null && DeniedSound != null)
+            if (audioSource != null && DeniedSound != null)
             {
                 if (Siren != null) 
                 {
@@ -130,7 +133,7 @@ public class PuzzleKeypad : PuzzleBase
                     }
                 }
                 currentCoroutine = StartCoroutine(Denied());
-                AudioSource.PlayOneShot(DeniedSound); // 角菩 家府 犁积
+                audioSource.PlayOneShot(DeniedSound); // 角菩 家府 犁积
             }
         }
 
