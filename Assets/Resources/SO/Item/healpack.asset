@@ -25,4 +25,4 @@ MonoBehaviour:
       \uD68C\uBCF5\uD15C"
     Stackable: 1
     EquipPrefab: {fileID: 5553327899995807929, guid: d442bba76d4d6e043a2d521c9fe9b575, type: 3}
-    ItemImage: {fileID: 21300000, guid: 962a649a059108046bfa10b3b8838f0c, type: 3}
+    ItemImage: {fileID: 21300000, guid: 2a9aedbfa7e4b1b4781ecd388715fc4b, type: 3}
