@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class BrokenGlass : MonoBehaviour
 {
+    [SerializeField]private LayerMask player;
     AudioSource audioSource;
     [SerializeField]AudioClip clip;
+    
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -13,6 +15,17 @@ public class BrokenGlass : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        audioSource.PlayOneShot(clip);
+
+      //if (other.TryGetComponent(out PlayerConditionController))
+        if (1 <<other.gameObject.layer == player)
+        {
+            audioSource.PlayOneShot(clip);
+            foreach (EnemyAI enemy in MainGameManager.Instance.Enemy)
+            {
+
+                enemy.GetAggroGage(5f);
+            }
+        }
+        
     }
 }

@@ -1,0 +1,97 @@
+{
+    "data": [
+        {
+            "key": "Player_noneParkourtic2",
+            "assetType": "Prefab",
+            "categoryType": "Player",
+            "position": {},
+            "referenceObjectName": "SpawnPoint"
+        },
+        {
+            "key": "Creature",
+            "assetType": "Prefab",
+            "categoryType": "Enemy",
+            "position": {},
+            "referenceObjectName": "Enemy01_SpawnPoint"
+        },
+        {
+            "key": "Frenzyer",
+            "assetType": "Prefab",
+            "categoryType": "Enemy",
+            "position": {},
+            "referenceObjectName": "Enemy02_SpawnPoint"
+        },
+        {
+            "key": "DropLockpick",
+            "assetType": "Prefab",
+            "categoryType": "Item",
+            "position": {},
+            "referenceObjectName": "HideableTable_15"
+        },
+        {
+            "key": "DropLockpick",
+            "assetType": "Prefab",
+            "categoryType": "Item",
+            "position": {},
+            "referenceObjectName": "HideableTable_3"
+        },
+        {
+            "key": "DropLockpick",
+            "assetType": "Prefab",
+            "categoryType": "Item",
+            "position": {},
+            "referenceObjectName": "HideableTable_2"
+        },
+        {
+            "key": "DropLockpick",
+            "assetType": "Prefab",
+            "categoryType": "Item",
+            "position": {},
+            "referenceObjectName": "HideableTable_28"
+        },
+        {
+            "key": "DropLockpick",
+            "assetType": "Prefab",
+            "categoryType": "Item",
+            "position": {},
+            "referenceObjectName": "HideableTable_24"
+        },
+        {
+            "key": "DropLockpick",
+            "assetType": "Prefab",
+            "categoryType": "Item",
+            "position": {},
+            "referenceObjectName": "HideableTable_19"
+        },
+        {
+            "key": "DropHealpack",
+            "assetType": "Prefab",
+            "categoryType": "Item",
+            "position": {},
+            "referenceObjectName": "HideableTable"
+        },
+        {
+            "key": "DropHealpack",
+            "assetType": "Prefab",
+            "categoryType": "Item",
+            "position": {},
+            "referenceObjectName": "HideableTable_31"
+        },
+        {
+            "key": "DropHealpack",
+            "assetType": "Prefab",
+            "categoryType": "Item",
+            "position": {},
+            "referenceObjectName": "HideableTable_12"
+        },
+        {
+            "key": "DropHealpack",
+            "assetType": "Prefab",
+            "categoryType": "Item",
+            "position": {},
+            "referenceObjectName": "HideableTable_20"
+        }
+
+
+    ]
+}

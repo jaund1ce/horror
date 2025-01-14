@@ -26,6 +26,7 @@ public class MainScene : SceneBase
             MapManager.Instance.ShowMap<Stage01>();
             MapManager.Instance.LoadAndSpawnObjects();
             UIManager.Instance.Show<MainUI>();
+            MainGameManager.Instance.FindOrSetEnemy();
             DataManager.Instance.LoadAllItems();
             return;
         }
@@ -49,6 +50,7 @@ public class MainScene : SceneBase
             MapManager.Instance.ShowMap<Stage01>();
             MapManager.Instance.LoadAndSpawnObjects();
             UIManager.Instance.Show<MainUI>();
+            MainGameManager.Instance.FindOrSetEnemy();
             DataManager.Instance.LoadAllItems();
     }
     public void ActivateObject02()
@@ -61,6 +63,7 @@ public class MainScene : SceneBase
             MapManager.Instance.ShowMap<Stage01>();
             MapManager.Instance.LoadAndSpawnObjects();
             UIManager.Instance.Show<MainUI>();
+            MainGameManager.Instance.FindOrSetEnemy();
             DataManager.Instance.LoadAllItems();
     }
 }

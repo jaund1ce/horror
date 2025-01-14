@@ -23,7 +23,6 @@ public class EndScene : SceneBase
         playerInputs.Enable();
         playerActions.Menu.performed += ActivateObject;
         UIManager.Instance.Show<SkipUI>();
-        UIManager.Instance.Show<MainUI>();
         Invoke("ActivateSound", delay2);
         Invoke("ActivateObject2", delay);
     }

@@ -6,7 +6,7 @@ public class Siren : MonoBehaviour
 {
     [SerializeField]private Color accessColor = new Color(0, 190, 0);
     [SerializeField]private Color denieColor = new Color(190, 0, 0);
-    [SerializeField]private float blinkTime = 8f;
+    [SerializeField]private float blinkTime = 15f;
     [SerializeField]private AudioClip audioClip;
     private AudioSource audioSource;
     private string emissionKeyword = "_EMISSION";
@@ -37,9 +37,15 @@ public class Siren : MonoBehaviour
     {
         if (blinkCoroutine == null)
         {
+            foreach (EnemyAI enemy in MainGameManager.Instance.Enemy) 
+            {
+                enemy.GetAggroGage(20f);
+            }
             audioSource.PlayOneShot(audioClip);
             blinkCoroutine = StartCoroutine(BlinkSiren(blinkTime));
         }
+        
+
     }
 
     private IEnumerator BlinkSiren(float blinkTime)
@@ -71,4 +77,6 @@ public class Siren : MonoBehaviour
         blinkCoroutine = null;
 
     }
+
+
 }
