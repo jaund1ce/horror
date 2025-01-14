@@ -77,7 +77,7 @@ public class InventoryItemInfoPanelelController : MonoBehaviour
         if (currentItemData == player.CurrentEquipItem)
         {
             SoundManger.Instance.MakeEnviormentSound("Click3");
-            player.CurrentEquipItem = null;
+            player.UnEquipCurrentItem();
             ChangePanelText(currentItemData);
             return;
         }
@@ -85,6 +85,7 @@ public class InventoryItemInfoPanelelController : MonoBehaviour
         SoundManger.Instance.MakeEnviormentSound("Click3");
         player.CurrentEquipItem = Inventory.CurrentInventoryData;
         player.Input.EquipMent.EquipNew(player.CurrentEquipItem);
+        player.ChangeEquip();
         ChangePanelText(currentItemData);
     }
     public void OnAddQuickSlotBTNClick()

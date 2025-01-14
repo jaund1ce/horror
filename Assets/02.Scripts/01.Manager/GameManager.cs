@@ -1,29 +1,42 @@
 using System;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainGameManager : mainSingleton<MainGameManager>
 {
     public int paperInteractionCount;
+    public bool getNewPaper;
     public Action<float> MakeSoundAction;
     public Player Player;
+    public EnemyAI[] Enemy;
+    public Component component;
 
     protected override void Awake()
     {
         base.Awake();
         SceneManager.sceneLoaded += OnSceneLoaded;
         FindOrSetPlayer();
-        paperInteractionCount = 0;
+        getNewPaper = false;
     }
+
 
     private void FindOrSetPlayer()
     {
         Player = FindObjectOfType<Player>();
     }
 
+    public void FindOrSetEnemy() 
+    {
+        Enemy = null;
+        Enemy = FindObjectsOfType<EnemyAI>();
+    }
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        paperInteractionCount = 0;
         FindOrSetPlayer();
+        FindOrSetEnemy();
     }
 
     protected override void OnDestroy()
@@ -36,8 +49,4 @@ public class MainGameManager : mainSingleton<MainGameManager>
     {
         MakeSoundAction?.Invoke(amount);
     }
-
-
-
-
 }

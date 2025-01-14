@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Drawing.Text;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -22,6 +19,8 @@ public class Player : MonoBehaviour
     public PlayerInventoryData PlayerInventoryData;
     public InventoryData CurrentEquipItem;
 
+    public event Action HPChange;
+
     [Header("Player States")]
     public bool isChangingQuickSlot = false;
     public bool isInventoryOpen = false;
@@ -31,9 +30,10 @@ public class Player : MonoBehaviour
     public bool isCrouching = false;
     [SerializeField]private PlayerHeartState playerState = PlayerHeartState.Normal; //creture 와 플레이어가 둘다 가지고 있어야하나?
     [SerializeField]private GroundType groundType = GroundType.Cement;
+    [SerializeField] private float groundCheckdistance = 0.4f;
 
     [Header("Monster Check Data")]
-    [SerializeField] private float checkDistance = 12f;
+    [SerializeField] private float checkDistance = 30f;
     [SerializeField] private float checkDuration = 2f;
     [SerializeField] private LayerMask monsterMask;
     private float lastCheckTime = 0f;
@@ -64,7 +64,6 @@ public class Player : MonoBehaviour
     {
         stateMachine.HandleInput();
         stateMachine.Update();
-        ChangeEquip();// *****
     }
 
     private void FixedUpdate()
@@ -112,10 +111,10 @@ public class Player : MonoBehaviour
         Ray ray2 = new Ray(curVector + Vector3.back * 0.2f + new Vector3(0,0.1f,0), Vector3.down);
         Ray ray3 = new Ray(curVector + Vector3.right * 0.2f + new Vector3(0,0.1f,0), Vector3.down);
         Ray ray4 = new Ray(curVector + Vector3.left * 0.2f + new Vector3(0,0.1f,0), Vector3.down);
-        float checkdistance = 0.2f;
+        
         RaycastHit hit;
 
-        if (Physics.Raycast(ray1,out hit, checkdistance) || Physics.Raycast(ray2, checkdistance) || Physics.Raycast(ray3, checkdistance) || Physics.Raycast(ray4, checkdistance))
+        if (Physics.Raycast(ray1,out hit, groundCheckdistance) || Physics.Raycast(ray2, groundCheckdistance) || Physics.Raycast(ray3, groundCheckdistance) || Physics.Raycast(ray4, groundCheckdistance))
         {
             if (hit.collider != null)
             {
@@ -190,7 +189,7 @@ public class Player : MonoBehaviour
         if (this.playerState == playerState) return;
 
         this.playerState = playerState;  
-        SoundManger.Instance.ChangeHearthBeatSound(playerState);
+        SoundManger.Instance.ChangeHearthBeatSound(this.playerState);
     }
 
     public bool CheckState(PlayerHeartState playerState)
@@ -200,17 +199,11 @@ public class Player : MonoBehaviour
 
     public void ChangeEquip()
     {
-        if (CurrentEquipItem == null || CurrentEquipItem.ItemData == null)
-        {
-            Animator.SetBool("FlashLight", false);
-            Animator.SetBool("HealPack", false);
-            Animator.SetBool("Key", false);
-            return;
-        }
-
         Animator.SetBool("FlashLight", false);
         Animator.SetBool("HealPack", false);
         Animator.SetBool("Key", false);
+
+        if (CurrentEquipItem == null || CurrentEquipItem.ItemData == null) return;
 
         if (CurrentEquipItem.ItemData.itemSO.ItemNameEng == "flash")
         {
@@ -222,7 +215,19 @@ public class Player : MonoBehaviour
         }
         else
         {
-            Animator.SetBool("Key", true);
+            //Animator.SetBool("Key", true);
         }
+    }
+
+    public void UnEquipCurrentItem()
+    {
+        Input.EquipMent.UnEquip();
+        CurrentEquipItem = null;
+        ChangeEquip();
+    }
+
+    public void OnHPChange()
+    {
+        HPChange?.Invoke();
     }
 }

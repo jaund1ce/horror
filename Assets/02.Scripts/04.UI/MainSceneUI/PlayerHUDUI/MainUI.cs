@@ -2,6 +2,7 @@
 
 public class MainUI : BaseUI
 {
+    private PlayerController playerController;
     public PromptUI promptUI;
 
 

@@ -29,10 +29,10 @@ MonoBehaviour:
   <Dealing_Start_TransitionTime>k__BackingField: 0.1
   <Dealing_End_TransitionTime>k__BackingField: 0.8
   <VisionRange>k__BackingField: 40
-  <VisionDistance>k__BackingField: 100
-  <RayAmount>k__BackingField: 31
-  <FeelPlayerRange>k__BackingField: 10
+  <VisionDistance>k__BackingField: 10
+  <RayAmount>k__BackingField: 21
+  <FeelPlayerRange>k__BackingField: 2
   <MissTargetTime>k__BackingField: 3
-  <MaxAggroGage>k__BackingField: 100
+  <MaxAggroGage>k__BackingField: 30
   <MinWanderDistance>k__BackingField: 15
   <MaxWanderDistance>k__BackingField: 20

@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Unity.VisualScripting;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SocialPlatforms;
@@ -73,6 +72,16 @@ public class CreatureAI : EnemyAI
     protected override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
+    }
+
+    public override void RealeaseAggroGage(float amount)
+    {
+        base.RealeaseAggroGage(amount);
+    }
+
+    protected override void CheckHalfAggroGage()
+    {
+        base.CheckHalfAggroGage();
     }
 
 }

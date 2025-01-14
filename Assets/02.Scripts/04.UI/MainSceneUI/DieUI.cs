@@ -18,6 +18,7 @@ public class DieUI : PopupUI
     {
         base.OnEnable();
         Time.timeScale = 0f;
+        SoundManger.Instance.ChangeBGMSound(4);
     }
     public override void OnDisable()
     {

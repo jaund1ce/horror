@@ -12,12 +12,4 @@ public class MainScene2 : SceneBase
         UIManager.Instance.Show<MainUI>();
         DataManager.Instance.LoadGame();
     }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 }

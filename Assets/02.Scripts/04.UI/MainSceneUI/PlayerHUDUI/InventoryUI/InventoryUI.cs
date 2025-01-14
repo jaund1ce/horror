@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class InventoryUI : PopupUI
 {
+    public MainGameManager gameManager;
     public override void OnEnable()
     {
         base.OnEnable();
@@ -23,7 +24,6 @@ public class InventoryUI : PopupUI
 
     public void OnDocumentUI()
     {
-
         UIManager.Instance.Hide<InventoryUI>();
         UIManager.Instance.Show<PaperUI>();
     }

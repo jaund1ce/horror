@@ -11,10 +11,4 @@ public class StartScene : SceneBase
         Cursor.visible = true;
         UIManager.Instance.Show<StartUI>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

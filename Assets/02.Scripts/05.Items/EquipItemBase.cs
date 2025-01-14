@@ -10,7 +10,6 @@ public abstract class EquipItemBase : MonoBehaviour
 
     protected virtual void Start()
     {
-
         inventoryData = MainGameManager.Instance.Player.CurrentEquipItem;
     }
 
@@ -20,11 +19,7 @@ public abstract class EquipItemBase : MonoBehaviour
         if (!OnUsing)
         {
             OnUsing = true;
-            if (inventoryData.Use(1) == (int)TryUse.ResetItem) 
-            {
-                Destroy(this.gameObject);
-            }
-            Invoke("OnUse", 2f);
+            Invoke("OnUse", 1f);
             // 애니메이션 추가
         }
     }
@@ -32,6 +27,9 @@ public abstract class EquipItemBase : MonoBehaviour
     public virtual void OnUse() 
     {
         OnUsing = false;
+        if (inventoryData.Use(1) == (int)TryUse.ResetItem)
+        {
+            MainGameManager.Instance.Player.UnEquipCurrentItem();
+        }
     }
-
 }

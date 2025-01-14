@@ -6,7 +6,9 @@ public class StageClear : MonoBehaviour
 {
     private LockedDoor lockedDoorWithHinge;
 
-    void Start()
+
+
+    private void OnEnable()
     {
         lockedDoorWithHinge = GetComponent<LockedDoor>();
         lockedDoorWithHinge.isOpen += StageClearEvent;

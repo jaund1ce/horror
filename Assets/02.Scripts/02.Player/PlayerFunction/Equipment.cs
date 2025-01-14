@@ -18,23 +18,22 @@ public class Equipment : MonoBehaviour
     private void Start()
     {
         controller = GetComponent<PlayerController>();
-
     }
 
     public void EquipNew(InventoryData data)
     {
         UnEquip();
-        Debug.Log($"{ data.ItemData.itemSO} {data.ItemData.itemSO.EquipPrefab.transform.position} {data.ItemData.itemSO.EquipPrefab.transform.rotation}");
         CurEquip = Instantiate(data.ItemData.itemSO.EquipPrefab, EquipPoint).GetComponent<EquipItemBase>();
         CurEquip.gameObject.transform.localPosition = data.ItemData.itemSO.EquipPrefab.transform.position;
         CurEquip.gameObject.transform.localRotation = data.ItemData.itemSO.EquipPrefab.transform.rotation;
-
     }
 
     public void UnEquip()
     {
         if (CurEquip != null)
         {
+            if (CurEquip is EquipLight && CurEquip.OnUsing) { CurEquip.OnUse(); }
+
             Destroy(CurEquip.gameObject);
             CurEquip = null;
         }

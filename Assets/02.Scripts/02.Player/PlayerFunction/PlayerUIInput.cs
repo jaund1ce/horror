@@ -1,7 +1,11 @@
+using System;
+using System.Collections;
+using System.Threading;
 using UnityEngine;
 
 public class PlayerUIInput : MonoBehaviour
 {
+    public static bool fisrtStart = false;
     private PlayerInputs playerInputs;
     private PlayerConditionController playerConditionController;
 
@@ -13,6 +17,16 @@ public class PlayerUIInput : MonoBehaviour
         {
             Debug.LogWarning("Health 컴포넌트를 찾을 수 없습니다. OnDie 이벤트는 등록되지 않습니다.");
         }
+    }
+
+    private void Start()
+    {
+        if (fisrtStart)
+        {
+            return;
+        }
+        UIManager.Instance.Show<ManualUI>();
+        fisrtStart = true;
     }
 
     private void OnEnable()
@@ -55,11 +69,19 @@ public class PlayerUIInput : MonoBehaviour
 
     private void OnDieUI()
     {
-        UIManager.Instance.Hide<PaperUI>();
-        UIManager.Instance.Hide<InventoryUI>();
         playerInputs.Disable();
         playerInputs.Player.Inventory.performed -= OnInventory;
         playerInputs.Player.Menu.performed -= OnSystemMenu;
+        UIManager.Instance.Hide<PaperUI>();
+        UIManager.Instance.Hide<InventoryUI>();
+        SoundManger.Instance.ResetAllSounds();
+        StartCoroutine(Delay(2.0f));
+        
+    }
+    IEnumerator Delay(float Seconds)
+    {
+        yield return new WaitForSeconds(Seconds);
         UIManager.Instance.Show<DieUI>();
     }
+
 }

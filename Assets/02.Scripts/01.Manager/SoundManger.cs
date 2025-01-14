@@ -36,13 +36,16 @@ public class SoundManger : mainSingleton<SoundManger>
     private float lastCheckTime;
     private AudioClip[] stepAudioClips;
     private Coroutine playerStepCoroutine;
+    private string breathename = "";
 
     private int index = 0;
-
+    private float soundpitch;
 
     protected override void Awake()
     {
         base.Awake();
+
+        Init();
     }
 
     protected override void Start()
@@ -58,6 +61,16 @@ public class SoundManger : mainSingleton<SoundManger>
             lastCheckTime = Time.time;
             TEMBGM.Play();
         }
+    }
+
+    private void Init()
+    {
+        PlayerStep.volume = 0.5f;
+        PlayerHeartBeat.volume = 0.9f;
+        PlayerBreathe.volume = 0.1f;
+        Enviroment.volume = 0.5f;
+        BGM.volume = 0.5f;
+        TEMBGM.volume = 0.5f;
     }
 
     public void GetSceneSource(string stagename)//특정 씬에서 필요한 사운드를 로드해줌으로서 로딩을 줄여준다
@@ -93,6 +106,19 @@ public class SoundManger : mainSingleton<SoundManger>
             stageNum = 1;
         }
 
+        else if (stagename == "MainScene2")
+        {
+            if (playerheartbeatSource.Length == 0 || playerBreatheSource.Length == 0)
+            {
+                GetPlayerStepSources();
+                playerheartbeatSource = Resources.LoadAll<AudioClip>("Sounds/PlayerHeartBeats");
+                playerBreatheSource = Resources.LoadAll<AudioClip>("Sounds/PlayerBreathes");
+
+                AddToDictionary(playerheartbeatSource);
+                AddToDictionary(playerBreatheSource);
+            }
+            stageNum = 2;
+        }
         //else //나중에 필요하면 추가
         //{
 
@@ -173,7 +199,15 @@ public class SoundManger : mainSingleton<SoundManger>
     {
         if (OnOff)
         {
-            PlayerStep.pitch = pitch;
+            soundpitch = pitch;
+            if(soundpitch >= 1f)
+            {
+                PlayerStep.volume = 1f;
+            }
+            else
+            {
+                PlayerStep.volume = 0.5f;
+            }
             playerStepCoroutine = StartCoroutine(StartStepSound());
         }
         else
@@ -181,7 +215,6 @@ public class SoundManger : mainSingleton<SoundManger>
             if (playerStepCoroutine == null) return;
 
             StopCoroutine(playerStepCoroutine);
-            PlayerStep.pitch = pitch;
             playerStepCoroutine = null;
         }
     }
@@ -192,11 +225,12 @@ public class SoundManger : mainSingleton<SoundManger>
 
         while (true)
         {
-            index = (int)((index) % stepAudioClips.Length);//다른 소리의 리스트의 길이는 서로 다르기때문에
+            index = (int)(((index) % stepAudioClips.Length));//다른 소리의 리스트의 길이는 서로 다르기때문에
             PlayerStep.clip = stepAudioClips[index];
             PlayerStep.PlayOneShot(PlayerStep.clip);
+            MainGameManager.Instance.MakeSound(PlayerStep.clip.length);
 
-            yield return new WaitForSeconds(stepAudioClips[index].length);
+            yield return new WaitForSeconds(PlayerStep.clip.length / soundpitch);
             index = (int)((index + 1) % stepAudioClips.Length);
         }
     }
@@ -219,7 +253,6 @@ public class SoundManger : mainSingleton<SoundManger>
         }
         else
         {
-            Debug.Log("No Sound Clip!");
         }
     }
 
@@ -233,7 +266,7 @@ public class SoundManger : mainSingleton<SoundManger>
             case 1: bgmname = "Stage1BGM"; break;
             case 2: bgmname = "Stage2BGM"; break;
             case 3: bgmname = "Stage3BGM"; break;
-            case 4: bgmname = "Stage4BGM"; break;
+            case 4: bgmname = "DieUI"; break;
             default: Debug.Log($"StageNum : {stagenum} / out of index"); break;
         }
 
@@ -287,7 +320,7 @@ public class SoundManger : mainSingleton<SoundManger>
         }        
     }
 
-    public void MakeEnviormentSound(string enviormentName, float amount)
+    public void MakeEnviormentSound(string enviormentName, float amount = 1f)
     {
         if (audioClipDictionary.TryGetValue(enviormentName, out AudioClip value))
         {
@@ -312,6 +345,20 @@ public class SoundManger : mainSingleton<SoundManger>
             PlayerBreathe.clip = null;
             return;
         }
+
+        if (playerBreatheType == PlayerBreatheType.Damaged)
+        {
+            if(PlayerBreathe.clip == null)
+            {
+                MakeEnviormentSound("PlayerTakeDamage");
+            }
+            else//코루틴으로
+            {
+                StartCoroutine( StartDamagedSound());
+            }
+            return;
+        }
+
         string breathename = $"PlayerBreathe{playerBreatheType.ToString()}";
 
         if (audioClipDictionary.TryGetValue(breathename, out AudioClip value))
@@ -324,6 +371,17 @@ public class SoundManger : mainSingleton<SoundManger>
         {
             Debug.Log("No Sound Clip!");
         }
+    }
+
+    private IEnumerator StartDamagedSound()//코루티의 조건을 외부에서 결정
+    {
+            PlayerBreathe.Stop();
+            MakeEnviormentSound("PlayerTakeDamage2");
+
+            yield return new WaitForSeconds(1f);
+
+            PlayerBreathe.Play();
+
     }
 
     public void ChangeAllSounds()

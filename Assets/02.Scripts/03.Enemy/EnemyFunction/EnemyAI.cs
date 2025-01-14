@@ -42,12 +42,14 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
     [field: Header("Enemy CalculateToAction")]
 
     [HideInInspector] public AIState EnemyAistate{ get; protected set; }
+    [HideInInspector] public Dictionary<AIState, SoundState> soundStates = new Dictionary<AIState, SoundState>();
     [HideInInspector] public float AggroGage;
-    public bool IsPlayerMiss { get; protected set; } = true;
-    public bool IsAggroGageMax { get; protected set; }
-    protected List<int> visionInObject = new List<int>();
+    [HideInInspector] public bool IsPlayerMiss { get; protected set; } = true;
+    [HideInInspector] public bool IsAggroGageMax { get; protected set; }
     protected float checkMissTime;
-    [HideInInspector]public Dictionary<AIState, SoundState> SoundStates = new Dictionary<AIState, SoundState>();
+    protected float checkAggroSoundTime;
+    protected float releaseGageAmount;
+    protected List<int> visionInObject = new List<int>();
     protected AIState previouseState;
 
     protected virtual void Awake()
@@ -56,16 +58,18 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
         agent = GetComponent<NavMeshAgent>();
         EnemyAistate = AIState.Idle;
         Data = enemy.Data;
+        checkAggroSoundTime = 30f;
+        releaseGageAmount = Data.MaxAggroGage/100;
     }
 
     protected virtual void Start() 
     {
         MainGameManager.Instance.MakeSoundAction += GetAggroGage;
-        SoundStates.Add(AIState.Idle, new SoundState { Sound = enemy.IdleSound, LastPlayTime = -enemy.SoundTime });
-        SoundStates.Add(AIState.Wandering, new SoundState { Sound = enemy.WanderSound, LastPlayTime = -enemy.SoundTime });
-        SoundStates.Add(AIState.Chasing, new SoundState { Sound = enemy.ChasingSound, LastPlayTime = -enemy.SoundTime });
-        SoundStates.Add(AIState.Attacking, new SoundState { Sound = enemy.AttackSound, LastPlayTime = -enemy.SoundTime });
-        SoundStates.Add(AIState.Frenzy, new SoundState { Sound = enemy.HowlingSound, LastPlayTime = -enemy.SoundTime });
+        soundStates.Add(AIState.Idle, new SoundState { Sound = enemy.IdleSound, LastPlayTime = -enemy.SoundTime });
+        soundStates.Add(AIState.Wandering, new SoundState { Sound = enemy.WanderSound, LastPlayTime = -enemy.SoundTime });
+        soundStates.Add(AIState.Chasing, new SoundState { Sound = enemy.ChasingSound, LastPlayTime = -enemy.SoundTime });
+        soundStates.Add(AIState.Attacking, new SoundState { Sound = enemy.AttackSound, LastPlayTime = -enemy.SoundTime });
+        soundStates.Add(AIState.Frenzy, new SoundState { Sound = enemy.HowlingSound, LastPlayTime = -enemy.SoundTime });
     }
 
     protected virtual void Update()
@@ -78,7 +82,7 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
             PlaySoundBasedOnState();
             previouseState = EnemyAistate;
         }
-    }
+;    }
 
     protected virtual void CheckTarget()
     {
@@ -93,8 +97,9 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
 
             // 방향 벡터 계산 (로컬 좌표계 기준)
             Vector3 direction = Quaternion.Euler(0, currentAngle, 0) * transform.forward;
-            if (Physics.Raycast(transform.position + (Vector3.up * 0.5f), direction, out RaycastHit hit, Data.VisionDistance, playerMask))
+            if (Physics.Raycast(transform.position - (Vector3.up * 0.2f), direction, out RaycastHit hit, Data.VisionDistance, playerMask))
             {
+                if (MainGameManager.Instance.Player.isHiding) return;
                 if (visionInObject.Count == 0)
                 {
                     visionInObject.Add((int)SightInObject.Player);
@@ -102,17 +107,17 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
                 }
                 isTarget = true;
 
-                Debug.DrawLine(transform.position + (Vector3.up * 0.5f), hit.point, Color.red, 1.0f);
+                Debug.DrawLine(transform.position - (Vector3.up * 0.2f), hit.point, Color.red, 1.0f);
             }
             else
             {
 
-               //Debug.DrawRay(transform.position + (Vector3.up * 0.5f), direction * Data.VisionDistance, Color.green, 1.0f);
+               Debug.DrawRay(transform.position - (Vector3.up * 0.2f), direction * Data.VisionDistance, Color.green, 1.0f);
             }
         }
 
         CheckMissTime(isTarget);
-
+        checkAggroSoundTime += Time.deltaTime;
     }
 
     protected virtual void CheckMissTime(bool isTarget)
@@ -144,12 +149,16 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
             increaceAmount = Data.FeelPlayerRange / (distance * 100);
             GetAggroGage(increaceAmount);
         }
+
+        if (colliders.Length == 0) RealeaseAggroGage(releaseGageAmount);
     }
 
     public virtual void GetAggroGage(float amount)
     {
         AggroGage += amount;
         AggroGage = Mathf.Clamp(AggroGage, 0f, 100f);
+
+
         if (AggroGage >= Data.MaxAggroGage)
         {
             IsAggroGageMax = true;
@@ -174,6 +183,19 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
 
     public virtual int UpdateState()
     {
+        if (MainGameManager.Instance.Player.PlayerConditionController.IsDie)
+        {
+            EnemyAistate = AIState.Idle;
+            return (int)EnemyAistate;
+        }else if (MainGameManager.Instance.Player.isHiding)
+        {
+            Debug.Log("Player Hiding");
+            EnemyAistate = AIState.Wandering;
+            IsAttacking = false;
+            return (int)EnemyAistate;
+        }
+        
+
         if (IsAttacking) return (int)EnemyAistate;
 
         if ((IsAggroGageMax || !IsPlayerMiss) && !IsInAttackRange())
@@ -185,6 +207,7 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
         {
             EnemyAistate = AIState.Wandering;
             FeelThePlayer();
+            CheckHalfAggroGage();
             return (int)EnemyAistate;
         }
         else if (!IsPlayerMiss && IsInAttackRange())
@@ -202,9 +225,9 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
 
     protected virtual void PlaySoundBasedOnState()
     {
-        if (!SoundStates.ContainsKey(EnemyAistate)) return;
+        if (!soundStates.ContainsKey(EnemyAistate)) return;
 
-        SoundState currentSoundState = SoundStates[EnemyAistate];
+        SoundState currentSoundState = soundStates[EnemyAistate];
 
         if (Time.time - currentSoundState.LastPlayTime >= enemy.SoundTime)
         {
@@ -215,7 +238,7 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
                 enemy.AudioSource.Play();
 
                 currentSoundState.LastPlayTime = Time.time; // 구조체는 값 타입이므로 아래코드 업데이트 하기 위해 필요
-                SoundStates[EnemyAistate] = currentSoundState; 
+                soundStates[EnemyAistate] = currentSoundState; 
             }
         }
     }
@@ -228,6 +251,22 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
         {
             if(!lockedDoor.IsOpened) lockedDoor.ToggleDoor();
         }
+    }
+
+    public virtual void RealeaseAggroGage(float amount)
+    {
+        AggroGage -= amount * Time.deltaTime;
+        AggroGage = Mathf.Clamp(AggroGage, 0f, 100f);
+    }
+
+    protected virtual void CheckHalfAggroGage() 
+    {
+        if (AggroGage / Data.MaxAggroGage > 0.5f && checkAggroSoundTime > 30f) 
+        {
+            enemy.AudioSource.PlayOneShot(enemy.AggroSound);
+            checkAggroSoundTime = 0f;
+        }
+
     }
 }
 

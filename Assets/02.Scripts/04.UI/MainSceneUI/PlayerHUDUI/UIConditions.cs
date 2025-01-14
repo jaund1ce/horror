@@ -5,6 +5,7 @@ using UnityEngine;
 public class UICondition : MonoBehaviour
 {
     private PlayerConditionController playerConditionController;
+    private Player player;
     public Condition DamagePrompt;
     public CreatureAI creatureAI;
     public GameObject RecPoint;
@@ -15,18 +16,24 @@ public class UICondition : MonoBehaviour
 
     private void Start()
     {
-        playerConditionController = MainGameManager.Instance.Player.PlayerConditionController;
+        player = MainGameManager.Instance.Player;
+        playerConditionController = player.PlayerConditionController;
+        player.HPChange += ChangeDamagedPrompt;
+
         creatureAI = FindAnyObjectByType<CreatureAI>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        DamagePrompt.GetAPercentage(playerConditionController.GetHPPercentage());
-
         if (Time.time - lastCheckTime < duration) return;
 
         onoff = !onoff;
         lastCheckTime = Time.time;
         RecPoint.SetActive(onoff);
+    }
+
+    private void ChangeDamagedPrompt()
+    {
+        DamagePrompt.GetAPercentage(playerConditionController.GetHPPercentage());
     }
 }

@@ -5,33 +5,42 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class EquipLight : EquipItemBase
 {
     private Light light;
-
+    private bool usable = false;
 
     protected override void Start()
     {
         base.Start();
         light = MainGameManager.Instance.Player.gameObject.GetComponentInChildren<Light>();
+        ChangeLightIntencity();
         light.enabled = false;
     }
 
-    private void Update()
+    private void ChangeLightIntencity()
     {
-        if (OnUsing) 
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        if (sceneName == "MainScene")
         {
-            //배터리 감소 로직 작성
-            //if(배터리 0 이면) animator.SetBool(animUse,false);
+            light.intensity = 10;
+        }
+        else if (sceneName == "MainScene2")
+        {
+            light.intensity = 200;
         }
     }
 
     public override void OnUseInput()
     {
         if (inventoryData == null) return;
+        if (!usable) return;
 
-        Invoke("OnUse", 2f);
+        usable = false;
+        Invoke("OnUse", 0.5f);
     }
 
 
@@ -39,14 +48,17 @@ public class EquipLight : EquipItemBase
     {
         if (!OnUsing)
         {
+            SoundManger.Instance.MakeEnviormentSound("Flashlight_On");
             light.enabled = true;
             OnUsing = true;
         }
         else
         {
+            SoundManger.Instance.MakeEnviormentSound("Flashlight_Off");
             light.enabled = false;
             OnUsing = false;
         }
+        usable = true;
     }
 }
 

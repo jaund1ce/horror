@@ -1,7 +1,6 @@
 using UnityEditor;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -22,6 +21,7 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
     [SerializeField] private string mainSceneName = "MainScene1";
     [SerializeField] private string mainScene2Name = "MainScene2";
     [SerializeField] private string endSceneName = "EndScene";
+    [SerializeField] private string loadingSceneName = "LoadingScene";
 
     protected override void Awake()
     {
@@ -35,6 +35,7 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
 
     public void LoadStartScene()
     {
+        SoundManger.Instance.GetSceneSource(startSceneName);
         ChangeScene(startSceneName);
     }
 
@@ -43,6 +44,7 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
     {
         ChangeScene(mainSceneName, NewGameInitalize);
         SoundManger.Instance.GetSceneSource(mainSceneName);
+        LoadLoadingScene(mainSceneName);
     }
     public void LoadGame() 
     {
@@ -52,7 +54,8 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
 
     public void Restart()
     {
-        ChangeScene(NowSceneName);
+        SoundManger.Instance.GetSceneSource(SceneManager.GetActiveScene().name);
+        ChangeScene(SceneManager.GetActiveScene().name);
     }
 
     public void LoadEndScene()
@@ -79,6 +82,7 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
                                                                                                                                  // 이 메서드는 비동기 방식으로 씬을 전환하며, UI를 통해 로딩 상태를 표시하거나 
                                                                                                                                  // 특정 로직을 씬 전환과 함께 처리하는 데 유용합니다.
     {
+
         var op = SceneManager.LoadSceneAsync(SceneName, loadSceneMode); // SceneManager의 LoadSceneAsync를 호출하여
                                                                         // 비동기로 씬을 로드합니다.
                                                                         // LoadSceneMode에 따라 기존 씬을 유지하거나 교체합니다.
@@ -115,6 +119,44 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
 
         callback?.Invoke();  // callback이 null이 아니면 해당 델리게이트를 실행합니다.
                              // 언로드 후 특정 동작을 수행하는 데 유용합니다.
+    }
+
+    public void LoadLoadingScene(string targetSceneName, Action callback = null)
+    {
+        StartCoroutine(LoadSceneWithControl(targetSceneName, callback));
+    }
+
+    private IEnumerator LoadSceneWithControl(string targetSceneName, Action callback)
+    {
+        // 1. 로딩 씬을 Additive 모드로 로드
+        AsyncOperation loadingSceneOp = SceneManager.LoadSceneAsync(loadingSceneName, LoadSceneMode.Additive);
+        yield return new WaitUntil(() => loadingSceneOp.isDone);
+
+        // 2. 로딩 씬의 UI 컨트롤러 가져오기
+        LoadingSceneController loadingController = FindObjectOfType<LoadingSceneController>();
+        if (loadingController != null)
+        {
+            loadingController.SetConfirmButtonActive(false); // 버튼 비활성화
+        }
+
+        // 3. 타겟 씬을 Single 모드로 로드
+        AsyncOperation targetSceneOp = SceneManager.LoadSceneAsync(targetSceneName, LoadSceneMode.Single);
+        NowSceneName = targetSceneName;
+
+        // 4. 진행률 업데이트
+        while (!targetSceneOp.isDone)
+        {
+            float progress = targetSceneOp.progress / 0.9f; // AsyncOperation 진행률 계산
+            if (loadingController != null)
+            {
+                loadingController.UpdateProgress(progress); // 진행률 업데이트
+
+            }
+            yield return null;
+        }
+
+        // 6. 추가 작업 실행
+        callback?.Invoke();
     }
 
 
