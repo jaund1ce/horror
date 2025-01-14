@@ -10,8 +10,6 @@ public class MainGameManager : mainSingleton<MainGameManager>
     public Action<float> MakeSoundAction;
     public Player Player;
     public EnemyAI[] Enemy;
-    [SerializeField]public GameObject targetObject;
-    [SerializeField]public string componentName;
     public Component component;
 
     protected override void Awake()
@@ -22,21 +20,13 @@ public class MainGameManager : mainSingleton<MainGameManager>
         getNewPaper = false;
     }
 
-    protected override void Start()
-    {
-        Type type = Type.GetType(componentName);
-        if (type != null)
-        {
-            component = targetObject.GetComponent(type);
-        }
-    }
 
     private void FindOrSetPlayer()
     {
         Player = FindObjectOfType<Player>();
     }
 
-    private void FindOrSetEnemy() 
+    public void FindOrSetEnemy() 
     {
         Enemy = null;
         Enemy = FindObjectsOfType<EnemyAI>();
