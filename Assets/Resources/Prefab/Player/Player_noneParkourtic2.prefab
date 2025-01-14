@@ -707,6 +707,7 @@ MonoBehaviour:
   isCrouching: 0
   playerState: -1
   groundType: 0
+  groundCheckdistance: 1
   checkDistance: 30
   checkDuration: 2
   monsterMask:

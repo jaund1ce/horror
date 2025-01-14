@@ -40,7 +40,7 @@ public class EquipLight : EquipItemBase
         if (!usable) return;
 
         usable = false;
-        Invoke("OnUse", 1f);
+        Invoke("OnUse", 0.5f);
     }
 
 
