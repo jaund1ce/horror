@@ -1,63 +1,81 @@
 {
-    "data": [
-        {
-            "key": "Player_noneParkourtic2",
-            "assetType": "Prefab",
-            "categoryType": "Player",
-            "position": {},
-            "referenceObjectName": "SpawnPoint"
-        },
-        {
-            "key": "DropHealPack",
-            "assetType": "Prefab",
-            "categoryType": "Item",
-            "position": {},
-            "referenceObjectName": "HideableTable_1"
-        },
-        {
-            "key": "DropHealPack",
-            "assetType": "Prefab",
-            "categoryType": "Item",
-            "position": {},
-            "referenceObjectName": "HideableTable_6"
-        },
-        {
-            "key": "Creature",
-            "assetType": "Prefab",
-            "categoryType": "Enemy",
-            "position": {},
-            "referenceObjectName": "Enemy01_SpawnPoint"
-        },
-        {
-            "key": "Gazer_Statue",
-            "assetType": "Prefab",
-            "categoryType": "Enemy",
-            "position": {},
-            "referenceObjectName": "Enemy02_SpawnPoint"
-        },
-        {
-            "key": "DropFlashlight",
-            "assetType": "Prefab",
-            "categoryType": "Item",
-            "position": {},
-            "referenceObjectName": "HideableTable_3"
-        },
-        {
-            "key": "DropHealPack",
-            "assetType": "Prefab",
-            "categoryType": "Item",
-            "position": {},
-            "referenceObjectName": "HideableTable_13"
-        },
-        {
-            "key": "DropHealPack",
-            "assetType": "Prefab",
-            "categoryType": "Item",
-            "position": {},
-            "referenceObjectName": "HideableTable_4"
-        }
-
-
-
-    ]
+  "data": [
+    {
+      "key": "Player_noneParkourtic2",
+      "assetType": "Prefab",
+      "categoryType": "Player",
+      "position": {},
+      "referenceObjectName": "SpawnPoint"
+    },
+    {
+      "key": "DropHealPack",
+      "assetType": "Prefab",
+      "categoryType": "Item",
+      "position": {},
+      "referenceObjectName": "HideableTable_1"
+    },
+    {
+      "key": "DropHealPack",
+      "assetType": "Prefab",
+      "categoryType": "Item",
+      "position": {},
+      "referenceObjectName": "HideableTable_6"
+    },
+    {
+      "key": "Creature",
+      "assetType": "Prefab",
+      "categoryType": "Enemy",
+      "position": {},
+      "referenceObjectName": "Enemy01_SpawnPoint"
+    },
+    {
+      "key": "Gazer_Statue",
+      "assetType": "Prefab",
+      "categoryType": "Enemy",
+      "position": {},
+      "referenceObjectName": "Enemy02_SpawnPoint"
+    },
+    {
+      "key": "DropFlashlight",
+      "assetType": "Prefab",
+      "categoryType": "Item",
+      "position": {},
+      "referenceObjectName": "HideableTable_3"
+    },
+    {
+      "key": "DropHealPack",
+      "assetType": "Prefab",
+      "categoryType": "Item",
+      "position": {},
+      "referenceObjectName": "HideableTable_13"
+    },
+    {
+      "key": "DropHealPack",
+      "assetType": "Prefab",
+      "categoryType": "Item",
+      "position": {},
+      "referenceObjectName": "HideableTable_4"
+    },
+    {
+      "key": "DropHealPack",
+      "assetType": "Prefab",
+      "categoryType": "Item",
+      "position": {},
+      "referenceObjectName": "HideableTable_8"
+    },
+    {
+      "key": "DropHealPack",
+      "assetType": "Prefab",
+      "categoryType": "Item",
+      "position": {},
+      "referenceObjectName": "HideableTable_2"
+    },
+    {
+      "key": "DropHealPack",
+      "assetType": "Prefab",
+      "categoryType": "Item",
+      "position": {},
+      "referenceObjectName": "HideableTable_14"
+    }
+  ]
 }

@@ -14,7 +14,7 @@ public class Paper : ObjectBase
 
     public override string GetInteractPrompt()
     {
-        return "ÀÐ±â";
+        return "Read";
     }
     public override void OnInteract()
     {
@@ -25,10 +25,6 @@ public class Paper : ObjectBase
         }
         MainGameManager.Instance.paperInteractionCount += paperData.value;
         MainGameManager.Instance.getNewPaper = true;
-        //if (MainGameManager.Instance.component == false)
-        //{
-        //    MainGameManager.Instance.component.enabled = true;
-        //}
         Debug.Log($"PaperInteractionCount: {MainGameManager.Instance.paperInteractionCount}");
 
         UIManager.Instance.Show<PaperUI>();

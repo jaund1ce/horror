@@ -4,7 +4,6 @@ using System.Threading;
 
 public class PlayerConditionController : MonoBehaviour
 {
-
     public event Action OnDie;
     [SerializeField] private float maxHealth;
     public float PassiveHealth;
@@ -46,7 +45,7 @@ public class PlayerConditionController : MonoBehaviour
         if (player.isHiding)
         {
             Health = Mathf.Clamp(Health + PassiveHealth * Time.deltaTime, 0, maxHealth);
-            player.PlayerHPChange();
+            player.OnHPChange();
         }
         
         Stamina = Mathf.Clamp(Stamina + PassiveStamina * Time.deltaTime, 0, maxStamina);
@@ -59,7 +58,7 @@ public class PlayerConditionController : MonoBehaviour
     public void TakeDamage(int damage, EnemyAI enemy)
     {
         EnemyAI attackEnemy = enemy;
-        player.PlayerHPChange();
+        player.OnHPChange();
 
         if (IsDie) return;
 
@@ -86,7 +85,7 @@ public class PlayerConditionController : MonoBehaviour
     public void AddHealth(int amount) 
     {
         Health = Mathf.Min(Health + amount, maxHealth);
-        player.PlayerHPChange();
+        player.OnHPChange();
     }
 
     private bool ChangeState(float staminaPercentage)
