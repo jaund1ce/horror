@@ -20,6 +20,7 @@ public class PlayerStateMachine2 : StateMachine
     public PlayerCrouchIdleState CrouchIdleState { get; private set; }
 
     //만약에 모든 state 가 공유해야하는 조건이 있다면 여기에 존재해야한다.
+    public bool isRunning;
     public bool isCrouching;
     public bool isAir;
 

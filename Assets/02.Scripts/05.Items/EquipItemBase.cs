@@ -10,7 +10,7 @@ public abstract class EquipItemBase : MonoBehaviour
 
     protected virtual void Start()
     {
-        inventoryData = MainGameManager.Instance.Player.CurrentEquipItem;
+        inventoryData = MainGameManager.Instance.Player.CurrentEquipItem;        
     }
 
     public virtual void OnUseInput() 
@@ -19,15 +19,16 @@ public abstract class EquipItemBase : MonoBehaviour
         if (!OnUsing)
         {
             OnUsing = true;
-            Invoke("OnUse", 1f);
-            // 애니메이션 추가
+            MainGameManager.Instance.Player.Animator.SetBool("OnUsing", OnUsing);
+            Invoke("OnUse", 0.5f);
         }
     }
 
     public virtual void OnUse() 
     {
         OnUsing = false;
-        if (inventoryData.Use(1) == (int)TryUse.ResetItem)
+        MainGameManager.Instance.Player.Animator.SetBool("OnUsing", OnUsing);
+        if (inventoryData.Use(1) == TryUse.ResetItem)
         {
             MainGameManager.Instance.Player.UnEquipCurrentItem();
         }

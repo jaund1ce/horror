@@ -23,10 +23,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float maxRotateY;
 
     [SerializeField]private float rotateSencitivity;
-    public bool Rotateable = true;
     public bool RunningReady = false;
-    public bool isCrouching = false;
-    public bool isRunning = false;
+    public bool CrouchingReady = false;
     private float currentYangle = 0f;
     private bool subscribed = false;
 
@@ -40,9 +38,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
-        UnLockRotate();
-        PlayerInputs.Enable();
         VirtualCameraNoise = playercamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        PlayerInputs.Enable();
         InputSubscribe();
     }
 
@@ -82,12 +79,11 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
-        OnUsing();
+        //OnUsing();
     }
 
     private void RotateCamera(InputAction.CallbackContext context)//cinemachine의 aim방식에 따라서 회전시키는 방법은 다르다.
     {
-        if (!Rotateable) return;
         Vector2 delta = context.ReadValue<Vector2>();
 
         if (delta != Vector2.zero)
@@ -105,16 +101,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void LockRotate() 
-    {
-        Rotateable = false;
-    }
-
-    public void UnLockRotate()
-    {
-        Rotateable = true;
-    }
-
     private void ChangeRunState(InputAction.CallbackContext context)
     {
         RunningReady = true; 
@@ -126,29 +112,30 @@ public class PlayerController : MonoBehaviour
 
     private void ChangeCrouchState(InputAction.CallbackContext context)
     {
-        isCrouching = true;
+        CrouchingReady = true;
     }
     private void ChangeCrouchState2(InputAction.CallbackContext context)
     {
-        isCrouching = false;
+        CrouchingReady = false;
     }
 
     public void ChangeRotateSencitivity(float amount)
     {
         rotateSencitivity = amount;
     }
+
     public float GetRotateSencitivity()
     {
         return rotateSencitivity;
     }
 
-    public void OnUsing()
-    {
-        if (EquipMent.CurEquip == null)
-        {
-            return;
-        }
-        bool onusing = EquipMent.CurEquip.OnUsing;
-        MainGameManager.Instance.Player.Animator.SetBool("OnUsing", onusing);
-    }
+    //public void OnUsing()
+    //{
+    //    if (EquipMent.CurEquip == null)
+    //    {
+    //        return;
+    //    }
+    //    bool onusing = EquipMent.CurEquip.OnUsing;
+    //    MainGameManager.Instance.Player.Animator.SetBool("OnUsing", onusing);
+    //}
 }

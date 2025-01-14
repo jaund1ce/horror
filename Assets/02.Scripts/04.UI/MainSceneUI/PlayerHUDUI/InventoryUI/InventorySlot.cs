@@ -41,7 +41,7 @@ public class InventorySlot : MonoBehaviour
     public void ChangeUI()
     {
         CurrentItemImage.sprite = CurrentData.ItemData.itemSO.ItemImage;
-        CurrentItemAmount.text = (CurrentData.amount).ToString();
+        CurrentItemAmount.text = (CurrentData.Amount).ToString();
     }
 
     public void ClearData() // 추가됨: ClearData 메서드 정의

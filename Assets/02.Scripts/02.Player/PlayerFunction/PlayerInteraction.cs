@@ -13,16 +13,17 @@ public class PlayerInteraction : MonoBehaviour
 
     private float lastCheckTime;
     [SerializeField]private LayerMask iteractableLayerMask;
-    
-    public PlayerInputs playerInputs { get; private set; }//inputsystem generate c# script로 생성된 스크립트
-    public PlayerInputs.PlayerActions playerActions { get; private set; }   //미리 정의한 행동들 move, look,... 등
 
-    public IInteractable CurrentInteracteable;
+    private PlayerInputs playerInputs;
+    private PlayerInputs.PlayerActions playerActions;
+
+    private IInteractable currentInteracteable;
     private bool isPuzzle;
-    private bool PuzzleEnter;
+    private bool puzzleEnter;
     private bool puzzleAccess;
 
-    public MainUI mainUI;
+    private MainUI mainUI;
+    private Player player;
 
     private void Awake()
     {
@@ -35,22 +36,12 @@ public class PlayerInteraction : MonoBehaviour
         {
             mainUI = UIManager.Instance.GetUI<MainUI>();
         }
-
-        playerInputs = new PlayerInputs();
-        playerActions = playerInputs.Player;
-        playerInputs.Enable();
     }
 
     private void Update()
     {
-        if (mainUI != null)
-        {
-            getItemData();
-        }
-        else
-        {
-            mainUI = UIManager.Instance.GetUI<MainUI>();
-        }
+        if (mainUI != null) getItemData();
+        else mainUI = UIManager.Instance.GetUI<MainUI>();
     }
 
     private void getItemData()//현재 바라보는 아이템 표시
@@ -68,41 +59,42 @@ public class PlayerInteraction : MonoBehaviour
                 iteractable = hit.collider.GetComponentInParent<IInteractable>();
                 if (iteractable == null) return;
             }
-            else if (iteractable == CurrentInteracteable) return;
-            CurrentInteracteable = iteractable;
-        }
-        else CurrentInteracteable = null;
+            else if (iteractable == currentInteracteable) return;
 
-        if (!PuzzleEnter)
+            currentInteracteable = iteractable;
+        }
+        else currentInteracteable = null;
+
+        if (!puzzleEnter)
         {
-            mainUI.ShowPromptUI(CurrentInteracteable);
+            mainUI.ShowPromptUI(currentInteracteable);
         }
     }
 
 
     private void handleInteractionInput(InputAction.CallbackContext context)//상호작용시 아이템 회득
     {
-        if (CurrentInteracteable == null) return;
+        if (currentInteracteable == null) return;
         HandleInputAndPrompt();
-        CurrentInteracteable.OnInteract();
-        CurrentInteracteable = null;
+        currentInteracteable.OnInteract();
+        currentInteracteable = null;
     }
 
     public void HandleInputAndPrompt() 
     {
-        if (isPuzzle && !PuzzleEnter && !puzzleAccess)
+        if (isPuzzle && !puzzleEnter && !puzzleAccess)
         {
-            PuzzleEnter = true;
+            puzzleEnter = true;
             MainGameManager.Instance.Player.Input.InputUnsubscribe();
             mainUI.ShowPromptUI(null);
             return;
         }
-        else if (PuzzleEnter)
+        else if (puzzleEnter)
         {
-            PuzzleEnter = false;
+            puzzleEnter = false;
             MainGameManager.Instance.Player.Input.InputSubscribe();
         }
-        mainUI.ShowPromptUI(CurrentInteracteable);
+        mainUI.ShowPromptUI(currentInteracteable);
        
     }
     private void IsPuzzleCheck(IInteractable iteractable) 
@@ -120,13 +112,19 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnEnable()
     {
-        playerInputs.Enable();
+        if (player == null)
+        {
+            player = MainGameManager.Instance.Player;
+
+            playerInputs = player.Input.PlayerInputs;
+            playerActions = player.Input.PlayerActions;
+        }      
+
         playerActions.Interaction.started += handleInteractionInput;
     }
 
     private void OnDisable()
     {
-        playerInputs.Disable();
         playerActions.Interaction.started -= handleInteractionInput;
     }
 }

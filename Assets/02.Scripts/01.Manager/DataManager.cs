@@ -77,11 +77,11 @@ public class DataManager : mainSingleton<DataManager>
         {
             if (inventorySlot.ItemData != null)
             {
-                serializableInventory.Add(new InventoryData(inventorySlot.slotIndex)
+                serializableInventory.Add(new InventoryData(inventorySlot.SlotIndex)
                 {
                     ItemID = inventorySlot.ItemData.itemSO.ID,
-                    amount = inventorySlot.amount,
-                    quickslotIndex = inventorySlot.quickslotIndex
+                    Amount = inventorySlot.Amount,
+                    QuickslotIndex = inventorySlot.QuickslotIndex
                 });
             }
             
@@ -132,7 +132,7 @@ public class DataManager : mainSingleton<DataManager>
                 var itemData = FindItemByID(serializedSlot.ItemID);
                 if (itemData != null)
                 {
-                    InventoryData[serializedSlot.slotIndex].SetItem(itemData, serializedSlot.amount);
+                    InventoryData[serializedSlot.SlotIndex].SetItem(itemData, serializedSlot.Amount);
                 }
                 else
                 {

@@ -53,7 +53,7 @@ public class PlayerBaseState : IState
 
     public virtual void PhysicsUpdate()
     {
-        if (!stateMachine.isAir)//점프하기 전에 이동 중이 었으면 해당 값을 유지하고 점프하지만 그렇지 않으면 제자리 점프만 함
+        if (!stateMachine.isAir)
         {
             Move();
         }
@@ -61,7 +61,7 @@ public class PlayerBaseState : IState
 
     public virtual void Update()//update는 값의 변경만을 해준다.
     {
-        if (stateMachine.Player.PlayerRigidbody.velocity.y < -0.01f)//지상을 걸어 다닐때 velocity.y가 정확히 0 이 아니기 때문에 오류가 발생 할 수 있음
+        if (stateMachine.Player.PlayerRigidbody.velocity.y < -0.01f)
         {
             if (stateMachine.Player.isGround)
             {
@@ -76,11 +76,7 @@ public class PlayerBaseState : IState
 
     protected virtual void OnMovementCanceled(InputAction.CallbackContext context)
     {
-        if (stateMachine.isCrouching)
-        {
-            stateMachine.ChangeState(stateMachine.CrouchIdleState);
-        }
-        else if (stateMachine.Player.isGround)
+        if (stateMachine.Player.isGround)
         {
             stateMachine.ChangeState(stateMachine.IdleState);
         }
