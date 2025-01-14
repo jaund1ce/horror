@@ -52,9 +52,4 @@ public class PlayerAnimationData
         CrouchParameterHash = Animator.StringToHash(crouchParameterName);
         CrouchingParameterHash = Animator.StringToHash(crouchingParameterName);
     }
-    // Animator animator = new Animator();
-    //animator.SetBool("Idle", true); X
-    //animator.SetBool(idleParamterHash, true);
-    //문자비교가 아닌 정수비교 사용
-
 }
