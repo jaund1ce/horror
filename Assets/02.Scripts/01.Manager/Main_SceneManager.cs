@@ -4,6 +4,8 @@ using System.Collections;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Drawing.Text;
+using UnityEngine.InputSystem;
 
 public class Main_SceneManager : mainSingleton<Main_SceneManager>
 {
@@ -14,12 +16,14 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
 
     public string NowSceneName = ""; // 현재 활성화된 씬의 이름을 저장하는 string 형식 변수
                                      // 초기값은 빈 문자열로 설정되며, Awake에서 현재 씬의 이름을 가져옵니다.
-                                     // 씬 전환 후 로직에 따라 다른 동작을 수행할 때 사용됩니다.                              
+                                     // 씬 전환 후 로직에 따라 다른 동작을 수행할 때 사용됩니다.
+                                     // 
 
+    PlayerInputs playerInputs;
+    PlayerInputs.PlayerActions playerActions;
 
     [SerializeField] private string startSceneName = "StartScene";
     [SerializeField] private string mainSceneName = "MainScene1";
-    [SerializeField] private string mainScene2Name = "MainScene2";
     [SerializeField] private string endSceneName = "EndScene";
     [SerializeField] private string loadingSceneName = "LoadingScene";
 
@@ -27,6 +31,7 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
     {
 
         base.Awake();
+
 
         NowSceneName = SceneManager.GetActiveScene().name; // SceneManager의 GetActiveScene().name을 사용하여
                                                            // 현재 활성화된 씬의 이름을 NowSceneName에 저장합니다.
@@ -42,14 +47,12 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
 
     public void NewGame()
     {
-        ChangeScene(mainSceneName, NewGameInitalize);
+        LoadLoadingScene(mainSceneName, 17f , NewGameInitalize);
         SoundManger.Instance.GetSceneSource(mainSceneName);
-        LoadLoadingScene(mainSceneName);
     }
     public void LoadGame() 
     {
         ChangeScene(DataManager.Instance.MapData.MapName , LoadGameInitalize);
-
     }
 
     public void Restart()
@@ -121,12 +124,16 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
                              // 언로드 후 특정 동작을 수행하는 데 유용합니다.
     }
 
-    public void LoadLoadingScene(string targetSceneName, Action callback = null)
+    public void LoadLoadingScene(string targetSceneName,float time, Action callback = null)
     {
-        StartCoroutine(LoadSceneWithControl(targetSceneName, callback));
+        if (callback.Method.Name == "NewGameInitalize") 
+        {
+            IntroControl();
+        }
+        StartCoroutine(LoadSceneWithControl(targetSceneName, time,  callback));
     }
 
-    private IEnumerator LoadSceneWithControl(string targetSceneName, Action callback)
+    private IEnumerator LoadSceneWithControl(string targetSceneName,float time,  Action callback)
     {
         // 1. 로딩 씬을 Additive 모드로 로드
         AsyncOperation loadingSceneOp = SceneManager.LoadSceneAsync(loadingSceneName, LoadSceneMode.Additive);
@@ -154,6 +161,7 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
             }
             yield return null;
         }
+        yield return new WaitForSeconds(time);
 
         // 6. 추가 작업 실행
         callback?.Invoke();
@@ -181,4 +189,25 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
         UIManager.Instance.Show<MainUI>();
     }
 
+    public void IntroControl()
+    {
+        UIManager.Instance.Show<SkipUI>();
+        playerInputs = new PlayerInputs();
+        playerActions = playerInputs.Player;
+        playerInputs.Enable();
+        UIManager.Instance.Show<SkipUI>();
+        playerActions.Menu.performed += ActivateObject01;
+        
+    }
+
+    public void ActivateObject01(InputAction.CallbackContext context)
+    {
+        GameObject targetObject = GameObject.FindGameObjectWithTag("Video");
+        if (targetObject.activeSelf == false)
+        { return; }
+        playerActions.Menu.performed -= ActivateObject01;
+        playerInputs.Disable();
+        UIManager.Instance.Hide<SkipUI>();
+        targetObject.SetActive(false); // 오브젝트 비활성화
+    }
 }
