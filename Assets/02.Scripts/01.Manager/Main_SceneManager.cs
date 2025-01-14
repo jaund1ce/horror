@@ -38,14 +38,16 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
         ChangeScene(startSceneName);
     }
 
-    public void LoadMainScene()
+
+    public void NewGame()
     {
-        ChangeScene(mainSceneName);
+        ChangeScene(mainSceneName, NewGameInitalize);
         SoundManger.Instance.GetSceneSource(mainSceneName);
     }
-    public void LoadMainScene2()
+    public void LoadGame() 
     {
-        ChangeScene(mainScene2Name);
+        ChangeScene(DataManager.Instance.MapData.MapName , LoadGameInitalize);
+
     }
 
     public void Restart()
@@ -53,14 +55,9 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
         ChangeScene(NowSceneName);
     }
 
-    public void   LoadEndScene()
+    public void LoadEndScene()
     {
-            ChangeScene(endSceneName);
-    }
-
-    public void LoadScene(string SceneName)
-    {
-        ChangeScene(SceneName);
+        ChangeScene(endSceneName);
     }
 
     public void QuitGame()
@@ -125,5 +122,21 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
     {
         base.OnDestroy();
     }
-        
+
+    private void NewGameInitalize() 
+    {
+        MapManager.Instance.ShowMap<Stage01>();
+        MapManager.Instance.LoadAndSpawnObjects(1);
+        DataManager.Instance.LoadAllItems();
+        UIManager.Instance.Show<MainUI>();
+    }
+
+    private void LoadGameInitalize()
+    {
+        MapManager.Instance.ShowMap<Stage01>();
+        DataManager.Instance.LoadGame();
+        DataManager.Instance.LoadAllItems();
+        UIManager.Instance.Show<MainUI>();
+    }
+
 }

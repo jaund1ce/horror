@@ -42,7 +42,7 @@ public class DataManager : mainSingleton<DataManager>
     {
         base.Awake();
 
-        if (PlayerData == null)
+        if (PlayerData == null) // MapData와 마찬가지로 public 으로 선언되었기때문에 유니티 자체에서 직렬화할때 초기화 해준다. 고로 타지 않음
         {
             PlayerData = new UserInfo();
         }
@@ -56,15 +56,14 @@ public class DataManager : mainSingleton<DataManager>
             }
         }
 
-        if (MapData == null)
-        {
-            MapData = new MapInfo();
-        }
+        MapData = SaveSystem.Load<MapInfo>(Json.MapData) ?? new MapInfo();
+        
 
         SaveItemData = new Dictionary<string, SpawnData>();
         SaveEnemyData = new Dictionary<string, SpawnData>();
         SavePaperData = new Dictionary<string, SpawnData>();
         SavePuzzleData = new Dictionary<string, bool>();
+        
     }
 
 /*    public void InitializeGameData()
@@ -285,6 +284,10 @@ public class DataManager : mainSingleton<DataManager>
 
     private void SaveSpawnData(bool saveBtnClick)
     {
+        foreach (string key in SaveItemData.Keys)
+        {
+            Debug.Log($"키값 : {key}");
+        }
         if (saveBtnClick)
         {
             // 하이어라키 전체 탐색
@@ -332,11 +335,17 @@ public class DataManager : mainSingleton<DataManager>
         
         if (PlayerData != null)
         {
+            SpawnData spawnPlayer = new SpawnData();
+            spawnPlayer.key = PlayerData.PlayerName;
+            spawnPlayer.assetType = AssetType.Prefab;
+            spawnPlayer.categoryType = CategoryType.Player;
+            spawnPlayer.position = PlayerData.Playerposition;
+            MapManager.Instance.SpawnObject(spawnPlayer);
             Player player = MainGameManager.Instance.Player;
             MainGameManager.Instance.paperInteractionCount = PlayerData.PaperInteractionCount; // 추가
             player.PlayerConditionController.Health = PlayerData.Health;
             player.PlayerConditionController.Stamina = PlayerData.Stamina;
-            player.transform.position = StringToVector3(PlayerData.Playerposition);
+            
             Debug.Log("PlayerData loaded successfully.");
         }
         else
@@ -380,6 +389,7 @@ public class DataManager : mainSingleton<DataManager>
             spawndata.referenceObjectName = enemyData.Value.referenceObjectName;
             MapManager.Instance.SpawnObject(spawndata);
         }
+        SaveEnemyData.Clear();
     }
 
     private void LoadItemData() 
@@ -394,6 +404,7 @@ public class DataManager : mainSingleton<DataManager>
             spawndata.referenceObjectName = itemData.Value.referenceObjectName;
             MapManager.Instance.SpawnObject(spawndata);
         }
+        SaveItemData.Clear();
     }
 
     private void LoadPaperData() 
@@ -408,6 +419,7 @@ public class DataManager : mainSingleton<DataManager>
             spawndata.referenceObjectName = paperData.Value.referenceObjectName;
             MapManager.Instance.SpawnObject(spawndata);
         }
+        SavePaperData.Clear();
     }
 
     private void LoadPuzzleData()
@@ -422,5 +434,6 @@ public class DataManager : mainSingleton<DataManager>
                 puzzleBase.Access(puzzleBase.IsAccess);
             }
         }
+        SavePuzzleData.Clear();
     }
 }

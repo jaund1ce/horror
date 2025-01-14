@@ -11,6 +11,7 @@ public interface ISaveable
 [Serializable]
 public class UserInfo : ISaveable
 {
+    public string PlayerName = "Player_noneParkourtic2";
     public int PaperInteractionCount;
     public float Health;
     public float Stamina;

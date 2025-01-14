@@ -9,18 +9,18 @@ public class StageClear : MonoBehaviour
     void Start()
     {
         lockedDoorWithHinge = GetComponent<LockedDoor>();
-        lockedDoorWithHinge.isOpen += stageClear;
+        lockedDoorWithHinge.isOpen += StageClearEvent;
     }
 
     private void OnDisable()
     {
-        lockedDoorWithHinge.isOpen -= stageClear;
+        lockedDoorWithHinge.isOpen -= StageClearEvent;
     }
 
-    private void stageClear()
+    private void StageClearEvent()
     {
         DataManager.Instance.SaveGame(false);
-        Main_SceneManager.Instance.LoadMainScene2();
+        Main_SceneManager.Instance.LoadGame();
     }
 
 }

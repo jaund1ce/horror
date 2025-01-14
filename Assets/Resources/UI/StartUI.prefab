@@ -65,9 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'CHAPTER
-
-'
+  m_text: LOAD
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 68123b2c6d777b84db2b8cbbbff37481, type: 2}
   m_sharedMaterial: {fileID: 302804514739764961, guid: 68123b2c6d777b84db2b8cbbbff37481, type: 2}
@@ -628,7 +626,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 763c801b5ddc760489b3886e7166f533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonSound: {fileID: 8300000, guid: 7202b2c5e83ea9a428da34d60dc15b4d, type: 3}
 --- !u!82 &1706255445354264541
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1232,7 +1229,7 @@ GameObject:
   - component: {fileID: 9047968119033804160}
   - component: {fileID: 3251295497859673076}
   m_Layer: 5
-  m_Name: Chapter
+  m_Name: Load
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1339,7 +1336,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9047968119033804160}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -4398496922305515717}
+        m_TargetAssemblyTypeName: StartUI, Assembly-CSharp
+        m_MethodName: LoadGameBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7267511306281389309
 GameObject:
   m_ObjectHideFlags: 0
@@ -1463,7 +1472,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: -4398496922305515717}
         m_TargetAssemblyTypeName: StartUI, Assembly-CSharp
-        m_MethodName: LoadQuit
+        m_MethodName: QuitBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1596,7 +1605,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: -4398496922305515717}
         m_TargetAssemblyTypeName: StartUI, Assembly-CSharp
-        m_MethodName: LoadMain
+        m_MethodName: NewGameBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
