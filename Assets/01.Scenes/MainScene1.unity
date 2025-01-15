@@ -170,8 +170,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiTransform: {fileID: 64313802}
   mapTransform: {fileID: 0}
-  targetObject01: {fileID: 1621892444}
-  delay01: 17
 --- !u!1 &835526694
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,7 +374,7 @@ GameObject:
   - component: {fileID: 1621892446}
   m_Layer: 0
   m_Name: FullscreenVideo
-  m_TagString: Untagged
+  m_TagString: Video
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

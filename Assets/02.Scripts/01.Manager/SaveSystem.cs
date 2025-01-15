@@ -25,7 +25,6 @@ public static class SaveSystem
         try
         {
             File.WriteAllText(SavePath(fileName), json); // 기존 SavePath 메서드 활용
-            Debug.Log($"Save successful: {fileName}");
         }
         catch (Exception e)
         {

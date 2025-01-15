@@ -8,7 +8,7 @@ public class DieUI : PopupUI
     }
     public void LoadMain()
     {
-        Main_SceneManager.Instance.Restart();
+        Main_SceneManager.Instance.LoadGame();
     }
     public void LoadQuit()
     {

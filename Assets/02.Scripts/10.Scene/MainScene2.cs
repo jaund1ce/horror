@@ -8,7 +8,6 @@ public class MainScene2 : SceneBase
     void Start()
     {
         MapManager.Instance.ShowMap<Stage02>();
-        MapManager.Instance.LoadAndSpawnObjects2();
         DataManager.Instance.LoadAllItems();
         UIManager.Instance.Show<MainUI>();
         DataManager.Instance.LoadGame();

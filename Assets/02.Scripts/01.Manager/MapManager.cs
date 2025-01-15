@@ -10,7 +10,7 @@ public class SpawnData
     public string key; // ResourceManager에서 로드할 자산의 고유 키
     public string assetType; // eAssetType 열거형 값 (프리팹, 썸네일 등 자산 유형 지정)
     public string categoryType; // eCategoryType 열거형 값 (아이템, NPC 등 자산 분류 지정)
-    public Vector3 position; // 오브젝트가 스폰될 월드 좌표
+    public string position; // 오브젝트가 스폰될 월드 좌표
     public string referenceObjectName; // 특정 오브젝트 이름 (이 오브젝트의 위치를 기준으로 스폰 위치 계산)
 }
 
@@ -35,8 +35,8 @@ public class MapManager : mainSingleton<MapManager>
         set { mapTransform = value; }
     }
     private static Transform mapTransform;
-    public string jsonFilePath ="Data/SpawnData"; // JSON 파일 경로 (Resources 폴더 내부 기준), 파일을 로드하여 데이터에 따라 오브젝트를 스폰
-    public string jsonFilePath2 = "Data/SpawnData2";
+    //public string jsonFilePath1 ="Data/SpawnData"; // JSON 파일 경로 (Resources 폴더 내부 기준), 파일을 로드하여 데이터에 따라 오브젝트를 스폰
+    //public string jsonFilePath2 = "Data/SpawnData2";
     private Dictionary<string, GameObject> mapList = new Dictionary<string, GameObject>();
 
 
@@ -115,33 +115,14 @@ public class MapManager : mainSingleton<MapManager>
     }
 
     // JSON 데이터를 읽어와 오브젝트를 스폰하는 함수
-    public void LoadAndSpawnObjects()
+    public void LoadAndSpawnObjects(int SceneNumber)
     {
+        string path = $"Data/SpawnData{SceneNumber}";
         // JSON 파일 로드
-        TextAsset jsonFile = Resources.Load<TextAsset>(jsonFilePath); // Resources 폴더에서 JSON 파일 로드
+        TextAsset jsonFile = Resources.Load<TextAsset>(path); // Resources 폴더에서 JSON 파일 로드
         if (jsonFile == null)
         {
-            Debug.LogError($"JSON 파일을 찾을 수 없습니다: {jsonFilePath}"); // JSON 파일이 없는 경우 오류 메시지 출력
-            return;
-        }
-
-        // JSON 데이터를 SpawnData 배열로 파싱
-        SpawnData[] spawnDataArray = JsonUtility.FromJson<SpawnDataArrayWrapper>(jsonFile.text).data;
-
-        // 각 SpawnData 항목에 대해 오브젝트를 스폰
-        foreach (var spawnData in spawnDataArray)
-        {
-            SpawnObject(spawnData); // 개별 오브젝트 스폰 함수 호출
-        }
-    }
-
-    public void LoadAndSpawnObjects2()
-    {
-        // JSON 파일 로드
-        TextAsset jsonFile = Resources.Load<TextAsset>(jsonFilePath2); // Resources 폴더에서 JSON 파일 로드
-        if (jsonFile == null)
-        {
-            Debug.LogError($"JSON 파일을 찾을 수 없습니다: {jsonFilePath2}"); // JSON 파일이 없는 경우 오류 메시지 출력
+            Debug.LogError($"JSON 파일을 찾을 수 없습니다: {path}"); // JSON 파일이 없는 경우 오류 메시지 출력
             return;
         }
 
@@ -156,7 +137,7 @@ public class MapManager : mainSingleton<MapManager>
     }
 
     // 개별 오브젝트를 스폰하는 함수
-    private void SpawnObject(SpawnData data)
+    public void SpawnObject(SpawnData data)
     {
         // assetType 문자열을 eAssetType 열거형으로 변환
         if (!System.Enum.TryParse(data.assetType, out eAssetType assetType))
@@ -180,7 +161,16 @@ public class MapManager : mainSingleton<MapManager>
             return;
         }
         // 기준 오브젝트의 위치를 참조하여 스폰 위치 조정
-        Vector3 spawnPosition = data.position;
+        Vector3 spawnPosition;
+        if (!string.IsNullOrEmpty(data.position))
+        {
+            spawnPosition = StringToVector3(data.position);
+        }
+        else 
+        {
+            spawnPosition = Vector3.zero;
+        }
+
         if (!string.IsNullOrEmpty(data.referenceObjectName))
         {
             GameObject referenceObject = GameObject.Find(data.referenceObjectName);
@@ -192,14 +182,28 @@ public class MapManager : mainSingleton<MapManager>
             {
                 Debug.LogWarning($"기준 오브젝트를 찾을 수 없습니다: {data.referenceObjectName}");
             }
-        }
+        }//## else if(!string.isNullOrEmpty(data.position))
 
         // 로드된 프리팹을 스폰 (Instantiate 함수 사용)
         Instantiate(prefab, spawnPosition, Quaternion.identity); // 지정된 위치에 오브젝트 생성
     }
+
+
+
     protected override void OnDestroy()
     {
         base.OnDestroy();
+    }
+
+    private Vector3 StringToVector3(string s)
+    {
+        s = s.Trim('(', ')');
+        string[] parts = s.Split(',');
+        return new Vector3(
+            float.Parse(parts[0]),
+            float.Parse(parts[1]),
+            float.Parse(parts[2])
+        );
     }
 }
 

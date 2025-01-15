@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class MainScene : SceneBase
 {
-    public GameObject targetObject01; // 비활성화할 오브젝트
+    /*public GameObject targetObject01; // 비활성화할 오브젝트
 
     public float delay01 = 17f;        // 지연 시간
     public static bool fisrtPlay = false;
@@ -23,11 +24,7 @@ public class MainScene : SceneBase
         if (fisrtPlay)
         {
             targetObject01.SetActive(false); // 오브젝트 비활성화
-            MapManager.Instance.ShowMap<Stage01>();
-            MapManager.Instance.LoadAndSpawnObjects();
-            UIManager.Instance.Show<MainUI>();
             MainGameManager.Instance.FindOrSetEnemy();
-            DataManager.Instance.LoadAllItems();
             return;
         }
 
@@ -48,7 +45,7 @@ public class MainScene : SceneBase
             UIManager.Instance.Hide<SkipUI>();
             targetObject01.SetActive(false); // 오브젝트 비활성화
             MapManager.Instance.ShowMap<Stage01>();
-            MapManager.Instance.LoadAndSpawnObjects();
+            //MapManager.Instance.LoadAndSpawnObjects();
             UIManager.Instance.Show<MainUI>();
             MainGameManager.Instance.FindOrSetEnemy();
             DataManager.Instance.LoadAllItems();
@@ -61,9 +58,9 @@ public class MainScene : SceneBase
             playerActions.Menu.performed -= ActivateObject01;
             targetObject01.SetActive(false); // 오브젝트 비활성화
             MapManager.Instance.ShowMap<Stage01>();
-            MapManager.Instance.LoadAndSpawnObjects();
+            //MapManager.Instance.LoadAndSpawnObjects();
             UIManager.Instance.Show<MainUI>();
             MainGameManager.Instance.FindOrSetEnemy();
             DataManager.Instance.LoadAllItems();
-    }
+    }*/
 }

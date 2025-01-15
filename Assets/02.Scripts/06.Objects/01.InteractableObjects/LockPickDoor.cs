@@ -284,4 +284,9 @@ public class LockPickDoor : PuzzleBase
         if (!IsAccess) return "Lock..ed..?";
         return isOpened ? "Close" : "Open";
     }
+
+    public override void Access(bool access)
+    {
+        base.Access(access);
+    }
 }

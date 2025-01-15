@@ -2,12 +2,18 @@ using UnityEngine;
 
 public class StartUI : BaseUI
 {
-    public void LoadMain()
+    public void NewGameBtn()
     {
         SoundManger.Instance.MakeEnviormentSound("PaperSound");
-        Main_SceneManager.Instance.LoadMainScene();
+        Main_SceneManager.Instance.NewGame();
     }
-    public void LoadQuit()
+    public void LoadGameBtn() 
+    {
+        SoundManger.Instance.MakeEnviormentSound("PaperSound");
+        Main_SceneManager.Instance.LoadGame();
+    }
+
+    public void QuitBtn()
     {
         SoundManger.Instance.MakeEnviormentSound("PaperSound");
         Main_SceneManager.Instance.QuitGame();

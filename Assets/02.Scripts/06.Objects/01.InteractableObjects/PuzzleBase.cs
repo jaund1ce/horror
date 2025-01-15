@@ -53,5 +53,10 @@ public abstract class PuzzleBase : MonoBehaviour , IInteractable
         Cursor.visible = false; // 마우스 커서 숨김
         Cursor.lockState = CursorLockMode.Locked;
     }
+
+    public virtual void Access(bool access) 
+    {
+        if (!access) return;
+    }
 }
 
