@@ -6,23 +6,36 @@ public class PlayerConditionController : MonoBehaviour
 {
     public event Action OnDie;
     [HideInInspector]public bool IsDie;
+
     [SerializeField] private float maxHealth;
     public float PassiveHealth;
-    public float Health;
+    public float Health = -1f;
     [SerializeField] private float maxStamina;
     public float PassiveStamina;
-    public float Stamina;
+    public float Stamina = -1f;
     [SerializeField] private float staminaUseAmount = 15f;
 
     private PlayerBreatheType playerBreatheType = PlayerBreatheType.Normal;
     private Player player;
 
-    void Start()//저장 값을 넣고 싶으면 변경
+    void Start()
     {
-        Health = maxHealth;
-        Stamina = maxStamina;
-
         player = MainGameManager.Instance.Player;
+
+        if (Health < 0)
+        {
+            Health = maxHealth;
+        }
+        else
+        {
+            player.OnHPChange();
+        }
+        if (Stamina < 0)
+        {
+            Stamina = maxStamina;
+        }
+
+        
         IsDie = false;
     }
     private void Update()
