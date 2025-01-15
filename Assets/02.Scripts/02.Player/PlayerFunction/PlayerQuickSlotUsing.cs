@@ -8,25 +8,23 @@ using UnityEngine.InputSystem;
 public class PlayerQuickSlotUsing : MonoBehaviour
 {
     private Player player;
-    public PlayerInputs playerInputs { get; private set; }//inputsystem generate c# script로 생성된 스크립트
-    public PlayerInputs.PlayerActions playerActions { get; private set; }   //미리 정의한 행동들 move, look,... 등
+    private PlayerInputs playerInputs;
+    private PlayerInputs.PlayerActions playerActions;
 
     private void Awake()
     {
         player = GetComponent<Player>();
-        playerInputs = new PlayerInputs();
-        playerActions = playerInputs.Player;//inputsystem에 선언했던 Actionmap 중에 하나를 선택
+        playerInputs = player.Input.PlayerInputs;
+        playerActions = player.Input.PlayerActions;
     }
 
     private void OnEnable()
     {
-        playerInputs.Enable();
         playerActions.QuickSlots.started += UseQuick;
     }
 
     private void OnDisable()
     {
-        playerInputs.Disable();
         playerActions.QuickSlots.started -= UseQuick;
     }
 
@@ -42,7 +40,7 @@ public class PlayerQuickSlotUsing : MonoBehaviour
         foreach(InventoryData inventoryData in player.PlayerInventoryData.inventoryDatas)
         {
             if(inventoryData == null) continue;
-            if(inventoryData.quickslotIndex == i-1)
+            if(inventoryData.QuickslotIndex == i-1)
             {
                 EquipQuick(inventoryData);
                 return;
@@ -52,15 +50,7 @@ public class PlayerQuickSlotUsing : MonoBehaviour
 
     private void EquipQuick(InventoryData inventoryData)
     {
-        if (player.CurrentEquipItem != inventoryData)
-        {
-            player.CurrentEquipItem = inventoryData;
-            player.Input.EquipMent.EquipNew(player.CurrentEquipItem);
-        }
-        else
-        {
-            player.UnEquipCurrentItem();
-        }
-        player.ChangeEquip();
+        if (player.CurrentEquipItem != inventoryData) player.EquipItem(inventoryData);
+        else player.UnEquipCurrentItem();
     }
 }

@@ -187,9 +187,9 @@ public abstract class EnemyAI : MonoBehaviour, IAggroGage
         {
             EnemyAistate = AIState.Idle;
             return (int)EnemyAistate;
-        }else if (MainGameManager.Instance.Player.isHiding)
+        }
+        else if (MainGameManager.Instance.Player.isHiding)
         {
-            Debug.Log("Player Hiding");
             EnemyAistate = AIState.Wandering;
             IsAttacking = false;
             return (int)EnemyAistate;

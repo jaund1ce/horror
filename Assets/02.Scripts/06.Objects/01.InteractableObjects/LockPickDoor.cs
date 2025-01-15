@@ -200,7 +200,7 @@ public class LockPickDoor : PuzzleBase
             if (player.PlayerInventoryData.inventoryDatas[i]?.ItemData?.itemSO?.ID == 1002)
             {
                 inventoryPin = player.PlayerInventoryData.inventoryDatas[i];
-                if (inventoryPin.amount > 0) 
+                if (inventoryPin.Amount > 0) 
                 {
                     canUsePin = true;
                     return;

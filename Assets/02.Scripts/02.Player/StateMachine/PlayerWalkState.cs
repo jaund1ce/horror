@@ -17,18 +17,15 @@ public class PlayerWalkState : PlayerGroundState
         }
         else
         {
-            stateMachine.MovementSpeedModifier = groundData.WalkSpeedModifier;
-            stateMachine.Player.Input.VirtualCameraNoise.m_AmplitudeGain = 2f;
-            stateMachine.Player.Input.VirtualCameraNoise.m_FrequencyGain = 0.02f;
-            SoundManger.Instance.PlayPlayrtStepSound(true, 0.5f);
             base.Enter();
+            ChangePlayerStateEnter();
             StartAnimation(stateMachine.Player.AnimationData.WalkParameterHash);
         }        
     }
 
     public override void Exit()
     {
-        SoundManger.Instance.PlayPlayrtStepSound(false);
+        SoundManger.Instance.PlayPlayerStepSound(false);
         base.Exit();
         StopAnimation(stateMachine.Player.AnimationData.WalkParameterHash);
     }
@@ -38,4 +35,12 @@ public class PlayerWalkState : PlayerGroundState
         base.OnRunStarted(context);
         stateMachine.ChangeState(stateMachine.RunState);
     }
+    private void ChangePlayerStateEnter()
+    {
+        stateMachine.MovementSpeedModifier = groundData.WalkSpeedModifier;
+        stateMachine.Player.Input.VirtualCameraNoise.m_AmplitudeGain = 2f;
+        stateMachine.Player.Input.VirtualCameraNoise.m_FrequencyGain = 0.02f;
+        SoundManger.Instance.PlayPlayerStepSound(true, 0.5f);
+    }
+
 }

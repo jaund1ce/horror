@@ -2,23 +2,13 @@ using UnityEngine;
 
 public class PopupUI : BaseUI
 {
-    private PlayerController playerController;
     public virtual void OnEnable()
     {
-        playerController = FindObjectOfType<PlayerController>(); 
-        if (playerController != null)
-        {
-            playerController.LockRotate(); // 회전 잠금
-        }
         UnlockCursor();
         MainGameManager.Instance.Player.Input.InputUnsubscribe();
     }
     public virtual void OnDisable()
     {
-        if (playerController != null)
-        {
-            playerController.UnLockRotate(); // 회전 잠금 해제
-        }
         LockCursor();
         MainGameManager.Instance.Player.Input.InputSubscribe();
     }

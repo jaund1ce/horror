@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     public CapsuleCollider CapsuleCollider { get; private set; }
     public PlayerConditionController PlayerConditionController { get; private set; }
 
-    private PlayerStateMachine2 stateMachine;
+    [HideInInspector]public PlayerStateMachine2 StateMachine;
     public PlayerInventoryData PlayerInventoryData;
     public InventoryData CurrentEquipItem;
 
@@ -27,7 +27,6 @@ public class Player : MonoBehaviour
     public bool isGround = true;
     public bool isHiding = false;
     public bool isCollideOverlapr= false;
-    public bool isCrouching = false;
     [SerializeField]private PlayerHeartState playerState = PlayerHeartState.Normal; //creture 와 플레이어가 둘다 가지고 있어야하나?
     [SerializeField]private GroundType groundType = GroundType.Cement;
     [SerializeField] private float groundCheckdistance = 0.4f;
@@ -49,26 +48,26 @@ public class Player : MonoBehaviour
         PlayerConditionController = GetComponent<PlayerConditionController>();
         PlayerInventoryData = GetComponent<PlayerInventoryData>();
 
-        stateMachine = new PlayerStateMachine2(this);
+        StateMachine = new PlayerStateMachine2(this);
         MainGameManager.Instance.Player=this;
     }
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        stateMachine.ChangeState(stateMachine.IdleState);//처음 시작시 idlestate로 실행
+        StateMachine.ChangeState(StateMachine.IdleState);//처음 시작시 idlestate로 실행
         PlayerConditionController.OnDie += OnDie;
     }
 
     private void Update()
     {
-        stateMachine.HandleInput();
-        stateMachine.Update();
+        StateMachine.HandleInput();
+        StateMachine.Update();
     }
 
     private void FixedUpdate()
     {
-        stateMachine.PhysicsUpdate();
+        StateMachine.PhysicsUpdate();
         CheckGround();
 
         if (Time.time - lastCheckTime < checkDuration) return;
@@ -217,6 +216,13 @@ public class Player : MonoBehaviour
         {
             //Animator.SetBool("Key", true);
         }
+    }
+
+    public void EquipItem(InventoryData inventoryData)
+    {
+        CurrentEquipItem = inventoryData;
+        Input.EquipMent.EquipNew(CurrentEquipItem);
+        ChangeEquip();
     }
 
     public void UnEquipCurrentItem()

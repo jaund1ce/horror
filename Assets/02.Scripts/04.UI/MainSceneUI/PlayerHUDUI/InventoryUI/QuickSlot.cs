@@ -23,7 +23,7 @@ public class QuickSlot : MonoBehaviour
     {
         if (CurrentData == null) { ResetSlot(); return; }
         if (CurrentData.ItemData == null) { ResetSlot(); return; }
-        if (CurrentData.quickslotIndex != quickIndex) { ResetSlot(); return; }
+        if (CurrentData.QuickslotIndex != quickIndex) { ResetSlot(); return; }
 
         ChangeUI();
     }
@@ -42,22 +42,22 @@ public class QuickSlot : MonoBehaviour
             SoundManger.Instance.MakeEnviormentSound("Click2");
             if (CurrentData == null) 
             {
-                if (inventoryLH.CurrentInventoryData.quickslotIndex == -1)
+                if (inventoryLH.CurrentInventoryData.QuickslotIndex == -1)
                 {
                     CurrentData = inventoryLH.CurrentInventoryData;
-                    CurrentData.quickslotIndex = quickIndex;
+                    CurrentData.QuickslotIndex = quickIndex;
                 }
                 else//이미 다른 슬롯에 있는데 빈 공간을 고른 경우
                 {
-                    inventoryLH.CurrentInventoryData.quickslotIndex = -1;
+                    inventoryLH.CurrentInventoryData.QuickslotIndex = -1;
                     CurrentData = inventoryLH.CurrentInventoryData;
-                    CurrentData.quickslotIndex = quickIndex;
+                    CurrentData.QuickslotIndex = quickIndex;
                 }
             }
             else
             {//index 바꾸기
-                CurrentData.quickslotIndex = inventoryLH.CurrentInventoryData.quickslotIndex;
-                inventoryLH.CurrentInventoryData.quickslotIndex = quickIndex;
+                CurrentData.QuickslotIndex = inventoryLH.CurrentInventoryData.QuickslotIndex;
+                inventoryLH.CurrentInventoryData.QuickslotIndex = quickIndex;
 
                 CurrentData = inventoryLH.CurrentInventoryData;
             }
@@ -94,6 +94,6 @@ public class QuickSlot : MonoBehaviour
     public void ChangeUI()
     {
         CurrentItemImage.sprite = CurrentData.ItemData.itemSO.ItemImage;
-        CurrentItemAmount.text = (CurrentData.amount).ToString();
+        CurrentItemAmount.text = (CurrentData.Amount).ToString();
     }
 }

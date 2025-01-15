@@ -11,20 +11,15 @@ public class PlayerRunState : PlayerGroundState
 
     public override void Enter()
     {
-        stateMachine.Player.Input.isRunning = true;
-        stateMachine.Player.Input.VirtualCameraNoise.m_AmplitudeGain = 5f;
-        stateMachine.Player.Input.VirtualCameraNoise.m_FrequencyGain = 0.05f;
-        stateMachine.MovementSpeedModifier = groundData.RunSpeedModifier;
-        SoundManger.Instance.PlayPlayrtStepSound(true, 1f);
         base.Enter();
+        ChangePlayerStateEnter();
         StartAnimation(stateMachine.Player.AnimationData.RunParameterHash);
     }
 
     public override void Exit()
     {
-        stateMachine.Player.Input.isRunning = false;
-        SoundManger.Instance.PlayPlayrtStepSound(false);
         base.Exit();
+        ChangePlayerStateExit();
         StopAnimation(stateMachine.Player.AnimationData.RunParameterHash);
     }
 
@@ -35,5 +30,20 @@ public class PlayerRunState : PlayerGroundState
         {
             stateMachine.ChangeState(stateMachine.WalkState);
         }
+    }
+
+    private void ChangePlayerStateEnter()
+    {
+        SoundManger.Instance.PlayPlayerStepSound(true, 1f);
+        stateMachine.isRunning = true;
+        stateMachine.Player.Input.VirtualCameraNoise.m_AmplitudeGain = 5f;
+        stateMachine.Player.Input.VirtualCameraNoise.m_FrequencyGain = 0.05f;
+        stateMachine.MovementSpeedModifier = groundData.RunSpeedModifier;
+    }
+
+    private void ChangePlayerStateExit()
+    {
+        stateMachine.isRunning = false;
+        SoundManger.Instance.PlayPlayerStepSound(false);
     }
 }

@@ -35,8 +35,6 @@ public class PlayerGroundState : PlayerBaseState
     {
         if (stateMachine.MovementInput == Vector2.zero) return;
 
-        //stateMachine.ChangeState(stateMachine.IdleState); //base가 있으면 필요 없는거 아닌가? //그래서 아래에 있다.
-
         base.OnMovementCanceled(context);
     }
 

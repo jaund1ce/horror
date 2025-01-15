@@ -1,22 +1,13 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
-    public enum TryUse 
-    {
-        CanUse,
-        CanNotUse,
-        ResetItem
-    }
 
 [Serializable]
 public class InventoryData
 {
     public int ItemID; // ItemSO의 ID
-    public int amount; // 아이템 수량
-    public int slotIndex; // 슬롯 인덱스
-    public int quickslotIndex; // 퀵슬롯 인덱스
-
-        
+    public int Amount; // 아이템 수량
+    public int SlotIndex; // 슬롯 인덱스
+    public int QuickslotIndex; // 퀵슬롯 인덱스
 
     // 비직렬화 필드: 실제 ItemSO 참조
     [NonSerialized]
@@ -24,34 +15,37 @@ public class InventoryData
 
     public InventoryData(int index)
     {
-        this.slotIndex = index;
-        this.quickslotIndex = -1;
-        this.amount = 0;
+        this.SlotIndex = index;
+        this.QuickslotIndex = -1;
+        this.Amount = 0;
         this.ItemID = -1;
     }
 
-    public int Use(int amount) 
+    public TryUse Use(int amount) 
     {
-        int result;
-        if (this.amount >= amount)
+        TryUse result;
+        
+        if (this.Amount >= amount)
         {
             UseItemQuantity(amount);
-            result = (int)TryUse.CanUse;
+            result = TryUse.CanUse;
         }
-        else result = (int)TryUse.CanNotUse;
-        if (this.amount <= 0)
+        else result = TryUse.CanNotUse;
+
+        if (this.Amount <= 0)
         {
             this.ResetData();
-            result = (int)TryUse.ResetItem;
+            result = TryUse.ResetItem;
         }
+
         return result;
     }
 
     public void UseItemQuantity(int amount)
     {
-        if (this.amount >= amount)
+        if (this.Amount >= amount)
         {
-            this.amount -= amount;
+            this.Amount -= amount;
         }
         else return;
     }
@@ -60,31 +54,28 @@ public class InventoryData
     {
         this.ItemData = itemData;
         this.ItemID = itemData.itemSO.ID; // 수정됨: ItemSO의 ID 저장
-        this.amount = quantity;
+        this.Amount = quantity;
     }
 
     public void ResetData()
     {
         this.ItemData = null;
         this.ItemID = -1;
-        this.amount = 0;
-        this.slotIndex = -1;
-        this.quickslotIndex = -1; // 수정됨: 퀵슬롯 인덱스 초기화 추가
+        this.Amount = 0;
+        this.SlotIndex = -1;
+        this.QuickslotIndex = -1; // 수정됨: 퀵슬롯 인덱스 초기화 추가
     }
 }
 
 public class PlayerInventoryData : MonoBehaviour
 {
-    public InventoryData[] inventoryDatas = new InventoryData[16]; // 인벤토리칸이 15개 클래스를 new로 선언하는 경우 공간만 미리 할당해주고 그 내부 값은 null이다.
+    public InventoryData[] inventoryDatas = new InventoryData[16];
 
     private void Awake()
     {
-        if (DataManager.Instance == null)
-        {
-            return;
-        }
+        if (DataManager.Instance == null) return;
 
-        for (int i = 0; i < 16; i++) // 할당 후 기본 값 적용
+        for (int i = 0; i < 16; i++)
         {
             inventoryDatas[i] = new InventoryData(i);
         }
@@ -94,14 +85,8 @@ public class PlayerInventoryData : MonoBehaviour
 
     public void AddItem(ItemData itemData)
     {
-        if (itemData.itemSO.Stackable)
-        {
-            CheckStack(itemData);
-        }
-        else
-        {
-            CheckEmpty(itemData);
-        }
+        if (itemData.itemSO.Stackable) CheckStack(itemData);
+        else CheckEmpty(itemData);
 
         SyncInventoryData();
     }
@@ -110,7 +95,7 @@ public class PlayerInventoryData : MonoBehaviour
     {
         foreach (InventoryData item in inventoryDatas)
         {
-            if (item.ItemData == null)
+            if (item == null || item.ItemData == null)
             {
                 item.SetItem(itemData, itemData.itemSO.ItemDropAmount); // 수정됨: SetItem으로 ID와 데이터 설정
                 return;
@@ -125,7 +110,7 @@ public class PlayerInventoryData : MonoBehaviour
             if (item == null || item.ItemData == null) continue;
             if (item.ItemData.itemSO == itemData.itemSO)
             {
-                item.amount += itemData.itemSO.ItemDropAmount;
+                item.Amount += itemData.itemSO.ItemDropAmount;
                 return;
             }
         }
@@ -134,10 +119,7 @@ public class PlayerInventoryData : MonoBehaviour
     }
     public void SyncInventoryData()
     {
-        if (DataManager.Instance == null || DataManager.Instance.InventoryData == null)
-        {
-            return;
-        }
+        if (DataManager.Instance == null || DataManager.Instance.InventoryData == null) return;
 
         if (DataManager.Instance.InventoryData.Length != inventoryDatas.Length)
         {
@@ -150,7 +132,4 @@ public class PlayerInventoryData : MonoBehaviour
             DataManager.Instance.InventoryData[i] = inventoryDatas[i]; // 동기화
         }
     }
-
-
-
 }

@@ -5,13 +5,15 @@ using UnityEngine;
 
 public class PlayerUIInput : MonoBehaviour
 {
-    public static bool fisrtStart = false;
+    public static bool FisrtStart = false;
+    private Player player;
     private PlayerInputs playerInputs;
     private PlayerConditionController playerConditionController;
 
     private void Awake()
     {
-        playerInputs = new PlayerInputs();
+        player = GetComponent<Player>();
+        playerInputs = player.Input.PlayerInputs;
         playerConditionController = GetComponent<PlayerConditionController>();
         if (playerConditionController == null)
         {
@@ -21,38 +23,35 @@ public class PlayerUIInput : MonoBehaviour
 
     private void Start()
     {
-        if (fisrtStart)
+        if (FisrtStart)
         {
             return;
         }
         UIManager.Instance.Show<ManualUI>();
-        fisrtStart = true;
+        FisrtStart = true;
     }
 
     private void OnEnable()
     {
-        playerInputs.Enable();
         playerInputs.Player.Inventory.performed += OnInventory;
         playerInputs.Player.Menu.performed += OnSystemMenu;
         if (playerConditionController != null)
         {
-            playerConditionController.OnDie += OnDieUI; // 이벤트 구독
+            playerConditionController.OnDie += OnDieUI;
         }
     }
 
     private void OnDisable()
     {
-        playerInputs.Disable();
         playerInputs.Player.Inventory.performed -= OnInventory;
         playerInputs.Player.Menu.performed -= OnSystemMenu;
         if (playerConditionController != null)
         {
-            playerConditionController.OnDie -= OnDieUI; // 이벤트 구독 해제
+            playerConditionController.OnDie -= OnDieUI;
         }
     }
 
-
-        private void OnInventory(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    private void OnInventory(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
         UIManager.Instance.Hide<PaperUI>();
         UIManager.Instance.Hide<SystemUI>();
@@ -64,24 +63,20 @@ public class PlayerUIInput : MonoBehaviour
         UIManager.Instance.Hide<PaperUI>();
         UIManager.Instance.Hide<InventoryUI>();
         UIManager.Instance.Show<SystemUI>();
-
     }
 
     private void OnDieUI()
     {
         playerInputs.Disable();
-        playerInputs.Player.Inventory.performed -= OnInventory;
-        playerInputs.Player.Menu.performed -= OnSystemMenu;
         UIManager.Instance.Hide<PaperUI>();
         UIManager.Instance.Hide<InventoryUI>();
         SoundManger.Instance.ResetAllSounds();
         StartCoroutine(Delay(2.0f));
-        
     }
+
     IEnumerator Delay(float Seconds)
     {
         yield return new WaitForSeconds(Seconds);
         UIManager.Instance.Show<DieUI>();
     }
-
 }

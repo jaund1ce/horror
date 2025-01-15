@@ -5,54 +5,70 @@ using System.Threading;
 public class PlayerConditionController : MonoBehaviour
 {
     public event Action OnDie;
-    [SerializeField] private float maxHealth;
-    public float PassiveHealth;
-    public float Health;
-    [SerializeField] private float maxStamina;
-    public float PassiveStamina;
-    public float Stamina;
     [HideInInspector]public bool IsDie;
 
+    [SerializeField] private float maxHealth;
+    public float PassiveHealth;
+    public float Health = -1f;
+    [SerializeField] private float maxStamina;
+    public float PassiveStamina;
+    public float Stamina = -1f;
     [SerializeField] private float staminaUseAmount = 15f;
 
     private PlayerBreatheType playerBreatheType = PlayerBreatheType.Normal;
     private Player player;
 
-    void Start()//저장 값을 넣고 싶으면 변경
+    void Start()
     {
-        Health = maxHealth;
-        Stamina = maxStamina;
-
         player = MainGameManager.Instance.Player;
+
+        if (Health < 0)
+        {
+            Health = maxHealth;
+        }
+        else
+        {
+            player.OnHPChange();
+        }
+        if (Stamina < 0)
+        {
+            Stamina = maxStamina;
+        }
+
+        
         IsDie = false;
     }
     private void Update()
     {
-        if(Stamina == 0f)
-        {
-            player.Input.RunningReady = false;
-        }
+        if (Stamina == 0f) player.Input.RunningReady = false;
 
-        if (player.Input.isRunning)
+        if (player.StateMachine.isRunning)
         {
             Stamina -= staminaUseAmount * Time.deltaTime;
         }
-        else if (player.Input.isCrouching)
-        {
-            Stamina += PassiveStamina * Time.deltaTime;
-        }
 
+        RecoverConditions();
+        
+        if (ChangeStaminaState(GetStaminaPercentage()))
+        {
+            SoundManger.Instance.ChangeBreatheBeatSound(playerBreatheType);
+        }
+    }
+
+    private void RecoverConditions()
+    {
         if (player.isHiding)
         {
             Health = Mathf.Clamp(Health + PassiveHealth * Time.deltaTime, 0, maxHealth);
             player.OnHPChange();
         }
-        
-        Stamina = Mathf.Clamp(Stamina + PassiveStamina * Time.deltaTime, 0, maxStamina);
-        if (ChangeState(GetStaminaPercentage()))
+
+        if (player.StateMachine.isCrouching)
         {
-            SoundManger.Instance.ChangeBreatheBeatSound(playerBreatheType);
+            Stamina += PassiveStamina * Time.deltaTime;
         }
+
+        Stamina = Mathf.Clamp(Stamina + PassiveStamina * Time.deltaTime, 0, maxStamina);
     }
 
     public void TakeDamage(int damage, EnemyAI enemy)
@@ -88,7 +104,7 @@ public class PlayerConditionController : MonoBehaviour
         player.OnHPChange();
     }
 
-    private bool ChangeState(float staminaPercentage)
+    private bool ChangeStaminaState(float staminaPercentage)
     {
         if (staminaPercentage > 0.7f && playerBreatheType != PlayerBreatheType.Normal)
         {

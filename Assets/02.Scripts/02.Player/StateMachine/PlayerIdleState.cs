@@ -10,10 +10,8 @@ public class PlayerIdleState : PlayerGroundState
 
     public override void Enter()
     {
-        stateMachine.MovementSpeedModifier = 0f;
-        stateMachine.Player.Input.VirtualCameraNoise.m_AmplitudeGain = 1f;
-        stateMachine.Player.Input.VirtualCameraNoise.m_FrequencyGain = 0.01f;
         base.Enter();
+        ChangePlayerStateEnter();
         StartAnimation(stateMachine.Player.AnimationData.IdleParameterHash);
     }
 
@@ -23,9 +21,9 @@ public class PlayerIdleState : PlayerGroundState
         StopAnimation(stateMachine.Player.AnimationData.IdleParameterHash);
     }
 
-    public override void PhysicsUpdate()
+    public override void HandleInput()
     {
-        base.PhysicsUpdate();
+        base.HandleInput();
 
         if (stateMachine.MovementInput != Vector2.zero)
         {
@@ -34,15 +32,20 @@ public class PlayerIdleState : PlayerGroundState
         }
     }
 
-    public override void Update()
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
+    }
+
+    public override void Update()//외부 요인으로 상태가 변할 수 있기 떄문에
     {
         base.Update();
+    }
 
-        //if (stateMachine.MovementInput != Vector2.zero)
-        //{
-        //    stateMachine.ChangeState(stateMachine.WalkState);
-        //    return;
-        //}
-
+    private void ChangePlayerStateEnter()
+    {
+        stateMachine.MovementSpeedModifier = 0f;
+        stateMachine.Player.Input.VirtualCameraNoise.m_AmplitudeGain = 1f;
+        stateMachine.Player.Input.VirtualCameraNoise.m_FrequencyGain = 0.01f;
     }
 }
