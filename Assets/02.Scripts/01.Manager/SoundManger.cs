@@ -93,7 +93,7 @@ public class SoundManger : mainSingleton<SoundManger>
             stageNum = 0;
         }
 
-        else if (stagename == "MainScene")
+        else if (stagename == "MainScene1")
         {
             if (playerheartbeatSource.Length == 0 || playerBreatheSource.Length == 0)
             {
@@ -222,7 +222,6 @@ public class SoundManger : mainSingleton<SoundManger>
 
     private IEnumerator StartStepSound()//코루티의 조건을 외부에서 결정
     {
-        Debug.Log("111");
         if (stepAudioClips == null) yield break;
 
         while (true)

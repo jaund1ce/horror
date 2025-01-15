@@ -40,8 +40,8 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
 
     public void LoadStartScene()
     {
-        SoundManger.Instance.GetSceneSource(startSceneName);
         ChangeScene(startSceneName);
+        SoundManger.Instance.GetSceneSource(startSceneName);
     }
 
 
@@ -53,12 +53,13 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
     public void LoadGame() 
     {
         ChangeScene(DataManager.Instance.MapData.MapName , LoadGameInitalize);
+        SoundManger.Instance.GetSceneSource(SceneManager.GetActiveScene().name);
     }
 
     public void Restart()
     {
-        SoundManger.Instance.GetSceneSource(SceneManager.GetActiveScene().name);
         ChangeScene(SceneManager.GetActiveScene().name);
+        SoundManger.Instance.GetSceneSource(SceneManager.GetActiveScene().name);
     }
 
     public void LoadEndScene()
