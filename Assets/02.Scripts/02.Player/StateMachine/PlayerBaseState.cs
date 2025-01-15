@@ -63,7 +63,7 @@ public class PlayerBaseState : IState
     {
         if (stateMachine.Player.PlayerRigidbody.velocity.y < -0.01f)
         {
-            if (stateMachine.Player.isGround)
+            if (stateMachine.Player.isGround)//여기가 문제
             {
                 stateMachine.ChangeState(stateMachine.IdleState);
                 return;

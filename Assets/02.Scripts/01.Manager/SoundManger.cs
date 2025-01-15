@@ -36,10 +36,11 @@ public class SoundManger : mainSingleton<SoundManger>
     private float lastCheckTime;
     private AudioClip[] stepAudioClips;
     private Coroutine playerStepCoroutine;
-    private string breathename = "";
 
     private int index = 0;
     private float soundpitch;
+
+    private WaitForSeconds nullWaitForSeconds = new WaitForSeconds(0.3f);
 
     protected override void Awake()
     {
@@ -119,10 +120,10 @@ public class SoundManger : mainSingleton<SoundManger>
             }
             stageNum = 2;
         }
-        //else //나중에 필요하면 추가
-        //{
-
-        //}
+        else //나중에 필요하면 추가
+        {
+            stageNum = -1;
+        }
 
         ChangeBGMSound(stageNum);
         ChangeTemBGMSound(stageNum);
@@ -195,7 +196,7 @@ public class SoundManger : mainSingleton<SoundManger>
         }
     }
 
-    public void PlayPlayrtStepSound(bool OnOff, float pitch = 1)
+    public void PlayPlayerStepSound(bool OnOff, float pitch = 1)
     {
         if (OnOff)
         {
@@ -221,17 +222,22 @@ public class SoundManger : mainSingleton<SoundManger>
 
     private IEnumerator StartStepSound()//코루티의 조건을 외부에서 결정
     {
+        Debug.Log("111");
         if (stepAudioClips == null) yield break;
 
         while (true)
         {
-            index = (int)(((index) % stepAudioClips.Length));//다른 소리의 리스트의 길이는 서로 다르기때문에
-            PlayerStep.clip = stepAudioClips[index];
-            PlayerStep.PlayOneShot(PlayerStep.clip);
-            MainGameManager.Instance.MakeSound(PlayerStep.clip.length);
+            if (stepAudioClips == null) yield return nullWaitForSeconds;
+            else
+            {
+                index = (int)(((index) % stepAudioClips.Length));//다른 소리의 리스트의 길이는 서로 다르기때문에
+                PlayerStep.clip = stepAudioClips[index];
+                PlayerStep.PlayOneShot(PlayerStep.clip);
+                MainGameManager.Instance.MakeSound(PlayerStep.clip.length);
 
-            yield return new WaitForSeconds(PlayerStep.clip.length / soundpitch);
-            index = (int)((index + 1) % stepAudioClips.Length);
+                yield return new WaitForSeconds(PlayerStep.clip.length / soundpitch);
+                index = (int)((index + 1) % stepAudioClips.Length);
+            }
         }
     }
 

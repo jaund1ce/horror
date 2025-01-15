@@ -10,20 +10,32 @@ public class PlayerAirState : PlayerBaseState
 
     public override void Enter()
     {
-        stateMachine.isAir = true;
         base.Enter();
+        ChangePlayerStateEnter();
         StartAnimation(stateMachine.Player.AnimationData.AirParameterHash);
     }
 
     public override void Exit()
     {
-        stateMachine.isAir = false;
         base.Exit();
+        ChangePlayerStateExit();
         StopAnimation(stateMachine.Player.AnimationData.AirParameterHash);
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+    }
+
+    private void ChangePlayerStateEnter()
+    {
+        stateMachine.isAir = true;
+        stateMachine.Player.Input.VirtualCameraNoise.m_AmplitudeGain = 2f;
+        stateMachine.Player.Input.VirtualCameraNoise.m_FrequencyGain = 1f;
+    }
+
+    private void ChangePlayerStateExit()
+    {
+        stateMachine.isAir = false;
     }
 }

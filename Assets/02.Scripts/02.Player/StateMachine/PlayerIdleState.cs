@@ -11,6 +11,7 @@ public class PlayerIdleState : PlayerGroundState
     public override void Enter()
     {
         base.Enter();
+        Debug.Log("idlestate");
         ChangePlayerStateEnter();
         StartAnimation(stateMachine.Player.AnimationData.IdleParameterHash);
     }
@@ -21,15 +22,20 @@ public class PlayerIdleState : PlayerGroundState
         StopAnimation(stateMachine.Player.AnimationData.IdleParameterHash);
     }
 
-    public override void PhysicsUpdate()
+    public override void HandleInput()
     {
-        base.PhysicsUpdate();
+        base.HandleInput();
 
         if (stateMachine.MovementInput != Vector2.zero)
         {
             stateMachine.ChangeState(stateMachine.WalkState);
             return;
         }
+    }
+
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
     }
 
     public override void Update()//외부 요인으로 상태가 변할 수 있기 떄문에

@@ -696,18 +696,17 @@ MonoBehaviour:
   PlayerInventoryData: {fileID: 0}
   CurrentEquipItem:
     ItemID: 0
-    amount: 0
-    slotIndex: 0
-    quickslotIndex: 0
+    Amount: 0
+    SlotIndex: 0
+    QuickslotIndex: 0
   isChangingQuickSlot: 0
   isInventoryOpen: 0
   isGround: 1
   isHiding: 0
   isCollideOverlapr: 0
-  isCrouching: 0
   playerState: -1
   groundType: 0
-  groundCheckdistance: 1
+  groundCheckdistance: 0.4
   checkDistance: 30
   checkDuration: 2
   monsterMask:
@@ -731,10 +730,8 @@ MonoBehaviour:
   Head: {fileID: 870975651428172388}
   maxRotateY: 60
   rotateSencitivity: 10
-  Rotateable: 1
   RunningReady: 0
-  isCrouching: 0
-  isRunning: 0
+  CrouchingReady: 0
 --- !u!114 &5712043628017939973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -749,11 +746,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
   itemCheckDistance: 3
-  itemCheckTime: 0.1
   iteractableLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  mainUI: {fileID: 0}
 --- !u!114 &3056842981750889108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -768,69 +763,69 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryDatas:
   - ItemID: 0
-    amount: 0
-    slotIndex: 0
-    quickslotIndex: 0
+    Amount: 0
+    SlotIndex: 0
+    QuickslotIndex: 0
   - ItemID: 0
-    amount: 0
-    slotIndex: 0
-    quickslotIndex: 0
+    Amount: 0
+    SlotIndex: 0
+    QuickslotIndex: 0
   - ItemID: 0
-    amount: 0
-    slotIndex: 0
-    quickslotIndex: 0
+    Amount: 0
+    SlotIndex: 0
+    QuickslotIndex: 0
   - ItemID: 0
-    amount: 0
-    slotIndex: 0
-    quickslotIndex: 0
+    Amount: 0
+    SlotIndex: 0
+    QuickslotIndex: 0
   - ItemID: 0
-    amount: 0
-    slotIndex: 0
-    quickslotIndex: 0
+    Amount: 0
+    SlotIndex: 0
+    QuickslotIndex: 0
   - ItemID: 0
-    amount: 0
-    slotIndex: 0
-    quickslotIndex: 0
+    Amount: 0
+    SlotIndex: 0
+    QuickslotIndex: 0
   - ItemID: 0
-    amount: 0
-    slotIndex: 0
-    quickslotIndex: 0
+    Amount: 0
+    SlotIndex: 0
+    QuickslotIndex: 0
   - ItemID: 0
-    amount: 0
-    slotIndex: 0
-    quickslotIndex: 0
+    Amount: 0
+    SlotIndex: 0
+    QuickslotIndex: 0
   - ItemID: 0
-    amount: 0
-    slotIndex: 0
-    quickslotIndex: 0
+    Amount: 0
+    SlotIndex: 0
+    QuickslotIndex: 0
   - ItemID: 0
-    amount: 0
-    slotIndex: 0
-    quickslotIndex: 0
+    Amount: 0
+    SlotIndex: 0
+    QuickslotIndex: 0
   - ItemID: 0
-    amount: 0
-    slotIndex: 0
-    quickslotIndex: 0
+    Amount: 0
+    SlotIndex: 0
+    QuickslotIndex: 0
   - ItemID: 0
-    amount: 0
-    slotIndex: 0
-    quickslotIndex: 0
+    Amount: 0
+    SlotIndex: 0
+    QuickslotIndex: 0
   - ItemID: 0
-    amount: 0
-    slotIndex: 0
-    quickslotIndex: 0
+    Amount: 0
+    SlotIndex: 0
+    QuickslotIndex: 0
   - ItemID: 0
-    amount: 0
-    slotIndex: 0
-    quickslotIndex: 0
+    Amount: 0
+    SlotIndex: 0
+    QuickslotIndex: 0
   - ItemID: 0
-    amount: 0
-    slotIndex: 0
-    quickslotIndex: 0
+    Amount: 0
+    SlotIndex: 0
+    QuickslotIndex: 0
   - ItemID: 0
-    amount: 0
-    slotIndex: 0
-    quickslotIndex: 0
+    Amount: 0
+    SlotIndex: 0
+    QuickslotIndex: 0
 --- !u!114 &1784298748991765889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -843,13 +838,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 926f8c9a94bc1d24c990296829895407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsDie: 0
   maxHealth: 100
   PassiveHealth: 1
   Health: 0
   maxStamina: 100
   PassiveStamina: 5
   Stamina: 0
-  IsDie: 0
   staminaUseAmount: 15
 --- !u!54 &8702856924162792245
 Rigidbody:

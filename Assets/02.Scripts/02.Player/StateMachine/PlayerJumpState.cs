@@ -22,11 +22,6 @@ public class PlayerJumpState : PlayerAirState
         StopAnimation(stateMachine.Player.AnimationData.JumpParameterHash);
     }
 
-    //public override void Update() //공중에서의 이동을 순간적으로만 줄것이기 때문에 불필요.
-    //{
-    //    base.Update();
-    //}
-
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();

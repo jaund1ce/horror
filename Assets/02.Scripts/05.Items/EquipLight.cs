@@ -1,23 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class EquipLight : EquipItemBase
 {
-    private Light light;
+    private Light handLight;
     private bool usable = false;
 
     protected override void Start()
     {
         base.Start();
-        light = MainGameManager.Instance.Player.gameObject.GetComponentInChildren<Light>();
+        handLight = MainGameManager.Instance.Player.gameObject.GetComponentInChildren<Light>();
         ChangeLightIntencity();
-        light.enabled = false;
+        handLight.enabled = false;
     }
 
     private void ChangeLightIntencity()
@@ -26,11 +20,11 @@ public class EquipLight : EquipItemBase
 
         if (sceneName == "MainScene")
         {
-            light.intensity = 10;
+            handLight.intensity = 10;
         }
         else if (sceneName == "MainScene2")
         {
-            light.intensity = 200;
+            handLight.intensity = 200;
         }
     }
 
@@ -49,13 +43,13 @@ public class EquipLight : EquipItemBase
         if (!OnUsing)
         {
             SoundManger.Instance.MakeEnviormentSound("Flashlight_On");
-            light.enabled = true;
+            handLight.enabled = true;
             OnUsing = true;
         }
         else
         {
             SoundManger.Instance.MakeEnviormentSound("Flashlight_Off");
-            light.enabled = false;
+            handLight.enabled = false;
             OnUsing = false;
         }
         usable = true;

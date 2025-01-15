@@ -9,7 +9,6 @@ public class PlayerInteraction : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
     [SerializeField] private float itemCheckDistance;
-    [SerializeField] private float itemCheckTime = 0.1f;
 
     private float lastCheckTime;
     [SerializeField]private LayerMask iteractableLayerMask;
