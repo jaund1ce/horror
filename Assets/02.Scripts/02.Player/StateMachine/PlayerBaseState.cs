@@ -59,16 +59,10 @@ public class PlayerBaseState : IState
         }
     }
 
-    public virtual void Update()//update는 값의 변경만을 해준다.
+    public virtual void Update()
     {
-        if (stateMachine.Player.PlayerRigidbody.velocity.y < -0.01f)
+        if (stateMachine.Player.PlayerRigidbody.velocity.y < -1f)//(< 0 일 경우 아주 작은 높이에서 떨어지더라도 fallstate로 들어감.)
         {
-            if (stateMachine.Player.isGround)//여기가 문제
-            {
-                stateMachine.ChangeState(stateMachine.IdleState);
-                return;
-            }
-
             stateMachine.ChangeState(stateMachine.FallState);
             return;
         }

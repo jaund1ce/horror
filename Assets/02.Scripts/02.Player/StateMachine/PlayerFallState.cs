@@ -27,6 +27,11 @@ public class PlayerFallState : PlayerAirState
 
         if (stateMachine.Player.isGround)
         {
+            if (stateMachine.MovementInput != Vector2.zero)
+            {
+                stateMachine.ChangeState(stateMachine.WalkState);
+                return;
+            }
             stateMachine.ChangeState(stateMachine.IdleState);
             return;
         }

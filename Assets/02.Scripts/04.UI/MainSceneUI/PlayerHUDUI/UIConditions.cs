@@ -14,7 +14,7 @@ public class UICondition : MonoBehaviour
     private float lastCheckTime;
     private bool onoff = true;
 
-    private void Start()
+    private void Awake()
     {
         player = MainGameManager.Instance.Player;
         playerConditionController = player.PlayerConditionController;

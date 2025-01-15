@@ -841,10 +841,10 @@ MonoBehaviour:
   IsDie: 0
   maxHealth: 100
   PassiveHealth: 1
-  Health: 0
+  Health: -1
   maxStamina: 100
   PassiveStamina: 5
-  Stamina: 0
+  Stamina: -1
   staminaUseAmount: 15
 --- !u!54 &8702856924162792245
 Rigidbody:
