@@ -91,7 +91,7 @@ public class DataManager : mainSingleton<DataManager>
 
 
 
-    public void SaveGame(bool saveBtnClick)
+    public void SaveGame(bool saveBtnClick = false)
     {
 
         SavePlayerData();
@@ -147,23 +147,14 @@ public class DataManager : mainSingleton<DataManager>
         else
         {
             int SceneNumber;
-            if (string.IsNullOrEmpty(MapData.MapName))
-            {
-                SceneNumber = 1;
-            }
+            if (string.IsNullOrEmpty(MapData.MapName)) SceneNumber = 1;
             else
             {
                 SceneNumber = int.Parse(MapData.MapName[MapData.MapName.Length - 1].ToString());
             }
-
             MapManager.Instance.LoadAndSpawnObjects(SceneNumber);
         }
-
-
-
         MapData = SaveSystem.Load<MapInfo>(Json.MapData) ?? new MapInfo();
-        
-
 
         Debug.Log("Game Loaded!");
     }
@@ -284,10 +275,7 @@ public class DataManager : mainSingleton<DataManager>
 
     private void SaveSpawnData(bool saveBtnClick)
     {
-        foreach (string key in SaveItemData.Keys)
-        {
-            Debug.Log($"키값 : {key}");
-        }
+
         if (saveBtnClick)
         {
             // 하이어라키 전체 탐색
