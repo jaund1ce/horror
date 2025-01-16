@@ -41,6 +41,9 @@ public class PlayerController : MonoBehaviour
         VirtualCameraNoise = playercamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         PlayerInputs.Enable();
         InputSubscribe();
+
+        ChangeRotateSencitivity(MainGameManager.Instance.temMouseSensitivity);
+        MainGameManager.Instance.temMouseSensitivity = -1f;
     }
 
     private void OnDisable()
@@ -75,11 +78,6 @@ public class PlayerController : MonoBehaviour
             PlayerActions.EquipmentUse.started -= EquipMent.OnAttackInput;
             subscribed = false;
         }
-    }
-
-    private void LateUpdate()
-    {
-        //OnUsing();
     }
 
     private void RotateCamera(InputAction.CallbackContext context)//cinemachine의 aim방식에 따라서 회전시키는 방법은 다르다.
@@ -121,6 +119,7 @@ public class PlayerController : MonoBehaviour
 
     public void ChangeRotateSencitivity(float amount)
     {
+        if (amount <= 0) return;
         rotateSencitivity = amount;
     }
 
@@ -128,14 +127,4 @@ public class PlayerController : MonoBehaviour
     {
         return rotateSencitivity;
     }
-
-    //public void OnUsing()
-    //{
-    //    if (EquipMent.CurEquip == null)
-    //    {
-    //        return;
-    //    }
-    //    bool onusing = EquipMent.CurEquip.OnUsing;
-    //    MainGameManager.Instance.Player.Animator.SetBool("OnUsing", onusing);
-    //}
 }

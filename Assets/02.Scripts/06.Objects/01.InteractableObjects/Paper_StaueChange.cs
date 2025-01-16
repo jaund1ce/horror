@@ -31,7 +31,7 @@ public class RandomRotationOnDestroy : MonoBehaviour
         yield return new WaitForSeconds(2f);
         if (targetObject != null)
         {
-            SoundManger.Instance.MakeEnviormentSound("Statue_Moving");
+            SoundManger.Instance.MakeEnviornmentSound("Statue_Moving");
             // 90, 180, 270 중 하나를 랜덤으로 선택
             int[] rotationValues = { 90, 180, 270 };
             int randomIndex = Random.Range(0, rotationValues.Length);

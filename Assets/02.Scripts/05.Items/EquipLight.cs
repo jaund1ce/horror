@@ -42,13 +42,13 @@ public class EquipLight : EquipItemBase
     {
         if (!OnUsing)
         {
-            SoundManger.Instance.MakeEnviormentSound("Flashlight_On");
+            SoundManger.Instance.MakeEnviornmentSound("Flashlight_On");
             handLight.enabled = true;
             OnUsing = true;
         }
         else
         {
-            SoundManger.Instance.MakeEnviormentSound("Flashlight_Off");
+            SoundManger.Instance.MakeEnviornmentSound("Flashlight_Off");
             handLight.enabled = false;
             OnUsing = false;
         }

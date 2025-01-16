@@ -28,8 +28,6 @@ public class PlayerFallState : PlayerAirState
 
     public override void Update()
     {
-        base.Update();
-
         if (stateMachine.Player.isGround)
         {
             if (stateMachine.MovementInput != Vector2.zero)

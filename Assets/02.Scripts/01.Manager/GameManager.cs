@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 public class MainGameManager : mainSingleton<MainGameManager>
 {
     public int paperInteractionCount;
+    public float temMouseSensitivity = -1f;
     public bool getNewPaper;
+    public bool IsHold;
     public Action<float> MakeSoundAction;
     public Player Player;
     public EnemyAI[] Enemy;

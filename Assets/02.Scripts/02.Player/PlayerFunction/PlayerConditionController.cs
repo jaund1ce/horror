@@ -77,7 +77,6 @@ public class PlayerConditionController : MonoBehaviour
         player.OnHPChange();
 
         if (IsDie) return;
-
         Health = Mathf.Max(Health - damage, 0);
         SoundManger.Instance.ChangeBreatheBeatSound(PlayerBreatheType.Damaged);
 
@@ -133,7 +132,7 @@ public class PlayerConditionController : MonoBehaviour
     {
         EnemyAI enemy = enemyAI;
         SoundState enemyKillSound = enemy.soundStates[AIState.Chasing];
-        SoundManger.Instance.Enviroment.PlayOneShot(enemyKillSound.Sound);
+        SoundManger.Instance.Environment.PlayOneShot(enemyKillSound.Sound);
         Transform firstChild = enemy.transform.GetChild(0);
         firstChild.gameObject.SetActive(true);
         OnDie?.Invoke();

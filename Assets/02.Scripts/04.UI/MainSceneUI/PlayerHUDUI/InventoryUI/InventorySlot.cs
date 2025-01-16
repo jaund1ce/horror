@@ -30,11 +30,11 @@ public class InventorySlot : MonoBehaviour
     {
         if (CurrentData == null || CurrentData.ItemData == null)
         {
-            SoundManger.Instance.MakeEnviormentSound("InventoryError");
+            SoundManger.Instance.MakeEnviornmentSound("InventoryError");
             InventoryController.ChangeData(null);
             return;
         }
-        SoundManger.Instance.MakeEnviormentSound("Click4");
+        SoundManger.Instance.MakeEnviornmentSound("Click4");
         InventoryController.ChangeData(CurrentData);
     }
 

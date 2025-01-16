@@ -30,13 +30,6 @@ namespace Michsky.UI.Dark
         void Awake()
         {
             if (mainSlider == null) { mainSlider = gameObject.GetComponent<Slider>(); }
-            if (enableSaving)
-            {
-                if (PlayerPrefs.HasKey(sliderTag + "Slider") == false) { saveValue = mainSlider.value; }
-                else { saveValue = PlayerPrefs.GetFloat(sliderTag + "Slider"); }
-
-                mainSlider.value = saveValue;
-            }
 
             mainSlider.onValueChanged.AddListener(delegate
             {
