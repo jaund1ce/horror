@@ -47,7 +47,7 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
 
     public void NewGame()
     {
-        LoadLoadingScene(mainSceneName, 17f , NewGameInitalize);
+        LoadLoadingScene(mainSceneName, 0f , NewGameInitalize);
         SoundManger.Instance.GetSceneSource(mainSceneName);
     }
     public void LoadGame() 
