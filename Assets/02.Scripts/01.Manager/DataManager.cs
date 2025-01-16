@@ -35,7 +35,7 @@ public class DataManager : mainSingleton<DataManager>
     InventorySlotsController InventorySlotsController;
     public Dictionary<string, SpawnData> SaveItemData;
     public Dictionary<string, SpawnData> SaveEnemyData;
-    public Dictionary<string, SpawnData> SavePaperData;
+    public Dictionary<int, SpawnData> SavePaperData;
     public Dictionary<string, bool> SavePuzzleData;
 
     protected override void Awake()
@@ -61,21 +61,10 @@ public class DataManager : mainSingleton<DataManager>
 
         SaveItemData = new Dictionary<string, SpawnData>();
         SaveEnemyData = new Dictionary<string, SpawnData>();
-        SavePaperData = new Dictionary<string, SpawnData>();
+        SavePaperData = new Dictionary<int, SpawnData>();
         SavePuzzleData = new Dictionary<string, bool>();
         
     }
-
-/*    public void InitializeGameData()
-    {
-        PlayerData = new UserInfo();
-        InventoryData = new InventoryData[16]; // 슬롯 수에 맞게 초기화
-        for (int i = 0; i < InventoryData.Length; i++)
-        {
-            InventoryData[i] = new InventoryData(i);
-        }
-        MapData = new MapInfo();
-    }*/
 
     public void LoadAllItems()
     {
@@ -85,40 +74,17 @@ public class DataManager : mainSingleton<DataManager>
         {
             return;
         }
-
     }
-
-
 
 
     public void SaveGame(bool saveBtnClick = false)
     {
 
         SavePlayerData();
-
-        // 직렬화 가능한 InventoryData 리스트 생성 (수정됨: 디버깅 추가)
-        var serializableInventory = new List<InventoryData>();
-        foreach (var inventorySlot in InventoryData)
-        {
-            if (inventorySlot.ItemData != null)
-            {
-                serializableInventory.Add(new InventoryData(inventorySlot.SlotIndex)
-                {
-                    ItemID = inventorySlot.ItemData.itemSO.ID,
-                    Amount = inventorySlot.Amount,
-                    QuickslotIndex = inventorySlot.QuickslotIndex
-                });
-            }
-            
-        }
-
+        SaveInventoryData();
         SaveSpawnData(saveBtnClick);
-        
 
         MapData.MapName = Main_SceneManager.Instance.NowSceneName;
-
-        // InventoryData 저장 (기존 코드 유지)
-        SaveSystem.Save(serializableInventory, Json.InventoryData);
 
         // MapData 저장 (기존 코드 유지)
         SaveSystem.Save(MapData, "MapData.json");
@@ -130,37 +96,10 @@ public class DataManager : mainSingleton<DataManager>
     public void LoadGame()
     {
         LoadPlayerData();
-
-        SaveItemData = SaveSystem.Load<Dictionary<string, SpawnData>>(Json.DropItemData);
-        SaveEnemyData = SaveSystem.Load<Dictionary<string, SpawnData>>(Json.EnemyData);
-        SavePaperData = SaveSystem.Load<Dictionary<string, SpawnData>>(Json.PaperData);
-        SavePuzzleData = SaveSystem.Load<Dictionary<string, bool>>(Json.PuzzleData);
-
-        if (SaveEnemyData != null) // 저장시에 적이 없을경우는 없기에 최상위 if문으로 NewGame인지 LoadGame인지 검출중
-        {
-            LoadEnemyData();
-            if (SaveItemData != null) LoadItemData();
-            //## TODO :: 나중에 스폰 수정시에 주석해제
-            //if (SavePaperData != null) LoadPaperData();
-            if (SavePuzzleData != null) LoadPuzzleData();
-        }
-        else
-        {
-            int SceneNumber;
-            if (string.IsNullOrEmpty(MapData.MapName)) SceneNumber = 1;
-            else
-            {
-                SceneNumber = int.Parse(MapData.MapName[MapData.MapName.Length - 1].ToString());
-            }
-            MapManager.Instance.LoadAndSpawnObjects(SceneNumber);
-        }
-        MapData = SaveSystem.Load<MapInfo>(Json.MapData) ?? new MapInfo();
+        LoadSpawnData();
 
         Debug.Log("Game Loaded!");
     }
-
-
-
 
     public ItemData FindItemByID(int id)
     {
@@ -222,8 +161,9 @@ public class DataManager : mainSingleton<DataManager>
             string position = obj.transform.position.ToString();
             spawndata.position = position;
             spawndata.referenceObjectName = "";
+            int key = Paper.paperData.ID;
             if (SaveItemData == null) SaveItemData = new Dictionary<string, SpawnData>();
-            SavePaperData.Add(position, spawndata);
+            SavePaperData.Add(key, spawndata);
         }
     }
 
@@ -236,14 +176,6 @@ public class DataManager : mainSingleton<DataManager>
             SavePuzzleData.Add(prefabName, isAccess);
         }
     }
-
-
-
-/*    public void UpdateMapStatus()
-    {
-        MapData.ExploredAreas = new int[] { 1, 0, 1, 1 }; // 탐험된 지역
-        Debug.Log("Map Updated!");
-    }*/
 
     protected override void OnDestroy()
     {
@@ -273,6 +205,27 @@ public class DataManager : mainSingleton<DataManager>
         SaveSystem.Save(PlayerData, Json.PlayerData);
     }
 
+    private void SaveInventoryData() 
+    {
+        // 직렬화 가능한 InventoryData 리스트 생성 (수정됨: 디버깅 추가)
+        var serializableInventory = new List<InventoryData>();
+        foreach (var inventorySlot in InventoryData)
+        {
+            if (inventorySlot.ItemData != null)
+            {
+                serializableInventory.Add(new InventoryData(inventorySlot.SlotIndex)
+                {
+                    ItemID = inventorySlot.ItemData.itemSO.ID,
+                    Amount = inventorySlot.Amount,
+                    QuickslotIndex = inventorySlot.QuickslotIndex
+                });
+            }
+
+        }
+        // InventoryData 저장 (기존 코드 유지)
+        SaveSystem.Save(serializableInventory, Json.InventoryData);
+    }
+
     private void SaveSpawnData(bool saveBtnClick)
     {
 
@@ -286,8 +239,7 @@ public class DataManager : mainSingleton<DataManager>
                 {
                     FindByItemBase<ItemBase>(rootObject);
                     FindByEnemy<Enemy>(rootObject);
-                    //## TODO :: 나중에 스폰 수정시에 주석해제
-                    //FindByPaper<Paper>(rootObject);
+                    FindByPaper<Paper>(rootObject);
                     FindByPuzzleBase<PuzzleBase>(rootObject);
                 }
             }
@@ -296,9 +248,8 @@ public class DataManager : mainSingleton<DataManager>
             SaveItemData.Clear();
             SaveSystem.Save(SaveEnemyData, Json.EnemyData);
             SaveEnemyData.Clear();
-            //## TODO :: 나중에 스폰 수정시에 주석해제
-            /*SaveSystem.Save(SavePaperData, "PaperData.json");
-            SavePaperData.Clear();*/
+            SaveSystem.Save(SavePaperData, Json.PaperData);
+            SavePaperData.Clear();
             SaveSystem.Save(SavePuzzleData, Json.PuzzleData);
             SavePuzzleData.Clear();
         }
@@ -310,8 +261,8 @@ public class DataManager : mainSingleton<DataManager>
             SaveSystem.Save(SaveItemData, Json.DropItemData);
             SaveEnemyData.Clear();
             SaveSystem.Save(SaveEnemyData, Json.EnemyData);
-            /*SavePaperData.Clear();
-            SaveSystem.Save(SavePaperData, "PaperData.json");*/
+            SavePaperData.Clear();
+            SaveSystem.Save(SavePaperData, Json.PaperData);
             SavePuzzleData.Clear();
             SaveSystem.Save(SavePuzzleData, Json.PuzzleData);
         }
@@ -365,6 +316,33 @@ public class DataManager : mainSingleton<DataManager>
         }
     }
 
+    private void LoadSpawnData() 
+    {
+        SaveItemData = SaveSystem.Load<Dictionary<string, SpawnData>>(Json.DropItemData);
+        SaveEnemyData = SaveSystem.Load<Dictionary<string, SpawnData>>(Json.EnemyData);
+        SavePaperData = SaveSystem.Load<Dictionary<int, SpawnData>>(Json.PaperData);
+        SavePuzzleData = SaveSystem.Load<Dictionary<string, bool>>(Json.PuzzleData);
+
+        if (SaveEnemyData != null) // 저장시에 적이 없을경우는 없기에 최상위 if문으로 NewGame인지 LoadGame인지 검출중
+        {
+            LoadEnemyData();
+            if (SaveItemData != null) LoadItemData();
+            if (SavePaperData != null) LoadPaperData();
+            if (SavePuzzleData != null) LoadPuzzleData();
+        }
+        else
+        {
+            int SceneNumber;
+            if (string.IsNullOrEmpty(MapData.MapName)) SceneNumber = 1;
+            else
+            {
+                SceneNumber = int.Parse(MapData.MapName[MapData.MapName.Length - 1].ToString());
+            }
+            MapManager.Instance.LoadAndSpawnObjects(SceneNumber);
+        }
+        MapData = SaveSystem.Load<MapInfo>(Json.MapData) ?? new MapInfo();
+    }
+
     private void LoadEnemyData() 
     {
         foreach (var enemyData in SaveEnemyData)
@@ -373,7 +351,7 @@ public class DataManager : mainSingleton<DataManager>
             spawndata.key = enemyData.Value.key;
             spawndata.assetType = enemyData.Value.assetType;
             spawndata.categoryType = enemyData.Value.categoryType;
-            spawndata.position = enemyData.Key;
+            spawndata.position = enemyData.Value.position;
             spawndata.referenceObjectName = enemyData.Value.referenceObjectName;
             MapManager.Instance.SpawnObject(spawndata);
         }
@@ -388,7 +366,7 @@ public class DataManager : mainSingleton<DataManager>
             spawndata.key = itemData.Value.key;
             spawndata.assetType = itemData.Value.assetType;
             spawndata.categoryType = itemData.Value.categoryType;
-            spawndata.position = itemData.Key;
+            spawndata.position = itemData.Value.position;
             spawndata.referenceObjectName = itemData.Value.referenceObjectName;
             MapManager.Instance.SpawnObject(spawndata);
         }
@@ -403,9 +381,11 @@ public class DataManager : mainSingleton<DataManager>
             spawndata.key = paperData.Value.key;
             spawndata.assetType = paperData.Value.assetType;
             spawndata.categoryType = paperData.Value.categoryType;
-            spawndata.position = paperData.Key;
+            spawndata.position = paperData.Value.position;
             spawndata.referenceObjectName = paperData.Value.referenceObjectName;
-            MapManager.Instance.SpawnObject(spawndata);
+            Paper paper = new Paper();
+            paper.paperData.ID = paperData.Key;
+            MapManager.Instance.SpawnObject(spawndata, paper, paper.paperData.ID);
         }
         SavePaperData.Clear();
     }
