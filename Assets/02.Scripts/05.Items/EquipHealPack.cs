@@ -19,7 +19,7 @@ public class EquipHealPack : EquipItemBase
     public override void OnUse()
     {
         MainGameManager.Instance.Player.PlayerConditionController.AddHealth(inventoryData.ItemData.itemSO.ItemHealHealth);
-        SoundManger.Instance.MakeEnviormentSound("HealPackUse");
+        SoundManger.Instance.MakeEnviornmentSound("HealPackUse");
         base.OnUse();
     }
 

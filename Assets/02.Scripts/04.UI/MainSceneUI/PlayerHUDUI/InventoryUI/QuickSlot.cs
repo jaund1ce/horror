@@ -39,7 +39,7 @@ public class QuickSlot : MonoBehaviour
         Debug.Log("Adding");
         if (MainGameManager.Instance.Player.isChangingQuickSlot)
         {
-            SoundManger.Instance.MakeEnviormentSound("Click2");
+            SoundManger.Instance.MakeEnviornmentSound("Click2");
             if (CurrentData == null) 
             {
                 if (inventoryLH.CurrentInventoryData.QuickslotIndex == -1)
@@ -66,7 +66,7 @@ public class QuickSlot : MonoBehaviour
         }
         else
         {
-            SoundManger.Instance.MakeEnviormentSound("InventoryError");
+            SoundManger.Instance.MakeEnviornmentSound("InventoryError");
             Debug.Log("Cant add now");
         }
     }

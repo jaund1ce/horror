@@ -693,7 +693,7 @@ MonoBehaviour:
   PlayerStep: {fileID: 2680419265581330280}
   PlayerHeartBeat: {fileID: 7136599014895928097}
   PlayerBreathe: {fileID: 4301733340647360768}
-  Enviroment: {fileID: 639795112180627924}
+  Environment: {fileID: 639795112180627924}
   BGM: {fileID: 8192046684148059100}
   TEMBGM: {fileID: 9021832365641338721}
   playerstepSource_cement: []
@@ -705,9 +705,15 @@ MonoBehaviour:
   playerBreatheSource: []
   bgmSource: []
   temBgmSource: []
-  enviromentsource: []
+  environmentsource: []
   interval: 5
   stageNum: -1
+  masterVolume: 1
+  stepVolume: 0.5
+  hearthbeatrVolume: 0.9
+  breatherVolume: 0.1
+  bgmVolume: 0.5
+  environmentVolume: 0.5
 --- !u!1 &8355438441886998168
 GameObject:
   m_ObjectHideFlags: 0

@@ -76,13 +76,13 @@ public class InventoryItemInfoPanelelController : MonoBehaviour
         if (currentItemData == null) return;
         if (currentItemData == player.CurrentEquipItem)
         {
-            SoundManger.Instance.MakeEnviormentSound("Click3");
+            SoundManger.Instance.MakeEnviornmentSound("Click3");
             player.UnEquipCurrentItem();
             ChangePanelText(currentItemData);
             return;
         }
 
-        SoundManger.Instance.MakeEnviormentSound("Click3");
+        SoundManger.Instance.MakeEnviornmentSound("Click3");
         player.CurrentEquipItem = Inventory.CurrentInventoryData;
         player.Input.EquipMent.EquipNew(player.CurrentEquipItem);
         player.ChangeEquip();
@@ -90,7 +90,7 @@ public class InventoryItemInfoPanelelController : MonoBehaviour
     }
     public void OnAddQuickSlotBTNClick()
     {
-        SoundManger.Instance.MakeEnviormentSound("Click3");
+        SoundManger.Instance.MakeEnviornmentSound("Click3");
         player.isChangingQuickSlot = true;
     }
 }

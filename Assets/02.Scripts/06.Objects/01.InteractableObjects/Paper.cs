@@ -23,10 +23,10 @@ public class Paper : ObjectBase
         {
             animator.SetTrigger("Interact"); // Animator에 "Interact"라는 트리거가 설정되어 있어야 함
         }
-        MainGameManager.Instance.paperInteractionCount += paperData.value;
+        MainGameManager.Instance.paperInteractionCount += 1;
         MainGameManager.Instance.getNewPaper = true;
         Debug.Log($"PaperInteractionCount: {MainGameManager.Instance.paperInteractionCount}");
-        SoundManger.Instance.MakeEnviormentSound("PaperSound");
+        SoundManger.Instance.MakeEnviornmentSound("PaperSound");
         UIManager.Instance.Show<PaperUI>();
         
         Destroy(gameObject);

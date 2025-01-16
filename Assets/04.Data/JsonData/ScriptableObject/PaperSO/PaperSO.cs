@@ -8,5 +8,5 @@ public class PaperSO : ScriptableObject
     public string Name;
     public string description;
     public GameObject dropPrefab;
-    public int value;
+    public int ID;
 }

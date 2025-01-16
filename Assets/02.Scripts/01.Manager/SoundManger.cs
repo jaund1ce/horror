@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ public class SoundManger : mainSingleton<SoundManger>
     public AudioSource PlayerStep;
     public AudioSource PlayerHeartBeat;
     public AudioSource PlayerBreathe;
-    public AudioSource Enviroment;
+    public AudioSource Environment;
     public AudioSource BGM;
     public AudioSource TEMBGM;
 
@@ -25,7 +26,7 @@ public class SoundManger : mainSingleton<SoundManger>
     [SerializeField] private AudioClip[] playerBreatheSource;
     [SerializeField] private AudioClip[] bgmSource;
     [SerializeField] private AudioClip[] temBgmSource;
-    [SerializeField] private AudioClip[] enviromentsource;
+    [SerializeField] private AudioClip[] environmentsource;
 
     private Dictionary<string, AudioClip[]> audioClipsDictionary = new Dictionary<string, AudioClip[]>(); //반드시 초기화 해주자
     private Dictionary<string, AudioClip> audioClipDictionary = new Dictionary<string, AudioClip>();
@@ -39,6 +40,14 @@ public class SoundManger : mainSingleton<SoundManger>
 
     private int index = 0;
     private float soundpitch;
+
+    [Header("Volumes")]
+    [SerializeField][Range(0f, 1f)] private float masterVolume = 1f;
+    [SerializeField][Range(0f, 1f)] private float stepVolume = 0.5f;
+    [SerializeField][Range(0f, 1f)] private float hearthbeatrVolume = 0.9f;
+    [SerializeField][Range(0f, 1f)] private float breatherVolume = 0.1f;
+    [SerializeField][Range(0f, 1f)] private float bgmVolume = 0.5f;
+    [SerializeField][Range(0f, 1f)] private float environmentVolume = 0.5f;
 
     private WaitForSeconds nullWaitForSeconds = new WaitForSeconds(0.3f);
 
@@ -66,12 +75,12 @@ public class SoundManger : mainSingleton<SoundManger>
 
     private void Init()
     {
-        PlayerStep.volume = 0.5f;
-        PlayerHeartBeat.volume = 0.9f;
-        PlayerBreathe.volume = 0.1f;
-        Enviroment.volume = 0.5f;
-        BGM.volume = 0.5f;
-        TEMBGM.volume = 0.5f;
+        PlayerStep.volume = masterVolume * stepVolume;
+        PlayerHeartBeat.volume = masterVolume * hearthbeatrVolume;
+        PlayerBreathe.volume = masterVolume * breatherVolume;
+        Environment.volume = masterVolume * environmentVolume;
+        BGM.volume = masterVolume * bgmVolume;
+        TEMBGM.volume = masterVolume * bgmVolume;
     }
 
     public void GetSceneSource(string stagename)//특정 씬에서 필요한 사운드를 로드해줌으로서 로딩을 줄여준다
@@ -80,15 +89,15 @@ public class SoundManger : mainSingleton<SoundManger>
 
         if (stagename == "StartScene")
         {
-            if (bgmSource.Length == 0 || temBgmSource.Length == 0 || enviromentsource.Length == 0)
+            if (bgmSource.Length == 0 || temBgmSource.Length == 0 || environmentsource.Length == 0)
             {
                 bgmSource = Resources.LoadAll<AudioClip>("Sounds/BGMs");
                 temBgmSource = Resources.LoadAll<AudioClip>("Sounds/TempBGMs");
-                enviromentsource = Resources.LoadAll<AudioClip>("Sounds/Enviroments");
+                environmentsource = Resources.LoadAll<AudioClip>("Sounds/Enviroments");
 
                 AddToDictionary(bgmSource);
                 AddToDictionary(temBgmSource);
-                AddToDictionary(enviromentsource);
+                AddToDictionary(environmentsource);
             }
             stageNum = 0;
         }
@@ -148,24 +157,37 @@ public class SoundManger : mainSingleton<SoundManger>
     {
         switch (audioSourceType)
         {
-            case AudioSourceType.STEP: PlayerStep.volume = volumePercentage; break;
-            case AudioSourceType.HEARTHBEAT: PlayerHeartBeat.volume = volumePercentage; break;
-            case AudioSourceType.BREATHE: PlayerBreathe.volume = volumePercentage; break;
-            case AudioSourceType.BGM: BGM.volume = volumePercentage; break;
-            case AudioSourceType.ENVIROMENT: Enviroment.volume = volumePercentage; break;
+            case AudioSourceType.MASTER: masterVolume = volumePercentage; break;
+            case AudioSourceType.STEP: stepVolume = volumePercentage; break;
+            case AudioSourceType.HEARTHBEAT: hearthbeatrVolume = volumePercentage; break;
+            case AudioSourceType.BREATHE: breatherVolume = volumePercentage; break;
+            case AudioSourceType.BGM: bgmVolume = volumePercentage; break;
+            case AudioSourceType.ENVIROMENT: environmentVolume = volumePercentage; break;
             default: Debug.Log("Index Error"); break;
         }
+        ChangeAllVolumes();
+    }
+
+    private void ChangeAllVolumes()
+    {
+        PlayerStep.volume = stepVolume * masterVolume;
+        PlayerHeartBeat.volume = hearthbeatrVolume * masterVolume;
+        PlayerBreathe.volume = bgmVolume * masterVolume;
+        BGM.volume = bgmVolume * masterVolume;
+        TEMBGM.volume = bgmVolume * masterVolume;
+        Environment.volume = environmentVolume * masterVolume;
     }
 
     public float GetVolume(AudioSourceType audioSourceType)
     {
         switch (audioSourceType)
         {
-            case AudioSourceType.STEP: return PlayerStep.volume;
-            case AudioSourceType.HEARTHBEAT: return PlayerHeartBeat.volume;
-            case AudioSourceType.BREATHE: return PlayerBreathe.volume;
-            case AudioSourceType.BGM: return BGM.volume;
-            case AudioSourceType.ENVIROMENT: return Enviroment.volume;
+            case AudioSourceType.MASTER: return masterVolume; ;
+            case AudioSourceType.STEP: return stepVolume * masterVolume;
+            case AudioSourceType.HEARTHBEAT: return hearthbeatrVolume * masterVolume;
+            case AudioSourceType.BREATHE: return breatherVolume * masterVolume;
+            case AudioSourceType.BGM: return bgmVolume * masterVolume;
+            case AudioSourceType.ENVIROMENT: return environmentVolume * masterVolume;
             default: Debug.Log("Index Error"); return -1;
         }
     }
@@ -313,15 +335,15 @@ public class SoundManger : mainSingleton<SoundManger>
         }
     }
 
-    public void MakeEnviormentSound(string enviormentName)
+    public void MakeEnviornmentSound(string environmentName)
     {
-        if (audioClipDictionary.TryGetValue(enviormentName, out AudioClip value))
+        if (audioClipDictionary.TryGetValue(environmentName, out AudioClip value))
         {
-            Enviroment.PlayOneShot(value);//오브젝트의 소리는 한번만 생성된다.
+            Environment.PlayOneShot(value);//오브젝트의 소리는 한번만 생성된다.
         }
         else
         {
-            Debug.Log($"No {enviormentName} Enviorment Sound Clip!");
+            Debug.Log($"No {environmentName} Enviorment Sound Clip!");
         }        
     }
 
@@ -329,8 +351,8 @@ public class SoundManger : mainSingleton<SoundManger>
     {
         if (audioClipDictionary.TryGetValue(enviormentName, out AudioClip value))
         {
-            Enviroment.PlayOneShot(value);
-            MainGameManager.Instance.MakeSoundAction(amount + Enviroment.volume);
+            Environment.PlayOneShot(value);
+            MainGameManager.Instance.MakeSoundAction(amount + Environment.volume);
         }
         else
         {
@@ -355,7 +377,7 @@ public class SoundManger : mainSingleton<SoundManger>
         {
             if(PlayerBreathe.clip == null)
             {
-                MakeEnviormentSound("PlayerTakeDamage");
+                MakeEnviornmentSound("PlayerTakeDamage");
             }
             else//코루틴으로
             {
@@ -381,7 +403,7 @@ public class SoundManger : mainSingleton<SoundManger>
     private IEnumerator StartDamagedSound()//코루티의 조건을 외부에서 결정
     {
             PlayerBreathe.Stop();
-            MakeEnviormentSound("PlayerTakeDamage2");
+            MakeEnviornmentSound("PlayerTakeDamage2");
 
             yield return new WaitForSeconds(1f);
 
@@ -400,7 +422,7 @@ public class SoundManger : mainSingleton<SoundManger>
         PlayerStep.clip = null;
         PlayerHeartBeat.clip = null;
         PlayerBreathe.clip = null;
-        Enviroment.clip = null;
+        Environment.clip = null;
         BGM.clip = null;
         TEMBGM.clip = null;
     }

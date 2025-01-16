@@ -35,8 +35,6 @@ public class MapManager : mainSingleton<MapManager>
         set { mapTransform = value; }
     }
     private static Transform mapTransform;
-    //public string jsonFilePath1 ="Data/SpawnData"; // JSON 파일 경로 (Resources 폴더 내부 기준), 파일을 로드하여 데이터에 따라 오브젝트를 스폰
-    //public string jsonFilePath2 = "Data/SpawnData2";
     private Dictionary<string, GameObject> mapList = new Dictionary<string, GameObject>();
 
 
@@ -137,7 +135,7 @@ public class MapManager : mainSingleton<MapManager>
     }
 
     // 개별 오브젝트를 스폰하는 함수
-    public void SpawnObject(SpawnData data)
+    public void SpawnObject(SpawnData data, Paper paper = null, int id = 0)
     {
         // assetType 문자열을 eAssetType 열거형으로 변환
         if (!System.Enum.TryParse(data.assetType, out eAssetType assetType))
@@ -182,7 +180,12 @@ public class MapManager : mainSingleton<MapManager>
             {
                 Debug.LogWarning($"기준 오브젝트를 찾을 수 없습니다: {data.referenceObjectName}");
             }
-        }//## else if(!string.isNullOrEmpty(data.position))
+        }
+
+        if (prefab.TryGetComponent<Paper>(out paper)) 
+        {
+            paper.paperData.ID = id;
+        }
 
         // 로드된 프리팹을 스폰 (Instantiate 함수 사용)
         Instantiate(prefab, spawnPosition, Quaternion.identity); // 지정된 위치에 오브젝트 생성
