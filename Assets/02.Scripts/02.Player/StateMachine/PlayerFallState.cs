@@ -24,6 +24,11 @@ public class PlayerFallState : PlayerAirState
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+    }
+
+    public override void Update()
+    {
+        base.Update();
 
         if (stateMachine.Player.isGround)
         {
