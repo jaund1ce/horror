@@ -839,6 +839,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDie: 0
+  maxBatteryCapacity: 100
+  BatteryCapacity: -1
+  BatteryCapacityUseAmount: 1
+  OnFlash: 0
   maxHealth: 100
   PassiveHealth: 1
   Health: -1

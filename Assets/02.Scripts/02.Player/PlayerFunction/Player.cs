@@ -214,12 +214,16 @@ public class Player : MonoBehaviour
         }
         else
         {
-            //Animator.SetBool("Key", true);
+            Animator.SetBool("Key", true);
         }
     }
 
     public void EquipItem(InventoryData inventoryData)
     {
+        if(Input.EquipMent.CurEquip.OnUsing)
+        {
+            return;
+        }
         CurrentEquipItem = inventoryData;
         Input.EquipMent.EquipNew(CurrentEquipItem);
         ChangeEquip();
@@ -227,6 +231,10 @@ public class Player : MonoBehaviour
 
     public void UnEquipCurrentItem()
     {
+        if (Input.EquipMent.CurEquip.OnUsing)
+        {
+            return;
+        }
         Input.EquipMent.UnEquip();
         CurrentEquipItem = null;
         ChangeEquip();
