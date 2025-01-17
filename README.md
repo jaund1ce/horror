@@ -25,9 +25,14 @@
 
 ## 3. 사용한 도구
 - 협업 도구
-  - Git : 
-  - Zira : 
-  - Figma : 
+  - Git, Github Desktop
+  - Zira
+  - Figma
+- 개발 도구
+  - C#
+  - Unity (2022.3.17f1 ver)
+  - Visual studio
+  - Json
 ## 4. 사용한 기술
 - FSM
   - 설명:
