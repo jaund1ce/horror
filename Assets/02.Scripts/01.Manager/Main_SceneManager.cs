@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Drawing.Text;
 using UnityEngine.InputSystem;
+using Unity.VisualScripting;
 
 public class Main_SceneManager : mainSingleton<Main_SceneManager>
 {
@@ -19,13 +20,17 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
                                      // 씬 전환 후 로직에 따라 다른 동작을 수행할 때 사용됩니다.
                                      // 
 
-    PlayerInputs playerInputs;
-    PlayerInputs.PlayerActions playerActions;
 
     [SerializeField] private string startSceneName = "StartScene";
     [SerializeField] private string mainSceneName = "MainScene1";
     [SerializeField] private string endSceneName = "EndScene";
     [SerializeField] private string loadingSceneName = "LoadingScene";
+
+    PlayerInputs playerInputs;
+    PlayerInputs.PlayerActions playerActions;
+    private Coroutine waitSeconds;
+    private bool isWaitStopped;
+    private float videoPlayTime = 17f;
 
     protected override void Awake()
     {
@@ -47,12 +52,13 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
 
     public void NewGame()
     {
-        LoadLoadingScene(mainSceneName, 0f , NewGameInitalize);
+        LoadLoadingScene(mainSceneName, videoPlayTime, NewGameInitalize);
         SoundManger.Instance.GetSceneSource(mainSceneName);
     }
     public void LoadGame() 
     {
-        ChangeScene(DataManager.Instance.MapData.MapName , LoadGameInitalize);
+        // 요구사항 : 영상이 끝나고 자연스럽게 플레이랑 이어지게끔 로딩 먼저 하기 위해 코드순서 설정
+        LoadLoadingScene(DataManager.Instance.MapData.SceneName , 0f , LoadGameInitalize);
         SoundManger.Instance.GetSceneSource(SceneManager.GetActiveScene().name);
     }
 
@@ -162,7 +168,8 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
             }
             yield return null;
         }
-        yield return new WaitForSeconds(time);
+        waitSeconds = StartCoroutine(WaitCoroutine(time));
+        yield return waitSeconds;
 
         // 6. 추가 작업 실행
         callback?.Invoke();
@@ -178,13 +185,23 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
     {
         MapManager.Instance.ShowMap<Stage01>();
         MapManager.Instance.LoadAndSpawnObjects(1);
+        MapManager.Instance.LoadAndSpawnPapers(1);
         DataManager.Instance.LoadAllItems();
         UIManager.Instance.Show<MainUI>();
     }
 
     private void LoadGameInitalize()
     {
-        MapManager.Instance.ShowMap<Stage01>();
+        string loadMap = DataManager.Instance.MapData.MapName;
+        switch(loadMap)
+        { 
+            case "Stage01":
+                MapManager.Instance.ShowMap<Stage01>();
+                break;
+            case "Stage02":
+                MapManager.Instance.ShowMap<Stage02>();
+                break;
+        }
         DataManager.Instance.LoadGame();
         DataManager.Instance.LoadAllItems();
         UIManager.Instance.Show<MainUI>();
@@ -196,19 +213,36 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
         playerInputs = new PlayerInputs();
         playerActions = playerInputs.Player;
         playerInputs.Enable();
-        UIManager.Instance.Show<SkipUI>();
-        playerActions.Menu.performed += ActivateObject01;
+        //UIManager.Instance.Show<SkipUI>(); 
+        playerActions.Menu.performed += ShowVideo;
         
     }
 
-    public void ActivateObject01(InputAction.CallbackContext context)
+    public void ShowVideo(InputAction.CallbackContext context)
     {
         GameObject targetObject = GameObject.FindGameObjectWithTag("Video");
         if (targetObject.activeSelf == false)
         { return; }
-        playerActions.Menu.performed -= ActivateObject01;
+        playerActions.Menu.performed -= ShowVideo;
         playerInputs.Disable();
         UIManager.Instance.Hide<SkipUI>();
+        isWaitStopped = true;
         targetObject.SetActive(false); // 오브젝트 비활성화
+    }
+
+    private IEnumerator WaitCoroutine(float time) 
+    {
+        float checkTime = 0f;
+
+        while (checkTime < time)
+        {
+            if (isWaitStopped)
+            {
+                yield break;
+            }
+
+            checkTime += Time.deltaTime;
+            yield return null;
+        }
     }
 }

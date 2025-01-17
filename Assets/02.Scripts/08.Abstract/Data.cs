@@ -52,6 +52,7 @@ public class EnemyInfo : ISaveable
 [Serializable]
 public class MapInfo : ISaveable
 {
+    public string SceneName;
     public string MapName;
     public int[] ExploredAreas;
 
