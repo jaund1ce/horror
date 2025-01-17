@@ -220,7 +220,7 @@ public class Player : MonoBehaviour
 
     public void EquipItem(InventoryData inventoryData)
     {
-        if(Input.EquipMent.CurEquip.OnUsing)
+        if(Input.EquipMent.CurEquip != null && Input.EquipMent.CurEquip.OnUsing)
         {
             return;
         }
@@ -231,7 +231,7 @@ public class Player : MonoBehaviour
 
     public void UnEquipCurrentItem()
     {
-        if (Input.EquipMent.CurEquip.OnUsing)
+        if (Input.EquipMent.CurEquip != null && Input.EquipMent.CurEquip.OnUsing)
         {
             return;
         }

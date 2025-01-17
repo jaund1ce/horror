@@ -210,7 +210,7 @@ public class MapManager : mainSingleton<MapManager>
         }
 
         // 로드된 프리팹을 스폰 (Instantiate 함수 사용)
-        GameObject spawnObject = Instantiate(prefab, spawnPosition, Quaternion.identity); // 지정된 위치에 오브젝트 생성
+        GameObject spawnObject = Instantiate(prefab, spawnPosition, prefab.transform.rotation); // 지정된 위치에 오브젝트 생성
 
         if (spawnObject.TryGetComponent<Paper>(out paper))
         {

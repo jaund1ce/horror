@@ -57,13 +57,14 @@ public class EquipLight : EquipItemBase
         if (!usable) return;
 
         usable = false;
+        OnUsing = true;
         Invoke("OnUse", 0.5f);
     }
 
 
     public override void OnUse()
     {
-        if (!OnUsing)
+        if (!playerConditionController.OnFlash)
         {
             if(batteryCapacity <= 0)
             {
@@ -71,7 +72,6 @@ public class EquipLight : EquipItemBase
             }
             SoundManger.Instance.MakeEnviornmentSound("Flashlight_On");
             handLight.enabled = true;
-            OnUsing = true;
             playerConditionController.OnFlash = true;
 
             Debug.Log(batteryCapacity);
@@ -80,8 +80,8 @@ public class EquipLight : EquipItemBase
         {
             SoundManger.Instance.MakeEnviornmentSound("Flashlight_Off");
             handLight.enabled = false;
-            OnUsing = false;
             playerConditionController.OnFlash = false;
+
             if (batteryWarningCoroutine != null)
             {
                 StopCoroutine(BatteryWarning());
@@ -90,6 +90,7 @@ public class EquipLight : EquipItemBase
             Debug.Log(batteryCapacity);
         }
         usable = true;
+        OnUsing = false;
     }
 
     private IEnumerator BatteryWarning()
