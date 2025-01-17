@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Paper : ObjectBase
 {
-    public PaperSO paperData;
+    public int PaperID;
 
     protected override void OnEnable()
     {
@@ -14,7 +14,7 @@ public class Paper : ObjectBase
 
     public override string GetInteractPrompt()
     {
-        return "Read";
+        return $"{PaperID}";
     }
     public override void OnInteract()
     {
@@ -23,9 +23,9 @@ public class Paper : ObjectBase
         {
             animator.SetTrigger("Interact"); // Animator에 "Interact"라는 트리거가 설정되어 있어야 함
         }
-        MainGameManager.Instance.paperInteractionCount += 1;
+        MainGameManager.Instance.PaperInteraction.Add(PaperID);
         MainGameManager.Instance.getNewPaper = true;
-        Debug.Log($"PaperInteractionCount: {MainGameManager.Instance.paperInteractionCount}");
+        Debug.Log($"PaperInteractionCount: {MainGameManager.Instance.PaperInteraction}");
         SoundManger.Instance.MakeEnviornmentSound("PaperSound");
         UIManager.Instance.Show<PaperUI>();
         

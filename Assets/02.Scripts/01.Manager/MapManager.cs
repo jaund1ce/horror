@@ -7,18 +7,19 @@ using UnityEngine;
 [System.Serializable]
 public class SpawnData
 {
-    public string key; // ResourceManager에서 로드할 자산의 고유 키
-    public string assetType; // eAssetType 열거형 값 (프리팹, 썸네일 등 자산 유형 지정)
-    public string categoryType; // eCategoryType 열거형 값 (아이템, NPC 등 자산 분류 지정)
-    public string position; // 오브젝트가 스폰될 월드 좌표
-    public string referenceObjectName; // 특정 오브젝트 이름 (이 오브젝트의 위치를 기준으로 스폰 위치 계산)
+    public string Key; // ResourceManager에서 로드할 자산의 고유 키
+    public string AssetType; // eAssetType 열거형 값 (프리팹, 썸네일 등 자산 유형 지정)
+    public string CategoryType; // eCategoryType 열거형 값 (아이템, NPC 등 자산 분류 지정)
+    public string Position; // 오브젝트가 스폰될 월드 좌표
+    public string ReferenceObjectName; // 특정 오브젝트 이름 (이 오브젝트의 위치를 기준으로 스폰 위치 계산)
+    public int ID;
 }
 
 // JSON 데이터 구조를 파싱하기 위한 래퍼 클래스
 [System.Serializable]
 public class SpawnDataArrayWrapper
 {
-    public SpawnData[] data; // SpawnData 배열로 JSON 데이터를 파싱
+    public SpawnData[] Data; // SpawnData 배열로 JSON 데이터를 파싱
 }
 
 
@@ -34,8 +35,11 @@ public class MapManager : mainSingleton<MapManager>
         }
         set { mapTransform = value; }
     }
+    public string NowMapName = "";
+
     private static Transform mapTransform;
     private Dictionary<string, GameObject> mapList = new Dictionary<string, GameObject>();
+    
 
 
     protected override void Awake()
@@ -64,6 +68,7 @@ public class MapManager : mainSingleton<MapManager>
         }
 
         var map = LoadMap(prefab, mapName);
+        NowMapName = mapName;
         mapList.Add(mapName, map);
         return map.GetComponent<T>();
     }
@@ -125,7 +130,7 @@ public class MapManager : mainSingleton<MapManager>
         }
 
         // JSON 데이터를 SpawnData 배열로 파싱
-        SpawnData[] spawnDataArray = JsonUtility.FromJson<SpawnDataArrayWrapper>(jsonFile.text).data;
+        SpawnData[] spawnDataArray = JsonUtility.FromJson<SpawnDataArrayWrapper>(jsonFile.text).Data;
 
         // 각 SpawnData 항목에 대해 오브젝트를 스폰
         foreach (var spawnData in spawnDataArray)
@@ -133,62 +138,84 @@ public class MapManager : mainSingleton<MapManager>
             SpawnObject(spawnData); // 개별 오브젝트 스폰 함수 호출
         }
     }
+    public void LoadAndSpawnPapers(int SceneNumber)
+    {
+        string path = $"Data/PaperSpawnData{SceneNumber}";
+        TextAsset jsonFile = Resources.Load<TextAsset>(path); 
+        if (jsonFile == null)
+        {
+            Debug.LogError($"JSON 파일을 찾을 수 없습니다: {path}"); 
+            return;
+        }
+        SpawnData[] spawnDataArray = JsonUtility.FromJson<SpawnDataArrayWrapper>(jsonFile.text).Data;
+
+        // 각 SpawnData 항목에 대해 오브젝트를 스폰
+        foreach (var spawnData in spawnDataArray)
+        {
+            GameObject prefab = ResourceManager.Instance.LoadAsset<GameObject>(spawnData.Key, eAssetType.Prefab, eCategoryType.Paper);
+            if (prefab.TryGetComponent<Paper>(out Paper paper)) 
+            {
+                SpawnObject(spawnData , paper);
+            }
+        }
+    }
+
 
     // 개별 오브젝트를 스폰하는 함수
-    public void SpawnObject(SpawnData data, Paper paper = null, int id = 0)
+    public void SpawnObject(SpawnData data, Paper paper = null)
     {
         // assetType 문자열을 eAssetType 열거형으로 변환
-        if (!System.Enum.TryParse(data.assetType, out eAssetType assetType))
+        if (!System.Enum.TryParse(data.AssetType, out eAssetType assetType))
         {
-            Debug.LogError($"유효하지 않은 assetType: {data.assetType}"); // 잘못된 assetType의 경우 오류 메시지 출력
+            Debug.LogError($"유효하지 않은 assetType: {data.AssetType}"); // 잘못된 assetType의 경우 오류 메시지 출력
             return;
         }
 
         // categoryType 문자열을 eCategoryType 열거형으로 변환
-        if (!System.Enum.TryParse(data.categoryType, out eCategoryType categoryType))
+        if (!System.Enum.TryParse(data.CategoryType, out eCategoryType categoryType))
         {
             categoryType = eCategoryType.None; // 변환 실패 시 기본값 None으로 설정
         }
 
         // ResourceManager를 사용해 프리팹 로드
-        GameObject prefab = ResourceManager.Instance.LoadAsset<GameObject>(data.key, assetType, categoryType);
+        GameObject prefab = ResourceManager.Instance.LoadAsset<GameObject>(data.Key, assetType, categoryType);
 
         if (prefab == null)
         {
-            Debug.LogError($"프리팹 로드 실패: {data.key}"); // 프리팹 로드 실패 시 오류 메시지 출력
+            Debug.LogError($"프리팹 로드 실패: {data.Key}"); // 프리팹 로드 실패 시 오류 메시지 출력
             return;
         }
         // 기준 오브젝트의 위치를 참조하여 스폰 위치 조정
         Vector3 spawnPosition;
-        if (!string.IsNullOrEmpty(data.position))
+        if (!string.IsNullOrEmpty(data.Position))
         {
-            spawnPosition = StringToVector3(data.position);
+            spawnPosition = StringToVector3(data.Position);
         }
         else 
         {
             spawnPosition = Vector3.zero;
         }
 
-        if (!string.IsNullOrEmpty(data.referenceObjectName))
+        if (!string.IsNullOrEmpty(data.ReferenceObjectName))
         {
-            GameObject referenceObject = GameObject.Find(data.referenceObjectName);
+            GameObject referenceObject = GameObject.Find(data.ReferenceObjectName);
             if (referenceObject != null)
             {
                 spawnPosition = referenceObject.transform.position + new Vector3(0, 2, 0); // y + 2으로 위치 조정
             }
             else
             {
-                Debug.LogWarning($"기준 오브젝트를 찾을 수 없습니다: {data.referenceObjectName}");
+                Debug.LogWarning($"기준 오브젝트를 찾을 수 없습니다: {data.ReferenceObjectName}");
             }
         }
 
-        if (prefab.TryGetComponent<Paper>(out paper)) 
-        {
-            paper.paperData.ID = id;
-        }
-
         // 로드된 프리팹을 스폰 (Instantiate 함수 사용)
-        Instantiate(prefab, spawnPosition, Quaternion.identity); // 지정된 위치에 오브젝트 생성
+        GameObject spawnObject = Instantiate(prefab, spawnPosition, Quaternion.identity); // 지정된 위치에 오브젝트 생성
+
+        if (spawnObject.TryGetComponent<Paper>(out paper))
+        {
+            paper.PaperID = data.ID;
+        }
     }
 
 

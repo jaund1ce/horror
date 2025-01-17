@@ -1,11 +1,12 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainGameManager : mainSingleton<MainGameManager>
 {
-    public int paperInteractionCount;
+    public List<int> PaperInteraction;
     public float temMouseSensitivity = -1f;
     public bool getNewPaper;
     public bool IsHold;
@@ -36,7 +37,7 @@ public class MainGameManager : mainSingleton<MainGameManager>
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        paperInteractionCount = 0;
+        PaperInteraction = new List<int>();
         FindOrSetPlayer();
         FindOrSetEnemy();
     }

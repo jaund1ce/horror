@@ -45,7 +45,7 @@ public class PaperUI : PopupUI
 
     private void Start()
     {
-        if (MainGameManager.Instance.paperInteractionCount >= 1)
+        if (MainGameManager.Instance.PaperInteraction.Contains(1001))
         {
             if (paperButton1 != null)
             {
@@ -57,7 +57,7 @@ public class PaperUI : PopupUI
                 paperDetail1.SetActive(true);
             }
         }
-        if (MainGameManager.Instance.paperInteractionCount >= 2)
+        if (MainGameManager.Instance.PaperInteraction.Contains(1002))
         {
             if (paperButton2 != null)
             {
@@ -69,7 +69,7 @@ public class PaperUI : PopupUI
                 paperDetail2.SetActive(true);
             }
         }
-        if (MainGameManager.Instance.paperInteractionCount >= 3)
+        if (MainGameManager.Instance.PaperInteraction.Contains(1003))
         {
             if (paperButton3 != null)
             {
@@ -81,7 +81,7 @@ public class PaperUI : PopupUI
                 paperDetail3.SetActive(true);
             }
         }
-        if (MainGameManager.Instance.paperInteractionCount >= 4)
+        if (MainGameManager.Instance.PaperInteraction.Contains(1004))
         {
             if (paperButton4 != null)
             {
@@ -93,7 +93,7 @@ public class PaperUI : PopupUI
                 paperDetail4.SetActive(true);
             }
         }
-        if (MainGameManager.Instance.paperInteractionCount >= 5)
+        if (MainGameManager.Instance.PaperInteraction.Contains(1005))
         {
             if (paperButton5 != null)
             {
@@ -105,7 +105,7 @@ public class PaperUI : PopupUI
                 paperDetail5.SetActive(true);
             }
         }
-        if (MainGameManager.Instance.paperInteractionCount >= 6)
+        if (MainGameManager.Instance.PaperInteraction.Contains(2001))
         {
             if (paperButton6 != null)
             {
@@ -117,7 +117,7 @@ public class PaperUI : PopupUI
                 paperDetail6.SetActive(true);
             }
         }
-        if (MainGameManager.Instance.paperInteractionCount >= 7)
+        if (MainGameManager.Instance.PaperInteraction.Contains(2002))
         {
             if (paperButton7 != null)
             {
@@ -129,7 +129,7 @@ public class PaperUI : PopupUI
                 paperDetail7.SetActive(true);
             }
         }
-        if (MainGameManager.Instance.paperInteractionCount >= 8)
+        if (MainGameManager.Instance.PaperInteraction.Contains(2003))
         {
             if (paperButton8 != null)
             {
@@ -141,7 +141,7 @@ public class PaperUI : PopupUI
                 paperDetail8.SetActive(true);
             }
         }
-        if (MainGameManager.Instance.paperInteractionCount >= 9)
+        if (MainGameManager.Instance.PaperInteraction.Contains(2004))
         {
             if (paperButton9 != null)
             {
@@ -153,7 +153,7 @@ public class PaperUI : PopupUI
                 paperDetail9.SetActive(true);
             }
         }
-        if (MainGameManager.Instance.paperInteractionCount >= 10)
+        if (MainGameManager.Instance.PaperInteraction.Contains(2005))
         {
             if (paperButton10 != null)
             {

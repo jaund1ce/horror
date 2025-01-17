@@ -13,6 +13,7 @@ public static class CategoryType
     public const string Enemy = "Enemy";
     public const string Item = "Item";
     public const string Interactableobjects = "InteractableObjects";
+    public const string Paper = "Paper";
 }
 
 public static class Json 
@@ -84,7 +85,8 @@ public class DataManager : mainSingleton<DataManager>
         SaveInventoryData();
         SaveSpawnData(saveBtnClick);
 
-        MapData.MapName = Main_SceneManager.Instance.NowSceneName;
+        MapData.SceneName = Main_SceneManager.Instance.NowSceneName;
+        MapData.MapName = MapManager.Instance.NowMapName;
 
         // MapData 저장 (기존 코드 유지)
         SaveSystem.Save(MapData, "MapData.json");
@@ -118,13 +120,13 @@ public class DataManager : mainSingleton<DataManager>
         if (obj.TryGetComponent<T>(out T ItemBase))
         {
             SpawnData spawndata = new SpawnData();
-            spawndata.key = ItemBase.gameObject.name;
-            spawndata.key = spawndata.key.Replace("(Clone)", "").Trim();
-            spawndata.assetType = AssetType.Prefab;
-            spawndata.categoryType = CategoryType.Item;
+            spawndata.Key = ItemBase.gameObject.name;
+            spawndata.Key = spawndata.Key.Replace("(Clone)", "").Trim();
+            spawndata.AssetType = AssetType.Prefab;
+            spawndata.CategoryType = CategoryType.Item;
             string position = obj.transform.position.ToString();
-            spawndata.position = position;
-            spawndata.referenceObjectName = "";
+            spawndata.Position = position;
+            spawndata.ReferenceObjectName = "";
             if (SaveItemData == null) SaveItemData = new Dictionary<string, SpawnData>();
             SaveItemData.Add(position, spawndata);
         }
@@ -137,13 +139,13 @@ public class DataManager : mainSingleton<DataManager>
         if (obj.TryGetComponent<T>(out T Enemy))
         {
             SpawnData enemy = new SpawnData();
-            enemy.key = Enemy.gameObject.name;
-            enemy.key = enemy.key.Replace("(Clone)", "").Trim();
-            enemy.assetType = AssetType.Prefab;
-            enemy.categoryType = CategoryType.Enemy;
+            enemy.Key = Enemy.gameObject.name;
+            enemy.Key = enemy.Key.Replace("(Clone)", "").Trim();
+            enemy.AssetType = AssetType.Prefab;
+            enemy.CategoryType = CategoryType.Enemy;
             string position = obj.transform.position.ToString();
-            enemy.position = position;
-            enemy.referenceObjectName = "";
+            enemy.Position = position;
+            enemy.ReferenceObjectName = "";
             if (SaveEnemyData == null) SaveEnemyData = new Dictionary<string, SpawnData>();
             SaveEnemyData.Add(position, enemy);
         }
@@ -154,14 +156,14 @@ public class DataManager : mainSingleton<DataManager>
         if (obj.TryGetComponent<T>(out T Paper))
         {
             SpawnData spawndata = new SpawnData();
-            spawndata.key = Paper.gameObject.name;
-            spawndata.key = spawndata.key.Replace("(Clone)", "").Trim();
-            spawndata.assetType = AssetType.Prefab;
-            spawndata.categoryType = CategoryType.Interactableobjects;
+            spawndata.Key = Paper.gameObject.name;
+            spawndata.Key = spawndata.Key.Replace("(Clone)", "").Trim();
+            spawndata.AssetType = AssetType.Prefab;
+            spawndata.CategoryType = CategoryType.Paper;
             string position = obj.transform.position.ToString();
-            spawndata.position = position;
-            spawndata.referenceObjectName = "";
-            int key = Paper.paperData.ID;
+            spawndata.Position = position;
+            spawndata.ReferenceObjectName = "";
+            int key = Paper.PaperID;
             if (SaveItemData == null) SaveItemData = new Dictionary<string, SpawnData>();
             SavePaperData.Add(key, spawndata);
         }
@@ -196,7 +198,7 @@ public class DataManager : mainSingleton<DataManager>
     private void SavePlayerData() 
     {
         // MainGameManager의 데이터를 동기화
-        PlayerData.PaperInteractionCount = MainGameManager.Instance.paperInteractionCount; // 추가
+        PlayerData.PaperInteraction = MainGameManager.Instance.PaperInteraction; // 추가
         PlayerData.Health = MainGameManager.Instance.Player.PlayerConditionController.Health;
         PlayerData.Stamina = MainGameManager.Instance.Player.PlayerConditionController.Stamina;
         PlayerData.Playerposition = (MainGameManager.Instance.Player.transform.position).ToString();
@@ -275,13 +277,13 @@ public class DataManager : mainSingleton<DataManager>
         if (PlayerData != null)
         {
             SpawnData spawnPlayer = new SpawnData();
-            spawnPlayer.key = PlayerData.PlayerName;
-            spawnPlayer.assetType = AssetType.Prefab;
-            spawnPlayer.categoryType = CategoryType.Player;
-            spawnPlayer.position = PlayerData.Playerposition;
+            spawnPlayer.Key = PlayerData.PlayerName;
+            spawnPlayer.AssetType = AssetType.Prefab;
+            spawnPlayer.CategoryType = CategoryType.Player;
+            spawnPlayer.Position = PlayerData.Playerposition;
             MapManager.Instance.SpawnObject(spawnPlayer);
             Player player = MainGameManager.Instance.Player;
-            MainGameManager.Instance.paperInteractionCount = PlayerData.PaperInteractionCount; // 추가
+            MainGameManager.Instance.PaperInteraction = PlayerData.PaperInteraction; // 추가
             player.PlayerConditionController.Health = PlayerData.Health;
             player.PlayerConditionController.Stamina = PlayerData.Stamina;
             
@@ -333,12 +335,13 @@ public class DataManager : mainSingleton<DataManager>
         else
         {
             int SceneNumber;
-            if (string.IsNullOrEmpty(MapData.MapName)) SceneNumber = 1;
+            if (string.IsNullOrEmpty(MapData.SceneName)) SceneNumber = 1;
             else
             {
-                SceneNumber = int.Parse(MapData.MapName[MapData.MapName.Length - 1].ToString());
+                SceneNumber = int.Parse(MapData.SceneName[MapData.SceneName.Length - 1].ToString());
             }
             MapManager.Instance.LoadAndSpawnObjects(SceneNumber);
+            MapManager.Instance.LoadAndSpawnPapers(SceneNumber);
         }
         MapData = SaveSystem.Load<MapInfo>(Json.MapData) ?? new MapInfo();
     }
@@ -348,11 +351,11 @@ public class DataManager : mainSingleton<DataManager>
         foreach (var enemyData in SaveEnemyData)
         {
             SpawnData spawndata = new SpawnData();
-            spawndata.key = enemyData.Value.key;
-            spawndata.assetType = enemyData.Value.assetType;
-            spawndata.categoryType = enemyData.Value.categoryType;
-            spawndata.position = enemyData.Value.position;
-            spawndata.referenceObjectName = enemyData.Value.referenceObjectName;
+            spawndata.Key = enemyData.Value.Key;
+            spawndata.AssetType = enemyData.Value.AssetType;
+            spawndata.CategoryType = enemyData.Value.CategoryType;
+            spawndata.Position = enemyData.Value.Position;
+            spawndata.ReferenceObjectName = enemyData.Value.ReferenceObjectName;
             MapManager.Instance.SpawnObject(spawndata);
         }
         SaveEnemyData.Clear();
@@ -363,11 +366,11 @@ public class DataManager : mainSingleton<DataManager>
         foreach (var itemData in SaveItemData)
         {
             SpawnData spawndata = new SpawnData();
-            spawndata.key = itemData.Value.key;
-            spawndata.assetType = itemData.Value.assetType;
-            spawndata.categoryType = itemData.Value.categoryType;
-            spawndata.position = itemData.Value.position;
-            spawndata.referenceObjectName = itemData.Value.referenceObjectName;
+            spawndata.Key = itemData.Value.Key;
+            spawndata.AssetType = itemData.Value.AssetType;
+            spawndata.CategoryType = itemData.Value.CategoryType;
+            spawndata.Position = itemData.Value.Position;
+            spawndata.ReferenceObjectName = itemData.Value.ReferenceObjectName;
             MapManager.Instance.SpawnObject(spawndata);
         }
         SaveItemData.Clear();
@@ -378,14 +381,14 @@ public class DataManager : mainSingleton<DataManager>
         foreach (var paperData in SavePaperData)
         {
             SpawnData spawndata = new SpawnData();
-            spawndata.key = paperData.Value.key;
-            spawndata.assetType = paperData.Value.assetType;
-            spawndata.categoryType = paperData.Value.categoryType;
-            spawndata.position = paperData.Value.position;
-            spawndata.referenceObjectName = paperData.Value.referenceObjectName;
+            spawndata.Key = paperData.Value.Key;
+            spawndata.AssetType = paperData.Value.AssetType;
+            spawndata.CategoryType = paperData.Value.CategoryType;
+            spawndata.Position = paperData.Value.Position;
+            spawndata.ReferenceObjectName = paperData.Value.ReferenceObjectName;
             Paper paper = new Paper();
-            paper.paperData.ID = paperData.Key;
-            MapManager.Instance.SpawnObject(spawndata, paper, paper.paperData.ID);
+            paper.PaperID = paperData.Key;
+            MapManager.Instance.SpawnObject(spawndata, paper);
         }
         SavePaperData.Clear();
     }

@@ -21,7 +21,8 @@ public enum eCategoryType
     Stage,        // 스테이지 자산
     Player,    // 캐릭터 관련 자산
     Maps,         // 맵 데이터
-    Model         // 3D 모델
+    Model,         // 3D 모델
+    Paper
 }
 
 public class ResourceManager : mainSingleton<ResourceManager> // Singleton<T>을 상속 받음, Instance 생성 가능
