@@ -38,7 +38,7 @@ public class SystemUI : PopupUI
 
     public void Load()
     {
-        DataManager.Instance.LoadGame();
+        Main_SceneManager.Instance.LoadGame();
     }
 
 
