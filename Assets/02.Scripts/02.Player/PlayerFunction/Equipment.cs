@@ -32,7 +32,7 @@ public class Equipment : MonoBehaviour
     {
         if (CurEquip != null)
         {
-            if (CurEquip is EquipLight && CurEquip.OnUsing) { CurEquip.OnUse(); }
+            if (CurEquip is EquipLight && MainGameManager.Instance.Player.PlayerConditionController.OnFlash) { CurEquip.OnUse(); }
 
             Destroy(CurEquip.gameObject);
             CurEquip = null;
