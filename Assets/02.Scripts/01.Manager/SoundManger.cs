@@ -225,11 +225,11 @@ public class SoundManger : mainSingleton<SoundManger>
             soundpitch = pitch;
             if(soundpitch >= 1f)
             {
-                PlayerStep.volume = 1f;
+                stepVolume = 1f;
             }
             else
             {
-                PlayerStep.volume = 0.5f;
+                stepVolume = 0.5f;
             }
             playerStepCoroutine = StartCoroutine(StartStepSound());
         }
