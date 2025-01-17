@@ -13,6 +13,7 @@ public static class CategoryType
     public const string Enemy = "Enemy";
     public const string Item = "Item";
     public const string Interactableobjects = "InteractableObjects";
+    public const string Paper = "Paper";
 }
 
 public static class Json 
@@ -158,7 +159,7 @@ public class DataManager : mainSingleton<DataManager>
             spawndata.Key = Paper.gameObject.name;
             spawndata.Key = spawndata.Key.Replace("(Clone)", "").Trim();
             spawndata.AssetType = AssetType.Prefab;
-            spawndata.CategoryType = CategoryType.Interactableobjects;
+            spawndata.CategoryType = CategoryType.Paper;
             string position = obj.transform.position.ToString();
             spawndata.Position = position;
             spawndata.ReferenceObjectName = "";
@@ -197,7 +198,7 @@ public class DataManager : mainSingleton<DataManager>
     private void SavePlayerData() 
     {
         // MainGameManager의 데이터를 동기화
-        PlayerData.PaperInteractionCount = MainGameManager.Instance.paperInteractionCount; // 추가
+        PlayerData.PaperInteraction = MainGameManager.Instance.PaperInteraction; // 추가
         PlayerData.Health = MainGameManager.Instance.Player.PlayerConditionController.Health;
         PlayerData.Stamina = MainGameManager.Instance.Player.PlayerConditionController.Stamina;
         PlayerData.Playerposition = (MainGameManager.Instance.Player.transform.position).ToString();
@@ -282,7 +283,7 @@ public class DataManager : mainSingleton<DataManager>
             spawnPlayer.Position = PlayerData.Playerposition;
             MapManager.Instance.SpawnObject(spawnPlayer);
             Player player = MainGameManager.Instance.Player;
-            MainGameManager.Instance.paperInteractionCount = PlayerData.PaperInteractionCount; // 추가
+            MainGameManager.Instance.PaperInteraction = PlayerData.PaperInteraction; // 추가
             player.PlayerConditionController.Health = PlayerData.Health;
             player.PlayerConditionController.Stamina = PlayerData.Stamina;
             

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public interface ISaveable
@@ -12,21 +13,21 @@ public interface ISaveable
 public class UserInfo : ISaveable
 {
     public string PlayerName = "Player_noneParkourtic2";
-    public int PaperInteractionCount;
+    public List<int> PaperInteraction;
     public float Health;
     public float Stamina;
     public string Playerposition;
 
     public string Save() // ?? 안쓰는거같은데
     {
-        PaperInteractionCount = MainGameManager.Instance.paperInteractionCount;
+        PaperInteraction = MainGameManager.Instance.PaperInteraction;
         return JsonUtility.ToJson(this, true);
     }
 
     public void Load(string json)
     {
         JsonUtility.FromJsonOverwrite(json, this);
-        MainGameManager.Instance.paperInteractionCount = PaperInteractionCount;
+        MainGameManager.Instance.PaperInteraction = PaperInteraction;
     }
 }
 
