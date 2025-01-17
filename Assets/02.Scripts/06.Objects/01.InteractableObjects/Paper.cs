@@ -26,7 +26,7 @@ public class Paper : ObjectBase
         MainGameManager.Instance.paperInteractionCount += 1;
         MainGameManager.Instance.getNewPaper = true;
         Debug.Log($"PaperInteractionCount: {MainGameManager.Instance.paperInteractionCount}");
-        SoundManger.Instance.MakeEnviormentSound("PaperSound");
+        SoundManger.Instance.MakeEnviornmentSound("PaperSound");
         UIManager.Instance.Show<PaperUI>();
         
         Destroy(gameObject);

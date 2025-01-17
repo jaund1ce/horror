@@ -1,0 +1,64 @@
+{
+    "data": [
+        {
+            "key": "Paper_Report",
+            "assetType": "Prefab",
+            "categoryType": "Paper",
+            "position": {
+                "x": -47.82,
+                "y": 1.83,
+                "z": 64.78
+            },
+            "referenceObjectName": "",
+            "ID": 1001
+        },
+        {
+            "key": "Paper_Report",
+            "assetType": "Prefab",
+            "categoryType": "Paper",
+            "position": {
+                "x": -97.27,
+                "y": 1.83,
+                "z": 48.29
+            },
+            "referenceObjectName": "",
+            "ID": 1002
+        },
+        {
+            "key": "Paper_Report",
+            "assetType": "Prefab",
+            "categoryType": "Paper",
+            "position": {
+                "x": 26.3,
+                "y": 1.83,
+                "z": 54.64
+            },
+            "referenceObjectName": "",
+            "ID": 1003
+        },
+        {
+            "key": "Paper_Report",
+            "assetType": "Prefab",
+            "categoryType": "Paper",
+            "position": {
+                "x": 33.35,
+                "y": 1.83,
+                "z": -22.21
+            },
+            "referenceObjectName": "",
+            "ID": 1004
+        },
+        {
+            "key": "Paper_Report",
+            "assetType": "Prefab",
+            "categoryType": "Paper",
+            "position": {
+                "x": -97.29,
+                "y": 1.83,
+                "z": -21.88
+            },
+            "referenceObjectName": "",
+            "ID": 1005
+        }
+    ]
+}

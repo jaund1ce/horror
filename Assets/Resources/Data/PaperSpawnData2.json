@@ -1,0 +1,64 @@
+{
+    "data": [
+        {
+            "key": "Paper_Diary",
+            "assetType": "Prefab",
+            "categoryType": "Paper",
+            "position": {
+                "x": -41.53,
+                "y": 1.77,
+                "z": -52.91
+            },
+            "referenceObjectName": "",
+            "ID": 2001
+        },
+        {
+            "key": "Paper_Diary",
+            "assetType": "Prefab",
+            "categoryType": "Paper",
+            "position": {
+                "x": -40.9,
+                "y": 1.78,
+                "z": 0.51
+            },
+            "referenceObjectName": "",
+            "ID": 2002
+        },
+        {
+            "key": "Paper_Diary",
+            "assetType": "Prefab",
+            "categoryType": "Paper",
+            "position": {
+                "x": -50.89,
+                "y": 1.78,
+                "z": 9.75
+            },
+            "referenceObjectName": "",
+            "ID": 2003
+        },
+        {
+            "key": "Paper_Diary",
+            "assetType": "Prefab",
+            "categoryType": "Paper",
+            "position": {
+                "x": 54.66,
+                "y": 1.78,
+                "z": -30.15
+            },
+            "referenceObjectName": "",
+            "ID": 2004
+        },
+        {
+            "key": "Paper_Diary",
+            "assetType": "Prefab",
+            "categoryType": "Paper",
+            "position": {
+                "x": -24.88,
+                "y": 1.70,
+                "z": 74.3
+            },
+            "referenceObjectName": "",
+            "ID": 2005
+        }
+    ]
+}

@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public enum AudioSourceType
 {
-    BGM = 0,
+    MASTER = 0,
+    BGM,
     HEARTHBEAT,
     BREATHE,
     STEP,
@@ -17,18 +18,12 @@ public class SystemUIVolumeSetting : MonoBehaviour
     [SerializeField]private AudioSourceType audioSourceType;
     [SerializeField]private Slider VolumeSlider;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        VolumeSlider.onValueChanged.AddListener(ChangeVolume);
+        if (VolumeSlider != null) VolumeSlider.value = SoundManger.Instance.GetVolume(audioSourceType);
     }
 
-    private void OnEnable()
-    {
-        VolumeSlider.value = SoundManger.Instance.GetVolume(audioSourceType);
-    }
-
-    private void ChangeVolume(float amount)
+    public void ChangeVolume(float amount)
     {
         SoundManger.Instance.AdjustSoundVolume(audioSourceType, amount);
     }

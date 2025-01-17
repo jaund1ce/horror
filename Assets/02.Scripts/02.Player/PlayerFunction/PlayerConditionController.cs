@@ -7,6 +7,11 @@ public class PlayerConditionController : MonoBehaviour
     public event Action OnDie;
     [HideInInspector]public bool IsDie;
 
+    [SerializeField] private float maxBatteryCapacity;
+    public float PassiveBatteryCapacity;
+    public float BatteryCapacity = -1f;
+    [SerializeField] private float BatteryCapacityUseAmount = 1f;
+    public bool OnFlash;
     [SerializeField] private float maxHealth;
     public float PassiveHealth;
     public float Health = -1f;
@@ -34,8 +39,11 @@ public class PlayerConditionController : MonoBehaviour
         {
             Stamina = maxStamina;
         }
+        if (BatteryCapacity < 0)
+        {
+            BatteryCapacity = maxBatteryCapacity;
+        }
 
-        
         IsDie = false;
     }
     private void Update()
@@ -45,6 +53,11 @@ public class PlayerConditionController : MonoBehaviour
         if (player.StateMachine.isRunning)
         {
             Stamina -= staminaUseAmount * Time.deltaTime;
+        }
+
+        if (OnFlash == true)
+        {
+            BatteryCapacity -= BatteryCapacityUseAmount * Time.deltaTime;
         }
 
         RecoverConditions();
@@ -77,7 +90,6 @@ public class PlayerConditionController : MonoBehaviour
         player.OnHPChange();
 
         if (IsDie) return;
-
         Health = Mathf.Max(Health - damage, 0);
         SoundManger.Instance.ChangeBreatheBeatSound(PlayerBreatheType.Damaged);
 
@@ -102,6 +114,11 @@ public class PlayerConditionController : MonoBehaviour
     {
         Health = Mathf.Min(Health + amount, maxHealth);
         player.OnHPChange();
+    }
+
+    public void AddBatteryCapacity(int amount)
+    {
+        BatteryCapacity = Mathf.Min(BatteryCapacity + amount, maxBatteryCapacity);
     }
 
     private bool ChangeStaminaState(float staminaPercentage)
@@ -133,7 +150,7 @@ public class PlayerConditionController : MonoBehaviour
     {
         EnemyAI enemy = enemyAI;
         SoundState enemyKillSound = enemy.soundStates[AIState.Chasing];
-        SoundManger.Instance.Enviroment.PlayOneShot(enemyKillSound.Sound);
+        SoundManger.Instance.Environment.PlayOneShot(enemyKillSound.Sound);
         Transform firstChild = enemy.transform.GetChild(0);
         firstChild.gameObject.SetActive(true);
         OnDie?.Invoke();
