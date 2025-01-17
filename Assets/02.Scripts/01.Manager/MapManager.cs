@@ -152,7 +152,7 @@ public class MapManager : mainSingleton<MapManager>
         // 각 SpawnData 항목에 대해 오브젝트를 스폰
         foreach (var spawnData in spawnDataArray)
         {
-            GameObject prefab = ResourceManager.Instance.LoadAsset<GameObject>(spawnData.Key, eAssetType.Prefab, eCategoryType.Item);
+            GameObject prefab = ResourceManager.Instance.LoadAsset<GameObject>(spawnData.Key, eAssetType.Prefab, eCategoryType.Paper);
             if (prefab.TryGetComponent<Paper>(out Paper paper)) 
             {
                 SpawnObject(spawnData , paper);
@@ -209,13 +209,13 @@ public class MapManager : mainSingleton<MapManager>
             }
         }
 
-        if (prefab.TryGetComponent<Paper>(out paper)) 
-        {
-            paper.paperData.ID = data.ID;
-        }
-
         // 로드된 프리팹을 스폰 (Instantiate 함수 사용)
-        Instantiate(prefab, spawnPosition, Quaternion.identity); // 지정된 위치에 오브젝트 생성
+        GameObject spawnObject = Instantiate(prefab, spawnPosition, Quaternion.identity); // 지정된 위치에 오브젝트 생성
+
+        if (spawnObject.TryGetComponent<Paper>(out paper))
+        {
+            paper.PaperID = data.ID;
+        }
     }
 
 

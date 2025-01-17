@@ -162,7 +162,7 @@ public class DataManager : mainSingleton<DataManager>
             string position = obj.transform.position.ToString();
             spawndata.Position = position;
             spawndata.ReferenceObjectName = "";
-            int key = Paper.paperData.ID;
+            int key = Paper.PaperID;
             if (SaveItemData == null) SaveItemData = new Dictionary<string, SpawnData>();
             SavePaperData.Add(key, spawndata);
         }
@@ -386,7 +386,7 @@ public class DataManager : mainSingleton<DataManager>
             spawndata.Position = paperData.Value.Position;
             spawndata.ReferenceObjectName = paperData.Value.ReferenceObjectName;
             Paper paper = new Paper();
-            paper.paperData.ID = paperData.Key;
+            paper.PaperID = paperData.Key;
             MapManager.Instance.SpawnObject(spawndata, paper);
         }
         SavePaperData.Clear();

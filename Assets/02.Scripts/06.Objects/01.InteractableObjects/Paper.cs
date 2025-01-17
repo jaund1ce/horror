@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Paper : ObjectBase
 {
-    public PaperSO paperData;
+    public int PaperID;
 
     protected override void OnEnable()
     {
@@ -14,7 +14,7 @@ public class Paper : ObjectBase
 
     public override string GetInteractPrompt()
     {
-        return "Read";
+        return $"{PaperID}";
     }
     public override void OnInteract()
     {

@@ -1,130 +1,148 @@
 {
-  "data": [
+  "Data": [
     {
-      "key": "Player_noneParkourtic2",
-      "assetType": "Prefab",
-      "categoryType": "Player",
-      "position": {},
-      "referenceObjectName": "SpawnPoint"
+      "Key": "Player_noneParkourtic2",
+      "AssetType": "Prefab",
+      "CategoryType": "Player",
+      "Position": {},
+      "ReferenceObjectName": "SpawnPoint",
+      "ID": 1
     },
     {
-      "key": "Creature",
-      "assetType": "Prefab",
-      "categoryType": "Enemy",
-      "position": {},
-      "referenceObjectName": "Enemy01_SpawnPoint"
+      "Key": "Creature",
+      "AssetType": "Prefab",
+      "CategoryType": "Enemy",
+      "Position": {},
+      "ReferenceObjectName": "Enemy01_SpawnPoint",
+      "ID": 2
     },
     {
-      "key": "Frenzyer",
-      "assetType": "Prefab",
-      "categoryType": "Enemy",
-      "position": {},
-      "referenceObjectName": "Enemy02_SpawnPoint"
+      "Key": "Frenzyer",
+      "AssetType": "Prefab",
+      "CategoryType": "Enemy",
+      "Position": {},
+      "ReferenceObjectName": "Enemy02_SpawnPoint",
+      "ID": 4
     },
     {
-      "key": "DropLockpick",
-      "assetType": "Prefab",
-      "categoryType": "Item",
-      "position": {},
-      "referenceObjectName": "HideableTable_15"
+      "Key": "DropLockpick",
+      "AssetType": "Prefab",
+      "CategoryType": "Item",
+      "Position": {},
+      "ReferenceObjectName": "HideableTable_15",
+      "ID": 503
     },
     {
-      "key": "DropLockpick",
-      "assetType": "Prefab",
-      "categoryType": "Item",
-      "position": {},
-      "referenceObjectName": "HideableTable_3"
+      "Key": "DropLockpick",
+      "AssetType": "Prefab",
+      "CategoryType": "Item",
+      "Position": {},
+      "ReferenceObjectName": "HideableTable_3",
+      "ID": 503
     },
     {
-      "key": "DropLockpick",
-      "assetType": "Prefab",
-      "categoryType": "Item",
-      "position": {},
-      "referenceObjectName": "HideableTable_2"
+      "Key": "DropLockpick",
+      "AssetType": "Prefab",
+      "CategoryType": "Item",
+      "Position": {},
+      "ReferenceObjectName": "HideableTable_2",
+      "ID": 503
     },
     {
-      "key": "DropLockpick",
-      "assetType": "Prefab",
-      "categoryType": "Item",
-      "position": {},
-      "referenceObjectName": "HideableTable_28"
+      "Key": "DropLockpick",
+      "AssetType": "Prefab",
+      "CategoryType": "Item",
+      "Position": {},
+      "ReferenceObjectName": "HideableTable_28",
+      "ID": 503
     },
     {
-      "key": "DropLockpick",
-      "assetType": "Prefab",
-      "categoryType": "Item",
-      "position": {},
-      "referenceObjectName": "HideableTable_24"
+      "Key": "DropLockpick",
+      "AssetType": "Prefab",
+      "CategoryType": "Item",
+      "Position": {},
+      "ReferenceObjectName": "HideableTable_24",
+      "ID": 503
     },
     {
-      "key": "DropLockpick",
-      "assetType": "Prefab",
-      "categoryType": "Item",
-      "position": {},
-      "referenceObjectName": "HideableTable_19"
+      "Key": "DropLockpick",
+      "AssetType": "Prefab",
+      "CategoryType": "Item",
+      "Position": {},
+      "ReferenceObjectName": "HideableTable_19",
+      "ID": 503
     },
     {
-      "key": "DropHealpack",
-      "assetType": "Prefab",
-      "categoryType": "Item",
-      "position": {},
-      "referenceObjectName": "HideableTable"
+      "Key": "DropHealpack",
+      "AssetType": "Prefab",
+      "CategoryType": "Item",
+      "Position": {},
+      "ReferenceObjectName": "HideableTable",
+      "ID": 501
     },
     {
-      "key": "DropHealpack",
-      "assetType": "Prefab",
-      "categoryType": "Item",
-      "position": {},
-      "referenceObjectName": "HideableTable_31"
+      "Key": "DropHealpack",
+      "AssetType": "Prefab",
+      "CategoryType": "Item",
+      "Position": {},
+      "ReferenceObjectName": "HideableTable_31",
+      "ID": 501
     },
     {
-      "key": "DropHealpack",
-      "assetType": "Prefab",
-      "categoryType": "Item",
-      "position": {},
-      "referenceObjectName": "HideableTable_12"
+      "Key": "DropHealpack",
+      "AssetType": "Prefab",
+      "CategoryType": "Item",
+      "Position": {},
+      "ReferenceObjectName": "HideableTable_12",
+      "ID": 501
     },
     {
-      "key": "DropHealpack",
-      "assetType": "Prefab",
-      "categoryType": "Item",
-      "position": {},
-      "referenceObjectName": "HideableTable_20"
+      "Key": "DropHealpack",
+      "AssetType": "Prefab",
+      "CategoryType": "Item",
+      "Position": {},
+      "ReferenceObjectName": "HideableTable_20",
+      "ID": 501
     },
     {
-      "key": "DropHealpack",
-      "assetType": "Prefab",
-      "categoryType": "Item",
-      "position": {},
-      "referenceObjectName": "HideableTable_30"
+      "Key": "DropHealpack",
+      "AssetType": "Prefab",
+      "CategoryType": "Item",
+      "Position": {},
+      "ReferenceObjectName": "HideableTable_30",
+      "ID": 501
     },
     {
-      "key": "DropHealpack",
-      "assetType": "Prefab",
-      "categoryType": "Item",
-      "position": {},
-      "referenceObjectName": "HideableTable_26"
+      "Key": "DropHealpack",
+      "AssetType": "Prefab",
+      "CategoryType": "Item",
+      "Position": {},
+      "ReferenceObjectName": "HideableTable_26",
+      "ID": 501
     },
     {
-      "key": "DropHealpack",
-      "assetType": "Prefab",
-      "categoryType": "Item",
-      "position": {},
-      "referenceObjectName": "HideableTable_25"
+      "Key": "DropHealpack",
+      "AssetType": "Prefab",
+      "CategoryType": "Item",
+      "Position": {},
+      "ReferenceObjectName": "HideableTable_25",
+      "ID": 501
     },
     {
-      "key": "DropHealpack",
-      "assetType": "Prefab",
-      "categoryType": "Item",
-      "position": {},
-      "referenceObjectName": "HideableTable_21"
+      "Key": "DropHealpack",
+      "AssetType": "Prefab",
+      "CategoryType": "Item",
+      "Position": {},
+      "ReferenceObjectName": "HideableTable_21",
+      "ID": 501
     },
     {
-      "key": "DropHealpack",
-      "assetType": "Prefab",
-      "categoryType": "Item",
-      "position": {},
-      "referenceObjectName": "HideableTable_8"
+      "Key": "DropHealpack",
+      "AssetType": "Prefab",
+      "CategoryType": "Item",
+      "Position": {},
+      "ReferenceObjectName": "HideableTable_8",
+      "ID": 501
     }
   ]
 }
