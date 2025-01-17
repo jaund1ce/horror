@@ -6,9 +6,10 @@ public class RandomRotationOnDestroy : MonoBehaviour
     // 인스펙터에서 설정할 대상 오브젝트들 (최대 11개)
     public GameObject[] targetObjects = new GameObject[11];
 
-    // 이 오브젝트가 파괴되기 전에 실행될 Unity 메서드
+
     private void OnDestroy()
     {
+
         // 모든 타겟 오브젝트에 대해 처리
         foreach (GameObject targetObject in targetObjects)
         {
