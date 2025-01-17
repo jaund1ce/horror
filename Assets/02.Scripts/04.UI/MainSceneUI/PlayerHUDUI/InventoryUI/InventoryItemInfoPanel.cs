@@ -83,7 +83,7 @@ public class InventoryItemInfoPanelelController : MonoBehaviour
         }
 
         SoundManger.Instance.MakeEnviornmentSound("Click3");
-        player.Input.EquipMent.EquipNew(player.CurrentEquipItem);
+        player.EquipItem(Inventory.CurrentInventoryData);
         player.ChangeEquip();
         ChangePanelText(currentItemData);
     }
