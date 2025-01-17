@@ -4,17 +4,15 @@ using UnityEngine;
 
 public abstract class SceneBase : MonoBehaviour
 {
-    public Transform uiTransform; // UI 오브젝트가 배치될 부모 Transform을 저장합니다.
+   // public Transform uiTransform; // UI 오브젝트가 배치될 부모 Transform을 저장합니다.
                                   // UIManager가 이를 참조하여 동적으로 생성된 UI를 적절한 위치에 배치합니다
                                   // 씬 전환 시에도 동일한 구조를 유지하기 위해 사용됩니다.
-    public Transform mapTransform;
 
     protected virtual void Awake()
     {
-        UIManager.UITransform = uiTransform; // UIManager의 정적 변수 UITransform에
+       // UIManager.UITransform = uiTransform; // UIManager의 정적 변수 UITransform에
                                              // 현재 씬의 uiTransform을 할당합니다.
                                              // 이를 통해 UIManager는 새롭게 생성된 UI를 올바르게 배치할 수 있습니다.
-        MapManager.MapTransform = mapTransform;
 
         if (!Main_SceneManager.Instance.isDontDestroy) // Main_SceneManager의 isDontDestroy가 false인 경우
         {
@@ -40,7 +38,6 @@ public abstract class SceneBase : MonoBehaviour
 
     protected virtual void OnDestroy()
     {
-        uiTransform = null; // uiTransform을 null로 설정하여 메모리 누수를 방지합니다.
-        mapTransform = null;
+       // uiTransform = null; // uiTransform을 null로 설정하여 메모리 누수를 방지합니다.
     }
 }

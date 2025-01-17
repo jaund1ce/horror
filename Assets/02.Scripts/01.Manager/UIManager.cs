@@ -12,7 +12,7 @@ public class UIManager : mainSingleton<UIManager>
     public static int ScreenWidth = 1920; // 화면 너비 기준 해상도를 설정합니다.
     public static int ScreenHeight = 1080; // 화면 높이 기준 해상도를 설정합니다.
 
-    public static Transform UITransform
+/*    public static Transform UITransform
     {
         get
         {
@@ -21,7 +21,7 @@ public class UIManager : mainSingleton<UIManager>
             return uiTransform; // uiTransform을 반환합니다.
         }
         set { uiTransform = value; }  // uiTransform을 설정합니다.
-    }
+    }*/
 
     private Dictionary<string, BaseUI> uiList = new Dictionary<string, BaseUI>();
 
@@ -87,7 +87,7 @@ public class UIManager : mainSingleton<UIManager>
     {
         var newCanvasObject = new GameObject(uiName + " Canvas"); // 새 Canvas GameObject를 생성합니다.
 
-        newCanvasObject.transform.SetParent(UIManager.UITransform); // 생성된 Canvas를 UI 부모 Transform에 연결합니다.
+        //newCanvasObject.transform.SetParent(UIManager.UITransform); // 생성된 Canvas를 UI 부모 Transform에 연결합니다.
 
         var canvas = newCanvasObject.gameObject.AddComponent<Canvas>(); // Canvas 컴포넌트를 추가합니다.
         canvas.renderMode = RenderMode.ScreenSpaceOverlay; // Canvas를 화면 전체에 표시되도록 설정합니다.

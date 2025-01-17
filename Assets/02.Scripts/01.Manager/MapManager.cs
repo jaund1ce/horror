@@ -25,19 +25,9 @@ public class SpawnDataArrayWrapper
 
 public class MapManager : mainSingleton<MapManager>
 {
-    public static Transform MapTransform
-    {
-        get
-        {
-            if (mapTransform == null)
-                mapTransform = FindFirstObjectByType<SceneBase>().mapTransform; // 현재 활성화된 SceneBase의 mapTransform 가져오기
-            return mapTransform;
-        }
-        set { mapTransform = value; }
-    }
     public string NowMapName = "";
 
-    private static Transform mapTransform;
+
     private Dictionary<string, GameObject> mapList = new Dictionary<string, GameObject>();
     
 
@@ -76,7 +66,7 @@ public class MapManager : mainSingleton<MapManager>
     // 맵 로드
     private GameObject LoadMap(GameObject prefab, string mapName)
     {
-        var newMapObject = Instantiate(prefab, MapTransform);
+        var newMapObject = Instantiate(prefab);
         newMapObject.name = mapName;
         return newMapObject;
     }
