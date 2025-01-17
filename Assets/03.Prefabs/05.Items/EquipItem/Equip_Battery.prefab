@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3806999073392957278}
-  - component: {fileID: 7174527379297107840}
   - component: {fileID: 7951593303915416376}
   m_Layer: 3
   m_Name: Equip_Battery
@@ -27,34 +26,13 @@ Transform:
   m_GameObject: {fileID: 5553327899995807929}
   serializedVersion: 2
   m_LocalRotation: {x: -0.0077412967, y: -0.025383392, z: 0.13036694, w: 0.9911106}
-  m_LocalPosition: {x: 0.1, y: -0.01, z: 0}
+  m_LocalPosition: {x: 0.03, y: -0.02, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7164396380285120622}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -0.5, y: -3, z: 15}
---- !u!95 &7174527379297107840
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5553327899995807929}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 20422f81e80f51b498851b37fd642fbc, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &7951593303915416376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,7 +56,7 @@ GameObject:
   - component: {fileID: 7164396380285120622}
   - component: {fileID: 3636439224087588924}
   - component: {fileID: 3209889223003929218}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Battery
   m_TagString: Untagged
   m_Icon: {fileID: 0}

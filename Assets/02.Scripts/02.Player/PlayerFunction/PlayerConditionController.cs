@@ -8,7 +8,6 @@ public class PlayerConditionController : MonoBehaviour
     [HideInInspector]public bool IsDie;
 
     [SerializeField] private float maxBatteryCapacity;
-    public float PassiveBatteryCapacity;
     public float BatteryCapacity = -1f;
     [SerializeField] private float BatteryCapacityUseAmount = 1f;
     public bool OnFlash;

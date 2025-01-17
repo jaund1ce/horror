@@ -18,9 +18,9 @@ MonoBehaviour:
     ItemNameKor: "\uBC30\uD130\uB9AC"
     ItemType: 2
     ItemEffect: "\uC190\uC804\uB4F1 \uBC30\uD130\uB9AC"
-    ItemHealHealth: 0
+    ItemHealHealth: 100
     ItemHealMental: 0
-    ItemDropAmount: 0
+    ItemDropAmount: 1
     ItemDescription: "\uC190\uC804\uB4F1\uC758 \uC804\uB825\uC744 \uB2F4\uACE0 \uC788\uB294
       \uBC30\uD130\uB9AC"
     Stackable: 1

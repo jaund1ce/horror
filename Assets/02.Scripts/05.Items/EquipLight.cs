@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class EquipLight : EquipItemBase
@@ -6,7 +7,11 @@ public class EquipLight : EquipItemBase
     private Light handLight;
     private bool usable = false;
     private float batteryCapacity;
-    public bool onFlash = false;   
+    public bool onFlash;
+    private bool isCoroutineStarted;
+
+    private Coroutine batteryWarningCoroutine; // 배터리 경고용 Coroutine
+    private PlayerConditionController playerConditionController;
 
     protected override void Start()
     {
@@ -14,8 +19,22 @@ public class EquipLight : EquipItemBase
         handLight = MainGameManager.Instance.Player.gameObject.GetComponentInChildren<Light>();
         ChangeLightIntencity();
         handLight.enabled = false;
-        batteryCapacity = MainGameManager.Instance.Player.PlayerConditionController.BatteryCapacity;
-        onFlash = MainGameManager.Instance.Player.PlayerConditionController.OnFlash;
+        playerConditionController = MainGameManager.Instance.Player.PlayerConditionController;
+    }
+
+    public void Update()
+    {
+        
+
+        batteryCapacity = playerConditionController.BatteryCapacity;
+        if (playerConditionController.OnFlash == true)
+        {
+            if (batteryCapacity <= 25 && !isCoroutineStarted )
+            {
+                batteryWarningCoroutine = StartCoroutine(BatteryWarning());
+            }
+        }
+
     }
 
     private void ChangeLightIntencity()
@@ -53,7 +72,8 @@ public class EquipLight : EquipItemBase
             SoundManger.Instance.MakeEnviornmentSound("Flashlight_On");
             handLight.enabled = true;
             OnUsing = true;
-            onFlash = true;
+            playerConditionController.OnFlash = true;
+
             Debug.Log(batteryCapacity);
         }
         else
@@ -61,10 +81,31 @@ public class EquipLight : EquipItemBase
             SoundManger.Instance.MakeEnviornmentSound("Flashlight_Off");
             handLight.enabled = false;
             OnUsing = false;
-            onFlash = false;
+            playerConditionController.OnFlash = false;
+            if (batteryWarningCoroutine != null)
+            {
+                StopCoroutine(BatteryWarning());
+                isCoroutineStarted = false;
+            }
             Debug.Log(batteryCapacity);
         }
         usable = true;
+    }
+
+    private IEnumerator BatteryWarning()
+    {
+        isCoroutineStarted = true;
+        while (batteryCapacity > 0 && batteryCapacity <= 25)
+        {
+            handLight.enabled = !handLight.enabled; // 손전등 상태 토글
+            yield return new WaitForSeconds(1f); // 1초 간격 대기
+        }
+
+        // 배터리 상태가 벗어나면 손전등 끔
+        handLight.enabled = false;
+        OnUsing = false;
+        playerConditionController.OnFlash = false;
+        isCoroutineStarted = false;
     }
 }
 
