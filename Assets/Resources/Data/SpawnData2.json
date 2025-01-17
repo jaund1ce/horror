@@ -1,14 +1,6 @@
 {
   "Data": [
     {
-      "Key": "Player_noneParkourtic2",
-      "AssetType": "Prefab",
-      "CategoryType": "Player",
-      "Position": {},
-      "ReferenceObjectName": "SpawnPoint",
-      "ID": 1
-    },
-    {
       "Key": "Creature",
       "AssetType": "Prefab",
       "CategoryType": "Enemy",

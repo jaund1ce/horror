@@ -89,7 +89,7 @@ public class DataManager : mainSingleton<DataManager>
         MapData.MapName = MapManager.Instance.NowMapName;
 
         // MapData 저장 (기존 코드 유지)
-        SaveSystem.Save(MapData, "MapData.json");
+        SaveSystem.Save(MapData, Json.MapData);
 
         Debug.Log("Game Saved!"); // 게임 저장 완료 로그
     }
@@ -325,12 +325,12 @@ public class DataManager : mainSingleton<DataManager>
         SavePaperData = SaveSystem.Load<Dictionary<int, SpawnData>>(Json.PaperData);
         SavePuzzleData = SaveSystem.Load<Dictionary<string, bool>>(Json.PuzzleData);
 
-        if (SaveEnemyData != null) // 저장시에 적이 없을경우는 없기에 최상위 if문으로 NewGame인지 LoadGame인지 검출중
+        if (SaveEnemyData.Count != 0) // 저장시에 적이 없을경우는 없기에 최상위 if문으로 NewGame인지 LoadGame인지 검출중
         {
             LoadEnemyData();
-            if (SaveItemData != null) LoadItemData();
-            if (SavePaperData != null) LoadPaperData();
-            if (SavePuzzleData != null) LoadPuzzleData();
+            if (SaveItemData.Count != 0) LoadItemData();
+            if (SavePaperData.Count != 0) LoadPaperData();
+            if (SavePuzzleData.Count != 0) LoadPuzzleData();
         }
         else
         {
