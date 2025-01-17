@@ -30,8 +30,6 @@ public class PlayerAirState : PlayerBaseState
     private void ChangePlayerStateEnter()
     {
         stateMachine.isAir = true;
-        stateMachine.Player.Input.VirtualCameraNoise.m_AmplitudeGain = 2f;
-        stateMachine.Player.Input.VirtualCameraNoise.m_FrequencyGain = 1f;
     }
 
     private void ChangePlayerStateExit()
