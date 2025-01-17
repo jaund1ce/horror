@@ -18,8 +18,8 @@ public class EquipBattery : EquipItemBase
 
     public override void OnUse()
     {
-        MainGameManager.Instance.Player.PlayerConditionController.AddHealth(inventoryData.ItemData.itemSO.ItemHealHealth);
-        SoundManger.Instance.MakeEnviornmentSound("HealPackUse");
+        MainGameManager.Instance.Player.PlayerConditionController.AddBatteryCapacity(inventoryData.ItemData.itemSO.ItemHealHealth);
+        SoundManger.Instance.MakeEnviornmentSound("BatteryChange");
         base.OnUse();
     }
 

@@ -6,6 +6,7 @@ public class EquipLight : EquipItemBase
     private Light handLight;
     private bool usable = false;
     private float batteryCapacity;
+    public bool onFlash = false;   
 
     protected override void Start()
     {
@@ -14,6 +15,7 @@ public class EquipLight : EquipItemBase
         ChangeLightIntencity();
         handLight.enabled = false;
         batteryCapacity = MainGameManager.Instance.Player.PlayerConditionController.BatteryCapacity;
+        onFlash = MainGameManager.Instance.Player.PlayerConditionController.OnFlash;
     }
 
     private void ChangeLightIntencity()
@@ -51,12 +53,16 @@ public class EquipLight : EquipItemBase
             SoundManger.Instance.MakeEnviornmentSound("Flashlight_On");
             handLight.enabled = true;
             OnUsing = true;
+            onFlash = true;
+            Debug.Log(batteryCapacity);
         }
         else
         {
             SoundManger.Instance.MakeEnviornmentSound("Flashlight_Off");
             handLight.enabled = false;
             OnUsing = false;
+            onFlash = false;
+            Debug.Log(batteryCapacity);
         }
         usable = true;
     }
