@@ -12100,7 +12100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectSO: {fileID: 0}
-  paperData: {fileID: 11400000, guid: 479092b6e9845c74aaa90c5698880e24, type: 2}
+  PaperID: 0
 --- !u!114 &2858634983643978706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14998,7 +14998,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectSO: {fileID: 0}
-  paperData: {fileID: 11400000, guid: 479092b6e9845c74aaa90c5698880e24, type: 2}
+  PaperID: 0
 --- !u!1 &1136386391008225884
 GameObject:
   m_ObjectHideFlags: 0
@@ -46636,7 +46636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectSO: {fileID: 0}
-  paperData: {fileID: 11400000, guid: 479092b6e9845c74aaa90c5698880e24, type: 2}
+  PaperID: 0
 --- !u!1 &3249303617628090007
 GameObject:
   m_ObjectHideFlags: 0
@@ -73770,7 +73770,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectSO: {fileID: 0}
-  paperData: {fileID: 11400000, guid: 479092b6e9845c74aaa90c5698880e24, type: 2}
+  PaperID: 0
 --- !u!1 &5197708014950217961
 GameObject:
   m_ObjectHideFlags: 0
@@ -96297,7 +96297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectSO: {fileID: 0}
-  paperData: {fileID: 11400000, guid: 479092b6e9845c74aaa90c5698880e24, type: 2}
+  PaperID: 0
 --- !u!1 &7039928409331213672
 GameObject:
   m_ObjectHideFlags: 0
