@@ -7,6 +7,9 @@ public class PlayerConditionController : MonoBehaviour
     public event Action OnDie;
     [HideInInspector]public bool IsDie;
 
+    [SerializeField] private float maxBatteryCapacity;
+    public float PassiveBatteryCapacity;
+    public float BatteryCapacity = -1f;
     [SerializeField] private float maxHealth;
     public float PassiveHealth;
     public float Health = -1f;
@@ -34,8 +37,11 @@ public class PlayerConditionController : MonoBehaviour
         {
             Stamina = maxStamina;
         }
+        if (BatteryCapacity < 0)
+        {
+            BatteryCapacity = maxBatteryCapacity;
+        }
 
-        
         IsDie = false;
     }
     private void Update()

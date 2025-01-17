@@ -5,6 +5,7 @@ public class EquipLight : EquipItemBase
 {
     private Light handLight;
     private bool usable = false;
+    private float batteryCapacity;
 
     protected override void Start()
     {
@@ -12,6 +13,7 @@ public class EquipLight : EquipItemBase
         handLight = MainGameManager.Instance.Player.gameObject.GetComponentInChildren<Light>();
         ChangeLightIntencity();
         handLight.enabled = false;
+        batteryCapacity = MainGameManager.Instance.Player.PlayerConditionController.BatteryCapacity;
     }
 
     private void ChangeLightIntencity()
@@ -42,6 +44,10 @@ public class EquipLight : EquipItemBase
     {
         if (!OnUsing)
         {
+            if(batteryCapacity <= 0)
+            {
+                return;
+            }
             SoundManger.Instance.MakeEnviornmentSound("Flashlight_On");
             handLight.enabled = true;
             OnUsing = true;
