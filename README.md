@@ -53,7 +53,7 @@
 <br>저장 할 해당 프리팹의 고유 키, 이름, 포지션 등을 딕셔너리로 저장하고 그 딕셔너리를 JsonData로 변환하여 고유의 파일로 저장합니다.  
 <br>Load 버튼 클릭 시 해당 씬으로 변경되게 되며, Json으로 저장되어있는 파일을 딕셔너리로 변환 후 맵, 플레이어, 아이템, 적 등 순으로 프리팹을 생성하여 맵에 배치합니다. 
 <br> 해당 프리팹에 변경점이 필요한 경우 Instantiate 시에 해당 컴포넌트의 값을 변경하여 생성합니다.
-<br><br><img src = "https://github.com/user-attachments/assets/a08c9c2a-7984-474e-a440-a09ceae040a3">
+<br><br><img src = "https://github.com/user-attachments/assets/17a74ac7-d261-4b9f-a7a1-9944ad5e7fbf">
 </details>
 
 <details>
@@ -63,6 +63,7 @@
 <br>플레이어가 존재하지 않는 등의 특수한 경우, 스스로 input system을 선언하여 사용하고 삭제하는 방식을 사용하였습니다.
 
   <br>( Shift를 누르면 statemachine을 변경하면서, 다른 스크립트의 값도 변경 // 인벤토리를 이용 중이거나 키패드와 상호작용 중일때 아이템의 사용이 불가능하게 만듦 )
+<br><br><img src = "https://github.com/user-attachments/assets/bd018520-689b-496f-b9b4-6dc1df076393">
 </details>
 
 <details>
