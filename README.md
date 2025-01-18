@@ -70,6 +70,7 @@
 <summary> CinemachineCamera를 활용한 카메라 이동, 연출 , Postprocesisng을 이용한 화면 효과 </summary>
 <br>CinemachineCamera를 활용하여 priority를 다르게 주는 등의 방식으로, 처음 게임을 플레이할 때 나오는 인트로나 죽을 때 나오는 점프스퀘어 등의 연출을 줍니다.
 <br>또한, 현재 버전의 CinemachineCamera 에서는 Postprocesisng 적용 방식이 최신 버전과는 다르기 때문에 volume을 통해서 어안렌즈 등의 원하는 카메라 효과를 넣어주고 스테이지마다 다른 분위기를 연출하였습니다.
+<br><br><img src = "https://github.com/user-attachments/assets/9d4d37cd-7f37-4008-8268-76172a53e86e">
 </details>
 
 <details>
@@ -95,7 +96,8 @@
 <br>마우스 클릭시 유저의 락픽 각도와 정답 각도의 오차를 계산하여 오차가 많이 날 경우 많은 떨림과 함께 락픽이 부러지게 되며,  
 <br>오차가 많이 나지 않을 경우 그 값을 정규화 하여 차이가 나는 정도에 따라 문고리 돌아가는 정도를 다르게 주어 유저가 어느정도 정답에 근접한지 식별하기 용이하도록 구현하였습니다.
 <br><br><img src = "https://github.com/user-attachments/assets/0bb8fe8b-1b2a-490d-bdfa-c1223d0e2a07"> 
-
+<br><br><img src = "https://github.com/user-attachments/assets/cd5723ca-42b6-4da7-a4bf-503bd3b9e6cf"> 
+  
 </details>
 
 #### 게임 외의 기능
