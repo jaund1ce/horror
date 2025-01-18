@@ -1190,6 +1190,7 @@ GameObject:
   - component: {fileID: 1231375331832883226}
   - component: {fileID: 1258291337456948510}
   - component: {fileID: 2696046947804985317}
+  - component: {fileID: 8437572250453519712}
   m_Layer: 0
   m_Name: statue_2
   m_TagString: Untagged
@@ -1262,6 +1263,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8437572250453519712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99325920571202244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8724178fffae6d64996779c0839f5046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &100660244721492566
 GameObject:
   m_ObjectHideFlags: 0
@@ -7530,6 +7543,7 @@ GameObject:
   - component: {fileID: 235735643120663336}
   - component: {fileID: 3812960935167259789}
   - component: {fileID: 1373224658673139783}
+  - component: {fileID: 3941291430367492543}
   m_Layer: 0
   m_Name: statue_2
   m_TagString: Untagged
@@ -7602,6 +7616,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3941291430367492543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580490450065596818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8724178fffae6d64996779c0839f5046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &585282768751888129
 GameObject:
   m_ObjectHideFlags: 0
@@ -12113,18 +12139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9019ce660b637bd4da347c8d9c6b2382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetObjects:
-  - {fileID: 580490450065596818}
-  - {fileID: 5581342617983931887}
-  - {fileID: 9073909550159378937}
-  - {fileID: 1656802561245396681}
-  - {fileID: 5904216187896802683}
-  - {fileID: 6283097801281527048}
-  - {fileID: 4901277362362369954}
-  - {fileID: 99325920571202244}
-  - {fileID: 2030094894822496629}
-  - {fileID: 2455886309141871764}
-  - {fileID: 5850702254451767438}
 --- !u!1 &904396995023932593
 GameObject:
   m_ObjectHideFlags: 0
@@ -22088,6 +22102,7 @@ GameObject:
   - component: {fileID: 1294799399785199651}
   - component: {fileID: 4622152143254211417}
   - component: {fileID: 4988384621866971398}
+  - component: {fileID: 5414016960849114086}
   m_Layer: 0
   m_Name: statue_2
   m_TagString: Untagged
@@ -22160,6 +22175,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5414016960849114086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656802561245396681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8724178fffae6d64996779c0839f5046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1668895143094893079
 GameObject:
   m_ObjectHideFlags: 0
@@ -28292,6 +28319,7 @@ GameObject:
   - component: {fileID: 851517840821167538}
   - component: {fileID: 584170316682797705}
   - component: {fileID: 6084499690761188146}
+  - component: {fileID: 4766515993918410089}
   m_Layer: 0
   m_Name: statue_2
   m_TagString: Untagged
@@ -28364,6 +28392,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4766515993918410089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030094894822496629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8724178fffae6d64996779c0839f5046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2035782192133752448
 GameObject:
   m_ObjectHideFlags: 0
@@ -33594,6 +33634,7 @@ GameObject:
   - component: {fileID: 8712590819577065444}
   - component: {fileID: 6979370555865085401}
   - component: {fileID: 6974431485057313993}
+  - component: {fileID: 7975025364688820552}
   m_Layer: 0
   m_Name: statue_2
   m_TagString: Untagged
@@ -33666,6 +33707,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7975025364688820552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2455886309141871764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8724178fffae6d64996779c0839f5046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2462441676116582428
 GameObject:
   m_ObjectHideFlags: 0
@@ -69394,6 +69447,7 @@ GameObject:
   - component: {fileID: 4741554753275111174}
   - component: {fileID: 4778042406565622652}
   - component: {fileID: 5145501354836254404}
+  - component: {fileID: 1478462125063354407}
   m_Layer: 0
   m_Name: statue_2
   m_TagString: Untagged
@@ -69466,6 +69520,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1478462125063354407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4901277362362369954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8724178fffae6d64996779c0839f5046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4907116019151691168
 GameObject:
   m_ObjectHideFlags: 0
@@ -79431,6 +79497,7 @@ GameObject:
   - component: {fileID: 6427852076976488454}
   - component: {fileID: 1054490660916388029}
   - component: {fileID: 3866277712485536090}
+  - component: {fileID: 3176647158765641385}
   m_Layer: 0
   m_Name: statue_2
   m_TagString: Untagged
@@ -79503,6 +79570,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3176647158765641385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5581342617983931887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8724178fffae6d64996779c0839f5046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5584386686559063263
 GameObject:
   m_ObjectHideFlags: 0
@@ -82663,6 +82742,7 @@ GameObject:
   - component: {fileID: 492887088098620804}
   - component: {fileID: 2874748460820798660}
   - component: {fileID: 5119444137964516513}
+  - component: {fileID: 2548241493913124836}
   m_Layer: 0
   m_Name: statue_2
   m_TagString: Untagged
@@ -82735,6 +82815,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2548241493913124836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5850702254451767438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8724178fffae6d64996779c0839f5046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5852355953830069889
 GameObject:
   m_ObjectHideFlags: 0
@@ -83217,6 +83309,7 @@ GameObject:
   - component: {fileID: 8531036265173423210}
   - component: {fileID: 686869914765851699}
   - component: {fileID: 619145989347406019}
+  - component: {fileID: 3609262342126413983}
   m_Layer: 0
   m_Name: statue_2
   m_TagString: Untagged
@@ -83289,6 +83382,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3609262342126413983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5904216187896802683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8724178fffae6d64996779c0839f5046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5911382159647556925
 GameObject:
   m_ObjectHideFlags: 0
@@ -87391,6 +87496,7 @@ GameObject:
   - component: {fileID: 2122728798022050622}
   - component: {fileID: 2273402194778400164}
   - component: {fileID: 9046464901796045369}
+  - component: {fileID: 7189024620248470160}
   m_Layer: 0
   m_Name: statue_2
   m_TagString: Untagged
@@ -87463,6 +87569,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7189024620248470160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6283097801281527048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8724178fffae6d64996779c0839f5046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6299664645025222430
 GameObject:
   m_ObjectHideFlags: 0
@@ -123823,6 +123941,7 @@ GameObject:
   - component: {fileID: 6488677950465015572}
   - component: {fileID: 4475956363333252434}
   - component: {fileID: 3730172240129718864}
+  - component: {fileID: 491282124612597401}
   m_Layer: 0
   m_Name: statue_2
   m_TagString: Untagged
@@ -123895,6 +124014,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &491282124612597401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9073909550159378937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8724178fffae6d64996779c0839f5046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9100341845254446643
 GameObject:
   m_ObjectHideFlags: 0

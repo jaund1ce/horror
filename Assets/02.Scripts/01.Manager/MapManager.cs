@@ -207,7 +207,7 @@ public class MapManager : mainSingleton<MapManager>
             paper.PaperID = data.ID;
             if (paper.PaperID == 1004) 
             {
-                spawnObject.AddComponent<RandomRotationOnDestroy>();
+                spawnObject.AddComponent<OnDestroyPaper>();
             }
         }
     }

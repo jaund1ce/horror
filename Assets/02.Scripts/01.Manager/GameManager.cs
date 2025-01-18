@@ -11,6 +11,7 @@ public class MainGameManager : mainSingleton<MainGameManager>
     public bool getNewPaper;
     public bool IsHold;
     public Action<float> MakeSoundAction;
+    public Action<GameObject> OnObjectDestroyedAction;
     public Player Player;
     public EnemyAI[] Enemy;
     public Component component;
@@ -51,5 +52,11 @@ public class MainGameManager : mainSingleton<MainGameManager>
     public void MakeSound(float amount)
     {
         MakeSoundAction?.Invoke(amount);
+    }
+
+    public void NotifyObjectDestroyed(GameObject destroyedObject)
+    {
+        // 파괴된 오브젝트에 대한 처리를 다른 구독자에게 알림
+        OnObjectDestroyedAction?.Invoke(destroyedObject);
     }
 }
