@@ -14,7 +14,7 @@ public class Paper : ObjectBase
 
     public override string GetInteractPrompt()
     {
-        return $"{PaperID}";
+        return "Read";
     }
     public override void OnInteract()
     {

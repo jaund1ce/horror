@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemSO:
     ID: 1009
-    ItemNameEng: healpack
+    ItemNameEng: Healpack
     ItemNameKor: "\uCC44\uB825\uD329"
     ItemType: 2
     ItemEffect: "\uCCB4\uB825\uD68C\uBCF5"

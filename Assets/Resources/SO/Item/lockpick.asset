@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemSO:
     ID: 1002
-    ItemNameEng: lockpick
+    ItemNameEng: Lockpick
     ItemNameKor: "\uB77D\uD53D"
     ItemType: 0
     ItemEffect: "\uB77D\uD53D\uD37C\uC990 \uD480\uB54C \uC18C\uBAA8"

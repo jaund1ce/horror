@@ -341,10 +341,6 @@ public class SoundManger : mainSingleton<SoundManger>
         {
             Environment.PlayOneShot(value);//오브젝트의 소리는 한번만 생성된다.
         }
-        else
-        {
-            Debug.Log($"No {environmentName} Enviorment Sound Clip!");
-        }        
     }
 
     public void MakeEnviormentSound(string enviormentName, float amount = 1f)

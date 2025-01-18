@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemSO:
     ID: 1005
-    ItemNameEng: flash
+    ItemNameEng: Flash
     ItemNameKor: "\uC190\uC804\uB4F1"
     ItemType: 1
     ItemEffect: "\uAD11\uC6D0"

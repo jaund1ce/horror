@@ -51,7 +51,6 @@ public static class SaveSystem
         try
         {
             string json = File.ReadAllText(path);
-            Debug.Log($"Loading data from {fileName}: {json}"); // 수정됨: JSON 디버깅 추가
             return JsonConvert.DeserializeObject<T>(json); // 수정됨: Newtonsoft.Json으로 역직렬화
         }
         catch (Exception e)

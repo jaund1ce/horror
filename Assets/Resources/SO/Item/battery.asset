@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemSO:
     ID: 1010
-    ItemNameEng: battery
+    ItemNameEng: Battery
     ItemNameKor: "\uBC30\uD130\uB9AC"
     ItemType: 2
     ItemEffect: "\uC190\uC804\uB4F1 \uBC30\uD130\uB9AC"
