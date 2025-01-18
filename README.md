@@ -53,6 +53,7 @@
 <br>저장 할 해당 프리팹의 고유 키, 이름, 포지션 등을 딕셔너리로 저장하고 그 딕셔너리를 JsonData로 변환하여 고유의 파일로 저장합니다.  
 <br>Load 버튼 클릭 시 해당 씬으로 변경되게 되며, Json으로 저장되어있는 파일을 딕셔너리로 변환 후 맵, 플레이어, 아이템, 적 등 순으로 프리팹을 생성하여 맵에 배치합니다. 
 <br> 해당 프리팹에 변경점이 필요한 경우 Instantiate 시에 해당 컴포넌트의 값을 변경하여 생성합니다.
+<br><br><img src = "https://github.com/user-attachments/assets/a08c9c2a-7984-474e-a440-a09ceae040a3">
 </details>
 
 <details>
@@ -75,8 +76,7 @@
 <br>FSM은 플레이어와 몬스터들은 상태(State)와 전이(Transition)를 기반으로 동작합니다. 
 <br>유한한 상태 집합에서 하나의 상태만 활성 상태로 유지되며, 특정 이벤트에 따라 상태가 전이됩니다. 
 <br>상태의 변화는 특정 조건에서만 이루어지기 때문에 버그 발생의 여지가 적고, 이후에 플레이어나 몬스터에게 새로운 상태가 추가되더라도 쉽게 유지보수가 가능합니다.
-    <br>  <br>
-<img src = "https://github.com/user-attachments/assets/d9698a27-66f7-43ef-9c97-ad5b4ea839ed"> 
+<br><br><img src = "https://github.com/user-attachments/assets/d9698a27-66f7-43ef-9c97-ad5b4ea839ed"> 
 </details>
 
 <details>
@@ -93,6 +93,8 @@
 <br>&nbsp; 락픽 퍼즐의 경우, 마우스의 Delta값을 받아 락픽의 각도를 조정합니다. 
 <br>마우스 클릭시 유저의 락픽 각도와 정답 각도의 오차를 계산하여 오차가 많이 날 경우 많은 떨림과 함께 락픽이 부러지게 되며,  
 <br>오차가 많이 나지 않을 경우 그 값을 정규화 하여 차이가 나는 정도에 따라 문고리 돌아가는 정도를 다르게 주어 유저가 어느정도 정답에 근접한지 식별하기 용이하도록 구현하였습니다.
+<br><br><img src = "https://github.com/user-attachments/assets/0bb8fe8b-1b2a-490d-bdfa-c1223d0e2a07"> 
+
 </details>
 
 #### 게임 외의 기능
@@ -117,5 +119,7 @@
 
 <details>
 <summary> Upper Layer를 사용하여 효율적인 매니메이션 관리 </summary>
-<br>플레이어의 다양한 상태와 다양한 아이템에 따른 애니메이션을 경우의 수만큼 만들지 않고, 플레이어의 상체에 아이템 장착 시 우선적으로 적용할 upper layer를 적용하여 이후에 다른 상태와 아이템이 추가 되어도 적은 비용으로 추가 할 수 있게 만들었습니다. 
+<br>플레이어의 다양한 상태와 다양한 아이템에 따른 애니메이션을 경우의 수만큼 만들지 않고, 플레이어의 상체에 아이템 장착 시 우선적으로 적용할 upper layer를 적용하여 이후에 다른 상태와 아이템이 추가 되어도 적은 비용으로 추가 할 수 있게 만들었습니다.  
+<br><br><img src = "https://github.com/user-attachments/assets/5d4c96ad-e88e-4044-bfdf-efd82a98b8d0">
+
 </details>
