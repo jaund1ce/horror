@@ -41,11 +41,8 @@
   - Unity (2022.3.17f1 ver)
   - Visual studio
   - Json
-## 4. 사용한 기술
-<details>
-<summary> Singleton 구조의 매니져들 </summary>
-내용1
-</details>
+## 4. 게임의 흐름과 사용한 기술
+
 
 <details>
 <summary> FSM 구조의 플레이어와 몬스터들  </summary>
@@ -63,6 +60,14 @@ Input System 의 구독과 구독 해제 기능을 사용하여서 한번의 입
 <details>
 <summary> CinemachineCamera를 활용한 카메라 이동, 연출 , Postprocesisng을 이용한 화면 효과 </summary>
 CinemachineCamera를 활용하여서 특정 상황에 priority를 다르게 주는 등의 방식으로 연출을 주고, 현재 버전의 CinemachineCamera에서는 Postprocesisng 적용 방식이 최신 버전과는 다르기 때문에 volume을 통해서 원하는 카메라 효과를 넣어주고 스테이지마다 다른 분위기를 연출하였습니다.
+</details>
+
+#### 게임 외의 기능
+
+  
+<details>
+<summary> Singleton 구조의 매니져들 </summary>
+내용1
 </details>
 
 <details>
