@@ -29,7 +29,7 @@ public class EquipLight : EquipItemBase
         batteryCapacity = playerConditionController.BatteryCapacity;
         if (playerConditionController.OnFlash == true)
         {
-            if (batteryCapacity <= 25 && !isCoroutineStarted )
+            if (batteryCapacity <= 5 && !isCoroutineStarted )
             {
                 batteryWarningCoroutine = StartCoroutine(BatteryWarning());
             }
@@ -96,10 +96,10 @@ public class EquipLight : EquipItemBase
     private IEnumerator BatteryWarning()
     {
         isCoroutineStarted = true;
-        while (batteryCapacity > 0 && batteryCapacity <= 25)
+        while (batteryCapacity > 0 && batteryCapacity <= 5)
         {
             handLight.enabled = !handLight.enabled; // 손전등 상태 토글
-            yield return new WaitForSeconds(1f); // 1초 간격 대기
+            yield return new WaitForSeconds(0.5f); // 1초 간격 대기
         }
 
         // 배터리 상태가 벗어나면 손전등 끔

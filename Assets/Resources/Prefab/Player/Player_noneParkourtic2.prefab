@@ -841,7 +841,7 @@ MonoBehaviour:
   IsDie: 0
   maxBatteryCapacity: 100
   BatteryCapacity: -1
-  BatteryCapacityUseAmount: 1
+  BatteryCapacityUseAmount: 0.5
   OnFlash: 0
   maxHealth: 100
   PassiveHealth: 1
