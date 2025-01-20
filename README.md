@@ -221,7 +221,7 @@
 <br>Layer를 player로 설정하여 적용시킨 뒤, 충돌 처리 코드 조건문의 조건을 other.gameObject.layer == player 로 설정하였지만 조건문의 조건이 계속해서 충족되지 않았습니다.
 <br>해당 문제의 원인은 other.gameObject.layer 는 int 값으로 계산되고 player는 비트연산자에 의해 2진수로 값이 들어오기 때문이였습니다.
 <br>other.gameObject.layer값을 2진수로 변화해여 문제를 해결하였습니다.
-<br><https://github.com/user-attachments/assets/0000391f-fa0f-46bc-b8a0-3cb2ae2fc884>
+<br><img src = "https://github.com/user-attachments/assets/0000391f-fa0f-46bc-b8a0-3cb2ae2fc884">
 </details>
 
 <details>
