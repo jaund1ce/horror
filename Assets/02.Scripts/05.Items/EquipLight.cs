@@ -24,8 +24,6 @@ public class EquipLight : EquipItemBase
 
     public void Update()
     {
-        
-
         batteryCapacity = playerConditionController.BatteryCapacity;
         if (playerConditionController.OnFlash == true)
         {
@@ -34,7 +32,6 @@ public class EquipLight : EquipItemBase
                 batteryWarningCoroutine = StartCoroutine(BatteryWarning());
             }
         }
-
     }
 
     private void ChangeLightIntencity()
@@ -104,6 +101,7 @@ public class EquipLight : EquipItemBase
 
         // 배터리 상태가 벗어나면 손전등 끔
         handLight.enabled = false;
+        usable = true;
         OnUsing = false;
         playerConditionController.OnFlash = false;
         isCoroutineStarted = false;
