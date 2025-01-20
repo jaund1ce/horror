@@ -1,6 +1,7 @@
 # Shhh... (쉿!)
 
 ## 1. 개요
+<img src = "https://github.com/user-attachments/assets/faea89d8-f44b-4ac8-b602-a67d495e5987">
 - 장르 : 3D, FPS, 호러, 퍼즐, 백룸
 - 플랫폼 : PC (Window)
 - 배포 방식 : itch.io
