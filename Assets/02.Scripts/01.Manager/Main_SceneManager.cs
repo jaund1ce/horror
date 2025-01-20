@@ -196,6 +196,7 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
         MapManager.Instance.LoadAndSpawnObjects(1);
         MapManager.Instance.LoadAndSpawnPapers(1);
         UIManager.Instance.Show<MainUI>();
+        AutoHideVideo();
     }
 
     private void LoadGameInitalize()
@@ -241,8 +242,8 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
     public void AutoHideVideo()
     {
         GameObject targetObject = GameObject.FindGameObjectWithTag("Video");
-        if (targetObject.activeSelf == false)
-        { return; }
+        if (targetObject.activeSelf == false) return; 
+        if (playerActions.Menu != null) playerActions.Menu.performed -= HideVideo;
         UIManager.Instance.Hide<SkipUI>();
         isWaitStopped = true;
         targetObject.SetActive(false); // 오브젝트 비활성화
