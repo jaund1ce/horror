@@ -184,9 +184,9 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
     private void NewGameInitalize() 
     {
         MapManager.Instance.ShowMap<Stage01>();
+        DataManager.Instance.LoadAllItems();
         MapManager.Instance.LoadAndSpawnObjects(1);
         MapManager.Instance.LoadAndSpawnPapers(1);
-        DataManager.Instance.LoadAllItems();
         UIManager.Instance.Show<MainUI>();
     }
 
@@ -202,8 +202,8 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
                 MapManager.Instance.ShowMap<Stage02>();
                 break;
         }
-        DataManager.Instance.LoadGame();
         DataManager.Instance.LoadAllItems();
+        DataManager.Instance.LoadGame();
         UIManager.Instance.Show<MainUI>();
     }
 
