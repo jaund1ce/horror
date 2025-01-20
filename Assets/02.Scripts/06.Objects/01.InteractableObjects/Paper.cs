@@ -14,17 +14,12 @@ public class Paper : ObjectBase
 
     public override string GetInteractPrompt()
     {
-        return $"{PaperID}";
+        return "Read";
     }
     public override void OnInteract()
     {
         MainGameManager.Instance.PaperInteraction.Add(PaperID);
         MainGameManager.Instance.getNewPaper = true;
-        
-        for (int i = 0; i < MainGameManager.Instance.PaperInteraction.Count; i++) 
-        {
-            Debug.Log($"PaperInteractionCount: {MainGameManager.Instance.PaperInteraction[i]}");
-        }
         
         SoundManger.Instance.MakeEnviornmentSound("PaperSound");
         UIManager.Instance.Show<PaperUI>();
