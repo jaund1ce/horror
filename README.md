@@ -66,7 +66,7 @@
 
   <br>( Shift를 누르면 statemachine을 변경하면서, 다른 스크립트의 값도 변경 // 인벤토리를 이용 중이거나 키패드와 상호작용 중일때 아이템의 사용이 불가능하게 만듦 )
 
-<br><img src = "https://github.com/user-attachments/assets/5d4c96ad-e88e-4044-bfdf-efd82a98b8d0" width="400" height="300">
+<br><br><img src = "https://github.com/user-attachments/assets/5d4c96ad-e88e-4044-bfdf-efd82a98b8d0" width="400" height="300">
 <img src = "https://github.com/user-attachments/assets/7ad6b5cf-939c-40b7-b53f-c36b915632bd" width="400" height="300">
 </details>
 
@@ -75,7 +75,7 @@
 <br>CinemachineCamera를 활용하여 priority를 다르게 주는 등의 방식으로, 처음 게임을 플레이할 때 나오는 인트로나 죽을 때 나오는 점프스퀘어 등의 연출을 줍니다.
 <br>또한, 현재 버전의 CinemachineCamera 에서는 Postprocesisng 적용 방식이 최신 버전과는 다르기 때문에 volume을 통해서 어안렌즈 등의 원하는 카메라 효과를 넣어주고 스테이지마다 다른 분위기를 연출하였습니다.
 
-<br><img src = "https://github.com/user-attachments/assets/9d4d37cd-7f37-4008-8268-76172a53e86e" width="400" height="300">
+<br><br><img src = "https://github.com/user-attachments/assets/9d4d37cd-7f37-4008-8268-76172a53e86e" width="400" height="300">
 <img src = "https://github.com/user-attachments/assets/b02de825-4e87-4a15-a695-1db617fbbc00" width="400" height="300">
 </details>
 
@@ -94,7 +94,7 @@
 <br>또한 , 각 객체들이 공통의 부모로부터 상속을 받는경우, 검출이나 비교 등 이 코드적으로 간편해질수 있도록 고려하여 설계하였습니다.
 
 <br><br><img src = "https://github.com/user-attachments/assets/ea207b59-386e-44d7-b5eb-4b95430774ee" width="400" height="300">
-<br><br><img src = "https://github.com/user-attachments/assets/e4115b57-8804-4b08-98b9-1c691e4f2188" width="400" height="300"> 
+<img src = "https://github.com/user-attachments/assets/e4115b57-8804-4b08-98b9-1c691e4f2188" width="400" height="300"> 
 </details>
 
 <details>
@@ -105,10 +105,10 @@
 <br>마우스 클릭시 유저의 락픽 각도와 정답 각도의 오차를 계산하여 오차가 많이 날 경우 많은 떨림과 함께 락픽이 부러지게 되며,  
 <br>오차가 많이 나지 않을 경우 그 값을 정규화 하여 차이가 나는 정도에 따라 문고리 돌아가는 정도를 다르게 주어 유저가 어느정도 정답에 근접한지 식별하기 용이하도록 구현하였습니다.
 
-<br><br><img src = "https://github.com/user-attachments/assets/fea9d418-8a82-404d-aa1f-6aa66d7ffd14">
-<br><br><img src = "https://github.com/user-attachments/assets/f646ae76-fe47-4f93-991d-c81521e95644">
-<br><br><img src = "https://github.com/user-attachments/assets/0bb8fe8b-1b2a-490d-bdfa-c1223d0e2a07"> 
-<br><br><img src = "https://github.com/user-attachments/assets/cd5723ca-42b6-4da7-a4bf-503bd3b9e6cf"> 
+<br><br><img src = "https://github.com/user-attachments/assets/0bb8fe8b-1b2a-490d-bdfa-c1223d0e2a07" width="400" height="300"> 
+<img src = "https://github.com/user-attachments/assets/cd5723ca-42b6-4da7-a4bf-503bd3b9e6cf" width="400" height="300"> 
+<br><br><img src = "https://github.com/user-attachments/assets/fea9d418-8a82-404d-aa1f-6aa66d7ffd14" width="400" height="100">
+<img src = "https://github.com/user-attachments/assets/f646ae76-fe47-4f93-991d-c81521e95644" width="400" height="100">
 </details>
 
 ### b. 게임 외의 기능
@@ -120,7 +120,7 @@
 <br>또한, 각 스크립트에서 추가적인 선언이 필요하지 않아 메모리 관리 효율 증가도 기대 할 수 있습니다. 싱글톤을 상속받는 매니져들은 DontDestroyOnLoad 를 활용하여, 각 객체를 유지하고 유지보수를 고려하였습니다.
 <br><br>(GameManger, SoundManger 등)
 
-<br><br><img src = "https://github.com/user-attachments/assets/628f51ab-90dd-4020-a6d7-c7d79b8d40c5">
+<br><br><img src = "https://github.com/user-attachments/assets/628f51ab-90dd-4020-a6d7-c7d79b8d40c5" width="400" height="300">
 </details>
 
 <details>
@@ -130,12 +130,12 @@
 <br>나중에 다른 SO 추가가 필요하면, 동일하게 정해진 SO방식를 만들고 그와 동일한 형식의 Json 파일을 전달해준다면 쉽게 해당 정보의 저장 및 수정을 쉽게 구현 할 수 있습니다. 
 <br>또한, 추후 자주 변경 될 밸런스적인 레벨디자인 부분은 엑셀로 컨트롤하여 쉽게 수정할수 있도록 접근성을 고려하여 코드도 설계되었습니다.
 
-<br><br><img src = "https://github.com/user-attachments/assets/3195c78a-16c2-4fd5-81d8-042ca1c97d68">  
+<br><br><img src = "https://github.com/user-attachments/assets/3195c78a-16c2-4fd5-81d8-042ca1c97d68" width="400" height="150">  
 </details>
 
 <details>
 <summary><b> Upper Layer를 사용하여 효율적인 매니메이션 관리 </b></summary>
 <br>플레이어의 다양한 상태와 다양한 아이템에 따른 애니메이션을 경우의 수만큼 만들지 않고, 플레이어의 상체에 아이템 장착 시 우선적으로 적용할 upper layer를 적용하여 이후에 다른 상태와 아이템이 추가 되어도 적은 비용으로 추가 할 수 있게 만들었습니다. 
   
-<br><br><img src = "https://github.com/user-attachments/assets/5d4c96ad-e88e-4044-bfdf-efd82a98b8d0">
+<br><br><img src = "https://github.com/user-attachments/assets/5d4c96ad-e88e-4044-bfdf-efd82a98b8d0" width="400" height="300">
 </details>
