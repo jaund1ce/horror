@@ -199,7 +199,7 @@
 
 ## 7. 트러블슈팅
 <details>
-<summary><b> 플레이어가 점프 후 rigidbody의 gravity의 영향을 안 받던 문제 </b></summary>
+<summary><b> 플레이어가 점프 후 Rigidbody의 Gravity의 영향을 안 받던 문제 </b></summary>
 플레이어의 애니메이션을 update와 lateupdate에서 동시에 수정하면서 발생한 문제, 
 <br>플레이어의 statemachine 변화를 일반적으로는 update에서만 처리하고 만약 다른 곳에서 변경하는 경우 방어 코드를 작성하여 동시에 변화시키지 못하게 함으로서 문제를 해결하였습다.
 </details>
