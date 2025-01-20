@@ -214,13 +214,14 @@
 2. 플레이어가 캐비넷에 들어가거나 나올 때 발소리가 비정상적으로 나오던 문제
 <br>플레이어가 순간적으로 낮은 높이를 내려올때도 하강하는 로직을 타서 순간적으로 FallState와 IdleState, WalkState로 변화하면서 생긴 문제로
 <br> 1. 의 방법을 적용 후, 하강을 인지하는 velocity.y의 값을 늘려 낮은 턱에서 동일하게 발생할 수 있는 문제를 해결하였습니다.
+<br><https://github.com/user-attachments/assets/0000391f-fa0f-46bc-b8a0-3cb2ae2fc884>
 </details>
 
 <details>
-<summary><b> 트러블슈팅 제목 </b></summary>
-트러블슈팅 내용
-<br>트러블슈팅 내용
-<br>트러블슈팅 내용
+<summary><b> 오브젝트와 플레이어가 충돌해도 충돌인식이 되지 않았던 문제 </b></summary>
+<br>Layer를 player로 설정하여 적용시킨 뒤, 충돌 처리 코드 조건문의 조건을 other.gameObject.layer == player 로 설정하였지만 조건문의 조건이 계속해서 충족되지 않았습니다.
+<br>해당 문제의 원인은 other.gameObject.layer 는 int 값으로 계산되고 player는 비트연산자에 의해 2진수로 값이 들어오기 때문이였습니다.
+<br>other.gameObject.layer값을 2진수로 변화해여 문제를 해결하였습니다.
 </details>
 
 <details>
