@@ -209,13 +209,12 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
 
     public void IntroControl()
     {
-        UIManager.Instance.Show<SkipUI>();
         playerInputs = new PlayerInputs();
         playerActions = playerInputs.Player;
         playerInputs.Enable();
         //UIManager.Instance.Show<SkipUI>(); 
         playerActions.Menu.performed += ShowVideo;
-        
+
     }
 
     public void ShowVideo(InputAction.CallbackContext context)
@@ -232,6 +231,11 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
 
     private IEnumerator WaitCoroutine(float time) 
     {
+        GameObject targetObject = GameObject.FindGameObjectWithTag("Video");
+        targetObject.SetActive(true);
+        UIManager.Instance.Show<SkipUI>();
+        isWaitStopped = false;
+
         float checkTime = 0f;
 
         while (checkTime < time)
