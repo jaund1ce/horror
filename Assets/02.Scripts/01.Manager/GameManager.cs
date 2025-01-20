@@ -40,7 +40,6 @@ public class MainGameManager : mainSingleton<MainGameManager>
     {
         PaperInteraction = new List<int>();
         FindOrSetPlayer();
-        FindOrSetEnemy();
     }
 
     protected override void OnDestroy()

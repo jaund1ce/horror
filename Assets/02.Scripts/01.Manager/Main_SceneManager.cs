@@ -196,6 +196,7 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
         MapManager.Instance.LoadAndSpawnObjects(1);
         MapManager.Instance.LoadAndSpawnPapers(1);
         UIManager.Instance.Show<MainUI>();
+        MainGameManager.Instance.FindOrSetEnemy();
         AutoHideVideo();
     }
 
@@ -214,7 +215,8 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
         DataManager.Instance.LoadAllItems();
         DataManager.Instance.LoadGame();
         UIManager.Instance.Show<MainUI>();
-        if(loadMap == "Stage01") AutoHideVideo();
+        MainGameManager.Instance.FindOrSetEnemy();
+        if (loadMap == "Stage01") AutoHideVideo();
     }
 
     public void IntroControl()
