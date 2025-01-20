@@ -183,11 +183,11 @@ public class SoundManger : mainSingleton<SoundManger>
         switch (audioSourceType)
         {
             case AudioSourceType.MASTER: return masterVolume; ;
-            case AudioSourceType.STEP: return stepVolume * masterVolume;
-            case AudioSourceType.HEARTHBEAT: return hearthbeatrVolume * masterVolume;
-            case AudioSourceType.BREATHE: return breatherVolume * masterVolume;
-            case AudioSourceType.BGM: return bgmVolume * masterVolume;
-            case AudioSourceType.ENVIROMENT: return environmentVolume * masterVolume;
+            case AudioSourceType.STEP: return stepVolume;
+            case AudioSourceType.HEARTHBEAT: return hearthbeatrVolume;
+            case AudioSourceType.BREATHE: return breatherVolume;
+            case AudioSourceType.BGM: return bgmVolume;
+            case AudioSourceType.ENVIROMENT: return environmentVolume;
             default: Debug.Log("Index Error"); return -1;
         }
     }
