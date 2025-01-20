@@ -299,6 +299,7 @@ public class DataManager : mainSingleton<DataManager>
         if (loadedInventory != null)
         {
             Debug.Log($"Loaded {loadedInventory.Count} inventory slots.");
+           
             foreach (var serializedSlot in loadedInventory)
             {
                 var itemData = FindItemByID(serializedSlot.ItemID);

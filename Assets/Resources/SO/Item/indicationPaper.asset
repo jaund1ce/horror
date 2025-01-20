@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: indicationPaper
   m_EditorClassIdentifier: 
   itemSO:
-    ID: 1008
+    ID: 0
     ItemNameEng: indicationPaper
     ItemNameKor: "\uC9C0\uC2DC\uC885\uC774"
     ItemType: 4
