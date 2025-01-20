@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerRunCrouchHoldToggleSelect : MonoBehaviour
+public class SystemUIPlayerRunCrouchHoldToggleSelect : MonoBehaviour
 {
     public void OnChange()
     {

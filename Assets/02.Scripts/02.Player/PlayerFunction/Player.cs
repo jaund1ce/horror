@@ -204,11 +204,11 @@ public class Player : MonoBehaviour
 
         if (CurrentEquipItem == null || CurrentEquipItem.ItemData == null) return;
 
-        if (CurrentEquipItem.ItemData.itemSO.ItemNameEng == "flash")
+        if (CurrentEquipItem.ItemData.itemSO.ItemNameEng == "Flash")
         {
             Animator.SetBool("FlashLight", true);
         }
-        else if (CurrentEquipItem.ItemData.itemSO.ItemNameEng == "healpack")
+        else if (CurrentEquipItem.ItemData.itemSO.ItemNameEng == "Healpack")
         {
             Animator.SetBool("HealPack", true);
         }
