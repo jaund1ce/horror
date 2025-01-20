@@ -57,9 +57,17 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
     }
     public void LoadGame() 
     {
-        // 요구사항 : 영상이 끝나고 자연스럽게 플레이랑 이어지게끔 로딩 먼저 하기 위해 코드순서 설정
-        LoadLoadingScene(DataManager.Instance.MapData.SceneName , 0f , LoadGameInitalize);
-        SoundManger.Instance.GetSceneSource(SceneManager.GetActiveScene().name);
+        if (DataManager.Instance.MapData.SceneName == null)
+        {
+            LoadLoadingScene(mainSceneName, videoPlayTime, NewGameInitalize);
+            SoundManger.Instance.GetSceneSource(mainSceneName);
+        }
+        else 
+        {
+            // 요구사항 : 영상이 끝나고 자연스럽게 플레이랑 이어지게끔 로딩 먼저 하기 위해 코드순서 설정
+            LoadLoadingScene(DataManager.Instance.MapData.SceneName, 0f, LoadGameInitalize);
+            SoundManger.Instance.GetSceneSource(SceneManager.GetActiveScene().name);
+        }
     }
 
     public void Restart()
@@ -205,6 +213,7 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
         DataManager.Instance.LoadAllItems();
         DataManager.Instance.LoadGame();
         UIManager.Instance.Show<MainUI>();
+        if(loadMap == "Stage01") AutoHideVideo();
     }
 
     public void IntroControl()
@@ -213,17 +222,27 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
         playerActions = playerInputs.Player;
         playerInputs.Enable();
         //UIManager.Instance.Show<SkipUI>(); 
-        playerActions.Menu.performed += ShowVideo;
+        playerActions.Menu.performed += HideVideo;
 
     }
 
-    public void ShowVideo(InputAction.CallbackContext context)
+    public void HideVideo(InputAction.CallbackContext context)
     {
         GameObject targetObject = GameObject.FindGameObjectWithTag("Video");
         if (targetObject.activeSelf == false)
         { return; }
-        playerActions.Menu.performed -= ShowVideo;
+        playerActions.Menu.performed -= HideVideo;
         playerInputs.Disable();
+        UIManager.Instance.Hide<SkipUI>();
+        isWaitStopped = true;
+        targetObject.SetActive(false); // 오브젝트 비활성화
+    }
+
+    public void AutoHideVideo()
+    {
+        GameObject targetObject = GameObject.FindGameObjectWithTag("Video");
+        if (targetObject.activeSelf == false)
+        { return; }
         UIManager.Instance.Hide<SkipUI>();
         isWaitStopped = true;
         targetObject.SetActive(false); // 오브젝트 비활성화

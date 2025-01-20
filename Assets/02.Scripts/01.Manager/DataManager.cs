@@ -273,7 +273,6 @@ public class DataManager : mainSingleton<DataManager>
     private void LoadPlayerData() 
     {
         PlayerData = SaveSystem.Load<UserInfo>(Json.PlayerData);
-        
         if (PlayerData != null)
         {
             SpawnData spawnPlayer = new SpawnData();
