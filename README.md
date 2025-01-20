@@ -54,8 +54,8 @@
 <br>Load 버튼 클릭 시 해당 씬으로 변경되게 되며, Json으로 저장되어있는 파일을 딕셔너리로 변환 후 맵, 플레이어, 아이템, 적 등 순으로 프리팹을 생성하여 맵에 배치합니다. 
 <br> 해당 프리팹에 변경점이 필요한 경우 Instantiate 시에 해당 컴포넌트의 값을 변경하여 생성합니다.
 
-<br><br><img src = "https://github.com/user-attachments/assets/902022ef-bf39-4d73-9151-4907fdf187dc">
-<br><br><img src = "https://github.com/user-attachments/assets/17a74ac7-d261-4b9f-a7a1-9944ad5e7fbf">
+<br><br><img src = "https://github.com/user-attachments/assets/17a74ac7-d261-4b9f-a7a1-9944ad5e7fbf" width="400" height="300">
+<img src = "https://github.com/user-attachments/assets/902022ef-bf39-4d73-9151-4907fdf187dc" width="400" height="300">
 </details>
 
 <details>
@@ -66,8 +66,8 @@
 
   <br>( Shift를 누르면 statemachine을 변경하면서, 다른 스크립트의 값도 변경 // 인벤토리를 이용 중이거나 키패드와 상호작용 중일때 아이템의 사용이 불가능하게 만듦 )
 
-<br><br><img src = "https://github.com/user-attachments/assets/7ad6b5cf-939c-40b7-b53f-c36b915632bd">
-<br><br><img src = "https://github.com/user-attachments/assets/5d4c96ad-e88e-4044-bfdf-efd82a98b8d0">
+<br><img src = "https://github.com/user-attachments/assets/5d4c96ad-e88e-4044-bfdf-efd82a98b8d0" width="400" height="300">
+<img src = "https://github.com/user-attachments/assets/7ad6b5cf-939c-40b7-b53f-c36b915632bd" width="400" height="300">
 </details>
 
 <details>
@@ -75,8 +75,8 @@
 <br>CinemachineCamera를 활용하여 priority를 다르게 주는 등의 방식으로, 처음 게임을 플레이할 때 나오는 인트로나 죽을 때 나오는 점프스퀘어 등의 연출을 줍니다.
 <br>또한, 현재 버전의 CinemachineCamera 에서는 Postprocesisng 적용 방식이 최신 버전과는 다르기 때문에 volume을 통해서 어안렌즈 등의 원하는 카메라 효과를 넣어주고 스테이지마다 다른 분위기를 연출하였습니다.
 
-<br><br><img src = "https://github.com/user-attachments/assets/b02de825-4e87-4a15-a695-1db617fbbc00">
-<br><br><img src = "https://github.com/user-attachments/assets/9d4d37cd-7f37-4008-8268-76172a53e86e">
+<br><img src = "https://github.com/user-attachments/assets/9d4d37cd-7f37-4008-8268-76172a53e86e" width="400" height="300">
+<img src = "https://github.com/user-attachments/assets/b02de825-4e87-4a15-a695-1db617fbbc00" width="400" height="300">
 </details>
 
 <details>
@@ -85,7 +85,7 @@
 <br>유한한 상태 집합에서 하나의 상태만 활성 상태로 유지되며, 특정 이벤트에 따라 상태가 전이됩니다. 
 <br>상태의 변화는 특정 조건에서만 이루어지기 때문에 버그 발생의 여지가 적고, 이후에 플레이어나 몬스터에게 새로운 상태가 추가되더라도 쉽게 유지보수가 가능합니다.
   
-<br><br><img src = "https://github.com/user-attachments/assets/d9698a27-66f7-43ef-9c97-ad5b4ea839ed"> 
+<br><br><img src = "https://github.com/user-attachments/assets/d9698a27-66f7-43ef-9c97-ad5b4ea839ed" width="400" height="300"> 
 </details>
 
 <details>
@@ -93,8 +93,8 @@
 <br>Items, Enemy, InteractableObjects 등 비슷한 분류로 나누어진 각 객체들은 Interface 또는 부모스크립트 Base 를 상속받아 기능의 독립성을 유지하되, 각 필요한 공통기능을 부여받고 있습니다.  
 <br>또한 , 각 객체들이 공통의 부모로부터 상속을 받는경우, 검출이나 비교 등 이 코드적으로 간편해질수 있도록 고려하여 설계하였습니다.
 
-<br><br><img src = "https://github.com/user-attachments/assets/ea207b59-386e-44d7-b5eb-4b95430774ee">
-<br><br><img src = "https://github.com/user-attachments/assets/e4115b57-8804-4b08-98b9-1c691e4f2188"> 
+<br><br><img src = "https://github.com/user-attachments/assets/ea207b59-386e-44d7-b5eb-4b95430774ee" width="400" height="300">
+<br><br><img src = "https://github.com/user-attachments/assets/e4115b57-8804-4b08-98b9-1c691e4f2188" width="400" height="300"> 
 </details>
 
 <details>
