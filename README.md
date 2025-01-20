@@ -199,6 +199,13 @@
 
 ## 7. 트러블슈팅
 <details>
+<summary><b> 캐릭터 컨트롤러가 아닌 Collider와 RigidBody를 선택한 이유  </b></summary>
+처음에는 보다 자연스럽고 쉽게 원하는 플레이어의 이동을 구현하기 위해서 캐릭터 컨트롤러를 사용했지만,
+<br>이후에 문을 열고 닫는 과정에서 문의 Collider와 충돌 시 예상과 다른 비정상적인 움직임을 보여 플레이어 컨트롤러가 아닌 Collider와 RigidBody로 변경해 주었고,
+<br>이에 따른 벽이나 물체와 비벼지는 현상은 플레이어 Collider의 Material을 변경하여 해결하였습니다.
+</details>
+
+<details>
 <summary><b> 플레이어의 애니메이션을 동시에 수정하면서 발생한 문제들 </b></summary>
 1. 플레이어가 점프 후 Rigidbody의 Gravity의 영향을 안 받던 문제
 <br>플레이어가 점프 후 하강 시 애니메이션을 update와 lateupdate에서 동시에 변경해주는 부분이 있어서 발생한 문제였다.  
@@ -207,13 +214,6 @@
 2. 플레이어가 캐비넷에 들어가거나 나올 때 발소리가 비정상적으로 나오던 문제
 <br>플레이어가 순간적으로 낮은 높이를 내려올때도 하강하는 로직을 타서 순간적으로 FallState와 IdleState, WalkState로 변화하면서 생긴 문제로
 <br> 1. 의 방법을 적용 후, 하강을 인지하는 velocity.y의 값을 늘려 낮은 턱에서 동일하게 발생할 수 있는 문제를 해결하였습니다.
-</details>
-
-<details>
-<summary><b> 캐릭터 컨트롤러가 아닌 Collider와 RigidBody를 선택한 이유  </b></summary>
-처음에는 보다 자연스럽고 쉽게 원하는 플레이어의 이동을 구현하기 위해서 캐릭터 컨트롤러를 사용했지만,
-<br>이후에 문을 열고 닫는 과정에서 문의 Collider와 충돌 시 예상과 다른 비정상적인 움직임을 보여 플레이어 컨트롤러가 아닌 Collider와 RigidBody로 변경해 주었고,
-<br>이에 따른 벽이나 물체와 비벼지는 현상은 플레이어 Collider의 Material을 변경하여 해결하였습니다.
 </details>
 
 <details>
