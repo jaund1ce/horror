@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnDisable()
     {
+        MainGameManager.Instance.temMouseSensitivity = rotateSencitivity;
         PlayerInputs.Disable();
         InputUnsubscribe();
     }
