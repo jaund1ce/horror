@@ -16,6 +16,7 @@ public class UserInfo : ISaveable
     public List<int> PaperInteraction;
     public float Health;
     public float Stamina;
+    public float Battery;
     public string Playerposition;
 
     public string Save() // ?? 안쓰는거같은데

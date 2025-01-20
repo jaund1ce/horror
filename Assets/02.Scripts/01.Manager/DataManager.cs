@@ -202,6 +202,7 @@ public class DataManager : mainSingleton<DataManager>
         PlayerData.PaperInteraction = MainGameManager.Instance.PaperInteraction; // 추가
         PlayerData.Health = MainGameManager.Instance.Player.PlayerConditionController.Health;
         PlayerData.Stamina = MainGameManager.Instance.Player.PlayerConditionController.Stamina;
+        PlayerData.Battery = MainGameManager.Instance.Player.PlayerConditionController.BatteryCapacity;
         PlayerData.Playerposition = (MainGameManager.Instance.Player.transform.position).ToString();
 
         // PlayerData 저장 (기존 코드 유지)
@@ -286,6 +287,7 @@ public class DataManager : mainSingleton<DataManager>
             MainGameManager.Instance.PaperInteraction = PlayerData.PaperInteraction; // 추가
             player.PlayerConditionController.Health = PlayerData.Health;
             player.PlayerConditionController.Stamina = PlayerData.Stamina;
+            player.PlayerConditionController.BatteryCapacity = PlayerData.Battery;
             
             Debug.Log("PlayerData loaded successfully.");
         }
