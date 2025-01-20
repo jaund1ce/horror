@@ -205,10 +205,10 @@
 </details>
 
 <details>
-<summary><b> 트러블슈팅 제목 </b></summary>
-트러블슈팅 내용
-<br>트러블슈팅 내용
-<br>트러블슈팅 내용
+<summary><b> 캐릭터 컨트롤러가 아닌 Collider와 RigidBody를 선택한 이유  </b></summary>
+처음에는 보다 자연스럽고 쉽게 원하는 플레이어의 이동을 구현하기 위해서 캐릭터 컨트롤러를 사용했지만,
+<br>이후에 문을 열고 닫는 과정에서 문의 Collider와 충돌 시 예상과 다른 비정상적인 움직임을 보여 플레이어 컨트롤러가 아닌 Collider와 RigidBody로 변경해 주었고,
+<br>이에 따른 벽이나 물체와 비벼지는 현상은 플레이어 Collider의 Material을 변경하여 해결하였습니다.
 </details>
 
 <details>
