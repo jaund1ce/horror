@@ -151,11 +151,14 @@
 <details>
 <summary><b> 브레인 스토밍 </b></summary>
 <img src = "https://github.com/user-attachments/assets/c7e95460-a396-4d2d-92c5-a698a928328c" width="400" height="300">
+  
 #### a. 시작
 - EscapeTheBackroom이라는 레퍼런스를 찾아 이 게임처럼 만들기로 결정하였습니다.
 <br>호러, FPS, 3D를 통합하여 해당 게임으로 결정하였습니다.
+
 #### b. 핵심주제
 - 플레이어에게 심리적 압박 및 공포감을 선사 해야 하며 이동을 위해 문서를 찾아 퍼즐을 푸는 방식으로 교체하게 되었습니다.
+</details>
 <details>
 <summary><b>컨텐츠 기획</b></summary>
 <br><img src = "https://github.com/user-attachments/assets/27f67100-79ca-4010-ae0f-14ced3a12a02" width="400" height="300">
@@ -165,7 +168,6 @@
 <br><img src = "https://github.com/user-attachments/assets/d777e52d-34d1-4b54-9f2d-b4d94ad08e3a" width="400" height="300">
 <img src = "https://github.com/user-attachments/assets/40b9fcf0-36c4-4ab3-b963-cfce8fb612c4" width="400" height="300">
 <br><img src = "https://github.com/user-attachments/assets/643399ec-0fbc-48b4-8ac6-4a7a21af4472" width="400" height="600">
-</details>
 </details>
 
 ## 6. 유저테스트
@@ -188,6 +190,37 @@
 <br>이를 수정하기 위해 손전등의 밝기를 강하게 만들고 그래피티 또는 낙서와 같은 형식의 이정표를 맵에 넣게 되었습니다.
 </details>
 <details>
-<summary><b> 그 밖의 피드백 </b></summary
+<summary><b> 그 밖의 피드백 </b></summary>
 <br>약 60여개 이상의 다양한 피드백을 수용하여 수정하는 과정을 거쳤습니다.
 <br><img src = "https://github.com/user-attachments/assets/86ae1e80-6e8a-43da-a773-b8823acd1cbe" width="400" height="300">
+</details>
+
+
+## 7. 트러블슈팅
+<details>
+<summary><b> 트러블슈팅 제목 </b></summary>
+트러블슈팅 내용
+<br>트러블슈팅 내용
+<br>트러블슈팅 내용
+</details>
+
+<details>
+<summary><b> 트러블슈팅 제목 </b></summary>
+트러블슈팅 내용
+<br>트러블슈팅 내용
+<br>트러블슈팅 내용
+</details>
+
+<details>
+<summary><b> 트러블슈팅 제목 </b></summary>
+트러블슈팅 내용
+<br>트러블슈팅 내용
+<br>트러블슈팅 내용
+</details>
+
+<details>
+<summary><b> 트러블슈팅 제목 </b></summary>
+트러블슈팅 내용
+<br>트러블슈팅 내용
+<br>트러블슈팅 내용
+</details>
