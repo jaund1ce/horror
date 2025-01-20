@@ -66,6 +66,9 @@
 
   <br>( Shift를 누르면 statemachine을 변경하면서, 다른 스크립트의 값도 변경 // 인벤토리를 이용 중이거나 키패드와 상호작용 중일때 아이템의 사용이 불가능하게 만듦 )
 
+<br><br><img src = "https://github.com/user-attachments/assets/ff9d8743-6ee7-4696-9ac5-1eada93613dc" width="400" height="300">
+<img src = "https://github.com/user-attachments/assets/7c1b4873-1054-4730-9c9f-3b92d4ddb21e" width="400" height="300">
+
 <br><br><img src = "https://github.com/user-attachments/assets/5d4c96ad-e88e-4044-bfdf-efd82a98b8d0" width="400" height="300">
 <img src = "https://github.com/user-attachments/assets/7ad6b5cf-939c-40b7-b53f-c36b915632bd" width="400" height="300">
 </details>
@@ -77,6 +80,7 @@
 
 <br><br><img src = "https://github.com/user-attachments/assets/9d4d37cd-7f37-4008-8268-76172a53e86e" width="400" height="300">
 <img src = "https://github.com/user-attachments/assets/b02de825-4e87-4a15-a695-1db617fbbc00" width="200" height="300">
+<img src = "https://github.com/user-attachments/assets/36db8520-bda5-476d-80ea-3c27329c623b" width="200" height="300">
 </details>
 
 <details>
@@ -86,6 +90,7 @@
 <br>상태의 변화는 특정 조건에서만 이루어지기 때문에 버그 발생의 여지가 적고, 이후에 플레이어나 몬스터에게 새로운 상태가 추가되더라도 쉽게 유지보수가 가능합니다.
   
 <br><br><img src = "https://github.com/user-attachments/assets/d9698a27-66f7-43ef-9c97-ad5b4ea839ed" width="400" height="300"> 
+<img src = "https://github.com/user-attachments/assets/a817495d-fe98-437e-8f65-299addc97581" width="400" height="300"> 
 </details>
 
 <details>
@@ -130,12 +135,14 @@
 <br>나중에 다른 SO 추가가 필요하면, 동일하게 정해진 SO방식를 만들고 그와 동일한 형식의 Json 파일을 전달해준다면 쉽게 해당 정보의 저장 및 수정을 쉽게 구현 할 수 있습니다. 
 <br>또한, 추후 자주 변경 될 밸런스적인 레벨디자인 부분은 엑셀로 컨트롤하여 쉽게 수정할수 있도록 접근성을 고려하여 코드도 설계되었습니다.
 
-<br><br><img src = "https://github.com/user-attachments/assets/3195c78a-16c2-4fd5-81d8-042ca1c97d68" width="400" height="150">  
+<br><br><img src = "https://github.com/user-attachments/assets/c42cde95-1507-46ee-948c-e4e1f0b267ab" width="400" height="500"> 
+<img src = "https://github.com/user-attachments/assets/3195c78a-16c2-4fd5-81d8-042ca1c97d68" width="400" height="150">  
 </details>
 
 <details>
 <summary><b> Upper Layer를 사용하여 효율적인 매니메이션 관리 </b></summary>
 <br>플레이어의 다양한 상태와 다양한 아이템에 따른 애니메이션을 경우의 수만큼 만들지 않고, 플레이어의 상체에 아이템 장착 시 우선적으로 적용할 upper layer를 적용하여 이후에 다른 상태와 아이템이 추가 되어도 적은 비용으로 추가 할 수 있게 만들었습니다. 
-  
-<br><br><img src = "https://github.com/user-attachments/assets/5d4c96ad-e88e-4044-bfdf-efd82a98b8d0" width="400" height="300">
+
+<br><br><img src = "https://github.com/user-attachments/assets/242cc470-bc8d-43e4-a012-f62aec5e02a9" alt="플레이어에 적용된 upper layer" width="400" height="300">
+<img src = "https://github.com/user-attachments/assets/5d4c96ad-e88e-4044-bfdf-efd82a98b8d0" width="400" height="300">
 </details>
