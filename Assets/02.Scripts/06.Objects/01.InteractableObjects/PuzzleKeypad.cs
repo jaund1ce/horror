@@ -22,7 +22,7 @@ public class PuzzleKeypad : PuzzleBase
     private MeshRenderer keypadRenderer;
     private AudioSource audioSource;
     private Color baseColor = Color.black;
-    private Color accessColor = Color.green;
+    private Color accessColor = Color.blue;
     private string accessTxt = "ACCESS";
     private Color deniedColor = Color.red;
     private string deniedTxt = "DENIED";

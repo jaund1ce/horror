@@ -196,6 +196,8 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
         MapManager.Instance.LoadAndSpawnObjects(1);
         MapManager.Instance.LoadAndSpawnPapers(1);
         UIManager.Instance.Show<MainUI>();
+        MainGameManager.Instance.FindOrSetEnemy();
+        AutoHideVideo();
     }
 
     private void LoadGameInitalize()
@@ -213,7 +215,8 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
         DataManager.Instance.LoadAllItems();
         DataManager.Instance.LoadGame();
         UIManager.Instance.Show<MainUI>();
-        if(loadMap == "Stage01") AutoHideVideo();
+        MainGameManager.Instance.FindOrSetEnemy();
+        if (loadMap == "Stage01") AutoHideVideo();
     }
 
     public void IntroControl()
@@ -241,19 +244,26 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
     public void AutoHideVideo()
     {
         GameObject targetObject = GameObject.FindGameObjectWithTag("Video");
-        if (targetObject.activeSelf == false)
-        { return; }
+        if (targetObject != null) 
+        {
+            if (targetObject.activeSelf == false) return;
+            targetObject.SetActive(false); // 오브젝트 비활성화
+        }
+        if (playerActions.Menu != null) playerActions.Menu.performed -= HideVideo;
         UIManager.Instance.Hide<SkipUI>();
         isWaitStopped = true;
-        targetObject.SetActive(false); // 오브젝트 비활성화
     }
 
     private IEnumerator WaitCoroutine(float time) 
     {
-        GameObject targetObject = GameObject.FindGameObjectWithTag("Video");
-        targetObject.SetActive(true);
-        UIManager.Instance.Show<SkipUI>();
-        isWaitStopped = false;
+        string loadMap = DataManager.Instance.MapData.MapName;
+        if (loadMap == "Stage01") 
+        {
+            GameObject targetObject = GameObject.FindGameObjectWithTag("Video");
+            targetObject.SetActive(true);
+            UIManager.Instance.Show<SkipUI>();
+            isWaitStopped = false;
+        }
 
         float checkTime = 0f;
 
