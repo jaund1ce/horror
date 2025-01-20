@@ -208,8 +208,8 @@
 <details>
 <summary><b> 플레이어의 애니메이션을 동시에 수정하면서 발생한 문제들 </b></summary>
 1. 플레이어가 점프 후 Rigidbody의 Gravity의 영향을 안 받던 문제
-<br>플레이어가 점프 후 하강 시 애니메이션을 update와 lateupdate에서 동시에 변경해주는 부분이 있어서 발생한 문제였다.  
-<br>그래서 플레이어의 statemachine 변화를 일반적으로는 update에서만 처리하고, 만약 다른 곳에서 변경하는 경우 방어 코드를 작성하여 동시에 변화시키지 못하게 함으로서 문제를 해결하였습다.
+<br>플레이어가 점프 후 하강 시 애니메이션을 update와 lateupdate에서 서로 State를 변경하여 문제가 발생했습니다.  
+<br>그래서 플레이어의 statemachine 변화를 일반적으로는 update에서만 처리하고, 만약 다른 곳에서 변경하는 경우 방어 코드를 작성하여 동시에 변화시키지 못하게 함으로서 문제를 해결하였습니다.
 <br><br>
 2. 플레이어가 캐비넷에 들어가거나 나올 때 발소리가 비정상적으로 나오던 문제
 <br>플레이어가 순간적으로 낮은 높이를 내려올때도 하강하는 로직을 타서 순간적으로 FallState와 IdleState, WalkState로 변화하면서 생긴 문제로
@@ -221,20 +221,39 @@
 <br>Layer를 player로 설정하여 적용시킨 뒤, 충돌 처리 코드 조건문의 조건을 other.gameObject.layer == player 로 설정하였지만 조건문의 조건이 계속해서 충족되지 않았습니다.
 <br>해당 문제의 원인은 other.gameObject.layer 는 int 값으로 계산되고 player는 비트연산자에 의해 2진수로 값이 들어오기 때문이였습니다.
 <br>other.gameObject.layer값을 2진수로 변화해여 문제를 해결하였습니다.
-<br><img src = "https://github.com/user-attachments/assets/0000391f-fa0f-46bc-b8a0-3cb2ae2fc884">
+<br><img src = "https://github.com/user-attachments/assets/0000391f-fa0f-46bc-b8a0-3cb2ae2fc884" width="400" height="200">
 </details>
 
 <details>
-<summary><b> 트러블슈팅 제목 </b></summary>
-트러블슈팅 내용
-<br>트러블슈팅 내용
-<br>트러블슈팅 내용
+<summary><b> UIManager가 프리팹 내부UI를 참조하도록 설정했지만, 실제로 Hierarchy에 배치된 오브젝트를 제대로 찾지 못하는 문제 </b></summary>
+해당 문제는 프리팹 내부 오브젝트를 참조하게 설정을 해놓으면 실제 인게임에선 Hierarchy에 배치된 오브젝트를 찾는것이 아니라,
+<br>프리팹 내부의 오브젝트를 참조하고있어 실질적으로 작동하지 않는 오류가 있었습니다.
+<br>그리하여 씬이 로드될때 해당 UI의 자식 오브젝트를 찾아 메서드 호출하는 방식으로 변경하였습니다.
+<br>해당 문제는 에러 코드로도 잡히지 않고 코드가 진행되기에 주의가 필요한 부분이기에 충분히 리마인드 하게 되었습니다.
+<br><img src = "https://github.com/user-attachments/assets/6bb52074-bf4f-4f1d-87fe-7332415fb94b" width="400" height="200">
+
 </details>
 
 <details>
 <summary><b> 여러 개의 LayOut Group으로 인한 레이아웃 정렬 문제  </b></summary>
-Vertical, Hoeizontal Layout Group을 하나의 UI에서 동시에 사용하게 되면 정렬에 문제가 생겨서 사용자가 예상한 모습으로 나오지 않을 수 있다.
-<br>이런 경우에는 LayouyRebuild.ForceRebuildLayoutImmediate() 를 통해서 강제로 재정렬을 통해 문제를 해결 할 수 있다.
+Vertical, Hoeizontal Layout Group을 하나의 UI에서 동시에 사용하게 되면 정렬에 문제가 생겨서 사용자가 예상한 모습으로 나오지 않을 수 있습니다.
+<br>이런 경우에는 LayouyRebuild.ForceRebuildLayoutImmediate() 를 통해서 강제로 재정렬을 통해 문제를 해결 할 수 있습니다.
 <br>그렇기에 문제가 발생하는 UI의 조건을 달아서 해당 기능을 호출해줌으로서 문제를 해결하였습니다.
-<br><br><img src = "https://github.com/user-attachments/assets/b4e9de06-4ad2-4bde-b112-478b3dd0bed9">
+<br><br><img src = "https://github.com/user-attachments/assets/b4e9de06-4ad2-4bde-b112-478b3dd0bed9" width="800" height="100">
+</details>
+
+<details>
+<summary><b> 문서 스폰 형식 변경 </b></summary>
+기존에 플레이어가 문서에 대한 고유 int 값을 갖고있고,
+<br>문서를 먹을때마다 그 값이 올라가면서 해당하는 int 값의 문서를 UI로 보여주는 형식으로 코드가 구성되어 있었습니다.
+<br><br>하지만 위 방식은, Save&Load 를 구현한 시점에서 문서는 맵에 종속되어있는 오브젝트였기에
+<br>세이브 데이터와는 별개로 무조건 스폰되게 되어있었고,
+<br>그에따라 저장과 불러오기를 반복하면 무한히 문서 대량습득이 가능했습니다.
+<br>일명 아이템 복사 버그를 막기 위해 문서도 스폰방식을 변경하며,
+<br>그에따른 ID값 부여 및 해당 ID에 대한 독립적인 문서 UI 제공으로 변경하였습니다.
+
+<br><br><img src = "https://github.com/user-attachments/assets/109f1fa2-a9eb-4bd3-bc6f-ef68154ffaa1" width="400" height="300">
+<img src = "https://github.com/user-attachments/assets/b0123dac-47c4-47d0-be95-298e5dd9fd71" width="400" height="300">
+<br><img src = "https://github.com/user-attachments/assets/6450702e-4e0a-47b8-96ce-a196190b2610" width="400" height="300">
+<img src = "https://github.com/user-attachments/assets/9bab203d-5da1-45a1-bd6e-3179b3e6b285" width="400" height="300">
 </details>
