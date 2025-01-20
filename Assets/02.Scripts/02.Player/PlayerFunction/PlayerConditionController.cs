@@ -9,7 +9,7 @@ public class PlayerConditionController : MonoBehaviour
 
     [SerializeField] private float maxBatteryCapacity;
     public float BatteryCapacity = -1f;
-    [SerializeField] private float BatteryCapacityUseAmount = 0.5f;
+    [SerializeField] private float BatteryCapacityUseAmount = 1f;
     public bool OnFlash;
     [SerializeField] private float maxHealth;
     public float PassiveHealth;
