@@ -250,10 +250,14 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
 
     private IEnumerator WaitCoroutine(float time) 
     {
-        GameObject targetObject = GameObject.FindGameObjectWithTag("Video");
-        targetObject.SetActive(true);
-        UIManager.Instance.Show<SkipUI>();
-        isWaitStopped = false;
+        string loadMap = DataManager.Instance.MapData.MapName;
+        if (loadMap == "Stage01") 
+        {
+            GameObject targetObject = GameObject.FindGameObjectWithTag("Video");
+            targetObject.SetActive(true);
+            UIManager.Instance.Show<SkipUI>();
+            isWaitStopped = false;
+        }
 
         float checkTime = 0f;
 
