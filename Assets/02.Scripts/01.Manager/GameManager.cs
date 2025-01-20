@@ -36,9 +36,14 @@ public class MainGameManager : mainSingleton<MainGameManager>
         Enemy = FindObjectsOfType<EnemyAI>();
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    public void InitalizePaperData() 
     {
         PaperInteraction = new List<int>();
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+
         FindOrSetPlayer();
     }
 

@@ -20,7 +20,7 @@ public class Paper : ObjectBase
     {
         MainGameManager.Instance.PaperInteraction.Add(PaperID);
         MainGameManager.Instance.getNewPaper = true;
-        Debug.Log($"PaperInteractionCount: {MainGameManager.Instance.PaperInteraction}");
+        
         SoundManger.Instance.MakeEnviornmentSound("PaperSound");
         UIManager.Instance.Show<PaperUI>();
         

@@ -193,6 +193,7 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
     {
         MapManager.Instance.ShowMap<Stage01>();
         DataManager.Instance.LoadAllItems();
+        MainGameManager.Instance.InitalizePaperData();
         MapManager.Instance.LoadAndSpawnObjects(1);
         MapManager.Instance.LoadAndSpawnPapers(1);
         UIManager.Instance.Show<MainUI>();
@@ -213,6 +214,7 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
                 break;
         }
         DataManager.Instance.LoadAllItems();
+        MainGameManager.Instance.InitalizePaperData();
         DataManager.Instance.LoadGame();
         UIManager.Instance.Show<MainUI>();
         MainGameManager.Instance.FindOrSetEnemy();
@@ -249,9 +251,16 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
             if (targetObject.activeSelf == false) return;
             targetObject.SetActive(false); // 오브젝트 비활성화
         }
-        if (playerActions.Menu != null) playerActions.Menu.performed -= HideVideo;
         UIManager.Instance.Hide<SkipUI>();
         isWaitStopped = true;
+        try
+        {
+            if (playerActions.Menu != null)
+            {
+                playerActions.Menu.performed -= HideVideo;
+            }
+        }
+        catch (System.Exception ex){}
     }
 
     private IEnumerator WaitCoroutine(float time) 
