@@ -230,3 +230,10 @@
 <br>트러블슈팅 내용
 <br>트러블슈팅 내용
 </details>
+
+<details>
+<summary><b> 여러 개의 LayOut Group으로 인한 레이아웃 정렬 문제  </b></summary>
+Vertical, Hoeizontal Layout Group을 하나의 UI에서 동시에 사용하게 되면 정렬에 문제가 생겨서 사용자가 예상한 모습으로 나오지 않을 수 있다.
+<br>이런 경우에는 LayouyRebuild.ForceRebuildLayoutImmediate() 를 통해서 강제로 재정렬을 통해 문제를 해결 할 수 있다.
+<br>그렇기에 문제가 발생하는 UI의 조건을 달아서 해당 기능을 호출해줌으로서 문제를 해결하였다.
+</details>
