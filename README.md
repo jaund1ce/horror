@@ -146,3 +146,48 @@
 <br><br><img src = "https://github.com/user-attachments/assets/242cc470-bc8d-43e4-a012-f62aec5e02a9" alt="플레이어에 적용된 upper layer" width="400" height="300">
 <img src = "https://github.com/user-attachments/assets/5d4c96ad-e88e-4044-bfdf-efd82a98b8d0" width="400" height="300">
 </details>
+
+## 5. 기획
+<details>
+<summary><b> 브레인 스토밍 </b></summary>
+<img src = "https://github.com/user-attachments/assets/c7e95460-a396-4d2d-92c5-a698a928328c" width="400" height="300">
+#### a. 시작
+- EscapeTheBackroom이라는 레퍼런스를 찾아 이 게임처럼 만들기로 결정하였습니다.
+<br>호러, FPS, 3D를 통합하여 해당 게임으로 결정하였습니다.
+#### b. 핵심주제
+- 플레이어에게 심리적 압박 및 공포감을 선사 해야 하며 이동을 위해 문서를 찾아 퍼즐을 푸는 방식으로 교체하게 되었습니다.
+<details>
+<summary><b>컨텐츠 기획</b></summary>
+<br><img src = "https://github.com/user-attachments/assets/27f67100-79ca-4010-ae0f-14ced3a12a02" width="400" height="300">
+<img src = "https://github.com/user-attachments/assets/c43c891f-d2ac-4f0e-aee1-3c6b10aa3cda" width="400" height="300">
+<br><img src = "https://github.com/user-attachments/assets/ab9fc22a-d026-468d-b66a-b8c05ba0243a" width="400" height="300">
+<img src = "https://github.com/user-attachments/assets/e96586d3-0b20-47b0-89e8-fee693aad3a0" width="400" height="300">
+<br><img src = "https://github.com/user-attachments/assets/d777e52d-34d1-4b54-9f2d-b4d94ad08e3a" width="400" height="300">
+<img src = "https://github.com/user-attachments/assets/40b9fcf0-36c4-4ab3-b963-cfce8fb612c4" width="400" height="300">
+<br><img src = "https://github.com/user-attachments/assets/643399ec-0fbc-48b4-8ac6-4a7a21af4472" width="400" height="600">
+</details>
+</details>
+
+## 6. 유저테스트
+<details>
+<summary><b> 게임이 너무 무서워요! </b></summary>
+ "공포게임이면 당연히 무서워야 하는거 아닌가?" 라고 생각하는것이 일반적이라고 생각하였습니다.
+문제는 피드백을 받아야하는데 이에 방해가 될정도로 무섭다는것때문에 대부분 게임에 일부만 해보고 무서워서 끄는 사람이 너무 많아 문제가 되었습니다.
+<br>UX/UI나 코드적인 문제점은 고치도록 노력 할 수 있으나, 이 점은 마이너한 게임장르 선정에 한계라 여겨 컨셉을 유지하되 조심스럽게 레벨디자인을 변경하는 방식을 채택하였습니다.
+</details>
+<details>
+<summary><b> 문서 읽기가 너무 어려워요! </b></summary>
+이게임에 스토리텔링과 키패드 퍼즐을 담당하는 부분인 문서는 SCP재단에서 영감을 받아 보고서의 형식으로 만들어졌습니다.
+<br>때문에 폰트가 작고 글이 매우 길어 몬스터 추격을 따돌리며 급하게 읽기에는 부적절한 형태의 정보전달 매개채가 되었습니다.
+<br>그래서 기존에 형식을 지키는 선에서 최대한 폰트를 키우고 문장을 요약하여 가독성을 올리는 방향으로 바꿨습니다.
+</details>
+<details>
+<summary><b> 너무 안보여요 </b></summary>
+게임을 고전적인 공포게임을 레퍼런스 삼아 어둡고 불편하게 만들었습니다.
+<br>다만 저희 팀원들은 게임 제작자의 입장이라 맵을 훤히 꿰고 있어 이를 잘 알고 있으나, 유저 입장에서는 동일한 공간의 연속과 매우 어두운 환경으로 인하여 원할히 플레이하기 어려웠습니다.
+<br>이를 수정하기 위해 손전등의 밝기를 강하게 만들고 그래피티 또는 낙서와 같은 형식의 이정표를 맵에 넣게 되었습니다.
+</details>
+<details>
+<summary><b> 그 밖의 피드백 </b></summary
+<br>약 60여개 이상의 다양한 피드백을 수용하여 수정하는 과정을 거쳤습니다.
+<br><img src = "https://github.com/user-attachments/assets/86ae1e80-6e8a-43da-a773-b8823acd1cbe" width="400" height="300">
