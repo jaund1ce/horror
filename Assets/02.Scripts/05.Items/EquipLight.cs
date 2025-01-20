@@ -71,7 +71,6 @@ public class EquipLight : EquipItemBase
             handLight.enabled = true;
             playerConditionController.OnFlash = true;
 
-            Debug.Log(batteryCapacity);
         }
         else
         {
@@ -84,7 +83,6 @@ public class EquipLight : EquipItemBase
                 StopCoroutine(BatteryWarning());
                 isCoroutineStarted = false;
             }
-            Debug.Log(batteryCapacity);
         }
         usable = true;
         OnUsing = false;

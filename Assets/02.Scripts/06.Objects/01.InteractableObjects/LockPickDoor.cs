@@ -175,7 +175,6 @@ public class LockPickDoor : PuzzleBase
         }
         else 
         {
-            Debug.Log("들어옴?");
             pin.gameObject.SetActive(false);
         }
     }
@@ -218,7 +217,7 @@ public class LockPickDoor : PuzzleBase
             PuzzleCamera.Priority = 11; // 카메라 활성화
         }
         isUsingPuzzle = true;
-        Invoke("PopupPuzzleUI", 2f);
+        Invoke("PopupPuzzleUI", 0.5f);
         player.Input.PlayerActions.Look.started += RotatePin;
         player.Input.PlayerActions.EquipmentUse.performed += ForceToPin;
         player.Input.PlayerActions.EquipmentUse.canceled += ForceToPin;

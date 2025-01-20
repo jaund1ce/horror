@@ -242,11 +242,14 @@ public class Main_SceneManager : mainSingleton<Main_SceneManager>
     public void AutoHideVideo()
     {
         GameObject targetObject = GameObject.FindGameObjectWithTag("Video");
-        if (targetObject.activeSelf == false) return; 
+        if (targetObject != null) 
+        {
+            if (targetObject.activeSelf == false) return;
+            targetObject.SetActive(false); // 오브젝트 비활성화
+        }
         if (playerActions.Menu != null) playerActions.Menu.performed -= HideVideo;
         UIManager.Instance.Hide<SkipUI>();
         isWaitStopped = true;
-        targetObject.SetActive(false); // 오브젝트 비활성화
     }
 
     private IEnumerator WaitCoroutine(float time) 
