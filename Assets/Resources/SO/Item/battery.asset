@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: battery
   m_EditorClassIdentifier: 
   itemSO:
-    ID: 1010
+    ID: 504
     ItemNameEng: Battery
-    ItemNameKor: "\uBC30\uD130\uB9AC"
+    ItemNameKor: "\uAC74\uC804\uC9C0"
     ItemType: 2
     ItemEffect: "\uC190\uC804\uB4F1 \uBC30\uD130\uB9AC"
     ItemHealHealth: 100
     ItemHealMental: 0
     ItemDropAmount: 1
-    ItemDescription: "\uC190\uC804\uB4F1\uC758 \uC804\uB825\uC744 \uB2F4\uACE0 \uC788\uB294
-      \uBC30\uD130\uB9AC"
+    ItemDescription: "\uC804\uC790\uAE30\uAE30\uC758 \uC804\uB825\uC744 \uCDA9\uC804
+      \uD560 \uB54C \uC4F0\uC778\uB2E4."
     Stackable: 1
     EquipPrefab: {fileID: 5553327899995807929, guid: 9062d0ef7b3d46c4aafaa177ea1c6417, type: 3}
     ItemImage: {fileID: 21300000, guid: a7e637b8b4a1f904d920a7105e3f87c2, type: 3}

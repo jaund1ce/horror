@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: hintpaper
   m_EditorClassIdentifier: 
   itemSO:
-    ID: 1007
+    ID: 0
     ItemNameEng: hintpaper
     ItemNameKor: "\uD78C\uD2B8\uC885\uC774"
     ItemType: 4

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: keycard
   m_EditorClassIdentifier: 
   itemSO:
-    ID: 1001
+    ID: 0
     ItemNameEng: keycard
     ItemNameKor: "\uD0A4\uCE74\uB4DC"
     ItemType: 0

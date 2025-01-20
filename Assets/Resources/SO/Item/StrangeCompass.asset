@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StrangeCompass
   m_EditorClassIdentifier: 
   itemSO:
-    ID: 1006
+    ID: 0
     ItemNameEng: StrangeCompass
     ItemNameKor: "\uC774\uC0C1\uD55C\uB098\uCE68\uBC18"
     ItemType: 1
@@ -21,6 +21,7 @@ MonoBehaviour:
       \uD45C\uC2DC\uB428"
     ItemHealHealth: 0
     ItemHealMental: 0
+    ItemDropAmount: 0
     ItemDescription: "\uBAA9\uD45C\uC9C0\uC810\uC744 \uC9C0\uC2DC\uD558\uB294 \uC544\uC774\uD15C"
     Stackable: 0
     EquipPrefab: {fileID: 0}
