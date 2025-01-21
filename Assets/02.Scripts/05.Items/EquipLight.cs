@@ -27,10 +27,14 @@ public class EquipLight : EquipItemBase
         batteryCapacity = playerConditionController.BatteryCapacity;
         if (playerConditionController.OnFlash == true)
         {
-            if (batteryCapacity > 0 && batteryCapacity <= 5 && !isCoroutineStarted )
+            if (batteryCapacity <= 5 && !isCoroutineStarted && 0 <= batteryCapacity )
             {
                 batteryWarningCoroutine = StartCoroutine(BatteryWarning());
             }
+            //if (batteryCapacity <= 0)
+            //{
+            //    OnUse();
+            //}
         }
         else if(batteryWarningCoroutine != null)
         {
