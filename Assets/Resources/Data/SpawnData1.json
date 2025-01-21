@@ -1,0 +1,148 @@
+{
+    "Data": [
+        {
+            "Key": "Player_noneParkourtic2",
+            "AssetType": "Prefab",
+            "CategoryType": "Player",
+            "Position": {},
+            "ReferenceObjectName": "SpawnPoint",
+            "ID": 1
+        },
+        {
+            "Key": "DropHealPack",
+            "AssetType": "Prefab",
+            "CategoryType": "Item",
+            "Position": {},
+            "ReferenceObjectName": "HideableTable_1",
+            "ID": 501
+        },
+        {
+            "Key": "DropHealPack",
+            "AssetType": "Prefab",
+            "CategoryType": "Item",
+            "Position": {},
+            "ReferenceObjectName": "HideableTable_6",
+            "ID": 501
+        },
+        {
+            "Key": "Creature",
+            "AssetType": "Prefab",
+            "CategoryType": "Enemy",
+            "Position": {},
+            "ReferenceObjectName": "Enemy01_SpawnPoint",
+            "ID": 2
+        },
+        {
+            "Key": "Gazer_Statue",
+            "AssetType": "Prefab",
+            "CategoryType": "Enemy",
+            "Position": {},
+            "ReferenceObjectName": "Enemy02_SpawnPoint",
+            "ID": 3
+        },
+        {
+            "Key": "DropFlashlight",
+            "AssetType": "Prefab",
+            "CategoryType": "Item",
+            "Position": {},
+            "ReferenceObjectName": "HideableTable_3",
+            "ID": 502
+        },
+        {
+            "Key": "DropHealPack",
+            "AssetType": "Prefab",
+            "CategoryType": "Item",
+            "Position": {},
+            "ReferenceObjectName": "HideableTable_13",
+            "ID": 501
+        },
+        {
+            "Key": "DropHealPack",
+            "AssetType": "Prefab",
+            "CategoryType": "Item",
+            "Position": {},
+            "ReferenceObjectName": "HideableTable_4",
+            "ID": 501
+        },
+        {
+            "Key": "DropHealPack",
+            "AssetType": "Prefab",
+            "CategoryType": "Item",
+            "Position": {},
+            "ReferenceObjectName": "HideableTable_8",
+            "ID": 501
+        },
+        {
+            "Key": "DropHealPack",
+            "AssetType": "Prefab",
+            "CategoryType": "Item",
+            "Position": {},
+            "ReferenceObjectName": "HideableTable_2",
+            "ID": 501
+        },
+        {
+            "Key": "DropHealPack",
+            "AssetType": "Prefab",
+            "CategoryType": "Item",
+            "Position": {},
+            "ReferenceObjectName": "HideableTable_14",
+            "ID": 501
+        },
+        {
+            "Key": "DropBattery",
+            "AssetType": "Prefab",
+            "CategoryType": "Item",
+            "Position": {},
+            "ReferenceObjectName": "HideableTable_5",
+            "ID": 504
+        },
+        {
+            "Key": "DropBattery",
+            "AssetType": "Prefab",
+            "CategoryType": "Item",
+            "Position": {},
+            "ReferenceObjectName": "HideableTable_7",
+            "ID": 504
+        },
+        {
+            "Key": "DropBattery",
+            "AssetType": "Prefab",
+            "CategoryType": "Item",
+            "Position": {},
+            "ReferenceObjectName": "HideableTable_9",
+            "ID": 504
+        },
+        {
+            "Key": "DropBattery",
+            "AssetType": "Prefab",
+            "CategoryType": "Item",
+            "Position": {},
+            "ReferenceObjectName": "HideableTable_10",
+            "ID": 504
+        },
+        {
+            "Key": "DropBattery",
+            "AssetType": "Prefab",
+            "CategoryType": "Item",
+            "Position": {},
+            "ReferenceObjectName": "HideableTable_11",
+            "ID": 504
+        },
+        {
+            "Key": "DropBattery",
+            "AssetType": "Prefab",
+            "CategoryType": "Item",
+            "Position": {},
+            "ReferenceObjectName": "HideableTable_12",
+            "ID": 504
+        },
+        {
+            "Key": "DropBattery",
+            "AssetType": "Prefab",
+            "CategoryType": "Item",
+            "Position": {},
+            "ReferenceObjectName": "Crate_Big_1",
+            "ID": 504
+        }
+    ]
+}

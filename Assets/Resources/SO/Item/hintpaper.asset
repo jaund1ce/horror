@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9349ae882313bda47b18be55d67b17d4, type: 3}
+  m_Name: hintpaper
+  m_EditorClassIdentifier: 
+  itemSO:
+    ID: 0
+    ItemNameEng: hintpaper
+    ItemNameKor: "\uD78C\uD2B8\uC885\uC774"
+    ItemType: 4
+    ItemEffect: "\uD78C\uD2B8\uAC00 \uC801\uD798"
+    ItemHealHealth: 0
+    ItemHealMental: 0
+    ItemDropAmount: 1
+    ItemDescription: "\uD78C\uD2B8\uAC00 \uC801\uD78C \uC885\uC774"
+    Stackable: 0
+    EquipPrefab: {fileID: 0}
+    ItemImage: {fileID: 0}

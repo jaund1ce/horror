@@ -3,32 +3,35 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Flesh
+  - HideZone
+  - Video
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
+  - Interact
+  - Weapon
+  - Focus
+  - NPC
+  - BodyPart
+  - 
+  - Slope
+  - World UI
+  - cctv
+  - Puzzle
+  - RoofTop
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - GroundCement
+  - GroundConcrete
+  - GroundWood
+  - GroundDirt
   - 
   - 
   - 

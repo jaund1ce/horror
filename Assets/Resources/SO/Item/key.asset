@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9349ae882313bda47b18be55d67b17d4, type: 3}
+  m_Name: key
+  m_EditorClassIdentifier: 
+  itemSO:
+    ID: 0
+    ItemNameEng: key
+    ItemNameKor: "\uC5F4\uC1E0"
+    ItemType: 0
+    ItemEffect: "\uD560\uB2F9\uB41C \uC790\uBB3C\uC1E0\uB85C \uC7A0\uAE34\uBB38 \uD574\uAE08"
+    ItemHealHealth: 0
+    ItemHealMental: 0
+    ItemDropAmount: 1
+    ItemDescription: "\uC790\uBB3C\uC1E0\uB85C \uC7A0\uAE34 \uBB38\uC744 \uC5F4\uB54C
+      \n\uC0AC\uC6A9\uD558\uB294 \uB3C4\uAD6C."
+    Stackable: 0
+    EquipPrefab: {fileID: 988203792830958513, guid: f98515f4871f6ae4b9437f391ca1285b, type: 3}
+    ItemImage: {fileID: 21300000, guid: 5bbd29b842d27754596feeb5f711b24a, type: 3}

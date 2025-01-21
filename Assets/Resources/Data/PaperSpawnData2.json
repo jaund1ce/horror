@@ -1,0 +1,44 @@
+{
+    "Data": [
+      {
+        "Key": "Paper_Diary",
+        "AssetType": "Prefab",
+        "CategoryType": "Paper",
+        "Position": "(-41.53, 1.77, -52.91)",
+        "ReferenceObjectName": "",
+        "ID": 2001
+      },
+      {
+        "Key": "Paper_Diary",
+        "AssetType": "Prefab",
+        "CategoryType": "Paper",
+        "Position": "(-40.9, 1.78, 0.51)",
+        "ReferenceObjectName": "",
+        "ID": 2002
+      },
+      {
+        "Key": "Paper_Diary",
+        "AssetType": "Prefab",
+        "CategoryType": "Paper",
+        "Position": "(-50.89, 1.78, 9.75)",
+        "ReferenceObjectName": "",
+        "ID": 2003
+      },
+      {
+        "Key": "Paper_Diary",
+        "AssetType": "Prefab",
+        "CategoryType": "Paper",
+        "Position": "(54.66, 1.78, -30.15)",
+        "ReferenceObjectName": "",
+        "ID": 2004
+      },
+      {
+        "Key": "Paper_Diary",
+        "AssetType": "Prefab",
+        "CategoryType": "Paper",
+        "Position": "(-24.88, 1.70, 74.3)",
+        "ReferenceObjectName": "",
+        "ID": 2005
+      }
+    ]
+}

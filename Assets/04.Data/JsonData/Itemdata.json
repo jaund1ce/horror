@@ -1,0 +1,123 @@
+[
+  {
+    "ID": "int",
+    "ItemNameEng": "string",
+    "ItemNameKor": "string",
+    "ItemType": "int",
+    "ItemEffect": "string",
+    "ItemHealHealth": "int",
+    "ItemHealMental": "int",
+    "ItemDescription": "string",
+    "GetItem": "int"
+  },
+  {
+    "ID": 1001,
+    "ItemNameEng": "keycard",
+    "ItemNameKor": "키카드",
+    "ItemType": 1,
+    "ItemEffect": "할당된 키패드로 잠긴문 해금",
+    "ItemHealHealth": 0,
+    "ItemHealMental": 0,
+    "ItemDescription": "키패드로 잠긴 문을 열때 \n사용하는 도구.",
+    "GetItem": 1
+  },
+  {
+    "ID": 1002,
+    "ItemNameEng": "lockpick",
+    "ItemNameKor": "락픽",
+    "ItemType": 2,
+    "ItemEffect": "락픽퍼즐 풀때 소모",
+    "ItemHealHealth": 0,
+    "ItemHealMental": 0,
+    "ItemDescription": "락픽퍼즐로 잠긴 문을 열때 \n사용하는 도구.",
+    "GetItem": 5
+  },
+  {
+    "ID": 1003,
+    "ItemNameEng": "key",
+    "ItemNameKor": "열쇠",
+    "ItemType": 1,
+    "ItemEffect": "할당된 자물쇠로 잠긴문 해금",
+    "ItemHealHealth": 0,
+    "ItemHealMental": 0,
+    "ItemDescription": "자물쇠로 잠긴 문을 열때 \n사용하는 도구.",
+    "GetItem": 1
+  },
+  {
+    "ID": 1004,
+    "ItemNameEng": "flash",
+    "ItemNameKor": "손전등",
+    "ItemType": 3,
+    "ItemEffect": "광원",
+    "ItemHealHealth": 0,
+    "ItemHealMental": 0,
+    "ItemDescription": "앞을 밝히는 아이템",
+    "GetItem": 1
+  },
+  {
+    "ID": 1005,
+    "ItemNameEng": "StrangeCompass",
+    "ItemNameKor": "이상한나침반",
+    "ItemType": 3,
+    "ItemEffect": "목표지점으로 좌표로 \n화살표가 표시됨",
+    "ItemHealHealth": 0,
+    "ItemHealMental": 0,
+    "ItemDescription": "목표지점을 지시하는 아이템",
+    "GetItem": 1
+  },
+  {
+    "ID": 1006,
+    "ItemNameEng": "hintpaper",
+    "ItemNameKor": "힌트종이",
+    "ItemType": 3,
+    "ItemEffect": "힌트가 적힘",
+    "ItemHealHealth": 0,
+    "ItemHealMental": 0,
+    "ItemDescription": "힌트가 적힌 종이",
+    "GetItem": 1
+  },
+  {
+    "ID": 1007,
+    "ItemNameEng": "indicationPaper",
+    "ItemNameKor": "지시종이",
+    "ItemType": 3,
+    "ItemEffect": "지시가 적힘",
+    "ItemHealHealth": 0,
+    "ItemHealMental": 0,
+    "ItemDescription": "지시가 적힌 종이",
+    "GetItem": 1
+  },
+  {
+    "ID": 1008,
+    "ItemNameEng": "healpack",
+    "ItemNameKor": "채력팩",
+    "ItemType": 2,
+    "ItemEffect": "체력회복",
+    "ItemHealHealth": 100,
+    "ItemHealMental": 0,
+    "ItemDescription": "체력을 무조건 꽉채우는 회복템",
+    "GetItem": 1
+  },
+  {
+    "ID": 1009,
+    "ItemNameEng": "sedative",
+    "ItemNameKor": "항불안제",
+    "ItemType": 2,
+    "ItemEffect": "정신력 회복",
+    "ItemHealHealth": 0,
+    "ItemHealMental": 100,
+    "ItemDescription": "정신력을 무조건 꽉채우는 회복템",
+    "GetItem": 1
+  },
+  {
+    "ID": 1010,
+    "ItemNameEng": "battery",
+    "ItemNameKor": "배터리",
+    "ItemType": 2,
+    "ItemEffect": "배터리 충전",
+    "ItemHealHealth": 0,
+    "ItemHealMental": 0,
+    "ItemDescription": "전원을 켜주는 아이템",
+    "GetItem": 1
+  }
+]
