@@ -1,14 +1,7 @@
 using Cinemachine;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UHFPS.Runtime;
-using UHFPS.Tools;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
-using UnityEngine.UIElements;
-using UnityEngine.Windows;
 
 public class PlayerController : MonoBehaviour
 {

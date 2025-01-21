@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UHFPS.Runtime;
 using UnityEngine;
 
 public class QuickSlotController : MonoBehaviour

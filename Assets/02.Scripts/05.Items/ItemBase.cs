@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UHFPS.Runtime;
 using UnityEngine;
 
 public class ItemBase : MonoBehaviour,IInteractable

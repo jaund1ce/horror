@@ -1593,6 +1593,36 @@ MonoBehaviour:
         shown: 0
         isBuiltIn: 1
         script: {fileID: 0}
+      - displayName: PostProcessDebug
+        name: UnityEngine.Rendering.PostProcessing.PostProcessDebug, Unity.Postprocessing.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        shown: 0
+        isBuiltIn: 1
+        script: {fileID: 0}
+      - displayName: PostProcessLayer
+        name: UnityEngine.Rendering.PostProcessing.PostProcessLayer, Unity.Postprocessing.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        shown: 0
+        isBuiltIn: 1
+        script: {fileID: 0}
+      - displayName: PostProcessVolume
+        name: UnityEngine.Rendering.PostProcessing.PostProcessVolume, Unity.Postprocessing.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        shown: 0
+        isBuiltIn: 1
+        script: {fileID: 0}
       - displayName: ProbeTouchupVolume
         name: UnityEngine.Rendering.ProbeTouchupVolume, Unity.RenderPipelines.Core.Runtime,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -5390,6 +5420,36 @@ MonoBehaviour:
         shown: 0
         isBuiltIn: 1
         script: {fileID: 0}
+      - displayName: PostProcessDebug
+        name: UnityEngine.Rendering.PostProcessing.PostProcessDebug, Unity.Postprocessing.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        shown: 0
+        isBuiltIn: 1
+        script: {fileID: 0}
+      - displayName: PostProcessLayer
+        name: UnityEngine.Rendering.PostProcessing.PostProcessLayer, Unity.Postprocessing.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        shown: 0
+        isBuiltIn: 1
+        script: {fileID: 0}
+      - displayName: PostProcessVolume
+        name: UnityEngine.Rendering.PostProcessing.PostProcessVolume, Unity.Postprocessing.Runtime,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        shown: 0
+        isBuiltIn: 1
+        script: {fileID: 0}
       - displayName: ProbeTouchupVolume
         name: UnityEngine.Rendering.ProbeTouchupVolume, Unity.RenderPipelines.Core.Runtime,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -6572,4 +6632,4 @@ MonoBehaviour:
         script: {fileID: 0}
     unityVersion: 2022.3.17f1
     isDirty: 0
-    UnityCount: 313
+    UnityCount: 316

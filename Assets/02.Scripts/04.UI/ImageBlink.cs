@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using UHFPS.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
 
