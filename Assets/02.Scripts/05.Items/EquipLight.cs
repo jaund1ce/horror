@@ -98,10 +98,7 @@ public class EquipLight : EquipItemBase
         }
 
         // 배터리 상태가 벗어나면 손전등 끔
-        handLight.enabled = false;
-        usable = true;
-        OnUsing = false;
-        playerConditionController.OnFlash = false;
+        MainGameManager.Instance.Player.UnEquipCurrentItem();
         isCoroutineStarted = false;
     }
 }
