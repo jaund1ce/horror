@@ -27,10 +27,14 @@ public class EquipLight : EquipItemBase
         batteryCapacity = playerConditionController.BatteryCapacity;
         if (playerConditionController.OnFlash == true)
         {
-            if (batteryCapacity <= 5 && !isCoroutineStarted )
+            if (batteryCapacity > 0 && batteryCapacity <= 5 && !isCoroutineStarted )
             {
                 batteryWarningCoroutine = StartCoroutine(BatteryWarning());
             }
+        }
+        else if(batteryWarningCoroutine != null)
+        {
+            StopCoroutine(batteryWarningCoroutine);
         }
     }
 
@@ -63,14 +67,16 @@ public class EquipLight : EquipItemBase
     {
         if (!playerConditionController.OnFlash)
         {
-            if(batteryCapacity <= 0)
+            if (batteryCapacity <= 0)
             {
-                return;
+                
             }
-            SoundManger.Instance.MakeEnviornmentSound("Flashlight_On");
-            handLight.enabled = true;
-            playerConditionController.OnFlash = true;
-
+            else
+            {
+                SoundManger.Instance.MakeEnviornmentSound("Flashlight_On");
+                handLight.enabled = true;
+                playerConditionController.OnFlash = true;
+            }
         }
         else
         {
@@ -98,7 +104,7 @@ public class EquipLight : EquipItemBase
         }
 
         // 배터리 상태가 벗어나면 손전등 끔
-        MainGameManager.Instance.Player.UnEquipCurrentItem();
+        OnUse();
         isCoroutineStarted = false;
     }
 }
