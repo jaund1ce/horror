@@ -27,10 +27,14 @@ public class EquipLight : EquipItemBase
         batteryCapacity = playerConditionController.BatteryCapacity;
         if (playerConditionController.OnFlash == true)
         {
-            if (batteryCapacity <= 5 && !isCoroutineStarted )
+            if (batteryCapacity <= 5 && !isCoroutineStarted && 0 <= batteryCapacity )
             {
                 batteryWarningCoroutine = StartCoroutine(BatteryWarning());
             }
+            //if (batteryCapacity <= 0)
+            //{
+            //    OnUse();
+            //}
         }
     }
 
@@ -98,7 +102,7 @@ public class EquipLight : EquipItemBase
         }
 
         // 배터리 상태가 벗어나면 손전등 끔
-        MainGameManager.Instance.Player.UnEquipCurrentItem();
+        OnUse();
         isCoroutineStarted = false;
     }
 }
